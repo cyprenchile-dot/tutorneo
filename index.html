@@ -29,6 +29,12 @@
         .mini-cancha-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; }
         .mini-cancha-roja { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); border: 2px solid #ef4444; }
         .airport-board { background: #090D16; border: 2px solid #1E293B; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll { display: flex; width: max-content; animation: scroll 25s linear infinite; }
+        .animate-scroll:hover { animation-play-state: paused; }
     </style>
 </head>
 <body class="min-h-screen selection:bg-brandPrimary selection:text-slate-950 flex flex-col justify-between">
@@ -142,9 +148,10 @@
         <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
             <div class="text-center space-y-2">
                 <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🎾 TABLERO OFICIAL EN VIVO • ESTILO GRAND SLAM</span>
-                <h2 class="text-4xl font-extrabold text-white">Resultados en Directo & Ranking del Circuito</h2>
+                <h2 class="text-4xl font-extrabold text-white">Resultados en Directo, Rankings & Sponsors</h2>
             </div>
 
+            <!-- TABLERO PRINCIPAL EN VIVO -->
             <div class="airport-board rounded-3xl p-6 md:p-8 space-y-6">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                     <div class="text-brandPrimary font-mono-code font-bold tracking-widest text-sm">🔴 CANCHAS OFICIALES • LIVE SCORES</div>
@@ -153,20 +160,37 @@
                 <div id="gridPartidosEnVivo" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             </div>
 
-            <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
-                <h3 class="text-xl font-bold text-white mb-4">📊 Ranking Oficial por Categoría</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left text-xs text-slate-300 font-mono-code">
-                        <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
-                            <tr>
-                                <th class="p-3">Pos</th>
-                                <th class="p-3">Dupla / Alias</th>
-                                <th class="p-3">Categoría</th>
-                                <th class="p-3 text-right">Puntos Acumulados</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800" id="tablaRankingPublica"></tbody>
-                    </table>
+            <!-- DOBLE TABLA DE RANKINGS (CIRCUITO + COPA CHALLENGER) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+                    <h3 class="text-xl font-bold text-white">📊 Ranking General del Circuito</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Pos</th>
+                                    <th class="p-3">Dupla / Alias</th>
+                                    <th class="p-3 text-right">Puntos WPT</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800" id="tablaRankingCircuitoTV"></tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+                    <h3 class="text-xl font-bold text-brandPrimary">🏆 Ranking Copa Challenger</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Pos</th>
+                                    <th class="p-3">Dupla / Alias</th>
+                                    <th class="p-3 text-right">Pts Challenger</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800" id="tablaRankingChallengerTV"></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </main>
@@ -179,7 +203,7 @@
                         <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
                             <span>🛠️ SUPER ADMIN MASTER (ESTUDIO CHICUREO)</span>
                         </h2>
-                        <p class="text-slate-400 text-sm">Panel unificado con control absoluto de canchas, estados, auspiciadores, marcas y resultados.</p>
+                        <p class="text-slate-400 text-sm">Control absoluto de inscripciones, parejas, precios, canchas, auspiciadores y rankings.</p>
                     </div>
                     <div class="flex gap-2">
                         <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg">💾 Guardar & Publicar en Vivo</button>
@@ -205,9 +229,10 @@
                 <!-- Pestañas Master Admin -->
                 <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
                     <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition">🎾 Canchas, Estados & Marcadores</button>
-                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Fotos & Fechas</button>
-                    <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🤝 Auspiciadores</button>
-                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Editar Ranking</button>
+                    <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">👥 Base de Datos Parejas</button>
+                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Precios & Fotos</button>
+                    <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🤝 Auspiciadores & Logos</button>
+                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Rankings (WPT & Challenger)</button>
                 </div>
 
                 <!-- Panel Admin: Boxes -->
@@ -237,9 +262,29 @@
                     </div>
                 </div>
 
+                <!-- Panel Admin: Base de Datos Parejas Inscritas -->
+                <div id="adminPanelParejas" class="space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Listado General de Parejas Inscritas</h3>
+                    <div class="overflow-x-auto rounded-xl border border-slate-800">
+                        <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Cat</th>
+                                    <th class="p-3">Box</th>
+                                    <th class="p-3">Alias</th>
+                                    <th class="p-3">Jugador 1 / 2</th>
+                                    <th class="p-3">PIN</th>
+                                    <th class="p-3 text-right">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaAdminParejasBody" class="divide-y divide-slate-800"></tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <!-- Panel Admin: CMS Visual -->
                 <div id="adminPanelCms" class="space-y-6 hidden">
-                    <h3 class="text-lg font-bold text-white">Personalización Visual de Marca & Cronograma</h3>
+                    <h3 class="text-lg font-bold text-white">Personalización Visual de Marca, Precios & Cronograma</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
                         <div>
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Nombre del Torneo</label>
@@ -256,6 +301,10 @@
                         <div>
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Enlace de Pago (Mercado Pago / Webpay)</label>
                             <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Valor de Inscripción ($ CLP)</label>
+                            <input type="number" id="cfgPrecioInscripcion" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div class="md:col-span-2">
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Texto del Comunicado Urgente (Banner)</label>
@@ -274,25 +323,38 @@
 
                 <!-- Panel Admin: Auspiciadores -->
                 <div id="adminPanelSponsors" class="space-y-6 hidden">
-                    <h3 class="text-lg font-bold text-white">Gestión de Auspiciadores y Enlaces</h3>
+                    <h3 class="text-lg font-bold text-white">Gestión de Auspiciadores y Logotipos</h3>
                     <div id="editorSponsorsAdmin" class="space-y-4"></div>
                     <button onclick="agregarSponsorAdmin()" class="bg-slate-800 hover:bg-slate-700 text-brandPrimary border border-brandPrimary/30 px-4 py-2 rounded-xl text-xs font-mono-code font-bold">+ Agregar Nuevo Auspiciador</button>
                 </div>
 
                 <!-- Panel Admin: Ranking -->
                 <div id="adminPanelRanking" class="space-y-6 hidden">
-                    <h3 class="text-lg font-bold text-white">Actualizar Tabla de Ranking por Categoría</h3>
-                    <div id="editorRankingAdmin" class="space-y-3"></div>
+                    <h3 class="text-lg font-bold text-white">Actualizar Tablas de Ranking (Circuito vs Challenger)</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-sm font-bold text-brandPrimary mb-2">Ranking General del Circuito (Puntos WPT)</h4>
+                            <div id="editorRankingCircuitoAdmin" class="space-y-3"></div>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800">
+                            <h4 class="text-sm font-bold text-brandPrimary mb-2">Ranking Copa Challenger</h4>
+                            <div id="editorRankingChallengerAdmin" class="space-y-3"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- SECCIÓN DE AUSPICIADORES (PIE DE PÁGINA) -->
-    <footer class="bg-slate-950 border-t border-slate-800 py-10 px-4">
+    <!-- SECCIÓN DE AUSPICIADORES (CARRUSEL INFERIOR INFINITO) -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4 overflow-hidden">
         <div class="max-w-7xl mx-auto space-y-6 text-center">
             <div class="text-xs uppercase font-mono-code text-slate-400 tracking-widest">Auspiciadores Oficiales del Circuito</div>
-            <div id="gridSponsorsPublico" class="flex flex-wrap justify-center items-center gap-8 opacity-80"></div>
+            <div class="relative w-full overflow-hidden">
+                <div id="carruselSponsorsPublico" class="animate-scroll flex space-x-12 items-center">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+            </div>
             <div class="text-xs text-slate-600 pt-4 border-t border-slate-900 font-mono-code">
                 © 2026 Tutorneo Pro • Arquitectura Nivel Dios & Grand Slam Engine. Todos los derechos reservados.
             </div>
@@ -306,7 +368,7 @@
             <div class="space-y-2">
                 <span id="modalBoxLabel" class="text-xs font-bold text-brandPrimary uppercase tracking-wider bg-brandPrimary/10 px-3 py-1 rounded border border-brandPrimary/20">Box #1</span>
                 <h3 class="text-2xl font-bold text-white">Inscripción Oficial de Dupla</h3>
-                <p class="text-slate-400 text-xs">Completa tus datos, acepta el reglamento y procede al pago seguro.</p>
+                <p id="modalPrecioLabel" class="text-emerald-400 text-xs font-bold">Valor de inscripción: $40.000 CLP</p>
             </div>
             <form id="formInscripcion" onsubmit="procesarInscripcionYPago(event)" class="space-y-4 text-xs font-mono-code">
                 <div>
@@ -324,7 +386,7 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-slate-300 uppercase mb-1">PIN de Autogestión</label>
+                    <label class="block text-slate-300 uppercase mb-1">PIN de Autogestión (Para modificar datos futuros)</label>
                     <input type="password" id="inputPin" required placeholder="Ej. 1234" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-white">
                 </div>
                 <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
@@ -342,28 +404,35 @@
 
     <!-- SCRIPT MASTER DE NÚCLEO Y SINCRONIZACIÓN -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v2';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v3';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v2')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v3')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
                 heroBgUrl: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop",
                 linkPago: "https://www.mercadopago.cl",
+                precioInscripcion: 40000,
                 comunicado: "¡Bienvenidos a la nueva fecha del circuito! Sorteo de grupos este viernes.",
                 cronograma: "<strong>SÁBADO:</strong> Fase de grupos de 09:00 a 22:00 hrs.<br><strong>DOMINGO:</strong> Cuartos, Semis y Finales desde las 10:00 hrs.",
                 reglamento: "1. W.O. estricto a los 10 minutos de retraso.<br>2. Partidos a 1 set largo de 9 games con Punto de Oro.<br>3. Uso obligatorio de indumentaria adecuada."
             },
             sponsors: [
-                { nombre: "Chicureo Motors", url: "https://www.google.com", logo: "🚗 Chicureo Motors" },
-                { nombre: "Pádel Pro Shop", url: "https://www.google.com", logo: "🎾 Pádel Pro" },
-                { nombre: "Laguna Sport", url: "https://www.google.com", logo: "💧 Laguna Sport" }
+                { nombre: "Chicureo Motors", url: "https://www.google.com", logo: "🚗 CHICUREO MOTORS" },
+                { nombre: "Pádel Pro Shop", url: "https://www.google.com", logo: "🎾 PÁDEL PRO SHOP" },
+                { nombre: "Laguna Sport", url: "https://www.google.com", logo: "💧 LAGUNA SPORT" },
+                { nombre: "Tesla Chile", url: "https://www.tesla.com", logo: "⚡ TESLA MOTORS" }
             ],
-            ranking: [
-                { pos: 1, dupla: "DUPLA ELITE 1", cat: "Varones 5ª", pts: 2450 },
-                { pos: 2, dupla: "CHICUREO GIRLS 1", cat: "Damas C", pts: 2100 },
-                { pos: 3, dupla: "MIXED POWER 1", cat: "Mixto C", pts: 1850 }
+            rankingCircuito: [
+                { pos: 1, dupla: "DUPLA ELITE 1", pts: 2450 },
+                { pos: 2, dupla: "CHICUREO GIRLS 1", pts: 2100 },
+                { pos: 3, dupla: "MIXED POWER 1", pts: 1850 }
+            ],
+            rankingChallenger: [
+                { pos: 1, dupla: "CHICUREO GIRLS 1", pts: 1200 },
+                { pos: 2, dupla: "DUPLA ELITE 1", pts: 1050 },
+                { pos: 3, dupla: "LOS VIKINGOS", pts: 900 }
             ],
             cupos: {
                 varones: Array.from({length: 16}, (_, i) => ({
@@ -409,21 +478,21 @@
         let boxSeleccionado = null;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v2', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v3', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v2'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v3'));
                 aplicarCMS();
                 renderPublico();
             }
         };
 
         function aplicarCMS() {
-            document.getElementById('navTitle').innerHTML = `Copa Challenger <span class="text-brandPrimary">Chicureo</span>`;
+            document.getElementById('navTitle').innerHTML = `Copa Challenger <span class="text-brandPrimary">${db.config.nombreTorneo.split(' ')[2] || 'Chicureo'}</span>`;
             document.getElementById('badgeOrgNav').innerText = db.config.badgeOrg;
             document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
             document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
@@ -442,17 +511,16 @@
                 commEl.classList.add('hidden');
             }
 
-            const spContainer = document.getElementById('gridSponsorsPublico');
-            if(spContainer) {
-                spContainer.innerHTML = '';
-                db.sponsors.forEach(s => {
-                    const a = document.createElement('a');
-                    a.href = s.url;
-                    a.target = "_blank";
-                    a.className = "text-sm font-bold text-slate-400 hover:text-brandPrimary transition font-mono-code bg-slate-900 px-4 py-2 rounded-xl border border-slate-800";
-                    a.innerText = s.logo;
-                    spContainer.appendChild(a);
-                });
+            // Carrusel de Auspiciadores Infinito (Duplicado para efecto fluido)
+            const carrusel = document.getElementById('carruselSponsorsPublico');
+            if(carrusel) {
+                carrusel.innerHTML = '';
+                const itemsHtml = db.sponsors.map(s => `
+                    <a href="${s.url}" target="_blank" class="text-sm font-extrabold text-slate-300 hover:text-brandPrimary transition font-mono-code bg-slate-900 px-6 py-3 rounded-2xl border border-slate-800 shadow-lg flex items-center space-x-2">
+                        <span>${s.logo}</span>
+                    </a>
+                `).join('');
+                carrusel.innerHTML = itemsHtml + itemsHtml; // Duplicar para loop continuo
             }
         }
 
@@ -468,13 +536,15 @@
             if(vista === 'tv') { renderTV(); document.getElementById('vistaTV').classList.remove('hidden'); }
             if(vista === 'admin') { 
                 renderAdminBoxes();
+                renderAdminParejas();
                 renderEditorSponsors();
-                renderEditorRanking();
+                renderEditorRankings();
                 actualizarCajaPrivadaAdmin();
                 document.getElementById('cfgNombreTorneo').value = db.config.nombreTorneo || '';
                 document.getElementById('cfgBadge').value = db.config.badgeOrg || '';
                 document.getElementById('cfgHeroUrl').value = db.config.heroBgUrl || '';
                 document.getElementById('cfgLinkPago').value = db.config.linkPago || '';
+                document.getElementById('cfgPrecioInscripcion').value = db.config.precioInscripcion || 40000;
                 document.getElementById('cfgComunicado').value = db.config.comunicado || '';
                 document.getElementById('cfgCronograma').value = db.config.cronograma || '';
                 document.getElementById('cfgReglamento').value = db.config.reglamento || '';
@@ -558,6 +628,7 @@
         function abrirModalInscripcion(id) {
             boxSeleccionado = id;
             document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${catActiva.toUpperCase()}`;
+            document.getElementById('modalPrecioLabel').innerText = `Valor de inscripción: $${db.config.precioInscripcion.toLocaleString('es-CL')} CLP`;
             document.getElementById('modalInscripcion').classList.remove('hidden');
         }
 
@@ -610,7 +681,7 @@
             if(!grid) return;
             grid.innerHTML = '';
             let ocupados = db.cupos[catActiva].filter(c => c.ocupado);
-            ocupados.forEach((p1, index) => {
+            ocupados.forEach((p1) => {
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 border border-slate-800 p-4 rounded-2xl flex justify-between items-center shadow";
                 card.innerHTML = `
@@ -627,28 +698,31 @@
                 grid.appendChild(card);
             });
 
-            const tbody = document.getElementById('tablaRankingPublica');
-            if(tbody) {
-                tbody.innerHTML = '';
-                db.ranking.forEach(r => {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
-                        <td class="p-3 text-brandPrimary font-bold">#${r.pos}</td>
-                        <td class="p-3 text-white font-bold">${r.dupla}</td>
-                        <td class="p-3 text-slate-300">${r.cat}</td>
-                        <td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td>
-                    `;
-                    tbody.appendChild(tr);
+            // Ranking Circuito WPT
+            const tbCircuito = document.getElementById('tablaRankingCircuitoTV');
+            if(tbCircuito) {
+                tbCircuito.innerHTML = '';
+                db.rankingCircuito.forEach(r => {
+                    tbCircuito.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${r.pos}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
+                });
+            }
+
+            // Ranking Copa Challenger
+            const tbChallenger = document.getElementById('tablaRankingChallengerTV');
+            if(tbChallenger) {
+                tbChallenger.innerHTML = '';
+                db.rankingChallenger.forEach(r => {
+                    tbChallenger.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${r.pos}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
                 });
             }
         }
 
         function setTabAdmin(tab) {
-            ['adminPanelBoxes', 'adminPanelCms', 'adminPanelSponsors', 'adminPanelRanking'].forEach(p => {
+            ['adminPanelBoxes', 'adminPanelParejas', 'adminPanelCms', 'adminPanelSponsors', 'adminPanelRanking'].forEach(p => {
                 const el = document.getElementById(p);
                 if(el) el.classList.add('hidden');
             });
-            ['tabAdminBoxes', 'tabAdminCms', 'tabAdminSponsors', 'tabAdminRanking'].forEach(t => {
+            ['tabAdminBoxes', 'tabAdminParejas', 'tabAdminCms', 'tabAdminSponsors', 'tabAdminRanking'].forEach(t => {
                 const el = document.getElementById(t);
                 if(el) el.className = "bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition";
             });
@@ -656,6 +730,10 @@
             if(tab === 'boxes') {
                 document.getElementById('adminPanelBoxes').classList.remove('hidden');
                 document.getElementById('tabAdminBoxes').className = "bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition";
+            } else if(tab === 'parejas') {
+                document.getElementById('adminPanelParejas').classList.remove('hidden');
+                document.getElementById('tabAdminParejas').className = "bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition";
+                renderAdminParejas();
             } else if(tab === 'cms') {
                 document.getElementById('adminPanelCms').classList.remove('hidden');
                 document.getElementById('tabAdminCms').className = "bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition";
@@ -665,6 +743,7 @@
             } else {
                 document.getElementById('adminPanelRanking').classList.remove('hidden');
                 document.getElementById('tabAdminRanking').className = "bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition";
+                renderEditorRankings();
             }
         }
 
@@ -673,7 +752,7 @@
             Object.values(db.cupos).forEach(cat => cat.forEach(c => { if(c.ocupado) total++; }));
             const el1 = document.getElementById('adminCajaTotal');
             const el2 = document.getElementById('adminCuposStats');
-            if(el1) el1.innerText = "$" + (total * 40000).toLocaleString('es-CL') + " CLP";
+            if(el1) el1.innerText = "$" + (total * db.config.precioInscripcion).toLocaleString('es-CL') + " CLP";
             if(el2) el2.innerText = `${total} / 48`;
         }
 
@@ -717,6 +796,39 @@
             actualizarCajaPrivadaAdmin();
         }
 
+        function renderAdminParejas() {
+            const tbody = document.getElementById('tablaAdminParejasBody');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            Object.keys(db.cupos).forEach(cat => {
+                db.cupos[cat].forEach(c => {
+                    if(c.ocupado) {
+                        tbody.innerHTML += `
+                            <tr>
+                                <td class="p-3 uppercase font-bold text-brandPrimary">${cat}</td>
+                                <td class="p-3 font-bold text-white">Box #${c.id}</td>
+                                <td class="p-3 text-white font-bold">${c.alias}</td>
+                                <td class="p-3 text-slate-300">${c.j1} / ${c.j2}</td>
+                                <td class="p-3 font-mono-code text-yellow-400">${c.pin}</td>
+                                <td class="p-3 text-right"><button onclick="liberarBox('${cat}', ${c.id})" class="text-red-400 hover:text-red-300 text-xs font-bold">Liberar</button></td>
+                            </tr>
+                        `;
+                    }
+                });
+            });
+        }
+
+        function liberarBox(cat, id) {
+            const c = db.cupos[cat].find(x => x.id === id);
+            c.ocupado = false;
+            c.alias = null;
+            c.j1 = '';
+            c.j2 = '';
+            sincronizar();
+            renderAdminParejas();
+            renderAdminBoxes();
+        }
+
         function cambiarEstado(cat, id, val) {
             const c = db.cupos[cat].find(x => x.id === id);
             c.ocupado = (val === 'ocupado');
@@ -753,7 +865,7 @@
             db.sponsors.forEach((s, index) => {
                 cont.innerHTML += `
                     <div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs">
-                        <input type="text" value="${s.logo}" onchange="db.sponsors[${index}].logo=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white w-40" placeholder="Nombre / Logo">
+                        <input type="text" value="${s.logo}" onchange="db.sponsors[${index}].logo=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white w-48" placeholder="Nombre / Logo">
                         <input type="text" value="${s.url}" onchange="db.sponsors[${index}].url=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1" placeholder="URL Enlace">
                         <button onclick="db.sponsors.splice(${index},1); renderEditorSponsors();" class="text-red-400 hover:text-red-300 font-bold px-2">Eliminar</button>
                     </div>
@@ -762,23 +874,25 @@
         }
 
         function agregarSponsorAdmin() {
-            db.sponsors.push({ nombre: "Nuevo Sponsor", url: "https://www.google.com", logo: "⭐ Patrocinador" });
+            db.sponsors.push({ nombre: "Nuevo Sponsor", url: "https://www.google.com", logo: "⭐ NUEVO PATROCINADOR" });
             renderEditorSponsors();
         }
 
-        function renderEditorRanking() {
-            const cont = document.getElementById('editorRankingAdmin');
-            if(!cont) return;
-            cont.innerHTML = '';
-            db.ranking.forEach((r, index) => {
-                cont.innerHTML += `
-                    <div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center">
-                        <span class="text-white font-bold">#${r.pos}</span>
-                        <input type="text" value="${r.dupla}" onchange="db.ranking[${index}].dupla=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1">
-                        <input type="number" value="${r.pts}" onchange="db.ranking[${index}].pts=Number(this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28">
-                    </div>
-                `;
-            });
+        function renderEditorRankings() {
+            const contC = document.getElementById('editorRankingCircuitoAdmin');
+            const contCh = document.getElementById('editorRankingChallengerAdmin');
+            if(contC) {
+                contC.innerHTML = '';
+                db.rankingCircuito.forEach((r, index) => {
+                    contC.innerHTML += `<div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs"><span class="text-white font-bold">#${r.pos}</span><input type="text" value="${r.dupla}" onchange="db.rankingCircuito[${index}].dupla=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1"><input type="number" value="${r.pts}" onchange="db.rankingCircuito[${index}].pts=Number(this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28"></div>`;
+                });
+            }
+            if(contCh) {
+                contCh.innerHTML = '';
+                db.rankingChallenger.forEach((r, index) => {
+                    contCh.innerHTML += `<div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs"><span class="text-white font-bold">#${r.pos}</span><input type="text" value="${r.dupla}" onchange="db.rankingChallenger[${index}].dupla=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1"><input type="number" value="${r.pts}" onchange="db.rankingChallenger[${index}].pts=Number(this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28"></div>`;
+                });
+            }
         }
 
         function guardarTodoAdmin() {
@@ -786,6 +900,7 @@
             db.config.badgeOrg = document.getElementById('cfgBadge').value;
             db.config.heroBgUrl = document.getElementById('cfgHeroUrl').value;
             db.config.linkPago = document.getElementById('cfgLinkPago').value;
+            db.config.precioInscripcion = Number(document.getElementById('cfgPrecioInscripcion').value);
             db.config.comunicado = document.getElementById('cfgComunicado').value;
             db.config.cronograma = document.getElementById('cfgCronograma').value;
             db.config.reglamento = document.getElementById('cfgReglamento').value;
