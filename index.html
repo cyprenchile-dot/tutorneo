@@ -3,356 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Chicureo Master Engine</title>
-    <style>
-        :root {
-            --primary: #D4AF37;
-            --dark: #05070B;
-            --card-bg: #0D1322;
-            --text-main: #F8FAFC;
+    <title id="pageTitle">Tutorneo Pro | Chicureo Master Grand Slam Engine</title>
+    <!-- Tailwind CSS CDN para diseño imponente -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function aplicarTailwindConfig(colorPrimary) {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brandPrimary: colorPrimary || '#D4AF37',
+                            brandDark: '#05070B',
+                            brandCard: '#0D1322',
+                        }
+                    }
+                }
+            }
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }
-        body { background-color: var(--dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
-        header { background: rgba(5, 7, 11, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1E293B; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo-area { display: flex; align-items: center; gap: 0.75rem; }
-        .badge-org { background: var(--primary); color: #030508; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.75rem; text-transform: uppercase; }
-        .nav-title { font-weight: 700; font-size: 1.1rem; color: #fff; }
-        .nav-title span { color: var(--primary); }
-        .nav-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .nav-btn { background: #131C2E; color: #fff; border: 1px solid #1E293B; padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
-        .nav-btn:hover { background: #1E293B; }
-        .nav-btn.active { background: var(--primary); color: #030508; font-weight: 700; border-color: var(--primary); }
-
-        .hero { background: linear-gradient(rgba(5, 7, 11, 0.75), rgba(5, 7, 11, 0.95)), var(--hero-bg, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat; padding: 5rem 1rem; text-align: center; border-bottom: 1px solid #1E293B; }
-        .hero h2 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
-        .hero h2 span { color: var(--primary); }
-        .reloj-box { background: rgba(13, 19, 34, 0.9); border: 1px solid var(--primary); padding: 1rem; border-radius: 16px; max-width: 400px; margin: 1.5rem auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        .reloj-time { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 800; color: var(--primary); }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; }
-        .grid-boxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .box-card { border-radius: 16px; padding: 1.25rem; color: #fff; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: transform 0.2s; }
-        .box-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; cursor: pointer; }
-        .box-roja { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); border: 2px solid #ef4444; }
-        .status-badge { position: absolute; top: 0; right: 0; padding: 0.25rem 0.75rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; border-bottom-left-radius: 12px; }
-        .badge-green { background: #10b981; color: #fff; }
-        .badge-red { background: #ef4444; color: #fff; }
-
-        .admin-panel { background: #0D1322; border: 1px solid #1E293B; border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        .table-custom { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
-        .table-custom th, .table-custom td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #1E293B; }
-        .table-custom th { background: #05070B; color: #94A3B8; text-transform: uppercase; font-size: 0.7rem; }
-        .input-dark { background: #05070B; border: 1px solid #334155; color: #fff; padding: 0.5rem 0.75rem; border-radius: 8px; width: 100%; font-size: 0.85rem; }
-        .btn-action { background: var(--primary); color: #030508; font-weight: 700; padding: 0.6rem 1.25rem; border-radius: 10px; border: none; cursor: pointer; }
-        
-        .hidden { display: none !important; }
-        .tabs-cat { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .tab-cat-btn { background: #0D1322; color: #94A3B8; border: 1px solid #1E293B; padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-weight: 600; }
-        .tab-cat-btn.active { background: var(--primary); color: #030508; border-color: var(--primary); }
-
+        aplicarTailwindConfig('#D4AF37');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; background-color: #05070B; color: #F8FAFC; }
+        .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+        .hero-custom-bg {
+            background: linear-gradient(135deg, rgba(5, 7, 11, 0.8) 0%, rgba(13, 19, 34, 0.95) 100%), var(--hero-bg, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
+        }
+        .glass-panel { background: rgba(13, 19, 34, 0.85); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .mini-cancha-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; }
+        .mini-cancha-roja { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); border: 2px solid #ef4444; }
+        .airport-board { background: #090D16; border: 2px solid #1E293B; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8); }
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
-        .animate-scroll { display: flex; width: max-content; animation: scroll 30s linear infinite; }
+        .animate-scroll { display: flex; width: max-content; animation: scroll 35s linear infinite; }
         .animate-scroll:hover { animation-play-state: paused; }
+        .view-section { display: none; }
+        .view-section.active-view { display: block; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="min-h-screen selection:bg-brandPrimary selection:text-slate-950 flex flex-col justify-between">
 
     <div>
-        <!-- NAVBAR -->
-        <header>
-            <div class="nav-container">
-                <div class="logo-area">
-                    <span id="badgeOrgNav" class="badge-org">Chicureo Open</span>
-                    <h1 class="nav-title" id="navTitle">Copa Challenger <span>Laguna Ayres</span></h1>
+        <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+        <header class="bg-slate-950/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+            <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center space-x-3">
+                    <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1.5 rounded-lg text-xs uppercase tracking-wider shadow">Chicureo Open</span>
+                    <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Laguna Ayres</span></h1>
                 </div>
-                <div class="nav-buttons">
-                    <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnVPub">🎾 Inicio & Cuadros</button>
-                    <button onclick="cambiarVista('premios')" class="nav-btn" id="btnVPrem">🏆 Premios & Mapa</button>
-                    <button onclick="cambiarVista('tv')" class="nav-btn" id="btnVTV">📺 Pantalla Gigante</button>
-                    <button onclick="cambiarVista('login')" class="nav-btn" id="btnVAdmin">⚙️ Admin Master</button>
+                <div class="flex items-center space-x-2 md:space-x-3 text-sm">
+                    <button onclick="cambiarVista('publico')" id="btnVPub" class="bg-slate-900 hover:bg-slate-800 text-slate-200 px-4 py-2 rounded-xl font-medium transition text-xs border border-slate-700/60 shadow">🎾 Inicio & Cuadros</button>
+                    <button onclick="cambiarVista('premios')" id="btnVPrem" class="bg-slate-900 hover:bg-slate-800 text-slate-200 px-4 py-2 rounded-xl font-medium transition text-xs border border-slate-700/60 shadow">🏆 Premios & Mapa</button>
+                    <button onclick="cambiarVista('tv')" id="btnVTV" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/40 px-4 py-2 rounded-xl font-medium transition text-xs shadow">📺 Pantalla Gigante</button>
+                    <button onclick="cambiarVista('login')" id="btnVAdmin" class="bg-brandPrimary/20 hover:bg-brandPrimary/30 text-brandPrimary border border-brandPrimary/50 px-4 py-2 rounded-xl font-semibold transition text-xs shadow">⚙️ Admin Master</button>
                 </div>
             </div>
         </header>
 
-        <!-- LOGIN ADMIN -->
-        <main id="vistaLogin" class="container hidden" style="max-width: 450px; margin-top: 4rem;">
-            <div class="admin-panel" style="text-align: center;">
-                <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Área Confidencial</span>
-                <h3 style="font-size: 1.5rem; margin: 0.75rem 0 0.25rem 0;">Acceso Super Admin Master</h3>
-                <p style="color: #94A3B8; font-size: 0.8rem; margin-bottom: 1.5rem;">Introduce la clave maestra para control total.</p>
-                <form onsubmit="procesarLoginAdmin(event)" style="display: flex; flex-direction: column; gap: 1rem;">
-                    <input type="password" id="inputClaveAdmin" required placeholder="Contraseña maestra" class="input-dark" style="text-align: center;">
-                    <button type="submit" class="btn-action">Desbloquear God Mode 🔓</button>
+        <!-- ================= VISTA LOGIN ADMIN ================= -->
+        <main id="vistaLogin" class="max-w-md mx-auto px-4 py-24 view-section">
+            <div class="glass-panel rounded-3xl p-8 shadow-2xl space-y-6 border border-slate-700/60 text-center">
+                <span class="bg-brandPrimary/15 text-brandPrimary border border-brandPrimary/30 px-3.5 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">Área Confidencial</span>
+                <h2 class="text-2xl font-extrabold text-white">Acceso Super Admin Master</h2>
+                <p class="text-slate-400 text-xs">Introduce tu clave maestra (`admin2026`) para desbloquear el control absoluto.</p>
+                <form onsubmit="procesarLoginAdmin(event)" class="space-y-4">
+                    <input type="password" id="inputClaveAdmin" required placeholder="Contraseña maestra" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm text-center focus:outline-none focus:border-brandPrimary">
+                    <button type="submit" class="w-full bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold py-3.5 rounded-xl transition shadow-lg text-sm">
+                        Desbloquear God Mode 🔓
+                    </button>
                 </form>
             </div>
         </main>
 
-        <!-- VISTA PÚBLICA -->
-        <main id="vistaPublica">
-            <section class="hero" id="heroBannerContainer">
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <span id="heroSubtitleBadge" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(212,175,55,0.3);">Sábado y Domingo • 4 Canchas · Chicureo</span>
-                    <h2 id="heroMainTitle" style="margin-top: 1rem;">El Torneo de Pádel Más Exclusivo de <span>Chicureo</span></h2>
+        <!-- ================= VISTA PÚBLICA ================= -->
+        <main id="vistaPublica" class="view-section active-view space-y-12 pb-24">
+            <section id="heroBannerContainer" class="hero-custom-bg py-28 px-4 text-center relative border-b border-slate-800">
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <span id="heroSubtitleBadge" class="text-brandPrimary font-semibold tracking-widest text-xs uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
+                    <h2 id="heroMainTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
+                    </h2>
                     
-                    <div class="reloj-box">
-                        <div style="font-size: 0.7rem; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.25rem;">⏱️ Comienzo Oficial del Torneo en:</div>
-                        <div id="relojGigante" class="reloj-time">00D : 00H : 00M : 00S</div>
+                    <div class="glass-panel rounded-2xl p-4 max-w-xl mx-auto shadow-2xl">
+                        <div class="text-xs uppercase font-mono-code text-slate-400 mb-1">⏱️ Comienzo Oficial del Torneo en:</div>
+                        <div id="relojGigante" class="text-3xl md:text-4xl font-extrabold text-brandPrimary font-mono-code tracking-widest">
+                            00D : 00H : 00M : 00S
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 pt-4">
+                        <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-0.5">
+                            Inscribir mi Dupla Online
+                        </a>
                     </div>
                 </div>
             </section>
 
-            <div class="container">
-                <div id="bannerComunicaciones" class="hidden" style="background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.3); padding: 1rem; border-radius: 12px; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
-                    <span style="font-size: 1.5rem;">📢</span>
+            <div id="bannerComunicaciones" class="max-w-7xl mx-auto px-4 hidden">
+                <div class="glass-panel border border-blue-500/30 rounded-2xl p-5 flex items-center space-x-4 shadow-xl">
+                    <span class="text-3xl">📢</span>
                     <div>
-                        <h4 style="color: #60A5FA; font-size: 0.85rem; text-transform: uppercase;">Comunicado Oficial</h4>
-                        <p id="textoComunicado" style="font-size: 0.8rem; color: #CBD5E1; margin-top: 0.2rem;"></p>
+                        <h4 class="text-sm font-bold text-blue-400 uppercase">Comunicado Oficial del Organizador</h4>
+                        <p id="textoComunicado" class="text-xs text-slate-300 mt-1">Bienvenidos a la nueva fecha del circuito.</p>
                     </div>
                 </div>
-
-                <div style="text-align: center; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Cuadros Oficiales & Autogestión</h3>
-                    <p style="color: #94A3B8; font-size: 0.9rem;">Verde para inscribirte online; Rojo con el estado en vivo de las duplas.</p>
-                </div>
-
-                <div class="tabs-cat">
-                    <button onclick="setCategoria('damas')" id="tabDamas" class="tab-cat-btn">Damas C</button>
-                    <button onclick="setCategoria('varones')" id="tabVarones" class="tab-cat-btn active">Varones 5ª</button>
-                    <button onclick="setCategoria('mixto')" id="tabMixto" class="tab-cat-btn">Mixto C</button>
-                </div>
-
-                <div id="gridCuposPublico" class="grid-boxes"></div>
             </div>
+
+            <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
+                <div class="text-center space-y-2">
+                    <h3 class="text-3xl font-bold text-white">Cuadros Oficiales & Autogestión</h3>
+                    <p class="text-slate-400 text-sm">Explora los boxes de juego. Los verdes están disponibles para reserva inmediata; los rojos muestran el estado en vivo.</p>
+                </div>
+
+                <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
+                    <button onclick="setCategoria('damas')" id="tabDamas" class="px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-900 text-slate-300 border border-slate-700/80 shadow">Damas C</button>
+                    <button onclick="setCategoria('varones')" id="tabVarones" class="px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">Varones 5ª</button>
+                    <button onclick="setCategoria('mixto')" id="tabMixto" class="px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-900 text-slate-300 border border-slate-700/80 shadow">Mixto C</button>
+                </div>
+
+                <div id="gridCuposPublico" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            </section>
         </main>
 
-        <!-- VISTA PREMIOS Y MAPA -->
-        <main id="vistaPremios" class="container hidden">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Información Oficial del Campeonato</h3>
-                <p style="color: #94A3B8;">Premios, reglamentos y ubicación exacta en Chicureo.</p>
+        <!-- ================= VISTA PREMIOS Y MAPA ================= -->
+        <main id="vistaPremios" class="max-w-7xl mx-auto px-4 py-12 view-section space-y-8">
+            <div class="text-center space-y-3">
+                <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🏆 Premios, Fechas & Ubicación</span>
+                <h2 class="text-4xl font-extrabold text-white">Información Oficial del Campeonato</h2>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-                <div class="admin-panel">
-                    <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📅 Cronograma & Fechas</h4>
-                    <div id="textoCronogramaPublico" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;"></div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="glass-panel rounded-3xl p-8 space-y-6 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-brandPrimary">📅 Cronograma & Fechas</h3>
+                    <div id="textoCronogramaPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed font-mono-code"></div>
                 </div>
-                <div class="admin-panel">
-                    <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📜 Reglamento & Términos</h4>
-                    <div id="textoReglamentoPublico" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;"></div>
+                <div class="glass-panel rounded-3xl p-8 space-y-6 shadow-2xl">
+                    <h3 class="text-2xl font-bold text-brandPrimary">📜 Reglamento & Términos</h3>
+                    <div id="textoReglamentoPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed"></div>
                 </div>
             </div>
-            <div class="admin-panel" style="margin-top: 1.5rem;">
-                <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 0.5rem;">📍 Ubicación del Club / Canchas</h4>
-                <div style="width: 100%; height: 320px; border-radius: 12px; overflow: hidden; margin-top: 1rem;">
+            <div class="glass-panel rounded-3xl p-8 space-y-4 shadow-2xl">
+                <h3 class="text-2xl font-bold text-brandPrimary">📍 Ubicación del Club / Canchas</h3>
+                <p class="text-xs text-slate-400">Instalaciones principales en Laguna Ayres de Chicureo.</p>
+                <div class="w-full h-80 rounded-2xl overflow-hidden border border-slate-700 shadow-inner">
                     <iframe id="mapaGoogleIframe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" src="https://maps.google.com/maps?q=Chicureo%20Colina%20Santiago&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                 </div>
             </div>
         </main>
 
-        <!-- VISTA PANTALLA GIGANTE (TV / LIVE) -->
-        <main id="vistaTV" class="container hidden">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <h3 style="font-size: 2rem; font-weight: 800;">Estado de Canchas & En Directo</h3>
-                <p style="color: #94A3B8; font-size: 0.9rem;">Monitoreo oficial de las 4 canchas en tiempo real.</p>
+        <!-- ================= VISTA PANTALLA GIGANTE (TV / LIVE) ================= -->
+        <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 view-section space-y-8">
+            <div class="text-center space-y-2">
+                <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🎾 TABLERO OFICIAL EN VIVO • ESTILO GRAND SLAM</span>
+                <h2 class="text-4xl font-extrabold text-white">Estado de Canchas & En Directo</h2>
             </div>
-            <div id="gridEstado4CanchasTV" class="grid-boxes" style="margin-bottom: 2rem;"></div>
+            <div id="gridEstado4CanchasTV" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
             
-            <div class="admin-panel">
-                <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📊 Rankings Oficiales del Circuito</h4>
+            <div class="glass-panel rounded-3xl p-8 shadow-2xl space-y-6">
+                <h3 class="text-xl font-bold text-brandPrimary">📊 Rankings Oficiales del Circuito</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                     <div>
-                        <h5 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #60A5FA;">Ranking General WPT</h5>
-                        <table class="table-custom"><tbody id="tablaRankingCircuitoTV"></tbody></table>
+                        <h5 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #60A5FA;" class="font-mono-code">Ranking General WPT</h5>
+                        <table class="w-full text-left text-xs font-mono-code"><tbody id="tablaRankingCircuitoTV"></tbody></table>
                     </div>
                     <div>
-                        <h5 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--primary);">Ranking Copa Challenger</h5>
-                        <table class="table-custom"><tbody id="tablaRankingChallengerTV"></tbody></table>
+                        <h5 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--primary);" class="font-mono-code">Ranking Copa Challenger</h5>
+                        <table class="w-full text-left text-xs font-mono-code"><tbody id="tablaRankingChallengerTV"></tbody></table>
                     </div>
                 </div>
             </div>
         </main>
 
-        <!-- VISTA SUPER ADMIN MASTER (GOD MODE) -->
-        <main id="vistaAdmin" class="container hidden">
-            <div class="admin-panel">
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #1E293B; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+        <!-- ================= VISTA SUPER ADMIN MASTER (GOD MODE) ================= -->
+        <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 view-section">
+            <div class="glass-panel rounded-3xl p-6 md:p-10 shadow-2xl space-y-8 border border-slate-700/50">
+                <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                     <div>
-                        <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">🛠️ SUPER ADMIN MASTER (GOD MODE)</h2>
-                        <p style="color: #94A3B8; font-size: 0.8rem;">Control absoluto e ilimitado de títulos, tarifas, pasarela de pago y estética.</p>
+                        <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
+                            <span>🛠️ SUPER ADMIN MASTER (GOD MODE)</span>
+                        </h2>
+                        <p class="text-slate-400 text-sm">Control absoluto e ilimitado de títulos, tarifas, pasarela de pago y estética.</p>
                     </div>
-                    <button onclick="guardarTodoAdmin()" class="btn-action">💾 Guardar & Publicar</button>
+                    <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition shadow-xl">💾 Guardar & Publicar</button>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #05070B; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace;">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950/80 p-5 rounded-2xl border border-slate-800 font-mono-code shadow-inner">
                     <div>
-                        <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Recaudación Privada</div>
-                        <div id="adminCajaTotal" style="font-size: 1.25rem; font-weight: 700; color: #10B981; margin-top: 0.2rem;">$0 CLP</div>
+                        <div class="text-slate-400 text-[10px] uppercase">Recaudación Privada</div>
+                        <div id="adminCajaTotal" class="text-2xl font-bold text-emerald-400 mt-1">$0 CLP</div>
                     </div>
                     <div>
-                        <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Cupos Ocupados</div>
-                        <div id="adminCuposStats" style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-top: 0.2rem;">0 / 48</div>
+                        <div class="text-slate-400 text-[10px] uppercase">Cupos Ocupados</div>
+                        <div id="adminCuposStats" class="text-2xl font-bold text-brandPrimary mt-1">0 / 48</div>
                     </div>
                     <div>
-                        <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Servidor</div>
-                        <div style="font-size: 1.25rem; font-weight: 700; color: #60A5FA; margin-top: 0.2rem;">🟢 LIVE OK</div>
+                        <div class="text-slate-400 text-[10px] uppercase">Servidor</div>
+                        <div class="text-2xl font-bold text-blue-400 mt-1">🟢 LIVE OK</div>
                     </div>
                 </div>
 
-                <div class="nav-buttons" style="margin-bottom: 1.5rem; border-bottom: 1px solid #1E293B; padding-bottom: 1rem;">
-                    <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas & Marcadores</button>
-                    <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="nav-btn">👥 Base de Parejas</button>
-                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 CMS Visual, Títulos & Tarifas</button>
-                    <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="nav-btn">🤝 Auspiciadores & Logos</button>
-                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="nav-btn">📊 Rankings WPT</button>
+                <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
+                    <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition">🎾 Canchas & Marcadores</button>
+                    <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">👥 Base de Parejas</button>
+                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Títulos & Tarifas</button>
+                    <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🤝 Auspiciadores & Logos</button>
+                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Rankings WPT</button>
                 </div>
 
                 <!-- Paneles Internos Admin -->
-                <div id="adminPanelBoxes">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                        <h4 style="font-size: 1rem; font-weight: 700;">Gestión de Canchas y Estados</h4>
-                        <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="input-dark" style="width: 180px;">
+                <div id="adminPanelBoxes" class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-base font-bold text-white">Gestión de Canchas y Estados</h4>
+                        <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-xs text-white font-mono-code" style="width: 180px;">
                             <option value="varones">Varones 5ª</option>
                             <option value="damas">Damas C</option>
                             <option value="mixto">Mixto C</option>
                         </select>
                     </div>
-                    <div style="overflow-x: auto;">
-                        <table class="table-custom">
-                            <thead>
+                    <div class="overflow-x-auto rounded-xl border border-slate-800">
+                        <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
                                 <tr>
-                                    <th>Box</th>
-                                    <th>Estado</th>
-                                    <th>Alias Dupla</th>
-                                    <th>Cancha</th>
-                                    <th>Partido</th>
-                                    <th>Marcador</th>
+                                    <th class="p-3">Box</th>
+                                    <th class="p-3">Estado</th>
+                                    <th class="p-3">Alias Dupla</th>
+                                    <th class="p-3">Cancha</th>
+                                    <th class="p-3">Partido</th>
+                                    <th class="p-3">Marcador</th>
                                 </tr>
                             </thead>
-                            <tbody id="tablaAdminBoxesBody"></tbody>
+                            <tbody id="tablaAdminBoxesBody" class="divide-y divide-slate-800"></tbody>
                         </table>
                     </div>
                 </div>
 
-                <div id="adminPanelParejas" class="hidden">
-                    <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Listado General de Parejas Inscritas</h4>
-                    <div style="overflow-x: auto;">
-                        <table class="table-custom">
-                            <thead>
+                <div id="adminPanelParejas" class="space-y-6 hidden">
+                    <h4 class="text-base font-bold text-white">Listado General de Parejas Inscritas</h4>
+                    <div class="overflow-x-auto rounded-xl border border-slate-800">
+                        <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
                                 <tr>
-                                    <th>Cat</th>
-                                    <th>Box</th>
-                                    <th>Alias</th>
-                                    <th>Jugadores</th>
-                                    <th>PIN</th>
-                                    <th style="text-align: right;">Acción</th>
+                                    <th class="p-3">Cat</th>
+                                    <th class="p-3">Box</th>
+                                    <th class="p-3">Alias</th>
+                                    <th class="p-3">Jugadores</th>
+                                    <th class="p-3">PIN</th>
+                                    <th class="p-3 text-right">Acción</th>
                                 </tr>
                             </thead>
-                            <tbody id="tablaAdminParejasBody"></tbody>
+                            <tbody id="tablaAdminParejasBody" class="divide-y divide-slate-800"></tbody>
                         </table>
                     </div>
                 </div>
 
-                <div id="adminPanelCms" class="hidden" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                <div id="adminPanelCms" class="space-y-6 hidden grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
                     <div>
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Nombre del Torneo</label>
-                        <input type="text" id="cfgNombreTorneo" class="input-dark">
-                    </div>
-                    <div>
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Organización (Badge)</label>
-                        <input type="text" id="cfgBadge" class="input-dark">
+                        <label class="block text-slate-400 mb-1">Nombre del Torneo</label>
+                        <input type="text" id="cfgNombreTorneo" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
                     <div>
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">URL Foto Fondo Hero</label>
-                        <input type="text" id="cfgHeroUrl" class="input-dark">
+                        <label class="block text-slate-400 mb-1">Organización (Badge)</label>
+                        <input type="text" id="cfgBadge" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
                     <div>
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Color Principal (Hex)</label>
-                        <input type="text" id="cfgColorPrimario" class="input-dark">
+                        <label class="block text-slate-400 mb-1">URL Foto Fondo Hero</label>
+                        <input type="text" id="cfgHeroUrl" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
                     <div>
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Enlace de Pago (Mercado Pago / Webpay)</label>
-                        <input type="text" id="cfgLinkPago" class="input-dark">
+                        <label class="block text-slate-400 mb-1">Color Principal (Hex)</label>
+                        <input type="text" id="cfgColorPrimario" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
                     <div>
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Tarifa / Valor Inscripción ($ CLP)</label>
-                        <input type="number" id="cfgPrecioInscripcion" class="input-dark">
+                        <label class="block text-slate-400 mb-1">Enlace de Pago (Mercado Pago / Webpay)</label>
+                        <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
-                    <div style="grid-column: 1 / -1;">
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Ubicación Google Maps (Query)</label>
-                        <input type="text" id="cfgGoogleMapsQuery" class="input-dark">
+                    <div>
+                        <label class="block text-slate-400 mb-1">Tarifa / Valor Inscripción ($ CLP)</label>
+                        <input type="number" id="cfgPrecioInscripcion" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
-                    <div style="grid-column: 1 / -1;">
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Comunicado Urgente</label>
-                        <input type="text" id="cfgComunicado" class="input-dark">
+                    <div class="md:col-span-2">
+                        <label class="block text-slate-400 mb-1">Ubicación Google Maps (Query)</label>
+                        <input type="text" id="cfgGoogleMapsQuery" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
-                    <div style="grid-column: 1 / -1;">
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Cronograma (HTML)</label>
-                        <textarea id="cfgCronograma" rows="3" class="input-dark"></textarea>
+                    <div class="md:col-span-2">
+                        <label class="block text-slate-400 mb-1">Comunicado Urgente</label>
+                        <input type="text" id="cfgComunicado" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                     </div>
-                    <div style="grid-column: 1 / -1;">
-                        <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Reglamento (HTML)</label>
-                        <textarea id="cfgReglamento" rows="3" class="input-dark"></textarea>
+                    <div class="md:col-span-2">
+                        <label class="block text-slate-400 mb-1">Cronograma (HTML)</label>
+                        <textarea id="cfgCronograma" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono-code"></textarea>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-slate-400 mb-1">Reglamento (HTML)</label>
+                        <textarea id="cfgReglamento" rows="3" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono-code"></textarea>
                     </div>
                 </div>
 
-                <div id="adminPanelSponsors" class="hidden">
-                    <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Gestión de Auspiciadores y Logos</h4>
-                    <div id="editorSponsorsAdmin" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem;"></div>
-                    <button onclick="agregarSponsorAdmin()" class="nav-btn">+ Agregar Auspiciador</button>
+                <div id="adminPanelSponsors" class="space-y-4 hidden">
+                    <h4 class="text-base font-bold text-white">Gestión de Auspiciadores y Logos</h4>
+                    <div id="editorSponsorsAdmin" class="space-y-3"></div>
+                    <button onclick="agregarSponsorAdmin()" class="bg-slate-800 hover:bg-slate-700 text-brandPrimary px-4 py-2 rounded-xl text-xs font-bold">+ Agregar Auspiciador</button>
                 </div>
 
-                <div id="adminPanelRanking" class="hidden">
-                    <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Puntos del Circuito</h4>
-                    <div id="editorRankingCircuitoAdmin" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+                <div id="adminPanelRanking" class="space-y-4 hidden">
+                    <h4 class="text-base font-bold text-white">Puntos del Circuito</h4>
+                    <div id="editorRankingCircuitoAdmin" class="space-y-3"></div>
                 </div>
             </div>
         </main>
     </div>
 
     <!-- FOOTER / AUSPICIADORES -->
-    <footer>
-        <div style="max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; text-align: center;">
-            <div style="font-size: 0.7rem; text-transform: uppercase; color: #94A3B8; font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem;">Auspiciadores Oficiales del Circuito</div>
-            <div style="overflow: hidden; width: 100%;">
-                <div id="carruselSponsorsPublico" class="animate-scroll" style="display: flex; gap: 2rem; align-items: center;"></div>
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4 shadow-2xl">
+        <div class="max-w-7xl mx-auto space-y-6 text-center">
+            <div class="text-xs uppercase font-mono-code text-slate-400 tracking-widest">Auspiciadores Oficiales del Circuito</div>
+            <div class="relative w-full overflow-hidden">
+                <div id="carruselSponsorsPublico" class="animate-scroll flex space-x-12 items-center"></div>
             </div>
-            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • God Mode Engine.</div>
+            <div class="text-xs text-slate-600 pt-4 border-t border-slate-900 font-mono-code">
+                © 2026 Tutorneo Pro • God Mode Engine. Todos los derechos reservados.
+            </div>
         </div>
     </footer>
 
     <!-- MODAL DE INSCRIPCIÓN -->
-    <div id="modalInscripcion" class="hidden" style="position: fixed; inset: 0; background: rgba(5,7,11,0.85); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-        <div class="admin-panel" style="max-width: 450px; width: 100%; position: relative;">
-            <button onclick="cerrarModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #94A3B8; font-size: 1.2rem; cursor: pointer;">&times;</button>
-            <span id="modalBoxLabel" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Box #1</span>
-            <h3 style="font-size: 1.3rem; font-weight: 700; margin: 0.5rem 0;">Inscripción Oficial</h3>
-            <p id="modalPrecioLabel" style="color: #10B981; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">Valor: $40.000 CLP</p>
-            <form onsubmit="procesarInscripcionYPago(event)" style="display: flex; flex-direction: column; gap: 0.75rem;">
-                <input type="text" id="inputAlias" required placeholder="Alias de la Dupla (Equipo)" class="input-dark">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
-                    <input type="text" id="inputJ1" required placeholder="Jugador 1" class="input-dark">
-                    <input type="text" id="inputJ2" required placeholder="Jugador 2" class="input-dark">
+    <div id="modalInscripcion" class="hidden fixed inset-0 bg-slate-950/85 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="glass-panel rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-6 shadow-2xl relative border border-slate-700">
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+            <span id="modalBoxLabel" class="bg-brandPrimary/15 text-brandPrimary px-3 py-1 rounded-lg text-xs font-bold">Box #1</span>
+            <h3 class="text-2xl font-bold text-white">Inscripción Oficial</h3>
+            <p id="modalPrecioLabel" class="text-emerald-400 text-xs font-bold">Valor: $40.000 CLP</p>
+            <form onsubmit="procesarInscripcionYPago(event)" class="space-y-4 text-xs font-mono-code">
+                <input type="text" id="inputAlias" required placeholder="Alias de la Dupla (Equipo)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-sans">
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="inputJ1" required placeholder="Jugador 1" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-sans">
+                    <input type="text" id="inputJ2" required placeholder="Jugador 2" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-white font-sans">
                 </div>
-                <input type="password" id="inputPin" required placeholder="PIN de Autogestión (ej. 1234)" class="input-dark">
-                <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #94A3B8; cursor: pointer;">
-                    <input type="checkbox" id="checkReglamento" required> Acepto los términos y el reglamento oficial.
+                <input type="password" id="inputPin" required placeholder="PIN de Autogestión (ej. 1234)" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                <label class="flex items-center space-x-2 text-slate-400 text-xs font-sans cursor-pointer">
+                    <input type="checkbox" id="checkReglamento" required class="rounded bg-slate-900 border-slate-700 text-brandPrimary">
+                    <span>Acepto los términos y el reglamento oficial.</span>
                 </label>
-                <button type="submit" class="btn-action" style="background: #009EE3; color: #fff; margin-top: 0.5rem;">Ir a Pagar & Inscribir 💳</button>
+                <button type="submit" class="w-full bg-[#009EE3] hover:bg-[#0082BD] text-white font-bold py-3.5 rounded-xl transition shadow-lg text-sm font-sans">
+                    Ir a Pagar & Inscribir 💳
+                </button>
             </form>
         </div>
     </div>
 
-    <!-- SCRIPT MASTER BLINDADO -->
+    <!-- SCRIPT DE NÚCLEO BLINDADO -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v9';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v11';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v9')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v11')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -418,21 +423,24 @@
         let boxSeleccionado = null;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v9', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v11', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v9'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v11'));
                 aplicarCMS();
                 renderPublico();
             }
         };
 
         function aplicarCMS() {
-            document.documentElement.style.setProperty('--primary', db.config.colorPrimary || '#D4AF37');
+            const primaryColor = db.config.colorPrimary || '#D4AF37';
+            document.documentElement.style.setProperty('--primary', primaryColor);
+            aplicarTailwindConfig(primaryColor);
+
             const partes = db.config.nombreTorneo.split(' ');
             const subName = partes.slice(2).join(' ') || 'Laguna Ayres';
             document.getElementById('navTitle').innerHTML = `${partes[0] || 'Copa'} ${partes[1] || 'Challenger'} <span style="color:var(--primary);">${subName}</span>`;
@@ -472,9 +480,9 @@
         }
 
         function cambiarVista(vista) {
-            ['vistaLogin', 'vistaPublica', 'vistaPremios', 'vistaTV', 'vistaAdmin'].forEach(v => {
+            ['vistaPublica', 'vistaPremios', 'vistaTV', 'vistaAdmin'].forEach(v => {
                 const el = document.getElementById(v);
-                if(el) el.classList.add('hidden');
+                if(el) el.classList.remove('active-view');
             });
 
             ['btnVPub', 'btnVPrem', 'btnVTV', 'btnVAdmin'].forEach(id => {
@@ -482,18 +490,15 @@
                 if(el) el.classList.remove('active');
             });
 
-            if(vista === 'login') {
-                document.getElementById('vistaLogin').classList.remove('hidden');
-                document.getElementById('btnVAdmin').classList.add('active');
-            } else if(vista === 'publico') {
-                document.getElementById('vistaPublica').classList.remove('hidden');
+            if(vista === 'publico') {
+                document.getElementById('vistaPublica').classList.add('active-view');
                 document.getElementById('btnVPub').classList.add('active');
             } else if(vista === 'premios') {
-                document.getElementById('vistaPremios').classList.remove('hidden');
+                document.getElementById('vistaPremios').classList.add('active-view');
                 document.getElementById('btnVPrem').classList.add('active');
             } else if(vista === 'tv') {
                 renderTV();
-                document.getElementById('vistaTV').classList.remove('hidden');
+                document.getElementById('vistaTV').classList.add('active-view');
                 document.getElementById('btnVTV').classList.add('active');
             } else if(vista === 'admin') {
                 renderAdminBoxes();
@@ -511,7 +516,15 @@
                 document.getElementById('cfgComunicado').value = db.config.comunicado || '';
                 document.getElementById('cfgCronograma').value = db.config.cronograma || '';
                 document.getElementById('cfgReglamento').value = db.config.reglamento || '';
-                document.getElementById('vistaAdmin').classList.remove('hidden');
+                
+                document.getElementById('subVistaLogin').classList.add('hidden');
+                document.getElementById('subVistaPanelAdmin').classList.remove('hidden');
+                document.getElementById('vistaAdmin').classList.add('active-view');
+                document.getElementById('btnVAdmin').classList.add('active');
+            } else if(vista === 'login') {
+                document.getElementById('subVistaPanelAdmin').classList.add('hidden');
+                document.getElementById('subVistaLogin').classList.remove('hidden');
+                document.getElementById('vistaAdmin').classList.add('active-view');
                 document.getElementById('btnVAdmin').classList.add('active');
             }
         }
@@ -688,10 +701,12 @@
 
         function setTabAdmin(tab) {
             ['adminPanelBoxes', 'adminPanelParejas', 'adminPanelCms', 'adminPanelSponsors', 'adminPanelRanking'].forEach(p => {
-                document.getElementById(p).classList.add('hidden');
+                const el = document.getElementById(p);
+                if(el) el.classList.add('hidden');
             });
             ['tabAdminBoxes', 'tabAdminParejas', 'tabAdminCms', 'tabAdminSponsors', 'tabAdminRanking'].forEach(t => {
-                document.getElementById(t).classList.remove('active');
+                const el = document.getElementById(t);
+                if(el) el.classList.remove('active');
             });
 
             if(tab === 'boxes') {
