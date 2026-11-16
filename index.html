@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Copa Challenger | Laguna Ayres de Chicureo</title>
+    <title id="pageTitle">Tutorneo Pro | Arquitectura Nivel Argón</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,8 +12,8 @@
                 extend: {
                     colors: {
                         brandPrimary: '#D4AF37',
-                        brandDark: '#0B0F19',
-                        brandCard: '#131C2E',
+                        brandDark: '#070A12',
+                        brandCard: '#0E1626',
                     }
                 }
             }
@@ -24,36 +24,35 @@
         body { font-family: 'Outfit', sans-serif; }
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .hero-custom-bg {
-            background: linear-gradient(rgba(11, 15, 25, 0.7), rgba(11, 15, 25, 0.95)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(7, 10, 18, 0.75), rgba(7, 10, 18, 0.95)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
         }
     </style>
 </head>
 <body class="bg-brandDark text-slate-100 min-h-screen selection:bg-brandPrimary selection:text-slate-950">
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
-    <header class="bg-slate-950/90 backdrop-blur border-b border-slate-800/80 sticky top-0 z-50">
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR REACTIVA -->
+    <header class="bg-slate-950/95 backdrop-blur border-b border-slate-800/80 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
-                <span id="badgeOrg" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1 rounded text-xs uppercase tracking-wider">Chicureo Open</span>
-                <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Laguna Ayres</span></h1>
+                <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1 rounded text-xs uppercase tracking-wider">Tutorneo Core</span>
+                <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Chicureo</span></h1>
             </div>
-            <div class="flex items-center space-x-3 text-sm">
-                <button onclick="cambiarVista('publico')" id="btnPub" class="bg-slate-800 text-white px-4 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">
-                    🎾 Vista Jugadores
+            <div class="flex items-center space-x-2 md:space-x-3 text-sm">
+                <button onclick="cambiarVista('publico')" id="btnPub" class="bg-slate-800 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">
+                    🎾 Jugadores
                 </button>
-                <button onclick="cambiarVista('tv')" id="btnTV" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 hover:bg-blue-600/30 px-4 py-2 rounded-xl font-medium transition text-xs">
-                    📺 Pantalla Gigante (TV)
+                <button onclick="cambiarVista('tv')" id="btnTV" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 hover:bg-blue-600/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
+                    📺 Pantalla TV
                 </button>
-                <button onclick="verificarAdmin()" id="btnAdm" class="bg-brandPrimary/20 text-brandPrimary border border-brandPrimary/40 hover:bg-brandPrimary/30 px-4 py-2 rounded-xl font-medium transition text-xs">
-                    ⚙️ Admin (CLAVE)
+                <button onclick="verificarAdmin()" id="btnAdm" class="bg-brandPrimary/20 text-brandPrimary border border-brandPrimary/40 hover:bg-brandPrimary/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
+                    ⚙️ Admin
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ================= VISTA PÚBLICA (PLAYERS LIFESTYLE) ================= -->
+    <!-- ================= VISTA PÚBLICA (LIFESTYLE) ================= -->
     <main id="vistaPublica" class="space-y-12 pb-24">
-        <!-- HERO -->
         <section id="heroSection" class="hero-custom-bg py-24 px-4 text-center relative border-b border-slate-800">
             <div class="max-w-4xl mx-auto space-y-6">
                 <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-sm uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
@@ -61,24 +60,23 @@
                     El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
                 </h2>
                 <p id="heroDesc" class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light">
-                    Disfruta de un fin de semana inolvidable con zona de descanso, tercer tiempo en la terraza y Copas Challenger en juego.
+                    Inscríbete de forma instantánea vía WhatsApp, visualiza los cruces en tiempo real y compite por la gloria perpetua.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 pt-4">
                     <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
-                        Ver Cuadros e Inscribirse
+                        Seleccionar Cupo y Jugar
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN CUADROS Y CATEGORÍAS -->
         <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
             <div class="text-center space-y-2">
-                <h3 class="text-3xl font-bold text-white">Cuadros de Juego e Inscripciones</h3>
-                <p class="text-slate-400">Selecciona tu categoría. Los cupos rojos muestran a las parejas inscritas; los verdes están listos para reserva.</p>
+                <h3 class="text-3xl font-bold text-white">Cuadros Oficiales de Inscripción</h3>
+                <p class="text-slate-400">Los boxes en rojo muestran a las duplas confirmadas; los verdes están disponibles para reserva inmediata.</p>
             </div>
 
-            <!-- Tabs de 3 Categorías -->
+            <!-- Selector de Categorías -->
             <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
                 <button onclick="setCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">
                     Damas C (Sáb 09:00)
@@ -91,58 +89,53 @@
                 </button>
             </div>
 
-            <!-- Grid de Cupos -->
-            <div id="gridCuposPublico" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Inyectado dinámicamente -->
-            </div>
+            <div id="gridCuposPublico" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
         </section>
     </main>
 
-    <!-- ================= VISTA PANTALLA GIGANTE (TV MODE) ================= -->
+    <!-- ================= VISTA PANTALLA GIGANTE (TV MODE / LIVE) ================= -->
     <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="text-center space-y-2">
-            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🔴 EN VIVO • MODO TV / CANCHA CENTRAL</span>
-            <h2 class="text-4xl font-extrabold text-white">Resultados y Cruces en Tiempo Real</h2>
+            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🔴 TELEMETRÍA EN VIVO • PANTALLA OFICIAL CLUB</span>
+            <h2 class="text-4xl font-extrabold text-white">Resultados y Playoff Dominical</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gridTV">
-            <!-- Renderizado tipo marcador profesional -->
-        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gridTV"></div>
     </main>
 
-    <!-- ================= VISTA SUPER ADMIN (NIVEL DIOS) ================= -->
+    <!-- ================= VISTA SUPER ADMIN (CONTROL NIVEL ARGÓN) ================= -->
     <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-8">
             <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                 <div>
                     <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
-                        <span>🛠️ PANEL SUPER ADMIN (LICENCIA ACTIVA)</span>
+                        <span>🛠️ NÚCLEO ADMIN (ARQUITECTURA ARGÓN)</span>
                     </h2>
-                    <p class="text-slate-400 text-sm">Control total de cupos, enlaces personalizados, avatares y personalización de marca blanca.</p>
+                    <p class="text-slate-400 text-sm">Sincronización atómica en tiempo real para pantallas y dispositivos móviles.</p>
                 </div>
-                <div class="flex space-x-3">
-                    <button onclick="guardarConfigAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">
-                        💾 Guardar Cambios
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="motorArgonGenerarLlaves()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">
+                        ⚡ Activar Playoff Domingo
+                    </button>
+                    <button onclick="guardarYPublicarConfig()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">
+                        💾 Sincronizar Sistema
                     </button>
                 </div>
             </div>
 
-            <!-- Pestañas de Admin -->
             <div class="flex space-x-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
-                <button onclick="setTabAdmin('cupos')" id="tabAdminCupos" class="bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold">Gestión de Cupos & Links</button>
-                <button onclick="setTabAdmin('marca')" id="tabAdminMarca" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">Personalizar Marca & Textos</button>
+                <button onclick="setTabAdmin('cupos')" id="tabAdminCupos" class="bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold">Gestión de Boxes & WhatsApp</button>
+                <button onclick="setTabAdmin('marca')" id="tabAdminMarca" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">CMS & Marca Blanca</button>
             </div>
 
-            <!-- Contenido Admin: Cupos -->
+            <!-- Panel Admin: Cupos -->
             <div id="adminPanelCupos" class="space-y-6">
                 <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white">Editar Estado y Enlaces de Inscripción por Cupo</h3>
-                    <div class="flex space-x-2">
-                        <select id="selectCatAdmin" onchange="renderAdminCuposTabla()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white">
-                            <option value="varones">Varones 5ª</option>
-                            <option value="damas">Damas C</option>
-                            <option value="mixto">Mixto C</option>
-                        </select>
-                    </div>
+                    <h3 class="text-lg font-bold text-white">Control Atómico de Boxes</h3>
+                    <select id="selectCatAdmin" onchange="renderAdminCuposTabla()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white">
+                        <option value="varones">Varones 5ª</option>
+                        <option value="damas">Damas C</option>
+                        <option value="mixto">Mixto C</option>
+                    </select>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs text-slate-300 font-mono-code">
@@ -150,90 +143,104 @@
                             <tr>
                                 <th class="p-3">Box</th>
                                 <th class="p-3">Estado</th>
-                                <th class="p-3">Alias / Dupla</th>
-                                <th class="p-3">Link de Inscripción / Pago (URL)</th>
-                                <th class="p-3 text-right">Acciones</th>
+                                <th class="p-3">Alias Dupla</th>
+                                <th class="p-3">Enlace WhatsApp Dinámico</th>
+                                <th class="p-3">Marcador Vivo</th>
                             </tr>
                         </thead>
-                        <tbody id="tablaAdminCuposBody" class="divide-y divide-slate-800">
-                            <!-- Inyectado por JS -->
-                        </tbody>
+                        <tbody id="tablaAdminCuposBody" class="divide-y divide-slate-800"></tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Contenido Admin: Marca Blanca -->
+            <!-- Panel Admin: Marca Blanca -->
             <div id="adminPanelMarca" class="space-y-6 hidden">
-                <h3 class="text-lg font-bold text-white">Configuración General (White-Label SaaS)</h3>
+                <h3 class="text-lg font-bold text-white">Personalización White-Label (SaaS)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nombre del Torneo</label>
                         <input type="text" id="cfgNombreTorneo" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Texto del Badge Superior</label>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nombre de la Organización (Badge)</label>
                         <input type="text" id="cfgBadge" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">URL Foto de Fondo (Banner)</label>
-                        <input type="text" id="cfgHeroBg" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Color Principal (Hex)</label>
-                        <input type="text" id="cfgColor" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- SCRIPT CENTRAL DE CONTROL TOTAL -->
+    <!-- SCRIPT DE REACTIVIDAD ATÓMICA -->
     <script>
-        // Base de Datos de Configuración y Cupos
-        let configSaaS = {
-            nombreTorneo: "Copa Challenger Laguna Ayres",
-            badgeOrg: "Chicureo Open",
-            heroBg: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop",
-            colorPrincipal: "#D4AF37"
-        };
+        const BROADCAST_CHANNEL = 'tutorneo_argon_channel';
+        const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let dbCupos = {
-            varones: Array.from({length: 16}, (_, i) => ({
-                id: i + 1,
-                ocupado: i < 8,
-                alias: i < 8 ? `DUPLA ELITE ${i+1}` : null,
-                j1: i < 10 ? `Jugador A${i+1}` : '',
-                j2: i < 10 ? `Jugador B${i+1}` : '',
-                avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=player${i}`,
-                linkInscripcion: "https://www.mercadopago.cl",
-                horarios: `Sáb ${13 + Math.floor(i/4)}:30 hrs`,
-                resultado: i < 4 ? "9 - 4" : "Próx."
-            })),
-            damas: Array.from({length: 16}, (_, i) => ({
-                id: i + 1,
-                ocupado: i < 6,
-                alias: i < 6 ? `CHICUREO GIRLS ${i+1}` : null,
-                j1: i < 6 ? `Jugadora A${i+1}` : '',
-                j2: i < 6 ? `Jugadora B${i+1}` : '',
-                avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=dama${i}`,
-                linkInscripcion: "https://www.mercadopago.cl",
-                horarios: `Sáb ${9 + Math.floor(i/4)}:00 hrs`,
-                resultado: "Próx."
-            })),
-            mixto: Array.from({length: 16}, (_, i) => ({
-                id: i + 1,
-                ocupado: i < 4,
-                alias: i < 4 ? `MIXED POWER ${i+1}` : null,
-                j1: i < 4 ? `Part. A${i+1}` : '',
-                j2: i < 4 ? `Part. B${i+1}` : '',
-                avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=mixto${i}`,
-                linkInscripcion: "https://www.mercadopago.cl",
-                horarios: `Sáb ${18 + Math.floor(i/4)}:00 hrs`,
-                resultado: "Próx."
-            }))
+        let argonState = JSON.parse(localStorage.getItem('tutorneo_argon_state')) || {
+            config: {
+                nombreTorneo: "Copa Challenger Laguna Ayres",
+                badgeOrg: "Chicureo Open Pro"
+            },
+            llavesActivas: false,
+            cupos: {
+                varones: Array.from({length: 16}, (_, i) => ({
+                    id: i + 1,
+                    ocupado: i < 8,
+                    alias: i < 8 ? `DUPLA ELITE ${i+1}` : null,
+                    j1: `Jugador A${i+1}`,
+                    j2: `Jugador B${i+1}`,
+                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=player${i}`,
+                    whatsapp: "56912345678",
+                    horarios: `Sáb ${13 + Math.floor(i/4)}:30 hrs`,
+                    resultado: i < 4 ? "9 - 4" : "Próx."
+                })),
+                damas: Array.from({length: 16}, (_, i) => ({
+                    id: i + 1,
+                    ocupado: i < 6,
+                    alias: i < 6 ? `CHICUREO GIRLS ${i+1}` : null,
+                    j1: `Jugadora A${i+1}`,
+                    j2: `Jugadora B${i+1}`,
+                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=dama${i}`,
+                    whatsapp: "56912345678",
+                    horarios: `Sáb ${9 + Math.floor(i/4)}:00 hrs`,
+                    resultado: "Próx."
+                })),
+                mixto: Array.from({length: 16}, (_, i) => ({
+                    id: i + 1,
+                    ocupado: i < 4,
+                    alias: i < 4 ? `MIXED POWER ${i+1}` : null,
+                    j1: `Part. A${i+1}`,
+                    j2: `Part. B${i+1}`,
+                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=mixto${i}`,
+                    whatsapp: "56912345678",
+                    horarios: `Sáb ${18 + Math.floor(i/4)}:00 hrs`,
+                    resultado: "Próx."
+                }))
+            }
         };
 
         let catActiva = 'varones';
+
+        function persistirYTransmitir() {
+            localStorage.setItem('tutorneo_argon_state', JSON.stringify(argonState));
+            storageSync.postMessage('sync_update');
+            aplicarConfiguracionVisual();
+        }
+
+        storageSync.onmessage = (event) => {
+            if(event.data === 'sync_update') {
+                argonState = JSON.parse(localStorage.getItem('tutorneo_argon_state'));
+                aplicarConfiguracionVisual();
+                renderPublico();
+                if(!document.getElementById('vistaTV').classList.contains('hidden')) renderTV();
+                if(!document.getElementById('vistaAdmin').classList.contains('hidden')) renderAdminCuposTabla();
+            }
+        };
+
+        function aplicarConfiguracionVisual() {
+            document.getElementById('navTitle').innerHTML = `Copa Challenger <span class="text-brandPrimary">${argonState.config.nombreTorneo.split(' ')[2] || 'Chicureo'}</span>`;
+            document.getElementById('badgeOrgNav').innerText = argonState.config.badgeOrg;
+            document.getElementById('pageTitle').innerText = argonState.config.nombreTorneo;
+        }
 
         function cambiarVista(vista) {
             document.getElementById('vistaPublica').classList.add('hidden');
@@ -246,12 +253,14 @@
         }
 
         function verificarAdmin() {
-            const clave = prompt("Introduce la clave de Super Admin:");
+            const clave = prompt("🔐 Acceso Super Admin (Nivel Argón):");
             if(clave === "admin2026" || clave === "chicureo") {
                 cambiarVista('admin');
                 renderAdminCuposTabla();
+                document.getElementById('cfgNombreTorneo').value = argonState.config.nombreTorneo;
+                document.getElementById('cfgBadge').value = argonState.config.badgeOrg;
             } else {
-                alert("Clave incorrecta.");
+                alert("❌ Clave de seguridad incorrecta.");
             }
         }
 
@@ -271,7 +280,7 @@
         function renderPublico() {
             const grid = document.getElementById('gridCuposPublico');
             grid.innerHTML = '';
-            dbCupos[catActiva].forEach(cupo => {
+            argonState.cupos[catActiva].forEach(cupo => {
                 const card = document.createElement('div');
                 if(cupo.ocupado) {
                     card.className = "bg-slate-900 border border-red-500/30 rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-lg";
@@ -287,19 +296,24 @@
                         </div>
                         <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs font-mono-code text-brandPrimary">
                             <span>🕒 ${cupo.horarios}</span>
-                            <span class="text-emerald-400 font-semibold">Marcador: ${cupo.resultado}</span>
+                            <span class="text-emerald-400 font-semibold">Estado: ${cupo.resultado}</span>
                         </div>
                     `;
                 } else {
+                    const mensajeWa = encodeURIComponent(`Hola, quiero inscribir mi dupla en el box #${cupo.id} de la categoría ${catActiva.toUpperCase()} para la ${argonState.config.nombreTorneo}.`);
+                    const linkWaFinal = `https://wa.me/${cupo.whatsapp}?text=${mensajeWa}`;
+
                     card.className = "bg-slate-900/60 hover:bg-slate-900 border border-emerald-500/30 rounded-2xl p-5 space-y-4 relative overflow-hidden transition shadow-lg group";
                     card.innerHTML = `
                         <div class="absolute top-0 right-0 bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-3 py-1 rounded-bl-xl">DISPONIBLE</div>
                         <div class="text-xs text-slate-400 font-mono-code">CUPO #${cupo.id}</div>
                         <h4 class="text-xl font-bold text-slate-300 group-hover:text-white transition">Cupo Libre</h4>
-                        <p class="text-xs text-slate-400">Reserva tu lugar en este cuadro oficial.</p>
+                        <p class="text-xs text-slate-400">Reserva tu lugar oficial en este cuadro.</p>
                         <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
                             <span class="text-slate-400 font-mono-code">🕒 ${cupo.horarios}</span>
-                            <a href="${cupo.linkInscripcion}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold transition shadow">Inscribir 💳</a>
+                            <a href="${linkWaFinal}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold transition shadow flex items-center space-x-1">
+                                <span>Inscribir WhatsApp 💬</span>
+                            </a>
                         </div>
                     `;
                 }
@@ -314,21 +328,28 @@
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl";
                 card.innerHTML = `
-                    <div class="uppercase text-xs font-bold text-brandPrimary font-mono-code">Categoría • ${cat}</div>
-                    <h3 class="text-2xl font-extrabold text-white">Cancha Central / En Vivo</h3>
+                    <div class="uppercase text-xs font-bold text-brandPrimary font-mono-code">Playoff Domingo • ${cat}</div>
+                    <h3 class="text-2xl font-extrabold text-white">${argonState.llavesActivas ? 'Cuartos de Final (Oro)' : 'Fase de Grupos Activa'}</h3>
                     <div class="space-y-3 pt-2">
                         <div class="bg-slate-950 p-3 rounded-xl flex justify-between items-center border border-slate-800">
-                            <span class="font-bold text-sm text-slate-200">DUPLA 1 vs DUPLA 2</span>
-                            <span class="font-mono-code text-emerald-400 font-bold text-lg">9 - 5</span>
+                            <span class="font-bold text-sm text-slate-200">${argonState.llavesActivas ? '1° Grupo A vs 2° Grupo B' : 'Partidos de Grupo en Curso'}</span>
+                            <span class="font-mono-code text-emerald-400 font-bold text-sm">${argonState.llavesActivas ? '10:00 AM' : 'En Vivo 🎾'}</span>
                         </div>
                         <div class="bg-slate-950 p-3 rounded-xl flex justify-between items-center border border-slate-800">
-                            <span class="font-bold text-sm text-slate-200">DUPLA 3 vs DUPLA 4</span>
-                            <span class="font-mono-code text-yellow-400 font-bold text-lg">En Juego</span>
+                            <span class="font-bold text-sm text-slate-200">${argonState.llavesActivas ? '1° Grupo C vs 2° Grupo D' : 'Clasificatorios'}</span>
+                            <span class="font-mono-code text-yellow-400 font-bold text-sm">${argonState.llavesActivas ? '10:45 AM' : 'Programados'}</span>
                         </div>
                     </div>
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        function motorArgonGenerarLlaves() {
+            argonState.llavesActivas = true;
+            persistirYTransmitir();
+            alert("⚡ ¡Motor Argón ejecutado! Las llaves del domingo se han proyectado en tiempo real en la Pantalla Gigante.");
+            cambiarVista('tv');
         }
 
         function setTabAdmin(tab) {
@@ -349,7 +370,7 @@
             const cat = document.getElementById('selectCatAdmin').value;
             const tbody = document.getElementById('tablaAdminCuposBody');
             tbody.innerHTML = '';
-            dbCupos[cat].forEach(c => {
+            argonState.cupos[cat].forEach(c => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td class="p-3 font-bold text-white">Box #${c.id}</td>
@@ -360,38 +381,51 @@
                         </select>
                     </td>
                     <td class="p-3"><input type="text" value="${c.alias || ''}" onchange="actualizarAlias('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white w-full"></td>
-                    <td class="p-3"><input type="text" value="${c.linkInscripcion}" onchange="actualizarLink('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white w-full"></td>
-                    <td class="p-3 text-right text-emerald-400 font-semibold">Guardado</td>
+                    <td class="p-3"><input type="text" value="${c.whatsapp}" onchange="actualizarWa('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white w-full"></td>
+                    <td class="p-3"><input type="text" value="${c.resultado}" onchange="actualizarRes('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-24"></td>
                 `;
                 tbody.appendChild(tr);
             });
         }
 
         function cambiarEstadoCupo(cat, id, val) {
-            const cupo = dbCupos[cat].find(x => x.id === id);
+            const cupo = argonState.cupos[cat].find(x => x.id === id);
             cupo.ocupado = (val === 'ocupado');
             if(!cupo.alias && cupo.ocupado) cupo.alias = "NUEVA DUPLA";
+            persistirYTransmitir();
             renderPublico();
         }
 
         function actualizarAlias(cat, id, val) {
-            const cupo = dbCupos[cat].find(x => x.id === id);
+            const cupo = argonState.cupos[cat].find(x => x.id === id);
             cupo.alias = val;
+            persistirYTransmitir();
             renderPublico();
         }
 
-        function actualizarLink(cat, id, val) {
-            const cupo = dbCupos[cat].find(x => x.id === id);
-            cupo.linkInscripcion = val;
+        function actualizarWa(cat, id, val) {
+            const cupo = argonState.cupos[cat].find(x => x.id === id);
+            cupo.whatsapp = val;
+            persistirYTransmitir();
             renderPublico();
         }
 
-        function guardarConfigAdmin() {
-            alert("¡Configuración guardada con éxito en los servidores de Render!");
+        function actualizarRes(cat, id, val) {
+            const cupo = argonState.cupos[cat].find(x => x.id === id);
+            cupo.resultado = val;
+            persistirYTransmitir();
+            renderPublico();
+        }
+
+        function guardarYPublicarConfig() {
+            argonState.config.nombreTorneo = document.getElementById('cfgNombreTorneo').value;
+            argonState.config.badgeOrg = document.getElementById('cfgBadge').value;
+            persistirYTransmitir();
+            alert("🚀 ¡Sistema sincronizado con éxito bajo Arquitectura Argón!");
             cambiarVista('publico');
         }
 
-        // Cargar vista inicial
+        aplicarConfiguracionVisual();
         renderPublico();
     </script>
 </body>
