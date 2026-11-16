@@ -54,6 +54,8 @@
         .tab-cat-btn { background: #0D1322; color: #94A3B8; border: 1px solid #1E293B; padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-weight: 600; }
         .tab-cat-btn.active { background: var(--primary); color: #030508; border-color: var(--primary); }
 
+        .modal-oculto { display: none !important; }
+
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -82,7 +84,7 @@
             </div>
         </header>
 
-        <!-- CONTENEDOR CENTRAL DE VISTAS (BLINDADO CONTRA PANTALLAS NEGRAS) -->
+        <!-- CONTENEDOR CENTRAL DE VISTAS -->
         <div id="contenedorVistas">
 
             <!-- VISTA PÚBLICA -->
@@ -100,7 +102,7 @@
                 </section>
 
                 <div class="container">
-                    <div id="bannerComunicaciones" class="hidden" style="background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.3); padding: 1rem; border-radius: 12px; margin-bottom: 2rem; display: flex; align-items: center; gap: 1rem;">
+                    <div id="bannerComunicaciones" style="background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.3); padding: 1rem; border-radius: 12px; margin-bottom: 2rem; display: none; align-items: center; gap: 1rem;">
                         <span style="font-size: 1.5rem;">📢</span>
                         <div>
                             <h4 style="color: #60A5FA; font-size: 0.85rem; text-transform: uppercase;">Comunicado Oficial</h4>
@@ -174,11 +176,11 @@
                 </div>
             </div>
 
-            <!-- VISTA ADMIN MASTER (INCLUYE LOGIN + PANEL GOD MODE) -->
+            <!-- VISTA ADMIN MASTER (LOGIN + PANEL) -->
             <div id="vistaAdmin" class="panel-vista">
                 <div class="container">
                     
-                    <!-- PANTALLA DE LOGIN INTERNA -->
+                    <!-- LOGIN -->
                     <div id="adminLoginBox" style="max-width: 450px; margin: 3rem auto;">
                         <div class="admin-panel" style="text-align: center;">
                             <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Área Confidencial</span>
@@ -191,8 +193,8 @@
                         </div>
                     </div>
 
-                    <!-- PANEL DE CONTROL GOD MODE (SE DESBLOQUEA TRAS CLAVE) -->
-                    <div id="adminPanelBox" class="admin-panel hidden">
+                    <!-- PANEL GOD MODE -->
+                    <div id="adminPanelBox" class="admin-panel modal-oculto">
                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #1E293B; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
                             <div>
                                 <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">🛠️ SUPER ADMIN MASTER (GOD MODE)</h2>
@@ -224,7 +226,7 @@
                             <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="nav-btn">📊 Rankings WPT</button>
                         </div>
 
-                        <!-- Paneles Internos Admin -->
+                        <!-- Sub-paneles -->
                         <div id="subPanelBoxes">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                                 <h4 style="font-size: 1rem; font-weight: 700;">Gestión de Canchas y Estados</h4>
@@ -251,7 +253,7 @@
                             </div>
                         </div>
 
-                        <div id="subPanelParejas" class="hidden">
+                        <div id="subPanelParejas" class="modal-oculto">
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Listado General de Parejas Inscritas</h4>
                             <div style="overflow-x: auto;">
                                 <table class="table-custom">
@@ -270,7 +272,7 @@
                             </div>
                         </div>
 
-                        <div id="subPanelCms" class="hidden" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <div id="subPanelCms" class="modal-oculto" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
                             <div>
                                 <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Nombre del Torneo</label>
                                 <input type="text" id="cfgNombreTorneo" class="input-dark">
@@ -313,13 +315,13 @@
                             </div>
                         </div>
 
-                        <div id="subPanelSponsors" class="hidden">
+                        <div id="subPanelSponsors" class="modal-oculto">
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Gestión de Auspiciadores y Logos</h4>
                             <div id="editorSponsorsAdmin" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem;"></div>
                             <button onclick="agregarSponsorAdmin()" class="nav-btn">+ Agregar Auspiciador</button>
                         </div>
 
-                        <div id="subPanelRanking" class="hidden">
+                        <div id="subPanelRanking" class="modal-oculto">
                             <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Puntos del Circuito</h4>
                             <div id="editorRankingCircuitoAdmin" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
                         </div>
@@ -338,12 +340,12 @@
             <div style="overflow: hidden; width: 100%;">
                 <div id="carruselSponsorsPublico" class="animate-scroll" style="display: flex; gap: 2rem; align-items: center;"></div>
             </div>
-            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • God Mode Engine.</div>
+            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • God Mode Engine. Todos los derechos reservados.</div>
         </div>
     </footer>
 
-    <!-- MODAL DE INSCRIPCIÓN -->
-    <div id="modalInscripcion" class="hidden" style="position: fixed; inset: 0; background: rgba(5,7,11,0.85); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem;">
+    <!-- MODAL DE INSCRIPCIÓN (BLINDADO: OCULTO POR DEFECTO) -->
+    <div id="modalInscripcion" class="modal-oculto" style="position: fixed; inset: 0; background: rgba(5,7,11,0.85); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem;">
         <div class="admin-panel" style="max-width: 450px; width: 100%; position: relative;">
             <button onclick="cerrarModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #94A3B8; font-size: 1.2rem; cursor: pointer;">&times;</button>
             <span id="modalBoxLabel" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Box #1</span>
@@ -366,10 +368,10 @@
 
     <!-- SCRIPT MASTER DE ENRUTAMIENTO BLINDADO -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v12';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v13';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v12')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v13')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -436,14 +438,14 @@
         let isAdminLoggedIn = false;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v12', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v13', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v12'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v13'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -511,8 +513,8 @@
                 document.getElementById('vistaAdmin').classList.add('activo');
                 document.getElementById('btnNavAdmin').classList.add('active');
                 if(isAdminLoggedIn) {
-                    document.getElementById('adminLoginBox').classList.add('hidden');
-                    document.getElementById('adminPanelBox').classList.remove('hidden');
+                    document.getElementById('adminLoginBox').style.display = 'none';
+                    document.getElementById('adminPanelBox').classList.remove('modal-oculto');
                     renderAdminBoxes();
                     renderAdminParejas();
                     renderEditorSponsors();
@@ -529,8 +531,8 @@
                     document.getElementById('cfgCronograma').value = db.config.cronograma || '';
                     document.getElementById('cfgReglamento').value = db.config.reglamento || '';
                 } else {
-                    document.getElementById('adminPanelBox').classList.add('hidden');
-                    document.getElementById('adminLoginBox').classList.remove('hidden');
+                    document.getElementById('adminPanelBox').classList.add('modal-oculto');
+                    document.getElementById('adminLoginBox').style.display = 'block';
                 }
             }
         }
@@ -606,11 +608,11 @@
             boxSeleccionado = id;
             document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${catActiva.toUpperCase()}`;
             document.getElementById('modalPrecioLabel').innerText = `Valor: $${db.config.precioInscripcion.toLocaleString('es-CL')} CLP`;
-            document.getElementById('modalInscripcion').classList.remove('hidden');
+            document.getElementById('modalInscripcion').classList.remove('modal-oculto');
         }
 
         function cerrarModal() {
-            document.getElementById('modalInscripcion').classList.add('hidden');
+            document.getElementById('modalInscripcion').classList.add('modal-oculto');
             document.getElementById('formInscripcion').reset();
             boxSeleccionado = null;
         }
@@ -707,28 +709,28 @@
 
         function setTabAdmin(tab) {
             ['subPanelBoxes', 'subPanelParejas', 'subPanelCms', 'subPanelSponsors', 'subPanelRanking'].forEach(p => {
-                document.getElementById(p).classList.add('hidden');
+                document.getElementById(p).classList.add('modal-oculto');
             });
             ['tabAdminBoxes', 'tabAdminParejas', 'tabAdminCms', 'tabAdminSponsors', 'tabAdminRanking'].forEach(t => {
                 document.getElementById(t).classList.remove('active');
             });
 
             if(tab === 'boxes') {
-                document.getElementById('subPanelBoxes').classList.remove('hidden');
+                document.getElementById('subPanelBoxes').classList.remove('modal-oculto');
                 document.getElementById('tabAdminBoxes').classList.add('active');
             } else if(tab === 'parejas') {
-                document.getElementById('subPanelParejas').classList.remove('hidden');
+                document.getElementById('subPanelParejas').classList.remove('modal-oculto');
                 document.getElementById('tabAdminParejas').classList.add('active');
                 renderAdminParejas();
             } else if(tab === 'cms') {
-                document.getElementById('subPanelCms').classList.remove('hidden');
+                document.getElementById('subPanelCms').classList.remove('modal-oculto');
                 document.getElementById('tabAdminCms').classList.add('active');
             } else if(tab === 'sponsors') {
-                document.getElementById('subPanelSponsors').classList.remove('hidden');
+                document.getElementById('subPanelSponsors').classList.remove('modal-oculto');
                 document.getElementById('tabAdminSponsors').classList.add('active');
                 renderEditorSponsors();
             } else {
-                document.getElementById('subPanelRanking').classList.remove('hidden');
+                document.getElementById('subPanelRanking').classList.remove('modal-oculto');
                 document.getElementById('tabAdminRanking').classList.add('active');
             }
         }
