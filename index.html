@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Plataforma Oficial de Pádel</title>
+    <title id="pageTitle">Tutorneo Pro | Nivel Dios & Tesla Engine</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,8 +12,8 @@
                 extend: {
                     colors: {
                         brandPrimary: '#D4AF37',
-                        brandDark: '#070A12',
-                        brandCard: '#0E1626',
+                        brandDark: '#05070B',
+                        brandCard: '#0D1322',
                     }
                 }
             }
@@ -24,13 +24,22 @@
         body { font-family: 'Outfit', sans-serif; }
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .hero-custom-bg {
-            background: linear-gradient(rgba(7, 10, 18, 0.75), rgba(7, 10, 18, 0.95)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(5, 7, 11, 0.75), rgba(5, 7, 11, 0.95)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+        /* Estilo mini cancha de pádel */
+        .mini-cancha-verde {
+            background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+            border: 2px solid #10b981;
+        }
+        .mini-cancha-roja {
+            background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
+            border: 2px solid #ef4444;
         }
     </style>
 </head>
 <body class="bg-brandDark text-slate-100 min-h-screen selection:bg-brandPrimary selection:text-slate-950">
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR (LIMPIA DE DATOS FINANCIEROS PÚBLICOS) -->
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (LIMPIA 100% DE DATOS FINANCIEROS PÚBLICOS) -->
     <header class="bg-slate-950/95 backdrop-blur border-b border-slate-800/80 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
@@ -39,30 +48,40 @@
             </div>
             <div class="flex items-center space-x-2 md:space-x-3 text-sm">
                 <button onclick="cambiarVista('publico')" id="btnPub" class="bg-slate-800 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">
-                    🎾 Jugadores
+                    🎾 Inicio & Cuadros
+                </button>
+                <button onclick="cambiarVista('premios')" id="btnPremios" class="bg-slate-800 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">
+                    🏆 Premios & Horarios
                 </button>
                 <button onclick="cambiarVista('tv')" id="btnTV" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 hover:bg-blue-600/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
                     📺 Pantalla TV & Playoff
                 </button>
                 <button onclick="verificarAdmin()" id="btnAdm" class="bg-brandPrimary/20 text-brandPrimary border border-brandPrimary/40 hover:bg-brandPrimary/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
-                    ⚙️ Admin (Privado)
+                    ⚙️ Admin Privado
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ================= VISTA PÚBLICA (LIFESTYLE & BOXES BINARIOS) ================= -->
+    <!-- ================= VISTA PÚBLICA (LIFESTYLE & MINI-CANCHAS BINARIAS) ================= -->
     <main id="vistaPublica" class="space-y-12 pb-24">
-        <section id="heroSection" class="hero-custom-bg py-24 px-4 text-center relative border-b border-slate-800">
+        <!-- HERO CON RELOJ DE CUENTA REGRESIVA GIGANTE -->
+        <section id="heroSection" class="hero-custom-bg py-20 px-4 text-center relative border-b border-slate-800">
             <div class="max-w-4xl mx-auto space-y-6">
                 <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-sm uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
                 <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
                     El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
                 </h2>
-                <p id="heroDesc" class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light">
-                    Inscríbete de forma instantánea vía WhatsApp, visualiza los cuadros en tiempo real y compite por la gloria perpetua.
-                </p>
-                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                
+                <!-- RELOJ GIGANTE CUENTA REGRESIVA -->
+                <div class="bg-slate-900/80 border border-brandPrimary/40 rounded-2xl p-4 max-w-xl mx-auto shadow-2xl backdrop-blur">
+                    <div class="text-xs uppercase font-mono-code text-slate-400 mb-1">⏱️ Comienzo Oficial del Torneo en:</div>
+                    <div id="relojGigante" class="text-3xl md:text-4xl font-extrabold text-brandPrimary font-mono-code tracking-widest">
+                        00D : 00H : 00M : 00S
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
                     <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
                         Seleccionar Cupo y Jugar
                     </a>
@@ -70,10 +89,11 @@
             </div>
         </section>
 
+        <!-- SECCIÓN DE CUADROS CON MINI-CANCHAS -->
         <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
             <div class="text-center space-y-2">
                 <h3 class="text-3xl font-bold text-white">Cuadros Oficiales de Inscripción</h3>
-                <p class="text-slate-400">Verifica disponibilidad en tiempo real: rojo para duplas confirmadas, verde para inscripción abierta.</p>
+                <p class="text-slate-400">Diseño interactivo tipo mini-cancha: verde disponible para reservar, rojo con los datos de la dupla inscrita.</p>
             </div>
 
             <!-- Selector de Categorías -->
@@ -93,6 +113,54 @@
         </section>
     </main>
 
+    <!-- ================= VISTA PREMIOS Y CRONOGRAMA ================= -->
+    <main id="vistaPremios" class="max-w-7xl mx-auto px-4 py-12 space-y-12 hidden">
+        <div class="text-center space-y-3">
+            <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🏆 Premios Oficiales & Cronograma</span>
+            <h2 class="text-4xl font-extrabold text-white">Todo lo que necesitas saber del evento</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Premios -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
+                <h3 class="text-2xl font-bold text-brandPrimary">🏅 Bolsa de Premios & Copas Challenger</h3>
+                <ul class="space-y-4 text-slate-300 text-sm">
+                    <li class="flex items-start space-x-3">
+                        <span class="text-xl">🏆</span>
+                        <div><strong>Copa Challenger Perpetua:</strong> Trofeo gigante de honor grabado con los nombres de los campeones para cada categoría.</div>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <span class="text-xl">🥩</span>
+                        <div><strong>Pack Parrillero Premium:</strong> Cortes finos de carne y vinos reserva para las duplas campeonas de Cuadro Oro.</div>
+                    </li>
+                    <li class="flex items-start space-x-3">
+                        <span class="text-xl">🎒</span>
+                        <div><strong>Equipamiento Oficial:</strong> Paleteros y accesorios deportivos de alta gama gentileza de nuestros sponsors.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Horarios y Día -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
+                <h3 class="text-2xl font-bold text-brandPrimary">📅 Cronograma Oficial del Fin de Semana</h3>
+                <div class="space-y-4 text-xs font-mono-code text-slate-300">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <div class="text-brandPrimary font-bold text-sm mb-1">SÁBADO • Fase de Grupos</div>
+                        <div>09:00 - 13:30 hrs → Damas C</div>
+                        <div>13:30 - 18:00 hrs → Varones 5ª</div>
+                        <div>18:00 - 22:30 hrs → Mixto C</div>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <div class="text-brandPrimary font-bold text-sm mb-1">DOMINGO • Playoff & Finales</div>
+                        <div>10:00 - 12:00 hrs → Cuartos de Final (Oro)</div>
+                        <div>12:30 - 15:00 hrs → Semifinales en Simultáneo</div>
+                        <div>16:00 - 19:30 hrs → Grandes Finales Cancha Central & Premiación</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
     <!-- ================= VISTA PANTALLA GIGANTE / TV & LLAVES INTERACTIVAS ================= -->
     <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="text-center space-y-2">
@@ -100,16 +168,13 @@
             <h2 class="text-4xl font-extrabold text-white">Cuadro de Eliminación y Ranking en Vivo</h2>
         </div>
         
-        <!-- Tabs TV: Playoff vs Ranking -->
         <div class="flex justify-center space-x-4">
             <button onclick="setTabTV('playoff')" id="btnTabPlayoff" class="bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold">🏆 Llaves Playoff (Domingo)</button>
             <button onclick="setTabTV('ranking')" id="btnTabRanking" class="bg-slate-800 text-slate-300 px-5 py-2 rounded-xl text-xs font-bold">📊 Ranking del Circuito</button>
         </div>
 
         <div id="contenedorTVPlayoff" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-        <div id="contenedorTVRanking" class="hidden max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
-            <!-- Tabla de Ranking Inyectada -->
-        </div>
+        <div id="contenedorTVRanking" class="hidden max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl"></div>
     </main>
 
     <!-- ================= VISTA SUPER ADMIN (CONTROL TOTAL Y CAJA PRIVADA) ================= -->
@@ -135,7 +200,7 @@
             <!-- Panel Privado de Caja Mercado Pago (Solo Admin) -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono-code">
                 <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Mercado Pago)</div>
+                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Confidencial)</div>
                     <div id="adminCajaTotal" class="text-xl font-bold text-emerald-400 mt-1">$1.920.000 CLP</div>
                 </div>
                 <div>
@@ -153,7 +218,6 @@
                 <button onclick="setTabAdmin('marca')" id="tabAdminMarca" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">CMS & Marca Blanca</button>
             </div>
 
-            <!-- Panel Admin: Cupos -->
             <div id="adminPanelCupos" class="space-y-6">
                 <div class="flex justify-between items-center">
                     <h3 class="text-lg font-bold text-white">Control Atómico de Boxes</h3>
@@ -179,7 +243,6 @@
                 </div>
             </div>
 
-            <!-- Panel Admin: Marca Blanca -->
             <div id="adminPanelMarca" class="space-y-6 hidden">
                 <h3 class="text-lg font-bold text-white">Personalización White-Label (SaaS)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -196,7 +259,7 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE REACTIVIDAD ATÓMICA -->
+    <!-- SCRIPT DE REACTIVIDAD ATÓMICA Y RELOJ -->
     <script>
         const BROADCAST_CHANNEL = 'tutorneo_argon_channel';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
@@ -207,6 +270,7 @@
                 badgeOrg: "Chicureo Open Pro"
             },
             llavesActivas: false,
+            fechaInicio: new Date(Date.now() + 86400000 * 3).toISOString(), // Fecha futura simulada
             cupos: {
                 varones: Array.from({length: 16}, (_, i) => ({
                     id: i + 1,
@@ -271,10 +335,12 @@
 
         function cambiarVista(vista) {
             document.getElementById('vistaPublica').classList.add('hidden');
+            document.getElementById('vistaPremios').classList.add('hidden');
             document.getElementById('vistaTV').classList.add('hidden');
             document.getElementById('vistaAdmin').classList.add('hidden');
 
             if(vista === 'publico') document.getElementById('vistaPublica').classList.remove('hidden');
+            if(vista === 'premios') document.getElementById('vistaPremios').classList.remove('hidden');
             if(vista === 'tv') { renderTV(); document.getElementById('vistaTV').classList.remove('hidden'); }
             if(vista === 'admin') { 
                 renderAdminCuposTabla();
@@ -307,44 +373,46 @@
             renderPublico();
         }
 
-        // RENDERIZADO PÚBLICO CON ESTADOS BINARIOS EXCLUSIVOS (Ocupado en Rojo O Libre en Verde)
+        // RENDERIZADO PÚBLICO CON MINI-CANCHAS DE PÁDEL INTEGRADAS
         function renderPublico() {
             const grid = document.getElementById('gridCuposPublico');
             grid.innerHTML = '';
             argonState.cupos[catActiva].forEach(cupo => {
                 const card = document.createElement('div');
                 if(cupo.ocupado) {
-                    // ESTADO OCUPADO (ROJO) - EXCLUSIVO CON DATOS DE LA DUPLA
-                    card.className = "bg-slate-900 border border-red-500/30 rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-lg";
+                    // ESTADO OCUPADO (MINI CANCHA ROJA)
+                    card.className = "mini-cancha-roja rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-xl text-white";
                     card.innerHTML = `
-                        <div class="absolute top-0 right-0 bg-red-500/20 text-red-400 text-[10px] font-bold px-3 py-1 rounded-bl-xl">INSCRITO</div>
-                        <div class="text-xs text-slate-400 font-mono-code">CUPO #${cupo.id}</div>
-                        <div class="flex items-center space-x-3">
-                            <img src="${cupo.avatar}" class="w-12 h-12 rounded-full bg-slate-800 border border-slate-700">
+                        <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Inscrito 🔴</div>
+                        <div class="text-xs text-red-200 font-mono-code">BOX #${cupo.id} • 🎾 Cancha Oficial</div>
+                        <div class="flex items-center space-x-3 bg-black/30 p-3 rounded-xl border border-red-500/30">
+                            <img src="${cupo.avatar}" class="w-12 h-12 rounded-full bg-slate-900 border border-red-400">
                             <div>
-                                <h4 class="text-lg font-bold text-white tracking-wide">${cupo.alias}</h4>
-                                <div class="text-[11px] text-slate-300">👤 ${cupo.j1} / ${cupo.j2}</div>
+                                <h4 class="text-lg font-extrabold tracking-wide text-white">${cupo.alias}</h4>
+                                <div class="text-[11px] text-red-200">👤 ${cupo.j1} / ${cupo.j2}</div>
                             </div>
                         </div>
-                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs font-mono-code text-brandPrimary">
+                        <div class="pt-2 border-t border-red-500/30 flex justify-between items-center text-xs font-mono-code text-red-200">
                             <span>🕒 ${cupo.horarios}</span>
-                            <span class="text-emerald-400 font-semibold">Estado: ${cupo.resultado}</span>
+                            <span class="text-white font-bold bg-red-600/60 px-2 py-0.5 rounded">Marcador: ${cupo.resultado}</span>
                         </div>
                     `;
                 } else {
-                    // ESTADO LIBRE (VERDE) - EXCLUSIVO CON BOTÓN WHATSAPP
+                    // ESTADO LIBRE (MINI CANCHA VERDE)
                     const mensajeWa = encodeURIComponent(`Hola, quiero inscribir mi dupla en el box #${cupo.id} de la categoría ${catActiva.toUpperCase()} para la ${argonState.config.nombreTorneo}.`);
                     const linkWaFinal = `https://wa.me/${cupo.whatsapp}?text=${mensajeWa}`;
 
-                    card.className = "bg-slate-900/60 hover:bg-slate-900 border border-emerald-500/30 rounded-2xl p-5 space-y-4 relative overflow-hidden transition shadow-lg group";
+                    card.className = "mini-cancha-verde rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-xl text-white group";
                     card.innerHTML = `
-                        <div class="absolute top-0 right-0 bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-3 py-1 rounded-bl-xl">DISPONIBLE</div>
-                        <div class="text-xs text-slate-400 font-mono-code">CUPO #${cupo.id}</div>
-                        <h4 class="text-xl font-bold text-slate-300 group-hover:text-white transition">Cupo Libre</h4>
-                        <p class="text-xs text-slate-400">Reserva tu lugar oficial en este cuadro.</p>
-                        <div class="pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
-                            <span class="text-slate-400 font-mono-code">🕒 ${cupo.horarios}</span>
-                            <a href="${linkWaFinal}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2 rounded-xl font-bold transition shadow flex items-center space-x-1">
+                        <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Disponible 🟢</div>
+                        <div class="text-xs text-emerald-200 font-mono-code">BOX #${cupo.id} • 🎾 Cancha Oficial</div>
+                        <div class="bg-black/30 p-4 rounded-xl border border-emerald-500/30 text-center space-y-1">
+                            <div class="text-lg font-extrabold text-emerald-300">¡Box Libre para Reserva!</div>
+                            <p class="text-[11px] text-emerald-200">Asegura tu lugar en este cuadro.</p>
+                        </div>
+                        <div class="pt-2 border-t border-emerald-500/30 flex justify-between items-center text-xs">
+                            <span class="text-emerald-200 font-mono-code">🕒 ${cupo.horarios}</span>
+                            <a href="${linkWaFinal}" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2 rounded-xl font-bold transition shadow flex items-center space-x-1">
                                 <span>Inscribir WhatsApp 💬</span>
                             </a>
                         </div>
@@ -353,6 +421,21 @@
                 grid.appendChild(card);
             });
         }
+
+        // RELOJ GIGANTE CUENTA REGRESIVA
+        setInterval(() => {
+            const evento = new Date('2026-11-21T09:00:00').getTime();
+            const ahora = new Date().getTime();
+            const diff = evento - ahora;
+            if(diff > 0) {
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+                const relojEl = document.getElementById('relojGigante');
+                if(relojEl) relojEl.innerText = `${d}D : ${h}H : ${m}M : ${s}S`;
+            }
+        }, 1000);
 
         function setTabTV(tab) {
             tvTabActiva = tab;
