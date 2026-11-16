@@ -24,7 +24,7 @@
         body { font-family: 'Outfit', sans-serif; }
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .hero-custom-bg {
-            background: linear-gradient(rgba(3, 5, 8, 0.8), rgba(3, 5, 8, 0.95)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(3, 5, 8, 0.75), rgba(3, 5, 8, 0.95)), var(--hero-bg-url, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
         }
         .mini-cancha-verde {
             background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
@@ -34,7 +34,6 @@
             background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
             border: 2px solid #ef4444;
         }
-        /* Estilo Tablero de Aeropuerto / Grand Slam */
         .airport-board {
             background: #090D16;
             border: 2px solid #1E293B;
@@ -64,10 +63,9 @@
         </div>
     </header>
 
-    <!-- ================= VISTA PÚBLICA (INICIO & CUADROS) ================= -->
+    <!-- ================= VISTA PÚBLICA ================= -->
     <main id="vistaPublica" class="space-y-12 pb-24">
-        <!-- BANNER HERO & RELOJ -->
-        <section class="hero-custom-bg py-20 px-4 text-center relative border-b border-slate-800">
+        <section id="heroBannerContainer" class="hero-custom-bg py-20 px-4 text-center relative border-b border-slate-800">
             <div class="max-w-4xl mx-auto space-y-6">
                 <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-sm uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
                 <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
@@ -89,7 +87,6 @@
             </div>
         </section>
 
-        <!-- COMUNICADO OFICIAL DINÁMICO -->
         <div id="bannerComunicaciones" class="max-w-7xl mx-auto px-4 hidden">
             <div class="bg-blue-600/10 border border-blue-500/30 rounded-2xl p-4 flex items-center space-x-4">
                 <span class="text-2xl">📢</span>
@@ -100,14 +97,12 @@
             </div>
         </div>
 
-        <!-- CUADROS CON MINI-CANCHAS -->
         <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
             <div class="text-center space-y-2">
                 <h3 class="text-3xl font-bold text-white">Cuadros Oficiales & Autogestión</h3>
-                <p class="text-slate-400">Haz clic en un box verde para inscribirte con datos y pago automático, o ingresa tu PIN si ya estás inscripto.</p>
+                <p class="text-slate-400">Haz clic en un box verde para inscribirte con datos y pago automático por Mercado Pago.</p>
             </div>
 
-            <!-- Selector de Categorías -->
             <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
                 <button onclick="setCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Damas C</button>
                 <button onclick="setCategoria('varones')" id="tabVarones" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">Varones 5ª</button>
@@ -128,9 +123,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
                 <h3 class="text-2xl font-bold text-brandPrimary">📜 Términos y Condiciones</h3>
-                <div id="textoReglamentoPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed">
-                    Cargando reglamento oficial...
-                </div>
+                <div id="textoReglamentoPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed"></div>
             </div>
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
                 <h3 class="text-2xl font-bold text-brandPrimary">🏅 Premios en Juego</h3>
@@ -143,26 +136,21 @@
         </div>
     </main>
 
-    <!-- ================= VISTA PANTALLA GIGANTE (GRAND SLAM / TABLERO AEROPUERTO) ================= -->
+    <!-- ================= VISTA PANTALLA GIGANTE ================= -->
     <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="text-center space-y-2">
             <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🎾 TABLERO OFICIAL EN VIVO • ESTILO GRAND SLAM</span>
             <h2 class="text-4xl font-extrabold text-white">Resultados en Directo & Ranking del Circuito</h2>
         </div>
 
-        <!-- TABLERO TIPO AEROPUERTO / WPT -->
         <div class="airport-board rounded-3xl p-6 md:p-8 space-y-6">
             <div class="flex justify-between items-center border-b border-slate-800 pb-4">
                 <div class="text-brandPrimary font-mono-code font-bold tracking-widest text-sm">🔴 CANCHA CENTRAL • LIVE SCORES</div>
-                <div id="relojTV" class="text-slate-400 font-mono-code text-xs">Sábado • 14:30 hrs</div>
+                <div class="text-slate-400 font-mono-code text-xs">Sábado • 14:30 hrs</div>
             </div>
-
-            <div id="gridPartidosEnVivo" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <!-- Inyectado dinámicamente -->
-            </div>
+            <div id="gridPartidosEnVivo" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
         </div>
 
-        <!-- RANKING GENERAL -->
         <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
             <h3 class="text-xl font-bold text-white mb-4">📊 Ranking Oficial por Categoría</h3>
             <div class="overflow-x-auto">
@@ -175,31 +163,29 @@
                             <th class="p-3 text-right">Puntos Acumulados</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-slate-800" id="tablaRankingPublica">
-                        <!-- Inyectado -->
-                    </tbody>
+                    <tbody class="divide-y divide-slate-800" id="tablaRankingPublica"></tbody>
                 </table>
             </div>
         </div>
     </main>
 
-    <!-- ================= VISTA SUPER ADMIN (CONTROL TOTAL) ================= -->
+    <!-- ================= VISTA SUPER ADMIN (HERRAMIENTAS TOTALES) ================= -->
     <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-8">
             <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                 <div>
-                    <h2 class="text-2xl font-bold text-white font-mono-code">🛠️ NÚCLEO SUPER ADMIN (CONFIDENCIAL)</h2>
-                    <p class="text-slate-400 text-sm">Control de caja privado, gestión de resultados en cancha, ranking y CMS de textos.</p>
+                    <h2 class="text-2xl font-bold text-white font-mono-code">🛠️ NÚCLEO SUPER ADMIN (ESTUDIO MAESTRO)</h2>
+                    <p class="text-slate-400 text-sm">Control total de cajas, diseño visual, fotos, reglamento y resultados simultáneos.</p>
                 </div>
                 <div class="flex gap-2">
-                    <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">💾 Guardar & Sincronizar</button>
+                    <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">💾 Guardar & Sincronizar Todo</button>
                 </div>
             </div>
 
             <!-- Caja privada -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono-code">
                 <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Mercado Pago)</div>
+                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Confidencial)</div>
                     <div id="adminCajaTotal" class="text-xl font-bold text-emerald-400 mt-1">$0 CLP</div>
                 </div>
                 <div>
@@ -207,22 +193,22 @@
                     <div id="adminCuposStats" class="text-xl font-bold text-brandPrimary mt-1">0 / 48</div>
                 </div>
                 <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Estado Servidor</div>
-                    <div class="text-xl font-bold text-blue-400 mt-1">🟢 RENDER ONLINE</div>
+                    <div class="text-slate-400 text-[10px] uppercase">Servidor Sincronizado</div>
+                    <div class="text-xl font-bold text-blue-400 mt-1">🟢 ACTIVO (RENDER)</div>
                 </div>
             </div>
 
             <!-- Pestañas Admin -->
-            <div class="flex space-x-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
+            <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
                 <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold">Gestión de Boxes & Resultados</button>
-                <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">CMS (Reglamento & Avisos)</button>
+                <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">CMS Visual & Textos</button>
                 <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">Editar Ranking</button>
             </div>
 
             <!-- Panel Admin: Boxes -->
             <div id="adminPanelBoxes" class="space-y-6">
                 <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white">Editar Resultados y Estado de Boxes</h3>
+                    <h3 class="text-lg font-bold text-white">Control Atómico de Boxes</h3>
                     <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white">
                         <option value="varones">Varones 5ª</option>
                         <option value="damas">Damas C</option>
@@ -236,7 +222,7 @@
                                 <th class="p-3">Box</th>
                                 <th class="p-3">Estado</th>
                                 <th class="p-3">Alias Dupla</th>
-                                <th class="p-3">Marcador en Vivo</th>
+                                <th class="p-3">Marcador Vivo</th>
                             </tr>
                         </thead>
                         <tbody id="tablaAdminBoxesBody" class="divide-y divide-slate-800"></tbody>
@@ -244,17 +230,25 @@
                 </div>
             </div>
 
-            <!-- Panel Admin: CMS -->
+            <!-- Panel Admin: CMS Visual -->
             <div id="adminPanelCms" class="space-y-6 hidden">
-                <h3 class="text-lg font-bold text-white">Editor de Reglamentos y Comunicados</h3>
+                <h3 class="text-lg font-bold text-white">Editor de Marca Blanca y Comunicados</h3>
                 <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">URL de la Foto de Fondo (Banner Hero)</label>
+                        <input type="text" id="cfgHeroUrl" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Enlace de Pago (Mercado Pago / Webpay)</label>
+                        <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs">
+                    </div>
                     <div>
                         <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Texto del Comunicado Urgente (Banner)</label>
                         <input type="text" id="cfgComunicado" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Reglamento y Términos (HTML o Texto)</label>
-                        <textarea id="cfgReglamento" rows="6" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs"></textarea>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Reglamento y Términos (HTML)</label>
+                        <textarea id="cfgReglamento" rows="5" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs"></textarea>
                     </div>
                 </div>
             </div>
@@ -267,14 +261,14 @@
         </div>
     </main>
 
-    <!-- MODAL DE INSCRIPCIÓN Y AUTOGESTIÓN CON PAGO Y REGLAMENTO -->
+    <!-- MODAL DE INSCRIPCIÓN Y PAGO -->
     <div id="modalInscripcion" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-6 shadow-2xl relative">
             <button onclick="cerrarModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">&times;</button>
             <div class="space-y-2">
                 <span id="modalBoxLabel" class="text-xs font-bold text-brandPrimary uppercase tracking-wider bg-brandPrimary/10 px-3 py-1 rounded border border-brandPrimary/20">Box #1</span>
                 <h3 class="text-2xl font-bold text-white">Inscripción Oficial de Dupla</h3>
-                <p class="text-slate-400 text-xs">Completa tus datos, acepta el reglamento y procede al pago seguro con Mercado Pago.</p>
+                <p class="text-slate-400 text-xs">Completa tus datos, acepta el reglamento y procede al pago seguro.</p>
             </div>
             <form id="formInscripcion" onsubmit="procesarInscripcionYPago(event)" class="space-y-4 text-xs font-mono-code">
                 <div>
@@ -292,23 +286,23 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-slate-300 uppercase mb-1">PIN / Contraseña de Autogestión (Para modificar datos o avisar ausencia)</label>
+                    <label class="block text-slate-300 uppercase mb-1">PIN de Autogestión</label>
                     <input type="password" id="inputPin" required placeholder="Ej. 1234" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-white">
                 </div>
                 <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
                     <label class="flex items-start space-x-2 cursor-pointer">
                         <input type="checkbox" id="checkReglamento" required class="mt-0.5 rounded bg-slate-900 border-slate-700 text-brandPrimary">
-                        <span class="text-[11px] text-slate-300 font-sans">Acepto los <strong class="text-white">Términos, Condiciones y Reglamento Oficial</strong> del campeonato.</span>
+                        <span class="text-[11px] text-slate-300 font-sans">Acepto los <strong class="text-white">Términos y Reglamento Oficial</strong> del campeonato.</span>
                     </label>
                 </div>
                 <button type="submit" class="w-full bg-[#009EE3] hover:bg-[#0082BD] text-white font-bold py-3.5 rounded-xl transition shadow-lg text-sm font-sans">
-                    Pagar $40.000 CLP & Confirmar Inscripción 💳
+                    Ir al Sistema de Pago & Inscribir 💳
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- SCRIPT DE REACTIVIDAD ATÓMICA & MOTOR GRAND SLAM -->
+    <!-- SCRIPT DE NÚCLEO Y REACTIVIDAD -->
     <script>
         const BROADCAST_CHANNEL = 'tutorneo_grand_slam';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
@@ -317,9 +311,10 @@
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
-                comunicado: "¡Bienvenidos a la mejor experiencia de pádel del año! Sorteo de grupos este viernes.",
-                reglamento: "1. W.O. estricto a los 10 minutos de retraso.<br>2. Partidos a 1 set largo de 9 games con Punto de Oro.<br>3. Uso obligatorio de indumentaria adecuada.",
-                linkPagoMercadoPago: "https://www.mercadopago.cl"
+                heroBgUrl: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop",
+                linkPago: "https://www.mercadopago.cl",
+                comunicado: "¡Bienvenidos a la nueva fecha del circuito! Sorteo de grupos este viernes.",
+                reglamento: "1. W.O. estricto a los 10 minutos de retraso.<br>2. Partidos a 1 set largo de 9 games con Punto de Oro.<br>3. Uso obligatorio de indumentaria adecuada."
             },
             ranking: [
                 { pos: 1, dupla: "DUPLA ELITE 1", cat: "Varones 5ª", pts: 2450 },
@@ -377,8 +372,6 @@
                 db = JSON.parse(localStorage.getItem('tutorneo_gs_db'));
                 aplicarCMS();
                 renderPublico();
-                if(!document.getElementById('vistaTV').classList.contains('hidden')) renderTV();
-                if(!document.getElementById('vistaAdmin').classList.contains('hidden')) renderAdminBoxes();
             }
         };
 
@@ -388,6 +381,12 @@
             document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
             document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
             
+            // Aplicar imagen de fondo dinámica al Hero
+            const banner = document.getElementById('heroBannerContainer');
+            if(banner && db.config.heroBgUrl) {
+                banner.style.setProperty('--hero-bg-url', `url('${db.config.heroBgUrl}')`);
+            }
+
             const commEl = document.getElementById('bannerComunicaciones');
             if(db.config.comunicado) {
                 commEl.classList.remove('hidden');
@@ -398,7 +397,11 @@
         }
 
         function cambiarVista(vista) {
-            ['vistaPublica', 'vistaPremios', 'vistaTV', 'vistaAdmin'].forEach(v => document.getElementById(v).classList.add('hidden'));
+            ['vistaPublica', 'vistaPremios', 'vistaTV', 'vistaAdmin'].forEach(v => {
+                const el = document.getElementById(v);
+                if(el) el.classList.add('hidden');
+            });
+
             if(vista === 'publico') document.getElementById('vistaPublica').classList.remove('hidden');
             if(vista === 'premios') document.getElementById('vistaPremios').classList.remove('hidden');
             if(vista === 'tv') { renderTV(); document.getElementById('vistaTV').classList.remove('hidden'); }
@@ -406,8 +409,10 @@
                 renderAdminBoxes();
                 renderAdminRanking();
                 actualizarCajaPrivadaAdmin();
-                document.getElementById('cfgComunicado').value = db.config.comunicado;
-                document.getElementById('cfgReglamento').value = db.config.reglamento;
+                document.getElementById('cfgHeroUrl').value = db.config.heroBgUrl || '';
+                document.getElementById('cfgLinkPago').value = db.config.linkPago || '';
+                document.getElementById('cfgComunicado').value = db.config.comunicado || '';
+                document.getElementById('cfgReglamento').value = db.config.reglamento || '';
                 document.getElementById('vistaAdmin').classList.remove('hidden'); 
             }
         }
@@ -425,18 +430,20 @@
             catActiva = cat;
             ['damas', 'varones', 'mixto'].forEach(c => {
                 const btn = document.getElementById(`tab${c.charAt(0).toUpperCase() + c.slice(1)}`);
-                if(c === cat) {
-                    btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md";
-                } else {
-                    btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700";
+                if(btn) {
+                    if(c === cat) {
+                        btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md";
+                    } else {
+                        btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700";
+                    }
                 }
             });
             renderPublico();
         }
 
-        // RENDERIZADO PÚBLICO CON MINI-CANCHAS BINARIAS Y MODAL AUTOGESTIÓN
         function renderPublico() {
             const grid = document.getElementById('gridCuposPublico');
+            if(!grid) return;
             grid.innerHTML = '';
             db.cupos[catActiva].forEach(cupo => {
                 const card = document.createElement('div');
@@ -508,11 +515,10 @@
 
             sincronizar();
             cerrarModal();
-            alert("¡Inscripción registrada con éxito! Redirigiendo a Mercado Pago...");
-            window.location.href = db.config.linkPagoMercadoPago;
+            alert("¡Inscripción registrada con éxito! Redirigiendo a la pasarela de pago...");
+            window.location.href = db.config.linkPago;
         }
 
-        // RELOJ CUENTA REGRESIVA
         setInterval(() => {
             const evento = new Date('2026-11-21T09:00:00').getTime();
             const ahora = new Date().getTime();
@@ -529,19 +535,17 @@
 
         function renderTV() {
             const grid = document.getElementById('gridPartidosEnVivo');
+            if(!grid) return;
             grid.innerHTML = '';
-            
-            // Mostrar partidos en curso basados en los boxes ocupados
             let ocupados = db.cupos[catActiva].filter(c => c.ocupado);
             for(let i=0; i<Math.min(ocupados.length, 4); i+=2) {
                 const p1 = ocupados[i];
                 const p2 = ocupados[i+1] || { alias: "LIBRE / BYE", resultado: "-" };
-
                 const card = document.createElement('div');
                 card.className = "flip-card p-4 rounded-2xl border border-slate-800 flex justify-between items-center";
                 card.innerHTML = `
                     <div class="space-y-1">
-                        <div class="text-[10px] text-brandPrimary font-mono-code uppercase">Cancha #${i+1} • En Juego</div>
+                        <div class="text-[10px] text-brandPrimary font-mono-code uppercase">Cancha #${i+1} • En Vivo</div>
                         <div class="text-sm font-extrabold text-white">${p1.alias}</div>
                         <div class="text-xs font-extrabold text-slate-400">${p2.alias}</div>
                     </div>
@@ -553,24 +557,31 @@
                 grid.appendChild(card);
             }
 
-            // Renderizar tabla de ranking
             const tbody = document.getElementById('tablaRankingPublica');
-            tbody.innerHTML = '';
-            db.ranking.forEach(r => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td class="p-3 text-brandPrimary font-bold">#${r.pos}</td>
-                    <td class="p-3 text-white font-bold">${r.dupla}</td>
-                    <td class="p-3 text-slate-300">${r.cat}</td>
-                    <td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td>
-                `;
-                tbody.appendChild(tr);
-            });
+            if(tbody) {
+                tbody.innerHTML = '';
+                db.ranking.forEach(r => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td class="p-3 text-brandPrimary font-bold">#${r.pos}</td>
+                        <td class="p-3 text-white font-bold">${r.dupla}</td>
+                        <td class="p-3 text-slate-300">${r.cat}</td>
+                        <td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
         }
 
         function setTabAdmin(tab) {
-            ['adminPanelBoxes', 'adminPanelCms', 'adminPanelRanking'].forEach(p => document.getElementById(p).classList.add('hidden'));
-            ['tabAdminBoxes', 'tabAdminCms', 'tabAdminRanking'].forEach(t => document.getElementById(t).className = "bg-slate-800 text-slate-400 px-4 py-2 rounded-lg");
+            ['adminPanelBoxes', 'adminPanelCms', 'adminPanelRanking'].forEach(p => {
+                const el = document.getElementById(p);
+                if(el) el.classList.add('hidden');
+            });
+            ['tabAdminBoxes', 'tabAdminCms', 'tabAdminRanking'].forEach(t => {
+                const el = document.getElementById(t);
+                if(el) el.className = "bg-slate-800 text-slate-400 px-4 py-2 rounded-lg";
+            });
 
             if(tab === 'boxes') {
                 document.getElementById('adminPanelBoxes').classList.remove('hidden');
@@ -588,13 +599,18 @@
         function actualizarCajaPrivadaAdmin() {
             let total = 0;
             Object.values(db.cupos).forEach(cat => cat.forEach(c => { if(c.ocupado) total++; }));
-            document.getElementById('adminCajaTotal').innerText = "$" + (total * 40000).toLocaleString('es-CL') + " CLP";
-            document.getElementById('adminCuposStats').innerText = `${total} / 48`;
+            const el1 = document.getElementById('adminCajaTotal');
+            const el2 = document.getElementById('adminCuposStats');
+            if(el1) el1.innerText = "$" + (total * 40000).toLocaleString('es-CL') + " CLP";
+            if(el2) el2.innerText = `${total} / 48`;
         }
 
         function renderAdminBoxes() {
-            const cat = document.getElementById('selectCatAdmin').value;
+            const catEl = document.getElementById('selectCatAdmin');
+            if(!catEl) return;
+            const cat = catEl.value;
             const tbody = document.getElementById('tablaAdminBoxesBody');
+            if(!tbody) return;
             tbody.innerHTML = '';
             db.cupos[cat].forEach(c => {
                 const tr = document.createElement('tr');
@@ -635,6 +651,7 @@
 
         function renderEditorRanking() {
             const cont = document.getElementById('editorRankingAdmin');
+            if(!cont) return;
             cont.innerHTML = '';
             db.ranking.forEach((r, index) => {
                 cont.innerHTML += `
@@ -648,6 +665,8 @@
         }
 
         function guardarTodoAdmin() {
+            db.config.heroBgUrl = document.getElementById('cfgHeroUrl').value;
+            db.config.linkPago = document.getElementById('cfgLinkPago').value;
             db.config.comunicado = document.getElementById('cfgComunicado').value;
             db.config.reglamento = document.getElementById('cfgReglamento').value;
             sincronizar();
