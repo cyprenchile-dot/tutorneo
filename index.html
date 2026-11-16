@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copa Challenger | Laguna Ayres de Chicureo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chicureoGold: '#D4AF37',
+                        chicureoDark: '#0F172A',
+                        chicureoCard: '#1E293B',
+                        chicureoGreen: '#10B981',
+                        chicureoRed: '#EF4444'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; }
+        .font-mono-telemetry { font-family: 'JetBrains Mono', monospace; }
+        .hero-bg {
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-chicureoDark text-slate-100 min-h-screen">
+
+    <!-- BARRA SUPERIOR DE ESTADO Y ACCESO ADMIN -->
+    <header class="bg-slate-900/90 backdrop-blur border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <span class="bg-chicureoGold text-slate-950 font-bold px-3 py-1 rounded text-xs uppercase tracking-wider">Chicureo Open</span>
+                <h1 class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-chicureoGold">Laguna Ayres</span></h1>
+            </div>
+            <div class="flex items-center space-x-4 text-sm">
+                <div class="hidden md:flex items-center space-x-2 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">
+                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span id="headerRecaudacion" class="font-mono-telemetry text-emerald-400 font-semibold">$1.920.000 CLP</span>
+                    <span class="text-slate-400 text-xs">(Mercado Pago Activo)</span>
+                </div>
+                <button onclick="cambiarVista('publico')" id="btnVistaPublica" class="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg font-medium transition text-xs flex items-center space-x-2 border border-slate-700">
+                    <span>🎾 Vista Jugadores (Lifestyle)</span>
+                </button>
+                <button onclick="cambiarVista('admin')" id="btnVistaAdmin" class="bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/40 px-4 py-2 rounded-lg font-medium transition text-xs flex items-center space-x-2">
+                    <span>⚙️ Panel Super Admin (Telemetría)</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= VISTA PÚBLICA (ESTILO DE VIDA / JUGADORES) ================= -->
+    <main id="vistaPublica" class="space-y-12 pb-20">
+        
+        <!-- HERO SECTION -->
+        <section class="hero-bg py-24 px-4 text-center relative border-b border-slate-800">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <span class="text-chicureoGold font-semibold tracking-widest text-sm uppercase bg-chicureoGold/10 px-4 py-1.5 rounded-full border border-chicureoGold/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
+                <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                    El Torneo de Pádel Más Exclusivo de <span class="text-chicureoGold">Chicureo</span>
+                </h2>
+                <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light">
+                    Disfruta de un fin de semana inolvidable con zona de descanso, tercer tiempo en la terraza, Copas Challenger en juego y la mejor onda de Laguna Ayres.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="#categoriasSec" class="bg-chicureoGold hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
+                        Inscribir mi Dupla ($40.000)
+                    </a>
+                    <a href="#detallesSec" class="bg-slate-800/80 hover:bg-slate-700 text-white font-medium px-8 py-3.5 rounded-xl border border-slate-700 transition">
+                        Ver Reglamento y Horarios
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE CATEGORÍAS Y CUPOS -->
+        <section id="categoriasSec" class="max-w-7xl mx-auto px-4 space-y-8">
+            <div class="text-center space-y-2">
+                <h3 class="text-3xl font-bold text-white">Selecciona tu Categoría</h3>
+                <p class="text-slate-400">Haz clic en un cupo libre (verde) para inscribirte de inmediato con Mercado Pago.</p>
+            </div>
+
+            <!-- Tabs de Categorías -->
+            <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
+                <button onclick="filtrarCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700">
+                    Damas C (Sáb 09:00)
+                </button>
+                <button onclick="filtrarCategoria('varones')" id="tabVarones" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-chicureoGold text-slate-950 shadow-md">
+                    Varones 5ª (Sáb 13:30)
+                </button>
+                <button onclick="filtrarCategoria('mixto')" id="tabMixto" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700">
+                    Mixto C (Sáb 18:00)
+                </button>
+            </div>
+
+            <!-- Contenedor de Cuadros de la Categoría Activa -->
+            <div id="gridCupos" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Se inyecta dinámicamente con JS -->
+            </div>
+        </section>
+
+        <!-- DETALLES Y TERCER TIEMPO -->
+        <section id="detallesSec" class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 pt-8 border-t border-slate-800/80">
+            <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-3">
+                <div class="text-3xl">🏆</div>
+                <h4 class="text-xl font-bold text-white">Copa Challenger Perpetua</h4>
+                <p class="text-slate-400 text-sm">Cada categoría compite por levantar la copa original grabada con sus nombres y mantener la gloria en su club.</p>
+            </div>
+            <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-3">
+                <div class="text-3xl">🍻</div>
+                <h4 class="text-xl font-bold text-white">Tercer Tiempo & Parrilla</h4>
+                <p class="text-slate-400 text-sm">Incluye welcome pack con cerveza artesanal o bebida, hidratación permanente y zona de quincho al atardecer.</p>
+            </div>
+            <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800 space-y-3">
+                <div class="text-3xl">⚡</div>
+                <h4 class="text-xl font-bold text-white">Formato Dinámico</h4>
+                <p class="text-slate-400 text-sm">Fase de grupos a 1 set largo de 9 games con Punto de Oro. ¡Partidos ágiles, sin esperas y definición el domingo!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= VISTA SUPER ADMIN (PANEL TELEMETRÍA) ================= -->
+    <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+            <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
+                <div>
+                    <h2 class="text-2xl font-bold text-white flex items-center space-x-2 font-mono-telemetry">
+                      <span>🛠️ SUPER ADMIN TERMINAL</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm">Control central de inscripciones, caja de Mercado Pago y simulación de partidos en tiempo real.</p>
+                </div>
+                <div class="flex space-x-3">
+                    <button onclick="simularSabadoCompleto()" class="bg-blue-600 hover:bg-blue-500 text-white font-mono-telemetry text-xs px-4 py-2.5 rounded-lg transition">
+                        ⚡ SIMULAR FASE DE GRUPOS
+                    </button>
+                    <button onclick="reiniciarTorneo()" class="bg-red-600/20 text-red-400 border border-red-500/30 hover:bg-red-600/30 font-mono-telemetry text-xs px-4 py-2.5 rounded-lg transition">
+                        🔄 RESETEAR DATOS
+                    </button>
+                </div>
+            </div>
+
+            <!-- Métricas Admin -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 my-6">
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono-telemetry">
+                    <div class="text-slate-400 text-xs uppercase">Recaudación Mercado Pago</div>
+                    <div id="adminRecaudacion" class="text-2xl font-bold text-emerald-400 mt-1">$1.920.000 CLP</div>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono-telemetry">
+                    <div class="text-slate-400 text-xs uppercase">Cupos Ocupados</div>
+                    <div id="adminCupos" class="text-2xl font-bold text-chicureoGold mt-1">48 / 48 (100%)</div>
+                </div>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono-telemetry">
+                    <div class="text-slate-400 text-xs uppercase">Estado Servidor Render</div>
+                    <div class="text-2xl font-bold text-blue-400 mt-1">🟢 ONLINE (Node.js)</div>
+                </div>
+            </div>
+
+            <!-- Tabla de Control de Duplas -->
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm text-slate-300 font-mono-telemetry">
+                    <thead class="bg-slate-950 text-slate-400 uppercase text-xs border-b border-slate-800">
+                        <tr>
+                            <th class="p-3">Cat</th>
+                            <th class="p-3">Cupo</th>
+                            <th class="p-3">Alias Dupla</th>
+                            <th class="p-3">Jugadores</th>
+                            <th class="p-3">Estado Pago</th>
+                            <th class="p-3 text-right">Acción Admin</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaAdminCupos" class="divide-y divide-slate-800">
+                        <!-- Inyectado por JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- ================= MODAL DE INSCRIPCIÓN Y PAGO (MERCADO PAGO) ================= -->
+    <div id="modalInscripcion" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full p-6 md:p-8 space-y-6 shadow-2xl relative">
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+            
+            <div class="space-y-2">
+                <span id="modalCatLabel" class="text-xs font-bold text-chicureoGold uppercase tracking-wider bg-chicureoGold/10 px-3 py-1 rounded border border-chicureoGold/20">Varones 5ª</span>
+                <h3 id="modalCupoTitle" class="text-2xl font-bold text-white">Inscripción Cupo #1</h3>
+                <p class="text-slate-400 text-sm">Completa los datos de tu pareja, acepta el deslinde y paga con Mercado Pago.</p>
+            </div>
+
+            <form id="formInscripcion" onsubmit="procesarPagoMercadoPago(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Alias de la Dupla (Nombre del Equipo)</label>
+                    <input type="text" id="inputAlias" required placeholder="Ej. Los Vikingos de Ayres" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-chicureoGold">
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Jugador 1 (Nombre y Apellido)</label>
+                        <input type="text" id="inputJ1" required placeholder="Ej. Daniel Terraza" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-chicureoGold">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Jugador 2 (Nombre y Apellido)</label>
+                        <input type="text" id="inputJ2" required placeholder="Ej. Gabi Díaz" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-chicureoGold">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Teléfono de Contacto (WhatsApp)</label>
+                    <input type="tel" id="inputTel" required placeholder="+56 9 1234 5678" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-chicureoGold">
+                </div>
+
+                <!-- Deslinde Legal -->
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+                    <label class="flex items-start space-x-3 cursor-pointer">
+                        <input type="checkbox" id="checkDeslinde" required class="mt-1 rounded bg-slate-900 border-slate-700 text-chicureoGold focus:ring-0">
+                        <span class="text-xs text-slate-300">
+                            Acepto el <strong class="text-white">Deslinde de Responsabilidad</strong>, eximiendo a la organización y al club de lesiones o accidentes durante el torneo, y confirmo cumplimiento de la categoría.
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Botón Pago Mercado Pago -->
+                <button type="submit" class="w-full bg-[#009EE3] hover:bg-[#0082BD] text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center space-x-2">
+                    <span>Pagar $40.000 CLP con Mercado Pago 💳</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE GESTIÓN Y REACTIVIDAD -->
+    <script>
+        // Estado inicial de los cupos (16 por categoría)
+        let datosTorneo = {
+            damas: Array.from({length: 16}, (_, i) => ({
+                id: i + 1,
+                ocupado: i < 10,
+                alias: i < 10 ? `LAS TRIBUS ${i+1}` : null,
+                j1: i < 10 ? `Jugadora A${i+1}` : '',
+                j2: i < 10 ? `Jugadora B${i+1}` : '',
+                horarios: `Sáb ${9 + Math.floor(i/4)}:00 hrs`
+            })),
+            varones: Array.from({length: 16}, (_, i) => ({
+                id: i + 1,
+                ocupado: i < 12,
+                alias: i < 12 ? `SMASH CHICUREO ${i+1}` : null,
+                j1: i < 12 ? `Jugador A${i+1}` : '',
+                j2: i < 12 ? `Jugador B${i+1}` : '',
+                horarios: `Sáb ${13 + Math.floor(i/4)}:30 hrs`
+            })),
+            mixto: Array.from({length: 16}, (_, i) => ({
+                id: i + 1,
+                ocupado: i < 8,
+                alias: i < 8 ? `MIXED POWER ${i+1}` : null,
+                j1: i < 8 ? `Participante A${i+1}` : '',
+                j2: i < 8 ? `Participante B${i+1}` : '',
+                horarios: `Sáb ${18 + Math.floor(i/4)}:00 hrs`
+            }))
+        };
+
+        let categoriaActiva = 'varones';
+        let cupoSeleccionado = null;
+
+        function cambiarVista(vista) {
+            const vPub = document.getElementById('vistaPublica');
+            const vAdm = document.getElementById('vistaAdmin');
+            const bPub = document.getElementById('btnVistaPublica');
+            const bAdm = document.getElementById('btnVistaAdmin');
+
+            if(vista === 'publico') {
+                vPub.classList.remove('hidden');
+                vAdm.classList.add('hidden');
+                bPub.className = "bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition text-xs border border-slate-700";
+                bAdm.className = "bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 px-4 py-2 rounded-lg font-medium transition text-xs";
+            } else {
+                vPub.classList.add('hidden');
+                vAdm.classList.remove('hidden');
+                bPub.className = "bg-emerald-600/20 text-emerald-400 border border-emerald-500/40 px-4 py-2 rounded-lg font-medium transition text-xs";
+                bAdm.className = "bg-slate-800 text-white px-4 py-2 rounded-lg font-medium transition text-xs border border-slate-700";
+                renderAdminTabla();
+            }
+        }
+
+        function filtrarCategoria(cat) {
+            categoriaActiva = cat;
+            ['damas', 'varones', 'mixto'].forEach(c => {
+                const btn = document.getElementById(`tab${c.charAt(0).toUpperCase() + c.slice(1)}`);
+                if(c === cat) {
+                    btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-chicureoGold text-slate-950 shadow-md";
+                } else {
+                    btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700";
+                }
+            });
+            renderCupos();
+        }
+
+        function renderCupos() {
+            const grid = document.getElementById('gridCupos');
+            grid.innerHTML = '';
+            const lista = datosTorneo[categoriaActiva];
+
+            lista.forEach(cupo => {
+                const card = document.createElement('div');
+                if(cupo.ocupado) {
+                    card.className = "bg-slate-900/90 border border-red-500/30 rounded-2xl p-5 space-y-3 relative overflow-hidden shadow-lg";
+                    card.innerHTML = `
+                        <div class="absolute top-0 right-0 bg-red-500/20 text-red-400 text-[10px] font-bold px-3 py-1 rounded-bl-xl border-l border-b border-red-500/30">OCUPADO</div>
+                        <div class="text-xs text-slate-400 font-mono-telemetry">CUPO #${cupo.id}</div>
+                        <h4 class="text-xl font-bold text-white tracking-wide">${cupo.alias}</h4>
+                        <div class="text-xs text-slate-300 space-y-1">
+                            <div>👤 ${cupo.j1}</div>
+                            <div>👤 ${cupo.j2}</div>
+                        </div>
+                        <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs text-chicureoGold font-mono-telemetry">
+                            <span>🕒 ${cupo.horarios}</span>
+                            <span class="text-emerald-400">● Pagado</span>
+                        </div>
+                    `;
+                } else {
+                    card.className = "bg-slate-900/60 hover:bg-slate-900 border border-emerald-500/30 hover:border-emerald-500/60 rounded-2xl p-5 space-y-3 relative overflow-hidden transition cursor-pointer shadow-lg group";
+                    card.innerHTML = `
+                        <div class="absolute top-0 right-0 bg-emerald-500/20 text-emerald-400 text-[10px] font-bold px-3 py-1 rounded-bl-xl border-l border-b border-emerald-500/30">LIBRE</div>
+                        <div class="text-xs text-slate-400 font-mono-telemetry">CUPO #${cupo.id}</div>
+                        <h4 class="text-xl font-bold text-slate-300 group-hover:text-white transition">Disponible</h4>
+                        <p class="text-xs text-slate-400">Reserva tu lugar en este cuadro de juego.</p>
+                        <div class="pt-2 border-t border-slate-800 flex justify-between items-center text-xs text-slate-400">
+                            <span>Inscripción: $40.000</span>
+                            <button onclick="abrirModal('${categoriaActiva}', ${cupo.id})" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg font-bold transition">Inscribir</button>
+                        </div>
+                    `;
+                }
+                grid.appendChild(card);
+            });
+            actualizarMetricasGlobales();
+        }
+
+        function abrirModal(cat, id) {
+            categoriaActiva = cat;
+            cupoSeleccionado = id;
+            document.getElementById('modalCatLabel').innerText = cat.toUpperCase() + ' • CHICUREO OPEN';
+            document.getElementById('modalCupoTitle').innerText = `Inscripción Cupo #${id}`;
+            document.getElementById('modalInscripcion').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalInscripcion').classList.add('hidden');
+            document.getElementById('formInscripcion').reset();
+            cupoSeleccionado = null;
+        }
+
+        function procesarPagoMercadoPago(e) {
+            e.preventDefault();
+            const alias = document.getElementById('inputAlias').value;
+            const j1 = document.getElementById('inputJ1').value;
+            const j2 = document.getElementById('inputJ2').value;
+
+            // Actualizar cupo
+            const cupo = datosTorneo[categoriaActiva].find(c => c.id === cupoSeleccionado);
+            if(cupo) {
+                cupo.ocupado = true;
+                cupo.alias = alias;
+                cupo.j1 = j1;
+                cupo.j2 = j2;
+            }
+
+            cerrarModal();
+            renderCupos();
+            alert(`¡Pago exitoso vía Mercado Pago para la dupla "${alias}"! Tu cupo ya figura en rojo oficial.`);
+        }
+
+        function actualizarMetricasGlobales() {
+            let totalOcupados = 0;
+            let totalCupos = 48;
+            Object.values(datosTorneo).forEach(cat => {
+                cat.forEach(c => { if(c.ocupado) totalOcupados++; });
+            });
+
+            const rec = totalOcupados * 40000;
+            const recFormateada = "$" + rec.toLocaleString('es-CL') + " CLP";
+            document.getElementById('headerRecaudacion').innerText = recFormateada;
+            if(document.getElementById('adminRecaudacion')) {
+                document.getElementById('adminRecaudacion').innerText = recFormateada;
+                document.getElementById('adminCupos').innerText = `${totalOcupados} / ${totalCupos} (${Math.round(totalOcupados/totalCupos*100)}%)`;
+            }
+        }
+
+        function renderAdminTabla() {
+            const tbody = document.getElementById('tablaAdminCupos');
+            tbody.innerHTML = '';
+            Object.keys(datosTorneo).forEach(cat => {
+                datosTorneo[cat].forEach(c => {
+                    if(c.ocupado) {
+                        const tr = document.createElement('tr');
+                        tr.innerHTML = `
+                            <td class="p-3 uppercase text-xs text-chicureoGold font-bold">${cat}</td>
+                            <td class="p-3">#${c.id}</td>
+                            <td class="p-3 text-white font-bold">${c.alias}</td>
+                            <td class="p-3 text-xs text-slate-300">${c.j1} / ${c.j2}</td>
+                            <td class="p-3 text-emerald-400 text-xs">● Aprobado (MP)</td>
+                            <td class="p-3 text-right">
+                                <button onclick="liberarCupo('${cat}', ${c.id})" class="bg-red-500/20 text-red-400 hover:bg-red-500/30 px-2 py-1 rounded text-xs">Liberar</button>
+                            </td>
+                        `;
+                        tbody.appendChild(tr);
+                    }
+                });
+            });
+        }
+
+        function liberarCupo(cat, id) {
+            const cupo = datosTorneo[cat].find(c => c.id === id);
+            if(cupo) {
+                cupo.ocupado = false;
+                cupo.alias = null;
+                cupo.j1 = '';
+                cupo.j2 = '';
+            }
+            renderCupos();
+            renderAdminTabla();
+        }
+
+        function simularSabadoCompleto() {
+            Object.keys(datosTorneo).forEach(cat => {
+                datosTorneo[cat].forEach((c, idx) => {
+                    c.ocupado = true;
+                    if(!c.alias) c.alias = `DUPLA ÉLITE ${idx+1}`;
+                    if(!c.j1) c.j1 = `Jugador A${idx+1}`;
+                    if(!c.j2) c.j2 = `Jugador B${idx+1}`;
+                });
+            });
+            renderCupos();
+            renderAdminTabla();
+            alert("⚡ Simulación completa: Los 48 cupos han sido cubiertos y pagados.");
+        }
+
+        function reiniciarTorneo() {
+            if(confirm("¿Seguro que deseas vaciar todos los cupos?")) {
+                Object.keys(datosTorneo).forEach(cat => {
+                    datosTorneo[cat].forEach((c, idx) => {
+                        c.ocupado = idx < 4; // Dejar algunos de muestra
+                        if(!c.ocupado) { c.alias = null; c.j1 = ''; c.j2 = ''; }
+                    });
+                });
+                renderCupos();
+                renderAdminTabla();
+            }
+        }
+
+        // Inicializar vista al cargar
+        renderCupos();
+    </script>
+</body>
+</html>
