@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Nivel Dios & God Mode Engine</title>
+    <title id="pageTitle">Tutorneo Pro | Chicureo Boutique & God Mode</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Configuración dinámica de colores con Tailwind
         function actualizarConfigTailwind(colorPrimary) {
             tailwind.config = {
                 theme: {
                     extend: {
                         colors: {
                             brandPrimary: colorPrimary || '#D4AF37',
-                            brandDark: '#030508',
-                            brandCard: '#0D1322',
+                            brandDark: '#0B0F17',
+                            brandCard: '#131C2E',
+                            brandAccent: '#10B981'
                         }
                     }
                 }
@@ -25,11 +25,12 @@
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Outfit', sans-serif; background-color: #030508; color: #F8FAFC; }
+        body { font-family: 'Outfit', sans-serif; background-color: #080C14; color: #F8FAFC; }
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .hero-custom-bg {
-            background: linear-gradient(rgba(3, 5, 8, 0.7), rgba(3, 5, 8, 0.92)), var(--hero-bg-url, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(8, 12, 20, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%), var(--hero-bg-url, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
         }
+        .glass-card { background: rgba(19, 28, 46, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
         .mini-cancha-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; }
         .mini-cancha-roja { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); border: 2px solid #ef4444; }
         .airport-board { background: #090D16; border: 2px solid #1E293B; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
@@ -44,60 +45,40 @@
 <body class="min-h-screen selection:bg-brandPrimary selection:text-slate-950 flex flex-col justify-between">
 
     <div>
-        <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
-        <header class="bg-slate-950/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-lg">
-            <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+        <!-- BARRA DE NAVEGACIÓN SUPERIOR (ESTILO BOUTIQUE) -->
+        <header class="bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 sticky top-0 z-50 shadow-2xl">
+            <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-wrap justify-between items-center gap-4">
                 <div class="flex items-center space-x-3">
-                    <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1 rounded text-xs uppercase tracking-wider">Chicureo Open</span>
+                    <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1.5 rounded-lg text-xs uppercase tracking-wider shadow">Chicureo Open</span>
                     <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Laguna Ayres</span></h1>
                 </div>
                 <div class="flex items-center space-x-2 md:space-x-3 text-sm">
-                    <button onclick="cambiarVista('publico')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">🎾 Inicio & Cuadros</button>
-                    <button onclick="cambiarVista('premios')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">🏆 Premios, Fechas & Mapa</button>
-                    <button onclick="cambiarVista('tv')" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">📺 Pantalla Gigante (Live)</button>
-                    <button onclick="cambiarVista('login')" class="bg-brandPrimary/20 hover:bg-brandPrimary/30 text-brandPrimary border border-brandPrimary/40 px-3.5 py-2 rounded-xl font-medium transition text-xs">⚙️ Admin Master</button>
+                    <button onclick="cambiarVista('publico')" class="bg-slate-900/80 hover:bg-slate-800 text-slate-200 px-4 py-2 rounded-xl font-medium transition text-xs border border-slate-700/60 shadow">🎾 Inicio & Cuadros</button>
+                    <button onclick="cambiarVista('premios')" class="bg-slate-900/80 hover:bg-slate-800 text-slate-200 px-4 py-2 rounded-xl font-medium transition text-xs border border-slate-700/60 shadow">🏆 Premios & Mapa</button>
+                    <button onclick="cambiarVista('tv')" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/40 px-4 py-2 rounded-xl font-medium transition text-xs shadow">📺 Pantalla Gigante</button>
+                    <button onclick="cambiarVista('admin')" class="bg-brandPrimary/20 hover:bg-brandPrimary/30 text-brandPrimary border border-brandPrimary/50 px-4 py-2 rounded-xl font-semibold transition text-xs shadow">⚙️ Admin Master</button>
                 </div>
             </div>
         </header>
 
-        <!-- ================= VISTA LOGIN ADMIN ================= -->
-        <main id="vistaLogin" class="max-w-md mx-auto px-4 py-24 hidden">
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl space-y-6">
-                <div class="text-center space-y-2">
-                    <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-3 py-1 rounded-full text-xs font-bold uppercase font-mono-code">Área Confidencial</span>
-                    <h2 class="text-2xl font-bold text-white">Acceso Super Admin Master</h2>
-                    <p class="text-slate-400 text-xs">Control total e ilimitado de tarifas, pasarela de pago, ranking y canchas.</p>
-                </div>
-                <form onsubmit="procesarLoginAdmin(event)" class="space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Contraseña de Administrador</label>
-                        <input type="password" id="inputClaveAdmin" required placeholder="Introduce tu clave" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brandPrimary">
-                    </div>
-                    <button type="submit" class="w-full bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold py-3.5 rounded-xl transition shadow-lg text-sm">
-                        Desbloquear God Mode 🔓
-                    </button>
-                </form>
-            </div>
-        </main>
-
-        <!-- ================= VISTA PÚBLICA ================= -->
+        <!-- ================= VISTA PÚBLICA (ARMONÍA Y CALIDEZ) ================= -->
         <main id="vistaPublica" class="space-y-12 pb-24">
-            <section id="heroBannerContainer" class="hero-custom-bg py-24 px-4 text-center relative border-b border-slate-800">
+            <section id="heroBannerContainer" class="hero-custom-bg py-28 px-4 text-center relative border-b border-slate-800">
                 <div class="max-w-4xl mx-auto space-y-6">
-                    <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-sm uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
+                    <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-xs uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
                     <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
                         El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
                     </h2>
                     
-                    <div class="bg-slate-900/90 border border-brandPrimary/40 rounded-2xl p-4 max-w-xl mx-auto shadow-2xl backdrop-blur">
+                    <div class="glass-card rounded-2xl p-4 max-w-xl mx-auto shadow-2xl">
                         <div class="text-xs uppercase font-mono-code text-slate-400 mb-1">⏱️ Comienzo Oficial del Torneo en:</div>
                         <div id="relojGigante" class="text-3xl md:text-4xl font-extrabold text-brandPrimary font-mono-code tracking-widest">
                             00D : 00H : 00M : 00S
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap justify-center gap-4 pt-2">
-                        <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
+                    <div class="flex flex-wrap justify-center gap-4 pt-4">
+                        <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-4 rounded-xl shadow-xl transition transform hover:-translate-y-0.5">
                             Inscribir mi Dupla Online
                         </a>
                     </div>
@@ -105,11 +86,11 @@
             </section>
 
             <div id="bannerComunicaciones" class="max-w-7xl mx-auto px-4 hidden">
-                <div class="bg-blue-600/10 border border-blue-500/30 rounded-2xl p-4 flex items-center space-x-4 shadow-lg">
-                    <span class="text-2xl">📢</span>
+                <div class="glass-card border border-blue-500/30 rounded-2xl p-5 flex items-center space-x-4 shadow-xl">
+                    <span class="text-3xl">📢</span>
                     <div>
                         <h4 class="text-sm font-bold text-blue-400 uppercase">Comunicado Oficial del Organizador</h4>
-                        <p id="textoComunicado" class="text-xs text-slate-300 mt-0.5">Bienvenidos a la nueva fecha del circuito.</p>
+                        <p id="textoComunicado" class="text-xs text-slate-300 mt-1">Bienvenidos a la nueva fecha del circuito.</p>
                     </div>
                 </div>
             </div>
@@ -117,13 +98,13 @@
             <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
                 <div class="text-center space-y-2">
                     <h3 class="text-3xl font-bold text-white">Cuadros Oficiales & Autogestión</h3>
-                    <p class="text-slate-400">Haz clic en un box verde para inscribirte. Los rojos muestran la cancha asignada y estado en vivo.</p>
+                    <p class="text-slate-400 text-sm">Explora los boxes de juego. Los verdes están disponibles para reserva inmediata; los rojos muestran el estado en vivo.</p>
                 </div>
 
                 <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
-                    <button onclick="setCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Damas C</button>
-                    <button onclick="setCategoria('varones')" id="tabVarones" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">Varones 5ª</button>
-                    <button onclick="setCategoria('mixto')" id="tabMixto" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Mixto C</button>
+                    <button onclick="setCategoria('damas')" id="tabDamas" class="px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-900 text-slate-300 border border-slate-700/80 shadow">Damas C</button>
+                    <button onclick="setCategoria('varones')" id="tabVarones" class="px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">Varones 5ª</button>
+                    <button onclick="setCategoria('mixto')" id="tabMixto" class="px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-900 text-slate-300 border border-slate-700/80 shadow">Mixto C</button>
                 </div>
 
                 <div id="gridCuposPublico" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
@@ -138,20 +119,20 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
+                <div class="glass-card rounded-3xl p-8 space-y-6 shadow-2xl">
                     <h3 class="text-2xl font-bold text-brandPrimary">📅 Fechas & Horarios Oficiales</h3>
                     <div id="textoCronogramaPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed font-mono-code"></div>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
+                <div class="glass-card rounded-3xl p-8 space-y-6 shadow-2xl">
                     <h3 class="text-2xl font-bold text-brandPrimary">📜 Reglamento & Términos</h3>
                     <div id="textoReglamentoPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed"></div>
                 </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-4 shadow-2xl">
+            <div class="glass-card rounded-3xl p-8 space-y-4 shadow-2xl">
                 <h3 class="text-2xl font-bold text-brandPrimary">📍 Ubicación del Club / Canchas</h3>
-                <p class="text-xs text-slate-400">Encuentra las instalaciones principales en Laguna Ayres de Chicureo.</p>
-                <div class="w-full h-80 rounded-2xl overflow-hidden border border-slate-700">
+                <p class="text-xs text-slate-400">Instalaciones principales en Laguna Ayres de Chicureo.</p>
+                <div class="w-full h-80 rounded-2xl overflow-hidden border border-slate-700 shadow-inner">
                     <iframe id="mapaGoogleIframe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" src="https://maps.google.com/maps?q=Chicureo%20Colina%20Santiago&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                 </div>
             </div>
@@ -175,55 +156,56 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-                    <h3 class="text-xl font-bold text-white">📊 Ranking General del Circuito (Todas las Parejas)</h3>
+                <div class="glass-card rounded-3xl p-6 shadow-xl space-y-4">
+                    <h3 class="text-xl font-bold text-white">📊 Ranking General del Circuito</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs text-slate-300 font-mono-code">
-                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                            <thead class="bg-slate-950/80 text-slate-400 uppercase border-b border-slate-800">
                                 <tr>
                                     <th class="p-3">Pos</th>
                                     <th class="p-3">Dupla / Alias</th>
                                     <th class="p-3 text-right">Puntos WPT</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800" id="tablaRankingCircuitoTV"></tbody>
+                            <tbody class="divide-y divide-slate-800/60" id="tablaRankingCircuitoTV"></tbody>
                         </table>
                     </div>
                 </div>
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+                <div class="glass-card rounded-3xl p-6 shadow-xl space-y-4">
                     <h3 class="text-xl font-bold text-brandPrimary">🏆 Ranking Copa Challenger</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs text-slate-300 font-mono-code">
-                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                            <thead class="bg-slate-950/80 text-slate-400 uppercase border-b border-slate-800">
                                 <tr>
                                     <th class="p-3">Pos</th>
                                     <th class="p-3">Dupla / Alias</th>
                                     <th class="p-3 text-right">Pts Challenger</th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-slate-800" id="tablaRankingChallengerTV"></tbody>
+                            <tbody class="divide-y divide-slate-800/60" id="tablaRankingChallengerTV"></tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </main>
 
-        <!-- ================= VISTA SUPER ADMIN MASTER (GOD MODE) ================= -->
+        <!-- ================= VISTA SUPER ADMIN MASTER (GOD MODE / 100% FUNCIONAL) ================= -->
         <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl space-y-8">
+            <div class="glass-card rounded-3xl p-6 md:p-10 shadow-2xl space-y-8 border border-slate-700/50">
                 <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                     <div>
                         <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
-                            <span>🛠️ SUPER ADMIN MASTER (GOD MODE ACTIVADO)</span>
+                            <span>🛠️ SUPER ADMIN MASTER (GOD MODE)</span>
                         </h2>
-                        <p class="text-slate-400 text-sm">Control absoluto de tarifas, pasarela de pago, colores, canchas, parejas y puntos de ranking.</p>
+                        <p class="text-slate-400 text-sm">Control absoluto de inscripciones, tarifas, canchas, auspiciadores, estética y rankings.</p>
                     </div>
                     <div class="flex gap-2">
-                        <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg">💾 Guardar & Publicar en Vivo</button>
+                        <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition shadow-xl">💾 Guardar & Publicar</button>
                     </div>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-5 rounded-2xl border border-slate-800 font-mono-code shadow-inner">
+                <!-- Caja confidencial -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950/80 p-5 rounded-2xl border border-slate-800 font-mono-code shadow-inner">
                     <div>
                         <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Confidencial)</div>
                         <div id="adminCajaTotal" class="text-2xl font-bold text-emerald-400 mt-1">$0 CLP</div>
@@ -238,12 +220,13 @@
                     </div>
                 </div>
 
+                <!-- Pestañas Master Admin -->
                 <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
                     <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition">🎾 Canchas, Estados & Marcadores</button>
                     <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">👥 Base de Datos Parejas</button>
-                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Precios, Fechas & Pagos</button>
+                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Tarifas & Pagos</button>
                     <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🤝 Auspiciadores & Logos</button>
-                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Rankings & Criterios WPT</button>
+                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Rankings & Puntos</button>
                 </div>
 
                 <!-- Panel Admin: Boxes -->
@@ -261,10 +244,10 @@
                             <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
                                 <tr>
                                     <th class="p-3">Box</th>
-                                    <th class="p-3">Estado (Libre/Ocupado)</th>
+                                    <th class="p-3">Estado</th>
                                     <th class="p-3">Alias Dupla</th>
                                     <th class="p-3">Cancha Asignada</th>
-                                    <th class="p-3">Estado del Partido</th>
+                                    <th class="p-3">Estado Partido</th>
                                     <th class="p-3">Marcador</th>
                                 </tr>
                             </thead>
@@ -273,7 +256,7 @@
                     </div>
                 </div>
 
-                <!-- Panel Admin: Base de Datos Parejas Inscritas -->
+                <!-- Panel Admin: Parejas -->
                 <div id="adminPanelParejas" class="space-y-6 hidden">
                     <h3 class="text-lg font-bold text-white">Listado General de Parejas Inscritas</h3>
                     <div class="overflow-x-auto rounded-xl border border-slate-800">
@@ -293,7 +276,7 @@
                     </div>
                 </div>
 
-                <!-- Panel Admin: CMS Visual, Precios de Pago y Enlaces -->
+                <!-- Panel Admin: CMS Visual, Tarifas y Pagos -->
                 <div id="adminPanelCms" class="space-y-6 hidden">
                     <h3 class="text-lg font-bold text-white">Control Comercial, Tarifas, Pasarela de Pago & Estética</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
@@ -315,14 +298,14 @@
                         </div>
                         <div>
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Enlace de Pasarela de Pago (Mercado Pago / Webpay)</label>
-                            <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="https://www.mercadopago.cl/checkout/...">
+                            <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div>
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Tarifa / Valor de Inscripción ($ CLP)</label>
                             <input type="number" id="cfgPrecioInscripcion" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div>
-                            <label class="block font-semibold text-slate-300 uppercase mb-1">Dirección / Consulta Google Maps (Query)</label>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Consulta Google Maps (Query)</label>
                             <input type="text" id="cfgGoogleMapsQuery" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div class="md:col-span-2">
@@ -347,13 +330,12 @@
                     <button onclick="agregarSponsorAdmin()" class="bg-slate-800 hover:bg-slate-700 text-brandPrimary border border-brandPrimary/30 px-4 py-2.5 rounded-xl text-xs font-mono-code font-bold">+ Agregar Nuevo Auspiciador</button>
                 </div>
 
-                <!-- Panel Admin: Ranking Global y Criterios WPT -->
+                <!-- Panel Admin: Rankings -->
                 <div id="adminPanelRanking" class="space-y-6 hidden">
-                    <h3 class="text-lg font-bold text-white">Criterios de Puntos (Estilo Mundial de Pádel / WPT)</h3>
-                    <p class="text-xs text-slate-400">Todas las parejas inscritas aparecen automáticamente en el ranking. Aquí puedes ajustar sus puntos acumulados y de la Copa Challenger según el rendimiento.</p>
+                    <h3 class="text-lg font-bold text-white">Criterios de Puntos (Estilo WPT / Mundial)</h3>
                     <div class="space-y-6">
                         <div>
-                            <h4 class="text-sm font-bold text-brandPrimary mb-2">Ranking General del Circuito (Puntos WPT)</h4>
+                            <h4 class="text-sm font-bold text-brandPrimary mb-2">Ranking General del Circuito</h4>
                             <div id="editorRankingCircuitoAdmin" class="space-y-3"></div>
                         </div>
                         <div class="pt-4 border-t border-slate-800">
@@ -367,7 +349,7 @@
     </div>
 
     <!-- SECCIÓN DE AUSPICIADORES (CARRUSEL INFERIOR INFINITO) -->
-    <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4 overflow-hidden">
+    <footer class="bg-slate-950 border-t border-slate-800 py-12 px-4 overflow-hidden shadow-2xl">
         <div class="max-w-7xl mx-auto space-y-6 text-center">
             <div class="text-xs uppercase font-mono-code text-slate-400 tracking-widest">Auspiciadores Oficiales del Circuito</div>
             <div class="relative w-full overflow-hidden">
@@ -422,10 +404,10 @@
 
     <!-- SCRIPT MASTER DE NÚCLEO Y SINCRONIZACIÓN -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v6';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v7';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v6')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v7')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -443,6 +425,16 @@
                 { nombre: "Pádel Pro Shop", url: "https://www.google.com", logoText: "🎾 PÁDEL PRO SHOP", logoImg: "" },
                 { nombre: "Laguna Sport", url: "https://www.google.com", logoText: "💧 LAGUNA SPORT", logoImg: "" },
                 { nombre: "Tesla Chile", url: "https://www.tesla.com", logoText: "⚡ TESLA MOTORS", logoImg: "" }
+            ],
+            rankingCircuito: [
+                { pos: 1, dupla: "DUPLA ELITE 1", pts: 2450 },
+                { pos: 2, dupla: "CHICUREO GIRLS 1", pts: 2100 },
+                { pos: 3, dupla: "MIXED POWER 1", pts: 1850 }
+            ],
+            rankingChallenger: [
+                { pos: 1, dupla: "CHICUREO GIRLS 1", pts: 1200 },
+                { pos: 2, dupla: "DUPLA ELITE 1", pts: 1050 },
+                { pos: 3, dupla: "LOS VIKINGOS", pts: 900 }
             ],
             cupos: {
                 varones: Array.from({length: 16}, (_, i) => ({
@@ -488,14 +480,14 @@
         let boxSeleccionado = null;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v6', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v7', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v6'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v7'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -511,6 +503,10 @@
             const banner = document.getElementById('heroBannerContainer');
             if(banner && db.config.heroBgUrl) {
                 banner.style.setProperty('--hero-bg-url', `url('${db.config.heroBgUrl}')`);
+            }
+
+            if(db.config.colorPrimary) {
+                actualizarConfigTailwind(db.config.colorPrimary);
             }
 
             const iframeMap = document.getElementById('mapaGoogleIframe');
@@ -592,9 +588,9 @@
                 const btn = document.getElementById(`tab${c.charAt(0).toUpperCase() + c.slice(1)}`);
                 if(btn) {
                     if(c === cat) {
-                        btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md";
+                        btn.className = "px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md";
                     } else {
-                        btn.className = "px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700";
+                        btn.className = "px-6 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-900 text-slate-300 border border-slate-700/80 shadow";
                     }
                 }
             });
@@ -758,29 +754,19 @@
                 grid.appendChild(card);
             });
 
-            // Generar Ranking Automático con TODAS las parejas inscritas
-            let listaInscritas = [];
-            Object.keys(db.cupos).forEach(cat => {
-                db.cupos[cat].forEach(cp => {
-                    if(cp.ocupado && cp.alias) {
-                        listaInscritas.push({ dupla: cp.alias, pts: Math.floor(Math.random() * 500) + 1500 });
-                    }
-                });
-            });
-
             const tbCircuito = document.getElementById('tablaRankingCircuitoTV');
             if(tbCircuito) {
                 tbCircuito.innerHTML = '';
-                listaInscritas.forEach((r, idx) => {
-                    tbCircuito.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${idx+1}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
+                db.rankingCircuito.forEach(r => {
+                    tbCircuito.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${r.pos}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
                 });
             }
 
             const tbChallenger = document.getElementById('tablaRankingChallengerTV');
             if(tbChallenger) {
                 tbChallenger.innerHTML = '';
-                listaInscritas.slice().reverse().forEach((r, idx) => {
-                    tbChallenger.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${idx+1}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts - 200} pts</td></tr>`;
+                db.rankingChallenger.forEach(r => {
+                    tbChallenger.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${r.pos}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
                 });
             }
         }
@@ -975,7 +961,6 @@
             const contC = document.getElementById('editorRankingCircuitoAdmin');
             const contCh = document.getElementById('editorRankingChallengerAdmin');
             
-            // Recopilar todas las parejas inscritas actuales para el ranking
             let inscritas = [];
             Object.keys(db.cupos).forEach(cat => {
                 db.cupos[cat].forEach(cp => {
