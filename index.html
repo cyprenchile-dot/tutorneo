@@ -144,7 +144,6 @@
                 </div>
             </div>
 
-            <!-- Mapa Interactivo Google Maps -->
             <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-4 shadow-2xl">
                 <h3 class="text-2xl font-bold text-brandPrimary">📍 Ubicación del Club / Canchas</h3>
                 <p class="text-xs text-slate-400">Encuentra las instalaciones principales en Laguna Ayres de Chicureo.</p>
@@ -161,10 +160,7 @@
                 <h2 class="text-4xl font-extrabold text-white">Estado de Canchas, En Directo & Rankings</h2>
             </div>
 
-            <!-- ESTADO DE LAS 4 CANCHAS EN TIEMPO REAL -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gridEstado4CanchasTV">
-                <!-- Inyectado dinámicamente con colores vivos -->
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="gridEstado4CanchasTV"></div>
 
             <div class="airport-board rounded-3xl p-6 md:p-8 space-y-6">
                 <div class="flex justify-between items-center border-b border-slate-800 pb-4">
@@ -223,7 +219,6 @@
                     </div>
                 </div>
 
-                <!-- Caja privada de control -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-5 rounded-2xl border border-slate-800 font-mono-code shadow-inner">
                     <div>
                         <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Confidencial)</div>
@@ -239,7 +234,6 @@
                     </div>
                 </div>
 
-                <!-- Pestañas Master Admin -->
                 <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
                     <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition">🎾 Canchas, Estados & Marcadores</button>
                     <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">👥 Base de Datos Parejas</button>
@@ -251,7 +245,7 @@
                 <!-- Panel Admin: Boxes -->
                 <div id="adminPanelBoxes" class="space-y-6">
                     <div class="flex justify-between items-center">
-                        <h3 class="text-lg font-bold text-white">Control de Canchas, Estados y Marcadores</h3>
+                        <h3 class="text-lg font-bold text-white">Control de Canchas, Estados (Libre/Ocupado) y Marcadores</h3>
                         <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-xs text-white font-mono-code">
                             <option value="varones">Varones 5ª</option>
                             <option value="damas">Damas C</option>
@@ -263,7 +257,7 @@
                             <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
                                 <tr>
                                     <th class="p-3">Box</th>
-                                    <th class="p-3">Estado</th>
+                                    <th class="p-3">Estado (Libre/Ocupado)</th>
                                     <th class="p-3">Alias Dupla</th>
                                     <th class="p-3">Cancha Asignada</th>
                                     <th class="p-3">Estado del Partido</th>
@@ -316,7 +310,7 @@
                             <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div>
-                            <label class="block font-semibold text-slate-300 uppercase mb-1">Valor de Inscripción ($ CLP)</label>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Valor de Inscripción Tarifa ($ CLP)</label>
                             <input type="number" id="cfgPrecioInscripcion" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div>
@@ -338,10 +332,10 @@
                     </div>
                 </div>
 
-                <!-- Panel Admin: Auspiciadores con Carga de Archivos / Logos -->
+                <!-- Panel Admin: Auspiciadores con Carga de Archivos Robusta -->
                 <div id="adminPanelSponsors" class="space-y-6 hidden">
-                    <h3 class="text-lg font-bold text-white">Gestión de Auspiciadores y Carga de Logotipos</h3>
-                    <p class="text-xs text-slate-400">Puedes escribir el nombre y enlace, o subir el archivo de imagen de su logotipo directamente desde tu computador.</p>
+                    <h3 class="text-lg font-bold text-white">Gestión de Auspiciadores y Carga de Logos</h3>
+                    <p class="text-xs text-slate-400">Sube una imagen de logotipo (PNG/JPG menor a 500 KB) o escribe el nombre destacado.</p>
                     <div id="editorSponsorsAdmin" class="space-y-4"></div>
                     <button onclick="agregarSponsorAdmin()" class="bg-slate-800 hover:bg-slate-700 text-brandPrimary border border-brandPrimary/30 px-4 py-2.5 rounded-xl text-xs font-mono-code font-bold">+ Agregar Nuevo Auspiciador</button>
                 </div>
@@ -422,10 +416,10 @@
 
     <!-- SCRIPT MASTER DE NÚCLEO Y SINCRONIZACIÓN -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v4';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v5';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v4')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v5')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -497,14 +491,14 @@
         let boxSeleccionado = null;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v4', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v5', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v4'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v5'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -535,19 +529,18 @@
                 commEl.classList.add('hidden');
             }
 
-            // Carrusel de Auspiciadores Infinito con soporte de Logos (Imágenes o Texto Grande)
             const carrusel = document.getElementById('carruselSponsorsPublico');
             if(carrusel) {
                 carrusel.innerHTML = '';
                 const itemsHtml = db.sponsors.map(s => {
-                    let contenidoVisual = s.logoImg ? `<img src="${s.logoImg}" class="h-12 object-contain">` : `<span class="text-lg font-extrabold text-white tracking-wider">${s.logoText || s.nombre}</span>`;
+                    let contenidoVisual = s.logoImg ? `<img src="${s.logoImg}" class="h-16 object-contain max-w-[200px]">` : `<span class="text-xl font-extrabold text-white tracking-wider">${s.logoText || s.nombre}</span>`;
                     return `
                         <a href="${s.url}" target="_blank" class="hover:text-brandPrimary transition bg-slate-900 px-8 py-4 rounded-3xl border border-slate-800 shadow-xl flex items-center space-x-3">
                             ${contenidoVisual}
                         </a>
                     `;
                 }).join('');
-                carrusel.innerHTML = itemsHtml + itemsHtml; // Duplicar para loop continuo
+                carrusel.innerHTML = itemsHtml + itemsHtml;
             }
         }
 
@@ -705,13 +698,11 @@
         }, 1000);
 
         function renderTV() {
-            // Renderizar Estado de las 4 Canchas en la Pantalla Gigante con colores vivos
             const gridCanchas = document.getElementById('gridEstado4CanchasTV');
             if(gridCanchas) {
                 gridCanchas.innerHTML = '';
                 for(let cNum = 1; cNum <= 4; cNum++) {
                     const canchaNombre = `Cancha #${cNum}`;
-                    // Buscar partido activo o programado en esta cancha
                     let partidoActual = null;
                     Object.keys(db.cupos).forEach(cat => {
                         db.cupos[cat].forEach(cp => {
@@ -769,7 +760,6 @@
                 grid.appendChild(card);
             });
 
-            // Ranking Circuito WPT
             const tbCircuito = document.getElementById('tablaRankingCircuitoTV');
             if(tbCircuito) {
                 tbCircuito.innerHTML = '';
@@ -778,7 +768,6 @@
                 });
             }
 
-            // Ranking Copa Challenger
             const tbChallenger = document.getElementById('tablaRankingChallengerTV');
             if(tbChallenger) {
                 tbChallenger.innerHTML = '';
@@ -935,13 +924,15 @@
             if(!cont) return;
             cont.innerHTML = '';
             db.sponsors.forEach((s, index) => {
+                let previewLogo = s.logoImg ? `<img src="${s.logoImg}" class="w-10 h-10 object-contain bg-slate-900 rounded p-1">` : `<span class="text-[10px] text-slate-500">Sin Logo</span>`;
                 cont.innerHTML += `
                     <div class="flex flex-wrap gap-4 bg-slate-950 p-4 rounded-xl border border-slate-800 items-center text-xs">
-                        <input type="text" value="${s.logoText || ''}" onchange="db.sponsors[${index}].logoText=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-white w-40" placeholder="Nombre Auspiciador">
+                        ${previewLogo}
+                        <input type="text" value="${s.logoText || ''}" onchange="db.sponsors[${index}].logoText=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-white w-40" placeholder="Nombre Sponsor">
                         <input type="text" value="${s.url}" onchange="db.sponsors[${index}].url=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1.5 text-white flex-1" placeholder="URL Enlace">
                         <div class="flex items-center space-x-2">
-                            <span class="text-[10px] text-slate-400">Subir Logo:</span>
-                            <input type="file" accept="image/*" onchange="subirLogoSponsor(event, ${index})" class="text-[10px] text-slate-300">
+                            <span class="text-[10px] text-slate-400">Subir Archivo:</span>
+                            <input type="file" accept="image/*" onchange="subirLogoSponsorRobusto(event, ${index})" class="text-[10px] text-slate-300">
                         </div>
                         <button onclick="db.sponsors.splice(${index},1); renderEditorSponsors();" class="text-red-400 hover:text-red-300 font-bold px-2">Eliminar</button>
                     </div>
@@ -949,14 +940,22 @@
             });
         }
 
-        function subirLogoSponsor(event, index) {
+        function subirLogoSponsorRobusto(event, index) {
             const file = event.target.files[0];
             if(file) {
+                if(file.size > 800000) {
+                    alert("⚠️ El archivo es demasiado grande (máx 800 KB). Selecciona una imagen más ligera para asegurar velocidad.");
+                    return;
+                }
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     db.sponsors[index].logoImg = e.target.result;
                     sincronizar();
                     renderEditorSponsors();
+                    alert("✅ ¡Logotipo cargado y procesado con éxito!");
+                };
+                reader.onerror = function() {
+                    alert("❌ Error al leer el archivo de imagen. Intenta con otro formato.");
                 };
                 reader.readAsDataURL(file);
             }
