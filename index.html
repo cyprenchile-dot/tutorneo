@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Arquitectura Nivel Argón</title>
+    <title id="pageTitle">Tutorneo Pro | Plataforma Oficial de Pádel</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -30,11 +30,11 @@
 </head>
 <body class="bg-brandDark text-slate-100 min-h-screen selection:bg-brandPrimary selection:text-slate-950">
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR REACTIVA -->
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR (LIMPIA DE DATOS FINANCIEROS PÚBLICOS) -->
     <header class="bg-slate-950/95 backdrop-blur border-b border-slate-800/80 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
-                <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1 rounded text-xs uppercase tracking-wider">Tutorneo Core</span>
+                <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1 rounded text-xs uppercase tracking-wider">Tutorneo Pro</span>
                 <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Chicureo</span></h1>
             </div>
             <div class="flex items-center space-x-2 md:space-x-3 text-sm">
@@ -42,16 +42,16 @@
                     🎾 Jugadores
                 </button>
                 <button onclick="cambiarVista('tv')" id="btnTV" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 hover:bg-blue-600/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
-                    📺 Pantalla TV
+                    📺 Pantalla TV & Playoff
                 </button>
                 <button onclick="verificarAdmin()" id="btnAdm" class="bg-brandPrimary/20 text-brandPrimary border border-brandPrimary/40 hover:bg-brandPrimary/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
-                    ⚙️ Admin
+                    ⚙️ Admin (Privado)
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- ================= VISTA PÚBLICA (LIFESTYLE) ================= -->
+    <!-- ================= VISTA PÚBLICA (LIFESTYLE & BOXES BINARIOS) ================= -->
     <main id="vistaPublica" class="space-y-12 pb-24">
         <section id="heroSection" class="hero-custom-bg py-24 px-4 text-center relative border-b border-slate-800">
             <div class="max-w-4xl mx-auto space-y-6">
@@ -60,7 +60,7 @@
                     El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
                 </h2>
                 <p id="heroDesc" class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-light">
-                    Inscríbete de forma instantánea vía WhatsApp, visualiza los cruces en tiempo real y compite por la gloria perpetua.
+                    Inscríbete de forma instantánea vía WhatsApp, visualiza los cuadros en tiempo real y compite por la gloria perpetua.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4 pt-4">
                     <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
@@ -73,7 +73,7 @@
         <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
             <div class="text-center space-y-2">
                 <h3 class="text-3xl font-bold text-white">Cuadros Oficiales de Inscripción</h3>
-                <p class="text-slate-400">Los boxes en rojo muestran a las duplas confirmadas; los verdes están disponibles para reserva inmediata.</p>
+                <p class="text-slate-400">Verifica disponibilidad en tiempo real: rojo para duplas confirmadas, verde para inscripción abierta.</p>
             </div>
 
             <!-- Selector de Categorías -->
@@ -93,24 +93,34 @@
         </section>
     </main>
 
-    <!-- ================= VISTA PANTALLA GIGANTE (TV MODE / LIVE) ================= -->
+    <!-- ================= VISTA PANTALLA GIGANTE / TV & LLAVES INTERACTIVAS ================= -->
     <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="text-center space-y-2">
-            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🔴 TELEMETRÍA EN VIVO • PANTALLA OFICIAL CLUB</span>
-            <h2 class="text-4xl font-extrabold text-white">Resultados y Playoff Dominical</h2>
+            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🔴 CANCHA CENTRAL • PANTALLA OFICIAL & PLAYOFF</span>
+            <h2 class="text-4xl font-extrabold text-white">Cuadro de Eliminación y Ranking en Vivo</h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="gridTV"></div>
+        
+        <!-- Tabs TV: Playoff vs Ranking -->
+        <div class="flex justify-center space-x-4">
+            <button onclick="setTabTV('playoff')" id="btnTabPlayoff" class="bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold">🏆 Llaves Playoff (Domingo)</button>
+            <button onclick="setTabTV('ranking')" id="btnTabRanking" class="bg-slate-800 text-slate-300 px-5 py-2 rounded-xl text-xs font-bold">📊 Ranking del Circuito</button>
+        </div>
+
+        <div id="contenedorTVPlayoff" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+        <div id="contenedorTVRanking" class="hidden max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+            <!-- Tabla de Ranking Inyectada -->
+        </div>
     </main>
 
-    <!-- ================= VISTA SUPER ADMIN (CONTROL NIVEL ARGÓN) ================= -->
+    <!-- ================= VISTA SUPER ADMIN (CONTROL TOTAL Y CAJA PRIVADA) ================= -->
     <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-8">
             <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                 <div>
                     <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
-                        <span>🛠️ NÚCLEO ADMIN (ARQUITECTURA ARGÓN)</span>
+                        <span>🛠️ PANEL SUPER ADMIN (GESTIÓN PRIVADA)</span>
                     </h2>
-                    <p class="text-slate-400 text-sm">Sincronización atómica en tiempo real para pantallas y dispositivos móviles.</p>
+                    <p class="text-slate-400 text-sm">Control de caja confidencial, estados binarios de boxes y generación de llaves.</p>
                 </div>
                 <div class="flex flex-wrap gap-2">
                     <button onclick="motorArgonGenerarLlaves()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">
@@ -119,6 +129,22 @@
                     <button onclick="guardarYPublicarConfig()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">
                         💾 Sincronizar Sistema
                     </button>
+                </div>
+            </div>
+
+            <!-- Panel Privado de Caja Mercado Pago (Solo Admin) -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono-code">
+                <div>
+                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Mercado Pago)</div>
+                    <div id="adminCajaTotal" class="text-xl font-bold text-emerald-400 mt-1">$1.920.000 CLP</div>
+                </div>
+                <div>
+                    <div class="text-slate-400 text-[10px] uppercase">Cupos Ocupados / Total</div>
+                    <div id="adminCuposStats" class="text-xl font-bold text-brandPrimary mt-1">48 / 48 (100%)</div>
+                </div>
+                <div>
+                    <div class="text-slate-400 text-[10px] uppercase">Estado Pasarela</div>
+                    <div class="text-xl font-bold text-blue-400 mt-1">🟢 ACTIVO (WEBHOOK OK)</div>
                 </div>
             </div>
 
@@ -142,7 +168,7 @@
                         <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
                             <tr>
                                 <th class="p-3">Box</th>
-                                <th class="p-3">Estado</th>
+                                <th class="p-3">Estado Binario</th>
                                 <th class="p-3">Alias Dupla</th>
                                 <th class="p-3">Enlace WhatsApp Dinámico</th>
                                 <th class="p-3">Marcador Vivo</th>
@@ -219,6 +245,7 @@
         };
 
         let catActiva = 'varones';
+        let tvTabActiva = 'playoff';
 
         function persistirYTransmitir() {
             localStorage.setItem('tutorneo_argon_state', JSON.stringify(argonState));
@@ -249,18 +276,21 @@
 
             if(vista === 'publico') document.getElementById('vistaPublica').classList.remove('hidden');
             if(vista === 'tv') { renderTV(); document.getElementById('vistaTV').classList.remove('hidden'); }
-            if(vista === 'admin') document.getElementById('vistaAdmin').classList.remove('hidden');
+            if(vista === 'admin') { 
+                renderAdminCuposTabla();
+                actualizarCajaAdminPrivada();
+                document.getElementById('vistaAdmin').classList.remove('hidden'); 
+            }
         }
 
         function verificarAdmin() {
-            const clave = prompt("🔐 Acceso Super Admin (Nivel Argón):");
+            const clave = prompt("🔐 Acceso Super Admin (Área Confidencial):");
             if(clave === "admin2026" || clave === "chicureo") {
                 cambiarVista('admin');
-                renderAdminCuposTabla();
                 document.getElementById('cfgNombreTorneo').value = argonState.config.nombreTorneo;
                 document.getElementById('cfgBadge').value = argonState.config.badgeOrg;
             } else {
-                alert("❌ Clave de seguridad incorrecta.");
+                alert("❌ Clave incorrecta.");
             }
         }
 
@@ -277,12 +307,14 @@
             renderPublico();
         }
 
+        // RENDERIZADO PÚBLICO CON ESTADOS BINARIOS EXCLUSIVOS (Ocupado en Rojo O Libre en Verde)
         function renderPublico() {
             const grid = document.getElementById('gridCuposPublico');
             grid.innerHTML = '';
             argonState.cupos[catActiva].forEach(cupo => {
                 const card = document.createElement('div');
                 if(cupo.ocupado) {
+                    // ESTADO OCUPADO (ROJO) - EXCLUSIVO CON DATOS DE LA DUPLA
                     card.className = "bg-slate-900 border border-red-500/30 rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-lg";
                     card.innerHTML = `
                         <div class="absolute top-0 right-0 bg-red-500/20 text-red-400 text-[10px] font-bold px-3 py-1 rounded-bl-xl">INSCRITO</div>
@@ -300,6 +332,7 @@
                         </div>
                     `;
                 } else {
+                    // ESTADO LIBRE (VERDE) - EXCLUSIVO CON BOTÓN WHATSAPP
                     const mensajeWa = encodeURIComponent(`Hola, quiero inscribir mi dupla en el box #${cupo.id} de la categoría ${catActiva.toUpperCase()} para la ${argonState.config.nombreTorneo}.`);
                     const linkWaFinal = `https://wa.me/${cupo.whatsapp}?text=${mensajeWa}`;
 
@@ -321,8 +354,24 @@
             });
         }
 
+        function setTabTV(tab) {
+            tvTabActiva = tab;
+            if(tab === 'playoff') {
+                document.getElementById('btnTabPlayoff').className = "bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold";
+                document.getElementById('btnTabRanking').className = "bg-slate-800 text-slate-300 px-5 py-2 rounded-xl text-xs font-bold";
+                document.getElementById('contenedorTVPlayoff').classList.remove('hidden');
+                document.getElementById('contenedorTVRanking').classList.add('hidden');
+            } else {
+                document.getElementById('btnTabPlayoff').className = "bg-slate-800 text-slate-300 px-5 py-2 rounded-xl text-xs font-bold";
+                document.getElementById('btnTabRanking').className = "bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold";
+                document.getElementById('contenedorTVPlayoff').classList.add('hidden');
+                document.getElementById('contenedorTVRanking').classList.remove('hidden');
+                renderRankingTV();
+            }
+        }
+
         function renderTV() {
-            const grid = document.getElementById('gridTV');
+            const grid = document.getElementById('contenedorTVPlayoff');
             grid.innerHTML = '';
             ['varones', 'damas', 'mixto'].forEach(cat => {
                 const card = document.createElement('div');
@@ -345,10 +394,32 @@
             });
         }
 
+        function renderRankingTV() {
+            const contenedor = document.getElementById('contenedorTVRanking');
+            contenedor.innerHTML = `
+                <h3 class="text-xl font-bold text-white mb-4">📊 Ranking General del Circuito</h3>
+                <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                    <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                        <tr>
+                            <th class="p-3">Pos</th>
+                            <th class="p-3">Dupla / Alias</th>
+                            <th class="p-3">Torneos</th>
+                            <th class="p-3 text-right">Puntos Totales</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800">
+                        <tr><td class="p-3 text-brandPrimary font-bold">1</td><td class="p-3 text-white font-bold">DUPLA ELITE 1</td><td class="p-3">3</td><td class="p-3 text-right font-bold text-emerald-400">2,450 pts</td></tr>
+                        <tr><td class="p-3 text-brandPrimary font-bold">2</td><td class="p-3 text-white font-bold">CHICUREO GIRLS 1</td><td class="p-3">3</td><td class="p-3 text-right font-bold text-emerald-400">2,100 pts</td></tr>
+                        <tr><td class="p-3 text-brandPrimary font-bold">3</td><td class="p-3 text-white font-bold">MIXED POWER 1</td><td class="p-3">2</td><td class="p-3 text-right font-bold text-emerald-400">1,850 pts</td></tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
         function motorArgonGenerarLlaves() {
             argonState.llavesActivas = true;
             persistirYTransmitir();
-            alert("⚡ ¡Motor Argón ejecutado! Las llaves del domingo se han proyectado en tiempo real en la Pantalla Gigante.");
+            alert("⚡ ¡Motor Argón ejecutado! Las llaves del domingo se han proyectado en tiempo real.");
             cambiarVista('tv');
         }
 
@@ -364,6 +435,16 @@
                 document.getElementById('tabAdminCupos').className = "bg-slate-800 text-slate-400 px-4 py-2 rounded-lg";
                 document.getElementById('tabAdminMarca').className = "bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold";
             }
+        }
+
+        function actualizarCajaAdminPrivada() {
+            let totalOcupados = 0;
+            Object.values(argonState.cupos).forEach(cat => {
+                cat.forEach(c => { if(c.ocupado) totalOcupados++; });
+            });
+            const rec = totalOcupados * 40000;
+            document.getElementById('adminCajaTotal').innerText = "$" + rec.toLocaleString('es-CL') + " CLP";
+            document.getElementById('adminCuposStats').innerText = `${totalOcupados} / 48 (${Math.round(totalOcupados/48*100)}%)`;
         }
 
         function renderAdminCuposTabla() {
@@ -386,6 +467,7 @@
                 `;
                 tbody.appendChild(tr);
             });
+            actualizarCajaAdminPrivada();
         }
 
         function cambiarEstadoCupo(cat, id, val) {
@@ -394,6 +476,7 @@
             if(!cupo.alias && cupo.ocupado) cupo.alias = "NUEVA DUPLA";
             persistirYTransmitir();
             renderPublico();
+            actualizarCajaAdminPrivada();
         }
 
         function actualizarAlias(cat, id, val) {
@@ -407,7 +490,6 @@
             const cupo = argonState.cupos[cat].find(x => x.id === id);
             cupo.whatsapp = val;
             persistirYTransmitir();
-            renderPublico();
         }
 
         function actualizarRes(cat, id, val) {
