@@ -127,22 +127,22 @@
                 </div>
             </div>
 
-            <!-- VISTA PANTALLA DE ÉXITO / INSCRIPTO (DINÁMICA PARA EL JUGADOR) -->
+            <!-- VISTA PANTALLA DE ÉXITO / INSCRIPTO -->
             <div id="vistaExitoInscripcion" class="panel-vista">
                 <div class="container" style="max-width: 700px; margin-top: 2rem;">
                     <div class="admin-panel space-y-6 text-center" style="border: 2px solid #10b981; background: linear-gradient(135deg, #064e3b 0%, #080C14 100%);">
                         <div style="font-size: 3rem;">🎉</div>
                         <h2 style="font-size: 2rem; font-weight: 800; color: #10b981;">¡Estás Inscrito con Éxito!</h2>
-                        <p style="color: #A7F3D0; font-size: 0.9rem;">Tu pago ha sido procesado y tu lugar en el cuadro oficial está asegurado.</p>
+                        <p style="color: #A7F3D0; font-size: 0.9rem;">Tu registro ha sido completado y tu lugar en el cuadro oficial está asegurado.</p>
                         
-                        <div style="background: rgba(5,7,11,0.6); padding: 1.5rem; border-radius: 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; space-y: 0.5rem;" class="space-y-2">
+                        <div style="background: rgba(5,7,11,0.6); padding: 1.5rem; border-radius: 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;" class="space-y-2">
                             <div><strong>Dupla / Equipo:</strong> <span id="exitoAlias" style="color: var(--primary);">--</span></div>
                             <div><strong>Jugadores:</strong> <span id="exitoJugadores">--</span></div>
                             <div><strong>Box Asignado:</strong> <span id="exitoBox" style="color: #60A5FA;">--</span></div>
-                            <div><strong>Estado de Pago:</strong> <span style="color: #10B981;">🟢 PAGADO ($40.000 CLP)</span></div>
+                            <div><strong>Estado:</strong> <span style="color: #10B981;">🟢 REGISTRADO (Redirigiendo a pasarela de pago...)</span></div>
                         </div>
 
-                        <div style="background: rgba(13,19,34,0.9); padding: 1.5rem; border-radius: 16px; text-align: left;" class="space-y-3">
+                        <div style="background: rgba(13,19,34,0.9); padding: 1.5rem; border-radius: 16px; text-align: left;">
                             <h4 style="color: var(--primary); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">📅 Horarios de Competencia & Información</h4>
                             <div id="exitoCronogramaContenedor" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;"></div>
                         </div>
@@ -379,7 +379,7 @@
         </div>
     </footer>
 
-    <!-- MODAL DE INSCRIPCIÓN Y PERFIL DEL JUGADOR (BLINDADO: OCULTO POR DEFECTO) -->
+    <!-- MODAL DE INSCRIPCIÓN Y PERFIL DEL JUGADOR -->
     <div id="modalInscripcion" class="modal-oculto" style="position: fixed; inset: 0; background: rgba(5,7,11,0.85); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem;">
         <div class="admin-panel" style="max-width: 480px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto;">
             <button onclick="cerrarModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #94A3B8; font-size: 1.2rem; cursor: pointer;">&times;</button>
@@ -429,10 +429,10 @@
 
     <!-- SCRIPT MASTER DE ENRUTAMIENTO BLINDADO -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v15';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v16';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v15')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v16')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -507,14 +507,14 @@
         let isAdminLoggedIn = false;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v15', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v16', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v15'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v16'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -742,10 +742,9 @@
 
             cambiarVista('exito');
             
-            // Simular redirección al enlace de pago configurado
             setTimeout(() => {
                 window.open(db.config.linkPago, '_blank');
-            }, 1500);
+            }, 1200);
         }
 
         setInterval(() => {
