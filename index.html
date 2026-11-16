@@ -21,7 +21,7 @@
         .nav-title span { color: var(--primary); }
         .nav-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
         .nav-btn { background: #131C2E; color: #fff; border: 1px solid #1E293B; padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
-        .nav-btn:hover { background: #1E293B; }
+        .nav-btn:hover { background: #131C2E; }
         .nav-btn.active { background: var(--primary); color: #030508; font-weight: 700; border-color: var(--primary); }
 
         .hero { background: linear-gradient(rgba(5, 7, 11, 0.75), rgba(5, 7, 11, 0.95)), var(--hero-bg, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat; padding: 5rem 1rem; text-align: center; border-bottom: 1px solid #1E293B; }
@@ -124,6 +124,31 @@
                     </div>
 
                     <div id="gridCuposPublico" class="grid-boxes"></div>
+                </div>
+            </div>
+
+            <!-- VISTA PANTALLA DE ÉXITO / INSCRIPTO (DINÁMICA PARA EL JUGADOR) -->
+            <div id="vistaExitoInscripcion" class="panel-vista">
+                <div class="container" style="max-width: 700px; margin-top: 2rem;">
+                    <div class="admin-panel space-y-6 text-center" style="border: 2px solid #10b981; background: linear-gradient(135deg, #064e3b 0%, #080C14 100%);">
+                        <div style="font-size: 3rem;">🎉</div>
+                        <h2 style="font-size: 2rem; font-weight: 800; color: #10b981;">¡Estás Inscrito con Éxito!</h2>
+                        <p style="color: #A7F3D0; font-size: 0.9rem;">Tu pago ha sido procesado y tu lugar en el cuadro oficial está asegurado.</p>
+                        
+                        <div style="background: rgba(5,7,11,0.6); padding: 1.5rem; border-radius: 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; space-y: 0.5rem;" class="space-y-2">
+                            <div><strong>Dupla / Equipo:</strong> <span id="exitoAlias" style="color: var(--primary);">--</span></div>
+                            <div><strong>Jugadores:</strong> <span id="exitoJugadores">--</span></div>
+                            <div><strong>Box Asignado:</strong> <span id="exitoBox" style="color: #60A5FA;">--</span></div>
+                            <div><strong>Estado de Pago:</strong> <span style="color: #10B981;">🟢 PAGADO ($40.000 CLP)</span></div>
+                        </div>
+
+                        <div style="background: rgba(13,19,34,0.9); padding: 1.5rem; border-radius: 16px; text-align: left;" class="space-y-3">
+                            <h4 style="color: var(--primary); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">📅 Horarios de Competencia & Información</h4>
+                            <div id="exitoCronogramaContenedor" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;"></div>
+                        </div>
+
+                        <button onclick="cambiarVista('publico')" class="btn-action" style="width: 100%;">Volver al Inicio 🎾</button>
+                    </div>
                 </div>
             </div>
 
@@ -354,7 +379,7 @@
         </div>
     </footer>
 
-    <!-- MODAL DE INSCRIPCIÓN Y PERFIL DEL JUGADOR -->
+    <!-- MODAL DE INSCRIPCIÓN Y PERFIL DEL JUGADOR (BLINDADO: OCULTO POR DEFECTO) -->
     <div id="modalInscripcion" class="modal-oculto" style="position: fixed; inset: 0; background: rgba(5,7,11,0.85); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem;">
         <div class="admin-panel" style="max-width: 480px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto;">
             <button onclick="cerrarModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #94A3B8; font-size: 1.2rem; cursor: pointer;">&times;</button>
@@ -402,12 +427,12 @@
         </div>
     </div>
 
-    <!-- SCRIPT MASTER DE NÚCLEO NÚCLEO GOD MODE -->
+    <!-- SCRIPT MASTER DE ENRUTAMIENTO BLINDADO -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v14';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v15';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v14')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v15')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -482,14 +507,14 @@
         let isAdminLoggedIn = false;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v14', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v15', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v14'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v15'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -506,7 +531,6 @@
             document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
             document.getElementById('textoCronogramaPublico').innerHTML = db.config.cronograma;
             
-            // Logotipo del Torneo en Navbar
             const logoCont = document.getElementById('navLogoContainer');
             if(logoCont) {
                 if(db.config.logoTorneoImg) {
@@ -546,16 +570,19 @@
         }
 
         function cambiarVista(vista) {
-            ['vistaPublica', 'vistaPremios', 'vistaTV', 'vistaAdmin'].forEach(v => {
+            ['vistaPublica', 'vistaExitoInscripcion', 'vistaPremios', 'vistaTV', 'vistaAdmin'].forEach(v => {
                 document.getElementById(v).classList.remove('activo');
             });
             ['btnNavPub', 'btnNavPrem', 'btnNavTV', 'btnNavAdmin'].forEach(id => {
-                document.getElementById(id).classList.remove('active');
+                const el = document.getElementById(id);
+                if(el) el.classList.remove('active');
             });
 
             if(vista === 'publico') {
                 document.getElementById('vistaPublica').classList.add('activo');
                 document.getElementById('btnNavPub').classList.add('active');
+            } else if(vista === 'exito') {
+                document.getElementById('vistaExitoInscripcion').classList.add('activo');
             } else if(vista === 'premios') {
                 document.getElementById('vistaPremios').classList.add('activo');
                 document.getElementById('btnNavPrem').classList.add('active');
@@ -626,7 +653,7 @@
                 if(cupo.ocupado) {
                     card.className = "box-card box-roja";
                     card.innerHTML = `
-                        <div class="status-badge badge-red">${cupo.estadoPartido}</div>
+                        <div class="status-badge badge-red">INSCRITO 🔴</div>
                         <div style="font-size: 0.75rem; color: #fca5a5; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
                         <div style="display: flex; align-items: center; gap: 0.75rem; background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 10px;">
                             <img src="${cupo.avatar}" style="width: 40px; height: 40px; border-radius: 50%; background: #000; object-fit: cover;">
@@ -636,22 +663,22 @@
                             </div>
                         </div>
                         <div style="margin-top: 0.75rem; display: flex; justify-content: space-between; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;">
-                            <span>Marcador:</span>
-                            <strong style="background: rgba(239, 68, 68, 0.4); padding: 0.1rem 0.4rem; border-radius: 4px;">${cupo.resultado}</strong>
+                            <span>Estado:</span>
+                            <strong style="background: rgba(239, 68, 68, 0.4); padding: 0.1rem 0.4rem; border-radius: 4px;">${cupo.estadoPartido}</strong>
                         </div>
                     `;
                 } else {
                     card.className = "box-card box-verde";
                     card.onclick = () => abrirModalInscripcion(cupo.id);
                     card.innerHTML = `
-                        <div class="status-badge badge-green">Disponible 🟢</div>
-                        <div style="font-size: 0.75rem; color: #6ee7b7; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
+                        <div class="status-badge badge-green">DISPONIBLE 🟢</div>
+                        <div style="font-size: 0.75rem; color: #6ee7b7; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 Cancha Oficial</div>
                         <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px; text-align: center;">
-                            <div style="font-size: 1rem; font-weight: 800; color: #34d399;">¡Box Libre!</div>
-                            <p style="font-size: 0.7rem; color: #a7f3d0; margin-top: 0.2rem;">Haz clic para registrar tu dupla y subir tu foto.</p>
+                            <div style="font-size: 1rem; font-weight: 800; color: #34d399;">¡Invítate a Jugar!</div>
+                            <p style="font-size: 0.7rem; color: #a7f3d0; margin-top: 0.2rem;">Haz clic para registrar tu dupla y pagar online.</p>
                         </div>
                         <div style="margin-top: 0.75rem; display: flex; justify-content: flex-end;">
-                            <span style="background: #10b981; color: #030508; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 6px;">Inscribir 💳</span>
+                            <span style="background: #10b981; color: #030508; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 6px;">Inscribir Ahora 💳</span>
                         </div>
                     `;
                 }
@@ -662,7 +689,7 @@
         function abrirModalInscripcion(id) {
             boxSeleccionado = id;
             document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${catActiva.toUpperCase()}`;
-            document.getElementById('modalPrecioLabel').innerText = `Valor: $${db.config.precioInscripcion.toLocaleString('es-CL')} CLP`;
+            document.getElementById('modalPrecioLabel').innerText = `Valor de inscripción: $${db.config.precioInscripcion.toLocaleString('es-CL')} CLP`;
             document.getElementById('modalInscripcion').classList.remove('modal-oculto');
         }
 
@@ -706,8 +733,19 @@
 
             sincronizar();
             cerrarModal();
-            alert("¡Inscripción registrada con éxito! Redirigiendo a pasarela de pago...");
-            window.location.href = db.config.linkPago;
+
+            // Rellenar pantalla de éxito dinámica
+            document.getElementById('exitoAlias').innerText = alias;
+            document.getElementById('exitoJugadores').innerText = `${j1} (${redes1 || 'Sin IG'}) / ${j2} (${redes2 || 'Sin IG'})`;
+            document.getElementById('exitoBox').innerText = `Box #${boxSeleccionado} (${catActiva.toUpperCase()})`;
+            document.getElementById('exitoCronogramaContenedor').innerHTML = db.config.cronograma;
+
+            cambiarVista('exito');
+            
+            // Simular redirección al enlace de pago configurado
+            setTimeout(() => {
+                window.open(db.config.linkPago, '_blank');
+            }, 1500);
         }
 
         setInterval(() => {
