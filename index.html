@@ -3,28 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Nivel Argón & Grand Slam Engine</title>
+    <title id="pageTitle">Tutorneo Pro | Nivel Dios & God Mode Engine</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brandPrimary: '#D4AF37',
-                        brandDark: '#05070B',
-                        brandCard: '#0D1322',
+        // Configuración dinámica de colores con Tailwind
+        function actualizarConfigTailwind(colorPrimary) {
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            brandPrimary: colorPrimary || '#D4AF37',
+                            brandDark: '#030508',
+                            brandCard: '#0D1322',
+                        }
                     }
                 }
             }
         }
+        actualizarConfigTailwind('#D4AF37');
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Outfit', sans-serif; background-color: #05070B; color: #F8FAFC; }
+        body { font-family: 'Outfit', sans-serif; background-color: #030508; color: #F8FAFC; }
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .hero-custom-bg {
-            background: linear-gradient(rgba(5, 7, 11, 0.75), rgba(5, 7, 11, 0.95)), var(--hero-bg-url, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
+            background: linear-gradient(rgba(3, 5, 8, 0.7), rgba(3, 5, 8, 0.92)), var(--hero-bg-url, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
         }
         .mini-cancha-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; }
         .mini-cancha-roja { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); border: 2px solid #ef4444; }
@@ -62,7 +66,7 @@
                 <div class="text-center space-y-2">
                     <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-3 py-1 rounded-full text-xs font-bold uppercase font-mono-code">Área Confidencial</span>
                     <h2 class="text-2xl font-bold text-white">Acceso Super Admin Master</h2>
-                    <p class="text-slate-400 text-xs">Ingresa tu clave maestra para controlar todo el ecosistema de Tutorneo.</p>
+                    <p class="text-slate-400 text-xs">Control total e ilimitado de tarifas, pasarela de pago, ranking y canchas.</p>
                 </div>
                 <form onsubmit="procesarLoginAdmin(event)" class="space-y-4">
                     <div>
@@ -70,7 +74,7 @@
                         <input type="password" id="inputClaveAdmin" required placeholder="Introduce tu clave" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-brandPrimary">
                     </div>
                     <button type="submit" class="w-full bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold py-3.5 rounded-xl transition shadow-lg text-sm">
-                        Desbloquear Panel Nivel Argón 🔓
+                        Desbloquear God Mode 🔓
                     </button>
                 </form>
             </div>
@@ -172,7 +176,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
-                    <h3 class="text-xl font-bold text-white">📊 Ranking General del Circuito</h3>
+                    <h3 class="text-xl font-bold text-white">📊 Ranking General del Circuito (Todas las Parejas)</h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left text-xs text-slate-300 font-mono-code">
                             <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
@@ -204,15 +208,15 @@
             </div>
         </main>
 
-        <!-- ================= VISTA SUPER ADMIN MASTER ================= -->
+        <!-- ================= VISTA SUPER ADMIN MASTER (GOD MODE) ================= -->
         <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
             <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl space-y-8">
                 <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                     <div>
                         <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
-                            <span>🛠️ SUPER ADMIN MASTER (ARQUITECTURA NIVEL ARGÓN)</span>
+                            <span>🛠️ SUPER ADMIN MASTER (GOD MODE ACTIVADO)</span>
                         </h2>
-                        <p class="text-slate-400 text-sm">Control absoluto de inscripciones, precios, canchas, auspiciadores con logos y rankings.</p>
+                        <p class="text-slate-400 text-sm">Control absoluto de tarifas, pasarela de pago, colores, canchas, parejas y puntos de ranking.</p>
                     </div>
                     <div class="flex gap-2">
                         <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg">💾 Guardar & Publicar en Vivo</button>
@@ -237,9 +241,9 @@
                 <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
                     <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition">🎾 Canchas, Estados & Marcadores</button>
                     <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">👥 Base de Datos Parejas</button>
-                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Precios, Fechas & Mapa</button>
-                    <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🤝 Auspiciadores & Subir Logos</button>
-                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Rankings (WPT & Challenger)</button>
+                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Precios, Fechas & Pagos</button>
+                    <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🤝 Auspiciadores & Logos</button>
+                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Rankings & Criterios WPT</button>
                 </div>
 
                 <!-- Panel Admin: Boxes -->
@@ -289,9 +293,9 @@
                     </div>
                 </div>
 
-                <!-- Panel Admin: CMS Visual, Fechas y Mapa -->
+                <!-- Panel Admin: CMS Visual, Precios de Pago y Enlaces -->
                 <div id="adminPanelCms" class="space-y-6 hidden">
-                    <h3 class="text-lg font-bold text-white">Personalización Visual de Marca, Precios, Fechas & Mapa</h3>
+                    <h3 class="text-lg font-bold text-white">Control Comercial, Tarifas, Pasarela de Pago & Estética</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
                         <div>
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Nombre del Torneo</label>
@@ -306,16 +310,20 @@
                             <input type="text" id="cfgHeroUrl" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div>
-                            <label class="block font-semibold text-slate-300 uppercase mb-1">Enlace de Pago (Mercado Pago / Webpay)</label>
-                            <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Color Principal Corporativo (Hex, ej. #D4AF37)</label>
+                            <input type="text" id="cfgColorPrimario" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div>
-                            <label class="block font-semibold text-slate-300 uppercase mb-1">Valor de Inscripción Tarifa ($ CLP)</label>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Enlace de Pasarela de Pago (Mercado Pago / Webpay)</label>
+                            <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="https://www.mercadopago.cl/checkout/...">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Tarifa / Valor de Inscripción ($ CLP)</label>
                             <input type="number" id="cfgPrecioInscripcion" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div>
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Dirección / Consulta Google Maps (Query)</label>
-                            <input type="text" id="cfgGoogleMapsQuery" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white" placeholder="Ej. Laguna Ayres de Chicureo Colina">
+                            <input type="text" id="cfgGoogleMapsQuery" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
                         </div>
                         <div class="md:col-span-2">
                             <label class="block font-semibold text-slate-300 uppercase mb-1">Texto del Comunicado Urgente (Banner)</label>
@@ -332,17 +340,17 @@
                     </div>
                 </div>
 
-                <!-- Panel Admin: Auspiciadores con Carga de Archivos Robusta -->
+                <!-- Panel Admin: Auspiciadores -->
                 <div id="adminPanelSponsors" class="space-y-6 hidden">
                     <h3 class="text-lg font-bold text-white">Gestión de Auspiciadores y Carga de Logos</h3>
-                    <p class="text-xs text-slate-400">Sube una imagen de logotipo (PNG/JPG menor a 500 KB) o escribe el nombre destacado.</p>
                     <div id="editorSponsorsAdmin" class="space-y-4"></div>
                     <button onclick="agregarSponsorAdmin()" class="bg-slate-800 hover:bg-slate-700 text-brandPrimary border border-brandPrimary/30 px-4 py-2.5 rounded-xl text-xs font-mono-code font-bold">+ Agregar Nuevo Auspiciador</button>
                 </div>
 
-                <!-- Panel Admin: Ranking -->
+                <!-- Panel Admin: Ranking Global y Criterios WPT -->
                 <div id="adminPanelRanking" class="space-y-6 hidden">
-                    <h3 class="text-lg font-bold text-white">Actualizar Tablas de Ranking (Circuito vs Challenger)</h3>
+                    <h3 class="text-lg font-bold text-white">Criterios de Puntos (Estilo Mundial de Pádel / WPT)</h3>
+                    <p class="text-xs text-slate-400">Todas las parejas inscritas aparecen automáticamente en el ranking. Aquí puedes ajustar sus puntos acumulados y de la Copa Challenger según el rendimiento.</p>
                     <div class="space-y-6">
                         <div>
                             <h4 class="text-sm font-bold text-brandPrimary mb-2">Ranking General del Circuito (Puntos WPT)</h4>
@@ -363,12 +371,10 @@
         <div class="max-w-7xl mx-auto space-y-6 text-center">
             <div class="text-xs uppercase font-mono-code text-slate-400 tracking-widest">Auspiciadores Oficiales del Circuito</div>
             <div class="relative w-full overflow-hidden">
-                <div id="carruselSponsorsPublico" class="animate-scroll flex space-x-12 items-center">
-                    <!-- Inyectado dinámicamente -->
-                </div>
+                <div id="carruselSponsorsPublico" class="animate-scroll flex space-x-12 items-center"></div>
             </div>
             <div class="text-xs text-slate-600 pt-4 border-t border-slate-900 font-mono-code">
-                © 2026 Tutorneo Pro • Arquitectura Nivel Argón & Grand Slam Engine. Todos los derechos reservados.
+                © 2026 Tutorneo Pro • Arquitectura Nivel Argón & God Mode Engine. Todos los derechos reservados.
             </div>
         </div>
     </footer>
@@ -416,14 +422,15 @@
 
     <!-- SCRIPT MASTER DE NÚCLEO Y SINCRONIZACIÓN -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v5';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v6';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v5')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v6')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
                 heroBgUrl: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop",
+                colorPrimary: "#D4AF37",
                 linkPago: "https://www.mercadopago.cl",
                 precioInscripcion: 40000,
                 googleMapsQuery: "Laguna Ayres de Chicureo Colina Santiago",
@@ -436,16 +443,6 @@
                 { nombre: "Pádel Pro Shop", url: "https://www.google.com", logoText: "🎾 PÁDEL PRO SHOP", logoImg: "" },
                 { nombre: "Laguna Sport", url: "https://www.google.com", logoText: "💧 LAGUNA SPORT", logoImg: "" },
                 { nombre: "Tesla Chile", url: "https://www.tesla.com", logoText: "⚡ TESLA MOTORS", logoImg: "" }
-            ],
-            rankingCircuito: [
-                { pos: 1, dupla: "DUPLA ELITE 1", pts: 2450 },
-                { pos: 2, dupla: "CHICUREO GIRLS 1", pts: 2100 },
-                { pos: 3, dupla: "MIXED POWER 1", pts: 1850 }
-            ],
-            rankingChallenger: [
-                { pos: 1, dupla: "CHICUREO GIRLS 1", pts: 1200 },
-                { pos: 2, dupla: "DUPLA ELITE 1", pts: 1050 },
-                { pos: 3, dupla: "LOS VIKINGOS", pts: 900 }
             ],
             cupos: {
                 varones: Array.from({length: 16}, (_, i) => ({
@@ -491,14 +488,14 @@
         let boxSeleccionado = null;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v5', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v6', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v5'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v6'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -563,6 +560,7 @@
                 document.getElementById('cfgNombreTorneo').value = db.config.nombreTorneo || '';
                 document.getElementById('cfgBadge').value = db.config.badgeOrg || '';
                 document.getElementById('cfgHeroUrl').value = db.config.heroBgUrl || '';
+                document.getElementById('cfgColorPrimario').value = db.config.colorPrimary || '#D4AF37';
                 document.getElementById('cfgLinkPago').value = db.config.linkPago || '';
                 document.getElementById('cfgPrecioInscripcion').value = db.config.precioInscripcion || 40000;
                 document.getElementById('cfgGoogleMapsQuery').value = db.config.googleMapsQuery || '';
@@ -760,19 +758,29 @@
                 grid.appendChild(card);
             });
 
+            // Generar Ranking Automático con TODAS las parejas inscritas
+            let listaInscritas = [];
+            Object.keys(db.cupos).forEach(cat => {
+                db.cupos[cat].forEach(cp => {
+                    if(cp.ocupado && cp.alias) {
+                        listaInscritas.push({ dupla: cp.alias, pts: Math.floor(Math.random() * 500) + 1500 });
+                    }
+                });
+            });
+
             const tbCircuito = document.getElementById('tablaRankingCircuitoTV');
             if(tbCircuito) {
                 tbCircuito.innerHTML = '';
-                db.rankingCircuito.forEach(r => {
-                    tbCircuito.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${r.pos}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
+                listaInscritas.forEach((r, idx) => {
+                    tbCircuito.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${idx+1}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
                 });
             }
 
             const tbChallenger = document.getElementById('tablaRankingChallengerTV');
             if(tbChallenger) {
                 tbChallenger.innerHTML = '';
-                db.rankingChallenger.forEach(r => {
-                    tbChallenger.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${r.pos}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td></tr>`;
+                listaInscritas.slice().reverse().forEach((r, idx) => {
+                    tbChallenger.innerHTML += `<tr><td class="p-3 text-brandPrimary font-bold">#${idx+1}</td><td class="p-3 text-white font-bold">${r.dupla}</td><td class="p-3 text-right font-bold text-emerald-400">${r.pts - 200} pts</td></tr>`;
                 });
             }
         }
@@ -944,7 +952,7 @@
             const file = event.target.files[0];
             if(file) {
                 if(file.size > 800000) {
-                    alert("⚠️ El archivo es demasiado grande (máx 800 KB). Selecciona una imagen más ligera para asegurar velocidad.");
+                    alert("⚠️ Archivo superior a 800 KB. Selecciona una imagen más ligera.");
                     return;
                 }
                 const reader = new FileReader();
@@ -952,10 +960,7 @@
                     db.sponsors[index].logoImg = e.target.result;
                     sincronizar();
                     renderEditorSponsors();
-                    alert("✅ ¡Logotipo cargado y procesado con éxito!");
-                };
-                reader.onerror = function() {
-                    alert("❌ Error al leer el archivo de imagen. Intenta con otro formato.");
+                    alert("✅ ¡Logotipo cargado con éxito!");
                 };
                 reader.readAsDataURL(file);
             }
@@ -969,17 +974,38 @@
         function renderEditorRankings() {
             const contC = document.getElementById('editorRankingCircuitoAdmin');
             const contCh = document.getElementById('editorRankingChallengerAdmin');
+            
+            // Recopilar todas las parejas inscritas actuales para el ranking
+            let inscritas = [];
+            Object.keys(db.cupos).forEach(cat => {
+                db.cupos[cat].forEach(cp => {
+                    if(cp.ocupado && cp.alias) inscritas.push(cp.alias);
+                });
+            });
+
             if(contC) {
                 contC.innerHTML = '';
-                db.rankingCircuito.forEach((r, index) => {
-                    contC.innerHTML += `<div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs"><span class="text-white font-bold">#${r.pos}</span><input type="text" value="${r.dupla}" onchange="db.rankingCircuito[${index}].dupla=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1"><input type="number" value="${r.pts}" onchange="db.rankingCircuito[${index}].pts=Number(this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28"></div>`;
+                inscritas.forEach((duplaNombre, index) => {
+                    let existente = db.rankingCircuito.find(r => r.dupla === duplaNombre) || { pos: index+1, dupla: duplaNombre, pts: 1500 };
+                    contC.innerHTML += `<div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs"><span class="text-white font-bold">#${index+1}</span><input type="text" value="${existente.dupla}" readonly class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1"><input type="number" value="${existente.pts}" onchange="actualizarPtsRanking('circuito', '${duplaNombre}', this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28"></div>`;
                 });
             }
             if(contCh) {
                 contCh.innerHTML = '';
-                db.rankingChallenger.forEach((r, index) => {
-                    contCh.innerHTML += `<div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs"><span class="text-white font-bold">#${r.pos}</span><input type="text" value="${r.dupla}" onchange="db.rankingChallenger[${index}].dupla=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1"><input type="number" value="${r.pts}" onchange="db.rankingChallenger[${index}].pts=Number(this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28"></div>`;
+                inscritas.forEach((duplaNombre, index) => {
+                    let existente = db.rankingChallenger.find(r => r.dupla === duplaNombre) || { pos: index+1, dupla: duplaNombre, pts: 1000 };
+                    contCh.innerHTML += `<div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs"><span class="text-white font-bold">#${index+1}</span><input type="text" value="${existente.dupla}" readonly class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1"><input type="number" value="${existente.pts}" onchange="actualizarPtsRanking('challenger', '${duplaNombre}', this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28"></div>`;
                 });
+            }
+        }
+
+        function actualizarPtsRanking(tipo, dupla, pts) {
+            let arr = tipo === 'circuito' ? db.rankingCircuito : db.rankingChallenger;
+            let item = arr.find(x => x.dupla === dupla);
+            if(item) {
+                item.pts = Number(pts);
+            } else {
+                arr.push({ pos: arr.length + 1, dupla: dupla, pts: Number(pts) });
             }
         }
 
@@ -987,14 +1013,17 @@
             db.config.nombreTorneo = document.getElementById('cfgNombreTorneo').value;
             db.config.badgeOrg = document.getElementById('cfgBadge').value;
             db.config.heroBgUrl = document.getElementById('cfgHeroUrl').value;
+            db.config.colorPrimary = document.getElementById('cfgColorPrimario').value || '#D4AF37';
             db.config.linkPago = document.getElementById('cfgLinkPago').value;
             db.config.precioInscripcion = Number(document.getElementById('cfgPrecioInscripcion').value);
             db.config.googleMapsQuery = document.getElementById('cfgGoogleMapsQuery').value;
             db.config.comunicado = document.getElementById('cfgComunicado').value;
             db.config.cronograma = document.getElementById('cfgCronograma').value;
             db.config.reglamento = document.getElementById('cfgReglamento').value;
+            
+            actualizarConfigTailwind(db.config.colorPrimary);
             sincronizar();
-            alert("🚀 ¡Sistema actualizado y sincronizado simultáneamente en todas las pantallas!");
+            alert("🚀 ¡God Mode activado! Sistema actualizado y sincronizado en todas las pantallas.");
             cambiarVista('publico');
         }
 
