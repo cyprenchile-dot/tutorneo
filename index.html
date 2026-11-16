@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Chicureo Grand Slam Edition</title>
+    <title id="pageTitle">Tutorneo Pro | Chicureo Master Engine</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -24,252 +24,262 @@
         body { font-family: 'Outfit', sans-serif; background-color: #0B0F19; color: #F8FAFC; }
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .hero-custom-bg {
-            background: linear-gradient(rgba(11, 15, 25, 0.7), rgba(11, 15, 25, 0.92)), var(--hero-bg-url, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
+            background: linear-gradient(rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.95)), var(--hero-bg-url, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat;
         }
-        .mini-cancha-verde {
-            background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
-            border: 2px solid #10b981;
-        }
-        .mini-cancha-roja {
-            background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
-            border: 2px solid #ef4444;
-        }
-        .airport-board {
-            background: #090D16;
-            border: 2px solid #1E293B;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-        }
+        .mini-cancha-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; }
+        .mini-cancha-roja { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); border: 2px solid #ef4444; }
+        .airport-board { background: #090D16; border: 2px solid #1E293B; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); }
     </style>
 </head>
-<body class="min-h-screen selection:bg-brandPrimary selection:text-slate-950">
+<body class="min-h-screen selection:bg-brandPrimary selection:text-slate-950 flex flex-col justify-between">
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR (HARMONÍA CHICUREO) -->
-    <header class="bg-slate-950/90 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
-            <div class="flex items-center space-x-3">
-                <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1 rounded text-xs uppercase tracking-wider">Chicureo Open</span>
-                <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Laguna Ayres</span></h1>
+    <div>
+        <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+        <header class="bg-slate-950/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+                <div class="flex items-center space-x-3">
+                    <span id="badgeOrgNav" class="bg-brandPrimary text-slate-950 font-extrabold px-3 py-1 rounded text-xs uppercase tracking-wider">Chicureo Open</span>
+                    <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Laguna Ayres</span></h1>
+                </div>
+                <div class="flex items-center space-x-2 md:space-x-3 text-sm">
+                    <button onclick="cambiarVista('publico')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">🎾 Inicio & Cuadros</button>
+                    <button onclick="cambiarVista('premios')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">🏆 Premios & Horarios</button>
+                    <button onclick="cambiarVista('tv')" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">📺 Pantalla Gigante (Live)</button>
+                    <button onclick="verificarAdmin()" class="bg-brandPrimary/20 hover:bg-brandPrimary/30 text-brandPrimary border border-brandPrimary/40 px-3.5 py-2 rounded-xl font-medium transition text-xs">⚙️ Admin Master</button>
+                </div>
             </div>
-            <div class="flex items-center space-x-2 md:space-x-3 text-sm">
-                <button onclick="cambiarVista('publico')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">🎾 Inicio & Cuadros</button>
-                <button onclick="cambiarVista('premios')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">🏆 Premios & Horarios</button>
-                <button onclick="cambiarVista('tv')" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">📺 Pantalla Gigante (Live)</button>
-                <button onclick="verificarAdmin()" class="bg-brandPrimary/20 hover:bg-brandPrimary/30 text-brandPrimary border border-brandPrimary/40 px-3.5 py-2 rounded-xl font-medium transition text-xs">⚙️ Admin Master</button>
-            </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- ================= VISTA PÚBLICA ================= -->
-    <main id="vistaPublica" class="space-y-12 pb-24">
-        <section id="heroBannerContainer" class="hero-custom-bg py-24 px-4 text-center relative border-b border-slate-800">
-            <div class="max-w-4xl mx-auto space-y-6">
-                <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-sm uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
-                <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
-                    El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
-                </h2>
-                
-                <div class="bg-slate-900/90 border border-brandPrimary/40 rounded-2xl p-4 max-w-xl mx-auto shadow-2xl backdrop-blur">
-                    <div class="text-xs uppercase font-mono-code text-slate-400 mb-1">⏱️ Comienzo Oficial del Torneo en:</div>
-                    <div id="relojGigante" class="text-3xl md:text-4xl font-extrabold text-brandPrimary font-mono-code tracking-widest">
-                        00D : 00H : 00M : 00S
+        <!-- ================= VISTA PÚBLICA ================= -->
+        <main id="vistaPublica" class="space-y-12 pb-24">
+            <section id="heroBannerContainer" class="hero-custom-bg py-24 px-4 text-center relative border-b border-slate-800">
+                <div class="max-w-4xl mx-auto space-y-6">
+                    <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-sm uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
+                    <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
+                    </h2>
+                    
+                    <div class="bg-slate-900/90 border border-brandPrimary/40 rounded-2xl p-4 max-w-xl mx-auto shadow-2xl backdrop-blur">
+                        <div class="text-xs uppercase font-mono-code text-slate-400 mb-1">⏱️ Comienzo Oficial del Torneo en:</div>
+                        <div id="relojGigante" class="text-3xl md:text-4xl font-extrabold text-brandPrimary font-mono-code tracking-widest">
+                            00D : 00H : 00M : 00S
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap justify-center gap-4 pt-2">
+                        <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
+                            Inscribir mi Dupla Online
+                        </a>
                     </div>
                 </div>
+            </section>
 
-                <div class="flex flex-wrap justify-center gap-4 pt-2">
-                    <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
-                        Inscribir mi Dupla Online
-                    </a>
+            <div id="bannerComunicaciones" class="max-w-7xl mx-auto px-4 hidden">
+                <div class="bg-blue-600/10 border border-blue-500/30 rounded-2xl p-4 flex items-center space-x-4 shadow-lg">
+                    <span class="text-2xl">📢</span>
+                    <div>
+                        <h4 class="text-sm font-bold text-blue-400 uppercase">Comunicado Oficial del Organizador</h4>
+                        <p id="textoComunicado" class="text-xs text-slate-300 mt-0.5">Bienvenidos a la nueva fecha del circuito.</p>
+                    </div>
                 </div>
             </div>
-        </section>
 
-        <div id="bannerComunicaciones" class="max-w-7xl mx-auto px-4 hidden">
-            <div class="bg-blue-600/10 border border-blue-500/30 rounded-2xl p-4 flex items-center space-x-4 shadow-lg">
-                <span class="text-2xl">📢</span>
-                <div>
-                    <h4 class="text-sm font-bold text-blue-400 uppercase">Comunicado Oficial del Organizador</h4>
-                    <p id="textoComunicado" class="text-xs text-slate-300 mt-0.5">Bienvenidos a la nueva fecha del circuito.</p>
+            <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
+                <div class="text-center space-y-2">
+                    <h3 class="text-3xl font-bold text-white">Cuadros Oficiales & Autogestión</h3>
+                    <p class="text-slate-400">Haz clic en un box verde para inscribirte. Los rojos muestran la cancha asignada y estado en vivo.</p>
+                </div>
+
+                <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
+                    <button onclick="setCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Damas C</button>
+                    <button onclick="setCategoria('varones')" id="tabVarones" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">Varones 5ª</button>
+                    <button onclick="setCategoria('mixto')" id="tabMixto" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Mixto C</button>
+                </div>
+
+                <div id="gridCuposPublico" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+            </section>
+        </main>
+
+        <!-- ================= VISTA PREMIOS Y HORARIOS ================= -->
+        <main id="vistaPremios" class="max-w-7xl mx-auto px-4 py-12 space-y-12 hidden">
+            <div class="text-center space-y-3">
+                <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🏆 Premios, Fechas & Horarios</span>
+                <h2 class="text-4xl font-extrabold text-white">Información Oficial del Campeonato</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
+                    <h3 class="text-2xl font-bold text-brandPrimary">📅 Cronograma & Fechas</h3>
+                    <div id="textoCronogramaPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed font-mono-code"></div>
+                </div>
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
+                    <h3 class="text-2xl font-bold text-brandPrimary">📜 Reglamento & Términos</h3>
+                    <div id="textoReglamentoPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed"></div>
                 </div>
             </div>
-        </div>
+        </main>
 
-        <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
+        <!-- ================= VISTA PANTALLA GIGANTE (TV / LIVE) ================= -->
+        <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
             <div class="text-center space-y-2">
-                <h3 class="text-3xl font-bold text-white">Cuadros Oficiales & Autogestión</h3>
-                <p class="text-slate-400">Haz clic en un box verde para inscribirte con datos y pago automático por Mercado Pago.</p>
+                <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🎾 TABLERO OFICIAL EN VIVO • ESTILO GRAND SLAM</span>
+                <h2 class="text-4xl font-extrabold text-white">Resultados en Directo & Ranking del Circuito</h2>
             </div>
 
-            <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
-                <button onclick="setCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Damas C</button>
-                <button onclick="setCategoria('varones')" id="tabVarones" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">Varones 5ª</button>
-                <button onclick="setCategoria('mixto')" id="tabMixto" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Mixto C</button>
-            </div>
-
-            <div id="gridCuposPublico" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-        </section>
-    </main>
-
-    <!-- ================= VISTA PREMIOS Y HORARIOS ================= -->
-    <main id="vistaPremios" class="max-w-7xl mx-auto px-4 py-12 space-y-12 hidden">
-        <div class="text-center space-y-3">
-            <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🏆 Premios, Fechas & Horarios</span>
-            <h2 class="text-4xl font-extrabold text-white">Información Oficial del Campeonato</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
-                <h3 class="text-2xl font-bold text-brandPrimary">📅 Cronograma & Fechas</h3>
-                <div id="textoCronogramaPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed font-mono-code">
-                    Cargando cronograma oficial...
+            <div class="airport-board rounded-3xl p-6 md:p-8 space-y-6">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                    <div class="text-brandPrimary font-mono-code font-bold tracking-widest text-sm">🔴 CANCHAS OFICIALES • LIVE SCORES</div>
+                    <div id="displayFechaTV" class="text-slate-400 font-mono-code text-xs">Sábado • En Vivo</div>
                 </div>
-            </div>
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
-                <h3 class="text-2xl font-bold text-brandPrimary">📜 Reglamento & Términos</h3>
-                <div id="textoReglamentoPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed">
-                    Cargando reglamento...
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- ================= VISTA PANTALLA GIGANTE (TV / LIVE) ================= -->
-    <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
-        <div class="text-center space-y-2">
-            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🎾 TABLERO OFICIAL EN VIVO • ESTILO GRAND SLAM</span>
-            <h2 class="text-4xl font-extrabold text-white">Resultados en Directo & Ranking del Circuito</h2>
-        </div>
-
-        <div class="airport-board rounded-3xl p-6 md:p-8 space-y-6">
-            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
-                <div class="text-brandPrimary font-mono-code font-bold tracking-widest text-sm">🔴 CANCHA CENTRAL • LIVE SCORES</div>
-                <div id="displayFechaTV" class="text-slate-400 font-mono-code text-xs">Sábado • En Vivo</div>
-            </div>
-            <div id="gridPartidosEnVivo" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-        </div>
-
-        <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
-            <h3 class="text-xl font-bold text-white mb-4">📊 Ranking Oficial por Categoría</h3>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs text-slate-300 font-mono-code">
-                    <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
-                        <tr>
-                            <th class="p-3">Pos</th>
-                            <th class="p-3">Dupla / Alias</th>
-                            <th class="p-3">Categoría</th>
-                            <th class="p-3 text-right">Puntos Acumulados</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800" id="tablaRankingPublica"></tbody>
-                </table>
-            </div>
-        </div>
-    </main>
-
-    <!-- ================= VISTA SUPER ADMIN MASTER (ESTILO BOUTIQUE & POTENCIA TOTAL) ================= -->
-    <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
-        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl space-y-8">
-            <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
-                <div>
-                    <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
-                        <span>🛠️ SUPER ADMIN MASTER (ESTUDIO CHICUREO)</span>
-                    </h2>
-                    <p class="text-slate-400 text-sm">Panel unificado con total armonía visual y control absoluto de cada parámetro del torneo.</p>
-                </div>
-                <div class="flex gap-2">
-                    <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg">💾 Guardar & Publicar en Vivo</button>
-                </div>
+                <div id="gridPartidosEnVivo" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             </div>
 
-            <!-- Caja privada de control -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-5 rounded-2xl border border-slate-800 font-mono-code shadow-inner">
-                <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Confidencial)</div>
-                    <div id="adminCajaTotal" class="text-2xl font-bold text-emerald-400 mt-1">$0 CLP</div>
-                </div>
-                <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Cupos Ocupados / Total</div>
-                    <div id="adminCuposStats" class="text-2xl font-bold text-brandPrimary mt-1">0 / 48</div>
-                </div>
-                <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Estado del Sistema</div>
-                    <div class="text-2xl font-bold text-blue-400 mt-1">🟢 RENDER LIVE OK</div>
-                </div>
-            </div>
-
-            <!-- Pestañas Master Admin -->
-            <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
-                <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition">🎾 Gestión de Boxes & Marcadores</button>
-                <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Fotos & Fechas</button>
-                <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Editar Ranking Oficial</button>
-            </div>
-
-            <!-- Panel Admin: Boxes -->
-            <div id="adminPanelBoxes" class="space-y-6">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white">Control Atómico de Boxes por Categoría</h3>
-                    <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-xs text-white font-mono-code">
-                        <option value="varones">Varones 5ª</option>
-                        <option value="damas">Damas C</option>
-                        <option value="mixto">Mixto C</option>
-                    </select>
-                </div>
-                <div class="overflow-x-auto rounded-xl border border-slate-800">
+            <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
+                <h3 class="text-xl font-bold text-white mb-4">📊 Ranking Oficial por Categoría</h3>
+                <div class="overflow-x-auto">
                     <table class="w-full text-left text-xs text-slate-300 font-mono-code">
                         <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
                             <tr>
-                                <th class="p-3">Box</th>
-                                <th class="p-3">Estado Binario</th>
-                                <th class="p-3">Alias Dupla</th>
-                                <th class="p-3">Marcador en Vivo</th>
+                                <th class="p-3">Pos</th>
+                                <th class="p-3">Dupla / Alias</th>
+                                <th class="p-3">Categoría</th>
+                                <th class="p-3 text-right">Puntos Acumulados</th>
                             </tr>
                         </thead>
-                        <tbody id="tablaAdminBoxesBody" class="divide-y divide-slate-800"></tbody>
+                        <tbody class="divide-y divide-slate-800" id="tablaRankingPublica"></tbody>
                     </table>
                 </div>
             </div>
+        </main>
 
-            <!-- Panel Admin: CMS Visual, Fotos, Fechas y Horarios -->
-            <div id="adminPanelCms" class="space-y-6 hidden">
-                <h3 class="text-lg font-bold text-white">Personalización Visual de Marca & Cronograma</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+        <!-- ================= VISTA SUPER ADMIN MASTER ================= -->
+        <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-6 md:p-8 shadow-2xl space-y-8">
+                <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                     <div>
-                        <label class="block font-semibold text-slate-300 uppercase mb-1">Nombre del Torneo</label>
-                        <input type="text" id="cfgNombreTorneo" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                        <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
+                            <span>🛠️ SUPER ADMIN MASTER (ESTUDIO CHICUREO)</span>
+                        </h2>
+                        <p class="text-slate-400 text-sm">Panel unificado con control absoluto de canchas, estados, auspiciadores, marcas y resultados.</p>
                     </div>
-                    <div>
-                        <label class="block font-semibold text-slate-300 uppercase mb-1">Nombre de la Organización (Badge)</label>
-                        <input type="text" id="cfgBadge" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-300 uppercase mb-1">URL de la Foto de Fondo (Banner Hero)</label>
-                        <input type="text" id="cfgHeroUrl" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
-                    </div>
-                    <div>
-                        <label class="block font-semibold text-slate-300 uppercase mb-1">Enlace de Pago (Mercado Pago / Webpay)</label>
-                        <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block font-semibold text-slate-300 uppercase mb-1">Texto del Comunicado Urgente (Banner)</label>
-                        <input type="text" id="cfgComunicado" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block font-semibold text-slate-300 uppercase mb-1">Cronograma, Fechas y Horarios Oficiales (HTML)</label>
-                        <textarea id="cfgCronograma" rows="4" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono-code"></textarea>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block font-semibold text-slate-300 uppercase mb-1">Reglamento y Términos y Condiciones (HTML)</label>
-                        <textarea id="cfgReglamento" rows="4" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono-code"></textarea>
+                    <div class="flex gap-2">
+                        <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-6 py-3 rounded-xl text-xs transition shadow-lg">💾 Guardar & Publicar en Vivo</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- Panel Admin: Ranking -->
-            <div id="adminPanelRanking" class="space-y-6 hidden">
-                <h3 class="text-lg font-bold text-white">Actualizar Tabla de Ranking por Categoría</h3>
-                <div id="editorRankingAdmin" class="space-y-3"></div>
+                <!-- Caja privada de control -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-5 rounded-2xl border border-slate-800 font-mono-code shadow-inner">
+                    <div>
+                        <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Confidencial)</div>
+                        <div id="adminCajaTotal" class="text-2xl font-bold text-emerald-400 mt-1">$0 CLP</div>
+                    </div>
+                    <div>
+                        <div class="text-slate-400 text-[10px] uppercase">Cupos Ocupados / Total</div>
+                        <div id="adminCuposStats" class="text-2xl font-bold text-brandPrimary mt-1">0 / 48</div>
+                    </div>
+                    <div>
+                        <div class="text-slate-400 text-[10px] uppercase">Estado del Sistema</div>
+                        <div class="text-2xl font-bold text-blue-400 mt-1">🟢 RENDER LIVE OK</div>
+                    </div>
+                </div>
+
+                <!-- Pestañas Master Admin -->
+                <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
+                    <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition">🎾 Canchas, Estados & Marcadores</button>
+                    <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🎨 CMS Visual, Fotos & Fechas</button>
+                    <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">🤝 Auspiciadores</button>
+                    <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition">📊 Editar Ranking</button>
+                </div>
+
+                <!-- Panel Admin: Boxes & Canchas -->
+                <div id="adminPanelBoxes" class="space-y-6">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-bold text-white">Control de Canchas, Estados y Marcadores</h3>
+                        <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-xs text-white font-mono-code">
+                            <option value="varones">Varones 5ª</option>
+                            <option value="damas">Damas C</option>
+                            <option value="mixto">Mixto C</option>
+                        </select>
+                    </div>
+                    <div class="overflow-x-auto rounded-xl border border-slate-800">
+                        <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                            <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                                <tr>
+                                    <th class="p-3">Box</th>
+                                    <th class="p-3">Estado</th>
+                                    <th class="p-3">Alias Dupla</th>
+                                    <th class="p-3">Cancha Asignada</th>
+                                    <th class="p-3">Estado del Partido</th>
+                                    <th class="p-3">Marcador</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tablaAdminBoxesBody" class="divide-y divide-slate-800"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Panel Admin: CMS Visual -->
+                <div id="adminPanelCms" class="space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Personalización Visual de Marca & Cronograma</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                        <div>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Nombre del Torneo</label>
+                            <input type="text" id="cfgNombreTorneo" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Nombre de la Organización (Badge)</label>
+                            <input type="text" id="cfgBadge" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">URL de la Foto de Fondo (Banner Hero)</label>
+                            <input type="text" id="cfgHeroUrl" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                        </div>
+                        <div>
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Enlace de Pago (Mercado Pago / Webpay)</label>
+                            <input type="text" id="cfgLinkPago" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Texto del Comunicado Urgente (Banner)</label>
+                            <input type="text" id="cfgComunicado" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Cronograma, Fechas y Horarios Oficiales (HTML)</label>
+                            <textarea id="cfgCronograma" rows="4" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono-code"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block font-semibold text-slate-300 uppercase mb-1">Reglamento y Términos y Condiciones (HTML)</label>
+                            <textarea id="cfgReglamento" rows="4" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-white font-mono-code"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Panel Admin: Auspiciadores -->
+                <div id="adminPanelSponsors" class="space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Gestión de Auspiciadores y Enlaces</h3>
+                    <div id="editorSponsorsAdmin" class="space-y-4"></div>
+                    <button onclick="agregarSponsorAdmin()" class="bg-slate-800 hover:bg-slate-700 text-brandPrimary border border-brandPrimary/30 px-4 py-2 rounded-xl text-xs font-mono-code font-bold">+ Agregar Nuevo Auspiciador</button>
+                </div>
+
+                <!-- Panel Admin: Ranking -->
+                <div id="adminPanelRanking" class="space-y-6 hidden">
+                    <h3 class="text-lg font-bold text-white">Actualizar Tabla de Ranking por Categoría</h3>
+                    <div id="editorRankingAdmin" class="space-y-3"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SECCIÓN DE AUSPICIADORES (PIE DE PÁGINA PÚBLICO) -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-10 px-4">
+        <div class="max-w-7xl mx-auto space-y-6 text-center">
+            <div class="text-xs uppercase font-mono-code text-slate-400 tracking-widest">Auspiciadores Oficiales del Circuito</div>
+            <div id="gridSponsorsPublico" class="flex flex-wrap justify-center items-center gap-8 opacity-80">
+                <!-- Inyectado dinámicamente -->
+            </div>
+            <div class="text-xs text-slate-600 pt-4 border-t border-slate-900 font-mono-code">
+                © 2026 Tutorneo Pro • Arquitectura Nivel Dios & Grand Slam Engine. Todos los derechos reservados.
             </div>
         </div>
-    </main>
+    </footer>
 
     <!-- MODAL DE INSCRIPCIÓN Y PAGO -->
     <div id="modalInscripcion" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
@@ -314,10 +324,10 @@
 
     <!-- SCRIPT MASTER DE NÚCLEO Y SINCRONIZACIÓN -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v2';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v2')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -327,6 +337,11 @@
                 cronograma: "<strong>SÁBADO:</strong> Fase de grupos de 09:00 a 22:00 hrs.<br><strong>DOMINGO:</strong> Cuartos, Semis y Finales desde las 10:00 hrs.",
                 reglamento: "1. W.O. estricto a los 10 minutos de retraso.<br>2. Partidos a 1 set largo de 9 games con Punto de Oro.<br>3. Uso obligatorio de indumentaria adecuada."
             },
+            sponsors: [
+                { nombre: "Chicureo Motors", url: "https://www.google.com", logo: "🚗 Chicureo Motors" },
+                { nombre: "Pádel Pro Shop", url: "https://www.google.com", logo: "🎾 Pádel Pro" },
+                { nombre: "Laguna Sport", url: "https://www.google.com", logo: "💧 Laguna Sport" }
+            ],
             ranking: [
                 { pos: 1, dupla: "DUPLA ELITE 1", cat: "Varones 5ª", pts: 2450 },
                 { pos: 2, dupla: "CHICUREO GIRLS 1", cat: "Damas C", pts: 2100 },
@@ -341,8 +356,9 @@
                     j2: `Jugador B${i+1}`,
                     pin: "1234",
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=player${i}`,
-                    horarios: `Sáb ${13 + Math.floor(i/4)}:30 hrs`,
-                    resultado: i < 4 ? "9 - 4" : "Próx."
+                    cancha: `Cancha #${(i % 4) + 1}`,
+                    estadoPartido: i < 4 ? "Jugando 🔴" : "Programado",
+                    resultado: i < 4 ? "5 - 3" : "Próx."
                 })),
                 damas: Array.from({length: 16}, (_, i) => ({
                     id: i + 1,
@@ -352,7 +368,8 @@
                     j2: `Jugadora B${i+1}`,
                     pin: "1234",
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=dama${i}`,
-                    horarios: `Sáb ${9 + Math.floor(i/4)}:00 hrs`,
+                    cancha: `Cancha #${(i % 4) + 1}`,
+                    estadoPartido: "Programado",
                     resultado: "Próx."
                 })),
                 mixto: Array.from({length: 16}, (_, i) => ({
@@ -363,7 +380,8 @@
                     j2: `Part. B${i+1}`,
                     pin: "1234",
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=mixto${i}`,
-                    horarios: `Sáb ${18 + Math.floor(i/4)}:00 hrs`,
+                    cancha: `Cancha #${(i % 4) + 1}`,
+                    estadoPartido: "Programado",
                     resultado: "Próx."
                 }))
             }
@@ -373,21 +391,21 @@
         let boxSeleccionado = null;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v2', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v2'));
                 aplicarCMS();
                 renderPublico();
             }
         };
 
         function aplicarCMS() {
-            document.getElementById('navTitle').innerHTML = `Copa Challenger <span class="text-brandPrimary">${db.config.nombreTorneo.split(' ')[2] || 'Chicureo'}</span>`;
+            document.getElementById('navTitle').innerHTML = `Copa Challenger <span class="text-brandPrimary">Chicureo</span>`;
             document.getElementById('badgeOrgNav').innerText = db.config.badgeOrg;
             document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
             document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
@@ -405,6 +423,20 @@
             } else {
                 commEl.classList.add('hidden');
             }
+
+            // Renderizar Auspiciadores Públicos
+            const spContainer = document.getElementById('gridSponsorsPublico');
+            if(spContainer) {
+                spContainer.innerHTML = '';
+                db.sponsors.forEach(s => {
+                    const a = document.createElement('a');
+                    a.href = s.url;
+                    a.target = "_blank";
+                    a.className = "text-sm font-bold text-slate-400 hover:text-brandPrimary transition font-mono-code bg-slate-900 px-4 py-2 rounded-xl border border-slate-800";
+                    a.innerText = s.logo;
+                    spContainer.appendChild(a);
+                });
+            }
         }
 
         function cambiarVista(vista) {
@@ -418,7 +450,8 @@
             if(vista === 'tv') { renderTV(); document.getElementById('vistaTV').classList.remove('hidden'); }
             if(vista === 'admin') { 
                 renderAdminBoxes();
-                renderAdminRanking();
+                renderEditorSponsors();
+                renderEditorRanking();
                 actualizarCajaPrivadaAdmin();
                 document.getElementById('cfgNombreTorneo').value = db.config.nombreTorneo || '';
                 document.getElementById('cfgBadge').value = db.config.badgeOrg || '';
@@ -464,8 +497,8 @@
                 if(cupo.ocupado) {
                     card.className = "mini-cancha-roja rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-xl text-white";
                     card.innerHTML = `
-                        <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Inscrito 🔴</div>
-                        <div class="text-xs text-red-200 font-mono-code">BOX #${cupo.id} • 🎾 Cancha Oficial</div>
+                        <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">${cupo.estadoPartido}</div>
+                        <div class="text-xs text-red-200 font-mono-code">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
                         <div class="flex items-center space-x-3 bg-black/30 p-3 rounded-xl border border-red-500/30">
                             <img src="${cupo.avatar}" class="w-12 h-12 rounded-full bg-slate-900 border border-red-400">
                             <div>
@@ -474,7 +507,7 @@
                             </div>
                         </div>
                         <div class="pt-2 border-t border-red-500/30 flex justify-between items-center text-xs font-mono-code text-red-200">
-                            <span>🕒 ${cupo.horarios}</span>
+                            <span>Estado: <strong class="text-white">${cupo.estadoPartido}</strong></span>
                             <span class="text-white font-bold bg-red-600/60 px-2 py-0.5 rounded">Marcador: ${cupo.resultado}</span>
                         </div>
                     `;
@@ -483,13 +516,13 @@
                     card.onclick = () => abrirModalInscripcion(cupo.id);
                     card.innerHTML = `
                         <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Disponible 🟢</div>
-                        <div class="text-xs text-emerald-200 font-mono-code">BOX #${cupo.id} • 🎾 Cancha Oficial</div>
+                        <div class="text-xs text-emerald-200 font-mono-code">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
                         <div class="bg-black/30 p-4 rounded-xl border border-emerald-500/30 text-center space-y-1">
                             <div class="text-lg font-extrabold text-emerald-300">¡Box Libre para Reserva!</div>
                             <p class="text-[11px] text-emerald-200">Haz clic para inscribirte online.</p>
                         </div>
                         <div class="pt-2 border-t border-emerald-500/30 flex justify-between items-center text-xs">
-                            <span class="text-emerald-200 font-mono-code">🕒 ${cupo.horarios}</span>
+                            <span class="text-emerald-200 font-mono-code">Cancha Oficial</span>
                             <span class="bg-emerald-500 text-slate-950 px-3 py-1 rounded-lg font-bold">Inscribir 💳</span>
                         </div>
                     `;
@@ -524,6 +557,7 @@
                 cupo.j1 = j1;
                 cupo.j2 = j2;
                 cupo.pin = pin;
+                cupo.estadoPartido = "Programado";
                 cupo.resultado = "Próx.";
             }
 
@@ -552,24 +586,22 @@
             if(!grid) return;
             grid.innerHTML = '';
             let ocupados = db.cupos[catActiva].filter(c => c.ocupado);
-            for(let i=0; i<Math.min(ocupados.length, 4); i+=2) {
-                const p1 = ocupados[i];
-                const p2 = ocupados[i+1] || { alias: "LIBRE / BYE", resultado: "-" };
+            ocupados.forEach((p1, index) => {
                 const card = document.createElement('div');
                 card.className = "bg-slate-900 border border-slate-800 p-4 rounded-2xl flex justify-between items-center shadow";
                 card.innerHTML = `
                     <div class="space-y-1">
-                        <div class="text-[10px] text-brandPrimary font-mono-code uppercase">Cancha #${i+1} • En Vivo</div>
+                        <div class="text-[10px] text-brandPrimary font-mono-code uppercase">${p1.cancha} • ${p1.estadoPartido}</div>
                         <div class="text-sm font-extrabold text-white">${p1.alias}</div>
-                        <div class="text-xs font-extrabold text-slate-400">${p2.alias}</div>
+                        <div class="text-xs text-slate-400">Box #${p1.id} (${catActiva.toUpperCase()})</div>
                     </div>
                     <div class="text-right font-mono-code">
                         <div class="text-xl font-extrabold text-emerald-400">${p1.resultado}</div>
-                        <div class="text-xs text-slate-500">Set 1</div>
+                        <div class="text-xs text-slate-500">${p1.estadoPartido}</div>
                     </div>
                 `;
                 grid.appendChild(card);
-            }
+            });
 
             const tbody = document.getElementById('tablaRankingPublica');
             if(tbody) {
@@ -588,11 +620,11 @@
         }
 
         function setTabAdmin(tab) {
-            ['adminPanelBoxes', 'adminPanelCms', 'adminPanelRanking'].forEach(p => {
+            ['adminPanelBoxes', 'adminPanelCms', 'adminPanelSponsors', 'adminPanelRanking'].forEach(p => {
                 const el = document.getElementById(p);
                 if(el) el.classList.add('hidden');
             });
-            ['tabAdminBoxes', 'tabAdminCms', 'tabAdminRanking'].forEach(t => {
+            ['tabAdminBoxes', 'tabAdminCms', 'tabAdminSponsors', 'tabAdminRanking'].forEach(t => {
                 const el = document.getElementById(t);
                 if(el) el.className = "bg-slate-800 text-slate-400 px-4 py-2.5 rounded-xl font-bold transition";
             });
@@ -603,10 +635,12 @@
             } else if(tab === 'cms') {
                 document.getElementById('adminPanelCms').classList.remove('hidden');
                 document.getElementById('tabAdminCms').className = "bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition";
+            } else if(tab === 'sponsors') {
+                document.getElementById('adminPanelSponsors').classList.remove('hidden');
+                document.getElementById('tabAdminSponsors').className = "bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition";
             } else {
                 document.getElementById('adminPanelRanking').classList.remove('hidden');
                 document.getElementById('tabAdminRanking').className = "bg-slate-800 text-brandPrimary px-4 py-2.5 rounded-xl font-bold transition";
-                renderEditorRanking();
             }
         }
 
@@ -637,6 +671,21 @@
                         </select>
                     </td>
                     <td class="p-3"><input type="text" value="${c.alias || ''}" onchange="cambiarAlias('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white w-full"></td>
+                    <td class="p-3">
+                        <select onchange="cambiarCancha('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded p-1 text-xs text-white">
+                            <option value="Cancha #1" ${c.cancha==='Cancha #1'?'selected':''}>Cancha #1</option>
+                            <option value="Cancha #2" ${c.cancha==='Cancha #2'?'selected':''}>Cancha #2</option>
+                            <option value="Cancha #3" ${c.cancha==='Cancha #3'?'selected':''}>Cancha #3</option>
+                            <option value="Cancha #4" ${c.cancha==='Cancha #4'?'selected':''}>Cancha #4</option>
+                        </select>
+                    </td>
+                    <td class="p-3">
+                        <select onchange="cambiarEstadoPartido('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded p-1 text-xs text-white">
+                            <option value="Programado" ${c.estadoPartido==='Programado'?'selected':''}>Programado</option>
+                            <option value="Jugando 🔴" ${c.estadoPartido==='Jugando 🔴'?'selected':''}>Jugando 🔴</option>
+                            <option value="Terminado 🏁" ${c.estadoPartido==='Terminado 🏁'?'selected':''}>Terminado 🏁</option>
+                        </select>
+                    </td>
                     <td class="p-3"><input type="text" value="${c.resultado}" onchange="cambiarRes('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-24"></td>
                 `;
                 tbody.appendChild(tr);
@@ -658,9 +707,39 @@
             renderPublico();
         }
 
+        function cambiarCancha(cat, id, val) {
+            db.cupos[cat].find(x => x.id === id).cancha = val;
+            sincronizar();
+        }
+
+        function cambiarEstadoPartido(cat, id, val) {
+            db.cupos[cat].find(x => x.id === id).estadoPartido = val;
+            sincronizar();
+        }
+
         function cambiarRes(cat, id, val) {
             db.cupos[cat].find(x => x.id === id).resultado = val;
             sincronizar();
+        }
+
+        function renderEditorSponsors() {
+            const cont = document.getElementById('editorSponsorsAdmin');
+            if(!cont) return;
+            cont.innerHTML = '';
+            db.sponsors.forEach((s, index) => {
+                cont.innerHTML += `
+                    <div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center text-xs">
+                        <input type="text" value="${s.logo}" onchange="db.sponsors[${index}].logo=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white w-40" placeholder="Nombre / Logo">
+                        <input type="text" value="${s.url}" onchange="db.sponsors[${index}].url=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1" placeholder="URL Enlace">
+                        <button onclick="db.sponsors.splice(${index},1); renderEditorSponsors();" class="text-red-400 hover:text-red-300 font-bold px-2">Eliminar</button>
+                    </div>
+                `;
+            });
+        }
+
+        function agregarSponsorAdmin() {
+            db.sponsors.push({ nombre: "Nuevo Sponsor", url: "https://www.google.com", logo: "⭐ Patrocinador" });
+            renderEditorSponsors();
         }
 
         function renderEditorRanking() {
