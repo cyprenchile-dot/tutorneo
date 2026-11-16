@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Nivel Dios & Tesla Engine</title>
+    <title id="pageTitle">Tutorneo Pro | Grand Slam Engine</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -12,8 +12,8 @@
                 extend: {
                     colors: {
                         brandPrimary: '#D4AF37',
-                        brandDark: '#05070B',
-                        brandCard: '#0D1322',
+                        brandDark: '#030508',
+                        brandCard: '#0B101D',
                     }
                 }
             }
@@ -24,9 +24,8 @@
         body { font-family: 'Outfit', sans-serif; }
         .font-mono-code { font-family: 'JetBrains Mono', monospace; }
         .hero-custom-bg {
-            background: linear-gradient(rgba(5, 7, 11, 0.75), rgba(5, 7, 11, 0.95)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
+            background: linear-gradient(rgba(3, 5, 8, 0.8), rgba(3, 5, 8, 0.95)), url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop') center/cover no-repeat;
         }
-        /* Estilo mini cancha de pádel */
         .mini-cancha-verde {
             background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
             border: 2px solid #10b981;
@@ -35,11 +34,21 @@
             background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%);
             border: 2px solid #ef4444;
         }
+        /* Estilo Tablero de Aeropuerto / Grand Slam */
+        .airport-board {
+            background: #090D16;
+            border: 2px solid #1E293B;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+        }
+        .flip-card {
+            background: #111827;
+            border-bottom: 2px solid #1F2937;
+        }
     </style>
 </head>
 <body class="bg-brandDark text-slate-100 min-h-screen selection:bg-brandPrimary selection:text-slate-950">
 
-    <!-- BARRA DE NAVEGACIÓN SUPERIOR (LIMPIA 100% DE DATOS FINANCIEROS PÚBLICOS) -->
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
     <header class="bg-slate-950/95 backdrop-blur border-b border-slate-800/80 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
             <div class="flex items-center space-x-3">
@@ -47,34 +56,25 @@
                 <h1 id="navTitle" class="font-bold text-lg tracking-wide text-white">Copa Challenger <span class="text-brandPrimary">Chicureo</span></h1>
             </div>
             <div class="flex items-center space-x-2 md:space-x-3 text-sm">
-                <button onclick="cambiarVista('publico')" id="btnPub" class="bg-slate-800 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">
-                    🎾 Inicio & Cuadros
-                </button>
-                <button onclick="cambiarVista('premios')" id="btnPremios" class="bg-slate-800 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700 shadow">
-                    🏆 Premios & Horarios
-                </button>
-                <button onclick="cambiarVista('tv')" id="btnTV" class="bg-blue-600/20 text-blue-400 border border-blue-500/30 hover:bg-blue-600/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
-                    📺 Pantalla TV & Playoff
-                </button>
-                <button onclick="verificarAdmin()" id="btnAdm" class="bg-brandPrimary/20 text-brandPrimary border border-brandPrimary/40 hover:bg-brandPrimary/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">
-                    ⚙️ Admin Privado
-                </button>
+                <button onclick="cambiarVista('publico')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700">🎾 Inicio & Cuadros</button>
+                <button onclick="cambiarVista('premios')" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl font-medium transition text-xs border border-slate-700">🏆 Premios & Reglamento</button>
+                <button onclick="cambiarVista('tv')" class="bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 border border-blue-500/30 px-3.5 py-2 rounded-xl font-medium transition text-xs">📺 Pantalla Gigante (Grand Slam)</button>
+                <button onclick="verificarAdmin()" class="bg-brandPrimary/20 hover:bg-brandPrimary/30 text-brandPrimary border border-brandPrimary/40 px-3.5 py-2 rounded-xl font-medium transition text-xs">⚙️ Admin Privado</button>
             </div>
         </div>
     </header>
 
-    <!-- ================= VISTA PÚBLICA (LIFESTYLE & MINI-CANCHAS BINARIAS) ================= -->
+    <!-- ================= VISTA PÚBLICA (INICIO & CUADROS) ================= -->
     <main id="vistaPublica" class="space-y-12 pb-24">
-        <!-- HERO CON RELOJ DE CUENTA REGRESIVA GIGANTE -->
-        <section id="heroSection" class="hero-custom-bg py-20 px-4 text-center relative border-b border-slate-800">
+        <!-- BANNER HERO & RELOJ -->
+        <section class="hero-custom-bg py-20 px-4 text-center relative border-b border-slate-800">
             <div class="max-w-4xl mx-auto space-y-6">
                 <span id="heroSubtitle" class="text-brandPrimary font-semibold tracking-widest text-sm uppercase bg-brandPrimary/10 px-4 py-1.5 rounded-full border border-brandPrimary/30">Sábado y Domingo • 4 Canchas · Chicureo</span>
                 <h2 id="heroTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight text-white leading-tight">
                     El Torneo de Pádel Más Exclusivo de <span class="text-brandPrimary">Chicureo</span>
                 </h2>
                 
-                <!-- RELOJ GIGANTE CUENTA REGRESIVA -->
-                <div class="bg-slate-900/80 border border-brandPrimary/40 rounded-2xl p-4 max-w-xl mx-auto shadow-2xl backdrop-blur">
+                <div class="bg-slate-900/90 border border-brandPrimary/40 rounded-2xl p-4 max-w-xl mx-auto shadow-2xl backdrop-blur">
                     <div class="text-xs uppercase font-mono-code text-slate-400 mb-1">⏱️ Comienzo Oficial del Torneo en:</div>
                     <div id="relojGigante" class="text-3xl md:text-4xl font-extrabold text-brandPrimary font-mono-code tracking-widest">
                         00D : 00H : 00M : 00S
@@ -82,146 +82,148 @@
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-4 pt-2">
-                    <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition transform hover:-translate-y-0.5">
-                        Seleccionar Cupo y Jugar
+                    <a href="#seccionCuadros" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-8 py-3.5 rounded-xl shadow-lg transition">
+                        Inscribir mi Dupla Online
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN DE CUADROS CON MINI-CANCHAS -->
+        <!-- COMUNICADO OFICIAL DINÁMICO -->
+        <div id="bannerComunicaciones" class="max-w-7xl mx-auto px-4 hidden">
+            <div class="bg-blue-600/10 border border-blue-500/30 rounded-2xl p-4 flex items-center space-x-4">
+                <span class="text-2xl">📢</span>
+                <div>
+                    <h4 class="text-sm font-bold text-blue-400 uppercase">Comunicado Oficial del Organizador</h4>
+                    <p id="textoComunicado" class="text-xs text-slate-300 mt-0.5">Bienvenidos a la nueva fecha del circuito.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUADROS CON MINI-CANCHAS -->
         <section id="seccionCuadros" class="max-w-7xl mx-auto px-4 space-y-8">
             <div class="text-center space-y-2">
-                <h3 class="text-3xl font-bold text-white">Cuadros Oficiales de Inscripción</h3>
-                <p class="text-slate-400">Diseño interactivo tipo mini-cancha: verde disponible para reservar, rojo con los datos de la dupla inscrita.</p>
+                <h3 class="text-3xl font-bold text-white">Cuadros Oficiales & Autogestión</h3>
+                <p class="text-slate-400">Haz clic en un box verde para inscribirte con datos y pago automático, o ingresa tu PIN si ya estás inscripto.</p>
             </div>
 
             <!-- Selector de Categorías -->
             <div class="flex justify-center space-x-2 md:space-x-4 border-b border-slate-800 pb-4">
-                <button onclick="setCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">
-                    Damas C (Sáb 09:00)
-                </button>
-                <button onclick="setCategoria('varones')" id="tabVarones" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">
-                    Varones 5ª (Sáb 13:30)
-                </button>
-                <button onclick="setCategoria('mixto')" id="tabMixto" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">
-                    Mixto C (Sáb 18:00)
-                </button>
+                <button onclick="setCategoria('damas')" id="tabDamas" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Damas C</button>
+                <button onclick="setCategoria('varones')" id="tabVarones" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brandPrimary text-slate-950 shadow-md">Varones 5ª</button>
+                <button onclick="setCategoria('mixto')" id="tabMixto" class="px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-800 text-slate-300 border border-slate-700">Mixto C</button>
             </div>
 
             <div id="gridCuposPublico" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
         </section>
     </main>
 
-    <!-- ================= VISTA PREMIOS Y CRONOGRAMA ================= -->
+    <!-- ================= VISTA PREMIOS Y REGLAMENTO ================= -->
     <main id="vistaPremios" class="max-w-7xl mx-auto px-4 py-12 space-y-12 hidden">
         <div class="text-center space-y-3">
-            <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🏆 Premios Oficiales & Cronograma</span>
-            <h2 class="text-4xl font-extrabold text-white">Todo lo que necesitas saber del evento</h2>
+            <span class="bg-brandPrimary/10 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🏆 Premios & Términos Legales</span>
+            <h2 class="text-4xl font-extrabold text-white">Reglamento Oficial del Campeonato</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Premios -->
             <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
-                <h3 class="text-2xl font-bold text-brandPrimary">🏅 Bolsa de Premios & Copas Challenger</h3>
-                <ul class="space-y-4 text-slate-300 text-sm">
-                    <li class="flex items-start space-x-3">
-                        <span class="text-xl">🏆</span>
-                        <div><strong>Copa Challenger Perpetua:</strong> Trofeo gigante de honor grabado con los nombres de los campeones para cada categoría.</div>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <span class="text-xl">🥩</span>
-                        <div><strong>Pack Parrillero Premium:</strong> Cortes finos de carne y vinos reserva para las duplas campeonas de Cuadro Oro.</div>
-                    </li>
-                    <li class="flex items-start space-x-3">
-                        <span class="text-xl">🎒</span>
-                        <div><strong>Equipamiento Oficial:</strong> Paleteros y accesorios deportivos de alta gama gentileza de nuestros sponsors.</div>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Horarios y Día -->
-            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
-                <h3 class="text-2xl font-bold text-brandPrimary">📅 Cronograma Oficial del Fin de Semana</h3>
-                <div class="space-y-4 text-xs font-mono-code text-slate-300">
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-                        <div class="text-brandPrimary font-bold text-sm mb-1">SÁBADO • Fase de Grupos</div>
-                        <div>09:00 - 13:30 hrs → Damas C</div>
-                        <div>13:30 - 18:00 hrs → Varones 5ª</div>
-                        <div>18:00 - 22:30 hrs → Mixto C</div>
-                    </div>
-                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
-                        <div class="text-brandPrimary font-bold text-sm mb-1">DOMINGO • Playoff & Finales</div>
-                        <div>10:00 - 12:00 hrs → Cuartos de Final (Oro)</div>
-                        <div>12:30 - 15:00 hrs → Semifinales en Simultáneo</div>
-                        <div>16:00 - 19:30 hrs → Grandes Finales Cancha Central & Premiación</div>
-                    </div>
+                <h3 class="text-2xl font-bold text-brandPrimary">📜 Términos y Condiciones</h3>
+                <div id="textoReglamentoPublico" class="text-slate-300 text-xs space-y-3 leading-relaxed">
+                    Cargando reglamento oficial...
                 </div>
             </div>
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 space-y-6 shadow-xl">
+                <h3 class="text-2xl font-bold text-brandPrimary">🏅 Premios en Juego</h3>
+                <ul class="space-y-4 text-slate-300 text-xs">
+                    <li>🏆 <strong>Copa Challenger Perpetua:</strong> Trofeo gigante grabado.</li>
+                    <li>🥩 <strong>Pack Parrillero:</strong> Cortes finos y vinos reserva.</li>
+                    <li>🎒 <strong>Equipamiento:</strong> Paleteros de alta gama.</li>
+                </ul>
+            </div>
         </div>
     </main>
 
-    <!-- ================= VISTA PANTALLA GIGANTE / TV & LLAVES INTERACTIVAS ================= -->
+    <!-- ================= VISTA PANTALLA GIGANTE (GRAND SLAM / TABLERO AEROPUERTO) ================= -->
     <main id="vistaTV" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="text-center space-y-2">
-            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🔴 CANCHA CENTRAL • PANTALLA OFICIAL & PLAYOFF</span>
-            <h2 class="text-4xl font-extrabold text-white">Cuadro de Eliminación y Ranking en Vivo</h2>
-        </div>
-        
-        <div class="flex justify-center space-x-4">
-            <button onclick="setTabTV('playoff')" id="btnTabPlayoff" class="bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold">🏆 Llaves Playoff (Domingo)</button>
-            <button onclick="setTabTV('ranking')" id="btnTabRanking" class="bg-slate-800 text-slate-300 px-5 py-2 rounded-xl text-xs font-bold">📊 Ranking del Circuito</button>
+            <span class="bg-blue-600/20 text-blue-400 border border-blue-500/30 px-4 py-1 rounded-full text-xs font-bold uppercase font-mono-code">🎾 TABLERO OFICIAL EN VIVO • ESTILO GRAND SLAM</span>
+            <h2 class="text-4xl font-extrabold text-white">Resultados en Directo & Ranking del Circuito</h2>
         </div>
 
-        <div id="contenedorTVPlayoff" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
-        <div id="contenedorTVRanking" class="hidden max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl"></div>
+        <!-- TABLERO TIPO AEROPUERTO / WPT -->
+        <div class="airport-board rounded-3xl p-6 md:p-8 space-y-6">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <div class="text-brandPrimary font-mono-code font-bold tracking-widest text-sm">🔴 CANCHA CENTRAL • LIVE SCORES</div>
+                <div id="relojTV" class="text-slate-400 font-mono-code text-xs">Sábado • 14:30 hrs</div>
+            </div>
+
+            <div id="gridPartidosEnVivo" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Inyectado dinámicamente -->
+            </div>
+        </div>
+
+        <!-- RANKING GENERAL -->
+        <div class="max-w-4xl mx-auto bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl">
+            <h3 class="text-xl font-bold text-white mb-4">📊 Ranking Oficial por Categoría</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs text-slate-300 font-mono-code">
+                    <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
+                        <tr>
+                            <th class="p-3">Pos</th>
+                            <th class="p-3">Dupla / Alias</th>
+                            <th class="p-3">Categoría</th>
+                            <th class="p-3 text-right">Puntos Acumulados</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800" id="tablaRankingPublica">
+                        <!-- Inyectado -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </main>
 
-    <!-- ================= VISTA SUPER ADMIN (CONTROL TOTAL Y CAJA PRIVADA) ================= -->
+    <!-- ================= VISTA SUPER ADMIN (CONTROL TOTAL) ================= -->
     <main id="vistaAdmin" class="max-w-7xl mx-auto px-4 py-8 space-y-8 hidden">
         <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-8">
             <div class="flex flex-wrap justify-between items-center gap-4 pb-6 border-b border-slate-800">
                 <div>
-                    <h2 class="text-2xl font-bold text-white font-mono-code flex items-center space-x-2">
-                        <span>🛠️ PANEL SUPER ADMIN (GESTIÓN PRIVADA)</span>
-                    </h2>
-                    <p class="text-slate-400 text-sm">Control de caja confidencial, estados binarios de boxes y generación de llaves.</p>
+                    <h2 class="text-2xl font-bold text-white font-mono-code">🛠️ NÚCLEO SUPER ADMIN (CONFIDENCIAL)</h2>
+                    <p class="text-slate-400 text-sm">Control de caja privado, gestión de resultados en cancha, ranking y CMS de textos.</p>
                 </div>
-                <div class="flex flex-wrap gap-2">
-                    <button onclick="motorArgonGenerarLlaves()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">
-                        ⚡ Activar Playoff Domingo
-                    </button>
-                    <button onclick="guardarYPublicarConfig()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">
-                        💾 Sincronizar Sistema
-                    </button>
+                <div class="flex gap-2">
+                    <button onclick="guardarTodoAdmin()" class="bg-brandPrimary hover:bg-yellow-500 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-xs transition">💾 Guardar & Sincronizar</button>
                 </div>
             </div>
 
-            <!-- Panel Privado de Caja Mercado Pago (Solo Admin) -->
+            <!-- Caja privada -->
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-slate-950 p-4 rounded-xl border border-slate-800 font-mono-code">
                 <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Confidencial)</div>
-                    <div id="adminCajaTotal" class="text-xl font-bold text-emerald-400 mt-1">$1.920.000 CLP</div>
+                    <div class="text-slate-400 text-[10px] uppercase">Recaudación Total (Mercado Pago)</div>
+                    <div id="adminCajaTotal" class="text-xl font-bold text-emerald-400 mt-1">$0 CLP</div>
                 </div>
                 <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Cupos Ocupados / Total</div>
-                    <div id="adminCuposStats" class="text-xl font-bold text-brandPrimary mt-1">48 / 48 (100%)</div>
+                    <div class="text-slate-400 text-[10px] uppercase">Cupos Ocupados</div>
+                    <div id="adminCuposStats" class="text-xl font-bold text-brandPrimary mt-1">0 / 48</div>
                 </div>
                 <div>
-                    <div class="text-slate-400 text-[10px] uppercase">Estado Pasarela</div>
-                    <div class="text-xl font-bold text-blue-400 mt-1">🟢 ACTIVO (WEBHOOK OK)</div>
+                    <div class="text-slate-400 text-[10px] uppercase">Estado Servidor</div>
+                    <div class="text-xl font-bold text-blue-400 mt-1">🟢 RENDER ONLINE</div>
                 </div>
             </div>
 
+            <!-- Pestañas Admin -->
             <div class="flex space-x-2 border-b border-slate-800 pb-3 text-xs font-mono-code">
-                <button onclick="setTabAdmin('cupos')" id="tabAdminCupos" class="bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold">Gestión de Boxes & WhatsApp</button>
-                <button onclick="setTabAdmin('marca')" id="tabAdminMarca" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">CMS & Marca Blanca</button>
+                <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold">Gestión de Boxes & Resultados</button>
+                <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">CMS (Reglamento & Avisos)</button>
+                <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="bg-slate-800 text-slate-400 px-4 py-2 rounded-lg">Editar Ranking</button>
             </div>
 
-            <div id="adminPanelCupos" class="space-y-6">
+            <!-- Panel Admin: Boxes -->
+            <div id="adminPanelBoxes" class="space-y-6">
                 <div class="flex justify-between items-center">
-                    <h3 class="text-lg font-bold text-white">Control Atómico de Boxes</h3>
-                    <select id="selectCatAdmin" onchange="renderAdminCuposTabla()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white">
+                    <h3 class="text-lg font-bold text-white">Editar Resultados y Estado de Boxes</h3>
+                    <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-1.5 text-xs text-white">
                         <option value="varones">Varones 5ª</option>
                         <option value="damas">Damas C</option>
                         <option value="mixto">Mixto C</option>
@@ -232,45 +234,98 @@
                         <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
                             <tr>
                                 <th class="p-3">Box</th>
-                                <th class="p-3">Estado Binario</th>
+                                <th class="p-3">Estado</th>
                                 <th class="p-3">Alias Dupla</th>
-                                <th class="p-3">Enlace WhatsApp Dinámico</th>
-                                <th class="p-3">Marcador Vivo</th>
+                                <th class="p-3">Marcador en Vivo</th>
                             </tr>
                         </thead>
-                        <tbody id="tablaAdminCuposBody" class="divide-y divide-slate-800"></tbody>
+                        <tbody id="tablaAdminBoxesBody" class="divide-y divide-slate-800"></tbody>
                     </table>
                 </div>
             </div>
 
-            <div id="adminPanelMarca" class="space-y-6 hidden">
-                <h3 class="text-lg font-bold text-white">Personalización White-Label (SaaS)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Panel Admin: CMS -->
+            <div id="adminPanelCms" class="space-y-6 hidden">
+                <h3 class="text-lg font-bold text-white">Editor de Reglamentos y Comunicados</h3>
+                <div class="space-y-4">
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nombre del Torneo</label>
-                        <input type="text" id="cfgNombreTorneo" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Texto del Comunicado Urgente (Banner)</label>
+                        <input type="text" id="cfgComunicado" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Nombre de la Organización (Badge)</label>
-                        <input type="text" id="cfgBadge" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white">
+                        <label class="block text-xs font-semibold text-slate-300 uppercase mb-1">Reglamento y Términos (HTML o Texto)</label>
+                        <textarea id="cfgReglamento" rows="6" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white text-xs"></textarea>
                     </div>
                 </div>
+            </div>
+
+            <!-- Panel Admin: Ranking -->
+            <div id="adminPanelRanking" class="space-y-6 hidden">
+                <h3 class="text-lg font-bold text-white">Actualizar Puntos de Ranking</h3>
+                <div id="editorRankingAdmin" class="space-y-3"></div>
             </div>
         </div>
     </main>
 
-    <!-- SCRIPT DE REACTIVIDAD ATÓMICA Y RELOJ -->
+    <!-- MODAL DE INSCRIPCIÓN Y AUTOGESTIÓN CON PAGO Y REGLAMENTO -->
+    <div id="modalInscripcion" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl max-w-lg w-full p-6 md:p-8 space-y-6 shadow-2xl relative">
+            <button onclick="cerrarModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl font-bold">&times;</button>
+            <div class="space-y-2">
+                <span id="modalBoxLabel" class="text-xs font-bold text-brandPrimary uppercase tracking-wider bg-brandPrimary/10 px-3 py-1 rounded border border-brandPrimary/20">Box #1</span>
+                <h3 class="text-2xl font-bold text-white">Inscripción Oficial de Dupla</h3>
+                <p class="text-slate-400 text-xs">Completa tus datos, acepta el reglamento y procede al pago seguro con Mercado Pago.</p>
+            </div>
+            <form id="formInscripcion" onsubmit="procesarInscripcionYPago(event)" class="space-y-4 text-xs font-mono-code">
+                <div>
+                    <label class="block text-slate-300 uppercase mb-1">Alias de la Dupla (Nombre del Equipo)</label>
+                    <input type="text" id="inputAlias" required placeholder="Ej. Los Vikingos" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-white font-sans">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-slate-300 uppercase mb-1">Jugador 1</label>
+                        <input type="text" id="inputJ1" required placeholder="Nombre y Apellido" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-sans">
+                    </div>
+                    <div>
+                        <label class="block text-slate-300 uppercase mb-1">Jugador 2</label>
+                        <input type="text" id="inputJ2" required placeholder="Nombre y Apellido" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-white font-sans">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-slate-300 uppercase mb-1">PIN / Contraseña de Autogestión (Para modificar datos o avisar ausencia)</label>
+                    <input type="password" id="inputPin" required placeholder="Ej. 1234" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-2 text-white">
+                </div>
+                <div class="bg-slate-950 p-3 rounded-xl border border-slate-800">
+                    <label class="flex items-start space-x-2 cursor-pointer">
+                        <input type="checkbox" id="checkReglamento" required class="mt-0.5 rounded bg-slate-900 border-slate-700 text-brandPrimary">
+                        <span class="text-[11px] text-slate-300 font-sans">Acepto los <strong class="text-white">Términos, Condiciones y Reglamento Oficial</strong> del campeonato.</span>
+                    </label>
+                </div>
+                <button type="submit" class="w-full bg-[#009EE3] hover:bg-[#0082BD] text-white font-bold py-3.5 rounded-xl transition shadow-lg text-sm font-sans">
+                    Pagar $40.000 CLP & Confirmar Inscripción 💳
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE REACTIVIDAD ATÓMICA & MOTOR GRAND SLAM -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_argon_channel';
+        const BROADCAST_CHANNEL = 'tutorneo_grand_slam';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let argonState = JSON.parse(localStorage.getItem('tutorneo_argon_state')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_gs_db')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
-                badgeOrg: "Chicureo Open Pro"
+                badgeOrg: "Chicureo Open Pro",
+                comunicado: "¡Bienvenidos a la mejor experiencia de pádel del año! Sorteo de grupos este viernes.",
+                reglamento: "1. W.O. estricto a los 10 minutos de retraso.<br>2. Partidos a 1 set largo de 9 games con Punto de Oro.<br>3. Uso obligatorio de indumentaria adecuada.",
+                linkPagoMercadoPago: "https://www.mercadopago.cl"
             },
-            llavesActivas: false,
-            fechaInicio: new Date(Date.now() + 86400000 * 3).toISOString(), // Fecha futura simulada
+            ranking: [
+                { pos: 1, dupla: "DUPLA ELITE 1", cat: "Varones 5ª", pts: 2450 },
+                { pos: 2, dupla: "CHICUREO GIRLS 1", cat: "Damas C", pts: 2100 },
+                { pos: 3, dupla: "MIXED POWER 1", cat: "Mixto C", pts: 1850 }
+            ],
             cupos: {
                 varones: Array.from({length: 16}, (_, i) => ({
                     id: i + 1,
@@ -278,8 +333,8 @@
                     alias: i < 8 ? `DUPLA ELITE ${i+1}` : null,
                     j1: `Jugador A${i+1}`,
                     j2: `Jugador B${i+1}`,
+                    pin: "1234",
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=player${i}`,
-                    whatsapp: "56912345678",
                     horarios: `Sáb ${13 + Math.floor(i/4)}:30 hrs`,
                     resultado: i < 4 ? "9 - 4" : "Próx."
                 })),
@@ -289,8 +344,8 @@
                     alias: i < 6 ? `CHICUREO GIRLS ${i+1}` : null,
                     j1: `Jugadora A${i+1}`,
                     j2: `Jugadora B${i+1}`,
+                    pin: "1234",
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=dama${i}`,
-                    whatsapp: "56912345678",
                     horarios: `Sáb ${9 + Math.floor(i/4)}:00 hrs`,
                     resultado: "Próx."
                 })),
@@ -300,8 +355,8 @@
                     alias: i < 4 ? `MIXED POWER ${i+1}` : null,
                     j1: `Part. A${i+1}`,
                     j2: `Part. B${i+1}`,
+                    pin: "1234",
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=mixto${i}`,
-                    whatsapp: "56912345678",
                     horarios: `Sáb ${18 + Math.floor(i/4)}:00 hrs`,
                     resultado: "Próx."
                 }))
@@ -309,52 +364,58 @@
         };
 
         let catActiva = 'varones';
-        let tvTabActiva = 'playoff';
+        let boxSeleccionado = null;
 
-        function persistirYTransmitir() {
-            localStorage.setItem('tutorneo_argon_state', JSON.stringify(argonState));
-            storageSync.postMessage('sync_update');
-            aplicarConfiguracionVisual();
+        function sincronizar() {
+            localStorage.setItem('tutorneo_gs_db', JSON.stringify(db));
+            storageSync.postMessage('actualizar');
+            aplicarCMS();
         }
 
-        storageSync.onmessage = (event) => {
-            if(event.data === 'sync_update') {
-                argonState = JSON.parse(localStorage.getItem('tutorneo_argon_state'));
-                aplicarConfiguracionVisual();
+        storageSync.onmessage = (e) => {
+            if(e.data === 'actualizar') {
+                db = JSON.parse(localStorage.getItem('tutorneo_gs_db'));
+                aplicarCMS();
                 renderPublico();
                 if(!document.getElementById('vistaTV').classList.contains('hidden')) renderTV();
-                if(!document.getElementById('vistaAdmin').classList.contains('hidden')) renderAdminCuposTabla();
+                if(!document.getElementById('vistaAdmin').classList.contains('hidden')) renderAdminBoxes();
             }
         };
 
-        function aplicarConfiguracionVisual() {
-            document.getElementById('navTitle').innerHTML = `Copa Challenger <span class="text-brandPrimary">${argonState.config.nombreTorneo.split(' ')[2] || 'Chicureo'}</span>`;
-            document.getElementById('badgeOrgNav').innerText = argonState.config.badgeOrg;
-            document.getElementById('pageTitle').innerText = argonState.config.nombreTorneo;
+        function aplicarCMS() {
+            document.getElementById('navTitle').innerHTML = `Copa Challenger <span class="text-brandPrimary">Chicureo</span>`;
+            document.getElementById('badgeOrgNav').innerText = db.config.badgeOrg;
+            document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
+            document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
+            
+            const commEl = document.getElementById('bannerComunicaciones');
+            if(db.config.comunicado) {
+                commEl.classList.remove('hidden');
+                document.getElementById('textoComunicado').innerText = db.config.comunicado;
+            } else {
+                commEl.classList.add('hidden');
+            }
         }
 
         function cambiarVista(vista) {
-            document.getElementById('vistaPublica').classList.add('hidden');
-            document.getElementById('vistaPremios').classList.add('hidden');
-            document.getElementById('vistaTV').classList.add('hidden');
-            document.getElementById('vistaAdmin').classList.add('hidden');
-
+            ['vistaPublica', 'vistaPremios', 'vistaTV', 'vistaAdmin'].forEach(v => document.getElementById(v).classList.add('hidden'));
             if(vista === 'publico') document.getElementById('vistaPublica').classList.remove('hidden');
             if(vista === 'premios') document.getElementById('vistaPremios').classList.remove('hidden');
             if(vista === 'tv') { renderTV(); document.getElementById('vistaTV').classList.remove('hidden'); }
             if(vista === 'admin') { 
-                renderAdminCuposTabla();
-                actualizarCajaAdminPrivada();
+                renderAdminBoxes();
+                renderAdminRanking();
+                actualizarCajaPrivadaAdmin();
+                document.getElementById('cfgComunicado').value = db.config.comunicado;
+                document.getElementById('cfgReglamento').value = db.config.reglamento;
                 document.getElementById('vistaAdmin').classList.remove('hidden'); 
             }
         }
 
         function verificarAdmin() {
-            const clave = prompt("🔐 Acceso Super Admin (Área Confidencial):");
+            const clave = prompt("🔐 Clave de Super Admin:");
             if(clave === "admin2026" || clave === "chicureo") {
                 cambiarVista('admin');
-                document.getElementById('cfgNombreTorneo').value = argonState.config.nombreTorneo;
-                document.getElementById('cfgBadge').value = argonState.config.badgeOrg;
             } else {
                 alert("❌ Clave incorrecta.");
             }
@@ -373,14 +434,13 @@
             renderPublico();
         }
 
-        // RENDERIZADO PÚBLICO CON MINI-CANCHAS DE PÁDEL INTEGRADAS
+        // RENDERIZADO PÚBLICO CON MINI-CANCHAS BINARIAS Y MODAL AUTOGESTIÓN
         function renderPublico() {
             const grid = document.getElementById('gridCuposPublico');
             grid.innerHTML = '';
-            argonState.cupos[catActiva].forEach(cupo => {
+            db.cupos[catActiva].forEach(cupo => {
                 const card = document.createElement('div');
                 if(cupo.ocupado) {
-                    // ESTADO OCUPADO (MINI CANCHA ROJA)
                     card.className = "mini-cancha-roja rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-xl text-white";
                     card.innerHTML = `
                         <div class="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Inscrito 🔴</div>
@@ -398,23 +458,18 @@
                         </div>
                     `;
                 } else {
-                    // ESTADO LIBRE (MINI CANCHA VERDE)
-                    const mensajeWa = encodeURIComponent(`Hola, quiero inscribir mi dupla en el box #${cupo.id} de la categoría ${catActiva.toUpperCase()} para la ${argonState.config.nombreTorneo}.`);
-                    const linkWaFinal = `https://wa.me/${cupo.whatsapp}?text=${mensajeWa}`;
-
-                    card.className = "mini-cancha-verde rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-xl text-white group";
+                    card.className = "mini-cancha-verde rounded-2xl p-5 space-y-4 relative overflow-hidden shadow-xl text-white group cursor-pointer hover:scale-[1.02] transition";
+                    card.onclick = () => abrirModalInscripcion(cupo.id);
                     card.innerHTML = `
                         <div class="absolute top-0 right-0 bg-emerald-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl uppercase tracking-wider">Disponible 🟢</div>
                         <div class="text-xs text-emerald-200 font-mono-code">BOX #${cupo.id} • 🎾 Cancha Oficial</div>
                         <div class="bg-black/30 p-4 rounded-xl border border-emerald-500/30 text-center space-y-1">
                             <div class="text-lg font-extrabold text-emerald-300">¡Box Libre para Reserva!</div>
-                            <p class="text-[11px] text-emerald-200">Asegura tu lugar en este cuadro.</p>
+                            <p class="text-[11px] text-emerald-200">Haz clic para inscribirte online.</p>
                         </div>
                         <div class="pt-2 border-t border-emerald-500/30 flex justify-between items-center text-xs">
                             <span class="text-emerald-200 font-mono-code">🕒 ${cupo.horarios}</span>
-                            <a href="${linkWaFinal}" target="_blank" class="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-4 py-2 rounded-xl font-bold transition shadow flex items-center space-x-1">
-                                <span>Inscribir WhatsApp 💬</span>
-                            </a>
+                            <span class="bg-emerald-500 text-slate-950 px-3 py-1 rounded-lg font-bold">Inscribir 💳</span>
                         </div>
                     `;
                 }
@@ -422,7 +477,42 @@
             });
         }
 
-        // RELOJ GIGANTE CUENTA REGRESIVA
+        function abrirModalInscripcion(id) {
+            boxSeleccionado = id;
+            document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${catActiva.toUpperCase()}`;
+            document.getElementById('modalInscripcion').classList.remove('hidden');
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalInscripcion').classList.add('hidden');
+            document.getElementById('formInscripcion').reset();
+            boxSeleccionado = null;
+        }
+
+        function procesarInscripcionYPago(e) {
+            e.preventDefault();
+            const alias = document.getElementById('inputAlias').value;
+            const j1 = document.getElementById('inputJ1').value;
+            const j2 = document.getElementById('inputJ2').value;
+            const pin = document.getElementById('inputPin').value;
+
+            const cupo = db.cupos[catActiva].find(x => x.id === boxSeleccionado);
+            if(cupo) {
+                cupo.ocupado = true;
+                cupo.alias = alias;
+                cupo.j1 = j1;
+                cupo.j2 = j2;
+                cupo.pin = pin;
+                cupo.resultado = "Próx.";
+            }
+
+            sincronizar();
+            cerrarModal();
+            alert("¡Inscripción registrada con éxito! Redirigiendo a Mercado Pago...");
+            window.location.href = db.config.linkPagoMercadoPago;
+        }
+
+        // RELOJ CUENTA REGRESIVA
         setInterval(() => {
             const evento = new Date('2026-11-21T09:00:00').getTime();
             const ahora = new Date().getTime();
@@ -432,165 +522,140 @@
                 const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                 const s = Math.floor((diff % (1000 * 60)) / 1000);
-                const relojEl = document.getElementById('relojGigante');
-                if(relojEl) relojEl.innerText = `${d}D : ${h}H : ${m}M : ${s}S`;
+                const el = document.getElementById('relojGigante');
+                if(el) el.innerText = `${d}D : ${h}H : ${m}M : ${s}S`;
             }
         }, 1000);
 
-        function setTabTV(tab) {
-            tvTabActiva = tab;
-            if(tab === 'playoff') {
-                document.getElementById('btnTabPlayoff').className = "bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold";
-                document.getElementById('btnTabRanking').className = "bg-slate-800 text-slate-300 px-5 py-2 rounded-xl text-xs font-bold";
-                document.getElementById('contenedorTVPlayoff').classList.remove('hidden');
-                document.getElementById('contenedorTVRanking').classList.add('hidden');
-            } else {
-                document.getElementById('btnTabPlayoff').className = "bg-slate-800 text-slate-300 px-5 py-2 rounded-xl text-xs font-bold";
-                document.getElementById('btnTabRanking').className = "bg-blue-600 text-white px-5 py-2 rounded-xl text-xs font-bold";
-                document.getElementById('contenedorTVPlayoff').classList.add('hidden');
-                document.getElementById('contenedorTVRanking').classList.remove('hidden');
-                renderRankingTV();
-            }
-        }
-
         function renderTV() {
-            const grid = document.getElementById('contenedorTVPlayoff');
+            const grid = document.getElementById('gridPartidosEnVivo');
             grid.innerHTML = '';
-            ['varones', 'damas', 'mixto'].forEach(cat => {
+            
+            // Mostrar partidos en curso basados en los boxes ocupados
+            let ocupados = db.cupos[catActiva].filter(c => c.ocupado);
+            for(let i=0; i<Math.min(ocupados.length, 4); i+=2) {
+                const p1 = ocupados[i];
+                const p2 = ocupados[i+1] || { alias: "LIBRE / BYE", resultado: "-" };
+
                 const card = document.createElement('div');
-                card.className = "bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl";
+                card.className = "flip-card p-4 rounded-2xl border border-slate-800 flex justify-between items-center";
                 card.innerHTML = `
-                    <div class="uppercase text-xs font-bold text-brandPrimary font-mono-code">Playoff Domingo • ${cat}</div>
-                    <h3 class="text-2xl font-extrabold text-white">${argonState.llavesActivas ? 'Cuartos de Final (Oro)' : 'Fase de Grupos Activa'}</h3>
-                    <div class="space-y-3 pt-2">
-                        <div class="bg-slate-950 p-3 rounded-xl flex justify-between items-center border border-slate-800">
-                            <span class="font-bold text-sm text-slate-200">${argonState.llavesActivas ? '1° Grupo A vs 2° Grupo B' : 'Partidos de Grupo en Curso'}</span>
-                            <span class="font-mono-code text-emerald-400 font-bold text-sm">${argonState.llavesActivas ? '10:00 AM' : 'En Vivo 🎾'}</span>
-                        </div>
-                        <div class="bg-slate-950 p-3 rounded-xl flex justify-between items-center border border-slate-800">
-                            <span class="font-bold text-sm text-slate-200">${argonState.llavesActivas ? '1° Grupo C vs 2° Grupo D' : 'Clasificatorios'}</span>
-                            <span class="font-mono-code text-yellow-400 font-bold text-sm">${argonState.llavesActivas ? '10:45 AM' : 'Programados'}</span>
-                        </div>
+                    <div class="space-y-1">
+                        <div class="text-[10px] text-brandPrimary font-mono-code uppercase">Cancha #${i+1} • En Juego</div>
+                        <div class="text-sm font-extrabold text-white">${p1.alias}</div>
+                        <div class="text-xs font-extrabold text-slate-400">${p2.alias}</div>
+                    </div>
+                    <div class="text-right font-mono-code">
+                        <div class="text-xl font-extrabold text-emerald-400">${p1.resultado}</div>
+                        <div class="text-xs text-slate-500">Set 1</div>
                     </div>
                 `;
                 grid.appendChild(card);
+            }
+
+            // Renderizar tabla de ranking
+            const tbody = document.getElementById('tablaRankingPublica');
+            tbody.innerHTML = '';
+            db.ranking.forEach(r => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="p-3 text-brandPrimary font-bold">#${r.pos}</td>
+                    <td class="p-3 text-white font-bold">${r.dupla}</td>
+                    <td class="p-3 text-slate-300">${r.cat}</td>
+                    <td class="p-3 text-right font-bold text-emerald-400">${r.pts} pts</td>
+                `;
+                tbody.appendChild(tr);
             });
-        }
-
-        function renderRankingTV() {
-            const contenedor = document.getElementById('contenedorTVRanking');
-            contenedor.innerHTML = `
-                <h3 class="text-xl font-bold text-white mb-4">📊 Ranking General del Circuito</h3>
-                <table class="w-full text-left text-xs text-slate-300 font-mono-code">
-                    <thead class="bg-slate-950 text-slate-400 uppercase border-b border-slate-800">
-                        <tr>
-                            <th class="p-3">Pos</th>
-                            <th class="p-3">Dupla / Alias</th>
-                            <th class="p-3">Torneos</th>
-                            <th class="p-3 text-right">Puntos Totales</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800">
-                        <tr><td class="p-3 text-brandPrimary font-bold">1</td><td class="p-3 text-white font-bold">DUPLA ELITE 1</td><td class="p-3">3</td><td class="p-3 text-right font-bold text-emerald-400">2,450 pts</td></tr>
-                        <tr><td class="p-3 text-brandPrimary font-bold">2</td><td class="p-3 text-white font-bold">CHICUREO GIRLS 1</td><td class="p-3">3</td><td class="p-3 text-right font-bold text-emerald-400">2,100 pts</td></tr>
-                        <tr><td class="p-3 text-brandPrimary font-bold">3</td><td class="p-3 text-white font-bold">MIXED POWER 1</td><td class="p-3">2</td><td class="p-3 text-right font-bold text-emerald-400">1,850 pts</td></tr>
-                    </tbody>
-                </table>
-            `;
-        }
-
-        function motorArgonGenerarLlaves() {
-            argonState.llavesActivas = true;
-            persistirYTransmitir();
-            alert("⚡ ¡Motor Argón ejecutado! Las llaves del domingo se han proyectado en tiempo real.");
-            cambiarVista('tv');
         }
 
         function setTabAdmin(tab) {
-            if(tab === 'cupos') {
-                document.getElementById('adminPanelCupos').classList.remove('hidden');
-                document.getElementById('adminPanelMarca').classList.add('hidden');
-                document.getElementById('tabAdminCupos').className = "bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold";
-                document.getElementById('tabAdminMarca').className = "bg-slate-800 text-slate-400 px-4 py-2 rounded-lg";
+            ['adminPanelBoxes', 'adminPanelCms', 'adminPanelRanking'].forEach(p => document.getElementById(p).classList.add('hidden'));
+            ['tabAdminBoxes', 'tabAdminCms', 'tabAdminRanking'].forEach(t => document.getElementById(t).className = "bg-slate-800 text-slate-400 px-4 py-2 rounded-lg");
+
+            if(tab === 'boxes') {
+                document.getElementById('adminPanelBoxes').classList.remove('hidden');
+                document.getElementById('tabAdminBoxes').className = "bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold";
+            } else if(tab === 'cms') {
+                document.getElementById('adminPanelCms').classList.remove('hidden');
+                document.getElementById('tabAdminCms').className = "bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold";
             } else {
-                document.getElementById('adminPanelCupos').classList.add('hidden');
-                document.getElementById('adminPanelMarca').classList.remove('hidden');
-                document.getElementById('tabAdminCupos').className = "bg-slate-800 text-slate-400 px-4 py-2 rounded-lg";
-                document.getElementById('tabAdminMarca').className = "bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold";
+                document.getElementById('adminPanelRanking').classList.remove('hidden');
+                document.getElementById('tabAdminRanking').className = "bg-slate-800 text-brandPrimary px-4 py-2 rounded-lg font-bold";
+                renderEditorRanking();
             }
         }
 
-        function actualizarCajaAdminPrivada() {
-            let totalOcupados = 0;
-            Object.values(argonState.cupos).forEach(cat => {
-                cat.forEach(c => { if(c.ocupado) totalOcupados++; });
-            });
-            const rec = totalOcupados * 40000;
-            document.getElementById('adminCajaTotal').innerText = "$" + rec.toLocaleString('es-CL') + " CLP";
-            document.getElementById('adminCuposStats').innerText = `${totalOcupados} / 48 (${Math.round(totalOcupados/48*100)}%)`;
+        function actualizarCajaPrivadaAdmin() {
+            let total = 0;
+            Object.values(db.cupos).forEach(cat => cat.forEach(c => { if(c.ocupado) total++; }));
+            document.getElementById('adminCajaTotal').innerText = "$" + (total * 40000).toLocaleString('es-CL') + " CLP";
+            document.getElementById('adminCuposStats').innerText = `${total} / 48`;
         }
 
-        function renderAdminCuposTabla() {
+        function renderAdminBoxes() {
             const cat = document.getElementById('selectCatAdmin').value;
-            const tbody = document.getElementById('tablaAdminCuposBody');
+            const tbody = document.getElementById('tablaAdminBoxesBody');
             tbody.innerHTML = '';
-            argonState.cupos[cat].forEach(c => {
+            db.cupos[cat].forEach(c => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td class="p-3 font-bold text-white">Box #${c.id}</td>
                     <td class="p-3">
-                        <select onchange="cambiarEstadoCupo('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded p-1 text-xs text-white">
+                        <select onchange="cambiarEstado('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded p-1 text-xs text-white">
                             <option value="libre" ${!c.ocupado?'selected':''}>Libre (Verde)</option>
                             <option value="ocupado" ${c.ocupado?'selected':''}>Ocupado (Rojo)</option>
                         </select>
                     </td>
-                    <td class="p-3"><input type="text" value="${c.alias || ''}" onchange="actualizarAlias('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white w-full"></td>
-                    <td class="p-3"><input type="text" value="${c.whatsapp}" onchange="actualizarWa('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white w-full"></td>
-                    <td class="p-3"><input type="text" value="${c.resultado}" onchange="actualizarRes('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-24"></td>
+                    <td class="p-3"><input type="text" value="${c.alias || ''}" onchange="cambiarAlias('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-white w-full"></td>
+                    <td class="p-3"><input type="text" value="${c.resultado}" onchange="cambiarRes('${cat}', ${c.id}, this.value)" class="bg-slate-950 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-24"></td>
                 `;
                 tbody.appendChild(tr);
             });
-            actualizarCajaAdminPrivada();
+            actualizarCajaPrivadaAdmin();
         }
 
-        function cambiarEstadoCupo(cat, id, val) {
-            const cupo = argonState.cupos[cat].find(x => x.id === id);
-            cupo.ocupado = (val === 'ocupado');
-            if(!cupo.alias && cupo.ocupado) cupo.alias = "NUEVA DUPLA";
-            persistirYTransmitir();
-            renderPublico();
-            actualizarCajaAdminPrivada();
-        }
-
-        function actualizarAlias(cat, id, val) {
-            const cupo = argonState.cupos[cat].find(x => x.id === id);
-            cupo.alias = val;
-            persistirYTransmitir();
+        function cambiarEstado(cat, id, val) {
+            const c = db.cupos[cat].find(x => x.id === id);
+            c.ocupado = (val === 'ocupado');
+            if(c.ocupado && !c.alias) c.alias = "NUEVA DUPLA";
+            sincronizar();
             renderPublico();
         }
 
-        function actualizarWa(cat, id, val) {
-            const cupo = argonState.cupos[cat].find(x => x.id === id);
-            cupo.whatsapp = val;
-            persistirYTransmitir();
-        }
-
-        function actualizarRes(cat, id, val) {
-            const cupo = argonState.cupos[cat].find(x => x.id === id);
-            cupo.resultado = val;
-            persistirYTransmitir();
+        function cambiarAlias(cat, id, val) {
+            db.cupos[cat].find(x => x.id === id).alias = val;
+            sincronizar();
             renderPublico();
         }
 
-        function guardarYPublicarConfig() {
-            argonState.config.nombreTorneo = document.getElementById('cfgNombreTorneo').value;
-            argonState.config.badgeOrg = document.getElementById('cfgBadge').value;
-            persistirYTransmitir();
-            alert("🚀 ¡Sistema sincronizado con éxito bajo Arquitectura Argón!");
+        function cambiarRes(cat, id, val) {
+            db.cupos[cat].find(x => x.id === id).resultado = val;
+            sincronizar();
+        }
+
+        function renderEditorRanking() {
+            const cont = document.getElementById('editorRankingAdmin');
+            cont.innerHTML = '';
+            db.ranking.forEach((r, index) => {
+                cont.innerHTML += `
+                    <div class="flex gap-4 bg-slate-950 p-3 rounded-xl border border-slate-800 items-center">
+                        <span class="text-white font-bold">#${r.pos}</span>
+                        <input type="text" value="${r.dupla}" onchange="db.ranking[${index}].dupla=this.value" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-white flex-1">
+                        <input type="number" value="${r.pts}" onchange="db.ranking[${index}].pts=Number(this.value)" class="bg-slate-900 border border-slate-700 rounded px-2 py-1 text-emerald-400 w-28">
+                    </div>
+                `;
+            });
+        }
+
+        function guardarTodoAdmin() {
+            db.config.comunicado = document.getElementById('cfgComunicado').value;
+            db.config.reglamento = document.getElementById('cfgReglamento').value;
+            sincronizar();
+            alert("🚀 ¡Sistema actualizado y sincronizado simultáneamente en todas las pantallas!");
             cambiarVista('publico');
         }
 
-        aplicarConfiguracionVisual();
+        aplicarCMS();
         renderPublico();
     </script>
 </body>
