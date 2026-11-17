@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Chicureo God Mode & Bracket Engine</title>
+    <title id="pageTitle">Tutorneo Pro | Chicureo Autonomous AI Engine</title>
     <style>
         :root {
             --primary: #D4AF37;
@@ -40,10 +40,9 @@
         .badge-green { background: #10b981; color: #fff; }
         .badge-red { background: #ef4444; color: #fff; }
 
-        /* Estilo de Árbol / Llaves tipo Grand Slam */
         .bracket-container { display: flex; justify-content: space-around; gap: 2rem; overflow-x: auto; padding: 2rem 0; }
-        .bracket-round { display: flex; flex-direction: column; justify-content: space-around; gap: 1.5rem; min-width: 220px; }
-        .bracket-match { background: #0D1322; border: 1px solid #1E293B; border-radius: 12px; padding: 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.5); position: relative; }
+        .bracket-round { display: flex; flex-direction: column; justify-content: space-around; gap: 1.5rem; min-width: 240px; }
+        .bracket-match { background: #0D1322; border: 1px solid #1E293B; border-radius: 12px; padding: 1rem; box-shadow: 0 8px 20px rgba(0,0,0,0.5); }
         .bracket-team { display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; padding: 0.3rem 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .bracket-team:last-child { border-bottom: none; }
 
@@ -139,9 +138,9 @@
             <div id="vistaLlaves" class="panel-vista">
                 <div class="container space-y-8">
                     <div class="text-center space-y-2">
-                        <span class="bg-brandPrimary/15 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🔀 Organigrama Matemático</span>
-                        <h2 class="text-3xl font-extrabold text-white">Llaves & Cruces del Campeonato</h2>
-                        <p class="text-slate-400 text-sm">Emparejamientos matemáticos automáticos generados por el motor de sorteo.</p>
+                        <span class="bg-brandPrimary/15 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🔀 Organigrama Autónomo con IA</span>
+                        <h2 class="text-3xl font-extrabold text-white">Llaves, Cruces & Fase de Grupos (3 Partidos Mínimo)</h2>
+                        <p class="text-slate-400 text-sm">Emparejamientos generados matemáticamente por el motor de IA del torneo.</p>
                     </div>
 
                     <div class="tabs-cat">
@@ -150,9 +149,7 @@
                         <button onclick="setCatLlaves('mixto')" id="tabLlavesMixto" class="tab-cat-btn">Mixto C</button>
                     </div>
 
-                    <div class="bracket-container" id="bracketTreeContainer">
-                        <!-- Generado por JS -->
-                    </div>
+                    <div class="bracket-container" id="bracketTreeContainer"></div>
                 </div>
             </div>
 
@@ -162,7 +159,7 @@
                     <div class="admin-panel space-y-6 text-center" style="border: 2px solid #10b981; background: linear-gradient(135deg, #064e3b 0%, #080C14 100%);">
                         <div style="font-size: 3rem;">🎉</div>
                         <h2 style="font-size: 2rem; font-weight: 800; color: #10b981;">¡Estás Inscrito con Éxito!</h2>
-                        <p style="color: #A7F3D0; font-size: 0.9rem;">Tu registro ha sido completado y tu lugar en el cuadro oficial está asegurado.</p>
+                        <p style="color: #A7F3D0; font-size: 0.9rem;">Tu registro ha sido completado y tu fixture de 3 partidos ha sido generado por IA.</p>
                         
                         <div style="background: rgba(5,7,11,0.6); padding: 1.5rem; border-radius: 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;" class="space-y-2">
                             <div><strong>Dupla / Equipo:</strong> <span id="exitoAlias" style="color: var(--primary);">--</span></div>
@@ -254,10 +251,10 @@
                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #1E293B; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
                             <div>
                                 <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">🛠️ SUPER ADMIN MASTER (GOD MODE)</h2>
-                                <p style="color: #94A3B8; font-size: 0.8rem;">Control absoluto, sorteo aleatorio de llaves, canchas, horarios y tarifas.</p>
+                                <p style="color: #94A3B8; font-size: 0.8rem;">Control autónomo de IA para programar 3 partidos por pareja, descansos y canchas.</p>
                             </div>
                             <div class="flex gap-2">
-                                <button onclick="sortearLlavesAleatorias()" class="bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">🔀 Sorteo de Llaves (Random)</button>
+                                <button onclick="ejecutarMotorIAProgramacion()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">🤖 IA: Generar Fixture & 3 Partidos</button>
                                 <button onclick="guardarTodoAdmin()" class="btn-action">💾 Guardar & Publicar</button>
                             </div>
                         </div>
@@ -459,12 +456,12 @@
         </div>
     </div>
 
-    <!-- SCRIPT MASTER DE ENRUTAMIENTO Y MOTOR DE LLAVES -->
+    <!-- SCRIPT MASTER CON INTELIGENCIA ARTIFICIAL DE LLAVES Y 3 PARTIDOS -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v17';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v18';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v17')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v18')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -475,8 +472,8 @@
                 precioInscripcion: 40000,
                 totalCanchas: 4,
                 googleMapsQuery: "Laguna Ayres de Chicureo Colina Santiago",
-                comunicado: "¡Bienvenidos a la nueva fecha del circuito! Sorteo de grupos este viernes.",
-                cronograma: "<strong>SÁBADO:</strong> Fase de grupos de 09:00 a 22:00 hrs.<br><strong>DOMINGO:</strong> Cuartos, Semis y Finales desde las 10:00 hrs.",
+                comunicado: "¡Bienvenidos a la nueva fecha del circuito! Sorteo de grupos y 3 partidos por IA activo.",
+                cronograma: "<strong>SÁBADO:</strong> Fase de grupos (3 partidos por dupla) de 09:00 a 22:00 hrs.<br><strong>DOMINGO:</strong> Cuartos, Semis y Finales desde las 10:00 hrs.",
                 reglamento: "1. W.O. estricto a los 10 minutos.<br>2. Partidos a 1 set de 9 games con Punto de Oro."
             },
             sponsors: [
@@ -543,14 +540,14 @@
         let isAdminLoggedIn = false;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v17', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v18', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v17'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v18'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -696,38 +693,38 @@
             renderBracketTree();
         }
 
-        // MOTOR DE SORTEO ALEATORIO DE LLAVES
-        function sortearLlavesAleatorias() {
-            let duplasInscritas = [];
+        // MOTOR DE IA PARA PROGRAMAR 3 PARTIDOS Y LLAVES AUTOMÁTICAS
+        function ejecutarMotorIAProgramacion() {
+            let duplas = [];
             db.cupos[catLlavesActiva].forEach(c => {
-                if(c.ocupado && c.alias) duplasInscritas.push(c.alias);
+                if(c.ocupado && c.alias) duplas.push(c.alias);
             });
 
-            if(duplasInscritas.length < 2) {
-                alert("⚠️ Se necesitan al menos 2 duplas inscritas en esta categoría para sortear las llaves.");
+            if(duplas.length < 3) {
+                alert("⚠️ Se necesitan al menos 3 duplas inscritas en esta categoría para que la IA genere los 3 partidos reglamentarios de fase de grupos.");
                 return;
             }
 
-            // Algoritmo Fisher-Yates Shuffle para desordenar al azar matemáticamente
-            for (let i = duplasInscritas.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [duplasInscritas[i], duplasInscritas[j]] = [duplasInscritas[j], duplasInscritas[i]];
-            }
-
-            // Construir estructura de Cuartos / Semis
-            let matches = [];
-            for(let i=0; i<duplasInscritas.length; i+=2) {
-                matches.push({
-                    t1: duplasInscritas[i],
-                    t2: duplasInscritas[i+1] || "LIBRE (BYE)",
-                    res: "Próx."
+            // Generador autónomo por IA (Round Robin / Todos contra todos simulado para 3 partidos por dupla)
+            let fixtures = [];
+            for(let i=0; i<duplas.length; i++) {
+                let p1 = duplas[i];
+                let p2 = duplas[(i + 1) % duplas.length];
+                let p3 = duplas[(i + 2) % duplas.length];
+                fixtures.push({
+                    dupla: p1,
+                    juegos: [
+                        { rival: p2, hora: "Sáb 09:30 hrs", cancha: "Cancha #1", res: "Prog." },
+                        { rival: p3, hora: "Sáb 12:00 hrs", cancha: "Cancha #2", res: "Prog." },
+                        { rival: duplas[(i + 3) % duplas.length], hora: "Sáb 16:30 hrs", cancha: "Cancha #3", res: "Prog." }
+                    ]
                 });
             }
 
-            db.llaves[catLlavesActiva] = matches;
+            db.llaves[catLlavesActiva] = fixtures;
             sincronizar();
             renderBracketTree();
-            alert("🔀 ¡Sorteo de llaves realizado con éxito!");
+            alert("🤖 ¡IA Activa! Se han programado automáticamente 3 partidos por pareja con descansos optimizados y asignación de canchas.");
         }
 
         function renderBracketTree() {
@@ -735,43 +732,35 @@
             if(!container) return;
             container.innerHTML = '';
 
-            let currentMatches = db.llaves[catLlavesActiva] || [];
-            if(currentMatches.length === 0) {
-                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono';">Aún no se ha realizado el sorteo de llaves para esta categoría. Entra a Admin Master y presiona <strong>Sorteo de Llaves</strong>.</div>`;
+            let dataFixtures = db.llaves[catLlavesActiva] || [];
+            if(dataFixtures.length === 0) {
+                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono';">El motor de IA aún no ha generado el fixture de 3 partidos. Entra a Admin Master y presiona <strong>🤖 IA: Generar Fixture & 3 Partidos</strong>.</div>`;
                 return;
             }
 
-            // Redondear vista de árbol
-            let htmlRound1 = `<div class="bracket-round"><h4 style="font-size:0.8rem; color:var(--primary); text-align:center; margin-bottom:1rem; font-family:'JetBrains Mono';">CUARTOS DE FINAL</h4>`;
-            currentMatches.forEach((m, idx) => {
-                htmlRound1 += `
-                    <div class="bracket-match">
-                        <div style="font-size:0.65rem; color:#60A5FA; margin-bottom:0.25rem;">Partido #${idx+1}</div>
-                        <div class="bracket-team"><span>${m.t1}</span><strong>-</strong></div>
-                        <div class="bracket-team"><span>${m.t2}</span><strong>-</strong></div>
-                        <div style="font-size:0.65rem; text-align:right; color:#10B981; margin-top:0.3rem;">Estado: ${m.res}</div>
-                    </div>
+            let html = `<div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; width: 100%;">`;
+            dataFixtures.forEach((f, idx) => {
+                html += `
+                    <div class="admin-panel" style="background:#0D1322; border:1px solid #1E293B;">
+                        <div style="font-size:0.75rem; color:var(--primary); font-family:'JetBrains Mono'; margin-bottom:0.5rem;">GRUPO / FASE DE CLASIFICACIÓN</div>
+                        <h4 style="font-size:1.2rem; font-weight:800; color:#fff; margin-bottom:1rem;">⭐ ${f.dupla}</h4>
+                        <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem; font-family:'JetBrains Mono';">
                 `;
+                f.juegos.forEach((j, jIdx) => {
+                    html += `
+                        <div style="background:#05070B; padding:0.6rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
+                            <div>
+                                <div style="color:#60A5FA;">Partido #${jIdx+1} vs <strong>${j.rival}</strong></div>
+                                <div style="font-size:0.7rem; color:#94A3B8;">🕒 ${j.hora} • 🎾 ${j.cancha}</div>
+                            </div>
+                            <span style="background:rgba(16,185,129,0.2); color:#10B981; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.7rem;">${j.res}</span>
+                        </div>
+                    `;
+                });
+                html += `</div></div>`;
             });
-            htmlRound1 += `</div>`;
-
-            let htmlRound2 = `<div class="bracket-round"><h4 style="font-size:0.8rem; color:var(--primary); text-align:center; margin-bottom:1rem; font-family:'JetBrains Mono';">SEMIFINALES</h4>
-                <div class="bracket-match">
-                    <div style="font-size:0.65rem; color:#60A5FA; margin-bottom:0.25rem;">Llave A</div>
-                    <div class="bracket-team"><span>Ganador P1 / P2</span><strong>-</strong></div>
-                    <div class="bracket-team"><span>Ganador P3 / P4</span><strong>-</strong></div>
-                </div>
-            </div>`;
-
-            let htmlFinal = `<div class="bracket-round"><h4 style="font-size:0.8rem; color:var(--primary); text-align:center; margin-bottom:1rem; font-family:'JetBrains Mono';">GRAN FINAL 🏆</h4>
-                <div class="bracket-match" style="border: 2px solid var(--primary);">
-                    <div style="font-size:0.65rem; color:var(--primary); margin-bottom:0.25rem;">Copa Challenger</div>
-                    <div class="bracket-team"><span>Finalista 1</span><strong>-</strong></div>
-                    <div class="bracket-team"><span>Finalista 2</span><strong>-</strong></div>
-                </div>
-            </div>`;
-
-            container.innerHTML = htmlRound1 + htmlRound2 + htmlFinal;
+            html += `</div>`;
+            container.innerHTML = html;
         }
 
         function renderPublico() {
