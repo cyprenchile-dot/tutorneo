@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Chicureo God Mode & AI Engine</title>
+    <title id="pageTitle">Tutorneo Pro | SaaS Multi-Torneo & God Mode</title>
     <style>
         :root {
             --primary: #D4AF37;
@@ -13,48 +13,56 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Outfit', sans-serif; }
         body { background-color: var(--dark); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; }
-        header { background: rgba(5, 7, 11, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1E293B; position: sticky; top: 0; z-index: 1000; }
-        .nav-container { max-width: 1200px; margin: 0 auto; padding: 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .logo-area { display: flex; align-items: center; gap: 0.75rem; }
-        .badge-org { background: var(--primary); color: #030508; font-weight: 800; padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.75rem; text-transform: uppercase; }
-        .nav-title { font-weight: 700; font-size: 1.1rem; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+        header { background: rgba(5, 7, 11, 0.96); backdrop-filter: blur(12px); border-bottom: 1px solid #1E293B; position: sticky; top: 0; z-index: 1000; }
+        .nav-container { max-width: 1280px; margin: 0 auto; padding: 0.85rem 1rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .logo-area { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+        .badge-org { background: var(--primary); color: #030508; font-weight: 800; padding: 0.3rem 0.8rem; border-radius: 6px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .nav-title { font-weight: 800; font-size: 1.15rem; color: #fff; display: flex; align-items: center; gap: 0.5rem; text-transform: uppercase; }
         .nav-title span { color: var(--primary); }
-        .nav-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-        .nav-btn { background: #131C2E; color: #fff; border: 1px solid #1E293B; padding: 0.5rem 1rem; border-radius: 10px; font-size: 0.8rem; cursor: pointer; transition: 0.2s; }
-        .nav-btn:hover { background: #131C2E; }
-        .nav-btn.active { background: var(--primary); color: #030508; font-weight: 700; border-color: var(--primary); }
+        .nav-buttons { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center; }
+        .nav-btn { background: #131C2E; color: #fff; border: 1px solid #1E293B; padding: 0.5rem 0.95rem; border-radius: 10px; font-size: 0.78rem; cursor: pointer; transition: 0.2s; font-weight: 600; }
+        .nav-btn:hover { background: #1E293B; border-color: #334155; }
+        .nav-btn.active { background: var(--primary); color: #030508; font-weight: 800; border-color: var(--primary); }
 
-        .hero { background: linear-gradient(135deg, rgba(5, 7, 11, 0.8), rgba(13, 19, 34, 0.95)), var(--hero-bg, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat; padding: 5rem 1rem; text-align: center; border-bottom: 1px solid #1E293B; }
-        .hero h2 { font-size: 3rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+        .hero { background: linear-gradient(135deg, rgba(5, 7, 11, 0.82), rgba(13, 19, 34, 0.96)), var(--hero-bg, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat; padding: 4.5rem 1rem; text-align: center; border-bottom: 1px solid #1E293B; }
+        .hero h2 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
         .hero h2 span { color: var(--primary); }
-        .reloj-box { background: rgba(13, 19, 34, 0.9); border: 1px solid var(--primary); padding: 1rem; border-radius: 16px; max-width: 400px; margin: 1.5rem auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        .reloj-time { font-family: 'JetBrains Mono', monospace; font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .reloj-box { background: rgba(13, 19, 34, 0.92); border: 1px solid var(--primary); padding: 1.1rem; border-radius: 16px; max-width: 440px; margin: 1.5rem auto 0; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        .reloj-time { font-family: 'JetBrains Mono', monospace; font-size: 1.75rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; width: 100%; }
-        .grid-boxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
-        .box-card { border-radius: 16px; padding: 1.25rem; color: #fff; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.3); transition: transform 0.2s; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1rem; width: 100%; }
+        .grid-boxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+        .box-card { border-radius: 16px; padding: 1.25rem; color: #fff; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.35); transition: transform 0.2s; }
         .box-card:hover { transform: translateY(-3px); }
         .box-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; cursor: pointer; }
         .box-roja { background: linear-gradient(135deg, #7f1d1d 0%, #450a0a 100%); border: 2px solid #ef4444; }
-        .status-badge { position: absolute; top: 0; right: 0; padding: 0.25rem 0.75rem; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; border-bottom-left-radius: 12px; }
-        .badge-green { background: #10b981; color: #fff; }
+        .status-badge { position: absolute; top: 0; right: 0; padding: 0.25rem 0.75rem; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; border-bottom-left-radius: 12px; }
+        .badge-green { background: #10b981; color: #030508; }
         .badge-red { background: #ef4444; color: #fff; }
 
         .bracket-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-        .admin-panel { background: #0D1322; border: 1px solid #1E293B; border-radius: 20px; padding: 2rem; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
-        .table-custom { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.85rem; }
-        .table-custom th, .table-custom td { padding: 0.75rem; text-align: left; border-bottom: 1px solid #1E293B; }
-        .table-custom th { background: #05070B; color: #94A3B8; text-transform: uppercase; font-size: 0.7rem; }
-        .input-dark { background: #05070B; border: 1px solid #334155; color: #fff; padding: 0.5rem 0.75rem; border-radius: 8px; width: 100%; font-size: 0.85rem; }
-        .btn-action { background: var(--primary); color: #030508; font-weight: 700; padding: 0.6rem 1.25rem; border-radius: 10px; border: none; cursor: pointer; }
+        .admin-panel { background: #0D1322; border: 1px solid #1E293B; border-radius: 20px; padding: 1.75rem; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        .table-custom { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.8rem; }
+        .table-custom th, .table-custom td { padding: 0.65rem 0.5rem; text-align: left; border-bottom: 1px solid #1E293B; vertical-align: middle; }
+        .table-custom th { background: #05070B; color: #94A3B8; text-transform: uppercase; font-size: 0.68rem; letter-spacing: 0.5px; }
+        .input-dark { background: #05070B; border: 1px solid #334155; color: #fff; padding: 0.55rem 0.75rem; border-radius: 8px; width: 100%; font-size: 0.82rem; }
+        .input-dark:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2); }
+        .btn-action { background: var(--primary); color: #030508; font-weight: 800; padding: 0.65rem 1.25rem; border-radius: 10px; border: none; cursor: pointer; font-size: 0.82rem; transition: 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; }
+        .btn-action:hover { filter: brightness(1.1); transform: translateY(-1px); }
+        .btn-confirm { background: #10B981; color: #030508; font-weight: 800; padding: 0.65rem 1.3rem; border-radius: 10px; border: none; cursor: pointer; font-size: 0.82rem; transition: 0.2s; }
+        .btn-confirm:hover { background: #34D399; }
+        .btn-small-ok { background: #10B981; color: #030508; font-weight: 800; padding: 0.4rem 0.65rem; border-radius: 6px; border: none; cursor: pointer; font-size: 0.72rem; }
         
         .panel-vista { display: none; }
         .panel-vista.activo { display: block; }
         .modal-oculto { display: none !important; }
 
-        .tabs-cat { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .tab-cat-btn { background: #0D1322; color: #94A3B8; border: 1px solid #1E293B; padding: 0.5rem 1.25rem; border-radius: 10px; cursor: pointer; font-weight: 600; }
+        .tabs-cat { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .tab-cat-btn { background: #0D1322; color: #94A3B8; border: 1px solid #1E293B; padding: 0.55rem 1.25rem; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
         .tab-cat-btn.active { background: var(--primary); color: #030508; border-color: var(--primary); }
+
+        /* Toast de confirmación tipo Reloj Suizo */
+        #toastNotificacion { position: fixed; bottom: 24px; right: 24px; background: #10B981; color: #030508; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 800; font-size: 0.85rem; box-shadow: 0 15px 30px rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: center; gap: 0.5rem; border: 2px solid #fff; }
 
         @keyframes scroll {
             0% { transform: translateX(0); }
@@ -63,20 +71,25 @@
         .animate-scroll { display: flex; width: max-content; animation: scroll 30s linear infinite; }
         .animate-scroll:hover { animation-play-state: paused; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+    <!-- NOTIFICACIÓN FLOTANTE DE CONFIRMACIÓN -->
+    <div id="toastNotificacion">✅ ¡Cambios confirmados y sincronizados al milímetro!</div>
+
     <div>
-        <!-- NAVBAR -->
+        <!-- BARRA SUPERIOR MULTI-TORNEO & NAVEGACIÓN -->
         <header>
             <div class="nav-container">
                 <div class="logo-area">
-                    <span id="badgeOrgNav" class="badge-org">Chicureo Open</span>
+                    <span id="badgeOrgNav" class="badge-org">WIN WIN</span>
                     <div style="display:flex; align-items:center; gap:0.5rem;">
                         <div id="navLogoContainer"></div>
-                        <h1 class="nav-title" id="navTitle">Copa Challenger <span>Laguna Ayres</span></h1>
+                        <h1 class="nav-title" id="navTitle">TORNEO COPA <span>CHALLENGER LAGUNA AYRES</span></h1>
                     </div>
+                    <!-- Selector rápido de Torneo Activo (SaaS) -->
+                    <select id="selectorTorneoPublico" onchange="cambiarTorneoActivo(this.value)" style="background:#05070B; color:#D4AF37; border:1px solid #334155; padding:0.3rem 0.6rem; border-radius:8px; font-size:0.72rem; font-family:'JetBrains Mono'; cursor:pointer;" title="Cambiar de Torneo Activo"></select>
                 </div>
                 <div class="nav-buttons">
                     <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnNavPub">🎾 Inicio & Cuadros</button>
@@ -91,125 +104,122 @@
         <!-- CONTENEDOR CENTRAL DE VISTAS -->
         <div id="contenedorVistas">
 
-            <!-- VISTA PÚBLICA -->
+            <!-- ================= VISTA PÚBLICA ================= -->
             <div id="vistaPublica" class="panel-vista activo">
                 <section class="hero" id="heroBannerContainer">
-                    <div style="max-width: 800px; margin: 0 auto;">
-                        <span id="heroSubtitleBadge" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(212,175,55,0.3);">Sábado y Domingo • Canchas Oficiales · Chicureo</span>
+                    <div style="max-width: 850px; margin: 0 auto;">
+                        <span id="heroSubtitleBadge" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.35rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border: 1px solid rgba(212,175,55,0.3);">Fechas Oficiales • Canchas Confirmadas</span>
                         <h2 id="heroMainTitle" style="margin-top: 1rem;">El Torneo de Pádel Más Exclusivo de <span>Chicureo</span></h2>
                         
                         <div class="reloj-box">
-                            <div style="font-size: 0.7rem; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.25rem;">⏱️ Comienzo Oficial del Torneo en:</div>
+                            <div style="font-size: 0.7rem; color: #94A3B8; text-transform: uppercase; margin-bottom: 0.25rem;">⏱️ Cuenta Regresiva Oficial de Inicio (<span id="labelFechaReloj"></span>):</div>
                             <div id="relojGigante" class="reloj-time">00D : 00H : 00M : 00S</div>
                         </div>
                     </div>
                 </section>
 
                 <div class="container">
-                    <div id="bannerComunicaciones" style="background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.3); padding: 1rem; border-radius: 12px; margin-bottom: 2rem; display: none; align-items: center; gap: 1rem;">
+                    <div id="bannerComunicaciones" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.35); padding: 1rem; border-radius: 12px; margin-bottom: 2rem; display: none; align-items: center; gap: 1rem;">
                         <span style="font-size: 1.5rem;">📢</span>
                         <div>
-                            <h4 style="color: #60A5FA; font-size: 0.85rem; text-transform: uppercase;">Comunicado Oficial</h4>
-                            <p id="textoComunicado" style="font-size: 0.8rem; color: #CBD5E1; margin-top: 0.2rem;"></p>
+                            <h4 style="color: #60A5FA; font-size: 0.85rem; text-transform: uppercase;">Comunicado Oficial del Organizador</h4>
+                            <p id="textoComunicado" style="font-size: 0.82rem; color: #CBD5E1; margin-top: 0.2rem;"></p>
                         </div>
                     </div>
 
                     <div style="text-align: center; margin-bottom: 1.5rem;">
-                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Cuadros Oficiales & Autogestión</h3>
-                        <p style="color: #94A3B8; font-size: 0.9rem;">Verde para inscribirte online; Rojo con el estado en vivo de las duplas.</p>
+                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem;">Cuadros Oficiales & Autogestión</h3>
+                        <p style="color: #94A3B8; font-size: 0.9rem;">Haz clic en un Box <strong>DISPONIBLE (Verde)</strong> para inscribirte; los <strong>INSCRITOS (Rojo)</strong> muestran su horario y cuenta regresiva en vivo.</p>
                     </div>
 
-                    <div class="tabs-cat">
-                        <button onclick="setCategoria('damas')" id="tabDamas" class="tab-cat-btn">Damas C</button>
-                        <button onclick="setCategoria('varones')" id="tabVarones" class="tab-cat-btn active">Varones 5ª</button>
-                        <button onclick="setCategoria('mixto')" id="tabMixto" class="tab-cat-btn">Mixto C</button>
-                    </div>
+                    <div class="tabs-cat" id="contenedorTabsCategoriasPublico"></div>
 
                     <div id="gridCuposPublico" class="grid-boxes"></div>
                 </div>
             </div>
 
-            <!-- VISTA LLAVES & CRUCES IA -->
+            <!-- ================= VISTA LLAVES & CRUCES IA ================= -->
             <div id="vistaLlaves" class="panel-vista">
-                <div class="container space-y-8">
-                    <div class="text-center space-y-2">
-                        <span class="bg-brandPrimary/15 text-brandPrimary border border-brandPrimary/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase font-mono-code">🔀 Motor Autónomo de IA</span>
-                        <h2 class="text-3xl font-extrabold text-white">Fixture Automático & Fase de Grupos (3 Partidos)</h2>
-                        <p class="text-slate-400 text-sm">Organigrama optimizado matemáticamente por la IA del torneo.</p>
+                <div class="container">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; font-family: 'JetBrains Mono';">🔀 MOTOR AUTÓNOMO DE IA</span>
+                        <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem;">Fixture Oficial & Fase de Grupos (3 Partidos Garantizados)</h2>
+                        <p style="color: #94A3B8; font-size: 0.9rem;">Horarios, descansos y canchas sincronizados con el almanaque oficial del torneo.</p>
                     </div>
 
-                    <div class="tabs-cat">
-                        <button onclick="setCatLlaves('damas')" id="tabLlavesDamas" class="tab-cat-btn">Damas C</button>
-                        <button onclick="setCatLlaves('varones')" id="tabLlavesVarones" class="tab-cat-btn active">Varones 5ª</button>
-                        <button onclick="setCatLlaves('mixto')" id="tabLlavesMixto" class="tab-cat-btn">Mixto C</button>
-                    </div>
+                    <div class="tabs-cat" id="contenedorTabsCategoriasLlaves"></div>
 
                     <div class="bracket-container" id="bracketTreeContainer"></div>
                 </div>
             </div>
 
-            <!-- VISTA PANTALLA DE ÉXITO / INSCRIPTO -->
+            <!-- ================= VISTA PANTALLA DE ÉXITO / INSCRIPTO ================= -->
             <div id="vistaExitoInscripcion" class="panel-vista">
-                <div class="container" style="max-width: 700px; margin-top: 2rem;">
-                    <div class="admin-panel space-y-6 text-center" style="border: 2px solid #10b981; background: linear-gradient(135deg, #064e3b 0%, #080C14 100%);">
-                        <div style="font-size: 3rem;">🎉</div>
-                        <h2 style="font-size: 2rem; font-weight: 800; color: #10b981;">¡Estás Inscrito con Éxito!</h2>
-                        <p style="color: #A7F3D0; font-size: 0.9rem;">Tu registro ha sido completado y tu fixture de 3 partidos ha sido asignado.</p>
+                <div class="container" style="max-width: 720px; margin-top: 1.5rem;">
+                    <div class="admin-panel" style="border: 2px solid #10b981; background: linear-gradient(135deg, #064e3b 0%, #080C14 100%); text-align: center;">
+                        <div style="font-size: 3.2rem; margin-bottom: 0.5rem;">🎉</div>
+                        <h2 style="font-size: 2rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">¡Estás Inscrito con Éxito!</h2>
+                        <p style="color: #A7F3D0; font-size: 0.9rem; margin-bottom: 1.5rem;">Tu dupla ya está registrada en el cuadro oficial y sincronizada con el motor de horarios.</p>
                         
-                        <div style="background: rgba(5,7,11,0.6); padding: 1.5rem; border-radius: 16px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;" class="space-y-2">
-                            <div><strong>Dupla / Equipo:</strong> <span id="exitoAlias" style="color: var(--primary);">--</span></div>
+                        <div style="background: rgba(5,7,11,0.75); padding: 1.25rem; border-radius: 14px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; margin-bottom: 1.25rem; line-height: 1.8; border: 1px solid #1E293B;">
+                            <div><strong>Torneo:</strong> <span id="exitoTorneoNombre" style="color: #fff;">--</span></div>
+                            <div><strong>Dupla / Equipo:</strong> <span id="exitoAlias" style="color: var(--primary); font-weight: 800;">--</span></div>
                             <div><strong>Jugadores:</strong> <span id="exitoJugadores">--</span></div>
-                            <div><strong>Box Asignado:</strong> <span id="exitoBox" style="color: #60A5FA;">--</span></div>
-                            <div><strong>Estado:</strong> <span style="color: #10B981;">🟢 REGISTRADO (Redirigiendo a pasarela de pago...)</span></div>
+                            <div><strong>Box & Cancha:</strong> <span id="exitoBox" style="color: #60A5FA;">--</span></div>
+                            <div><strong>Horario 1er Partido:</strong> <span id="exitoHorarioPartido" style="color: #FACC15;">--</span></div>
+                            <div><strong>Valor Inscripción:</strong> <span id="exitoMontoPago" style="color: #10B981;">--</span></div>
                         </div>
 
-                        <div style="background: rgba(13,19,34,0.9); padding: 1.5rem; border-radius: 16px; text-align: left;">
-                            <h4 style="color: var(--primary); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">📅 Horarios de Competencia & Información</h4>
-                            <div id="exitoCronogramaContenedor" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;"></div>
+                        <div style="background: rgba(13,19,34,0.9); padding: 1.25rem; border-radius: 14px; text-align: left; margin-bottom: 1.5rem; border: 1px solid #1E293B;">
+                            <h4 style="color: var(--primary); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">📅 Almanaque & Horarios Oficiales de Competencia</h4>
+                            <div id="exitoCronogramaContenedor" style="font-size: 0.82rem; color: #CBD5E1; line-height: 1.6;"></div>
                         </div>
 
-                        <button onclick="cambiarVista('publico')" class="btn-action" style="width: 100%;">Volver al Inicio 🎾</button>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a id="btnIrMercadoPagoDirecto" href="#" target="_blank" class="btn-action" style="flex: 1; background: #009EE3; color: #fff; text-decoration: none; padding: 0.9rem;">💳 Ir a Pagar en Mercado Pago Ahora</a>
+                            <button onclick="cambiarVista('publico')" class="btn-action" style="flex: 1;">🎾 Volver al Cuadro de Boxes</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- VISTA PREMIOS Y MAPA -->
+            <!-- ================= VISTA PREMIOS Y MAPA ================= -->
             <div id="vistaPremios" class="panel-vista">
                 <div class="container">
                     <div style="text-align: center; margin-bottom: 2rem;">
                         <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem;">Información Oficial del Campeonato</h3>
-                        <p style="color: #94A3B8;">Premios, reglamentos y ubicación exacta en Chicureo.</p>
+                        <p style="color: #94A3B8;">Almanaque oficial, reglamento y ubicación exacta de las canchas.</p>
                     </div>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
                         <div class="admin-panel">
-                            <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📅 Cronograma & Fechas</h4>
-                            <div id="textoCronogramaPublico" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;"></div>
+                            <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📅 Almanaque, Fechas & Horarios</h4>
+                            <div id="textoCronogramaPublico" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.7;"></div>
                         </div>
                         <div class="admin-panel">
                             <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📜 Reglamento & Términos</h4>
-                            <div id="textoReglamentoPublico" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.6;"></div>
+                            <div id="textoReglamentoPublico" style="font-size: 0.85rem; color: #CBD5E1; line-height: 1.7;"></div>
                         </div>
                     </div>
                     <div class="admin-panel" style="margin-top: 1.5rem;">
-                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 0.5rem;">📍 Ubicación del Club / Canchas</h4>
-                        <div style="width: 100%; height: 320px; border-radius: 12px; overflow: hidden; margin-top: 1rem;">
+                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 0.5rem;">📍 Mapa Interactivo del Club / Canchas</h4>
+                        <div style="width: 100%; height: 340px; border-radius: 12px; overflow: hidden; margin-top: 1rem; border: 1px solid #334155;">
                             <iframe id="mapaGoogleIframe" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" src="https://maps.google.com/maps?q=Chicureo%20Colina%20Santiago&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- VISTA PANTALLA GIGANTE (TV / LIVE) -->
+            <!-- ================= VISTA PANTALLA GIGANTE (TV / LIVE) ================= -->
             <div id="vistaTV" class="panel-vista">
                 <div class="container">
                     <div style="text-align: center; margin-bottom: 2rem;">
-                        <h3 style="font-size: 2rem; font-weight: 800;">Estado de Canchas & En Directo</h3>
-                        <p style="color: #94A3B8; font-size: 0.9rem;">Monitoreo oficial en tiempo real.</p>
+                        <h3 style="font-size: 2.2rem; font-weight: 800;">📺 Monitor Oficial de Canchas & En Directo</h3>
+                        <p style="color: #94A3B8; font-size: 0.9rem;">Sincronización en vivo de canchas, marcadores y rankings oficiales.</p>
                     </div>
                     <div id="gridEstadoCanchasTV" class="grid-boxes" style="margin-bottom: 2rem;"></div>
                     
                     <div class="admin-panel">
-                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📊 Rankings Oficiales del Circuito</h4>
+                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📊 Rankings Oficiales del Circuito (Todas las Parejas Inscritas)</h4>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                             <div>
                                 <h5 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #60A5FA;">Ranking General WPT</h5>
@@ -224,7 +234,7 @@
                 </div>
             </div>
 
-            <!-- VISTA ADMIN MASTER (LOGIN + PANEL) -->
+            <!-- ================= VISTA ADMIN MASTER (GOD MODE) ================= -->
             <div id="vistaAdmin" class="panel-vista">
                 <div class="container">
                     
@@ -233,7 +243,7 @@
                         <div class="admin-panel" style="text-align: center;">
                             <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Área Confidencial</span>
                             <h3 style="font-size: 1.5rem; margin: 0.75rem 0 0.25rem 0;">Acceso Super Admin Master</h3>
-                            <p style="color: #94A3B8; font-size: 0.8rem; margin-bottom: 1.5rem;">Introduce la clave maestra (`admin2026`) para control total.</p>
+                            <p style="color: #94A3B8; font-size: 0.8rem; margin-bottom: 1.5rem;">Introduce la clave maestra (`admin2026` o la clave de licencia del torneo).</p>
                             <form onsubmit="procesarLoginAdmin(event)" style="display: flex; flex-direction: column; gap: 1rem;">
                                 <input type="password" id="inputClaveAdmin" required placeholder="Contraseña maestra" class="input-dark" style="text-align: center;">
                                 <button type="submit" class="btn-action">Desbloquear God Mode 🔓</button>
@@ -243,49 +253,57 @@
 
                     <!-- PANEL GOD MODE -->
                     <div id="adminPanelBox" class="admin-panel modal-oculto">
-                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #1E293B; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #1E293B; padding-bottom: 1.25rem; margin-bottom: 1.25rem;">
                             <div>
-                                <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">🛠️ SUPER ADMIN MASTER (GOD MODE)</h2>
-                                <p style="color: #94A3B8; font-size: 0.8rem;">Control autónomo de IA para programar 3 partidos por pareja, horarios de almanaque y canchas.</p>
+                                <h2 style="font-size: 1.45rem; font-weight: 800; color: #fff;">🛠️ SUPER ADMIN MASTER (RELOJ SUIZO & SAAS)</h2>
+                                <p style="color: #94A3B8; font-size: 0.8rem;">Torneo activo en edición: <strong id="labelTorneoActivoAdmin" style="color:var(--primary);">--</strong></p>
                             </div>
-                            <div class="flex gap-2">
-                                <button onclick="ejecutarMotorIAProgramacion()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">🤖 IA: Generar Fixture & 3 Partidos</button>
-                                <button onclick="guardarTodoAdmin()" class="btn-action">💾 Guardar & Publicar</button>
+                            <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
+                                <button onclick="ejecutarMotorIAProgramacion()" class="btn-action" style="background: #4F46E5; color: #fff;">🤖 IA: Armar Fixture 3 Partidos & Horarios</button>
+                                <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y GUARDAR TODO</button>
                             </div>
                         </div>
 
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #05070B; padding: 1.25rem; border-radius: 12px; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace;">
+                        <!-- Métricas Superiores -->
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #05070B; padding: 1.15rem; border-radius: 12px; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; border: 1px solid #1E293B;">
                             <div>
                                 <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Recaudación Privada</div>
-                                <div id="adminCajaTotal" style="font-size: 1.25rem; font-weight: 700; color: #10B981; margin-top: 0.2rem;">$0 CLP</div>
+                                <div id="adminCajaTotal" style="font-size: 1.25rem; font-weight: 800; color: #10B981; margin-top: 0.2rem;">$0 CLP</div>
                             </div>
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Cupos Ocupados</div>
-                                <div id="adminCuposStats" style="font-size: 1.25rem; font-weight: 700; color: var(--primary); margin-top: 0.2rem;">0 / 48</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Cupos Inscritos</div>
+                                <div id="adminCuposStats" style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">0 / 48</div>
                             </div>
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Servidor</div>
-                                <div style="font-size: 1.25rem; font-weight: 700; color: #60A5FA; margin-top: 0.2rem;">🟢 LIVE OK</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Enlace Compartible de este Torneo</div>
+                                <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.25rem;">
+                                    <input type="text" id="inputShareLinkTorneo" readonly class="input-dark" style="font-size:0.7rem; padding:0.25rem 0.5rem;">
+                                    <button onclick="copiarLinkTorneo()" class="btn-small-ok">Copiar</button>
+                                </div>
                             </div>
                         </div>
 
+                        <!-- Pestañas del Admin Master -->
                         <div class="nav-buttons" style="margin-bottom: 1.5rem; border-bottom: 1px solid #1E293B; padding-bottom: 1rem;">
-                            <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas & Marcadores</button>
-                            <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="nav-btn">👥 Base de Parejas</button>
-                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Logo, Almanaque & Tarifas</button>
+                            <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas, Horarios & Marcadores</button>
+                            <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="nav-btn">👥 Base de Parejas & Nombres</button>
+                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Logo, Almanaque, Categorías & Tarifas</button>
                             <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="nav-btn">🤝 Auspiciadores & Logos</button>
                             <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="nav-btn">📊 Rankings WPT</button>
+                            <button onclick="setTabAdmin('saas')" id="tabAdminSaas" class="nav-btn" style="border-color: #10B981; color: #10B981;">🏢 Multi-Torneo & Licencias (SaaS)</button>
                         </div>
 
-                        <!-- Sub-paneles -->
+                        <!-- 1. SUB-PANEL: CANCHAS, HORARIOS POR BOX Y MARCADORES -->
                         <div id="subPanelBoxes">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-                                <h4 style="font-size: 1rem; font-weight: 700;">Gestión de Canchas y Estados</h4>
-                                <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="input-dark" style="width: 180px;">
-                                    <option value="varones">Varones 5ª</option>
-                                    <option value="damas">Damas C</option>
-                                    <option value="mixto">Mixto C</option>
-                                </select>
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="font-size: 1.05rem; font-weight: 800;">Gestión Quirúrgica de Boxes, Jugadores, Horarios y Estados</h4>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Edita cualquier dato o la hora exacta del partido y presiona el botón verde de confirmar.</p>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="input-dark" style="width: 190px; font-weight: 700;"></select>
+                                    <button onclick="confirmarCambiosTablaBoxes()" class="btn-confirm">✅ Confirmar Datos de Canchas</button>
+                                </div>
                             </div>
                             <div style="overflow-x: auto;">
                                 <table class="table-custom">
@@ -294,9 +312,12 @@
                                             <th>Box</th>
                                             <th>Estado</th>
                                             <th>Alias Dupla</th>
+                                            <th>Jugador 1 / Jugador 2</th>
+                                            <th>Fecha y Hora Partido</th>
                                             <th>Cancha</th>
-                                            <th>Partido</th>
+                                            <th>Fase / Estado</th>
                                             <th>Marcador</th>
+                                            <th>Confirmar</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaAdminBoxesBody"></tbody>
@@ -304,18 +325,27 @@
                             </div>
                         </div>
 
+                        <!-- 2. SUB-PANEL: BASE DE PAREJAS EDITABLE -->
                         <div id="subPanelParejas" class="modal-oculto">
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Listado General de Parejas Inscritas & Perfiles</h4>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
+                                <div>
+                                    <h4 style="font-size: 1.05rem; font-weight: 800;">Base de Datos Editable de Parejas Inscritas</h4>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Aquí puedes cambiar el nombre de la dupla, los nombres de los jugadores, sus redes o su PIN y confirmar al instante.</p>
+                                </div>
+                                <button onclick="mostrarToast('✅ ¡Datos de parejas confirmados y guardados!')" class="btn-confirm">✅ Confirmar Todos los Nombres</button>
+                            </div>
                             <div style="overflow-x: auto;">
                                 <table class="table-custom">
                                     <thead>
                                         <tr>
-                                            <th>Cat</th>
+                                            <th>Categoría</th>
                                             <th>Box</th>
-                                            <th>Alias</th>
-                                            <th>Jugadores / Redes</th>
+                                            <th>Alias Dupla</th>
+                                            <th>Jugador 1</th>
+                                            <th>Jugador 2</th>
+                                            <th>Instagram (J1 / J2)</th>
                                             <th>PIN</th>
-                                            <th style="text-align: right;">Acción</th>
+                                            <th style="text-align: right;">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaAdminParejasBody"></tbody>
@@ -323,80 +353,175 @@
                             </div>
                         </div>
 
-                        <!-- NUEVOS CASILLEROS DE ALMANAQUE Y CALENDARIO PARA LA IA -->
-                        <div id="subPanelCms" class="modal-oculto" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Nombre del Torneo</label>
-                                <input type="text" id="cfgNombreTorneo" class="input-dark">
+                        <!-- 3. SUB-PANEL: CMS, LOGO, ALMANAQUE, CATEGORÍAS Y TARIFAS -->
+                        <div id="subPanelCms" class="modal-oculto">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem; background: #05070B; padding: 1rem; border-radius: 12px; border: 1px solid #10B981;">
+                                <div>
+                                    <h4 style="font-size: 1rem; font-weight: 800; color: #10B981;">📅 Configuración de Almanaque, Carrera/Categorías y Tarifas</h4>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Modifica cualquier campo y presiona el botón verde para fijar la hora, el reloj regresivo y los títulos.</p>
+                                </div>
+                                <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y APLICAR ALMANAQUE Y DATOS</button>
                             </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Organización (Badge)</label>
-                                <input type="text" id="cfgBadge" class="input-dark">
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Nombre Oficial del Torneo / Carrera</label>
+                                    <input type="text" id="cfgNombreTorneo" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Organización / Marca (Badge Superior)</label>
+                                    <input type="text" id="cfgBadge" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Subir Logotipo del Torneo (Imagen)</label>
+                                    <input type="file" accept="image/*" onchange="subirLogoTorneo(event)" class="input-dark" style="padding: 0.35rem;">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Número Total de Canchas del Club (1 a 12)</label>
+                                    <input type="number" id="cfgTotalCanchas" min="1" max="12" class="input-dark">
+                                </div>
+
+                                <!-- Nombres de Categorías / Carreras Editables -->
+                                <div>
+                                    <label style="font-size: 0.75rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem;">Nombre Categoría / Carrera 1</label>
+                                    <input type="text" id="cfgCatNombreDamas" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem;">Nombre Categoría / Carrera 2</label>
+                                    <input type="text" id="cfgCatNombreVarones" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem;">Nombre Categoría / Carrera 3</label>
+                                    <input type="text" id="cfgCatNombreMixto" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Duración por Partido en Minutos (Ej. 45 o 60)</label>
+                                    <input type="number" id="cfgDuracionPartido" min="20" max="120" class="input-dark">
+                                </div>
+
+                                <!-- Almanaque y Horarios con botón directo -->
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">📅 Fecha de Inicio del Torneo</label>
+                                    <input type="date" id="cfgFechaInicio" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">📅 Fecha de Término del Torneo</label>
+                                    <input type="date" id="cfgFechaFin" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">⏰ Hora de Apertura / 1er Partido (Ej. 09:00)</label>
+                                    <input type="time" id="cfgHoraApertura" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">⏰ Hora de Cierre Diario (Ej. 21:00)</label>
+                                    <input type="time" id="cfgHoraCierre" class="input-dark">
+                                </div>
+
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">URL Foto Fondo Hero</label>
+                                    <input type="text" id="cfgHeroUrl" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Color Principal Corporativo (Hex)</label>
+                                    <input type="text" id="cfgColorPrimario" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #60A5FA; font-weight: 700; display: block; margin-bottom: 0.3rem;">💳 Enlace de Pago (Mercado Pago / Webpay)</label>
+                                    <input type="text" id="cfgLinkPago" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">💲 Tarifa / Valor Inscripción ($ CLP)</label>
+                                    <input type="number" id="cfgPrecioInscripcion" class="input-dark">
+                                </div>
+                                <div style="grid-column: 1 / -1;">
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Ubicación Google Maps (Nombre del Club o Dirección)</label>
+                                    <input type="text" id="cfgGoogleMapsQuery" class="input-dark">
+                                </div>
+                                <div style="grid-column: 1 / -1;">
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Comunicado Oficial Urgente (Banner Público)</label>
+                                    <input type="text" id="cfgComunicado" class="input-dark">
+                                </div>
+                                <div style="grid-column: 1 / -1;">
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Reglamento Oficial y Condiciones (HTML)</label>
+                                    <textarea id="cfgReglamento" rows="3" class="input-dark"></textarea>
+                                </div>
                             </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Subir Logotipo del Torneo (Imagen)</label>
-                                <input type="file" accept="image/*" onchange="subirLogoTorneo(event)" class="input-dark" style="padding: 0.35rem;">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Número Total de Canchas (Ej. 4)</label>
-                                <input type="number" id="cfgTotalCanchas" min="1" max="8" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Fecha de Inicio del Torneo</label>
-                                <input type="date" id="cfgFechaInicio" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Fecha de Término del Torneo</label>
-                                <input type="date" id="cfgFechaFin" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Hora de Apertura Diaria (Ej. 09:00)</label>
-                                <input type="time" id="cfgHoraApertura" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Hora de Cierre Diario (Ej. 21:00)</label>
-                                <input type="time" id="cfgHoraCierre" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">URL Foto Fondo Hero</label>
-                                <input type="text" id="cfgHeroUrl" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Color Principal (Hex)</label>
-                                <input type="text" id="cfgColorPrimario" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Enlace de Pasarela de Pago (Mercado Pago)</label>
-                                <input type="text" id="cfgLinkPago" class="input-dark">
-                            </div>
-                            <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Tarifa / Valor Inscripción ($ CLP)</label>
-                                <input type="number" id="cfgPrecioInscripcion" class="input-dark">
-                            </div>
-                            <div style="grid-column: 1 / -1;">
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Ubicación Google Maps (Query)</label>
-                                <input type="text" id="cfgGoogleMapsQuery" class="input-dark">
-                            </div>
-                            <div style="grid-column: 1 / -1;">
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Comunicado Urgente</label>
-                                <input type="text" id="cfgComunicado" class="input-dark">
-                            </div>
-                            <div style="grid-column: 1 / -1;">
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Reglamento (HTML)</label>
-                                <textarea id="cfgReglamento" rows="3" class="input-dark"></textarea>
+
+                            <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap;">
+                                <button onclick="sincronizarHorariosBoxesConAlmanaque()" class="btn-action" style="background: #3B82F6; color: #fff;">⏱️ Sincronizar Relojes de Boxes con este Almanaque</button>
+                                <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y PUBLICAR CAMBIOS AHORA</button>
                             </div>
                         </div>
 
+                        <!-- 4. SUB-PANEL: AUSPICIADORES -->
                         <div id="subPanelSponsors" class="modal-oculto">
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Gestión de Auspiciadores y Logos</h4>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <h4 style="font-size: 1.05rem; font-weight: 800;">Gestión de Auspiciadores y Carga de Logos</h4>
+                                <button onclick="sincronizar(); mostrarToast('✅ ¡Auspiciadores confirmados y publicados!')" class="btn-confirm">✅ Confirmar Auspiciadores</button>
+                            </div>
                             <div id="editorSponsorsAdmin" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem;"></div>
-                            <button onclick="agregarSponsorAdmin()" class="nav-btn">+ Agregar Auspiciador</button>
+                            <button onclick="agregarSponsorAdmin()" class="nav-btn">+ Agregar Nuevo Auspiciador</button>
                         </div>
 
+                        <!-- 5. SUB-PANEL: RANKINGS EDITABLES -->
                         <div id="subPanelRanking" class="modal-oculto">
-                            <h4 style="font-size: 1rem; font-weight: 700; margin-bottom: 1rem;">Puntos del Circuito</h4>
-                            <div id="editorRankingCircuitoAdmin" style="display: flex; flex-direction: column; gap: 0.75rem;"></div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <div>
+                                    <h4 style="font-size: 1.05rem; font-weight: 800;">Control de Puntos del Circuito (WPT & Challenger)</h4>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Ajusta los puntos de cualquier pareja inscrita y presiona Confirmar.</p>
+                                </div>
+                                <button onclick="sincronizar(); mostrarToast('✅ ¡Puntos de Ranking actualizados!')" class="btn-confirm">✅ Confirmar Puntos de Ranking</button>
+                            </div>
+                            <div id="editorRankingCircuitoAdmin" style="display: flex; flex-direction: column; gap: 0.6rem;"></div>
                         </div>
+
+                        <!-- 6. SUB-PANEL: MULTI-TORNEO & LICENCIAS SAAS -->
+                        <div id="subPanelSaas" class="modal-oculto">
+                            <div style="background: #05070B; border: 1px solid #10B981; padding: 1.25rem; border-radius: 14px; margin-bottom: 1.5rem;">
+                                <h4 style="font-size: 1.15rem; font-weight: 800; color: #10B981; margin-bottom: 0.4rem;">🏢 Central de Licencias Comerciales & Multi-Torneo (SaaS)</h4>
+                                <p style="font-size: 0.8rem; color: #CBD5E1; line-height: 1.5;">Crea múltiples torneos en simultáneo o genera licencias para otros clubes. Cada torneo tiene su propio enlace compartible (`?torneo=id`), su propia clave de administración y sus propios cuadros independientes.</p>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; background: #080C14; padding: 1.25rem; border-radius: 14px; border: 1px solid #1E293B; margin-bottom: 1.5rem;">
+                                <div>
+                                    <label style="font-size: 0.7rem; color: #94A3B8;">ID Único (Sin espacios, ej. club-colina)</label>
+                                    <input type="text" id="nuevoSaasId" placeholder="ej. copa-verano" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.7rem; color: #94A3B8;">Nombre del Nuevo Torneo</label>
+                                    <input type="text" id="nuevoSaasNombre" placeholder="Ej. Copa Verano Club Colina" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.7rem; color: #94A3B8;">Organizador / Cliente (Badge)</label>
+                                    <input type="text" id="nuevoSaasClub" placeholder="Ej. PÁDEL COLINA" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.7rem; color: #94A3B8;">Clave Licencia Admin para el Cliente</label>
+                                    <input type="text" id="nuevoSaasClave" placeholder="Ej. cliente2026" class="input-dark">
+                                </div>
+                                <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end; margin-top: 0.4rem;">
+                                    <button onclick="crearNuevoTorneoLicencia()" class="btn-confirm">+ Crear Nuevo Torneo / Licencia Activa</button>
+                                </div>
+                            </div>
+
+                            <h5 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.75rem;">Torneos & Licencias Activas en la Plataforma</h5>
+                            <div style="overflow-x: auto;">
+                                <table class="table-custom">
+                                    <thead>
+                                        <tr>
+                                            <th>ID Torneo</th>
+                                            <th>Nombre del Torneo</th>
+                                            <th>Organizador / Licencia</th>
+                                            <th>Clave Admin</th>
+                                            <th>Enlace Directo</th>
+                                            <th style="text-align: right;">Acción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tablaSaasTorneosBody"></tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
@@ -407,189 +532,273 @@
 
     <!-- FOOTER / AUSPICIADORES -->
     <footer>
-        <div style="max-width: 1200px; margin: 0 auto; padding: 2rem 1rem; text-align: center;">
+        <div style="max-width: 1280px; margin: 0 auto; padding: 2rem 1rem; text-align: center;">
             <div style="font-size: 0.7rem; text-transform: uppercase; color: #94A3B8; font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem;">Auspiciadores Oficiales del Circuito</div>
             <div style="overflow: hidden; width: 100%;">
                 <div id="carruselSponsorsPublico" class="animate-scroll" style="display: flex; gap: 2rem; align-items: center;"></div>
             </div>
-            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • God Mode Engine. Todos los derechos reservados.</div>
+            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • SaaS Multi-Torneo & God Mode Engine.</div>
         </div>
     </footer>
 
     <!-- MODAL DE INSCRIPCIÓN Y PERFIL DUAL -->
-    <div id="modalInscripcion" class="modal-oculto" style="position: fixed; inset: 0; background: rgba(5,7,11,0.85); backdrop-filter: blur(5px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem;">
-        <div class="admin-panel" style="max-width: 480px; width: 100%; position: relative; max-height: 90vh; overflow-y: auto;">
-            <button onclick="cerrarModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #94A3B8; font-size: 1.2rem; cursor: pointer;">&times;</button>
-            <span id="modalBoxLabel" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.2rem 0.6rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Box #1</span>
-            <h3 style="font-size: 1.3rem; font-weight: 700; margin: 0.5rem 0;">Inscripción & Perfil de Dupla</h3>
-            <p id="modalPrecioLabel" style="color: #10B981; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem;">Valor: $40.000 CLP</p>
-            <form onsubmit="procesarInscripcionYPago(event)" style="display: flex; flex-direction: column; gap: 0.75rem;">
+    <div id="modalInscripcion" class="modal-oculto" style="position: fixed; inset: 0; background: rgba(5,7,11,0.88); backdrop-filter: blur(6px); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 1rem;">
+        <div class="admin-panel" style="max-width: 480px; width: 100%; position: relative; max-height: 92vh; overflow-y: auto;">
+            <button onclick="cerrarModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #94A3B8; font-size: 1.4rem; cursor: pointer;">&times;</button>
+            <span id="modalBoxLabel" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">Box #1</span>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.5rem 0;">Inscripción & Perfil de Dupla</h3>
+            <p id="modalPrecioLabel" style="color: #10B981; font-size: 0.85rem; font-weight: 800; margin-bottom: 1rem;">Valor: $70.000 CLP</p>
+            <form id="formInscripcion" onsubmit="procesarInscripcionYPago(event)" style="display: flex; flex-direction: column; gap: 0.75rem;">
                 <div>
-                    <label style="font-size: 0.7rem; color: #94A3B8;">Alias de la Dupla (Equipo)</label>
+                    <label style="font-size: 0.72rem; color: #94A3B8;">Alias de la Dupla (Nombre del Equipo)</label>
                     <input type="text" id="inputAlias" required placeholder="Ej. Los Vikingos" class="input-dark">
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
                     <div>
-                        <label style="font-size: 0.7rem; color: #94A3B8;">Jugador 1</label>
-                        <input type="text" id="inputJ1" required placeholder="Nombre J1" class="input-dark">
+                        <label style="font-size: 0.72rem; color: #94A3B8;">Jugador 1</label>
+                        <input type="text" id="inputJ1" required placeholder="Nombre y Apellido" class="input-dark">
                     </div>
                     <div>
-                        <label style="font-size: 0.7rem; color: #94A3B8;">Jugador 2</label>
-                        <input type="text" id="inputJ2" required placeholder="Nombre J2" class="input-dark">
+                        <label style="font-size: 0.72rem; color: #94A3B8;">Jugador 2</label>
+                        <input type="text" id="inputJ2" required placeholder="Nombre y Apellido" class="input-dark">
                     </div>
                 </div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
                     <div>
-                        <label style="font-size: 0.7rem; color: #94A3B8;">Instagram J1</label>
-                        <input type="text" id="inputRedes1" placeholder="@instagram1" class="input-dark">
+                        <label style="font-size: 0.72rem; color: #94A3B8;">Instagram J1</label>
+                        <input type="text" id="inputRedes1" placeholder="@usuario1" class="input-dark">
                     </div>
                     <div>
-                        <label style="font-size: 0.7rem; color: #94A3B8;">Instagram J2</label>
-                        <input type="text" id="inputRedes2" placeholder="@instagram2" class="input-dark">
+                        <label style="font-size: 0.72rem; color: #94A3B8;">Instagram J2</label>
+                        <input type="text" id="inputRedes2" placeholder="@usuario2" class="input-dark">
                     </div>
                 </div>
                 <div>
-                    <label style="font-size: 0.7rem; color: #94A3B8;">Foto de Perfil / Dupla</label>
-                    <input type="file" accept="image/*" id="inputFileFotoJugador" class="input-dark" style="padding: 0.3rem;">
+                    <label style="font-size: 0.72rem; color: #94A3B8;">Subir Foto de la Dupla / Avatar (Opcional)</label>
+                    <input type="file" accept="image/*" id="inputFileFotoJugador" class="input-dark" style="padding: 0.35rem;">
                 </div>
                 <div>
-                    <label style="font-size: 0.7rem; color: #94A3B8;">PIN de Autogestión</label>
+                    <label style="font-size: 0.72rem; color: #94A3B8;">PIN de Autogestión (4 dígitos)</label>
                     <input type="password" id="inputPin" required placeholder="Ej. 1234" class="input-dark">
                 </div>
                 <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #94A3B8; cursor: pointer; margin-top: 0.25rem;">
-                    <input type="checkbox" id="checkReglamento" required> Acepto los términos y el reglamento oficial.
+                    <input type="checkbox" id="checkReglamento" required> Acepto los términos y el reglamento oficial del torneo.
                 </label>
-                <button type="submit" class="btn-action" style="background: #009EE3; color: #fff; margin-top: 0.5rem;">Ir a Pagar & Inscribir 💳</button>
+                <button type="submit" class="btn-action" style="background: #009EE3; color: #fff; margin-top: 0.5rem; padding: 0.85rem;">💳 Confirmar Inscripción & Ir a Mercado Pago</button>
             </form>
         </div>
     </div>
 
-    <!-- SCRIPT MASTER CON MOTOR DE CALENDARIO Y CUENTA REGRESIVA POR BOX -->
+    <!-- SCRIPT MASTER MULTI-TORNEO & RELOJ SUIZO -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v20';
+        const STORAGE_KEY_SAAS = 'tutorneo_saas_multi_db_v21';
+        const BROADCAST_CHANNEL = 'tutorneo_saas_sync_v21';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v20')) || {
-            config: {
-                nombreTorneo: "Copa Challenger Laguna Ayres",
-                badgeOrg: "Chicureo Open Pro",
-                logoTorneoImg: "",
-                heroBgUrl: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop",
-                colorPrimary: "#D4AF37",
-                linkPago: "https://www.mercadopago.cl",
-                precioInscripcion: 40000,
-                totalCanchas: 4,
-                fechaInicio: "2026-11-21",
-                fechaFin: "2026-11-22",
-                horaApertura: "09:00",
-                horaCierre: "21:00",
-                googleMapsQuery: "Laguna Ayres de Chicureo Colina Santiago",
-                comunicado: "¡Bienvenidos a la nueva fecha del circuito! Sorteo de grupos y 3 partidos por IA activo.",
-                cronograma: "<strong>SÁBADO:</strong> Fase de grupos (3 partidos por dupla) de 09:00 a 21:00 hrs.<br><strong>DOMINGO:</strong> Cuartos, Semis y Finales desde las 10:00 hrs.",
-                reglamento: "1. W.O. estricto a los 10 minutos.<br>2. Partidos a 1 set de 9 games con Punto de Oro."
-            },
-            sponsors: [
-                { nombre: "Chicureo Motors", url: "https://www.google.com", logoText: "🚗 CHICUREO MOTORS", logoImg: "" },
-                { nombre: "Pádel Pro Shop", url: "https://www.google.com", logoText: "🎾 PÁDEL PRO SHOP", logoImg: "" },
-                { nombre: "Laguna Sport", url: "https://www.google.com", logoText: "💧 LAGUNA SPORT", logoImg: "" }
-            ],
-            rankingCircuito: [
-                { pos: 1, dupla: "DUPLA ELITE 1", pts: 2450 },
-                { pos: 2, dupla: "CHICUREO GIRLS 1", pts: 2100 }
-            ],
-            llaves: {
-                varones: [], damas: [], mixto: []
-            },
-            cupos: {
-                varones: Array.from({length: 16}, (_, i) => ({
-                    id: i + 1,
-                    ocupado: i < 8,
-                    alias: i < 8 ? `DUPLA ELITE ${i+1}` : null,
-                    j1: `Jugador A${i+1}`,
-                    j2: `Jugador B${i+1}`,
-                    redes1: "@ig1",
-                    redes2: "@ig2",
-                    pin: "1234",
-                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=player${i}`,
-                    cancha: `Cancha #${(i % 4) + 1}`,
-                    estadoPartido: i < 4 ? "Jugando 🔴" : "Programado",
-                    horaInicioMatch: new Date(Date.now() + (i + 1) * 3600000).toISOString(),
-                    resultado: i < 4 ? "5 - 3" : "Próx."
-                })),
-                damas: Array.from({length: 16}, (_, i) => ({
-                    id: i + 1,
-                    ocupado: i < 6,
-                    alias: i < 6 ? `CHICUREO GIRLS ${i+1}` : null,
-                    j1: `Jugadora A${i+1}`,
-                    j2: `Jugadora B${i+1}`,
-                    redes1: "@ig_dama1",
-                    redes2: "@ig_dama2",
-                    pin: "1234",
-                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=dama${i}`,
-                    cancha: `Cancha #${(i % 4) + 1}`,
-                    estadoPartido: "Programado",
-                    horaInicioMatch: new Date(Date.now() + (i + 2) * 3600000).toISOString(),
-                    resultado: "Próx."
-                })),
-                mixto: Array.from({length: 16}, (_, i) => ({
-                    id: i + 1,
-                    ocupado: i < 4,
-                    alias: i < 4 ? `MIXED POWER ${i+1}` : null,
-                    j1: `Part. A${i+1}`,
-                    j2: `Part. B${i+1}`,
-                    redes1: "@mix1",
-                    redes2: "@mix2",
-                    pin: "1234",
-                    avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=mixto${i}`,
-                    cancha: `Cancha #${(i % 4) + 1}`,
-                    estadoPartido: "Programado",
-                    horaInicioMatch: new Date(Date.now() + (i + 3) * 3600000).toISOString(),
-                    resultado: "Próx."
-                }))
-            }
-        };
+        // Generador de plantilla limpia para cualquier torneo nuevo
+        function crearEstructuraTorneoBase(id, nombre, badge, claveLicencia) {
+            const fechaBase = "2026-11-21";
+            return {
+                id: id,
+                claveLicencia: claveLicencia || "admin2026",
+                config: {
+                    nombreTorneo: nombre || "TORNEO COPA CHALLENGER LAGUNA AYRES DE CHICUREO",
+                    badgeOrg: badge || "WIN WIN",
+                    logoTorneoImg: "",
+                    heroBgUrl: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop",
+                    colorPrimary: "#D4AF37",
+                    linkPago: "https://www.mercadopago.cl",
+                    precioInscripcion: 70000,
+                    totalCanchas: 4,
+                    duracionPartido: 45,
+                    fechaInicio: fechaBase,
+                    fechaFin: "2026-11-22",
+                    horaApertura: "09:00",
+                    horaCierre: "21:00",
+                    catNombres: {
+                        damas: "Damas C",
+                        varones: "Varones 5ª",
+                        mixto: "Mixto C"
+                    },
+                    googleMapsQuery: "Laguna Ayres de Chicureo Colina Santiago",
+                    comunicado: "¡Bienvenidos a la fecha oficial! Horarios y 3 partidos por pareja sincronizados por IA.",
+                    reglamento: "1. W.O. estricto a los 10 minutos.<br>2. Fase de grupos: 3 partidos garantizados por pareja.<br>3. Partidos a 1 set de 9 games con Punto de Oro."
+                },
+                sponsors: [
+                    { nombre: "Chicureo Motors", url: "https://www.google.com", logoText: "🚗 CHICUREO MOTORS", logoImg: "" },
+                    { nombre: "Pádel Pro Shop", url: "https://www.google.com", logoText: "🎾 PÁDEL PRO SHOP", logoImg: "" },
+                    { nombre: "Laguna Sport", url: "https://www.google.com", logoText: "💧 LAGUNA SPORT", logoImg: "" }
+                ],
+                puntosExtraRanking: {},
+                llaves: { varones: [], damas: [], mixto: [] },
+                cupos: {
+                    varones: Array.from({length: 16}, (_, i) => ({
+                        id: i + 1,
+                        ocupado: i < 4,
+                        alias: i < 4 ? `DUPLA ELITE ${i+1}` : "",
+                        j1: i < 4 ? `Jugador A${i+1}` : "",
+                        j2: i < 4 ? `Jugador B${i+1}` : "",
+                        redes1: "@ig1",
+                        redes2: "@ig2",
+                        pin: "1234",
+                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}_v_${i}`,
+                        cancha: `Cancha #${(i % 4) + 1}`,
+                        estadoPartido: "Programado",
+                        horaInicioMatch: `${fechaBase}T09:${(i % 2 === 0 ? '00' : '45')}`,
+                        resultado: "Próx."
+                    })),
+                    damas: Array.from({length: 16}, (_, i) => ({
+                        id: i + 1,
+                        ocupado: i < 2,
+                        alias: i < 2 ? `CHICUREO GIRLS ${i+1}` : "",
+                        j1: i < 2 ? `Jugadora A${i+1}` : "",
+                        j2: i < 2 ? `Jugadora B${i+1}` : "",
+                        redes1: "@ig_d1",
+                        redes2: "@ig_d2",
+                        pin: "1234",
+                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}_d_${i}`,
+                        cancha: `Cancha #${(i % 4) + 1}`,
+                        estadoPartido: "Programado",
+                        horaInicioMatch: `${fechaBase}T10:30`,
+                        resultado: "Próx."
+                    })),
+                    mixto: Array.from({length: 16}, (_, i) => ({
+                        id: i + 1,
+                        ocupado: i < 2,
+                        alias: i < 2 ? `MIXED POWER ${i+1}` : "",
+                        j1: i < 2 ? `Part. A${i+1}` : "",
+                        j2: i < 2 ? `Part. B${i+1}` : "",
+                        redes1: "@mix1",
+                        redes2: "@mix2",
+                        pin: "1234",
+                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}_m_${i}`,
+                        cancha: `Cancha #${(i % 4) + 1}`,
+                        estadoPartido: "Programado",
+                        horaInicioMatch: `${fechaBase}T11:15`,
+                        resultado: "Próx."
+                    }))
+                }
+            };
+        }
 
+        // Base de datos global SaaS
+        let saasDB = JSON.parse(localStorage.getItem(STORAGE_KEY_SAAS));
+        if (!saasDB || !saasDB.torneos) {
+            saasDB = {
+                torneoActivoId: "laguna-ayres",
+                torneos: {
+                    "laguna-ayres": crearEstructuraTorneoBase("laguna-ayres", "TORNEO COPA CHALLENGER LAGUNA AYRES DE CHICUREO", "WIN WIN", "admin2026"),
+                    "chicureo-open": crearEstructuraTorneoBase("chicureo-open", "CHICUREO OPEN PRO CIRCUIT", "CLUB CHICUREO", "club2026")
+                }
+            };
+            localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
+        }
+
+        // Leer parámetro ?torneo= de la URL si se compartió un link específico
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramTorneo = urlParams.get('torneo');
+        if (paramTorneo && saasDB.torneos[paramTorneo]) {
+            saasDB.torneoActivoId = paramTorneo;
+        }
+
+        let db = saasDB.torneos[saasDB.torneoActivoId];
         let catActiva = 'varones';
         let catLlavesActiva = 'varones';
         let boxSeleccionado = null;
         let isAdminLoggedIn = false;
 
+        function mostrarToast(mensaje) {
+            const t = document.getElementById('toastNotificacion');
+            t.innerText = mensaje || "✅ ¡Cambios confirmados y sincronizados al milímetro!";
+            t.style.display = 'flex';
+            setTimeout(() => { t.style.display = 'none'; }, 3200);
+        }
+
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v20', JSON.stringify(db));
+            saasDB.torneos[saasDB.torneoActivoId] = db;
+            localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v20'));
+                saasDB = JSON.parse(localStorage.getItem(STORAGE_KEY_SAAS));
+                db = saasDB.torneos[saasDB.torneoActivoId];
                 aplicarCMS();
                 renderPublico();
             }
         };
 
+        function cambiarTorneoActivo(nuevoId) {
+            if (saasDB.torneos[nuevoId]) {
+                saasDB.torneoActivoId = nuevoId;
+                db = saasDB.torneos[nuevoId];
+                sincronizar();
+                renderPublico();
+                if (isAdminLoggedIn) cargarValoresEnFormularioCMS();
+                mostrarToast(`🏢 Cambiado a: ${db.config.nombreTorneo}`);
+            }
+        }
+
+        function renderSelectoresCategorias() {
+            const nombres = db.config.catNombres || { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
+            
+            // Público
+            const contPub = document.getElementById('contenedorTabsCategoriasPublico');
+            if (contPub) {
+                contPub.innerHTML = ['damas', 'varones', 'mixto'].map(k => 
+                    `<button onclick="setCategoria('${k}')" class="tab-cat-btn ${catActiva === k ? 'active' : ''}">${nombres[k]}</button>`
+                ).join('');
+            }
+
+            // Llaves
+            const contLlaves = document.getElementById('contenedorTabsCategoriasLlaves');
+            if (contLlaves) {
+                contLlaves.innerHTML = ['damas', 'varones', 'mixto'].map(k => 
+                    `<button onclick="setCatLlaves('${k}')" class="tab-cat-btn ${catLlavesActiva === k ? 'active' : ''}">${nombres[k]}</button>`
+                ).join('');
+            }
+
+            // Select Admin Boxes
+            const selAdmin = document.getElementById('selectCatAdmin');
+            if (selAdmin) {
+                const valPrevio = selAdmin.value || 'varones';
+                selAdmin.innerHTML = ['varones', 'damas', 'mixto'].map(k => 
+                    `<option value="${k}" ${valPrevio === k ? 'selected' : ''}>${nombres[k]}</option>`
+                ).join('');
+            }
+        }
+
         function aplicarCMS() {
             document.documentElement.style.setProperty('--primary', db.config.colorPrimary || '#D4AF37');
-            const partes = db.config.nombreTorneo.split(' ');
-            const subName = partes.slice(2).join(' ') || 'Laguna Ayres';
-            document.getElementById('navTitle').innerHTML = `${partes[0] || 'Copa'} ${partes[1] || 'Challenger'} <span style="color:var(--primary);">${subName}</span>`;
-            document.getElementById('badgeOrgNav').innerText = db.config.badgeOrg;
-            document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
-            document.getElementById('heroMainTitle').innerHTML = `El Torneo de Pádel Más Exclusivo de <span style="color:var(--primary);">${partes[partes.length-1] || 'Chicureo'}</span>`;
             
-            // Generar texto dinámico de cronograma con los valores del almanaque
-            const cronoGenerado = `<strong>Del ${db.config.fechaInicio || '2026-11-21'} al ${db.config.fechaFin || '2026-11-22'}</strong><br>Horario diario de operación: de ${db.config.horaApertura || '09:00'} a ${db.config.horaCierre || '21:00'} hrs.<br>Fase de grupos (3 partidos por pareja) distribuidos por IA en ${db.config.totalCanchas || 4} canchas oficiales.`;
+            // Selector superior de torneos
+            const selTorneo = document.getElementById('selectorTorneoPublico');
+            if (selTorneo) {
+                selTorneo.innerHTML = Object.values(saasDB.torneos).map(t => 
+                    `<option value="${t.id}" ${t.id === saasDB.torneoActivoId ? 'selected' : ''}>🏆 ${t.config.badgeOrg}: ${t.config.nombreTorneo.substring(0, 28)}</option>`
+                ).join('');
+            }
+
+            const partes = (db.config.nombreTorneo || "TORNEO COPA CHALLENGER").split(' ');
+            const primerasDos = partes.slice(0, 2).join(' ');
+            const restoNombre = partes.slice(2).join(' ') || '';
+            document.getElementById('navTitle').innerHTML = `${primerasDos} <span style="color:var(--primary);">${restoNombre}</span>`;
+            document.getElementById('badgeOrgNav').innerText = db.config.badgeOrg || 'WIN WIN';
+            document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
+            document.getElementById('heroMainTitle').innerHTML = `${db.config.nombreTorneo} <span style="color:var(--primary);">• ${db.config.badgeOrg}</span>`;
+            document.getElementById('heroSubtitleBadge').innerText = `📅 ${db.config.fechaInicio} al ${db.config.fechaFin} • ⏰ ${db.config.horaApertura} a ${db.config.horaCierre} hrs • 🎾 ${db.config.totalCanchas} Canchas`;
+            document.getElementById('labelFechaReloj').innerText = `${db.config.fechaInicio} ${db.config.horaApertura} hrs`;
+
+            const cronoGenerado = `<strong>📅 FECHAS OFICIALES:</strong> Del ${db.config.fechaInicio} al ${db.config.fechaFin}<br><strong>⏰ HORARIO DE CANCHAS:</strong> Apertura ${db.config.horaApertura} hrs — Cierre ${db.config.horaCierre} hrs (Partidos de ${db.config.duracionPartido || 45} min)<br><strong>🎾 INFRAESTRUCTURA:</strong> ${db.config.totalCanchas} Canchas activas en simultáneo • 3 Partidos garantizados por pareja en fase de grupos.`;
             db.config.cronograma = cronoGenerado;
             document.getElementById('textoCronogramaPublico').innerHTML = cronoGenerado;
             document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
             
             const logoCont = document.getElementById('navLogoContainer');
             if(logoCont) {
-                if(db.config.logoTorneoImg) {
-                    logoCont.innerHTML = `<img src="${db.config.logoTorneoImg}" style="height: 36px; object-fit: contain; border-radius: 6px;">`;
-                } else {
-                    logoCont.innerHTML = ``;
-                }
+                logoCont.innerHTML = db.config.logoTorneoImg ? `<img src="${db.config.logoTorneoImg}" style="height: 38px; object-fit: contain; border-radius: 6px;">` : ``;
             }
 
             const banner = document.getElementById('heroBannerContainer');
@@ -612,13 +821,41 @@
 
             const carrusel = document.getElementById('carruselSponsorsPublico');
             if(carrusel) {
-                carrusel.innerHTML = '';
                 const itemsHtml = db.sponsors.map(s => {
-                    let contenidoVisual = s.logoImg ? `<img src="${s.logoImg}" style="height: 45px; object-fit: contain;">` : `<span style="font-size: 1rem; font-weight: 800; color: #fff;">${s.logoText || s.nombre}</span>`;
-                    return `<a href="${s.url}" target="_blank" style="background: #131C2E; padding: 0.6rem 1.25rem; border-radius: 14px; border: 1px solid #1E293B; display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">${contenidoVisual}</a>`;
+                    let contenidoVisual = s.logoImg ? `<img src="${s.logoImg}" style="height: 48px; object-fit: contain;">` : `<span style="font-size: 1rem; font-weight: 800; color: #fff;">${s.logoText || s.nombre}</span>`;
+                    return `<a href="${s.url}" target="_blank" style="background: #131C2E; padding: 0.65rem 1.4rem; border-radius: 14px; border: 1px solid #1E293B; display: flex; align-items: center; gap: 0.5rem; text-decoration: none;">${contenidoVisual}</a>`;
                 }).join('');
                 carrusel.innerHTML = itemsHtml + itemsHtml;
             }
+
+            renderSelectoresCategorias();
+            actualizarCajaPrivadaAdmin();
+        }
+
+        function cargarValoresEnFormularioCMS() {
+            if (!db.config.catNombres) db.config.catNombres = { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
+            document.getElementById('labelTorneoActivoAdmin').innerText = `${db.config.nombreTorneo} (${db.id})`;
+            const shareUrl = `${window.location.origin}${window.location.pathname}?torneo=${db.id}`;
+            document.getElementById('inputShareLinkTorneo').value = shareUrl;
+
+            document.getElementById('cfgNombreTorneo').value = db.config.nombreTorneo || '';
+            document.getElementById('cfgBadge').value = db.config.badgeOrg || '';
+            document.getElementById('cfgTotalCanchas').value = db.config.totalCanchas || 4;
+            document.getElementById('cfgDuracionPartido').value = db.config.duracionPartido || 45;
+            document.getElementById('cfgCatNombreDamas').value = db.config.catNombres.damas || 'Damas C';
+            document.getElementById('cfgCatNombreVarones').value = db.config.catNombres.varones || 'Varones 5ª';
+            document.getElementById('cfgCatNombreMixto').value = db.config.catNombres.mixto || 'Mixto C';
+            document.getElementById('cfgFechaInicio').value = db.config.fechaInicio || '2026-11-21';
+            document.getElementById('cfgFechaFin').value = db.config.fechaFin || '2026-11-22';
+            document.getElementById('cfgHoraApertura').value = db.config.horaApertura || '09:00';
+            document.getElementById('cfgHoraCierre').value = db.config.horaCierre || '21:00';
+            document.getElementById('cfgHeroUrl').value = db.config.heroBgUrl || '';
+            document.getElementById('cfgColorPrimario').value = db.config.colorPrimary || '#D4AF37';
+            document.getElementById('cfgLinkPago').value = db.config.linkPago || 'https://www.mercadopago.cl';
+            document.getElementById('cfgPrecioInscripcion').value = db.config.precioInscripcion || 70000;
+            document.getElementById('cfgGoogleMapsQuery').value = db.config.googleMapsQuery || '';
+            document.getElementById('cfgComunicado').value = db.config.comunicado || '';
+            document.getElementById('cfgReglamento').value = db.config.reglamento || '';
         }
 
         function cambiarVista(vista) {
@@ -631,6 +868,7 @@
             });
 
             if(vista === 'publico') {
+                renderPublico();
                 document.getElementById('vistaPublica').classList.add('activo');
                 document.getElementById('btnNavPub').classList.add('active');
             } else if(vista === 'llaves') {
@@ -652,25 +890,13 @@
                 if(isAdminLoggedIn) {
                     document.getElementById('adminLoginBox').style.display = 'none';
                     document.getElementById('adminPanelBox').classList.remove('modal-oculto');
+                    cargarValoresEnFormularioCMS();
                     renderAdminBoxes();
                     renderAdminParejas();
                     renderEditorSponsors();
                     renderEditorRankings();
+                    renderSaasTorneos();
                     actualizarCajaPrivadaAdmin();
-                    document.getElementById('cfgNombreTorneo').value = db.config.nombreTorneo || '';
-                    document.getElementById('cfgBadge').value = db.config.badgeOrg || '';
-                    document.getElementById('cfgHeroUrl').value = db.config.heroBgUrl || '';
-                    document.getElementById('cfgColorPrimario').value = db.config.colorPrimary || '#D4AF37';
-                    document.getElementById('cfgLinkPago').value = db.config.linkPago || '';
-                    document.getElementById('cfgPrecioInscripcion').value = db.config.precioInscripcion || 40000;
-                    document.getElementById('cfgTotalCanchas').value = db.config.totalCanchas || 4;
-                    document.getElementById('cfgFechaInicio').value = db.config.fechaInicio || '';
-                    document.getElementById('cfgFechaFin').value = db.config.fechaFin || '';
-                    document.getElementById('cfgHoraApertura').value = db.config.horaApertura || '';
-                    document.getElementById('cfgHoraCierre').value = db.config.horaCierre || '';
-                    document.getElementById('cfgGoogleMapsQuery').value = db.config.googleMapsQuery || '';
-                    document.getElementById('cfgComunicado').value = db.config.comunicado || '';
-                    document.getElementById('cfgReglamento').value = db.config.reglamento || '';
                 } else {
                     document.getElementById('adminPanelBox').classList.add('modal-oculto');
                     document.getElementById('adminLoginBox').style.display = 'block';
@@ -678,14 +904,14 @@
             }
         }
 
-        function verificarAdmin() { cambiarVista('admin'); }
-
         function procesarLoginAdmin(e) {
             e.preventDefault();
-            const clave = document.getElementById('inputClaveAdmin').value;
-            if(clave === "admin2026" || clave === "chicureo") {
+            const clave = document.getElementById('inputClaveAdmin').value.trim();
+            if(clave === "admin2026" || clave === "chicureo" || clave === db.claveLicencia) {
                 isAdminLoggedIn = true;
+                document.getElementById('inputClaveAdmin').value = '';
                 cambiarVista('admin');
+                mostrarToast("🔓 ¡Modo Dios Desbloqueado!");
             } else {
                 alert("❌ Clave incorrecta. Usa: admin2026");
             }
@@ -693,62 +919,93 @@
 
         function setCategoria(cat) {
             catActiva = cat;
-            ['damas', 'varones', 'mixto'].forEach(c => {
-                const btn = document.getElementById(`tab${c.charAt(0).toUpperCase() + c.slice(1)}`);
-                if(btn) {
-                    if(c === cat) btn.classList.add('active');
-                    else btn.classList.remove('active');
-                }
-            });
+            renderSelectoresCategorias();
             renderPublico();
         }
 
         function setCatLlaves(cat) {
             catLlavesActiva = cat;
-            ['damas', 'varones', 'mixto'].forEach(c => {
-                const btn = document.getElementById(`tabLlaves${c.charAt(0).toUpperCase() + c.slice(1)}`);
-                if(btn) {
-                    if(c === cat) btn.classList.add('active');
-                    else btn.classList.remove('active');
-                }
-            });
+            renderSelectoresCategorias();
             renderBracketTree();
         }
 
-        function ejecutarMotorIAProgramacion() {
-            let duplas = [];
-            db.cupos[catLlavesActiva].forEach(c => {
-                if(c.ocupado && c.alias) duplas.push(c.alias);
+        // SINCRONIZADOR AUTOMÁTICO DE HORARIOS DE BOXES CON EL ALMANAQUE
+        function sincronizarHorariosBoxesConAlmanaque() {
+            const fInicio = document.getElementById('cfgFechaInicio').value || db.config.fechaInicio || "2026-11-21";
+            const hApertura = document.getElementById('cfgHoraApertura').value || db.config.horaApertura || "09:00";
+            const duracion = Number(document.getElementById('cfgDuracionPartido').value) || db.config.duracionPartido || 45;
+            const totalC = Number(document.getElementById('cfgTotalCanchas').value) || db.config.totalCanchas || 4;
+
+            const [hBase, mBase] = hApertura.split(':').map(Number);
+            const baseDate = new Date(`${fInicio}T${String(hBase).padStart(2,'0')}:${String(mBase).padStart(2,'0')}:00`);
+
+            ['varones', 'damas', 'mixto'].forEach((cat, catIdx) => {
+                db.cupos[cat].forEach((cupo, idx) => {
+                    const turno = Math.floor(idx / totalC) + (catIdx * 2);
+                    const matchDate = new Date(baseDate.getTime() + turno * duracion * 60000);
+                    const yyyy = matchDate.getFullYear();
+                    const mm = String(matchDate.getMonth() + 1).padStart(2, '0');
+                    const dd = String(matchDate.getDate()).padStart(2, '0');
+                    const hh = String(matchDate.getHours()).padStart(2, '0');
+                    const min = String(matchDate.getMinutes()).padStart(2, '0');
+                    cupo.horaInicioMatch = `${yyyy}-${mm}-${dd}T${hh}:${min}`;
+                    cupo.cancha = `Cancha #${(idx % totalC) + 1}`;
+                });
             });
 
-            if(duplas.length < 3) {
-                alert("⚠️ Se necesitan al menos 3 duplas inscritas en esta categoría para que la IA genere los 3 partidos reglamentarios.");
-                return;
-            }
+            guardarTodoAdmin(true);
+            renderAdminBoxes();
+            mostrarToast("⏱️ ¡Todos los Boxes y Canchas fueron sincronizados con el Almanaque!");
+        }
 
-            let fixtures = [];
-            let baseTime = new Date().getTime() + 7200000; // 2 horas a partir de ahora para demo
+        // MOTOR IA: ARMAR FIXTURE DE 3 PARTIDOS RESPETANDO ALMANAQUE Y DESCANSO
+        function ejecutarMotorIAProgramacion() {
+            const fInicio = db.config.fechaInicio || "2026-11-21";
+            const hApertura = db.config.horaApertura || "09:00";
+            const duracion = Number(db.config.duracionPartido) || 45;
+            const totalC = Number(db.config.totalCanchas) || 4;
+            const [hBase, mBase] = hApertura.split(':').map(Number);
+            const baseDate = new Date(`${fInicio}T${String(hBase).padStart(2,'0')}:${String(mBase).padStart(2,'0')}:00`);
 
-            for(let i=0; i<duplas.length; i++) {
-                let p1 = duplas[i];
-                let p2 = duplas[(i + 1) % duplas.length];
-                let p3 = duplas[(i + 2) % duplas.length];
-                
-                // Asignar tiempos progresivos con descansos automáticos
-                fixtures.push({
-                    dupla: p1,
-                    juegos: [
-                        { rival: p2, hora: "09:30 hrs", cancha: "Cancha #1", timestamp: baseTime, res: "Prog." },
-                        { rival: p3, hora: "12:00 hrs", cancha: "Cancha #2", timestamp: baseTime + 7200000, res: "Prog." },
-                        { rival: duplas[(i + 3) % duplas.length], hora: "16:30 hrs", cancha: "Cancha #3", timestamp: baseTime + 14400000, res: "Prog." }
-                    ]
+            ['varones', 'damas', 'mixto'].forEach((cat, catOffset) => {
+                let duplas = db.cupos[cat].filter(c => c.ocupado && c.alias);
+                if (duplas.length < 2) return;
+
+                let fixtures = [];
+                duplas.forEach((c, i) => {
+                    const r1 = duplas[(i + 1) % duplas.length].alias;
+                    const r2 = duplas[(i + 2) % duplas.length]?.alias || "Por Definir";
+                    const r3 = duplas[(i + 3) % duplas.length]?.alias || "Por Definir";
+
+                    // 3 partidos con descanso programado entre rondas (cada 2 bloques)
+                    const t1 = new Date(baseDate.getTime() + ((i % totalC) + catOffset) * duracion * 60000);
+                    const t2 = new Date(t1.getTime() + (duracion * 2) * 60000);
+                    const t3 = new Date(t2.getTime() + (duracion * 2) * 60000);
+
+                    const fmt = (d) => `${d.toISOString().slice(0,10)} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} hrs`;
+                    const fmtInput = (d) => `${d.toISOString().slice(0,10)}T${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+
+                    // Actualizar también el horario del Box para su cuenta regresiva
+                    c.horaInicioMatch = fmtInput(t1);
+                    c.cancha = `Cancha #${(i % totalC) + 1}`;
+
+                    fixtures.push({
+                        dupla: c.alias,
+                        boxId: c.id,
+                        juegos: [
+                            { rival: r1, hora: fmt(t1), cancha: `Cancha #${(i % totalC) + 1}`, res: "Programado" },
+                            { rival: r2, hora: fmt(t2), cancha: `Cancha #${((i + 1) % totalC) + 1}`, res: "Con Descanso Previo" },
+                            { rival: r3, hora: fmt(t3), cancha: `Cancha #${((i + 2) % totalC) + 1}`, res: "Clasificatorio" }
+                        ]
+                    });
                 });
-            }
+                db.llaves[cat] = fixtures;
+            });
 
-            db.llaves[catLlavesActiva] = fixtures;
             sincronizar();
             renderBracketTree();
-            alert("🤖 ¡IA Activa! Fechas, horarios y 3 partidos por pareja programados con precisión quirúrgica.");
+            renderAdminBoxes();
+            mostrarToast("🤖 ¡IA ejecutada! 3 partidos por dupla, descansos y relojes actualizados.");
         }
 
         function renderBracketTree() {
@@ -758,32 +1015,35 @@
 
             let dataFixtures = db.llaves[catLlavesActiva] || [];
             if(dataFixtures.length === 0) {
-                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1;">El motor de IA aún no ha generado el fixture. Entra a Admin Master y presiona <strong>🤖 IA: Generar Fixture & 3 Partidos</strong>.</div>`;
+                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1; background:#0D1322; border-radius:16px; border:1px solid #1E293B;">Aún no se han generado los cruces automáticos para esta categoría. Entra a <strong>Admin Master</strong> y presiona <strong>🤖 IA: Armar Fixture 3 Partidos & Horarios</strong>.</div>`;
                 return;
             }
 
-            let html = ``;
-            dataFixtures.forEach((f) => {
-                html += `
-                    <div class="admin-panel" style="background:#0D1322; border:1px solid #1E293B;">
-                        <div style="font-size:0.75rem; color:var(--primary); font-family:'JetBrains Mono'; margin-bottom:0.5rem;">FASE DE GRUPOS (3 PARTIDOS)</div>
-                        <h4 style="font-size:1.2rem; font-weight:800; color:#fff; margin-bottom:1rem;">⭐ ${f.dupla}</h4>
-                        <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem; font-family:'JetBrains Mono';">
-                `;
-                f.juegos.forEach((j, jIdx) => {
-                    html += `
-                        <div style="background:#05070B; padding:0.6rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center;">
-                            <div>
-                                <div style="color:#60A5FA;">Partido #${jIdx+1} vs <strong>${j.rival}</strong></div>
-                                <div style="font-size:0.7rem; color:#94A3B8;">🕒 ${j.hora} • 🎾 ${j.cancha}</div>
+            container.innerHTML = dataFixtures.map(f => `
+                <div class="admin-panel" style="background:#0D1322; border:1px solid #1E293B;">
+                    <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--primary); font-family:'JetBrains Mono'; margin-bottom:0.4rem;">
+                        <span>BOX #${f.boxId || ''} • FASE DE GRUPOS</span>
+                        <span>3 PARTIDOS GARANTIZADOS</span>
+                    </div>
+                    <h4 style="font-size:1.15rem; font-weight:800; color:#fff; margin-bottom:1rem;">⭐ ${f.dupla}</h4>
+                    <div style="display:flex; flex-direction:column; gap:0.55rem; font-size:0.78rem; font-family:'JetBrains Mono';">
+                        ${f.juegos.map((j, jIdx) => `
+                            <div style="background:#05070B; padding:0.65rem; border-radius:8px; display:flex; justify-content:space-between; align-items:center; border:1px solid #1E293B;">
+                                <div>
+                                    <div style="color:#60A5FA;">Partido #${jIdx+1} vs <strong style="color:#fff;">${j.rival}</strong></div>
+                                    <div style="font-size:0.7rem; color:#94A3B8; margin-top:0.2rem;">🕒 ${j.hora} • 🎾 ${j.cancha}</div>
+                                </div>
+                                <span style="background:rgba(16,185,129,0.18); color:#10B981; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.68rem;">${j.res}</span>
                             </div>
-                            <span style="background:rgba(16,185,129,0.2); color:#10B981; padding:0.2rem 0.5rem; border-radius:4px; font-size:0.7rem;">${j.res}</span>
-                        </div>
-                    `;
-                });
-                html += `</div></div>`;
-            });
-            container.innerHTML = html;
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function formatearFechaHoraLegible(isoStr) {
+            if (!isoStr) return `${db.config.fechaInicio} ${db.config.horaApertura}`;
+            return isoStr.replace('T', ' ') + ' hrs';
         }
 
         function renderPublico() {
@@ -796,17 +1056,24 @@
                     card.className = "box-card box-roja";
                     card.innerHTML = `
                         <div class="status-badge badge-red">INSCRITO 🔴</div>
-                        <div style="font-size: 0.75rem; color: #fca5a5; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem; background: rgba(0,0,0,0.3); padding: 0.75rem; border-radius: 10px;">
-                            <img src="${cupo.avatar}" style="width: 40px; height: 40px; border-radius: 50%; background: #000; object-fit: cover;">
+                        <div style="font-size: 0.72rem; color: #fca5a5; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; background: rgba(0,0,0,0.35); padding: 0.75rem; border-radius: 10px;">
+                            <img src="${cupo.avatar}" style="width: 44px; height: 44px; border-radius: 50%; background: #000; object-fit: cover; border: 2px solid #ef4444;">
                             <div>
-                                <h4 style="font-size: 1rem; font-weight: 800;">${cupo.alias}</h4>
-                                <div style="font-size: 0.7rem; color: #fca5a5;">👤 ${cupo.j1} (${cupo.redes1 || ''}) / ${cupo.j2} (${cupo.redes2 || ''})</div>
+                                <h4 style="font-size: 1rem; font-weight: 800; color: #fff;">${cupo.alias || 'DUPLA INSCRITA'}</h4>
+                                <div style="font-size: 0.72rem; color: #fca5a5; margin-top: 0.15rem;">👤 ${cupo.j1 || 'Jugador 1'} / ${cupo.j2 || 'Jugador 2'}</div>
+                                <div style="font-size: 0.65rem; color: #cbd5e1;">📸 ${cupo.redes1 || ''} ${cupo.redes2 || ''}</div>
                             </div>
                         </div>
-                        <div style="margin-top: 0.75rem; display: flex; justify-content: space-between; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;">
-                            <span>Cuenta Regresiva:</span>
-                            <strong class="box-countdown" data-time="${cupo.horaInicioMatch || ''}" style="background: rgba(239, 68, 68, 0.4); padding: 0.1rem 0.4rem; border-radius: 4px; color: #fff;">Calculando...</strong>
+                        <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; display:flex; flex-direction:column; gap:0.3rem;">
+                            <div style="display:flex; justify-content:space-between;">
+                                <span style="color:#fca5a5;">🕒 Horario:</span>
+                                <strong>${formatearFechaHoraLegible(cupo.horaInicioMatch)}</strong>
+                            </div>
+                            <div style="display:flex; justify-content:space-between; align-items:center;">
+                                <span style="color:#fca5a5;">⏱️ Empieza en:</span>
+                                <strong class="box-countdown" data-time="${cupo.horaInicioMatch || `${db.config.fechaInicio}T${db.config.horaApertura}`}" style="background: rgba(0,0,0,0.45); padding: 0.15rem 0.5rem; border-radius: 4px; color: #FACC15;">Calculando...</strong>
+                            </div>
                         </div>
                     `;
                 } else {
@@ -814,13 +1081,14 @@
                     card.onclick = () => abrirModalInscripcion(cupo.id);
                     card.innerHTML = `
                         <div class="status-badge badge-green">DISPONIBLE 🟢</div>
-                        <div style="font-size: 0.75rem; color: #6ee7b7; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 Cancha Oficial</div>
-                        <div style="background: rgba(0,0,0,0.2); padding: 1rem; border-radius: 10px; text-align: center;">
-                            <div style="font-size: 1rem; font-weight: 800; color: #34d399;">¡Invítate a Jugar!</div>
-                            <p style="font-size: 0.7rem; color: #a7f3d0; margin-top: 0.2rem;">Haz clic para registrar tu dupla y pagar online.</p>
+                        <div style="font-size: 0.72rem; color: #6ee7b7; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
+                        <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 10px; text-align: center;">
+                            <div style="font-size: 1.05rem; font-weight: 800; color: #34d399;">¡Cupo Disponible!</div>
+                            <p style="font-size: 0.72rem; color: #a7f3d0; margin-top: 0.25rem;">Inscribe a tu pareja y asegura tus 3 partidos.</p>
                         </div>
-                        <div style="margin-top: 0.75rem; display: flex; justify-content: flex-end;">
-                            <span style="background: #10b981; color: #030508; font-size: 0.75rem; font-weight: 700; padding: 0.25rem 0.75rem; border-radius: 6px;">Inscribir Ahora 💳</span>
+                        <div style="margin-top: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem;">
+                            <span style="color:#a7f3d0; font-family:'JetBrains Mono';">$${Number(db.config.precioInscripcion).toLocaleString('es-CL')} CLP</span>
+                            <span style="background: #10b981; color: #030508; font-weight: 800; padding: 0.3rem 0.75rem; border-radius: 6px;">Inscribir Ahora 💳</span>
                         </div>
                     `;
                 }
@@ -829,20 +1097,41 @@
             actualizarContadoresRegresivos();
         }
 
-        // MOTOR DE CUENTA REGRESIVA POR BOX EN VIVO
+        // MOTOR DE RELOJES REGRESIVOS (HERO + CADA BOX) CONECTADO AL ALMANAQUE
         function actualizarContadoresRegresivos() {
+            const ahora = new Date().getTime();
+
+            // 1. Reloj Gigante Principal conectado a Fecha de Inicio + Hora de Apertura del Almanaque
+            const strFechaTorneo = `${db.config.fechaInicio || '2026-11-21'}T${db.config.horaApertura || '09:00'}:00`;
+            const targetTorneo = new Date(strFechaTorneo).getTime();
+            const elGigante = document.getElementById('relojGigante');
+            if (elGigante && !isNaN(targetTorneo)) {
+                const diffG = targetTorneo - ahora;
+                if (diffG > 0) {
+                    const d = Math.floor(diffG / (1000 * 60 * 60 * 24));
+                    const h = Math.floor((diffG % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const m = Math.floor((diffG % (1000 * 60 * 60)) / (1000 * 60));
+                    const s = Math.floor((diffG % (1000 * 60)) / 1000);
+                    elGigante.innerText = `${d}D : ${String(h).padStart(2,'0')}H : ${String(m).padStart(2,'0')}M : ${String(s).padStart(2,'0')}S`;
+                } else {
+                    elGigante.innerText = "🎾 ¡TORNEO EN JUEGO!";
+                }
+            }
+
+            // 2. Relojes individuales de cada Box
             const elements = document.querySelectorAll('.box-countdown');
             elements.forEach(el => {
-                const targetTime = new Date(el.getAttribute('data-time')).getTime();
-                const now = new Date().getTime();
-                const diff = targetTime - now;
-                if(diff > 0) {
+                const rawTime = el.getAttribute('data-time');
+                const targetTime = new Date(rawTime.length === 16 ? rawTime + ':00' : rawTime).getTime();
+                const diff = targetTime - ahora;
+                if(!isNaN(diff) && diff > 0) {
+                    const d = Math.floor(diff / (1000 * 60 * 60 * 24));
                     const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                     const secs = Math.floor((diff % (1000 * 60)) / 1000);
-                    el.innerText = `${hrs}h ${mins}m ${secs}s`;
+                    el.innerText = d > 0 ? `${d}d ${hrs}h ${mins}m ${secs}s` : `${hrs}h ${mins}m ${secs}s`;
                 } else {
-                    el.innerText = "¡En Juego / Live!";
+                    el.innerText = "🎾 ¡En Cancha / Live!";
                 }
             });
         }
@@ -850,8 +1139,9 @@
 
         function abrirModalInscripcion(id) {
             boxSeleccionado = id;
-            document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${catActiva.toUpperCase()}`;
-            document.getElementById('modalPrecioLabel').innerText = `Valor de inscripción: $${db.config.precioInscripcion.toLocaleString('es-CL')} CLP`;
+            const nombreCat = (db.config.catNombres && db.config.catNombres[catActiva]) || catActiva.toUpperCase();
+            document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${nombreCat}`;
+            document.getElementById('modalPrecioLabel').innerText = `Valor de inscripción: $${Number(db.config.precioInscripcion).toLocaleString('es-CL')} CLP`;
             document.getElementById('modalInscripcion').classList.remove('modal-oculto');
         }
 
@@ -863,12 +1153,12 @@
 
         function procesarInscripcionYPago(e) {
             e.preventDefault();
-            const alias = document.getElementById('inputAlias').value;
-            const j1 = document.getElementById('inputJ1').value;
-            const j2 = document.getElementById('inputJ2').value;
-            const redes1 = document.getElementById('inputRedes1').value;
-            const redes2 = document.getElementById('inputRedes2').value;
-            const pin = document.getElementById('inputPin').value;
+            const alias = document.getElementById('inputAlias').value.trim();
+            const j1 = document.getElementById('inputJ1').value.trim();
+            const j2 = document.getElementById('inputJ2').value.trim();
+            const redes1 = document.getElementById('inputRedes1').value.trim();
+            const redes2 = document.getElementById('inputRedes2').value.trim();
+            const pin = document.getElementById('inputPin').value.trim();
             const fileInput = document.getElementById('inputFileFotoJugador');
 
             const cupo = db.cupos[catActiva].find(x => x.id === boxSeleccionado);
@@ -881,7 +1171,9 @@
                 cupo.redes2 = redes2;
                 cupo.pin = pin;
                 cupo.estadoPartido = "Programado";
-                cupo.horaInicioMatch = new Date(Date.now() + 5400000).toISOString();
+                if (!cupo.horaInicioMatch) {
+                    cupo.horaInicioMatch = `${db.config.fechaInicio}T${db.config.horaApertura}`;
+                }
                 cupo.resultado = "Próx.";
 
                 if(fileInput.files && fileInput.files[0]) {
@@ -894,34 +1186,27 @@
                 }
             }
 
+            const boxGuardado = boxSeleccionado;
+            const horarioAsignado = cupo ? formatearFechaHoraLegible(cupo.horaInicioMatch) : '';
+            const canchaAsignada = cupo ? cupo.cancha : 'Cancha #1';
+
             sincronizar();
             cerrarModal();
 
+            document.getElementById('exitoTorneoNombre').innerText = db.config.nombreTorneo;
             document.getElementById('exitoAlias').innerText = alias;
-            document.getElementById('exitoJugadores').innerText = `${j1} (${redes1 || 'Sin IG'}) / ${j2} (${redes2 || 'Sin IG'})`;
-            document.getElementById('exitoBox').innerText = `Box #${boxSeleccionado} (${catActiva.toUpperCase()})`;
+            document.getElementById('exitoJugadores').innerText = `${j1} (${redes1 || 'Sin IG'}) & ${j2} (${redes2 || 'Sin IG'})`;
+            document.getElementById('exitoBox').innerText = `Box #${boxGuardado} • ${canchaAsignada}`;
+            document.getElementById('exitoHorarioPartido').innerText = horarioAsignado;
+            document.getElementById('exitoMontoPago').innerText = `$${Number(db.config.precioInscripcion).toLocaleString('es-CL')} CLP`;
             document.getElementById('exitoCronogramaContenedor').innerHTML = db.config.cronograma;
+            document.getElementById('btnIrMercadoPagoDirecto').href = db.config.linkPago || 'https://www.mercadopago.cl';
 
             cambiarVista('exito');
-            
             setTimeout(() => {
-                window.open(db.config.linkPago, '_blank');
-            }, 1200);
+                window.open(db.config.linkPago || 'https://www.mercadopago.cl', '_blank');
+            }, 900);
         }
-
-        setInterval(() => {
-            const evento = new Date('2026-11-21T09:00:00').getTime();
-            const ahora = new Date().getTime();
-            const diff = evento - ahora;
-            if(diff > 0) {
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-                const s = Math.floor((diff % (1000 * 60)) / 1000);
-                const el = document.getElementById('relojGigante');
-                if(el) el.innerText = `${d}D : ${h}H : ${m}M : ${s}S`;
-            }
-        }, 1000);
 
         function renderTV() {
             const gridCanchas = document.getElementById('gridEstadoCanchasTV');
@@ -940,14 +1225,14 @@
                     const cardC = document.createElement('div');
                     if(partidoActual && partidoActual.estadoPartido.includes("Jugando")) {
                         cardC.className = "box-card box-roja";
-                        cardC.innerHTML = `<div class="status-badge badge-red">Jugando 🔴</div><div style="font-size:0.75rem; color:#fca5a5;">Cancha #${cNum}</div><h4 style="font-size:1.1rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.8rem;">Marcador: <strong>${partidoActual.resultado}</strong></div>`;
+                        cardC.innerHTML = `<div class="status-badge badge-red">JUGANDO 🔴</div><div style="font-size:0.75rem; color:#fca5a5;">Cancha #${cNum}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.78rem; color:#fca5a5;">${partidoActual.j1} / ${partidoActual.j2}</div><div style="font-size:0.85rem; margin-top:0.5rem;">Marcador: <strong style="color:#FACC15;">${partidoActual.resultado}</strong></div>`;
                     } else if(partidoActual) {
                         cardC.className = "box-card";
                         cardC.style.background = "#1E293B";
-                        cardC.innerHTML = `<div class="status-badge" style="background:#3B82F6; color:#fff;">Programado</div><div style="font-size:0.75rem; color:#94A3B8;">Cancha #${cNum}</div><h4 style="font-size:1.1rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.8rem; color:#94A3B8;">Estado: ${partidoActual.estadoPartido}</div>`;
+                        cardC.innerHTML = `<div class="status-badge" style="background:#3B82F6; color:#fff;">PROGRAMADO</div><div style="font-size:0.75rem; color:#94A3B8;">Cancha #${cNum}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.78rem; color:#cbd5e1;">🕒 ${formatearFechaHoraLegible(partidoActual.horaInicioMatch)}</div>`;
                     } else {
                         cardC.className = "box-card box-verde";
-                        cardC.innerHTML = `<div class="status-badge badge-green">Libre 🟢</div><div style="font-size:0.75rem; color:#6ee7b7;">Cancha #${cNum}</div><h4 style="font-size:1.1rem; font-weight:800; margin:0.5rem 0; color:#34d399;">Disponible</h4><div style="font-size:0.8rem; color:#a7f3d0;">Lista para jugar</div>`;
+                        cardC.innerHTML = `<div class="status-badge badge-green">LIBRE 🟢</div><div style="font-size:0.75rem; color:#6ee7b7;">Cancha #${cNum}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0; color:#34d399;">Cancha Disponible</h4><div style="font-size:0.8rem; color:#a7f3d0;">Lista para siguiente turno</div>`;
                     }
                     gridCanchas.appendChild(cardC);
                 }
@@ -956,94 +1241,169 @@
             let inscritas = [];
             Object.keys(db.cupos).forEach(cat => {
                 db.cupos[cat].forEach(cp => {
-                    if(cp.ocupado && cp.alias) inscritas.push(cp.alias);
+                    if(cp.ocupado && cp.alias) {
+                        const ptsGuardados = (db.puntosExtraRanking && db.puntosExtraRanking[cp.alias]) || 1800;
+                        inscritas.push({ alias: cp.alias, pts: ptsGuardados });
+                    }
                 });
             });
+            inscritas.sort((a,b) => b.pts - a.pts);
 
             const tbCircuito = document.getElementById('tablaRankingCircuitoTV');
             if(tbCircuito) {
-                tbCircuito.innerHTML = '';
-                inscritas.forEach((dup, idx) => {
-                    tbCircuito.innerHTML += `<tr><td style="color:var(--primary); font-weight:700;">#${idx+1}</td><td>${dup}</td><td style="text-align:right; color:#10B981; font-weight:700;">${2500 - (idx*150)} pts</td></tr>`;
-                });
+                tbCircuito.innerHTML = inscritas.map((item, idx) => `<tr><td style="color:var(--primary); font-weight:800;">#${idx+1}</td><td>${item.alias}</td><td style="text-align:right; color:#10B981; font-weight:800;">${item.pts} pts</td></tr>`).join('');
             }
             const tbChallenger = document.getElementById('tablaRankingChallengerTV');
             if(tbChallenger) {
-                tbChallenger.innerHTML = '';
-                inscritas.slice().reverse().forEach((dup, idx) => {
-                    tbChallenger.innerHTML += `<tr><td style="color:var(--primary); font-weight:700;">#${idx+1}</td><td>${dup}</td><td style="text-align:right; color:#10B981; font-weight:700;">${1200 - (idx*100)} pts</td></tr>`;
-                });
+                tbChallenger.innerHTML = inscritas.map((item, idx) => `<tr><td style="color:var(--primary); font-weight:800;">#${idx+1}</td><td>${item.alias}</td><td style="text-align:right; color:#10B981; font-weight:800;">${Math.max(500, item.pts - 350)} pts</td></tr>`).join('');
             }
         }
 
         function setTabAdmin(tab) {
-            ['subPanelBoxes', 'subPanelParejas', 'subPanelCms', 'subPanelSponsors', 'subPanelRanking'].forEach(p => {
+            ['subPanelBoxes', 'subPanelParejas', 'subPanelCms', 'subPanelSponsors', 'subPanelRanking', 'subPanelSaas'].forEach(p => {
                 document.getElementById(p).classList.add('modal-oculto');
             });
-            ['tabAdminBoxes', 'tabAdminParejas', 'tabAdminCms', 'tabAdminSponsors', 'tabAdminRanking'].forEach(t => {
+            ['tabAdminBoxes', 'tabAdminParejas', 'tabAdminCms', 'tabAdminSponsors', 'tabAdminRanking', 'tabAdminSaas'].forEach(t => {
                 document.getElementById(t).classList.remove('active');
             });
 
             if(tab === 'boxes') {
                 document.getElementById('subPanelBoxes').classList.remove('modal-oculto');
                 document.getElementById('tabAdminBoxes').classList.add('active');
+                renderAdminBoxes();
             } else if(tab === 'parejas') {
                 document.getElementById('subPanelParejas').classList.remove('modal-oculto');
                 document.getElementById('tabAdminParejas').classList.add('active');
                 renderAdminParejas();
             } else if(tab === 'cms') {
+                cargarValoresEnFormularioCMS();
                 document.getElementById('subPanelCms').classList.remove('modal-oculto');
                 document.getElementById('tabAdminCms').classList.add('active');
             } else if(tab === 'sponsors') {
                 document.getElementById('subPanelSponsors').classList.remove('modal-oculto');
                 document.getElementById('tabAdminSponsors').classList.add('active');
                 renderEditorSponsors();
-            } else {
+            } else if(tab === 'ranking') {
                 document.getElementById('subPanelRanking').classList.remove('modal-oculto');
                 document.getElementById('tabAdminRanking').classList.add('active');
+                renderEditorRankings();
+            } else if(tab === 'saas') {
+                document.getElementById('subPanelSaas').classList.remove('modal-oculto');
+                document.getElementById('tabAdminSaas').classList.add('active');
+                renderSaasTorneos();
             }
         }
 
         function actualizarCajaPrivadaAdmin() {
             let total = 0;
             Object.values(db.cupos).forEach(cat => cat.forEach(c => { if(c.ocupado) total++; }));
-            document.getElementById('adminCajaTotal').innerText = "$" + (total * db.config.precioInscripcion).toLocaleString('es-CL') + " CLP";
-            document.getElementById('adminCuposStats').innerText = `${total} / 48`;
+            const elCaja = document.getElementById('adminCajaTotal');
+            const elStats = document.getElementById('adminCuposStats');
+            if(elCaja) elCaja.innerText = "$" + (total * (Number(db.config.precioInscripcion) || 0)).toLocaleString('es-CL') + " CLP";
+            if(elStats) elStats.innerText = `${total} / 48`;
         }
 
         function renderAdminBoxes() {
-            const cat = document.getElementById('selectCatAdmin').value;
+            const cat = document.getElementById('selectCatAdmin').value || 'varones';
             const tbody = document.getElementById('tablaAdminBoxesBody');
+            if(!tbody) return;
             tbody.innerHTML = '';
+            const totalC = Number(db.config.totalCanchas) || 4;
+
             db.cupos[cat].forEach(c => {
+                let opcionesCanchas = '';
+                for(let i=1; i<=totalC; i++) {
+                    const cNom = `Cancha #${i}`;
+                    opcionesCanchas += `<option value="${cNom}" ${c.cancha === cNom ? 'selected' : ''}>${cNom}</option>`;
+                }
+
                 tbody.innerHTML += `
                     <tr>
                         <td><strong>Box #${c.id}</strong></td>
-                        <td><select onchange="cambiarEstado('${cat}', ${c.id}, this.value)" class="input-dark" style="width:100px;"><option value="libre" ${!c.ocupado?'selected':''}>Libre</option><option value="ocupado" ${c.ocupado?'selected':''}>Ocupado</option></select></td>
-                        <td><input type="text" value="${c.alias || ''}" onchange="cambiarAlias('${cat}', ${c.id}, this.value)" class="input-dark"></td>
-                        <td><select onchange="cambiarCancha('${cat}', ${c.id}, this.value)" class="input-dark" style="width:110px;"><option value="Cancha #1" ${c.cancha==='Cancha #1'?'selected':''}>Cancha #1</option><option value="Cancha #2" ${c.cancha==='Cancha #2'?'selected':''}>Cancha #2</option><option value="Cancha #3" ${c.cancha==='Cancha #3'?'selected':''}>Cancha #3</option><option value="Cancha #4" ${c.cancha==='Cancha #4'?'selected':''}>Cancha #4</option></select></td>
-                        <td><select onchange="cambiarEstadoPartido('${cat}', ${c.id}, this.value)" class="input-dark" style="width:120px;"><option value="Programado" ${c.estadoPartido==='Programado'?'selected':''}>Programado</option><option value="Jugando 🔴" ${c.estadoPartido==='Jugando 🔴'?'selected':''}>Jugando 🔴</option><option value="Terminado 🏁" ${c.estadoPartido==='Terminado 🏁'?'selected':''}>Terminado 🏁</option></select></td>
-                        <td><input type="text" value="${c.resultado}" onchange="cambiarRes('${cat}', ${c.id}, this.value)" class="input-dark" style="width:80px;"></td>
+                        <td>
+                            <select onchange="cambiarEstado('${cat}', ${c.id}, this.value)" class="input-dark" style="width:105px;">
+                                <option value="libre" ${!c.ocupado?'selected':''}>🟢 Libre</option>
+                                <option value="ocupado" ${c.ocupado?'selected':''}>🔴 Inscrito</option>
+                            </select>
+                        </td>
+                        <td><input type="text" value="${c.alias || ''}" placeholder="Nombre Dupla" onchange="cambiarCampoBox('${cat}', ${c.id}, 'alias', this.value)" class="input-dark" style="min-width:130px;"></td>
+                        <td>
+                            <div style="display:flex; gap:0.3rem;">
+                                <input type="text" value="${c.j1 || ''}" placeholder="Jugador 1" onchange="cambiarCampoBox('${cat}', ${c.id}, 'j1', this.value)" class="input-dark" style="min-width:95px;">
+                                <input type="text" value="${c.j2 || ''}" placeholder="Jugador 2" onchange="cambiarCampoBox('${cat}', ${c.id}, 'j2', this.value)" class="input-dark" style="min-width:95px;">
+                            </div>
+                        </td>
+                        <td>
+                            <input type="datetime-local" value="${(c.horaInicioMatch || `${db.config.fechaInicio}T${db.config.horaApertura}`).slice(0,16)}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'horaInicioMatch', this.value)" class="input-dark" style="min-width:165px;">
+                        </td>
+                        <td>
+                            <select onchange="cambiarCampoBox('${cat}', ${c.id}, 'cancha', this.value)" class="input-dark" style="width:110px;">
+                                ${opcionesCanchas}
+                            </select>
+                        </td>
+                        <td>
+                            <select onchange="cambiarCampoBox('${cat}', ${c.id}, 'estadoPartido', this.value)" class="input-dark" style="width:120px;">
+                                <option value="Programado" ${c.estadoPartido==='Programado'?'selected':''}>Programado</option>
+                                <option value="Jugando 🔴" ${c.estadoPartido==='Jugando 🔴'?'selected':''}>Jugando 🔴</option>
+                                <option value="Terminado 🏁" ${c.estadoPartido==='Terminado 🏁'?'selected':''}>Terminado 🏁</option>
+                            </select>
+                        </td>
+                        <td><input type="text" value="${c.resultado || 'Próx.'}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'resultado', this.value)" class="input-dark" style="width:75px;"></td>
+                        <td><button onclick="confirmarFilaBox()" class="btn-small-ok">✔ Fijar</button></td>
                     </tr>
                 `;
             });
             actualizarCajaPrivadaAdmin();
         }
 
+        function cambiarCampoBox(cat, id, campo, valor) {
+            const c = db.cupos[cat].find(x => x.id === id);
+            if (c) {
+                c[campo] = valor;
+                if (campo === 'alias' && valor.trim() !== '') c.ocupado = true;
+                sincronizar();
+            }
+        }
+
+        function confirmarFilaBox() {
+            sincronizar();
+            renderPublico();
+            mostrarToast("✅ ¡Box, horario y jugadores confirmados!");
+        }
+
+        function confirmarCambiosTablaBoxes() {
+            sincronizar();
+            renderPublico();
+            mostrarToast("✅ ¡Toda la tabla de Canchas y Horarios fue confirmada!");
+        }
+
         function renderAdminParejas() {
             const tbody = document.getElementById('tablaAdminParejasBody');
+            if(!tbody) return;
             tbody.innerHTML = '';
+            const nombresCat = db.config.catNombres || { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
+
             Object.keys(db.cupos).forEach(cat => {
                 db.cupos[cat].forEach(c => {
                     if(c.ocupado) {
                         tbody.innerHTML += `
                             <tr>
-                                <td style="text-transform:uppercase; font-weight:700; color:var(--primary);">${cat}</td>
+                                <td style="font-weight:800; color:var(--primary);">${nombresCat[cat] || cat}</td>
                                 <td><strong>Box #${c.id}</strong></td>
-                                <td style="font-weight:700; color:#fff;">${c.alias}</td>
-                                <td>${c.j1} (${c.redes1 || ''}) / ${c.j2} (${c.redes2 || ''})</td>
-                                <td style="font-family:'JetBrains Mono'; color:#FACC15;">${c.pin}</td>
-                                <td style="text-align:right;"><button onclick="liberarBox('${cat}', ${c.id})" style="background:#EF4444; color:#fff; border:none; padding:0.25rem 0.5rem; border-radius:6px; cursor:pointer; font-size:0.75rem;">Liberar</button></td>
+                                <td><input type="text" value="${c.alias || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'alias', this.value)" class="input-dark"></td>
+                                <td><input type="text" value="${c.j1 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'j1', this.value)" class="input-dark"></td>
+                                <td><input type="text" value="${c.j2 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'j2', this.value)" class="input-dark"></td>
+                                <td>
+                                    <div style="display:flex; gap:0.25rem;">
+                                        <input type="text" value="${c.redes1 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'redes1', this.value)" class="input-dark" placeholder="@ig1">
+                                        <input type="text" value="${c.redes2 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'redes2', this.value)" class="input-dark" placeholder="@ig2">
+                                    </div>
+                                </td>
+                                <td><input type="text" value="${c.pin || '1234'}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'pin', this.value)" class="input-dark" style="width:70px; color:#FACC15;"></td>
+                                <td style="text-align:right; white-space:nowrap;">
+                                    <button onclick="confirmarFilaBox()" class="btn-small-ok" style="margin-right:0.3rem;">✔ Guardar</button>
+                                    <button onclick="liberarBox('${cat}', ${c.id})" style="background:#EF4444; color:#fff; border:none; padding:0.4rem 0.6rem; border-radius:6px; cursor:pointer; font-size:0.72rem; font-weight:700;">Liberar</button>
+                                </td>
                             </tr>
                         `;
                     }
@@ -1053,35 +1413,108 @@
 
         function liberarBox(cat, id) {
             const c = db.cupos[cat].find(x => x.id === id);
-            c.ocupado = false; c.alias = null; c.j1 = ''; c.j2 = '';
+            c.ocupado = false; c.alias = ""; c.j1 = ""; c.j2 = "";
             sincronizar(); renderAdminParejas(); renderAdminBoxes();
+            mostrarToast("🗑️ Cupo liberado y disponible en verde.");
         }
 
         function cambiarEstado(cat, id, val) {
             const c = db.cupos[cat].find(x => x.id === id);
             c.ocupado = (val === 'ocupado');
-            if(c.ocupado && !c.alias) c.alias = "NUEVA DUPLA";
-            sincronizar(); renderPublico();
+            if(c.ocupado && !c.alias) c.alias = `DUPLA BOX #${id}`;
+            sincronizar(); renderAdminBoxes(); renderPublico();
         }
-
-        function cambiarAlias(cat, id, val) { db.cupos[cat].find(x => x.id === id).alias = val; sincronizar(); renderPublico(); }
-        function cambiarCancha(cat, id, val) { db.cupos[cat].find(x => x.id === id).cancha = val; sincronizar(); }
-        function cambiarEstadoPartido(cat, id, val) { db.cupos[cat].find(x => x.id === id).estadoPartido = val; sincronizar(); }
-        function cambiarRes(cat, id, val) { db.cupos[cat].find(x => x.id === id).resultado = val; sincronizar(); }
 
         function renderEditorSponsors() {
             const cont = document.getElementById('editorSponsorsAdmin');
+            if(!cont) return;
             cont.innerHTML = '';
             db.sponsors.forEach((s, index) => {
                 cont.innerHTML += `
-                    <div style="display:flex; gap:0.75rem; align-items:center; background:#05070B; padding:0.75rem; border-radius:10px; border:1px solid #1E293B;">
-                        <input type="text" value="${s.logoText || ''}" onchange="db.sponsors[${index}].logoText=this.value" class="input-dark" placeholder="Nombre Sponsor" style="width: 150px;">
-                        <input type="text" value="${s.url}" onchange="db.sponsors[${index}].url=this.value" class="input-dark" placeholder="URL Enlace" style="flex:1;">
+                    <div style="display:flex; gap:0.75rem; align-items:center; background:#05070B; padding:0.75rem; border-radius:10px; border:1px solid #1E293B; flex-wrap:wrap;">
+                        <input type="text" value="${s.logoText || ''}" onchange="db.sponsors[${index}].logoText=this.value; sincronizar();" class="input-dark" placeholder="Nombre Sponsor" style="width: 180px;">
+                        <input type="text" value="${s.url}" onchange="db.sponsors[${index}].url=this.value; sincronizar();" class="input-dark" placeholder="URL Enlace" style="flex:1; min-width:180px;">
                         <input type="file" accept="image/*" onchange="subirLogo(event, ${index})" style="font-size:0.75rem; color:#94A3B8;">
-                        <button onclick="db.sponsors.splice(${index},1); renderEditorSponsors();" style="background:none; border:none; color:#EF4444; cursor:pointer; font-weight:700;">X</button>
+                        <button onclick="sincronizar(); mostrarToast('✅ Sponsor confirmado');" class="btn-small-ok">✔ Confirmar</button>
+                        <button onclick="db.sponsors.splice(${index},1); sincronizar(); renderEditorSponsors();" style="background:#EF4444; color:#fff; border:none; padding:0.35rem 0.65rem; border-radius:6px; cursor:pointer; font-weight:700;">Eliminar</button>
                     </div>
                 `;
             });
+        }
+
+        function renderEditorRankings() {
+            const cont = document.getElementById('editorRankingCircuitoAdmin');
+            if(!cont) return;
+            if(!db.puntosExtraRanking) db.puntosExtraRanking = {};
+            cont.innerHTML = '';
+
+            let duplas = [];
+            Object.keys(db.cupos).forEach(cat => {
+                db.cupos[cat].forEach(c => {
+                    if(c.ocupado && c.alias) duplas.push(c.alias);
+                });
+            });
+
+            duplas.forEach((alias, idx) => {
+                const pts = db.puntosExtraRanking[alias] || (2200 - idx * 100);
+                db.puntosExtraRanking[alias] = pts;
+                cont.innerHTML += `
+                    <div style="display:flex; gap:1rem; align-items:center; background:#05070B; padding:0.65rem 1rem; border-radius:10px; border:1px solid #1E293B;">
+                        <strong style="color:var(--primary); width:40px;">#${idx+1}</strong>
+                        <span style="flex:1; font-weight:700;">${alias}</span>
+                        <input type="number" value="${pts}" onchange="db.puntosExtraRanking['${alias}']=Number(this.value); sincronizar();" class="input-dark" style="width:130px; color:#10B981; font-weight:800;">
+                        <button onclick="sincronizar(); mostrarToast('✅ Puntos confirmados');" class="btn-small-ok">✔ Fijar Puntos</button>
+                    </div>
+                `;
+            });
+        }
+
+        // GESTOR MULTI-TORNEO & LICENCIAS SAAS
+        function renderSaasTorneos() {
+            const tbody = document.getElementById('tablaSaasTorneosBody');
+            if(!tbody) return;
+            tbody.innerHTML = '';
+            Object.values(saasDB.torneos).forEach(t => {
+                const link = `${window.location.origin}${window.location.pathname}?torneo=${t.id}`;
+                tbody.innerHTML += `
+                    <tr>
+                        <td style="font-family:'JetBrains Mono'; color:var(--primary); font-weight:700;">${t.id}</td>
+                        <td style="font-weight:800;">${t.config.nombreTorneo}</td>
+                        <td><span class="badge-org">${t.config.badgeOrg}</span></td>
+                        <td style="font-family:'JetBrains Mono'; color:#FACC15;">${t.claveLicencia || 'admin2026'}</td>
+                        <td><input type="text" readonly value="${link}" class="input-dark" style="font-size:0.7rem;"></td>
+                        <td style="text-align:right; white-space:nowrap;">
+                            <button onclick="cambiarTorneoActivo('${t.id}')" class="btn-small-ok">Administrar Este</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function crearNuevoTorneoLicencia() {
+            const rawId = document.getElementById('nuevoSaasId').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
+            const nombre = document.getElementById('nuevoSaasNombre').value.trim();
+            const club = document.getElementById('nuevoSaasClub').value.trim();
+            const clave = document.getElementById('nuevoSaasClave').value.trim() || 'admin2026';
+
+            if (!rawId || !nombre) {
+                alert("⚠️ Ingresa un ID único (ej. copa-colina) y el Nombre del Torneo.");
+                return;
+            }
+            saasDB.torneos[rawId] = crearEstructuraTorneoBase(rawId, nombre, club || "CLUB PRO", clave);
+            saasDB.torneoActivoId = rawId;
+            db = saasDB.torneos[rawId];
+            sincronizar();
+            cargarValoresEnFormularioCMS();
+            renderSaasTorneos();
+            mostrarToast(`🏢 ¡Licencia y Torneo "${nombre}" creado y activado!`);
+        }
+
+        function copiarLinkTorneo() {
+            const el = document.getElementById('inputShareLinkTorneo');
+            el.select();
+            navigator.clipboard.writeText(el.value);
+            mostrarToast("🔗 ¡Enlace único del torneo copiado al portapapeles!");
         }
 
         function subirLogo(e, index) {
@@ -1090,7 +1523,7 @@
                 const reader = new FileReader();
                 reader.onload = function(evt) {
                     db.sponsors[index].logoImg = evt.target.result;
-                    sincronizar(); renderEditorSponsors(); alert("Logo cargado.");
+                    sincronizar(); renderEditorSponsors(); mostrarToast("✅ Logo de auspiciador confirmado.");
                 };
                 reader.readAsDataURL(file);
             }
@@ -1103,32 +1536,45 @@
                 reader.onload = function(evt) {
                     db.config.logoTorneoImg = evt.target.result;
                     sincronizar();
-                    alert("✅ Logotipo del torneo cargado con éxito.");
+                    mostrarToast("✅ Logotipo oficial del torneo actualizado.");
                 };
                 reader.readAsDataURL(file);
             }
         }
 
-        function agregarSponsorAdmin() { db.sponsors.push({ nombre: "Nuevo", url: "#", logoText: "⭐ NUEVO", logoImg: "" }); renderEditorSponsors(); }
+        function agregarSponsorAdmin() { db.sponsors.push({ nombre: "Nuevo", url: "https://www.google.com", logoText: "⭐ NUEVO SPONSOR", logoImg: "" }); renderEditorSponsors(); }
 
-        function guardarTodoAdmin() {
-            db.config.nombreTorneo = document.getElementById('cfgNombreTorneo').value;
-            db.config.badgeOrg = document.getElementById('cfgBadge').value;
-            db.config.heroBgUrl = document.getElementById('cfgHeroUrl').value;
-            db.config.colorPrimary = document.getElementById('cfgColorPrimario').value || '#D4AF37';
-            db.config.linkPago = document.getElementById('cfgLinkPago').value;
-            db.config.precioInscripcion = Number(document.getElementById('cfgPrecioInscripcion').value);
+        function guardarTodoAdmin(silencioso) {
+            const vNombre = document.getElementById('cfgNombreTorneo').value.trim();
+            const vBadge = document.getElementById('cfgBadge').value.trim();
+            if (vNombre) db.config.nombreTorneo = vNombre;
+            if (vBadge) db.config.badgeOrg = vBadge;
+
+            db.config.heroBgUrl = document.getElementById('cfgHeroUrl').value.trim() || db.config.heroBgUrl;
+            db.config.colorPrimary = document.getElementById('cfgColorPrimario').value.trim() || '#D4AF37';
+            db.config.linkPago = document.getElementById('cfgLinkPago').value.trim() || 'https://www.mercadopago.cl';
+            db.config.precioInscripcion = Number(document.getElementById('cfgPrecioInscripcion').value) || 70000;
             db.config.totalCanchas = Number(document.getElementById('cfgTotalCanchas').value) || 4;
-            db.config.fechaInicio = document.getElementById('cfgFechaInicio').value;
-            db.config.fechaFin = document.getElementById('cfgFechaFin').value;
-            db.config.horaApertura = document.getElementById('cfgHoraApertura').value;
-            db.config.horaCierre = document.getElementById('cfgHoraCierre').value;
-            db.config.googleMapsQuery = document.getElementById('cfgGoogleMapsQuery').value;
-            db.config.comunicado = document.getElementById('cfgComunicado').value;
+            db.config.duracionPartido = Number(document.getElementById('cfgDuracionPartido').value) || 45;
+
+            if (!db.config.catNombres) db.config.catNombres = {};
+            db.config.catNombres.damas = document.getElementById('cfgCatNombreDamas').value.trim() || 'Damas C';
+            db.config.catNombres.varones = document.getElementById('cfgCatNombreVarones').value.trim() || 'Varones 5ª';
+            db.config.catNombres.mixto = document.getElementById('cfgCatNombreMixto').value.trim() || 'Mixto C';
+
+            db.config.fechaInicio = document.getElementById('cfgFechaInicio').value || '2026-11-21';
+            db.config.fechaFin = document.getElementById('cfgFechaFin').value || '2026-11-22';
+            db.config.horaApertura = document.getElementById('cfgHoraApertura').value || '09:00';
+            db.config.horaCierre = document.getElementById('cfgHoraCierre').value || '21:00';
+            db.config.googleMapsQuery = document.getElementById('cfgGoogleMapsQuery').value.trim() || db.config.googleMapsQuery;
+            db.config.comunicado = document.getElementById('cfgComunicado').value.trim();
             db.config.reglamento = document.getElementById('cfgReglamento').value;
+
             sincronizar();
-            alert("🚀 ¡Guardado con éxito! Calendario y almanaque sincronizados.");
-            cambiarVista('publico');
+            renderPublico();
+            if (!silencioso) {
+                mostrarToast("✅ ¡Todos los cambios, horarios y nombres fueron confirmados!");
+            }
         }
 
         aplicarCMS();
