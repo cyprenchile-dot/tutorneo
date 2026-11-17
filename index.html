@@ -31,7 +31,7 @@
         .sound-btn { background: rgba(16, 185, 129, 0.12); color: #34D399; border: 1px solid rgba(16, 185, 129, 0.4); font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; }
 
         /* PORTADA CON CARRUSEL AUTOMÁTICO */
-        .hero { position: relative; min-height: 510px; display: flex; align-items: center; justify-content: center; padding: 4.6rem 1rem; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.3); overflow: hidden; background-color: #04070D; }
+        .hero { position: relative; min-height: 500px; display: flex; align-items: center; justify-content: center; padding: 4.5rem 1rem; text-align: center; border-bottom: 1px solid rgba(212, 175, 55, 0.3); overflow: hidden; background-color: #04070D; }
         .hero-bg-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; z-index: 1; opacity: 0; transition: opacity 1.6s ease-in-out, transform 18s ease-out; transform: scale(1.02); filter: saturate(1.15) contrast(1.06); }
         .hero-bg-slide.active-slide { opacity: 1; transform: scale(1.1); }
         .hero-video-media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; display: none; }
@@ -49,10 +49,15 @@
         .grid-boxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
         .box-card { border-radius: 16px; padding: 1.25rem; color: #fff; position: relative; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.45); transition: transform 0.2s, box-shadow 0.2s; }
         .box-card:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+        
+        /* 3 ESTADOS DE BOX: VERDE (DISPONIBLE), AMARILLO (PAGANDO 10 MIN), ROJO (INSCRITO PAGADO) */
         .box-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; cursor: pointer; }
+        .box-amarilla { background: linear-gradient(135deg, #78350f 0%, #451a03 100%); border: 2px solid #f59e0b; cursor: pointer; }
         .box-roja { background: linear-gradient(135deg, #7f1d1d 0%, #3b0808 100%); border: 2px solid #ef4444; }
+        
         .status-badge { position: absolute; top: 0; right: 0; padding: 0.25rem 0.75rem; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; border-bottom-left-radius: 12px; }
         .badge-green { background: #10b981; color: #030508; }
+        .badge-yellow { background: #f59e0b; color: #030508; }
         .badge-red { background: #ef4444; color: #fff; }
 
         .bracket-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 1.5rem; }
@@ -106,13 +111,14 @@
                         <div id="navLogoContainer"></div>
                         <h1 class="nav-title" id="navTitle">COPA AYRES <span>OPEN</span></h1>
                     </div>
+                    <span id="indicadorNubeSync" style="font-size:0.68rem; font-family:'JetBrains Mono'; padding:0.2rem 0.55rem; border-radius:6px; background:rgba(16,185,129,0.15); color:#34D399; border:1px solid rgba(16,185,129,0.35);">⚡ SYNC LIVE</span>
                 </div>
                 <div class="nav-buttons">
                     <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnNavPub">🎾 Cuadros & Boxes</button>
                     <button onclick="cambiarVista('llaves')" class="nav-btn" id="btnNavLlaves">🤖 Fixture IA & Tabla</button>
                     <button onclick="cambiarVista('premios')" class="nav-btn" id="btnNavPrem">🏆 Almanaque & Club</button>
                     <button onclick="cambiarVista('tv')" class="nav-btn" id="btnNavTV">📺 Monitor TV</button>
-                    <button onclick="toggleAudioPelota()" class="nav-btn sound-btn" id="btnToggleSound" title="Activar/Silenciar sonido real de pelota de pádel">🔊 Pelota: ON</button>
+                    <button onclick="toggleAudioPelota()" class="nav-btn sound-btn" id="btnToggleSound">🔊 Pelota: ON</button>
                     <button onclick="cambiarVista('admin')" class="nav-btn" id="btnNavAdmin">⚙️ Admin Master</button>
                 </div>
             </div>
@@ -129,7 +135,6 @@
             <!-- ================= VISTA PÚBLICA ================= -->
             <div id="vistaPublica" class="panel-vista activo">
                 <section class="hero" id="heroBannerContainer">
-                    <!-- CARRUSEL AUTOMÁTICO DE FONDO -->
                     <img id="heroSlide0" class="hero-bg-slide active-slide" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=2000&auto=format&fit=crop" alt="Pádel Césped Verde">
                     <img id="heroSlide1" class="hero-bg-slide" src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=85&w=2000&auto=format&fit=crop" alt="Club de Pádel">
                     <img id="heroSlide2" class="hero-bg-slide" src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=85&w=2000&auto=format&fit=crop" alt="Torneo Pádel">
@@ -141,7 +146,7 @@
                             <span id="heroClubTag">🎾 CIRCUITO 360</span> • <span id="heroSubtitleBadge">Fechas y Canchas Sincronizadas</span>
                         </div>
                         <h2 id="heroMainTitle">COPA AYRES OPEN</h2>
-                        <p class="hero-subtext">Experiencia Country Club de alto nivel • 3 Partidos garantizados por dupla sincronizados por Inteligencia Artificial y reserva inmediata con Mercado Pago.</p>
+                        <p class="hero-subtext">Sistema de Reserva Protegida • El Box solo queda inscrito en rojo cuando Mercado Pago aprueba la transacción.</p>
                         
                         <div class="reloj-box">
                             <div style="font-size: 0.72rem; color: #CBD5E1; text-transform: uppercase; margin-bottom: 0.3rem;">⏱️ Cuenta Regresiva Oficial de Inicio (<span id="labelFechaReloj" style="color:var(--primary); font-weight:800;"></span>):</div>
@@ -160,8 +165,8 @@
                     </div>
 
                     <div style="text-align: center; margin-bottom: 1.5rem;">
-                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem;">Cuadros Oficiales de Pádel & Autogestión IA</h3>
-                        <p style="color: #94A3B8; font-size: 0.9rem;">Elige tu categoría. Los Boxes <strong>DISPONIBLES (Verde)</strong> te conectan directo a <strong>Mercado Pago</strong> y te asignan tus 3 partidos dentro de los días oficiales del torneo; los <strong>INSCRITOS (Rojo)</strong> muestran su cuenta regresiva sincronizada.</p>
+                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem;">Cuadros Oficiales de Pádel & Verificación Mercado Pago</h3>
+                        <p style="color: #94A3B8; font-size: 0.9rem;">🟢 <strong>DISPONIBLE:</strong> Libre para reservar • 🟡 <strong>PAGANDO (10 min):</strong> Bloqueado mientras el jugador paga en Mercado Pago • 🔴 <strong>INSCRITO:</strong> Pago confirmado.</p>
                     </div>
 
                     <div class="tabs-cat" id="contenedorTabsCategoriasPublico"></div>
@@ -183,8 +188,8 @@
 
                     <div class="admin-panel" style="margin-bottom: 2rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
-                            <h4 style="color: var(--primary); font-size: 1.1rem; font-weight: 800;">📊 Tabla de Posiciones Oficial de la Categoría (En Vivo)</h4>
-                            <span style="font-size:0.72rem; color:#94A3B8; font-family:'JetBrains Mono';">Criterio Pádel: Victoria = 3 pts • Participación = 1 pt • Desempate por Games</span>
+                            <h4 style="color: var(--primary); font-size: 1.1rem; font-weight: 800;">📊 Tabla de Posiciones Oficial de la Categoría (Solo Parejas con Pago Confirmado)</h4>
+                            <span style="font-size:0.72rem; color:#94A3B8; font-family:'JetBrains Mono';">Victoria = 3 pts • Participación = 1 pt</span>
                         </div>
                         <div style="overflow-x: auto;">
                             <table class="table-custom">
@@ -211,18 +216,19 @@
                 </div>
             </div>
 
-            <!-- ================= VISTA PANTALLA DE ÉXITO / CHECKOUT MERCADO PAGO ================= -->
+            <!-- ================= VISTA PANTALLA DE CHECKOUT / RETORNO MERCADO PAGO ================= -->
             <div id="vistaExitoInscripcion" class="panel-vista">
                 <div class="container" style="max-width: 760px; margin-top: 1.5rem;">
-                    <div class="admin-panel" style="border: 2px solid #009EE3; background: linear-gradient(135deg, #062c43 0%, #05070B 100%); text-align: center;">
-                        <div style="display:inline-flex; align-items:center; gap:0.5rem; background:#009EE3; color:#fff; font-weight:900; font-size:0.75rem; padding:0.35rem 0.9rem; border-radius:20px; margin-bottom:0.75rem;">
-                            💳 CHECKOUT OFICIAL MERCADO PAGO • CIRCUITO360.CL
+                    <div class="admin-panel" id="cardContenedorCheckoutMP" style="border: 2px solid #f59e0b; background: linear-gradient(135deg, #451a03 0%, #05070B 100%); text-align: center;">
+                        <div id="badgeEstadoCheckoutMP" style="display:inline-flex; align-items:center; gap:0.5rem; background:#f59e0b; color:#030508; font-weight:900; font-size:0.75rem; padding:0.35rem 0.9rem; border-radius:20px; margin-bottom:0.75rem;">
+                            ⏳ PASO FINAL OBLIGATORIO: COMPLETAR PAGO EN MERCADO PAGO
                         </div>
-                        <h2 style="font-size: 2rem; font-weight: 800; color: #38BDF8; margin-bottom: 0.4rem;">¡Cupo Reservado & Horarios Asignados!</h2>
-                        <p style="color: #BAE6FD; font-size: 0.88rem; margin-bottom: 1.5rem;">Tu dupla ya tiene su Box bloqueado y sus 3 partidos programados dentro de los días oficiales del torneo.</p>
+                        <h2 id="tituloEstadoCheckoutMP" style="font-size: 1.9rem; font-weight: 800; color: #FDE047; margin-bottom: 0.4rem;">Tu Box está Bloqueado por 10 Minutos</h2>
+                        <p id="subtituloEstadoCheckoutMP" style="color: #FDE68A; font-size: 0.88rem; margin-bottom: 1.5rem;">Importante: Tu inscripción <strong>NO quedará en rojo definitivo</strong> hasta que completes el pago en Mercado Pago. Si no se registra el pago en 10 minutos, el Box volverá a estar libre.</p>
                         
                         <div style="background: rgba(4,7,13,0.85); padding: 1.35rem; border-radius: 14px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; margin-bottom: 1.25rem; line-height: 1.85; border: 1px solid #1E293B;">
                             <div><strong>Folio Operación MP:</strong> <span id="exitoFolioMP" style="color: #38BDF8; font-weight: 800;">--</span></div>
+                            <div><strong>Estado del Cupo:</strong> <span id="exitoEstadoReservaTexto" style="color: #FACC15; font-weight: 800;">🟡 PENDIENTE DE PAGO EN MERCADO PAGO</span></div>
                             <div><strong>Torneo:</strong> <span id="exitoTorneoNombre" style="color: #fff;">--</span></div>
                             <div><strong>Categoría:</strong> <span id="exitoCategoriaNombre" style="color: #C4B5FD;">--</span></div>
                             <div><strong>Dupla / Equipo:</strong> <span id="exitoAlias" style="color: var(--primary); font-weight: 800;">--</span></div>
@@ -230,23 +236,23 @@
                             <div><strong>Contacto Registrado:</strong> <span id="exitoContacto" style="color: #CBD5E1;">--</span></div>
                             <div><strong>Box & Cancha Base:</strong> <span id="exitoBox" style="color: #60A5FA;">--</span></div>
                             <div><strong>Debut (1er Partido):</strong> <span id="exitoHorarioPartido" style="color: #FACC15;">--</span></div>
-                            <div><strong>Modalidad de Pago:</strong> <span id="exitoMontoPago" style="color: #10B981; font-weight: 800;">--</span></div>
+                            <div><strong>Monto a Pagar:</strong> <span id="exitoMontoPago" style="color: #10B981; font-weight: 800;">--</span></div>
                         </div>
 
                         <div style="background: rgba(11,18,32,0.92); padding: 1.25rem; border-radius: 14px; text-align: left; margin-bottom: 1.5rem; border: 1px solid #1E293B;">
-                            <h4 style="color: var(--primary); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">🤖 Tus 3 Partidos de Pádel Asignados por IA</h4>
+                            <h4 style="color: var(--primary); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">🤖 Tus 3 Partidos Pre-Asignados por IA (Se confirman al pagar)</h4>
                             <div id="exitoCronogramaContenedor" style="font-size: 0.82rem; color: #CBD5E1; line-height: 1.6;"></div>
                         </div>
 
                         <div style="display: flex; gap: 0.85rem; flex-wrap: wrap;">
-                            <a id="btnIrMercadoPagoDirecto" href="#" target="_blank" class="btn-mp" style="flex: 1.3; text-decoration: none;">
-                                💳 Pagar Ahora en Mercado Pago Oficial
+                            <a id="btnIrMercadoPagoDirecto" href="#" class="btn-mp" style="flex: 1.5; text-decoration: none; font-size: 0.95rem; padding: 1rem;">
+                                💳 Ir a Pagar en Mercado Pago Ahora →
                             </a>
                             <button onclick="copiarResumenWhatsAppJugador()" class="btn-confirm" style="flex: 1;">
                                 📲 Copiar Ficha para WhatsApp
                             </button>
                             <button onclick="cambiarVista('publico')" class="btn-action" style="flex: 0.8;">
-                                🎾 Ver Cuadros
+                                🎾 Volver al Cuadro
                             </button>
                         </div>
                     </div>
@@ -290,7 +296,7 @@
                     <div id="gridEstadoCanchasTV" class="grid-boxes" style="margin-bottom: 2rem;"></div>
                     
                     <div class="admin-panel">
-                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📊 Rankings Oficiales CIRCUITO360.CL (Todas las Categorías)</h4>
+                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📊 Rankings Oficiales CIRCUITO360.CL (Parejas Confirmadas)</h4>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                             <div>
                                 <h5 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #60A5FA;">Ranking General Circuito 360</h5>
@@ -329,7 +335,7 @@
                         <div id="barraExclusivaSuperGod" class="modal-oculto" style="background: linear-gradient(90deg, #311042 0%, #0B1220 100%); border: 1px solid #A855F7; padding: 1rem 1.25rem; border-radius: 14px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                             <div>
                                 <span style="background: #A855F7; color: #fff; font-weight: 800; font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">👑 SUPER SUPER ADMIN GLOBAL • DUEÑO CIRCUITO360.CL</span>
-                                <p style="font-size: 0.78rem; color: #E9D5FF; margin-top: 0.3rem;">Control maestro sobre todos los torneos, canchas, categorías, relojes y nóminas de jugadores.</p>
+                                <p style="font-size: 0.78rem; color: #E9D5FF; margin-top: 0.3rem;">Control maestro sobre todos los torneos, canchas, categorías, relojes y nóminas de jugadores en tiempo real.</p>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
                                 <label style="font-size: 0.72rem; color: #E9D5FF; font-weight: 700;">Torneo en Edición:</label>
@@ -337,7 +343,7 @@
                             </div>
                         </div>
 
-                        <!-- BARRA DE CONTROL RÁPIDO SINCRONIZADO (FECHAS, HORAS, CANCHAS Y LINK MERCADO PAGO) -->
+                        <!-- BARRA DE CONTROL RÁPIDO SINCRONIZADO -->
                         <div style="background: #060B14; border: 1px solid var(--primary); border-radius: 14px; padding: 1rem 1.25rem; margin-bottom: 1.25rem;">
                             <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.75rem;">
                                 <span style="font-size:0.75rem; font-weight:800; color:var(--primary); font-family:'JetBrains Mono';">⚡ CONTROL DIRECTO SINCRONIZADO (FECHAS DE TORNEO, CANCHAS Y LINK MERCADO PAGO)</span>
@@ -389,13 +395,13 @@
                         <!-- Métricas del Torneo Activo -->
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; background: #04070D; padding: 1.15rem; border-radius: 12px; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; border: 1px solid #1E293B;">
                             <div>
-                                <div style="font-size: 0.65rem; color: #38BDF8; text-transform: uppercase;">💳 Caja Mercado Pago (Inscritos)</div>
+                                <div style="font-size: 0.65rem; color: #38BDF8; text-transform: uppercase;">💳 Caja Confirmada Mercado Pago</div>
                                 <div id="adminCajaTotal" style="font-size: 1.25rem; font-weight: 800; color: #10B981; margin-top: 0.2rem;">$0 CLP</div>
-                                <div id="adminDetallePagosMP" style="font-size: 0.65rem; color: #94A3B8; margin-top: 0.15rem;">0 Pagados • 0 Pendientes</div>
+                                <div id="adminDetallePagosMP" style="font-size: 0.65rem; color: #94A3B8; margin-top: 0.15rem;">0 Pagados 🔴 • 0 Pagando 🟡</div>
                             </div>
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Parejas / Jugadores Inscritos</div>
-                                <div id="adminCuposStats" style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">0 Duplas (0 Jugadores)</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Parejas Confirmadas / En Proceso</div>
+                                <div id="adminCuposStats" style="font-size: 1.15rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">0 Confirmadas</div>
                             </div>
                             <div>
                                 <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Infraestructura Activa</div>
@@ -412,9 +418,9 @@
 
                         <!-- Pestañas del Admin -->
                         <div class="nav-buttons" style="margin-bottom: 1.5rem; border-bottom: 1px solid #1E293B; padding-bottom: 1rem;">
-                            <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas, Boxes & Marcadores</button>
+                            <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas, Boxes & Aprobación MP</button>
                             <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="nav-btn">👥 Directorio Maestro de Jugadores (CRM)</button>
-                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Categorías, Canchas, Almanaque & MP</button>
+                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Categorías, Canchas, Almanaque & API MP</button>
                             <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="nav-btn">🤝 Auspiciadores & Logos</button>
                             <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="nav-btn">📊 Rankings Circuito 360</button>
                             <button onclick="setTabAdmin('saas')" id="tabAdminSaas" class="nav-btn modal-oculto" style="background: rgba(168, 85, 247, 0.15); border-color: #A855F7; color: #E9D5FF;">👑 Consola Super Super Admin (Licencias & Global)</button>
@@ -424,8 +430,8 @@
                         <div id="subPanelBoxes">
                             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
                                 <div>
-                                    <h4 style="font-size: 1.05rem; font-weight: 800;">Gestión Quirúrgica de Boxes, Canchas, Horarios IA y Marcadores</h4>
-                                    <p style="font-size: 0.75rem; color: #94A3B8;">2 Boxes comparten cancha en cada turno (ej. Box #1 vs Box #2 en Cancha #1 a las 09:00 hrs). Todos los turnos respetan estrictamente los días del torneo.</p>
+                                    <h4 style="font-size: 1.05rem; font-weight: 800;">Gestión Quirúrgica de Boxes (🟢 Libre • 🟡 Pagando MP • 🔴 Inscrito Pagado)</h4>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Si un jugador está en 🟡 Pagando MP y te envía el comprobante, puedes pasarlo a 🔴 Inscrito Pagado con 1 clic.</p>
                                 </div>
                                 <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
                                     <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="input-dark" style="width: 220px; font-weight: 700;"></select>
@@ -438,16 +444,15 @@
                                     <thead>
                                         <tr>
                                             <th>Box</th>
-                                            <th>Cupo</th>
-                                            <th>Pago MP</th>
+                                            <th>Estado del Box / Pago MP</th>
                                             <th>Alias Dupla</th>
                                             <th>Jugador 1 / Jugador 2</th>
                                             <th>WhatsApp / Teléfonos</th>
                                             <th>Fecha y Hora 1er Partido</th>
                                             <th>Cancha</th>
-                                            <th>Estado</th>
+                                            <th>Estado Partido</th>
                                             <th>Marcador</th>
-                                            <th>Fijar</th>
+                                            <th>Acción Rápida</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaAdminBoxesBody"></tbody>
@@ -460,9 +465,9 @@
                             <div style="background: #060B14; border: 1px solid #38BDF8; border-radius: 14px; padding: 1.2rem; margin-bottom: 1.25rem;">
                                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
                                     <div>
-                                        <span style="background: rgba(56,189,248,0.18); color: #38BDF8; font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 5px;">BASE DE DATOS COMPLETA DE JUGADORES</span>
-                                        <h4 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-top: 0.3rem;">👥 Nómina General & Ficha Completa de Jugadores Inscritos</h4>
-                                        <p style="font-size: 0.76rem; color: #94A3B8;">Visualiza y edita todos los datos de los jugadores inscritos (Nombres, Teléfonos/WhatsApp, Emails, Instagram, Categoría, Cancha, Folio Mercado Pago y sus 3 horarios IA).</p>
+                                        <span style="background: rgba(56,189,248,0.18); color: #38BDF8; font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 5px;">BASE DE DATOS CENTRALIZADA</span>
+                                        <h4 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-top: 0.3rem;">👥 Nómina General de Jugadores (Confirmados 🔴 y En Proceso de Pago 🟡)</h4>
+                                        <p style="font-size: 0.76rem; color: #94A3B8;">Aquí aparecen al instante todos los jugadores que llenan el formulario desde sus celulares. Puedes aprobarles el pago o liberar el Box.</p>
                                     </div>
                                     <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
                                         <button onclick="exportarJugadoresCSV()" class="btn-action" style="background: #38BDF8; color: #030508;">📥 Descargar Nómina en Excel (CSV)</button>
@@ -475,7 +480,7 @@
                                     <select id="filtroCatCRM" onchange="renderAdminParejas()" class="input-dark">
                                         <option value="TODAS">📋 Mostrar Todas las Categorías</option>
                                     </select>
-                                    <button onclick="inscribirParejaManualDesdeAdmin()" class="btn-confirm">+ Inscribir Nueva Pareja Manualmente</button>
+                                    <button onclick="inscribirParejaManualDesdeAdmin()" class="btn-confirm">+ Inscribir Pareja Confirmada Manualmente</button>
                                 </div>
                             </div>
 
@@ -484,7 +489,7 @@
                                     <thead>
                                         <tr>
                                             <th>Categoría / Box</th>
-                                            <th>Pago MP / Folio</th>
+                                            <th>Estado MP / Folio</th>
                                             <th>Alias Dupla</th>
                                             <th>Jugador 1 (Nombre / WhatsApp / Email / IG)</th>
                                             <th>Jugador 2 (Nombre / WhatsApp / Email / IG)</th>
@@ -533,16 +538,23 @@
                                 <div id="listaEditorCategoriasDinamicas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;"></div>
                             </div>
 
-                            <!-- BLOQUE ESPECIAL MERCADO PAGO -->
+                            <!-- BLOQUE ESPECIAL MERCADO PAGO (CON LINK Y ACCESS TOKEN OPCIONAL PARA CHECKOUT PRO) -->
                             <div style="background: linear-gradient(90deg, rgba(0,158,227,0.15) 0%, rgba(7,12,22,0.95) 100%); border: 1px solid #009EE3; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
-                                <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.85rem;">
-                                    <span style="background:#009EE3; color:#fff; font-weight:900; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:5px;">💳 PASARELA OFICIAL MERCADO PAGO</span>
-                                    <span style="font-size:0.75rem; color:#BAE6FD;">Configuración de cobro automático al inscribirse en un Box</span>
+                                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.85rem;">
+                                    <div style="display:flex; align-items:center; gap:0.5rem;">
+                                        <span style="background:#009EE3; color:#fff; font-weight:900; font-size:0.7rem; padding:0.2rem 0.6rem; border-radius:5px;">💳 PASARELA OFICIAL MERCADO PAGO</span>
+                                        <span style="font-size:0.75rem; color:#BAE6FD;">Configuración de Link de Pago o API Checkout Pro con Verificación Automática</span>
+                                    </div>
+                                    <button type="button" onclick="probarEnlaceMercadoPagoAdmin()" class="btn-small-ok" style="background:#009EE3; color:#fff;">🔗 Probar Mi Enlace MP</button>
                                 </div>
-                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem;">
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem;">
                                     <div>
-                                        <label style="font-size: 0.75rem; color: #38BDF8; font-weight: 700; display: block; margin-bottom: 0.3rem;">Enlace de Pago Mercado Pago (Link / Checkout Pro)</label>
+                                        <label style="font-size: 0.75rem; color: #38BDF8; font-weight: 700; display: block; margin-bottom: 0.3rem;">1. Enlace de Pago Mercado Pago (Ej. https://mpago.la/...)</label>
                                         <input type="text" id="cfgLinkPago" placeholder="https://mpago.la/..." class="input-dark">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.75rem; color: #FACC15; font-weight: 700; display: block; margin-bottom: 0.3rem;">2. Access Token MP (Opcional - Crea cobro automático por API)</label>
+                                        <input type="password" id="cfgMpAccessToken" placeholder="APP_USR-..." class="input-dark">
                                     </div>
                                     <div>
                                         <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">Valor Inscripción por Dupla ($ CLP)</label>
@@ -668,7 +680,6 @@
                                 </div>
                             </div>
 
-                            <!-- CREADOR COMPLETO DE NUEVO TORNEO / LICENCIA CON FECHA INICIO, FECHA FIN Y LINK MERCADO PAGO -->
                             <div style="background: #070C16; padding: 1.25rem; border-radius: 14px; border: 1px solid #1E293B; margin-bottom: 1.5rem;">
                                 <h5 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem;">➕ Crear Nuevo Torneo / Licencia Comercial Sincronizada</h5>
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 0.85rem;">
@@ -780,11 +791,11 @@
             
             <div style="display:flex; align-items:center; gap:0.5rem;">
                 <span id="modalBoxLabel" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">Box #1</span>
-                <span style="background: rgba(0,158,227,0.18); color: #38BDF8; padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.7rem; font-weight: 800;">💳 Mercado Pago Oficial</span>
+                <span style="background: rgba(0,158,227,0.18); color: #38BDF8; padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.7rem; font-weight: 800;">💳 Bloqueo Temporal 10 Min hasta Pago MP</span>
             </div>
 
-            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.55rem 0 0.2rem 0;">Registro Oficial de Jugadores & Pago</h3>
-            <p style="font-size: 0.76rem; color: #94A3B8; margin-bottom: 0.85rem;">Tus datos quedarán registrados en la nómina oficial y la IA te asignará tus 3 partidos dentro de los días del torneo.</p>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.55rem 0 0.2rem 0;">Registro de Jugadores & Paso a Mercado Pago</h3>
+            <p style="font-size: 0.76rem; color: #94A3B8; margin-bottom: 0.85rem;">Al continuar, bloquearemos este Box por 10 minutos mientras completas el pago en Mercado Pago. <strong>Solo quedará inscrito en rojo una vez pagado.</strong></p>
 
             <form id="formInscripcion" onsubmit="procesarInscripcionYPago(event)" style="display: flex; flex-direction: column; gap: 0.7rem;">
                 <div>
@@ -827,7 +838,7 @@
                         <option value="mitad">Pagar Mi Mitad (50% Jugador Individual)</option>
                     </select>
                     <div style="display:flex; justify-content:space-between; align-items:center; font-family:'JetBrains Mono'; font-size:0.85rem; padding-top:0.35rem; border-top:1px solid #1E293B;">
-                        <span style="color:#CBD5E1;">Total a Pagar Ahora:</span>
+                        <span style="color:#CBD5E1;">Total a Pagar en MP:</span>
                         <strong id="modalPrecioLabel" style="color:#10B981; font-size:1.05rem;">$70.000 CLP</strong>
                     </div>
                 </div>
@@ -837,21 +848,22 @@
                     <input type="password" id="inputPin" required placeholder="Ej. 1234" class="input-dark">
                 </div>
                 <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #94A3B8; cursor: pointer;">
-                    <input type="checkbox" id="checkReglamento" required> Acepto el reglamento oficial y las bases en CIRCUITO360.CL.
+                    <input type="checkbox" id="checkReglamento" required> Entiendo que el Box solo quedará inscrito tras completar el pago en Mercado Pago.
                 </label>
-                <button type="submit" class="btn-mp" style="width: 100%; margin-top: 0.25rem;">
-                    💳 Confirmar Registro & Pagar en Mercado Pago
+                <button type="submit" id="btnSubmitInscripcionMP" class="btn-mp" style="width: 100%; margin-top: 0.25rem;">
+                    💳 Bloquear Box 10 Min & Pagar en Mercado Pago →
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- MOTOR JAVASCRIPT CIRCUITO360.CL -->
+    <!-- MOTOR JAVASCRIPT CIRCUITO360.CL (RELOJ SUIZO + CLOUD SYNC + 3 ESTADOS DE PAGO) -->
     <script>
-        const STORAGE_KEY_SAAS = 'circuito360_saas_db_v27';
-        const PREV_STORAGE_KEY = 'circuito360_saas_db_v26';
-        const BROADCAST_CHANNEL = 'circuito360_sync_v27';
+        const STORAGE_KEY_SAAS = 'circuito360_saas_db_v28';
+        const PREV_STORAGE_KEY = 'circuito360_saas_db_v27';
+        const BROADCAST_CHANNEL = 'circuito360_sync_v28';
         const CLAVE_SUPER_SUPER_ADMIN = 'supergod2026';
+        const TIEMPO_EXPIRACION_PAGO_MS = 10 * 60 * 1000; // 10 minutos para pagar en Mercado Pago
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
         const ESCENAS_CARRUSEL_HERO = [
@@ -860,8 +872,26 @@
             "https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=85&w=2000&auto=format&fit=crop"
         ];
 
+        // Sanitizador estricto de enlaces de Mercado Pago para que nunca falle la redirección
+        function sanitizarUrlMercadoPago(rawUrl) {
+            if (!rawUrl || typeof rawUrl !== 'string') return 'https://www.mercadopago.cl';
+            let limpia = rawUrl.trim();
+            if (!limpia) return 'https://www.mercadopago.cl';
+            if (!/^https?:\/\//i.test(limpia)) {
+                limpia = 'https://' + limpia;
+            }
+            return limpia;
+        }
+
+        function probarEnlaceMercadoPagoAdmin() {
+            const raw = document.getElementById('cfgLinkPago').value;
+            const urlFinal = sanitizarUrlMercadoPago(raw);
+            document.getElementById('cfgLinkPago').value = urlFinal;
+            window.open(urlFinal, '_blank');
+        }
+
         // =========================================================================
-        // 1. CARRUSEL AUTOMÁTICO DE FONDO EN PORTADA (CADA 6 SEGUNDOS)
+        // 1. CARRUSEL AUTOMÁTICO DE FONDO EN PORTADA
         // =========================================================================
         let indiceSlideActual = 0;
         function iniciarCarruselAutomaticoHero() {
@@ -973,7 +1003,6 @@
             }
         }
 
-        // Utilidad para sumar días en formato YYYY-MM-DD sin errores de zona horaria
         function sumarDiasIso(fechaIso, dias) {
             const partes = (fechaIso || "2026-12-05").split('-').map(Number);
             const dt = new Date(partes[0] || 2026, (partes[1] || 12) - 1, (partes[2] || 5) + dias);
@@ -984,15 +1013,16 @@
         }
 
         // =========================================================================
-        // 3. ESTRUCTURA DE DATOS MULTI-TORNEO Y SINCRONIZACIÓN TOTAL
+        // 3. ESTRUCTURA DE DATOS MULTI-TORNEO CON 3 ESTADOS REALES DE PAGO
         // =========================================================================
         function crearCuposParaCategoria(idTorneo, catKey, cantidadCupos, ocupadosIniciales, prefijoAlias, fechaBase, horaBase, totalCanchas) {
             const numCanchas = Math.max(1, Number(totalCanchas) || 4);
             const hInit = horaBase || "09:00";
             return Array.from({length: cantidadCupos}, (_, i) => ({
                 id: i + 1,
-                ocupado: i < ocupadosIniciales,
-                estadoPagoMP: i < ocupadosIniciales ? "PAGADO_MP" : "PENDIENTE",
+                ocupado: i < ocupadosIniciales, // true solo si está PAGADO_MP o RESERVANDO_MP
+                estadoPagoMP: i < ocupadosIniciales ? "PAGADO_MP" : "LIBRE", // LIBRE | RESERVANDO_MP | PAGADO_MP
+                expiraReservaTimestamp: 0,
                 folioMP: i < ocupadosIniciales ? `C360-MP-${1000 + i}` : "",
                 modalidadPago: "Dupla Completa (100%)",
                 alias: i < ocupadosIniciales ? `${prefijoAlias} ${i+1}` : "",
@@ -1006,7 +1036,6 @@
                 redes2: "@padel2",
                 pin: "1234",
                 avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${idTorneo}_${catKey}_${i}`,
-                // 2 Boxes (1 partido) comparten la misma cancha en cada turno
                 cancha: `Cancha #${(Math.floor(i / 2) % numCanchas) + 1}`,
                 estadoPartido: "Programado",
                 horaInicioMatch: `${fechaBase}T${hInit}`,
@@ -1058,7 +1087,8 @@
                     heroCustomBase64: "",
                     heroVideoUrl: "",
                     colorPrimary: "#D4AF37",
-                    linkPago: linkMP || "https://www.mercadopago.cl",
+                    linkPago: sanitizarUrlMercadoPago(linkMP || "https://www.mercadopago.cl"),
+                    mpAccessToken: "",
                     titularMP: `${badge || 'Club Oficial'} • Mercado Pago`,
                     precioInscripcion: valorInsc,
                     totalCanchas: canchasNum,
@@ -1070,8 +1100,8 @@
                     horaCierre: "21:00",
                     categorias: categoriasBase,
                     googleMapsQuery: "Chicureo Colina Santiago Chile",
-                    comunicado: `¡Bienvenidos a ${nombre || 'COPA AYRES OPEN'} en ${badge || 'AYRES SPORTING CLUB'}! Horarios del ${fechaBase} al ${fechaFinDefault} sincronizados por IA.`,
-                    reglamento: "1. W.O. estricto a los 10 minutos.<br>2. Fase de grupos: 3 partidos garantizados por pareja.<br>3. Partidos al mejor de 2 sets con Punto de Oro (Super Tie-Break al 3er set)."
+                    comunicado: `¡Bienvenidos a ${nombre || 'COPA AYRES OPEN'} en ${badge || 'AYRES SPORTING CLUB'}! Reserva protegida con Mercado Pago y horarios sincronizados por IA.`,
+                    reglamento: "1. W.O. estricto a los 10 minutos.<br>2. Fase de grupos: 3 partidos garantizados por pareja.<br>3. El Box solo queda inscrito en rojo una vez confirmado el pago en Mercado Pago."
                 },
                 sponsors: [
                     { nombre: "Chicureo Motors", url: "https://www.google.com", logoText: "🚗 CHICUREO MOTORS", logoImg: "" },
@@ -1084,27 +1114,16 @@
             };
         }
 
-        // Cargar o migrar reparando cualquier fecha que haya saltado al 2026-12-07 en torneos del 5 y 6 de diciembre
-        let saasDB = JSON.parse(localStorage.getItem(STORAGE_KEY_SAAS));
-        if (!saasDB) {
-            const prevDB = JSON.parse(localStorage.getItem(PREV_STORAGE_KEY));
-            if (prevDB && prevDB.torneos) {
-                saasDB = prevDB;
-                Object.values(saasDB.torneos).forEach(t => {
-                    if (t.config.fechaInicio === "2026-12-05" || t.id.toLowerCase().includes("copa")) {
-                        t.config.fechaInicio = "2026-12-05";
-                        t.config.fechaFin = "2026-12-06";
-                    }
-                });
-            } else {
-                saasDB = {
-                    torneoActivoId: "copa",
-                    torneos: {
-                        "copa": crearEstructuraTorneoBase("copa", "COPA AYRES OPEN", "AYRES SPORTING CLUB", "1234", "@ayres.cl", 0, "2026-12-05", "2026-12-06", "09:00", 4, 70000, "DAMAS 7 6 Y 5 CATEGORIA, VARONES 7 6 Y 5 CATEGORIA, MIXTO 7 6 Y 5 CATEGORIA", "https://www.mercadopago.cl"),
-                        "chicureo-open": crearEstructuraTorneoBase("chicureo-open", "CHICUREO OPEN PRO CIRCUIT", "CLUB CHICUREO", "admin2026", "contacto@clubchicureo.cl", 180000, "2026-12-05", "2026-12-06", "09:00", 4, 70000, "Damas C, Varones 5ª, Mixto C", "https://www.mercadopago.cl")
-                    }
-                };
-            }
+        let saasDB = JSON.parse(localStorage.getItem(STORAGE_KEY_SAAS)) || JSON.parse(localStorage.getItem(PREV_STORAGE_KEY));
+        if (!saasDB || !saasDB.torneos) {
+            saasDB = {
+                lastUpdated: Date.now(),
+                torneoActivoId: "copa",
+                torneos: {
+                    "copa": crearEstructuraTorneoBase("copa", "COPA AYRES OPEN", "AYRES SPORTING CLUB", "1234", "@ayres.cl", 0, "2026-12-05", "2026-12-06", "09:00", 4, 70000, "DAMAS 7 6 Y 5 CATEGORIA, VARONES 7 6 Y 5 CATEGORIA, MIXTO 7 6 Y 5 CATEGORIA", "https://www.mercadopago.cl"),
+                    "chicureo-open": crearEstructuraTorneoBase("chicureo-open", "CHICUREO OPEN PRO CIRCUIT", "CLUB CHICUREO", "admin2026", "contacto@clubchicureo.cl", 180000, "2026-12-05", "2026-12-06", "09:00", 4, 70000, "Damas C, Varones 5ª, Mixto C", "https://www.mercadopago.cl")
+                }
+            };
             localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
         }
 
@@ -1120,6 +1139,136 @@
         let boxSeleccionado = null;
         let rolAdminActual = null;
         let ultimoTextoWhatsAppGenerado = "";
+        let servidorCentralDisponible = false;
+
+        // =========================================================================
+        // 4. SINCRONIZACIÓN CENTRAL EN TIEMPO REAL ENTRE CELULARES Y PC ADMIN
+        // =========================================================================
+        async function empujarEstadoAlServidorCentral() {
+            saasDB.lastUpdated = Date.now();
+            try {
+                const resp = await fetch('/api/state', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(saasDB)
+                });
+                if (resp.ok) {
+                    servidorCentralDisponible = true;
+                    const ind = document.getElementById('indicadorNubeSync');
+                    if (ind) {
+                        ind.innerText = "☁️ CLOUD SYNC OK";
+                        ind.style.color = "#34D399";
+                    }
+                }
+            } catch (e) {
+                // Si aún no está activo server.js, mantiene sincronización local y avisa en el indicador
+                const ind = document.getElementById('indicadorNubeSync');
+                if (ind) {
+                    ind.innerText = "⚡ LOCAL MODE";
+                    ind.style.color = "#FACC15";
+                }
+            }
+        }
+
+        async function consultarEstadoDelServidorCentral() {
+            try {
+                const resp = await fetch('/api/state?t=' + Date.now());
+                if (!resp.ok) return;
+                const remoteDB = await resp.json();
+                if (remoteDB && remoteDB.torneos && (!saasDB.lastUpdated || remoteDB.lastUpdated > saasDB.lastUpdated)) {
+                    const idActual = saasDB.torneoActivoId;
+                    saasDB = remoteDB;
+                    if (idActual && saasDB.torneos[idActual]) {
+                        saasDB.torneoActivoId = idActual;
+                    }
+                    db = saasDB.torneos[saasDB.torneoActivoId] || Object.values(saasDB.torneos)[0];
+                    localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
+                    aplicarCMS();
+                    renderPublico();
+                    if (rolAdminActual) {
+                        renderAdminBoxes();
+                        renderAdminParejas();
+                        if (rolAdminActual === 'SUPERGOD') renderSaasTorneos();
+                    }
+                }
+                servidorCentralDisponible = true;
+                const ind = document.getElementById('indicadorNubeSync');
+                if (ind) {
+                    ind.innerText = "☁️ CLOUD SYNC OK";
+                    ind.style.color = "#34D399";
+                }
+            } catch (e) {}
+        }
+
+        // Consultar el servidor central cada 2.5 segundos para que el Admin vea al instante cualquier inscripción de un celular
+        setInterval(consultarEstadoDelServidorCentral, 2500);
+
+        // Verificar si el jugador viene regresando de Mercado Pago con pago aprobado (?mp_status=approved)
+        function verificarRetornoMercadoPagoEnURL() {
+            const mpStatus = urlParams.get('mp_status') || urlParams.get('collection_status') || urlParams.get('status');
+            const mpTorneo = urlParams.get('torneo');
+            const mpCat = urlParams.get('cat');
+            const mpBox = Number(urlParams.get('box'));
+
+            if (mpStatus && mpCat && mpBox) {
+                const tObj = (mpTorneo && saasDB.torneos[mpTorneo]) ? saasDB.torneos[mpTorneo] : db;
+                if (tObj && tObj.cupos && tObj.cupos[mpCat]) {
+                    const cupo = tObj.cupos[mpCat].find(x => x.id === mpBox);
+                    if (cupo) {
+                        if (mpStatus === 'approved' || mpStatus === 'success') {
+                            cupo.ocupado = true;
+                            cupo.estadoPagoMP = 'PAGADO_MP';
+                            cupo.expiraReservaTimestamp = 0;
+                            ejecutarMotorIAProgramacion(true);
+                            sincronizar();
+                            mostrarToast(`🎉 ¡Pago verificado por Mercado Pago! Box #${mpBox} inscrito oficialmente en rojo.`);
+                        } else if (mpStatus === 'failure' || mpStatus === 'rejected' || mpStatus === 'null') {
+                            cupo.ocupado = false;
+                            cupo.estadoPagoMP = 'LIBRE';
+                            cupo.alias = '';
+                            cupo.j1 = '';
+                            cupo.j2 = '';
+                            cupo.expiraReservaTimestamp = 0;
+                            ejecutarMotorIAProgramacion(true);
+                            sincronizar();
+                            alert("⚠️ El pago en Mercado Pago no fue completado o fue rechazado. El Box ha vuelto a quedar DISPONIBLE en verde.");
+                        }
+                        // Limpiar parámetros de pago de la URL dejando solo ?torneo=
+                        const cleanUrl = `${window.location.pathname}?torneo=${tObj.id}`;
+                        window.history.replaceState({}, document.title, cleanUrl);
+                    }
+                }
+            }
+        }
+
+        // Liberador automático de Boxes que llevan más de 10 minutos en "En Proceso de Pago" sin pagar
+        function limpiarReservasExpiradasSinPago() {
+            const ahora = Date.now();
+            let huboCambios = false;
+            Object.values(saasDB.torneos).forEach(t => {
+                (t.config.categorias || []).forEach(cat => {
+                    (t.cupos[cat.key] || []).forEach(c => {
+                        if (c.ocupado && c.estadoPagoMP === 'RESERVANDO_MP' && c.expiraReservaTimestamp > 0 && ahora > c.expiraReservaTimestamp) {
+                            c.ocupado = false;
+                            c.estadoPagoMP = 'LIBRE';
+                            c.alias = '';
+                            c.j1 = '';
+                            c.j2 = '';
+                            c.expiraReservaTimestamp = 0;
+                            huboCambios = true;
+                        }
+                    });
+                });
+            });
+            if (huboCambios) {
+                ejecutarMotorIAProgramacion(true);
+                renderPublico();
+                if (rolAdminActual) {
+                    renderAdminBoxes();
+                    renderAdminParejas();
+                }
+            }
+        }
 
         function asegurarIntegridadCategorias() {
             if (!db.config.categorias || !Array.isArray(db.config.categorias) || db.config.categorias.length === 0) {
@@ -1158,14 +1307,16 @@
             const t = document.getElementById('toastNotificacion');
             t.innerText = mensaje || "✅ ¡Confirmado y sincronizado en CIRCUITO360.CL!";
             t.style.display = 'flex';
-            setTimeout(() => { t.style.display = 'none'; }, 3200);
+            setTimeout(() => { t.style.display = 'none'; }, 3500);
         }
 
         function sincronizar() {
             asegurarIntegridadCategorias();
+            saasDB.lastUpdated = Date.now();
             saasDB.torneos[saasDB.torneoActivoId] = db;
             localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
             storageSync.postMessage('actualizar');
+            empujarEstadoAlServidorCentral();
             aplicarCMS();
         }
 
@@ -1176,11 +1327,15 @@
                 asegurarIntegridadCategorias();
                 aplicarCMS();
                 renderPublico();
+                if (rolAdminActual) {
+                    renderAdminBoxes();
+                    renderAdminParejas();
+                }
             }
         };
 
         // =========================================================================
-        // 4. MOTOR MATEMÁTICO DE ALMANAQUE Y CANCHAS SIN DESBORDE DE FECHAS
+        // 5. MOTOR MATEMÁTICO DE ALMANAQUE Y CANCHAS SIN DESBORDE DE FECHAS
         // =========================================================================
         function generarGrillaSlotsAlmanaque() {
             const fInicioStr = db.config.fechaInicio || "2026-12-05";
@@ -1202,7 +1357,6 @@
             const diasTotales = Math.max(1, Math.round((endDay - startDay) / 86400000) + 1);
 
             let bloquesTiempo = [];
-            // ESTRICTAMENTE LOS DÍAS DEL TORNEO (PROHIBIDO SALTAR AL DÍA 7 SI EL TORNEO ES 5 Y 6)
             for (let d = 0; d < diasTotales; d++) {
                 const fechaIso = sumarDiasIso(fInicioStr, d);
                 for (let min = minutosApertura; min + duracion <= minutosCierre; min += duracion) {
@@ -1228,10 +1382,8 @@
 
             const descansoTurnos = Number(db.config.turnosDescansoIA) || 2;
             let ultimoBloquePorDupla = {};
-            let partidosTotalesProgramados = 0;
 
-            // 1. ASIGNACIÓN MATEMÁTICA DE TURNO BASE Y CANCHA A TODOS LOS BOXES (2 BOXES = 1 PARTIDO EN 1 CANCHA)
-            // Con 4 canchas, cada bloque de 45 min aloja 4 partidos simultáneos = 8 Boxes en el MISMO horario.
+            // 1. Asignar turno base de a pares (2 Boxes = 1 Cancha simultánea) dentro de las fechas oficiales
             let partidoGlobalIdx = 0;
             db.config.categorias.forEach((cat) => {
                 const listaCupos = db.cupos[cat.key] || [];
@@ -1255,7 +1407,7 @@
                 }
             });
 
-            // 2. PROGRAMACIÓN DE LOS 3 PARTIDOS DE FASE DE GRUPOS PARA LAS PAREJAS INSCRITAS DENTRO DE LOS DÍAS OFICIALES
+            // 2. Programar los 3 partidos para las parejas en reserva o inscritas
             let colaPartidosPorRonda = [[], [], []];
             db.config.categorias.forEach((cat) => {
                 const listaCupos = db.cupos[cat.key] || [];
@@ -1287,12 +1439,10 @@
                         const bloque = bloquesTiempo[b];
                         for (let cNum = 1; cNum <= totalCanchas; cNum++) {
                             const nombreCancha = `Cancha #${cNum}`;
-                            // Permitimos hasta 2 duplas por cancha en el mismo bloque
                             const ocupacionActual = bloque.canchasOcupadas[nombreCancha] || 0;
                             if (ocupacionActual < 2) {
                                 bloque.canchasOcupadas[nombreCancha] = ocupacionActual + 1;
                                 ultimoBloquePorDupla[idUnicoA] = b;
-                                partidosTotalesProgramados++;
 
                                 const detallePartido = {
                                     ronda: match.ronda,
@@ -1321,7 +1471,7 @@
 
             db.config.categorias.forEach(cat => {
                 db.llaves[cat.key] = (db.cupos[cat.key] || [])
-                    .filter(c => c.ocupado && c.alias)
+                    .filter(c => c.ocupado && c.estadoPagoMP === 'PAGADO_MP' && c.alias)
                     .map(c => ({
                         dupla: c.alias,
                         boxId: c.id,
@@ -1345,13 +1495,6 @@
             const { bloquesTiempo, diasTotales, totalCanchas, duracion } = generarGrillaSlotsAlmanaque();
             const capacidadTotalPartidos = bloquesTiempo.length * totalCanchas;
 
-            let parejasInscritasTotales = 0;
-            db.config.categorias.forEach(cat => {
-                (db.cupos[cat.key] || []).forEach(c => {
-                    if (c.ocupado) parejasInscritasTotales++;
-                });
-            });
-
             const elDiag = document.getElementById('textoDiagnosticoGlobalIA');
             const elBadge = document.getElementById('badgeEstadoSincroniaIA');
             const elResumenPub = document.getElementById('resumenPublicoIA');
@@ -1368,7 +1511,6 @@
             }
         }
 
-        // CONTROL RÁPIDO DESDE LA BARRA SUPERIOR DEL ADMIN
         function aplicarControlRapidoSincronizado() {
             const fIni = document.getElementById('quickFechaInicio').value;
             const fFin = document.getElementById('quickFechaFin').value;
@@ -1385,17 +1527,17 @@
             if (db.licenciaMeta) db.licenciaMeta.fechaVencimiento = db.config.fechaFin;
             if (hIni) db.config.horaApertura = hIni;
             if (tCanchas >= 1) db.config.totalCanchas = tCanchas;
-            if (linkMP) db.config.linkPago = linkMP;
+            if (linkMP) db.config.linkPago = sanitizarUrlMercadoPago(linkMP);
 
             ejecutarMotorIAProgramacion(true);
             cargarValoresEnFormularioCMS();
             renderPublico();
             if (rolAdminActual === 'SUPERGOD') renderSaasTorneos();
-            mostrarToast(`⚡ ¡Sincronizado del ${db.config.fechaInicio} al ${db.config.fechaFin} con ${db.config.totalCanchas} canchas y Link MP!`);
+            mostrarToast(`⚡ ¡Sincronizado del ${db.config.fechaInicio} al ${db.config.fechaFin} con ${db.config.totalCanchas} canchas y Link MP verificado!`);
         }
 
         // =========================================================================
-        // 5. GESTOR DE CATEGORÍAS ILIMITADAS
+        // 6. GESTOR DE CATEGORÍAS ILIMITADAS
         // =========================================================================
         function renderEditorCategoriasDinamicas() {
             const cont = document.getElementById('listaEditorCategoriasDinamicas');
@@ -1403,16 +1545,16 @@
             asegurarIntegridadCategorias();
 
             cont.innerHTML = db.config.categorias.map((cat, idx) => {
-                const inscritosCat = (db.cupos[cat.key] || []).filter(c => c.ocupado).length;
+                const inscritosCat = (db.cupos[cat.key] || []).filter(c => c.ocupado && c.estadoPagoMP === 'PAGADO_MP').length;
                 return `
                     <div style="background:#04070D; border:1px solid #1E293B; padding:0.85rem; border-radius:10px; display:flex; flex-direction:column; gap:0.5rem;">
                         <div style="display:flex; justify-content:space-between; align-items:center;">
                             <span style="font-size:0.68rem; color:var(--primary); font-family:'JetBrains Mono'; font-weight:800;">CATEGORÍA #${idx+1}</span>
-                            <span style="font-size:0.68rem; color:#10B981; font-family:'JetBrains Mono';">${inscritosCat} / ${cat.maxCupos} inscritos</span>
+                            <span style="font-size:0.68rem; color:#10B981; font-family:'JetBrains Mono';">${inscritosCat} / ${cat.maxCupos} pagados</span>
                         </div>
                         <div style="display:flex; gap:0.4rem;">
-                            <input type="text" value="${cat.nombre}" onchange="renombrarCategoriaDinamica('${cat.key}', this.value)" class="input-dark" style="font-weight:700;" title="Nombre de la Categoría">
-                            <select onchange="cambiarCuposCategoriaDinamica('${cat.key}', this.value)" class="input-dark" style="width:110px;" title="Cantidad de Boxes">
+                            <input type="text" value="${cat.nombre}" onchange="renombrarCategoriaDinamica('${cat.key}', this.value)" class="input-dark" style="font-weight:700;">
+                            <select onchange="cambiarCuposCategoriaDinamica('${cat.key}', this.value)" class="input-dark" style="width:110px;">
                                 <option value="4" ${cat.maxCupos==4?'selected':''}>4 Boxes</option>
                                 <option value="8" ${cat.maxCupos==8?'selected':''}>8 Boxes</option>
                                 <option value="12" ${cat.maxCupos==12?'selected':''}>12 Boxes</option>
@@ -1420,7 +1562,7 @@
                                 <option value="24" ${cat.maxCupos==24?'selected':''}>24 Boxes</option>
                                 <option value="32" ${cat.maxCupos==32?'selected':''}>32 Boxes</option>
                             </select>
-                            <button onclick="eliminarCategoriaDinamica('${cat.key}')" style="background:#EF4444; color:#fff; border:none; padding:0.4rem 0.65rem; border-radius:8px; cursor:pointer; font-weight:800;" title="Eliminar Categoría">✕</button>
+                            <button onclick="eliminarCategoriaDinamica('${cat.key}')" style="background:#EF4444; color:#fff; border:none; padding:0.4rem 0.65rem; border-radius:8px; cursor:pointer; font-weight:800;">✕</button>
                         </div>
                     </div>
                 `;
@@ -1471,7 +1613,8 @@
                     actuales.push({
                         id: i + 1,
                         ocupado: false,
-                        estadoPagoMP: "PENDIENTE",
+                        estadoPagoMP: "LIBRE",
+                        expiraReservaTimestamp: 0,
                         folioMP: "",
                         alias: "",
                         j1: "",
@@ -1695,6 +1838,7 @@
             document.getElementById('cfgHoraCierre').value = db.config.horaCierre || '21:00';
             document.getElementById('cfgColorPrimario').value = db.config.colorPrimary || '#D4AF37';
             document.getElementById('cfgLinkPago').value = db.config.linkPago || 'https://www.mercadopago.cl';
+            document.getElementById('cfgMpAccessToken').value = db.config.mpAccessToken || '';
             document.getElementById('cfgTitularMP').value = db.config.titularMP || 'Club Oficial';
             document.getElementById('cfgPrecioInscripcion').value = db.config.precioInscripcion || 70000;
             document.getElementById('cfgGoogleMapsQuery').value = db.config.googleMapsQuery || '';
@@ -1821,10 +1965,11 @@
             if(!container) return;
             container.innerHTML = '';
 
-            const inscritosCat = (db.cupos[catLlavesActiva] || []).filter(c => c.ocupado && c.alias);
+            // Solo las parejas con PAGO CONFIRMADO (PAGADO_MP) entran a la tabla oficial de posiciones
+            const inscritosCat = (db.cupos[catLlavesActiva] || []).filter(c => c.ocupado && c.estadoPagoMP === 'PAGADO_MP' && c.alias);
             if (tbodyPos) {
                 if (inscritosCat.length === 0) {
-                    tbodyPos.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#94A3B8; padding:1.5rem;">Sin parejas inscritas aún en esta categoría.</td></tr>`;
+                    tbodyPos.innerHTML = `<tr><td colspan="9" style="text-align:center; color:#94A3B8; padding:1.5rem;">Sin parejas con pago confirmado aún en esta categoría.</td></tr>`;
                 } else {
                     const filasCalculadas = inscritosCat.map((c, idx) => {
                         const tieneResultado = c.resultado && c.resultado !== 'Próx.' && c.resultado.includes('-');
@@ -1853,7 +1998,7 @@
 
             let dataFixtures = db.llaves[catLlavesActiva] || [];
             if(dataFixtures.length === 0) {
-                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1; background:#0B1220; border-radius:16px; border:1px solid #1E293B;">No hay suficientes duplas inscritas en <strong>${obtenerNombreCategoria(catLlavesActiva)}</strong> para armar cruces.</div>`;
+                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1; background:#0B1220; border-radius:16px; border:1px solid #1E293B;">No hay suficientes duplas con pago confirmado en <strong>${obtenerNombreCategoria(catLlavesActiva)}</strong> para armar cruces.</div>`;
                 return;
             }
 
@@ -1884,6 +2029,7 @@
             return isoStr.replace('T', ' ') + ' hrs';
         }
 
+        // RENDER PÚBLICO CON LOS 3 ESTADOS DE BOX (🟢 DISPONIBLE, 🟡 PAGANDO 10 MIN, 🔴 INSCRITO PAGADO)
         function renderPublico() {
             const grid = document.getElementById('gridCuposPublico');
             if(!grid) return;
@@ -1892,17 +2038,15 @@
 
             lista.forEach(cupo => {
                 const card = document.createElement('div');
-                if(cupo.ocupado) {
+
+                if(cupo.ocupado && cupo.estadoPagoMP === 'PAGADO_MP') {
+                    // ESTADO 3: ROJO DEFINITIVO (PAGO VERIFICADO)
                     const resumen3Partidos = (cupo.partidosIA && cupo.partidosIA.length > 0)
                         ? `<div style="margin-top:0.5rem; background:rgba(0,0,0,0.35); padding:0.45rem 0.6rem; border-radius:8px; font-size:0.66rem; font-family:'JetBrains Mono'; color:#E2E8F0;">
                             <div style="color:var(--primary); font-weight:700; margin-bottom:0.2rem;">🤖 Agenda IA (3 Partidos):</div>
                             ${cupo.partidosIA.map((p, idx) => `<div>P${idx+1}: ${p.hora.slice(5)} (${p.cancha}) vs ${p.rival.substring(0,12)}</div>`).join('')}
                            </div>`
                         : '';
-
-                    const badgePago = cupo.estadoPagoMP === 'PAGADO_MP'
-                        ? `<span style="color:#34D399; font-size:0.65rem;">💳 MP Verificado</span>`
-                        : `<span style="color:#FACC15; font-size:0.65rem;">⏳ Pago en Proceso</span>`;
 
                     card.className = "box-card box-roja";
                     card.innerHTML = `
@@ -1916,8 +2060,7 @@
                                 <h4 style="font-size: 1rem; font-weight: 800; color: #fff;">${cupo.alias || 'DUPLA INSCRITA'}</h4>
                                 <div style="font-size: 0.72rem; color: #fca5a5; margin-top: 0.15rem;">👤 ${cupo.j1 || 'Jugador 1'} / ${cupo.j2 || 'Jugador 2'}</div>
                                 <div style="display:flex; gap:0.5rem; align-items:center; margin-top:0.15rem;">
-                                    <span style="font-size: 0.65rem; color: #cbd5e1;">📸 ${cupo.redes1 || ''} ${cupo.redes2 || ''}</span>
-                                    ${badgePago}
+                                    <span style="color:#34D399; font-size:0.65rem; font-weight:800;">💳 Pago Verificado MP</span>
                                 </div>
                             </div>
                         </div>
@@ -1933,7 +2076,26 @@
                             </div>
                         </div>
                     `;
+                } else if (cupo.ocupado && cupo.estadoPagoMP === 'RESERVANDO_MP') {
+                    // ESTADO 2: AMARILLO TEMPORAL (EN PROCESO DE PAGO EN MERCADO PAGO - 10 MIN)
+                    const urlPagoDirecto = sanitizarUrlMercadoPago(db.config.linkPago);
+                    card.className = "box-card box-amarilla";
+                    card.onclick = () => window.location.href = urlPagoDirecto;
+                    card.innerHTML = `
+                        <div class="status-badge badge-yellow">PAGANDO EN MP ⏳</div>
+                        <div style="font-size: 0.72rem; color: #FDE68A; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
+                        <div style="background: rgba(0,0,0,0.35); padding: 0.85rem; border-radius: 10px;">
+                            <div style="font-size: 0.95rem; font-weight: 800; color: #FDE047;">⏳ ${cupo.alias || 'Reserva en Curso'}</div>
+                            <div style="font-size: 0.72rem; color: #FEF3C7; margin-top: 0.2rem;">👤 ${cupo.j1} / ${cupo.j2}</div>
+                            <p style="font-size: 0.68rem; color: #FDE68A; margin-top: 0.35rem;">Esperando confirmación de pago en Mercado Pago. Si no se completa el pago, se liberará automáticamente.</p>
+                        </div>
+                        <div style="margin-top: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-family: 'JetBrains Mono', monospace;">
+                            <span class="reserva-expira-timer" data-expira="${cupo.expiraReservaTimestamp || 0}" style="color:#FDE047; font-weight:800;">⏱️ 10:00 min</span>
+                            <span style="background: #009EE3; color: #fff; font-weight: 800; padding: 0.3rem 0.7rem; border-radius: 6px;">Completar Pago MP 💳</span>
+                        </div>
+                    `;
                 } else {
+                    // ESTADO 1: VERDE DISPONIBLE
                     card.className = "box-card box-verde";
                     card.onclick = () => abrirModalInscripcion(cupo.id);
                     card.innerHTML = `
@@ -1956,6 +2118,8 @@
         }
 
         function actualizarContadoresRegresivos() {
+            limpiarReservasExpiradasSinPago();
+
             const ahora = new Date().getTime();
             const fTorneo = (db && db.config && db.config.fechaInicio) ? db.config.fechaInicio : '2026-12-05';
             const hTorneo = (db && db.config && db.config.horaApertura) ? db.config.horaApertura : '09:00';
@@ -1991,6 +2155,20 @@
                     el.innerText = "🎾 ¡En Cancha / Live!";
                 }
             });
+
+            // Temporizador de expiración de 10 minutos para Boxes en proceso de pago
+            const timersReserva = document.querySelectorAll('.reserva-expira-timer');
+            timersReserva.forEach(el => {
+                const exp = Number(el.getAttribute('data-expira')) || 0;
+                const rest = exp - ahora;
+                if (rest > 0) {
+                    const m = Math.floor(rest / 60000);
+                    const s = Math.floor((rest % 60000) / 1000);
+                    el.innerText = `⏱️ Expira en ${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+                } else {
+                    el.innerText = `Liberando...`;
+                }
+            });
         }
         setInterval(actualizarContadoresRegresivos, 1000);
 
@@ -2021,7 +2199,8 @@
             boxSeleccionado = null;
         }
 
-        function procesarInscripcionYPago(e) {
+        // PROCESO DE INSCRIPCIÓN EXHAUSTIVO: NO REGALA EL CUPO EN ROJO SIN PAGO
+        async function procesarInscripcionYPago(e) {
             e.preventDefault();
             const alias = document.getElementById('inputAlias').value.trim();
             const j1 = document.getElementById('inputJ1').value.trim();
@@ -2043,8 +2222,10 @@
 
             const cupo = (db.cupos[catActiva] || []).find(x => x.id === boxSeleccionado);
             if(cupo) {
+                // PASA A ESTADO INTERMEDIO AMARILLO (RESERVANDO_MP POR 10 MINUTOS), NO A PAGADO ROJO
                 cupo.ocupado = true;
-                cupo.estadoPagoMP = "PAGADO_MP";
+                cupo.estadoPagoMP = "RESERVANDO_MP";
+                cupo.expiraReservaTimestamp = Date.now() + TIEMPO_EXPIRACION_PAGO_MS;
                 cupo.folioMP = folioUnico;
                 cupo.modalidadPago = textoModalidad;
                 cupo.alias = alias;
@@ -2071,7 +2252,35 @@
             }
 
             const boxGuardado = boxSeleccionado;
+            const catGuardada = catActiva;
             ejecutarMotorIAProgramacion(true);
+
+            // Determinar URL de pago en Mercado Pago (Preferencia Dinámica por API o Link Sanitizado)
+            let urlCheckoutFinal = sanitizarUrlMercadoPago(db.config.linkPago);
+            try {
+                const respPref = await fetch('/api/mp/create-preference', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        torneoId: db.id,
+                        nombreTorneo: db.config.nombreTorneo,
+                        categoriaKey: catGuardada,
+                        categoriaNombre: obtenerNombreCategoria(catGuardada),
+                        boxId: boxGuardado,
+                        aliasDupla: alias,
+                        monto: montoCobrado,
+                        folioMP: folioUnico,
+                        mpAccessToken: db.config.mpAccessToken || '',
+                        fallbackLink: urlCheckoutFinal
+                    })
+                });
+                if (respPref.ok) {
+                    const dataPref = await respPref.json();
+                    if (dataPref && dataPref.init_point) {
+                        urlCheckoutFinal = dataPref.init_point;
+                    }
+                }
+            } catch (err) {}
 
             const horarioAsignado = cupo ? formatearFechaHoraLegible(cupo.horaInicioMatch) : '';
             const canchaAsignada = cupo ? cupo.cancha : 'Cancha #1';
@@ -2079,13 +2288,13 @@
                 ? cupo.partidosIA.map((p, idx) => `<div>• <strong>Partido #${idx+1}:</strong> ${p.hora} en <strong>${p.cancha}</strong> vs ${p.rival}</div>`).join('')
                 : '';
 
-            ultimoTextoWhatsAppGenerado = `🎾 *CIRCUITO360.CL - INSCRIPCIÓN OFICIAL*\n🏆 Torneo: ${db.config.nombreTorneo} (${db.config.badgeOrg})\n🥇 Categoría: ${obtenerNombreCategoria(catActiva)}\n⭐ Dupla: ${alias}\n👤 Jugadores: ${j1} (${tel1}) / ${j2} (${tel2})\n📦 Box #${boxGuardado} (${canchaAsignada})\n🕒 Debut IA: ${horarioAsignado}\n💳 Folio MP: ${folioUnico}`;
+            ultimoTextoWhatsAppGenerado = `🎾 *CIRCUITO360.CL - PRE-RESERVA BOX #${boxGuardado}*\n🏆 Torneo: ${db.config.nombreTorneo} (${db.config.badgeOrg})\n🥇 Categoría: ${obtenerNombreCategoria(catGuardada)}\n⭐ Dupla: ${alias}\n👤 Jugadores: ${j1} (${tel1}) / ${j2} (${tel2})\n📦 Box #${boxGuardado} (${canchaAsignada})\n🕒 Debut IA: ${horarioAsignado}\n💳 Folio MP: ${folioUnico}\n🔗 Link de Pago: ${urlCheckoutFinal}`;
 
             cerrarModal();
 
             document.getElementById('exitoFolioMP').innerText = folioUnico;
             document.getElementById('exitoTorneoNombre').innerText = `${db.config.nombreTorneo} • ${db.config.badgeOrg}`;
-            document.getElementById('exitoCategoriaNombre').innerText = obtenerNombreCategoria(catActiva);
+            document.getElementById('exitoCategoriaNombre').innerText = obtenerNombreCategoria(catGuardada);
             document.getElementById('exitoAlias').innerText = alias;
             document.getElementById('exitoJugadores').innerText = `${j1} (${redes1 || 'Sin IG'}) & ${j2} (${redes2 || 'Sin IG'})`;
             document.getElementById('exitoContacto').innerText = `WhatsApp: ${tel1} / ${tel2} • Email: ${email1 || '--'} / ${email2 || '--'}`;
@@ -2093,14 +2302,15 @@
             document.getElementById('exitoHorarioPartido').innerText = horarioAsignado;
             document.getElementById('exitoMontoPago').innerText = textoModalidad;
             document.getElementById('exitoCronogramaContenedor').innerHTML = `${listaMisPartidos}<hr style="border-color:#1E293B; margin:0.75rem 0;">${db.config.cronograma}`;
-            document.getElementById('btnIrMercadoPagoDirecto').href = db.config.linkPago || 'https://www.mercadopago.cl';
+            document.getElementById('btnIrMercadoPagoDirecto').href = urlCheckoutFinal;
 
             cambiarVista('exito');
             sonarGolpePelotaPadel(1.2, 1.15);
 
+            // Redirigir de forma directa en la misma ventana tras 1.2s para evitar bloqueadores de popups en iPhone/Android
             setTimeout(() => {
-                window.open(db.config.linkPago || 'https://www.mercadopago.cl', '_blank');
-            }, 950);
+                window.location.href = urlCheckoutFinal;
+            }, 1200);
         }
 
         function copiarResumenWhatsAppJugador() {
@@ -2120,7 +2330,7 @@
                     let catPartido = "";
                     db.config.categorias.forEach(cat => {
                         (db.cupos[cat.key] || []).forEach(cp => {
-                            if(cp.cancha === canchaNombre && cp.ocupado) {
+                            if(cp.cancha === canchaNombre && cp.ocupado && cp.estadoPagoMP === 'PAGADO_MP') {
                                 partidoActual = cp;
                                 catPartido = cat.nombre;
                             }
@@ -2146,7 +2356,7 @@
             let inscritas = [];
             db.config.categorias.forEach(cat => {
                 (db.cupos[cat.key] || []).forEach(cp => {
-                    if(cp.ocupado && cp.alias) {
+                    if(cp.ocupado && cp.estadoPagoMP === 'PAGADO_MP' && cp.alias) {
                         const ptsGuardados = (db.puntosExtraRanking && db.puntosExtraRanking[cp.alias]) || 1800;
                         inscritas.push({ alias: `${cp.alias} (${cat.nombre})`, pts: ptsGuardados });
                     }
@@ -2205,9 +2415,8 @@
         }
 
         function actualizarCajaPrivadaAdmin() {
-            let totalOcupados = 0;
             let pagadosMP = 0;
-            let pendientesMP = 0;
+            let enProcesoMP = 0;
             let capacidadTotalCupos = 0;
 
             db.config.categorias.forEach(cat => {
@@ -2215,9 +2424,8 @@
                 capacidadTotalCupos += arr.length;
                 arr.forEach(c => {
                     if(c.ocupado) {
-                        totalOcupados++;
                         if (c.estadoPagoMP === 'PAGADO_MP') pagadosMP++;
-                        else pendientesMP++;
+                        else enProcesoMP++;
                     }
                 });
             });
@@ -2229,8 +2437,8 @@
             const elCats = document.getElementById('adminTotalCategoriasKpi');
 
             if(elCaja) elCaja.innerText = "$" + (pagadosMP * precioUnit).toLocaleString('es-CL') + " CLP";
-            if(elDetMP) elDetMP.innerText = `${pagadosMP} Pagados MP • ${pendientesMP} Por Verificar`;
-            if(elStats) elStats.innerText = `${totalOcupados} Duplas (${totalOcupados * 2} Jugadores) / ${capacidadTotalCupos}`;
+            if(elDetMP) elDetMP.innerText = `${pagadosMP} Pagados 🔴 • ${enProcesoMP} Pagando en MP 🟡`;
+            if(elStats) elStats.innerText = `${pagadosMP} Confirmadas (${enProcesoMP} en pago) / ${capacidadTotalCupos}`;
             if(elCats) elCats.innerText = `${db.config.totalCanchas || 4} Canchas • ${db.config.categorias.length} Categorías`;
         }
 
@@ -2250,19 +2458,16 @@
                     opcionesCanchas += `<option value="${cNom}" ${c.cancha === cNom ? 'selected' : ''}>${cNom}</option>`;
                 }
 
+                const estadoSelectVal = !c.ocupado ? 'LIBRE' : (c.estadoPagoMP === 'PAGADO_MP' ? 'PAGADO_MP' : 'RESERVANDO_MP');
+
                 tbody.innerHTML += `
                     <tr>
                         <td><strong>Box #${c.id}</strong></td>
                         <td>
-                            <select onchange="cambiarEstado('${cat}', ${c.id}, this.value)" class="input-dark" style="width:95px;">
-                                <option value="libre" ${!c.ocupado?'selected':''}>🟢 Libre</option>
-                                <option value="ocupado" ${c.ocupado?'selected':''}>🔴 Inscrito</option>
-                            </select>
-                        </td>
-                        <td>
-                            <select onchange="cambiarCampoBox('${cat}', ${c.id}, 'estadoPagoMP', this.value)" class="input-dark" style="width:115px; border-color:#009EE3;">
-                                <option value="PAGADO_MP" ${c.estadoPagoMP==='PAGADO_MP'?'selected':''}>💳 Pagado MP</option>
-                                <option value="PENDIENTE" ${c.estadoPagoMP!=='PAGADO_MP'?'selected':''}>⏳ Pendiente</option>
+                            <select onchange="cambiarEstadoUnificadoBox('${cat}', ${c.id}, this.value)" class="input-dark" style="width:165px; font-weight:700;">
+                                <option value="LIBRE" ${estadoSelectVal==='LIBRE'?'selected':''}>🟢 Libre (Disponible)</option>
+                                <option value="RESERVANDO_MP" ${estadoSelectVal==='RESERVANDO_MP'?'selected':''}>🟡 Pagando MP (10m)</option>
+                                <option value="PAGADO_MP" ${estadoSelectVal==='PAGADO_MP'?'selected':''}>🔴 Inscrito & Pagado</option>
                             </select>
                         </td>
                         <td><input type="text" value="${c.alias || ''}" placeholder="Nombre Dupla" onchange="cambiarCampoBox('${cat}', ${c.id}, 'alias', this.value)" class="input-dark" style="min-width:120px;"></td>
@@ -2294,7 +2499,10 @@
                             </select>
                         </td>
                         <td><input type="text" value="${c.resultado || 'Próx.'}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'resultado', this.value)" class="input-dark" style="width:80px;"></td>
-                        <td><button onclick="confirmarFilaBox()" class="btn-small-ok">✔</button></td>
+                        <td style="white-space:nowrap;">
+                            ${estadoSelectVal === 'RESERVANDO_MP' ? `<button onclick="aprobarPagoManualAdmin('${cat}', ${c.id})" class="btn-small-ok" style="background:#10B981; margin-right:0.25rem;">💳 Aprobar MP</button>` : ''}
+                            <button onclick="confirmarFilaBox()" class="btn-small-ok">✔</button>
+                        </td>
                     </tr>
                 `;
             });
@@ -2302,11 +2510,46 @@
             actualizarDiagnosticoIA();
         }
 
+        function cambiarEstadoUnificadoBox(cat, id, nuevoEstado) {
+            const c = (db.cupos[cat] || []).find(x => x.id === id);
+            if (!c) return;
+            if (nuevoEstado === 'LIBRE') {
+                c.ocupado = false;
+                c.estadoPagoMP = 'LIBRE';
+                c.expiraReservaTimestamp = 0;
+                c.alias = '';
+                c.j1 = '';
+                c.j2 = '';
+            } else if (nuevoEstado === 'RESERVANDO_MP') {
+                c.ocupado = true;
+                c.estadoPagoMP = 'RESERVANDO_MP';
+                c.expiraReservaTimestamp = Date.now() + TIEMPO_EXPIRACION_PAGO_MS;
+                if (!c.alias) c.alias = `RESERVA BOX #${id}`;
+            } else if (nuevoEstado === 'PAGADO_MP') {
+                c.ocupado = true;
+                c.estadoPagoMP = 'PAGADO_MP';
+                c.expiraReservaTimestamp = 0;
+                if (!c.alias) c.alias = `DUPLA BOX #${id}`;
+            }
+            ejecutarMotorIAProgramacion(true);
+            renderAdminBoxes();
+            renderAdminParejas();
+            renderPublico();
+        }
+
+        function aprobarPagoManualAdmin(cat, id) {
+            cambiarEstadoUnificadoBox(cat, id, 'PAGADO_MP');
+            mostrarToast(`💳 ¡Pago aprobado! Box #${id} ahora está inscrito en rojo en todas las pantallas.`);
+        }
+
         function cambiarCampoBox(cat, id, campo, valor) {
             const c = (db.cupos[cat] || []).find(x => x.id === id);
             if (c) {
                 c[campo] = valor;
-                if (campo === 'alias' && valor.trim() !== '') c.ocupado = true;
+                if (campo === 'alias' && valor.trim() !== '' && !c.ocupado) {
+                    c.ocupado = true;
+                    c.estadoPagoMP = 'PAGADO_MP';
+                }
                 sincronizar();
             }
         }
@@ -2352,9 +2595,10 @@
                                     <div style="font-size:0.72rem; font-family:'JetBrains Mono'; color:#60A5FA;">Box #${c.id}</div>
                                 </td>
                                 <td>
-                                    <select onchange="cambiarCampoBox('${cat.key}', ${c.id}, 'estadoPagoMP', this.value)" class="input-dark" style="width:120px; font-size:0.72rem; margin-bottom:0.25rem;">
-                                        <option value="PAGADO_MP" ${c.estadoPagoMP==='PAGADO_MP'?'selected':''}>💳 Pagado MP</option>
-                                        <option value="PENDIENTE" ${c.estadoPagoMP!=='PAGADO_MP'?'selected':''}>⏳ Pendiente</option>
+                                    <select onchange="cambiarEstadoUnificadoBox('${cat.key}', ${c.id}, this.value)" class="input-dark" style="width:140px; font-size:0.72rem; margin-bottom:0.25rem; font-weight:700;">
+                                        <option value="PAGADO_MP" ${c.estadoPagoMP==='PAGADO_MP'?'selected':''}>🔴 Pagado MP</option>
+                                        <option value="RESERVANDO_MP" ${c.estadoPagoMP==='RESERVANDO_MP'?'selected':''}>🟡 Pagando (10m)</option>
+                                        <option value="LIBRE">🟢 Liberar Box</option>
                                     </select>
                                     <div style="font-size:0.65rem; font-family:'JetBrains Mono'; color:#38BDF8;">${c.folioMP || 'C360-MANUAL'}</div>
                                 </td>
@@ -2387,6 +2631,7 @@
                                 </td>
                                 <td><input type="text" value="${c.pin || '1234'}" onchange="cambiarCampoBox('${cat.key}', ${c.id}, 'pin', this.value)" class="input-dark" style="width:62px; color:#FACC15; font-family:'JetBrains Mono';"></td>
                                 <td style="text-align:right; white-space:nowrap;">
+                                    ${c.estadoPagoMP !== 'PAGADO_MP' ? `<button onclick="aprobarPagoManualAdmin('${cat.key}', ${c.id})" class="btn-small-ok" style="margin-right:0.25rem;">💳 Aprobar</button>` : ''}
                                     <button onclick="confirmarFilaBox()" class="btn-small-ok" style="margin-right:0.25rem;">✔ Guardar</button>
                                     <button onclick="liberarBox('${cat.key}', ${c.id})" style="background:#EF4444; color:#fff; border:none; padding:0.38rem 0.6rem; border-radius:6px; cursor:pointer; font-size:0.7rem; font-weight:700;">Liberar</button>
                                 </td>
@@ -2396,7 +2641,7 @@
                 });
             });
 
-            tbody.innerHTML = filasHTML || `<tr><td colspan="8" style="text-align:center; padding:2rem; color:#94A3B8;">No hay parejas inscritas aún. Usa el botón "+ Inscribir Nueva Pareja Manualmente" o inscríbete desde los Boxes verdes.</td></tr>`;
+            tbody.innerHTML = filasHTML || `<tr><td colspan="8" style="text-align:center; padding:2rem; color:#94A3B8;">No hay parejas inscritas ni en proceso de pago.</td></tr>`;
         }
 
         function inscribirParejaManualDesdeAdmin() {
@@ -2409,6 +2654,7 @@
             }
             cupoLibre.ocupado = true;
             cupoLibre.estadoPagoMP = "PAGADO_MP";
+            cupoLibre.expiraReservaTimestamp = 0;
             cupoLibre.folioMP = `C360-ADM-${Math.floor(1000 + Math.random() * 9000)}`;
             cupoLibre.alias = `DUPLA AYRES #${cupoLibre.id}`;
             cupoLibre.j1 = "Nombre Jugador 1";
@@ -2417,7 +2663,7 @@
             cupoLibre.tel2 = "+569";
             ejecutarMotorIAProgramacion(true);
             renderAdminParejas();
-            mostrarToast(`➕ Dupla agregada en ${obtenerNombreCategoria(catTarget)} (Box #${cupoLibre.id}).`);
+            mostrarToast(`➕ Dupla confirmada en ${obtenerNombreCategoria(catTarget)} (Box #${cupoLibre.id}).`);
         }
 
         function exportarJugadoresCSV() {
@@ -2461,26 +2707,8 @@
         }
 
         function liberarBox(cat, id) {
-            const c = (db.cupos[cat] || []).find(x => x.id === id);
-            if (!c) return;
-            c.ocupado = false; c.alias = ""; c.j1 = ""; c.j2 = ""; c.tel1 = ""; c.tel2 = ""; c.email1 = ""; c.email2 = ""; c.partidosIA = []; c.estadoPagoMP = "PENDIENTE";
-            ejecutarMotorIAProgramacion(true);
-            renderAdminParejas();
-            renderAdminBoxes();
-            mostrarToast("🗑️ Cupo liberado y horarios re-optimizados por IA.");
-        }
-
-        function cambiarEstado(cat, id, val) {
-            const c = (db.cupos[cat] || []).find(x => x.id === id);
-            if (!c) return;
-            c.ocupado = (val === 'ocupado');
-            if(c.ocupado && !c.alias) {
-                c.alias = `DUPLA BOX #${id}`;
-                c.estadoPagoMP = "PAGADO_MP";
-            }
-            ejecutarMotorIAProgramacion(true);
-            renderAdminBoxes();
-            renderPublico();
+            cambiarEstadoUnificadoBox(cat, id, 'LIBRE');
+            mostrarToast("🗑️ Cupo liberado y disponible en verde en todas las pantallas.");
         }
 
         function renderEditorSponsors() {
@@ -2509,7 +2737,7 @@
             let duplas = [];
             db.config.categorias.forEach(cat => {
                 (db.cupos[cat.key] || []).forEach(c => {
-                    if(c.ocupado && c.alias) duplas.push({ alias: c.alias, catNombre: cat.nombre });
+                    if(c.ocupado && c.estadoPagoMP === 'PAGADO_MP' && c.alias) duplas.push({ alias: c.alias, catNombre: cat.nombre });
                 });
             });
 
@@ -2527,9 +2755,6 @@
             });
         }
 
-        // =========================================================================
-        // 6. CONSOLA SUPER SUPER ADMIN CON FECHA INICIO, FECHA FIN Y LINK MP DIRECTO
-        // =========================================================================
         function renderSaasTorneos() {
             if (rolAdminActual !== 'SUPERGOD') return;
             const tbody = document.getElementById('tablaSaasTorneosBody');
@@ -2548,7 +2773,7 @@
 
                 let inscritosCount = 0;
                 (t.config.categorias || []).forEach(cat => {
-                    (t.cupos[cat.key] || []).forEach(c => { if (c.ocupado) inscritosCount++; });
+                    (t.cupos[cat.key] || []).forEach(c => { if (c.ocupado && c.estadoPagoMP === 'PAGADO_MP') inscritosCount++; });
                 });
 
                 tbody.innerHTML += `
@@ -2560,7 +2785,7 @@
                         </td>
                         <td>
                             <div style="font-weight:800; color:#fff;">${t.config.nombreTorneo}</div>
-                            <div style="font-family:'JetBrains Mono'; font-size:0.68rem; color:var(--primary);">${t.config.badgeOrg} • ID: ${t.id} (${(t.config.categorias || []).length} Cat)</div>
+                            <div style="font-family:'JetBrains Mono'; font-size:0.68rem; color:var(--primary);">${t.config.badgeOrg} • ID: ${t.id} (${inscritosCount} Pagados)</div>
                         </td>
                         <td>
                             <input type="text" value="${t.claveLicencia || '1234'}" onchange="actualizarMetaLicencia('${t.id}', 'clave', this.value)" class="input-dark" style="width:75px; font-family:'JetBrains Mono'; color:#FACC15; font-weight:700;">
@@ -2618,7 +2843,7 @@
                 t.licenciaMeta.fechaVencimiento = t.config.fechaFin;
             }
             if (campo === 'horaApertura') t.config.horaApertura = valor;
-            if (campo === 'linkMP') t.config.linkPago = valor.trim() || 'https://www.mercadopago.cl';
+            if (campo === 'linkMP') t.config.linkPago = sanitizarUrlMercadoPago(valor);
 
             saasDB.torneoActivoId = idTorneo;
             db = saasDB.torneos[idTorneo];
@@ -2649,7 +2874,7 @@
             const horaIni = document.getElementById('nuevoSaasHoraInicio').value || '09:00';
             const canchasClub = Number(document.getElementById('nuevoSaasCanchas').value) || 4;
             const catsLista = document.getElementById('nuevoSaasCategoriasLista').value;
-            const linkMP = document.getElementById('nuevoSaasLinkMP').value.trim() || 'https://www.mercadopago.cl';
+            const linkMP = sanitizarUrlMercadoPago(document.getElementById('nuevoSaasLinkMP').value);
             const precioInsc = Number(document.getElementById('nuevoSaasPrecioInscripcion').value) || 70000;
             const clave = document.getElementById('nuevoSaasClave').value.trim() || '1234';
             const precioLic = document.getElementById('nuevoSaasPrecioLicencia').value;
@@ -2709,7 +2934,8 @@
             if (vBadge) db.config.badgeOrg = vBadge;
 
             db.config.colorPrimary = document.getElementById('cfgColorPrimario').value.trim() || '#D4AF37';
-            db.config.linkPago = document.getElementById('cfgLinkPago').value.trim() || 'https://www.mercadopago.cl';
+            db.config.linkPago = sanitizarUrlMercadoPago(document.getElementById('cfgLinkPago').value);
+            db.config.mpAccessToken = document.getElementById('cfgMpAccessToken').value.trim();
             db.config.titularMP = document.getElementById('cfgTitularMP').value.trim() || 'Club Oficial';
             db.config.precioInscripcion = Number(document.getElementById('cfgPrecioInscripcion').value) || 70000;
             db.config.totalCanchas = Math.max(1, Number(document.getElementById('cfgTotalCanchas').value) || 4);
@@ -2738,7 +2964,9 @@
 
         // Inicialización completa al arrancar CIRCUITO360.CL
         iniciarCarruselAutomaticoHero();
+        verificarRetornoMercadoPagoEnURL();
         ejecutarMotorIAProgramacion(true);
+        consultarEstadoDelServidorCentral();
         aplicarCMS();
         renderPublico();
     </script>
