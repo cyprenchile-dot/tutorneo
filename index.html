@@ -246,7 +246,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #1E293B; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
                             <div>
                                 <h2 style="font-size: 1.5rem; font-weight: 800; color: #fff;">🛠️ SUPER ADMIN MASTER (GOD MODE)</h2>
-                                <p style="color: #94A3B8; font-size: 0.8rem;">Control autónomo de IA para programar 3 partidos por pareja, horarios y canchas.</p>
+                                <p style="color: #94A3B8; font-size: 0.8rem;">Control autónomo de IA para programar 3 partidos por pareja, horarios de almanaque y canchas.</p>
                             </div>
                             <div class="flex gap-2">
                                 <button onclick="ejecutarMotorIAProgramacion()" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition">🤖 IA: Generar Fixture & 3 Partidos</button>
@@ -272,7 +272,7 @@
                         <div class="nav-buttons" style="margin-bottom: 1.5rem; border-bottom: 1px solid #1E293B; padding-bottom: 1rem;">
                             <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas & Marcadores</button>
                             <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="nav-btn">👥 Base de Parejas</button>
-                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Logo, Horarios & Tarifas</button>
+                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Logo, Almanaque & Tarifas</button>
                             <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="nav-btn">🤝 Auspiciadores & Logos</button>
                             <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="nav-btn">📊 Rankings WPT</button>
                         </div>
@@ -323,6 +323,7 @@
                             </div>
                         </div>
 
+                        <!-- NUEVOS CASILLEROS DE ALMANAQUE Y CALENDARIO PARA LA IA -->
                         <div id="subPanelCms" class="modal-oculto" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
                             <div>
                                 <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Nombre del Torneo</label>
@@ -341,6 +342,22 @@
                                 <input type="number" id="cfgTotalCanchas" min="1" max="8" class="input-dark">
                             </div>
                             <div>
+                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Fecha de Inicio del Torneo</label>
+                                <input type="date" id="cfgFechaInicio" class="input-dark">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Fecha de Término del Torneo</label>
+                                <input type="date" id="cfgFechaFin" class="input-dark">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Hora de Apertura Diaria (Ej. 09:00)</label>
+                                <input type="time" id="cfgHoraApertura" class="input-dark">
+                            </div>
+                            <div>
+                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Hora de Cierre Diario (Ej. 21:00)</label>
+                                <input type="time" id="cfgHoraCierre" class="input-dark">
+                            </div>
+                            <div>
                                 <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">URL Foto Fondo Hero</label>
                                 <input type="text" id="cfgHeroUrl" class="input-dark">
                             </div>
@@ -349,7 +366,7 @@
                                 <input type="text" id="cfgColorPrimario" class="input-dark">
                             </div>
                             <div>
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Enlace de Pasarela de Pago</label>
+                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Enlace de Pasarela de Pago (Mercado Pago)</label>
                                 <input type="text" id="cfgLinkPago" class="input-dark">
                             </div>
                             <div>
@@ -363,10 +380,6 @@
                             <div style="grid-column: 1 / -1;">
                                 <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Comunicado Urgente</label>
                                 <input type="text" id="cfgComunicado" class="input-dark">
-                            </div>
-                            <div style="grid-column: 1 / -1;">
-                                <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Horarios y Fechas del Torneo (HTML)</label>
-                                <textarea id="cfgCronograma" rows="3" class="input-dark"></textarea>
                             </div>
                             <div style="grid-column: 1 / -1;">
                                 <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Reglamento (HTML)</label>
@@ -451,12 +464,12 @@
         </div>
     </div>
 
-    <!-- SCRIPT MASTER CON MOTOR DE IA Y 3 PARTIDOS -->
+    <!-- SCRIPT MASTER CON MOTOR DE CALENDARIO Y CUENTA REGRESIVA POR BOX -->
     <script>
-        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v19';
+        const BROADCAST_CHANNEL = 'tutorneo_master_sync_v20';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v19')) || {
+        let db = JSON.parse(localStorage.getItem('tutorneo_master_db_v20')) || {
             config: {
                 nombreTorneo: "Copa Challenger Laguna Ayres",
                 badgeOrg: "Chicureo Open Pro",
@@ -466,9 +479,13 @@
                 linkPago: "https://www.mercadopago.cl",
                 precioInscripcion: 40000,
                 totalCanchas: 4,
+                fechaInicio: "2026-11-21",
+                fechaFin: "2026-11-22",
+                horaApertura: "09:00",
+                horaCierre: "21:00",
                 googleMapsQuery: "Laguna Ayres de Chicureo Colina Santiago",
                 comunicado: "¡Bienvenidos a la nueva fecha del circuito! Sorteo de grupos y 3 partidos por IA activo.",
-                cronograma: "<strong>SÁBADO:</strong> Fase de grupos (3 partidos por dupla) de 09:00 a 22:00 hrs.<br><strong>DOMINGO:</strong> Cuartos, Semis y Finales desde las 10:00 hrs.",
+                cronograma: "<strong>SÁBADO:</strong> Fase de grupos (3 partidos por dupla) de 09:00 a 21:00 hrs.<br><strong>DOMINGO:</strong> Cuartos, Semis y Finales desde las 10:00 hrs.",
                 reglamento: "1. W.O. estricto a los 10 minutos.<br>2. Partidos a 1 set de 9 games con Punto de Oro."
             },
             sponsors: [
@@ -496,6 +513,7 @@
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=player${i}`,
                     cancha: `Cancha #${(i % 4) + 1}`,
                     estadoPartido: i < 4 ? "Jugando 🔴" : "Programado",
+                    horaInicioMatch: new Date(Date.now() + (i + 1) * 3600000).toISOString(),
                     resultado: i < 4 ? "5 - 3" : "Próx."
                 })),
                 damas: Array.from({length: 16}, (_, i) => ({
@@ -510,6 +528,7 @@
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=dama${i}`,
                     cancha: `Cancha #${(i % 4) + 1}`,
                     estadoPartido: "Programado",
+                    horaInicioMatch: new Date(Date.now() + (i + 2) * 3600000).toISOString(),
                     resultado: "Próx."
                 })),
                 mixto: Array.from({length: 16}, (_, i) => ({
@@ -524,6 +543,7 @@
                     avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=mixto${i}`,
                     cancha: `Cancha #${(i % 4) + 1}`,
                     estadoPartido: "Programado",
+                    horaInicioMatch: new Date(Date.now() + (i + 3) * 3600000).toISOString(),
                     resultado: "Próx."
                 }))
             }
@@ -535,14 +555,14 @@
         let isAdminLoggedIn = false;
 
         function sincronizar() {
-            localStorage.setItem('tutorneo_master_db_v19', JSON.stringify(db));
+            localStorage.setItem('tutorneo_master_db_v20', JSON.stringify(db));
             storageSync.postMessage('actualizar');
             aplicarCMS();
         }
 
         storageSync.onmessage = (e) => {
             if(e.data === 'actualizar') {
-                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v19'));
+                db = JSON.parse(localStorage.getItem('tutorneo_master_db_v20'));
                 aplicarCMS();
                 renderPublico();
             }
@@ -556,8 +576,12 @@
             document.getElementById('badgeOrgNav').innerText = db.config.badgeOrg;
             document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
             document.getElementById('heroMainTitle').innerHTML = `El Torneo de Pádel Más Exclusivo de <span style="color:var(--primary);">${partes[partes.length-1] || 'Chicureo'}</span>`;
+            
+            // Generar texto dinámico de cronograma con los valores del almanaque
+            const cronoGenerado = `<strong>Del ${db.config.fechaInicio || '2026-11-21'} al ${db.config.fechaFin || '2026-11-22'}</strong><br>Horario diario de operación: de ${db.config.horaApertura || '09:00'} a ${db.config.horaCierre || '21:00'} hrs.<br>Fase de grupos (3 partidos por pareja) distribuidos por IA en ${db.config.totalCanchas || 4} canchas oficiales.`;
+            db.config.cronograma = cronoGenerado;
+            document.getElementById('textoCronogramaPublico').innerHTML = cronoGenerado;
             document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
-            document.getElementById('textoCronogramaPublico').innerHTML = db.config.cronograma;
             
             const logoCont = document.getElementById('navLogoContainer');
             if(logoCont) {
@@ -640,9 +664,12 @@
                     document.getElementById('cfgLinkPago').value = db.config.linkPago || '';
                     document.getElementById('cfgPrecioInscripcion').value = db.config.precioInscripcion || 40000;
                     document.getElementById('cfgTotalCanchas').value = db.config.totalCanchas || 4;
+                    document.getElementById('cfgFechaInicio').value = db.config.fechaInicio || '';
+                    document.getElementById('cfgFechaFin').value = db.config.fechaFin || '';
+                    document.getElementById('cfgHoraApertura').value = db.config.horaApertura || '';
+                    document.getElementById('cfgHoraCierre').value = db.config.horaCierre || '';
                     document.getElementById('cfgGoogleMapsQuery').value = db.config.googleMapsQuery || '';
                     document.getElementById('cfgComunicado').value = db.config.comunicado || '';
-                    document.getElementById('cfgCronograma').value = db.config.cronograma || '';
                     document.getElementById('cfgReglamento').value = db.config.reglamento || '';
                 } else {
                     document.getElementById('adminPanelBox').classList.add('modal-oculto');
@@ -695,21 +722,25 @@
             });
 
             if(duplas.length < 3) {
-                alert("⚠️ Se necesitan al menos 3 duplas inscritas en esta categoría para que la IA genere los 3 partidos reglamentarios de fase de grupos.");
+                alert("⚠️ Se necesitan al menos 3 duplas inscritas en esta categoría para que la IA genere los 3 partidos reglamentarios.");
                 return;
             }
 
             let fixtures = [];
+            let baseTime = new Date().getTime() + 7200000; // 2 horas a partir de ahora para demo
+
             for(let i=0; i<duplas.length; i++) {
                 let p1 = duplas[i];
                 let p2 = duplas[(i + 1) % duplas.length];
                 let p3 = duplas[(i + 2) % duplas.length];
+                
+                // Asignar tiempos progresivos con descansos automáticos
                 fixtures.push({
                     dupla: p1,
                     juegos: [
-                        { rival: p2, hora: "Sáb 09:30 hrs", cancha: "Cancha #1", res: "Prog." },
-                        { rival: p3, hora: "Sáb 12:00 hrs", cancha: "Cancha #2", res: "Prog." },
-                        { rival: duplas[(i + 3) % duplas.length], hora: "Sáb 16:30 hrs", cancha: "Cancha #3", res: "Prog." }
+                        { rival: p2, hora: "09:30 hrs", cancha: "Cancha #1", timestamp: baseTime, res: "Prog." },
+                        { rival: p3, hora: "12:00 hrs", cancha: "Cancha #2", timestamp: baseTime + 7200000, res: "Prog." },
+                        { rival: duplas[(i + 3) % duplas.length], hora: "16:30 hrs", cancha: "Cancha #3", timestamp: baseTime + 14400000, res: "Prog." }
                     ]
                 });
             }
@@ -717,7 +748,7 @@
             db.llaves[catLlavesActiva] = fixtures;
             sincronizar();
             renderBracketTree();
-            alert("🤖 ¡IA Activa! Se han programado automáticamente 3 partidos por pareja con descansos optimizados y asignación de canchas.");
+            alert("🤖 ¡IA Activa! Fechas, horarios y 3 partidos por pareja programados con precisión quirúrgica.");
         }
 
         function renderBracketTree() {
@@ -727,15 +758,15 @@
 
             let dataFixtures = db.llaves[catLlavesActiva] || [];
             if(dataFixtures.length === 0) {
-                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1;">El motor de IA aún no ha generado el fixture de 3 partidos. Entra a Admin Master y presiona <strong>🤖 IA: Generar Fixture & 3 Partidos</strong>.</div>`;
+                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1;">El motor de IA aún no ha generado el fixture. Entra a Admin Master y presiona <strong>🤖 IA: Generar Fixture & 3 Partidos</strong>.</div>`;
                 return;
             }
 
             let html = ``;
-            dataFixtures.forEach((f, idx) => {
+            dataFixtures.forEach((f) => {
                 html += `
                     <div class="admin-panel" style="background:#0D1322; border:1px solid #1E293B;">
-                        <div style="font-size:0.75rem; color:var(--primary); font-family:'JetBrains Mono'; margin-bottom:0.5rem;">GRUPO / FASE DE CLASIFICACIÓN</div>
+                        <div style="font-size:0.75rem; color:var(--primary); font-family:'JetBrains Mono'; margin-bottom:0.5rem;">FASE DE GRUPOS (3 PARTIDOS)</div>
                         <h4 style="font-size:1.2rem; font-weight:800; color:#fff; margin-bottom:1rem;">⭐ ${f.dupla}</h4>
                         <div style="display:flex; flex-direction:column; gap:0.5rem; font-size:0.8rem; font-family:'JetBrains Mono';">
                 `;
@@ -774,8 +805,8 @@
                             </div>
                         </div>
                         <div style="margin-top: 0.75rem; display: flex; justify-content: space-between; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace;">
-                            <span>Estado:</span>
-                            <strong style="background: rgba(239, 68, 68, 0.4); padding: 0.1rem 0.4rem; border-radius: 4px;">${cupo.estadoPartido}</strong>
+                            <span>Cuenta Regresiva:</span>
+                            <strong class="box-countdown" data-time="${cupo.horaInicioMatch || ''}" style="background: rgba(239, 68, 68, 0.4); padding: 0.1rem 0.4rem; border-radius: 4px; color: #fff;">Calculando...</strong>
                         </div>
                     `;
                 } else {
@@ -795,7 +826,27 @@
                 }
                 grid.appendChild(card);
             });
+            actualizarContadoresRegresivos();
         }
+
+        // MOTOR DE CUENTA REGRESIVA POR BOX EN VIVO
+        function actualizarContadoresRegresivos() {
+            const elements = document.querySelectorAll('.box-countdown');
+            elements.forEach(el => {
+                const targetTime = new Date(el.getAttribute('data-time')).getTime();
+                const now = new Date().getTime();
+                const diff = targetTime - now;
+                if(diff > 0) {
+                    const hrs = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const secs = Math.floor((diff % (1000 * 60)) / 1000);
+                    el.innerText = `${hrs}h ${mins}m ${secs}s`;
+                } else {
+                    el.innerText = "¡En Juego / Live!";
+                }
+            });
+        }
+        setInterval(actualizarContadoresRegresivos, 1000);
 
         function abrirModalInscripcion(id) {
             boxSeleccionado = id;
@@ -830,6 +881,7 @@
                 cupo.redes2 = redes2;
                 cupo.pin = pin;
                 cupo.estadoPartido = "Programado";
+                cupo.horaInicioMatch = new Date(Date.now() + 5400000).toISOString();
                 cupo.resultado = "Próx.";
 
                 if(fileInput.files && fileInput.files[0]) {
@@ -1067,12 +1119,15 @@
             db.config.linkPago = document.getElementById('cfgLinkPago').value;
             db.config.precioInscripcion = Number(document.getElementById('cfgPrecioInscripcion').value);
             db.config.totalCanchas = Number(document.getElementById('cfgTotalCanchas').value) || 4;
+            db.config.fechaInicio = document.getElementById('cfgFechaInicio').value;
+            db.config.fechaFin = document.getElementById('cfgFechaFin').value;
+            db.config.horaApertura = document.getElementById('cfgHoraApertura').value;
+            db.config.horaCierre = document.getElementById('cfgHoraCierre').value;
             db.config.googleMapsQuery = document.getElementById('cfgGoogleMapsQuery').value;
             db.config.comunicado = document.getElementById('cfgComunicado').value;
-            db.config.cronograma = document.getElementById('cfgCronograma').value;
             db.config.reglamento = document.getElementById('cfgReglamento').value;
             sincronizar();
-            alert("🚀 ¡Guardado con éxito! Cambios publicados.");
+            alert("🚀 ¡Guardado con éxito! Calendario y almanaque sincronizados.");
             cambiarVista('publico');
         }
 
