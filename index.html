@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | SaaS Multi-Torneo & God Mode</title>
+    <title id="pageTitle">Tutorneo Pro | Plataforma Oficial de Torneos</title>
     <style>
         :root {
             --primary: #D4AF37;
@@ -61,7 +61,6 @@
         .tab-cat-btn { background: #0D1322; color: #94A3B8; border: 1px solid #1E293B; padding: 0.55rem 1.25rem; border-radius: 10px; cursor: pointer; font-weight: 700; font-size: 0.85rem; }
         .tab-cat-btn.active { background: var(--primary); color: #030508; border-color: var(--primary); }
 
-        /* Toast de confirmación tipo Reloj Suizo */
         #toastNotificacion { position: fixed; bottom: 24px; right: 24px; background: #10B981; color: #030508; padding: 1rem 1.5rem; border-radius: 12px; font-weight: 800; font-size: 0.85rem; box-shadow: 0 15px 30px rgba(0,0,0,0.6); z-index: 9999; display: none; align-items: center; gap: 0.5rem; border: 2px solid #fff; }
 
         @keyframes scroll {
@@ -79,7 +78,7 @@
     <div id="toastNotificacion">✅ ¡Cambios confirmados y sincronizados al milímetro!</div>
 
     <div>
-        <!-- BARRA SUPERIOR MULTI-TORNEO & NAVEGACIÓN -->
+        <!-- BARRA SUPERIOR PÚBLICA (LIMPIA: SOLO MUESTRA EL TORNEO ACTUAL DEL ENLACE) -->
         <header>
             <div class="nav-container">
                 <div class="logo-area">
@@ -88,8 +87,6 @@
                         <div id="navLogoContainer"></div>
                         <h1 class="nav-title" id="navTitle">TORNEO COPA <span>CHALLENGER LAGUNA AYRES</span></h1>
                     </div>
-                    <!-- Selector rápido de Torneo Activo (SaaS) -->
-                    <select id="selectorTorneoPublico" onchange="cambiarTorneoActivo(this.value)" style="background:#05070B; color:#D4AF37; border:1px solid #334155; padding:0.3rem 0.6rem; border-radius:8px; font-size:0.72rem; font-family:'JetBrains Mono'; cursor:pointer;" title="Cambiar de Torneo Activo"></select>
                 </div>
                 <div class="nav-buttons">
                     <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnNavPub">🎾 Inicio & Cuadros</button>
@@ -100,6 +97,11 @@
                 </div>
             </div>
         </header>
+
+        <!-- AVISO DE LICENCIA SUSPENDIDA (SI EL SUPER SUPER ADMIN BLOQUEA A UN CLIENTE) -->
+        <div id="bannerLicenciaSuspendida" class="modal-oculto" style="background: #7F1D1D; border-bottom: 2px solid #EF4444; padding: 0.9rem 1rem; text-align: center; font-weight: 800; font-size: 0.85rem; color: #FECACA;">
+            ⚠️ LICENCIA DE EVENTO PAUSADA TEMPORALMENTE POR EL ADMINISTRADOR GLOBAL DE LA PLATAFORMA.
+        </div>
 
         <!-- CONTENEDOR CENTRAL DE VISTAS -->
         <div id="contenedorVistas">
@@ -234,40 +236,57 @@
                 </div>
             </div>
 
-            <!-- ================= VISTA ADMIN MASTER (GOD MODE) ================= -->
+            <!-- ================= VISTA ADMIN MASTER (JERARQUÍA 2 NIVELES) ================= -->
             <div id="vistaAdmin" class="panel-vista">
                 <div class="container">
                     
-                    <!-- LOGIN -->
-                    <div id="adminLoginBox" style="max-width: 450px; margin: 3rem auto;">
+                    <!-- LOGIN LIMPIO (SIN REVELAR CLAVES EN PANTALLA) -->
+                    <div id="adminLoginBox" style="max-width: 460px; margin: 3rem auto;">
                         <div class="admin-panel" style="text-align: center;">
-                            <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Área Confidencial</span>
-                            <h3 style="font-size: 1.5rem; margin: 0.75rem 0 0.25rem 0;">Acceso Super Admin Master</h3>
-                            <p style="color: #94A3B8; font-size: 0.8rem; margin-bottom: 1.5rem;">Introduce la clave maestra (`admin2026` o la clave de licencia del torneo).</p>
+                            <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Autenticación de Seguridad</span>
+                            <h3 style="font-size: 1.5rem; margin: 0.75rem 0 0.35rem 0;">Acceso Administrativo</h3>
+                            <p style="color: #94A3B8; font-size: 0.8rem; margin-bottom: 1.5rem;">Ingresa tu credencial de <strong>Organizador de Torneo</strong> o tu llave de <strong>Super Super Admin Global</strong>.</p>
                             <form onsubmit="procesarLoginAdmin(event)" style="display: flex; flex-direction: column; gap: 1rem;">
-                                <input type="password" id="inputClaveAdmin" required placeholder="Contraseña maestra" class="input-dark" style="text-align: center;">
-                                <button type="submit" class="btn-action">Desbloquear God Mode 🔓</button>
+                                <input type="password" id="inputClaveAdmin" required placeholder="Ingresa tu clave de acceso..." class="input-dark" style="text-align: center;">
+                                <button type="submit" class="btn-action">Verificar Credencial & Entrar 🔓</button>
                             </form>
                         </div>
                     </div>
 
-                    <!-- PANEL GOD MODE -->
+                    <!-- PANEL ADMINISTRATIVO (SE ADAPTA SEGÚN EL ROL: ORGANIZADOR vs SUPER SUPER ADMIN) -->
                     <div id="adminPanelBox" class="admin-panel modal-oculto">
+                        
+                        <!-- BARRA EXCLUSIVA DEL SUPER SUPER ADMIN GLOBAL (OCULTA PARA ORGANIZADORES) -->
+                        <div id="barraExclusivaSuperGod" class="modal-oculto" style="background: linear-gradient(90deg, #311042 0%, #0D1322 100%); border: 1px solid #A855F7; padding: 1rem 1.25rem; border-radius: 14px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                            <div>
+                                <span style="background: #A855F7; color: #fff; font-weight: 800; font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">👑 MODO SUPER SUPER ADMIN GLOBAL (DUEÑO SAAS)</span>
+                                <p style="font-size: 0.78rem; color: #E9D5FF; margin-top: 0.3rem;">Tienes control total sobre todas las licencias vendidas. Puedes auditar cualquier torneo desde el selector derecho.</p>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <label style="font-size: 0.72rem; color: #E9D5FF; font-weight: 700;">Inspeccionar Torneo:</label>
+                                <select id="selectorTorneoInternoGod" onchange="cambiarTorneoActivo(this.value)" class="input-dark" style="width: 240px; border-color: #A855F7; font-weight: 700;"></select>
+                            </div>
+                        </div>
+
                         <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid #1E293B; padding-bottom: 1.25rem; margin-bottom: 1.25rem;">
                             <div>
-                                <h2 style="font-size: 1.45rem; font-weight: 800; color: #fff;">🛠️ SUPER ADMIN MASTER (RELOJ SUIZO & SAAS)</h2>
-                                <p style="color: #94A3B8; font-size: 0.8rem;">Torneo activo en edición: <strong id="labelTorneoActivoAdmin" style="color:var(--primary);">--</strong></p>
+                                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                                    <h2 style="font-size: 1.4rem; font-weight: 800; color: #fff;">🛠️ PANEL DE CONTROL DEL EVENTO</h2>
+                                    <span id="badgeRolActual" style="background: #10B981; color: #030508; font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.6rem; border-radius: 6px;">ORGANIZADOR LICENCIADO</span>
+                                </div>
+                                <p style="color: #94A3B8; font-size: 0.8rem; margin-top: 0.25rem;">Evento activo: <strong id="labelTorneoActivoAdmin" style="color:var(--primary);">--</strong></p>
                             </div>
                             <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
                                 <button onclick="ejecutarMotorIAProgramacion()" class="btn-action" style="background: #4F46E5; color: #fff;">🤖 IA: Armar Fixture 3 Partidos & Horarios</button>
                                 <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y GUARDAR TODO</button>
+                                <button onclick="cerrarSesionAdmin()" class="nav-btn" style="border-color:#EF4444; color:#FCA5A5;">🔒 Salir</button>
                             </div>
                         </div>
 
-                        <!-- Métricas Superiores -->
+                        <!-- Métricas del Torneo Activo -->
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #05070B; padding: 1.15rem; border-radius: 12px; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; border: 1px solid #1E293B;">
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Recaudación Privada</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Recaudación Inscripciones (Este Torneo)</div>
                                 <div id="adminCajaTotal" style="font-size: 1.25rem; font-weight: 800; color: #10B981; margin-top: 0.2rem;">$0 CLP</div>
                             </div>
                             <div>
@@ -275,7 +294,11 @@
                                 <div id="adminCuposStats" style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">0 / 48</div>
                             </div>
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Enlace Compartible de este Torneo</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Estado de tu Licencia</div>
+                                <div id="adminEstadoLicenciaActual" style="font-size: 1rem; font-weight: 800; color: #60A5FA; margin-top: 0.3rem;">🟢 LICENCIA ACTIVA</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Enlace Oficial para tus Jugadores</div>
                                 <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.25rem;">
                                     <input type="text" id="inputShareLinkTorneo" readonly class="input-dark" style="font-size:0.7rem; padding:0.25rem 0.5rem;">
                                     <button onclick="copiarLinkTorneo()" class="btn-small-ok">Copiar</button>
@@ -283,14 +306,14 @@
                             </div>
                         </div>
 
-                        <!-- Pestañas del Admin Master -->
+                        <!-- Pestañas del Admin (La pestaña SaaS solo es visible para el SUPER SUPER ADMIN) -->
                         <div class="nav-buttons" style="margin-bottom: 1.5rem; border-bottom: 1px solid #1E293B; padding-bottom: 1rem;">
                             <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas, Horarios & Marcadores</button>
                             <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="nav-btn">👥 Base de Parejas & Nombres</button>
                             <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Logo, Almanaque, Categorías & Tarifas</button>
                             <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="nav-btn">🤝 Auspiciadores & Logos</button>
                             <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="nav-btn">📊 Rankings WPT</button>
-                            <button onclick="setTabAdmin('saas')" id="tabAdminSaas" class="nav-btn" style="border-color: #10B981; color: #10B981;">🏢 Multi-Torneo & Licencias (SaaS)</button>
+                            <button onclick="setTabAdmin('saas')" id="tabAdminSaas" class="nav-btn modal-oculto" style="background: rgba(168, 85, 247, 0.15); border-color: #A855F7; color: #E9D5FF;">👑 Consola Super Super Admin (Venta de Licencias)</button>
                         </div>
 
                         <!-- 1. SUB-PANEL: CANCHAS, HORARIOS POR BOX Y MARCADORES -->
@@ -330,7 +353,7 @@
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
                                 <div>
                                     <h4 style="font-size: 1.05rem; font-weight: 800;">Base de Datos Editable de Parejas Inscritas</h4>
-                                    <p style="font-size: 0.75rem; color: #94A3B8;">Aquí puedes cambiar el nombre de la dupla, los nombres de los jugadores, sus redes o su PIN y confirmar al instante.</p>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Cambia el nombre de la dupla, los nombres de los jugadores, sus redes o su PIN y confirma al instante.</p>
                                 </div>
                                 <button onclick="mostrarToast('✅ ¡Datos de parejas confirmados y guardados!')" class="btn-confirm">✅ Confirmar Todos los Nombres</button>
                             </div>
@@ -358,7 +381,7 @@
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem; background: #05070B; padding: 1rem; border-radius: 12px; border: 1px solid #10B981;">
                                 <div>
                                     <h4 style="font-size: 1rem; font-weight: 800; color: #10B981;">📅 Configuración de Almanaque, Carrera/Categorías y Tarifas</h4>
-                                    <p style="font-size: 0.75rem; color: #94A3B8;">Modifica cualquier campo y presiona el botón verde para fijar la hora, el reloj regresivo y los títulos.</p>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Modifica cualquier campo y presiona el botón verde para fijar la hora, el reloj regresivo y los títulos de tu evento.</p>
                                 </div>
                                 <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y APLICAR ALMANAQUE Y DATOS</button>
                             </div>
@@ -381,7 +404,6 @@
                                     <input type="number" id="cfgTotalCanchas" min="1" max="12" class="input-dark">
                                 </div>
 
-                                <!-- Nombres de Categorías / Carreras Editables -->
                                 <div>
                                     <label style="font-size: 0.75rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem;">Nombre Categoría / Carrera 1</label>
                                     <input type="text" id="cfgCatNombreDamas" class="input-dark">
@@ -399,7 +421,6 @@
                                     <input type="number" id="cfgDuracionPartido" min="20" max="120" class="input-dark">
                                 </div>
 
-                                <!-- Almanaque y Horarios con botón directo -->
                                 <div>
                                     <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">📅 Fecha de Inicio del Torneo</label>
                                     <input type="date" id="cfgFechaInicio" class="input-dark">
@@ -426,7 +447,7 @@
                                     <input type="text" id="cfgColorPrimario" class="input-dark">
                                 </div>
                                 <div>
-                                    <label style="font-size: 0.75rem; color: #60A5FA; font-weight: 700; display: block; margin-bottom: 0.3rem;">💳 Enlace de Pago (Mercado Pago / Webpay)</label>
+                                    <label style="font-size: 0.75rem; color: #60A5FA; font-weight: 700; display: block; margin-bottom: 0.3rem;">💳 Enlace de Pago del Organizador (Mercado Pago)</label>
                                     <input type="text" id="cfgLinkPago" class="input-dark">
                                 </div>
                                 <div>
@@ -475,46 +496,73 @@
                             <div id="editorRankingCircuitoAdmin" style="display: flex; flex-direction: column; gap: 0.6rem;"></div>
                         </div>
 
-                        <!-- 6. SUB-PANEL: MULTI-TORNEO & LICENCIAS SAAS -->
+                        <!-- 6. SUB-PANEL EXCLUSIVO SUPER SUPER ADMIN: CONSOLA COMERCIAL DE LICENCIAS SAAS -->
                         <div id="subPanelSaas" class="modal-oculto">
-                            <div style="background: #05070B; border: 1px solid #10B981; padding: 1.25rem; border-radius: 14px; margin-bottom: 1.5rem;">
-                                <h4 style="font-size: 1.15rem; font-weight: 800; color: #10B981; margin-bottom: 0.4rem;">🏢 Central de Licencias Comerciales & Multi-Torneo (SaaS)</h4>
-                                <p style="font-size: 0.8rem; color: #CBD5E1; line-height: 1.5;">Crea múltiples torneos en simultáneo o genera licencias para otros clubes. Cada torneo tiene su propio enlace compartible (`?torneo=id`), su propia clave de administración y sus propios cuadros independientes.</p>
-                            </div>
-
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.75rem; background: #080C14; padding: 1.25rem; border-radius: 14px; border: 1px solid #1E293B; margin-bottom: 1.5rem;">
-                                <div>
-                                    <label style="font-size: 0.7rem; color: #94A3B8;">ID Único (Sin espacios, ej. club-colina)</label>
-                                    <input type="text" id="nuevoSaasId" placeholder="ej. copa-verano" class="input-dark">
-                                </div>
-                                <div>
-                                    <label style="font-size: 0.7rem; color: #94A3B8;">Nombre del Nuevo Torneo</label>
-                                    <input type="text" id="nuevoSaasNombre" placeholder="Ej. Copa Verano Club Colina" class="input-dark">
-                                </div>
-                                <div>
-                                    <label style="font-size: 0.7rem; color: #94A3B8;">Organizador / Cliente (Badge)</label>
-                                    <input type="text" id="nuevoSaasClub" placeholder="Ej. PÁDEL COLINA" class="input-dark">
-                                </div>
-                                <div>
-                                    <label style="font-size: 0.7rem; color: #94A3B8;">Clave Licencia Admin para el Cliente</label>
-                                    <input type="text" id="nuevoSaasClave" placeholder="Ej. cliente2026" class="input-dark">
-                                </div>
-                                <div style="grid-column: 1 / -1; display: flex; justify-content: flex-end; margin-top: 0.4rem;">
-                                    <button onclick="crearNuevoTorneoLicencia()" class="btn-confirm">+ Crear Nuevo Torneo / Licencia Activa</button>
+                            <div style="background: linear-gradient(135deg, #2E1065 0%, #05070B 100%); border: 1px solid #A855F7; padding: 1.5rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem;">
+                                    <div>
+                                        <span style="background:#A855F7; color:#fff; padding:0.2rem 0.6rem; border-radius:6px; font-size:0.68rem; font-weight:800;">EXCLUSIVO DUEÑO DE PLATAFORMA</span>
+                                        <h4 style="font-size: 1.25rem; font-weight: 800; color: #fff; margin-top: 0.4rem;">👑 Consola Maestra de Venta de Licencias & Multi-Torneos</h4>
+                                        <p style="font-size: 0.8rem; color: #DDD6FE; margin-top: 0.2rem;">Los organizadores a quienes vendas una licencia entrarán con su propia clave y <strong>solo verán su torneo</strong>. Tú desde aquí controlas todas las licencias, cobros y vencimientos.</p>
+                                    </div>
+                                    <div style="background:rgba(5,7,11,0.7); padding:1rem 1.25rem; border-radius:12px; border:1px solid #A855F7; font-family:'JetBrains Mono'; text-align:right;">
+                                        <div style="font-size:0.65rem; color:#DDD6FE;">INGRESOS POR VENTA DE LICENCIAS SAAS</div>
+                                        <div id="kpiIngresosLicenciasSaas" style="font-size:1.4rem; font-weight:800; color:#10B981;">$0 CLP</div>
+                                    </div>
                                 </div>
                             </div>
 
-                            <h5 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.75rem;">Torneos & Licencias Activas en la Plataforma</h5>
+                            <!-- Formulario para Vender / Crear Nueva Licencia -->
+                            <div style="background: #080C14; padding: 1.25rem; border-radius: 14px; border: 1px solid #1E293B; margin-bottom: 1.5rem;">
+                                <h5 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem;">➕ Emitir Nueva Licencia Comercial para un Cliente / Organizador</h5>
+                                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem;">
+                                    <div>
+                                        <label style="font-size: 0.7rem; color: #94A3B8;">ID URL (Ej. club-colina)</label>
+                                        <input type="text" id="nuevoSaasId" placeholder="club-colina" class="input-dark">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.7rem; color: #94A3B8;">Nombre del Torneo del Cliente</label>
+                                        <input type="text" id="nuevoSaasNombre" placeholder="Ej. Open Pádel Colina" class="input-dark">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.7rem; color: #94A3B8;">Nombre del Club / Cliente</label>
+                                        <input type="text" id="nuevoSaasClub" placeholder="Ej. CLUB COLINA" class="input-dark">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.7rem; color: #94A3B8;">Contacto Cliente (WhatsApp/Email)</label>
+                                        <input type="text" id="nuevoSaasContacto" placeholder="+569... / correo@club.cl" class="input-dark">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.7rem; color: #FACC15; font-weight:700;">🔑 Clave para el Organizador</label>
+                                        <input type="text" id="nuevoSaasClave" placeholder="Ej. colina2026" class="input-dark">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.7rem; color: #10B981; font-weight:700;">💵 Valor Licencia Cobrada ($ CLP)</label>
+                                        <input type="number" id="nuevoSaasPrecioLicencia" value="150000" class="input-dark">
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.7rem; color: #94A3B8;">Vencimiento de Licencia</label>
+                                        <input type="date" id="nuevoSaasVencimiento" value="2026-12-31" class="input-dark">
+                                    </div>
+                                    <div style="display: flex; align-items: flex-end;">
+                                        <button onclick="crearNuevoTorneoLicencia()" class="btn-confirm" style="width: 100%;">✅ Crear & Activar Licencia</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h5 style="font-size: 0.95rem; font-weight: 800; margin-bottom: 0.75rem;">📋 Cartera de Licencias & Organizadores Activos</h5>
                             <div style="overflow-x: auto;">
                                 <table class="table-custom">
                                     <thead>
                                         <tr>
-                                            <th>ID Torneo</th>
-                                            <th>Nombre del Torneo</th>
-                                            <th>Organizador / Licencia</th>
-                                            <th>Clave Admin</th>
-                                            <th>Enlace Directo</th>
-                                            <th style="text-align: right;">Acción</th>
+                                            <th>Estado</th>
+                                            <th>ID / Torneo</th>
+                                            <th>Cliente / Contacto</th>
+                                            <th>Clave Organizador</th>
+                                            <th>Valor Licencia ($ CLP)</th>
+                                            <th>Vencimiento</th>
+                                            <th>Enlace Exclusivo del Cliente</th>
+                                            <th style="text-align: right;">Control Super Admin</th>
                                         </tr>
                                     </thead>
                                     <tbody id="tablaSaasTorneosBody"></tbody>
@@ -533,11 +581,11 @@
     <!-- FOOTER / AUSPICIADORES -->
     <footer>
         <div style="max-width: 1280px; margin: 0 auto; padding: 2rem 1rem; text-align: center;">
-            <div style="font-size: 0.7rem; text-transform: uppercase; color: #94A3B8; font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem;">Auspiciadores Oficiales del Circuito</div>
+            <div style="font-size: 0.7rem; text-transform: uppercase; color: #94A3B8; font-family: 'JetBrains Mono', monospace; margin-bottom: 1rem;">Auspiciadores Oficiales del Torneo</div>
             <div style="overflow: hidden; width: 100%;">
                 <div id="carruselSponsorsPublico" class="animate-scroll" style="display: flex; gap: 2rem; align-items: center;"></div>
             </div>
-            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • SaaS Multi-Torneo & God Mode Engine.</div>
+            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • Plataforma Oficial Licenciada.</div>
         </div>
     </footer>
 
@@ -589,18 +637,24 @@
         </div>
     </div>
 
-    <!-- SCRIPT MASTER MULTI-TORNEO & RELOJ SUIZO -->
+    <!-- SCRIPT MASTER CON JERARQUÍA DE 2 NIVELES: SUPER SUPER ADMIN GLOBAL vs ORGANIZADOR LICENCIADO -->
     <script>
-        const STORAGE_KEY_SAAS = 'tutorneo_saas_multi_db_v21';
-        const BROADCAST_CHANNEL = 'tutorneo_saas_sync_v21';
+        const STORAGE_KEY_SAAS = 'tutorneo_saas_multi_db_v22';
+        const BROADCAST_CHANNEL = 'tutorneo_saas_sync_v22';
+        const CLAVE_SUPER_SUPER_ADMIN = 'supergod2026'; // Clave exclusiva del Dueño del Software
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
 
-        // Generador de plantilla limpia para cualquier torneo nuevo
-        function crearEstructuraTorneoBase(id, nombre, badge, claveLicencia) {
+        function crearEstructuraTorneoBase(id, nombre, badge, claveLicencia, contacto, precioLicencia, vencimiento) {
             const fechaBase = "2026-11-21";
             return {
                 id: id,
                 claveLicencia: claveLicencia || "admin2026",
+                licenciaMeta: {
+                    estado: "ACTIVA", // ACTIVA o SUSPENDIDA
+                    contactoCliente: contacto || "Director de Torneo",
+                    precioLicenciaCLP: Number(precioLicencia) || 150000,
+                    fechaVencimiento: vencimiento || "2026-12-31"
+                },
                 config: {
                     nombreTorneo: nombre || "TORNEO COPA CHALLENGER LAGUNA AYRES DE CHICUREO",
                     badgeOrg: badge || "WIN WIN",
@@ -681,20 +735,19 @@
             };
         }
 
-        // Base de datos global SaaS
         let saasDB = JSON.parse(localStorage.getItem(STORAGE_KEY_SAAS));
         if (!saasDB || !saasDB.torneos) {
             saasDB = {
                 torneoActivoId: "laguna-ayres",
                 torneos: {
-                    "laguna-ayres": crearEstructuraTorneoBase("laguna-ayres", "TORNEO COPA CHALLENGER LAGUNA AYRES DE CHICUREO", "WIN WIN", "admin2026"),
-                    "chicureo-open": crearEstructuraTorneoBase("chicureo-open", "CHICUREO OPEN PRO CIRCUIT", "CLUB CHICUREO", "club2026")
+                    "laguna-ayres": crearEstructuraTorneoBase("laguna-ayres", "TORNEO COPA CHALLENGER LAGUNA AYRES DE CHICUREO", "WIN WIN", "admin2026", "Gerencia Win Win", 0, "2027-12-31"),
+                    "chicureo-open": crearEstructuraTorneoBase("chicureo-open", "CHICUREO OPEN PRO CIRCUIT", "CLUB CHICUREO", "club2026", "contacto@clubchicureo.cl", 180000, "2026-12-31")
                 }
             };
             localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
         }
 
-        // Leer parámetro ?torneo= de la URL si se compartió un link específico
+        // Si el usuario o cliente entra con ?torneo=id-del-cliente, carga estrictamente ese torneo
         const urlParams = new URLSearchParams(window.location.search);
         const paramTorneo = urlParams.get('torneo');
         if (paramTorneo && saasDB.torneos[paramTorneo]) {
@@ -705,7 +758,9 @@
         let catActiva = 'varones';
         let catLlavesActiva = 'varones';
         let boxSeleccionado = null;
-        let isAdminLoggedIn = false;
+
+        // Estado de sesión administrativa: null | 'ORGANIZADOR' | 'SUPERGOD'
+        let rolAdminActual = null;
 
         function mostrarToast(mensaje) {
             const t = document.getElementById('toastNotificacion');
@@ -730,21 +785,27 @@
             }
         };
 
+        // Solo el Super Super Admin puede cambiar entre torneos desde su barra interna
         function cambiarTorneoActivo(nuevoId) {
+            if (rolAdminActual !== 'SUPERGOD') return;
             if (saasDB.torneos[nuevoId]) {
                 saasDB.torneoActivoId = nuevoId;
                 db = saasDB.torneos[nuevoId];
                 sincronizar();
                 renderPublico();
-                if (isAdminLoggedIn) cargarValoresEnFormularioCMS();
-                mostrarToast(`🏢 Cambiado a: ${db.config.nombreTorneo}`);
+                cargarValoresEnFormularioCMS();
+                renderAdminBoxes();
+                renderAdminParejas();
+                renderEditorSponsors();
+                renderEditorRankings();
+                renderSaasTorneos();
+                mostrarToast(`👑 Super Admin auditando: ${db.config.nombreTorneo}`);
             }
         }
 
         function renderSelectoresCategorias() {
             const nombres = db.config.catNombres || { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
             
-            // Público
             const contPub = document.getElementById('contenedorTabsCategoriasPublico');
             if (contPub) {
                 contPub.innerHTML = ['damas', 'varones', 'mixto'].map(k => 
@@ -752,7 +813,6 @@
                 ).join('');
             }
 
-            // Llaves
             const contLlaves = document.getElementById('contenedorTabsCategoriasLlaves');
             if (contLlaves) {
                 contLlaves.innerHTML = ['damas', 'varones', 'mixto'].map(k => 
@@ -760,7 +820,6 @@
                 ).join('');
             }
 
-            // Select Admin Boxes
             const selAdmin = document.getElementById('selectCatAdmin');
             if (selAdmin) {
                 const valPrevio = selAdmin.value || 'varones';
@@ -771,13 +830,25 @@
         }
 
         function aplicarCMS() {
+            if (!db.licenciaMeta) {
+                db.licenciaMeta = { estado: "ACTIVA", contactoCliente: "Director", precioLicenciaCLP: 150000, fechaVencimiento: "2026-12-31" };
+            }
+
+            // Verificar si la licencia está suspendida
+            const bannerSusp = document.getElementById('bannerLicenciaSuspendida');
+            if (db.licenciaMeta.estado === 'SUSPENDIDA') {
+                bannerSusp.classList.remove('modal-oculto');
+            } else {
+                bannerSusp.classList.add('modal-oculto');
+            }
+
             document.documentElement.style.setProperty('--primary', db.config.colorPrimary || '#D4AF37');
             
-            // Selector superior de torneos
-            const selTorneo = document.getElementById('selectorTorneoPublico');
-            if (selTorneo) {
-                selTorneo.innerHTML = Object.values(saasDB.torneos).map(t => 
-                    `<option value="${t.id}" ${t.id === saasDB.torneoActivoId ? 'selected' : ''}>🏆 ${t.config.badgeOrg}: ${t.config.nombreTorneo.substring(0, 28)}</option>`
+            // Selector interno exclusivo para Super Super Admin
+            const selGod = document.getElementById('selectorTorneoInternoGod');
+            if (selGod) {
+                selGod.innerHTML = Object.values(saasDB.torneos).map(t => 
+                    `<option value="${t.id}" ${t.id === saasDB.torneoActivoId ? 'selected' : ''}>[${t.licenciaMeta?.estado || 'ACTIVA'}] ${t.config.badgeOrg} - ${t.config.nombreTorneo.substring(0, 26)}</option>`
                 ).join('');
             }
 
@@ -832,11 +903,38 @@
             actualizarCajaPrivadaAdmin();
         }
 
+        function configurarPermisosVisualesPorRol() {
+            const barraGod = document.getElementById('barraExclusivaSuperGod');
+            const tabSaas = document.getElementById('tabAdminSaas');
+            const badgeRol = document.getElementById('badgeRolActual');
+
+            if (rolAdminActual === 'SUPERGOD') {
+                barraGod.classList.remove('modal-oculto');
+                tabSaas.classList.remove('modal-oculto');
+                badgeRol.style.background = '#A855F7';
+                badgeRol.style.color = '#fff';
+                badgeRol.innerText = '👑 SUPER SUPER ADMIN GLOBAL';
+            } else {
+                barraGod.classList.add('modal-oculto');
+                tabSaas.classList.add('modal-oculto');
+                badgeRol.style.background = '#10B981';
+                badgeRol.style.color = '#030508';
+                badgeRol.innerText = '🎾 ORGANIZADOR LICENCIADO (ACCESO EXCLUSIVO A ESTE EVENTO)';
+            }
+        }
+
         function cargarValoresEnFormularioCMS() {
             if (!db.config.catNombres) db.config.catNombres = { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
-            document.getElementById('labelTorneoActivoAdmin').innerText = `${db.config.nombreTorneo} (${db.id})`;
+            document.getElementById('labelTorneoActivoAdmin').innerText = `${db.config.nombreTorneo}`;
             const shareUrl = `${window.location.origin}${window.location.pathname}?torneo=${db.id}`;
             document.getElementById('inputShareLinkTorneo').value = shareUrl;
+
+            const estadoLic = db.licenciaMeta?.estado || 'ACTIVA';
+            const elEst = document.getElementById('adminEstadoLicenciaActual');
+            if (elEst) {
+                elEst.innerText = estadoLic === 'ACTIVA' ? `🟢 ACTIVA (Vence: ${db.licenciaMeta?.fechaVencimiento || '2026-12-31'})` : `🔴 LICENCIA SUSPENDIDA`;
+                elEst.style.color = estadoLic === 'ACTIVA' ? '#10B981' : '#EF4444';
+            }
 
             document.getElementById('cfgNombreTorneo').value = db.config.nombreTorneo || '';
             document.getElementById('cfgBadge').value = db.config.badgeOrg || '';
@@ -887,15 +985,16 @@
             } else if(vista === 'admin') {
                 document.getElementById('vistaAdmin').classList.add('activo');
                 document.getElementById('btnNavAdmin').classList.add('active');
-                if(isAdminLoggedIn) {
+                if(rolAdminActual) {
                     document.getElementById('adminLoginBox').style.display = 'none';
                     document.getElementById('adminPanelBox').classList.remove('modal-oculto');
+                    configurarPermisosVisualesPorRol();
                     cargarValoresEnFormularioCMS();
                     renderAdminBoxes();
                     renderAdminParejas();
                     renderEditorSponsors();
                     renderEditorRankings();
-                    renderSaasTorneos();
+                    if (rolAdminActual === 'SUPERGOD') renderSaasTorneos();
                     actualizarCajaPrivadaAdmin();
                 } else {
                     document.getElementById('adminPanelBox').classList.add('modal-oculto');
@@ -907,14 +1006,55 @@
         function procesarLoginAdmin(e) {
             e.preventDefault();
             const clave = document.getElementById('inputClaveAdmin').value.trim();
-            if(clave === "admin2026" || clave === "chicureo" || clave === db.claveLicencia) {
-                isAdminLoggedIn = true;
+
+            // 1. Verificar si es el SUPER SUPER ADMIN GLOBAL (Dueño de todas las licencias)
+            if (clave === CLAVE_SUPER_SUPER_ADMIN) {
+                rolAdminActual = 'SUPERGOD';
                 document.getElementById('inputClaveAdmin').value = '';
                 cambiarVista('admin');
-                mostrarToast("🔓 ¡Modo Dios Desbloqueado!");
-            } else {
-                alert("❌ Clave incorrecta. Usa: admin2026");
+                mostrarToast("👑 ¡Bienvenido Super Super Admin Global!");
+                return;
             }
+
+            // 2. Verificar si la clave pertenece al Organizador del torneo actual
+            if (clave === db.claveLicencia) {
+                if (db.licenciaMeta && db.licenciaMeta.estado === 'SUSPENDIDA') {
+                    alert("⛔ Tu licencia de organizador se encuentra SUSPENDIDA. Contacta al proveedor de Tutorneo Pro para regularizar tu suscripción.");
+                    return;
+                }
+                rolAdminActual = 'ORGANIZADOR';
+                document.getElementById('inputClaveAdmin').value = '';
+                cambiarVista('admin');
+                setTabAdmin('boxes');
+                mostrarToast(`🎾 Panel de Organizador activado: ${db.config.badgeOrg}`);
+                return;
+            }
+
+            // 3. Si un organizador ingresa su clave desde la URL genérica, lo redirigimos automáticamente a SU torneo
+            const torneoEncontrado = Object.values(saasDB.torneos).find(t => t.claveLicencia === clave);
+            if (torneoEncontrado) {
+                if (torneoEncontrado.licenciaMeta && torneoEncontrado.licenciaMeta.estado === 'SUSPENDIDA') {
+                    alert("⛔ La licencia de tu evento se encuentra SUSPENDIDA. Contacta a soporte comercial.");
+                    return;
+                }
+                saasDB.torneoActivoId = torneoEncontrado.id;
+                db = torneoEncontrado;
+                rolAdminActual = 'ORGANIZADOR';
+                document.getElementById('inputClaveAdmin').value = '';
+                sincronizar();
+                cambiarVista('admin');
+                setTabAdmin('boxes');
+                mostrarToast(`🎾 Acceso directo a tu evento: ${db.config.nombreTorneo}`);
+                return;
+            }
+
+            alert("❌ Credencial inválida.");
+        }
+
+        function cerrarSesionAdmin() {
+            rolAdminActual = null;
+            cambiarVista('publico');
+            mostrarToast("🔒 Sesión administrativa cerrada.");
         }
 
         function setCategoria(cat) {
@@ -929,7 +1069,6 @@
             renderBracketTree();
         }
 
-        // SINCRONIZADOR AUTOMÁTICO DE HORARIOS DE BOXES CON EL ALMANAQUE
         function sincronizarHorariosBoxesConAlmanaque() {
             const fInicio = document.getElementById('cfgFechaInicio').value || db.config.fechaInicio || "2026-11-21";
             const hApertura = document.getElementById('cfgHoraApertura').value || db.config.horaApertura || "09:00";
@@ -958,7 +1097,6 @@
             mostrarToast("⏱️ ¡Todos los Boxes y Canchas fueron sincronizados con el Almanaque!");
         }
 
-        // MOTOR IA: ARMAR FIXTURE DE 3 PARTIDOS RESPETANDO ALMANAQUE Y DESCANSO
         function ejecutarMotorIAProgramacion() {
             const fInicio = db.config.fechaInicio || "2026-11-21";
             const hApertura = db.config.horaApertura || "09:00";
@@ -977,7 +1115,6 @@
                     const r2 = duplas[(i + 2) % duplas.length]?.alias || "Por Definir";
                     const r3 = duplas[(i + 3) % duplas.length]?.alias || "Por Definir";
 
-                    // 3 partidos con descanso programado entre rondas (cada 2 bloques)
                     const t1 = new Date(baseDate.getTime() + ((i % totalC) + catOffset) * duracion * 60000);
                     const t2 = new Date(t1.getTime() + (duracion * 2) * 60000);
                     const t3 = new Date(t2.getTime() + (duracion * 2) * 60000);
@@ -985,7 +1122,6 @@
                     const fmt = (d) => `${d.toISOString().slice(0,10)} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} hrs`;
                     const fmtInput = (d) => `${d.toISOString().slice(0,10)}T${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
 
-                    // Actualizar también el horario del Box para su cuenta regresiva
                     c.horaInicioMatch = fmtInput(t1);
                     c.cancha = `Cancha #${(i % totalC) + 1}`;
 
@@ -1015,7 +1151,7 @@
 
             let dataFixtures = db.llaves[catLlavesActiva] || [];
             if(dataFixtures.length === 0) {
-                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1; background:#0D1322; border-radius:16px; border:1px solid #1E293B;">Aún no se han generado los cruces automáticos para esta categoría. Entra a <strong>Admin Master</strong> y presiona <strong>🤖 IA: Armar Fixture 3 Partidos & Horarios</strong>.</div>`;
+                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1; background:#0D1322; border-radius:16px; border:1px solid #1E293B;">Aún no se han generado los cruces automáticos para esta categoría. El organizador puede activarlos desde <strong>Admin Master</strong> presionando <strong>🤖 IA: Armar Fixture 3 Partidos & Horarios</strong>.</div>`;
                 return;
             }
 
@@ -1097,11 +1233,8 @@
             actualizarContadoresRegresivos();
         }
 
-        // MOTOR DE RELOJES REGRESIVOS (HERO + CADA BOX) CONECTADO AL ALMANAQUE
         function actualizarContadoresRegresivos() {
             const ahora = new Date().getTime();
-
-            // 1. Reloj Gigante Principal conectado a Fecha de Inicio + Hora de Apertura del Almanaque
             const strFechaTorneo = `${db.config.fechaInicio || '2026-11-21'}T${db.config.horaApertura || '09:00'}:00`;
             const targetTorneo = new Date(strFechaTorneo).getTime();
             const elGigante = document.getElementById('relojGigante');
@@ -1118,7 +1251,6 @@
                 }
             }
 
-            // 2. Relojes individuales de cada Box
             const elements = document.querySelectorAll('.box-countdown');
             elements.forEach(el => {
                 const rawTime = el.getAttribute('data-time');
@@ -1138,6 +1270,10 @@
         setInterval(actualizarContadoresRegresivos, 1000);
 
         function abrirModalInscripcion(id) {
+            if (db.licenciaMeta && db.licenciaMeta.estado === 'SUSPENDIDA') {
+                alert("⚠️ Las inscripciones de este evento están temporalmente pausadas.");
+                return;
+            }
             boxSeleccionado = id;
             const nombreCat = (db.config.catNombres && db.config.catNombres[catActiva]) || catActiva.toUpperCase();
             document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${nombreCat}`;
@@ -1260,6 +1396,11 @@
         }
 
         function setTabAdmin(tab) {
+            if (tab === 'saas' && rolAdminActual !== 'SUPERGOD') {
+                alert("⛔ Acceso exclusivo para el Super Super Admin Global.");
+                return;
+            }
+
             ['subPanelBoxes', 'subPanelParejas', 'subPanelCms', 'subPanelSponsors', 'subPanelRanking', 'subPanelSaas'].forEach(p => {
                 document.getElementById(p).classList.add('modal-oculto');
             });
@@ -1469,52 +1610,115 @@
             });
         }
 
-        // GESTOR MULTI-TORNEO & LICENCIAS SAAS
+        // CONSOLA EXCLUSIVA SUPER SUPER ADMIN: GESTIÓN DE LICENCIAS SAAS
         function renderSaasTorneos() {
+            if (rolAdminActual !== 'SUPERGOD') return;
             const tbody = document.getElementById('tablaSaasTorneosBody');
             if(!tbody) return;
             tbody.innerHTML = '';
+
+            let totalFacturadoLicencias = 0;
+
             Object.values(saasDB.torneos).forEach(t => {
+                if (!t.licenciaMeta) {
+                    t.licenciaMeta = { estado: "ACTIVA", contactoCliente: "Director", precioLicenciaCLP: 150000, fechaVencimiento: "2026-12-31" };
+                }
+                totalFacturadoLicencias += Number(t.licenciaMeta.precioLicenciaCLP) || 0;
                 const link = `${window.location.origin}${window.location.pathname}?torneo=${t.id}`;
+                const esActiva = t.licenciaMeta.estado === 'ACTIVA';
+
                 tbody.innerHTML += `
                     <tr>
-                        <td style="font-family:'JetBrains Mono'; color:var(--primary); font-weight:700;">${t.id}</td>
-                        <td style="font-weight:800;">${t.config.nombreTorneo}</td>
-                        <td><span class="badge-org">${t.config.badgeOrg}</span></td>
-                        <td style="font-family:'JetBrains Mono'; color:#FACC15;">${t.claveLicencia || 'admin2026'}</td>
-                        <td><input type="text" readonly value="${link}" class="input-dark" style="font-size:0.7rem;"></td>
+                        <td>
+                            <span style="background:${esActiva ? 'rgba(16,185,129,0.2)' : 'rgba(239,68,68,0.2)'}; color:${esActiva ? '#10B981' : '#EF4444'}; padding:0.25rem 0.6rem; border-radius:6px; font-weight:800; font-size:0.7rem;">
+                                ${esActiva ? '🟢 ACTIVA' : '🔴 SUSPENDIDA'}
+                            </span>
+                        </td>
+                        <td>
+                            <div style="font-weight:800; color:#fff;">${t.config.nombreTorneo}</div>
+                            <div style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--primary);">ID: ${t.id}</div>
+                        </td>
+                        <td>
+                            <div style="font-weight:700;">${t.config.badgeOrg}</div>
+                            <div style="font-size:0.7rem; color:#94A3B8;">${t.licenciaMeta.contactoCliente || ''}</div>
+                        </td>
+                        <td>
+                            <input type="text" value="${t.claveLicencia || 'admin2026'}" onchange="actualizarMetaLicencia('${t.id}', 'clave', this.value)" class="input-dark" style="width:110px; font-family:'JetBrains Mono'; color:#FACC15; font-weight:700;">
+                        </td>
+                        <td>
+                            <input type="number" value="${t.licenciaMeta.precioLicenciaCLP || 0}" onchange="actualizarMetaLicencia('${t.id}', 'precio', this.value)" class="input-dark" style="width:115px; color:#10B981; font-weight:700;">
+                        </td>
+                        <td>
+                            <input type="date" value="${t.licenciaMeta.fechaVencimiento || '2026-12-31'}" onchange="actualizarMetaLicencia('${t.id}', 'vencimiento', this.value)" class="input-dark" style="width:135px;">
+                        </td>
+                        <td>
+                            <div style="display:flex; gap:0.3rem;">
+                                <input type="text" readonly value="${link}" class="input-dark" style="font-size:0.68rem; min-width:160px;">
+                                <button onclick="navigator.clipboard.writeText('${link}'); mostrarToast('🔗 Link de cliente copiado');" class="btn-small-ok">Copiar</button>
+                            </div>
+                        </td>
                         <td style="text-align:right; white-space:nowrap;">
-                            <button onclick="cambiarTorneoActivo('${t.id}')" class="btn-small-ok">Administrar Este</button>
+                            <button onclick="cambiarTorneoActivo('${t.id}'); setTabAdmin('boxes');" class="btn-small-ok" style="background:#3B82F6; color:#fff; margin-right:0.25rem;">🔍 Auditar</button>
+                            <button onclick="alternarEstadoLicencia('${t.id}')" style="background:${esActiva ? '#EF4444' : '#10B981'}; color:#fff; border:none; padding:0.4rem 0.65rem; border-radius:6px; cursor:pointer; font-size:0.72rem; font-weight:800;">
+                                ${esActiva ? '⏸️ Suspender' : '▶️ Activar'}
+                            </button>
                         </td>
                     </tr>
                 `;
             });
+
+            const elKpi = document.getElementById('kpiIngresosLicenciasSaas');
+            if (elKpi) elKpi.innerText = "$" + totalFacturadoLicencias.toLocaleString('es-CL') + " CLP";
+        }
+
+        function actualizarMetaLicencia(idTorneo, campo, valor) {
+            const t = saasDB.torneos[idTorneo];
+            if (!t) return;
+            if (campo === 'clave') t.claveLicencia = valor.trim();
+            if (campo === 'precio') t.licenciaMeta.precioLicenciaCLP = Number(valor) || 0;
+            if (campo === 'vencimiento') t.licenciaMeta.fechaVencimiento = valor;
+            sincronizar();
+            renderSaasTorneos();
+            mostrarToast("👑 ¡Parámetro de licencia comercial actualizado!");
+        }
+
+        function alternarEstadoLicencia(idTorneo) {
+            const t = saasDB.torneos[idTorneo];
+            if (!t) return;
+            t.licenciaMeta.estado = t.licenciaMeta.estado === 'ACTIVA' ? 'SUSPENDIDA' : 'ACTIVA';
+            sincronizar();
+            renderSaasTorneos();
+            mostrarToast(`👑 Licencia ${idTorneo}: ${t.licenciaMeta.estado}`);
         }
 
         function crearNuevoTorneoLicencia() {
+            if (rolAdminActual !== 'SUPERGOD') return;
             const rawId = document.getElementById('nuevoSaasId').value.trim().toLowerCase().replace(/[^a-z0-9-]/g, '-');
             const nombre = document.getElementById('nuevoSaasNombre').value.trim();
             const club = document.getElementById('nuevoSaasClub').value.trim();
-            const clave = document.getElementById('nuevoSaasClave').value.trim() || 'admin2026';
+            const contacto = document.getElementById('nuevoSaasContacto').value.trim();
+            const clave = document.getElementById('nuevoSaasClave').value.trim() || 'cliente2026';
+            const precioLic = document.getElementById('nuevoSaasPrecioLicencia').value;
+            const venc = document.getElementById('nuevoSaasVencimiento').value;
 
             if (!rawId || !nombre) {
-                alert("⚠️ Ingresa un ID único (ej. copa-colina) y el Nombre del Torneo.");
+                alert("⚠️ Ingresa un ID URL único (ej. club-colina) y el Nombre del Torneo.");
                 return;
             }
-            saasDB.torneos[rawId] = crearEstructuraTorneoBase(rawId, nombre, club || "CLUB PRO", clave);
+            saasDB.torneos[rawId] = crearEstructuraTorneoBase(rawId, nombre, club || "CLUB OFICIAL", clave, contacto, precioLic, venc);
             saasDB.torneoActivoId = rawId;
             db = saasDB.torneos[rawId];
             sincronizar();
             cargarValoresEnFormularioCMS();
             renderSaasTorneos();
-            mostrarToast(`🏢 ¡Licencia y Torneo "${nombre}" creado y activado!`);
+            mostrarToast(`👑 ¡Licencia comercial "${nombre}" creada y lista para entregar al cliente!`);
         }
 
         function copiarLinkTorneo() {
             const el = document.getElementById('inputShareLinkTorneo');
             el.select();
             navigator.clipboard.writeText(el.value);
-            mostrarToast("🔗 ¡Enlace único del torneo copiado al portapapeles!");
+            mostrarToast("🔗 ¡Enlace exclusivo del torneo copiado al portapapeles!");
         }
 
         function subirLogo(e, index) {
