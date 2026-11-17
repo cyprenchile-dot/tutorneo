@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="pageTitle">Tutorneo Pro | Plataforma Oficial de Torneos</title>
+    <title id="pageTitle">Tutorneo Pro | AI Autonomous Tournament Engine</title>
     <style>
         :root {
             --primary: #D4AF37;
@@ -24,14 +24,14 @@
         .nav-btn:hover { background: #1E293B; border-color: #334155; }
         .nav-btn.active { background: var(--primary); color: #030508; font-weight: 800; border-color: var(--primary); }
 
-        .hero { background: linear-gradient(135deg, rgba(5, 7, 11, 0.82), rgba(13, 19, 34, 0.96)), var(--hero-bg, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat; padding: 4.5rem 1rem; text-align: center; border-bottom: 1px solid #1E293B; }
-        .hero h2 { font-size: 2.8rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
+        .hero { background: linear-gradient(135deg, rgba(5, 7, 11, 0.82), rgba(13, 19, 34, 0.96)), var(--hero-bg, url('https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop')) center/cover no-repeat; padding: 4.2rem 1rem; text-align: center; border-bottom: 1px solid #1E293B; }
+        .hero h2 { font-size: 2.7rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.2; }
         .hero h2 span { color: var(--primary); }
-        .reloj-box { background: rgba(13, 19, 34, 0.92); border: 1px solid var(--primary); padding: 1.1rem; border-radius: 16px; max-width: 440px; margin: 1.5rem auto 0; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
+        .reloj-box { background: rgba(13, 19, 34, 0.92); border: 1px solid var(--primary); padding: 1.1rem; border-radius: 16px; max-width: 460px; margin: 1.5rem auto 0; box-shadow: 0 10px 30px rgba(0,0,0,0.6); }
         .reloj-time { font-family: 'JetBrains Mono', monospace; font-size: 1.75rem; font-weight: 800; color: var(--primary); letter-spacing: 1px; }
 
         .container { max-width: 1280px; margin: 0 auto; padding: 2rem 1rem; width: 100%; }
-        .grid-boxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(275px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
+        .grid-boxes { display: grid; grid-template-columns: repeat(auto-fill, minmax(285px, 1fr)); gap: 1.25rem; margin-top: 1.5rem; }
         .box-card { border-radius: 16px; padding: 1.25rem; color: #fff; position: relative; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.35); transition: transform 0.2s; }
         .box-card:hover { transform: translateY(-3px); }
         .box-verde { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); border: 2px solid #10b981; cursor: pointer; }
@@ -40,7 +40,7 @@
         .badge-green { background: #10b981; color: #030508; }
         .badge-red { background: #ef4444; color: #fff; }
 
-        .bracket-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .bracket-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 1.5rem; }
         .admin-panel { background: #0D1322; border: 1px solid #1E293B; border-radius: 20px; padding: 1.75rem; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
         .table-custom { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.8rem; }
         .table-custom th, .table-custom td { padding: 0.65rem 0.5rem; text-align: left; border-bottom: 1px solid #1E293B; vertical-align: middle; }
@@ -51,6 +51,8 @@
         .btn-action:hover { filter: brightness(1.1); transform: translateY(-1px); }
         .btn-confirm { background: #10B981; color: #030508; font-weight: 800; padding: 0.65rem 1.3rem; border-radius: 10px; border: none; cursor: pointer; font-size: 0.82rem; transition: 0.2s; }
         .btn-confirm:hover { background: #34D399; }
+        .btn-ai { background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%); color: #fff; font-weight: 800; padding: 0.65rem 1.25rem; border-radius: 10px; border: 1px solid #818CF8; cursor: pointer; font-size: 0.8rem; transition: 0.2s; }
+        .btn-ai:hover { filter: brightness(1.15); }
         .btn-small-ok { background: #10B981; color: #030508; font-weight: 800; padding: 0.4rem 0.65rem; border-radius: 6px; border: none; cursor: pointer; font-size: 0.72rem; }
         
         .panel-vista { display: none; }
@@ -75,10 +77,10 @@
 <body>
 
     <!-- NOTIFICACIÓN FLOTANTE DE CONFIRMACIÓN -->
-    <div id="toastNotificacion">✅ ¡Cambios confirmados y sincronizados al milímetro!</div>
+    <div id="toastNotificacion">✅ ¡Cambios confirmados y sincronizados por IA!</div>
 
     <div>
-        <!-- BARRA SUPERIOR PÚBLICA (LIMPIA: SOLO MUESTRA EL TORNEO ACTUAL DEL ENLACE) -->
+        <!-- BARRA SUPERIOR PÚBLICA -->
         <header>
             <div class="nav-container">
                 <div class="logo-area">
@@ -90,7 +92,7 @@
                 </div>
                 <div class="nav-buttons">
                     <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnNavPub">🎾 Inicio & Cuadros</button>
-                    <button onclick="cambiarVista('llaves')" class="nav-btn" id="btnNavLlaves">🔀 Llaves & Cruces IA</button>
+                    <button onclick="cambiarVista('llaves')" class="nav-btn" id="btnNavLlaves">🤖 Llaves & Agenda IA</button>
                     <button onclick="cambiarVista('premios')" class="nav-btn" id="btnNavPrem">🏆 Premios & Mapa</button>
                     <button onclick="cambiarVista('tv')" class="nav-btn" id="btnNavTV">📺 Pantalla Gigante</button>
                     <button onclick="cambiarVista('admin')" class="nav-btn" id="btnNavAdmin">⚙️ Admin Master</button>
@@ -98,7 +100,7 @@
             </div>
         </header>
 
-        <!-- AVISO DE LICENCIA SUSPENDIDA (SI EL SUPER SUPER ADMIN BLOQUEA A UN CLIENTE) -->
+        <!-- AVISO DE LICENCIA SUSPENDIDA -->
         <div id="bannerLicenciaSuspendida" class="modal-oculto" style="background: #7F1D1D; border-bottom: 2px solid #EF4444; padding: 0.9rem 1rem; text-align: center; font-weight: 800; font-size: 0.85rem; color: #FECACA;">
             ⚠️ LICENCIA DE EVENTO PAUSADA TEMPORALMENTE POR EL ADMINISTRADOR GLOBAL DE LA PLATAFORMA.
         </div>
@@ -130,8 +132,8 @@
                     </div>
 
                     <div style="text-align: center; margin-bottom: 1.5rem;">
-                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem;">Cuadros Oficiales & Autogestión</h3>
-                        <p style="color: #94A3B8; font-size: 0.9rem;">Haz clic en un Box <strong>DISPONIBLE (Verde)</strong> para inscribirte; los <strong>INSCRITOS (Rojo)</strong> muestran su horario y cuenta regresiva en vivo.</p>
+                        <h3 style="font-size: 2rem; font-weight: 800; margin-bottom: 0.4rem;">Cuadros Oficiales & Autogestión por IA</h3>
+                        <p style="color: #94A3B8; font-size: 0.9rem;">Selecciona tu categoría. Los Boxes <strong>DISPONIBLES (Verde)</strong> te asignan horario automático por IA al inscribirte; los <strong>INSCRITOS (Rojo)</strong> muestran su cuenta regresiva y sus 3 partidos.</p>
                     </div>
 
                     <div class="tabs-cat" id="contenedorTabsCategoriasPublico"></div>
@@ -143,10 +145,10 @@
             <!-- ================= VISTA LLAVES & CRUCES IA ================= -->
             <div id="vistaLlaves" class="panel-vista">
                 <div class="container">
-                    <div style="text-align: center; margin-bottom: 2rem;">
-                        <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-weight: 700; font-family: 'JetBrains Mono';">🔀 MOTOR AUTÓNOMO DE IA</span>
-                        <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem;">Fixture Oficial & Fase de Grupos (3 Partidos Garantizados)</h2>
-                        <p style="color: #94A3B8; font-size: 0.9rem;">Horarios, descansos y canchas sincronizados con el almanaque oficial del torneo.</p>
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <span style="background: rgba(124,58,237,0.2); color: #C4B5FD; padding: 0.3rem 0.9rem; border-radius: 20px; font-size: 0.72rem; font-weight: 800; font-family: 'JetBrains Mono'; border: 1px solid #7C3AED;">🤖 MOTOR GLOBAL DE IA EN TIEMPO REAL</span>
+                        <h2 style="font-size: 2.2rem; font-weight: 800; margin-top: 0.5rem;">Organigrama Matemático & 3 Partidos por Pareja</h2>
+                        <p id="resumenPublicoIA" style="color: #94A3B8; font-size: 0.85rem; margin-top: 0.3rem;"></p>
                     </div>
 
                     <div class="tabs-cat" id="contenedorTabsCategoriasLlaves"></div>
@@ -157,23 +159,24 @@
 
             <!-- ================= VISTA PANTALLA DE ÉXITO / INSCRIPTO ================= -->
             <div id="vistaExitoInscripcion" class="panel-vista">
-                <div class="container" style="max-width: 720px; margin-top: 1.5rem;">
+                <div class="container" style="max-width: 740px; margin-top: 1.5rem;">
                     <div class="admin-panel" style="border: 2px solid #10b981; background: linear-gradient(135deg, #064e3b 0%, #080C14 100%); text-align: center;">
                         <div style="font-size: 3.2rem; margin-bottom: 0.5rem;">🎉</div>
                         <h2 style="font-size: 2rem; font-weight: 800; color: #10b981; margin-bottom: 0.5rem;">¡Estás Inscrito con Éxito!</h2>
-                        <p style="color: #A7F3D0; font-size: 0.9rem; margin-bottom: 1.5rem;">Tu dupla ya está registrada en el cuadro oficial y sincronizada con el motor de horarios.</p>
+                        <p style="color: #A7F3D0; font-size: 0.9rem; margin-bottom: 1.5rem;">La Inteligencia Artificial del torneo ya programó tus 3 partidos de fase de grupos respetando los descansos reglamentarios.</p>
                         
                         <div style="background: rgba(5,7,11,0.75); padding: 1.25rem; border-radius: 14px; text-align: left; font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; margin-bottom: 1.25rem; line-height: 1.8; border: 1px solid #1E293B;">
                             <div><strong>Torneo:</strong> <span id="exitoTorneoNombre" style="color: #fff;">--</span></div>
+                            <div><strong>Categoría:</strong> <span id="exitoCategoriaNombre" style="color: #C4B5FD;">--</span></div>
                             <div><strong>Dupla / Equipo:</strong> <span id="exitoAlias" style="color: var(--primary); font-weight: 800;">--</span></div>
                             <div><strong>Jugadores:</strong> <span id="exitoJugadores">--</span></div>
-                            <div><strong>Box & Cancha:</strong> <span id="exitoBox" style="color: #60A5FA;">--</span></div>
-                            <div><strong>Horario 1er Partido:</strong> <span id="exitoHorarioPartido" style="color: #FACC15;">--</span></div>
+                            <div><strong>Box & Cancha Base:</strong> <span id="exitoBox" style="color: #60A5FA;">--</span></div>
+                            <div><strong>Debut (1er Partido):</strong> <span id="exitoHorarioPartido" style="color: #FACC15;">--</span></div>
                             <div><strong>Valor Inscripción:</strong> <span id="exitoMontoPago" style="color: #10B981;">--</span></div>
                         </div>
 
                         <div style="background: rgba(13,19,34,0.9); padding: 1.25rem; border-radius: 14px; text-align: left; margin-bottom: 1.5rem; border: 1px solid #1E293B;">
-                            <h4 style="color: var(--primary); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">📅 Almanaque & Horarios Oficiales de Competencia</h4>
+                            <h4 style="color: var(--primary); font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem;">🤖 Tus 3 Partidos Asignados por IA & Almanaque Oficial</h4>
                             <div id="exitoCronogramaContenedor" style="font-size: 0.82rem; color: #CBD5E1; line-height: 1.6;"></div>
                         </div>
 
@@ -214,14 +217,14 @@
             <!-- ================= VISTA PANTALLA GIGANTE (TV / LIVE) ================= -->
             <div id="vistaTV" class="panel-vista">
                 <div class="container">
-                    <div style="text-align: center; margin-bottom: 2rem;">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
                         <h3 style="font-size: 2.2rem; font-weight: 800;">📺 Monitor Oficial de Canchas & En Directo</h3>
-                        <p style="color: #94A3B8; font-size: 0.9rem;">Sincronización en vivo de canchas, marcadores y rankings oficiales.</p>
+                        <p style="color: #94A3B8; font-size: 0.9rem;">Sincronización en vivo de canchas, categorías, marcadores y rankings oficiales.</p>
                     </div>
                     <div id="gridEstadoCanchasTV" class="grid-boxes" style="margin-bottom: 2rem;"></div>
                     
                     <div class="admin-panel">
-                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📊 Rankings Oficiales del Circuito (Todas las Parejas Inscritas)</h4>
+                        <h4 style="color: var(--primary); font-size: 1.2rem; margin-bottom: 1rem;">📊 Rankings Oficiales del Circuito (Todas las Categorías)</h4>
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
                             <div>
                                 <h5 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #60A5FA;">Ranking General WPT</h5>
@@ -236,11 +239,11 @@
                 </div>
             </div>
 
-            <!-- ================= VISTA ADMIN MASTER (JERARQUÍA 2 NIVELES) ================= -->
+            <!-- ================= VISTA ADMIN MASTER ================= -->
             <div id="vistaAdmin" class="panel-vista">
                 <div class="container">
                     
-                    <!-- LOGIN LIMPIO (SIN REVELAR CLAVES EN PANTALLA) -->
+                    <!-- LOGIN LIMPIO -->
                     <div id="adminLoginBox" style="max-width: 460px; margin: 3rem auto;">
                         <div class="admin-panel" style="text-align: center;">
                             <span style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.75rem; border-radius: 6px; font-size: 0.7rem; font-weight: 700;">Autenticación de Seguridad</span>
@@ -253,18 +256,32 @@
                         </div>
                     </div>
 
-                    <!-- PANEL ADMINISTRATIVO (SE ADAPTA SEGÚN EL ROL: ORGANIZADOR vs SUPER SUPER ADMIN) -->
+                    <!-- PANEL ADMINISTRATIVO -->
                     <div id="adminPanelBox" class="admin-panel modal-oculto">
                         
-                        <!-- BARRA EXCLUSIVA DEL SUPER SUPER ADMIN GLOBAL (OCULTA PARA ORGANIZADORES) -->
-                        <div id="barraExclusivaSuperGod" class="modal-oculto" style="background: linear-gradient(90deg, #311042 0%, #0D1322 100%); border: 1px solid #A855F7; padding: 1rem 1.25rem; border-radius: 14px; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <!-- BARRA EXCLUSIVA SUPER SUPER ADMIN GLOBAL -->
+                        <div id="barraExclusivaSuperGod" class="modal-oculto" style="background: linear-gradient(90deg, #311042 0%, #0D1322 100%); border: 1px solid #A855F7; padding: 1rem 1.25rem; border-radius: 14px; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
                             <div>
                                 <span style="background: #A855F7; color: #fff; font-weight: 800; font-size: 0.68rem; padding: 0.2rem 0.6rem; border-radius: 6px; text-transform: uppercase;">👑 MODO SUPER SUPER ADMIN GLOBAL (DUEÑO SAAS)</span>
-                                <p style="font-size: 0.78rem; color: #E9D5FF; margin-top: 0.3rem;">Tienes control total sobre todas las licencias vendidas. Puedes auditar cualquier torneo desde el selector derecho.</p>
+                                <p style="font-size: 0.78rem; color: #E9D5FF; margin-top: 0.3rem;">Control total sobre todas las licencias vendidas. Puedes auditar cualquier torneo desde el selector derecho.</p>
                             </div>
                             <div style="display: flex; align-items: center; gap: 0.5rem;">
                                 <label style="font-size: 0.72rem; color: #E9D5FF; font-weight: 700;">Inspeccionar Torneo:</label>
                                 <select id="selectorTorneoInternoGod" onchange="cambiarTorneoActivo(this.value)" class="input-dark" style="width: 240px; border-color: #A855F7; font-weight: 700;"></select>
+                            </div>
+                        </div>
+
+                        <!-- CEREBRO DE IA OMNIPRESENTE EN TODO EL PANEL -->
+                        <div style="background: linear-gradient(90deg, rgba(79,70,229,0.2) 0%, rgba(13,19,34,0.95) 100%); border: 1px solid #6366F1; border-radius: 14px; padding: 1rem 1.25rem; margin-bottom: 1.25rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                            <div style="flex: 1; min-width: 260px;">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span style="background: #4F46E5; color: #fff; font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 5px; font-family: 'JetBrains Mono';">🤖 MOTOR IA DE ALMANAQUE ACTIVO</span>
+                                    <span id="badgeEstadoSincroniaIA" style="font-size: 0.72rem; color: #34D399; font-family: 'JetBrains Mono'; font-weight: 700;">🟢 0 Colisiones de Cancha</span>
+                                </div>
+                                <p id="textoDiagnosticoGlobalIA" style="font-size: 0.78rem; color: #CBD5E1; margin-top: 0.35rem; font-family: 'JetBrains Mono';">Calculando capacidad de canchas y horarios...</p>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <button onclick="ejecutarMotorIAProgramacion(false)" class="btn-ai">🤖 IA: Organizar Todos los Horarios, Canchas & 3 Partidos</button>
                             </div>
                         </div>
 
@@ -277,7 +294,6 @@
                                 <p style="color: #94A3B8; font-size: 0.8rem; margin-top: 0.25rem;">Evento activo: <strong id="labelTorneoActivoAdmin" style="color:var(--primary);">--</strong></p>
                             </div>
                             <div style="display: flex; gap: 0.6rem; flex-wrap: wrap;">
-                                <button onclick="ejecutarMotorIAProgramacion()" class="btn-action" style="background: #4F46E5; color: #fff;">🤖 IA: Armar Fixture 3 Partidos & Horarios</button>
                                 <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y GUARDAR TODO</button>
                                 <button onclick="cerrarSesionAdmin()" class="nav-btn" style="border-color:#EF4444; color:#FCA5A5;">🔒 Salir</button>
                             </div>
@@ -286,19 +302,19 @@
                         <!-- Métricas del Torneo Activo -->
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; background: #05070B; padding: 1.15rem; border-radius: 12px; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace; border: 1px solid #1E293B;">
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Recaudación Inscripciones (Este Torneo)</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Recaudación Inscripciones</div>
                                 <div id="adminCajaTotal" style="font-size: 1.25rem; font-weight: 800; color: #10B981; margin-top: 0.2rem;">$0 CLP</div>
                             </div>
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Cupos Inscritos</div>
-                                <div id="adminCuposStats" style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">0 / 48</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Cupos Inscritos / Total Categorías</div>
+                                <div id="adminCuposStats" style="font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-top: 0.2rem;">0 / 64</div>
                             </div>
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Estado de tu Licencia</div>
-                                <div id="adminEstadoLicenciaActual" style="font-size: 1rem; font-weight: 800; color: #60A5FA; margin-top: 0.3rem;">🟢 LICENCIA ACTIVA</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Categorías Activas</div>
+                                <div id="adminTotalCategoriasKpi" style="font-size: 1.15rem; font-weight: 800; color: #C4B5FD; margin-top: 0.2rem;">4 Categorías</div>
                             </div>
                             <div>
-                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Enlace Oficial para tus Jugadores</div>
+                                <div style="font-size: 0.65rem; color: #94A3B8; text-transform: uppercase;">Enlace Oficial para Jugadores</div>
                                 <div style="display:flex; align-items:center; gap:0.4rem; margin-top:0.25rem;">
                                     <input type="text" id="inputShareLinkTorneo" readonly class="input-dark" style="font-size:0.7rem; padding:0.25rem 0.5rem;">
                                     <button onclick="copiarLinkTorneo()" class="btn-small-ok">Copiar</button>
@@ -306,11 +322,11 @@
                             </div>
                         </div>
 
-                        <!-- Pestañas del Admin (La pestaña SaaS solo es visible para el SUPER SUPER ADMIN) -->
+                        <!-- Pestañas del Admin -->
                         <div class="nav-buttons" style="margin-bottom: 1.5rem; border-bottom: 1px solid #1E293B; padding-bottom: 1rem;">
                             <button onclick="setTabAdmin('boxes')" id="tabAdminBoxes" class="nav-btn active">🎾 Canchas, Horarios & Marcadores</button>
                             <button onclick="setTabAdmin('parejas')" id="tabAdminParejas" class="nav-btn">👥 Base de Parejas & Nombres</button>
-                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Logo, Almanaque, Categorías & Tarifas</button>
+                            <button onclick="setTabAdmin('cms')" id="tabAdminCms" class="nav-btn">🎨 Almanaque, Categorías Ilimitadas & Tarifas</button>
                             <button onclick="setTabAdmin('sponsors')" id="tabAdminSponsors" class="nav-btn">🤝 Auspiciadores & Logos</button>
                             <button onclick="setTabAdmin('ranking')" id="tabAdminRanking" class="nav-btn">📊 Rankings WPT</button>
                             <button onclick="setTabAdmin('saas')" id="tabAdminSaas" class="nav-btn modal-oculto" style="background: rgba(168, 85, 247, 0.15); border-color: #A855F7; color: #E9D5FF;">👑 Consola Super Super Admin (Venta de Licencias)</button>
@@ -321,10 +337,11 @@
                             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
                                 <div>
                                     <h4 style="font-size: 1.05rem; font-weight: 800;">Gestión Quirúrgica de Boxes, Jugadores, Horarios y Estados</h4>
-                                    <p style="font-size: 0.75rem; color: #94A3B8;">Edita cualquier dato o la hora exacta del partido y presiona el botón verde de confirmar.</p>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Selecciona cualquier categoría o presiona el botón de IA para re-calcular horarios sin choques de cancha.</p>
                                 </div>
-                                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                                    <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="input-dark" style="width: 190px; font-weight: 700;"></select>
+                                <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                                    <select id="selectCatAdmin" onchange="renderAdminBoxes()" class="input-dark" style="width: 210px; font-weight: 700;"></select>
+                                    <button onclick="ejecutarMotorIAProgramacion(false)" class="btn-ai">🤖 IA: Auto-Asignar Horarios</button>
                                     <button onclick="confirmarCambiosTablaBoxes()" class="btn-confirm">✅ Confirmar Datos de Canchas</button>
                                 </div>
                             </div>
@@ -336,7 +353,7 @@
                                             <th>Estado</th>
                                             <th>Alias Dupla</th>
                                             <th>Jugador 1 / Jugador 2</th>
-                                            <th>Fecha y Hora Partido</th>
+                                            <th>Fecha y Hora 1er Partido</th>
                                             <th>Cancha</th>
                                             <th>Fase / Estado</th>
                                             <th>Marcador</th>
@@ -352,10 +369,13 @@
                         <div id="subPanelParejas" class="modal-oculto">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 1rem;">
                                 <div>
-                                    <h4 style="font-size: 1.05rem; font-weight: 800;">Base de Datos Editable de Parejas Inscritas</h4>
-                                    <p style="font-size: 0.75rem; color: #94A3B8;">Cambia el nombre de la dupla, los nombres de los jugadores, sus redes o su PIN y confirma al instante.</p>
+                                    <h4 style="font-size: 1.05rem; font-weight: 800;">Base de Datos Editable de Parejas Inscritas (Todas las Categorías)</h4>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Cambia el nombre de la dupla, jugadores o su horario y la IA mantendrá sus 3 partidos sincronizados.</p>
                                 </div>
-                                <button onclick="mostrarToast('✅ ¡Datos de parejas confirmados y guardados!')" class="btn-confirm">✅ Confirmar Todos los Nombres</button>
+                                <div style="display:flex; gap:0.5rem;">
+                                    <button onclick="ejecutarMotorIAProgramacion(false)" class="btn-ai">🤖 IA: Actualizar Cruces de Inscritos</button>
+                                    <button onclick="mostrarToast('✅ ¡Datos de parejas confirmados y guardados!')" class="btn-confirm">✅ Confirmar Todos los Nombres</button>
+                                </div>
                             </div>
                             <div style="overflow-x: auto;">
                                 <table class="table-custom">
@@ -366,7 +386,7 @@
                                             <th>Alias Dupla</th>
                                             <th>Jugador 1</th>
                                             <th>Jugador 2</th>
-                                            <th>Instagram (J1 / J2)</th>
+                                            <th>Horario Debut IA</th>
                                             <th>PIN</th>
                                             <th style="text-align: right;">Acciones</th>
                                         </tr>
@@ -376,17 +396,42 @@
                             </div>
                         </div>
 
-                        <!-- 3. SUB-PANEL: CMS, LOGO, ALMANAQUE, CATEGORÍAS Y TARIFAS -->
+                        <!-- 3. SUB-PANEL: CMS, LOGO, ALMANAQUE, CATEGORÍAS ILIMITADAS Y TARIFAS -->
                         <div id="subPanelCms" class="modal-oculto">
-                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem; background: #05070B; padding: 1rem; border-radius: 12px; border: 1px solid #10B981;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem; flex-wrap: wrap; gap: 1rem; background: #05070B; padding: 1rem 1.25rem; border-radius: 12px; border: 1px solid #10B981;">
                                 <div>
-                                    <h4 style="font-size: 1rem; font-weight: 800; color: #10B981;">📅 Configuración de Almanaque, Carrera/Categorías y Tarifas</h4>
-                                    <p style="font-size: 0.75rem; color: #94A3B8;">Modifica cualquier campo y presiona el botón verde para fijar la hora, el reloj regresivo y los títulos de tu evento.</p>
+                                    <h4 style="font-size: 1rem; font-weight: 800; color: #10B981;">📅 Configuración de Almanaque, Categorías Dinámicas y Tarifas</h4>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Modifica cualquier campo y presiona el botón verde. La IA recalculará automáticamente todos los horarios del torneo.</p>
                                 </div>
-                                <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y APLICAR ALMANAQUE Y DATOS</button>
+                                <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y APLICAR ALMANAQUE + IA</button>
                             </div>
 
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+                            <!-- GESTOR DINÁMICO DE CATEGORÍAS ILIMITADAS (SIN LÍMITE DE 3) -->
+                            <div style="background: #080C14; border: 1px solid #334155; border-radius: 14px; padding: 1.25rem; margin-bottom: 1.5rem;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem;">
+                                    <div>
+                                        <span style="background: rgba(212,175,55,0.15); color: var(--primary); font-size: 0.68rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 5px;">ILIMITADAS CATEGORÍAS / CARRERAS</span>
+                                        <h5 style="font-size: 1rem; font-weight: 800; color: #fff; margin-top: 0.3rem;">🏆 Gestor de Categorías y Cantidad de Cupos del Evento</h5>
+                                        <p style="font-size: 0.75rem; color: #94A3B8;">Agrega todas las categorías que necesite el organizador (3, 5, 8 o más) y define cuántos Boxes tiene cada una.</p>
+                                    </div>
+                                    <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+                                        <input type="text" id="inputNuevaCatNombre" placeholder="Ej. Varones 3ª / Senior +40" class="input-dark" style="width: 210px;">
+                                        <select id="inputNuevaCatCupos" class="input-dark" style="width: 130px;">
+                                            <option value="8">8 Cupos (Boxes)</option>
+                                            <option value="12">12 Cupos (Boxes)</option>
+                                            <option value="16" selected>16 Cupos (Boxes)</option>
+                                            <option value="24">24 Cupos (Boxes)</option>
+                                            <option value="32">32 Cupos (Boxes)</option>
+                                        </select>
+                                        <button onclick="agregarCategoriaDinamica()" class="btn-confirm">+ Agregar Categoría</button>
+                                    </div>
+                                </div>
+
+                                <div id="listaEditorCategoriasDinamicas" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem;"></div>
+                            </div>
+
+                            <!-- DATOS DEL ALMANAQUE Y PARÁMETROS PARA EL MOTOR IA -->
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
                                 <div>
                                     <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Nombre Oficial del Torneo / Carrera</label>
                                     <input type="text" id="cfgNombreTorneo" class="input-dark">
@@ -400,25 +445,8 @@
                                     <input type="file" accept="image/*" onchange="subirLogoTorneo(event)" class="input-dark" style="padding: 0.35rem;">
                                 </div>
                                 <div>
-                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Número Total de Canchas del Club (1 a 12)</label>
-                                    <input type="number" id="cfgTotalCanchas" min="1" max="12" class="input-dark">
-                                </div>
-
-                                <div>
-                                    <label style="font-size: 0.75rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem;">Nombre Categoría / Carrera 1</label>
-                                    <input type="text" id="cfgCatNombreDamas" class="input-dark">
-                                </div>
-                                <div>
-                                    <label style="font-size: 0.75rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem;">Nombre Categoría / Carrera 2</label>
-                                    <input type="text" id="cfgCatNombreVarones" class="input-dark">
-                                </div>
-                                <div>
-                                    <label style="font-size: 0.75rem; color: var(--primary); font-weight: 700; display: block; margin-bottom: 0.3rem;">Nombre Categoría / Carrera 3</label>
-                                    <input type="text" id="cfgCatNombreMixto" class="input-dark">
-                                </div>
-                                <div>
-                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Duración por Partido en Minutos (Ej. 45 o 60)</label>
-                                    <input type="number" id="cfgDuracionPartido" min="20" max="120" class="input-dark">
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Número Total de Canchas del Club (1 a 16)</label>
+                                    <input type="number" id="cfgTotalCanchas" min="1" max="16" class="input-dark">
                                 </div>
 
                                 <div>
@@ -439,12 +467,16 @@
                                 </div>
 
                                 <div>
-                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">URL Foto Fondo Hero</label>
-                                    <input type="text" id="cfgHeroUrl" class="input-dark">
+                                    <label style="font-size: 0.75rem; color: #C4B5FD; font-weight: 700; display: block; margin-bottom: 0.3rem;">🤖 Duración por Partido en Minutos (Ej. 45 o 60)</label>
+                                    <input type="number" id="cfgDuracionPartido" min="20" max="120" class="input-dark">
                                 </div>
                                 <div>
-                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Color Principal Corporativo (Hex)</label>
-                                    <input type="text" id="cfgColorPrimario" class="input-dark">
+                                    <label style="font-size: 0.75rem; color: #C4B5FD; font-weight: 700; display: block; margin-bottom: 0.3rem;">🤖 Descanso Mínimo por Pareja (Turnos IA)</label>
+                                    <select id="cfgTurnosDescansoIA" class="input-dark">
+                                        <option value="1">1 Turno de descanso entre partidos</option>
+                                        <option value="2" selected>2 Turnos de descanso entre partidos</option>
+                                        <option value="3">3 Turnos de descanso entre partidos</option>
+                                    </select>
                                 </div>
                                 <div>
                                     <label style="font-size: 0.75rem; color: #60A5FA; font-weight: 700; display: block; margin-bottom: 0.3rem;">💳 Enlace de Pago del Organizador (Mercado Pago)</label>
@@ -453,6 +485,15 @@
                                 <div>
                                     <label style="font-size: 0.75rem; color: #10B981; font-weight: 700; display: block; margin-bottom: 0.3rem;">💲 Tarifa / Valor Inscripción ($ CLP)</label>
                                     <input type="number" id="cfgPrecioInscripcion" class="input-dark">
+                                </div>
+
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">URL Foto Fondo Hero</label>
+                                    <input type="text" id="cfgHeroUrl" class="input-dark">
+                                </div>
+                                <div>
+                                    <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Color Principal Corporativo (Hex)</label>
+                                    <input type="text" id="cfgColorPrimario" class="input-dark">
                                 </div>
                                 <div style="grid-column: 1 / -1;">
                                     <label style="font-size: 0.75rem; color: #94A3B8; display: block; margin-bottom: 0.3rem;">Ubicación Google Maps (Nombre del Club o Dirección)</label>
@@ -469,8 +510,7 @@
                             </div>
 
                             <div style="margin-top: 1.5rem; display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap;">
-                                <button onclick="sincronizarHorariosBoxesConAlmanaque()" class="btn-action" style="background: #3B82F6; color: #fff;">⏱️ Sincronizar Relojes de Boxes con este Almanaque</button>
-                                <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR Y PUBLICAR CAMBIOS AHORA</button>
+                                <button onclick="guardarTodoAdmin()" class="btn-confirm">✅ CONFIRMAR ALMANAQUE Y RE-PROGRAMAR HORARIOS CON IA</button>
                             </div>
                         </div>
 
@@ -489,7 +529,7 @@
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
                                 <div>
                                     <h4 style="font-size: 1.05rem; font-weight: 800;">Control de Puntos del Circuito (WPT & Challenger)</h4>
-                                    <p style="font-size: 0.75rem; color: #94A3B8;">Ajusta los puntos de cualquier pareja inscrita y presiona Confirmar.</p>
+                                    <p style="font-size: 0.75rem; color: #94A3B8;">Ajusta los puntos de cualquier pareja inscrita en cualquiera de las categorías activas.</p>
                                 </div>
                                 <button onclick="sincronizar(); mostrarToast('✅ ¡Puntos de Ranking actualizados!')" class="btn-confirm">✅ Confirmar Puntos de Ranking</button>
                             </div>
@@ -512,7 +552,6 @@
                                 </div>
                             </div>
 
-                            <!-- Formulario para Vender / Crear Nueva Licencia -->
                             <div style="background: #080C14; padding: 1.25rem; border-radius: 14px; border: 1px solid #1E293B; margin-bottom: 1.5rem;">
                                 <h5 style="font-size: 0.95rem; font-weight: 800; color: var(--primary); margin-bottom: 1rem;">➕ Emitir Nueva Licencia Comercial para un Cliente / Organizador</h5>
                                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.85rem;">
@@ -585,7 +624,7 @@
             <div style="overflow: hidden; width: 100%;">
                 <div id="carruselSponsorsPublico" class="animate-scroll" style="display: flex; gap: 2rem; align-items: center;"></div>
             </div>
-            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • Plataforma Oficial Licenciada.</div>
+            <div style="font-size: 0.7rem; color: #475569; margin-top: 1.5rem; font-family: 'JetBrains Mono', monospace;">© 2026 Tutorneo Pro • Plataforma Oficial Licenciada con Motor IA.</div>
         </div>
     </footer>
 
@@ -594,7 +633,7 @@
         <div class="admin-panel" style="max-width: 480px; width: 100%; position: relative; max-height: 92vh; overflow-y: auto;">
             <button onclick="cerrarModal()" style="position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: #94A3B8; font-size: 1.4rem; cursor: pointer;">&times;</button>
             <span id="modalBoxLabel" style="background: rgba(212,175,55,0.15); color: var(--primary); padding: 0.25rem 0.65rem; border-radius: 6px; font-size: 0.72rem; font-weight: 800;">Box #1</span>
-            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.5rem 0;">Inscripción & Perfil de Dupla</h3>
+            <h3 style="font-size: 1.35rem; font-weight: 800; margin: 0.5rem 0;">Inscripción & Asignación IA</h3>
             <p id="modalPrecioLabel" style="color: #10B981; font-size: 0.85rem; font-weight: 800; margin-bottom: 1rem;">Valor: $70.000 CLP</p>
             <form id="formInscripcion" onsubmit="procesarInscripcionYPago(event)" style="display: flex; flex-direction: column; gap: 0.75rem;">
                 <div>
@@ -632,32 +671,57 @@
                 <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #94A3B8; cursor: pointer; margin-top: 0.25rem;">
                     <input type="checkbox" id="checkReglamento" required> Acepto los términos y el reglamento oficial del torneo.
                 </label>
-                <button type="submit" class="btn-action" style="background: #009EE3; color: #fff; margin-top: 0.5rem; padding: 0.85rem;">💳 Confirmar Inscripción & Ir a Mercado Pago</button>
+                <button type="submit" class="btn-action" style="background: #009EE3; color: #fff; margin-top: 0.5rem; padding: 0.85rem;">💳 Confirmar Inscripción, Activar IA & Ir a Mercado Pago</button>
             </form>
         </div>
     </div>
 
-    <!-- SCRIPT MASTER CON JERARQUÍA DE 2 NIVELES: SUPER SUPER ADMIN GLOBAL vs ORGANIZADOR LICENCIADO -->
+    <!-- SCRIPT MASTER CON CATEGORÍAS ILIMITADAS + MOTOR IA GLOBAL DE ALMANAQUE Y CANCHAS -->
     <script>
-        const STORAGE_KEY_SAAS = 'tutorneo_saas_multi_db_v22';
-        const BROADCAST_CHANNEL = 'tutorneo_saas_sync_v22';
-        const CLAVE_SUPER_SUPER_ADMIN = 'supergod2026'; // Clave exclusiva del Dueño del Software
+        const STORAGE_KEY_SAAS = 'tutorneo_saas_multi_db_v23';
+        const BROADCAST_CHANNEL = 'tutorneo_saas_sync_v23';
+        const CLAVE_SUPER_SUPER_ADMIN = 'supergod2026';
         const storageSync = new BroadcastChannel(BROADCAST_CHANNEL);
+
+        function crearCuposParaCategoria(idTorneo, catKey, cantidadCupos, ocupadosIniciales, prefijoAlias, fechaBase) {
+            return Array.from({length: cantidadCupos}, (_, i) => ({
+                id: i + 1,
+                ocupado: i < ocupadosIniciales,
+                alias: i < ocupadosIniciales ? `${prefijoAlias} ${i+1}` : "",
+                j1: i < ocupadosIniciales ? `Jugador A${i+1}` : "",
+                j2: i < ocupadosIniciales ? `Jugador B${i+1}` : "",
+                redes1: "@ig1",
+                redes2: "@ig2",
+                pin: "1234",
+                avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${idTorneo}_${catKey}_${i}`,
+                cancha: `Cancha #${(i % 4) + 1}`,
+                estadoPartido: "Programado",
+                horaInicioMatch: `${fechaBase}T09:00`,
+                resultado: "Próx.",
+                partidosIA: []
+            }));
+        }
 
         function crearEstructuraTorneoBase(id, nombre, badge, claveLicencia, contacto, precioLicencia, vencimiento) {
             const fechaBase = "2026-11-21";
+            const categoriasBase = [
+                { key: "damas_c", nombre: "Damas C", maxCupos: 16 },
+                { key: "varones_5", nombre: "Varones 5ª", maxCupos: 16 },
+                { key: "mixto_c", nombre: "Mixto C", maxCupos: 16 },
+                { key: "varones_4", nombre: "Varones 4ª", maxCupos: 16 }
+            ];
             return {
                 id: id,
                 claveLicencia: claveLicencia || "admin2026",
                 licenciaMeta: {
-                    estado: "ACTIVA", // ACTIVA o SUSPENDIDA
+                    estado: "ACTIVA",
                     contactoCliente: contacto || "Director de Torneo",
                     precioLicenciaCLP: Number(precioLicencia) || 150000,
                     fechaVencimiento: vencimiento || "2026-12-31"
                 },
                 config: {
-                    nombreTorneo: nombre || "TORNEO COPA CHALLENGER LAGUNA AYRES DE CHICUREO",
-                    badgeOrg: badge || "WIN WIN",
+                    nombreTorneo: nombre || "CHICUREO OPEN PRO CIRCUIT",
+                    badgeOrg: badge || "CLUB CHICUREO",
                     logoTorneoImg: "",
                     heroBgUrl: "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=1920&auto=format&fit=crop",
                     colorPrimary: "#D4AF37",
@@ -665,15 +729,12 @@
                     precioInscripcion: 70000,
                     totalCanchas: 4,
                     duracionPartido: 45,
+                    turnosDescansoIA: 2,
                     fechaInicio: fechaBase,
                     fechaFin: "2026-11-22",
                     horaApertura: "09:00",
                     horaCierre: "21:00",
-                    catNombres: {
-                        damas: "Damas C",
-                        varones: "Varones 5ª",
-                        mixto: "Mixto C"
-                    },
+                    categorias: categoriasBase,
                     googleMapsQuery: "Laguna Ayres de Chicureo Colina Santiago",
                     comunicado: "¡Bienvenidos a la fecha oficial! Horarios y 3 partidos por pareja sincronizados por IA.",
                     reglamento: "1. W.O. estricto a los 10 minutos.<br>2. Fase de grupos: 3 partidos garantizados por pareja.<br>3. Partidos a 1 set de 9 games con Punto de Oro."
@@ -684,53 +745,12 @@
                     { nombre: "Laguna Sport", url: "https://www.google.com", logoText: "💧 LAGUNA SPORT", logoImg: "" }
                 ],
                 puntosExtraRanking: {},
-                llaves: { varones: [], damas: [], mixto: [] },
+                llaves: { damas_c: [], varones_5: [], mixto_c: [], varones_4: [] },
                 cupos: {
-                    varones: Array.from({length: 16}, (_, i) => ({
-                        id: i + 1,
-                        ocupado: i < 4,
-                        alias: i < 4 ? `DUPLA ELITE ${i+1}` : "",
-                        j1: i < 4 ? `Jugador A${i+1}` : "",
-                        j2: i < 4 ? `Jugador B${i+1}` : "",
-                        redes1: "@ig1",
-                        redes2: "@ig2",
-                        pin: "1234",
-                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}_v_${i}`,
-                        cancha: `Cancha #${(i % 4) + 1}`,
-                        estadoPartido: "Programado",
-                        horaInicioMatch: `${fechaBase}T09:${(i % 2 === 0 ? '00' : '45')}`,
-                        resultado: "Próx."
-                    })),
-                    damas: Array.from({length: 16}, (_, i) => ({
-                        id: i + 1,
-                        ocupado: i < 2,
-                        alias: i < 2 ? `CHICUREO GIRLS ${i+1}` : "",
-                        j1: i < 2 ? `Jugadora A${i+1}` : "",
-                        j2: i < 2 ? `Jugadora B${i+1}` : "",
-                        redes1: "@ig_d1",
-                        redes2: "@ig_d2",
-                        pin: "1234",
-                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}_d_${i}`,
-                        cancha: `Cancha #${(i % 4) + 1}`,
-                        estadoPartido: "Programado",
-                        horaInicioMatch: `${fechaBase}T10:30`,
-                        resultado: "Próx."
-                    })),
-                    mixto: Array.from({length: 16}, (_, i) => ({
-                        id: i + 1,
-                        ocupado: i < 2,
-                        alias: i < 2 ? `MIXED POWER ${i+1}` : "",
-                        j1: i < 2 ? `Part. A${i+1}` : "",
-                        j2: i < 2 ? `Part. B${i+1}` : "",
-                        redes1: "@mix1",
-                        redes2: "@mix2",
-                        pin: "1234",
-                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${id}_m_${i}`,
-                        cancha: `Cancha #${(i % 4) + 1}`,
-                        estadoPartido: "Programado",
-                        horaInicioMatch: `${fechaBase}T11:15`,
-                        resultado: "Próx."
-                    }))
+                    damas_c: crearCuposParaCategoria(id, "damas_c", 16, 4, "CHICUREO GIRLS", fechaBase),
+                    varones_5: crearCuposParaCategoria(id, "varones_5", 16, 4, "DUPLA ELITE", fechaBase),
+                    mixto_c: crearCuposParaCategoria(id, "mixto_c", 16, 4, "MIXED POWER", fechaBase),
+                    varones_4: crearCuposParaCategoria(id, "varones_4", 16, 4, "PRO MASTERS", fechaBase)
                 }
             };
         }
@@ -738,16 +758,15 @@
         let saasDB = JSON.parse(localStorage.getItem(STORAGE_KEY_SAAS));
         if (!saasDB || !saasDB.torneos) {
             saasDB = {
-                torneoActivoId: "laguna-ayres",
+                torneoActivoId: "chicureo-open",
                 torneos: {
-                    "laguna-ayres": crearEstructuraTorneoBase("laguna-ayres", "TORNEO COPA CHALLENGER LAGUNA AYRES DE CHICUREO", "WIN WIN", "admin2026", "Gerencia Win Win", 0, "2027-12-31"),
-                    "chicureo-open": crearEstructuraTorneoBase("chicureo-open", "CHICUREO OPEN PRO CIRCUIT", "CLUB CHICUREO", "club2026", "contacto@clubchicureo.cl", 180000, "2026-12-31")
+                    "chicureo-open": crearEstructuraTorneoBase("chicureo-open", "CHICUREO OPEN PRO CIRCUIT", "CLUB CHICUREO", "admin2026", "contacto@clubchicureo.cl", 180000, "2026-12-31"),
+                    "laguna-ayres": crearEstructuraTorneoBase("laguna-ayres", "TORNEO COPA CHALLENGER LAGUNA AYRES", "WIN WIN", "win2026", "Gerencia Win Win", 150000, "2027-12-31")
                 }
             };
             localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
         }
 
-        // Si el usuario o cliente entra con ?torneo=id-del-cliente, carga estrictamente ese torneo
         const urlParams = new URLSearchParams(window.location.search);
         const paramTorneo = urlParams.get('torneo');
         if (paramTorneo && saasDB.torneos[paramTorneo]) {
@@ -755,21 +774,53 @@
         }
 
         let db = saasDB.torneos[saasDB.torneoActivoId];
-        let catActiva = 'varones';
-        let catLlavesActiva = 'varones';
+        let catActiva = db.config.categorias[0]?.key || 'damas_c';
+        let catLlavesActiva = db.config.categorias[0]?.key || 'damas_c';
         let boxSeleccionado = null;
-
-        // Estado de sesión administrativa: null | 'ORGANIZADOR' | 'SUPERGOD'
         let rolAdminActual = null;
+
+        function asegurarIntegridadCategorias() {
+            if (!db.config.categorias || !Array.isArray(db.config.categorias) || db.config.categorias.length === 0) {
+                db.config.categorias = [
+                    { key: "damas_c", nombre: "Damas C", maxCupos: 16 },
+                    { key: "varones_5", nombre: "Varones 5ª", maxCupos: 16 },
+                    { key: "mixto_c", nombre: "Mixto C", maxCupos: 16 }
+                ];
+            }
+            if (!db.llaves) db.llaves = {};
+            if (!db.cupos) db.cupos = {};
+
+            db.config.categorias.forEach(cat => {
+                if (!db.cupos[cat.key]) {
+                    db.cupos[cat.key] = crearCuposParaCategoria(db.id, cat.key, cat.maxCupos || 16, 0, cat.nombre.toUpperCase(), db.config.fechaInicio || "2026-11-21");
+                }
+                if (!db.llaves[cat.key]) {
+                    db.llaves[cat.key] = [];
+                }
+            });
+
+            if (!db.config.categorias.some(c => c.key === catActiva)) {
+                catActiva = db.config.categorias[0].key;
+            }
+            if (!db.config.categorias.some(c => c.key === catLlavesActiva)) {
+                catLlavesActiva = db.config.categorias[0].key;
+            }
+        }
+
+        function obtenerNombreCategoria(key) {
+            const encontrada = (db.config.categorias || []).find(c => c.key === key);
+            return encontrada ? encontrada.nombre : key;
+        }
 
         function mostrarToast(mensaje) {
             const t = document.getElementById('toastNotificacion');
-            t.innerText = mensaje || "✅ ¡Cambios confirmados y sincronizados al milímetro!";
+            t.innerText = mensaje || "✅ ¡Cambios confirmados y sincronizados por IA!";
             t.style.display = 'flex';
             setTimeout(() => { t.style.display = 'none'; }, 3200);
         }
 
         function sincronizar() {
+            asegurarIntegridadCategorias();
             saasDB.torneos[saasDB.torneoActivoId] = db;
             localStorage.setItem(STORAGE_KEY_SAAS, JSON.stringify(saasDB));
             storageSync.postMessage('actualizar');
@@ -780,17 +831,359 @@
             if(e.data === 'actualizar') {
                 saasDB = JSON.parse(localStorage.getItem(STORAGE_KEY_SAAS));
                 db = saasDB.torneos[saasDB.torneoActivoId];
+                asegurarIntegridadCategorias();
                 aplicarCMS();
                 renderPublico();
             }
         };
 
-        // Solo el Super Super Admin puede cambiar entre torneos desde su barra interna
+        // =========================================================================
+        // MOTOR DE INTELIGENCIA ARTIFICIAL GLOBAL (MULTI-CATEGORÍA Y MULTI-DÍA)
+        // =========================================================================
+        function generarGrillaSlotsAlmanaque() {
+            const fInicioStr = db.config.fechaInicio || "2026-11-21";
+            const fFinStr = db.config.fechaFin || fInicioStr;
+            const hApertura = db.config.horaApertura || "09:00";
+            const hCierre = db.config.horaCierre || "21:00";
+            const duracion = Math.max(20, Number(db.config.duracionPartido) || 45);
+            const totalCanchas = Math.max(1, Number(db.config.totalCanchas) || 4);
+
+            const [apH, apM] = hApertura.split(':').map(Number);
+            const [ciH, ciM] = hCierre.split(':').map(Number);
+            const minutosApertura = apH * 60 + apM;
+            const minutosCierre = ciH * 60 + ciM;
+
+            const startDay = new Date(`${fInicioStr}T00:00:00`);
+            const endDay = new Date(`${fFinStr}T00:00:00`);
+            const diasTotales = Math.max(1, Math.round((endDay - startDay) / 86400000) + 1);
+
+            let bloquesTiempo = [];
+            // Si el torneo requiere más días de los configurados, la IA extiende hasta 7 días de respaldo para nunca fallar
+            const diasMaximosSeguridad = Math.max(diasTotales, 5);
+
+            for (let d = 0; d < diasMaximosSeguridad; d++) {
+                const currentDay = new Date(startDay.getTime() + d * 86400000);
+                const yyyy = currentDay.getFullYear();
+                const mm = String(currentDay.getMonth() + 1).padStart(2, '0');
+                const dd = String(currentDay.getDate()).padStart(2, '0');
+                const fechaIso = `${yyyy}-${mm}-${dd}`;
+
+                for (let min = minutosApertura; min + duracion <= minutosCierre; min += duracion) {
+                    const hh = String(Math.floor(min / 60)).padStart(2, '0');
+                    const mStr = String(min % 60).padStart(2, '0');
+                    bloquesTiempo.push({
+                        bloqueIdx: bloquesTiempo.length,
+                        dentroDeRangoOficial: d < diasTotales,
+                        fecha: fechaIso,
+                        hora: `${hh}:${mStr}`,
+                        isoLocal: `${fechaIso}T${hh}:${mStr}`,
+                        canchasOcupadas: {}
+                    });
+                }
+            }
+            return { bloquesTiempo, diasTotales, totalCanchas, duracion };
+        }
+
+        function ejecutarMotorIAProgramacion(silencioso) {
+            asegurarIntegridadCategorias();
+            const { bloquesTiempo, diasTotales, totalCanchas, duracion } = generarGrillaSlotsAlmanaque();
+            const descansoTurnos = Number(db.config.turnosDescansoIA) || 2;
+
+            // Mapa para rastrear en qué bloque jugó por última vez cada dupla y evitar que jueguen sin descanso
+            let ultimoBloquePorDupla = {};
+            let partidosTotalesProgramados = 0;
+
+            // 1. Generar todos los partidos (Ronda 1, Ronda 2 y Ronda 3) de TODAS las categorías
+            let colaPartidosPorRonda = [[], [], []];
+
+            db.config.categorias.forEach((cat) => {
+                const listaCupos = db.cupos[cat.key] || [];
+                const inscritos = listaCupos.filter(c => c.ocupado && c.alias);
+
+                // Inicializar contenedor de partidos IA por cupo
+                listaCupos.forEach(c => { c.partidosIA = []; });
+
+                if (inscritos.length >= 2) {
+                    inscritos.forEach((duplaObj, idx) => {
+                        const r1 = inscritos[(idx + 1) % inscritos.length];
+                        const r2 = inscritos[(idx + 2) % inscritos.length] || r1;
+                        const r3 = inscritos[(idx + 3) % inscritos.length] || r1;
+
+                        colaPartidosPorRonda[0].push({ catKey: cat.key, catNombre: cat.nombre, ronda: 1, duplaA: duplaObj, duplaB: r1 });
+                        colaPartidosPorRonda[1].push({ catKey: cat.key, catNombre: cat.nombre, ronda: 2, duplaA: duplaObj, duplaB: r2 });
+                        colaPartidosPorRonda[2].push({ catKey: cat.key, catNombre: cat.nombre, ronda: 3, duplaA: duplaObj, duplaB: r3 });
+                    });
+                }
+            });
+
+            // 2. Asignar cada partido en la matriz global de Canchas y Horarios sin colisiones
+            [0, 1, 2].forEach(rondaIdx => {
+                colaPartidosPorRonda[rondaIdx].forEach(match => {
+                    const idUnicoA = `${match.catKey}_${match.duplaA.id}`;
+                    const minBloqueA = ultimoBloquePorDupla[idUnicoA] !== undefined ? ultimoBloquePorDupla[idUnicoA] + descansoTurnos : 0;
+
+                    let asignado = false;
+                    for (let b = minBloqueA; b < bloquesTiempo.length; b++) {
+                        const bloque = bloquesTiempo[b];
+                        for (let cNum = 1; cNum <= totalCanchas; cNum++) {
+                            const nombreCancha = `Cancha #${cNum}`;
+                            if (!bloque.canchasOcupadas[nombreCancha]) {
+                                bloque.canchasOcupadas[nombreCancha] = true;
+                                ultimoBloquePorDupla[idUnicoA] = b;
+                                partidosTotalesProgramados++;
+
+                                const detallePartido = {
+                                    ronda: match.ronda,
+                                    rival: match.duplaB.alias || "Por Definir",
+                                    fecha: bloque.fecha,
+                                    hora: `${bloque.fecha} ${bloque.hora} hrs`,
+                                    isoLocal: bloque.isoLocal,
+                                    cancha: nombreCancha,
+                                    res: match.ronda === 1 ? "Debut Oficial" : `Con Descanso (+${descansoTurnos} turnos)`
+                                };
+
+                                match.duplaA.partidosIA.push(detallePartido);
+
+                                // Si es el Partido #1 (Debut), sincroniza el reloj regresivo y la cancha principal del Box
+                                if (match.ronda === 1) {
+                                    match.duplaA.horaInicioMatch = bloque.isoLocal;
+                                    match.duplaA.cancha = nombreCancha;
+                                }
+                                asignado = true;
+                                break;
+                            }
+                        }
+                        if (asignado) break;
+                    }
+                });
+            });
+
+            // 3. También asignar horarios preventivos a los Boxes libres para que el organizador vea toda la grilla ordenada
+            let cursorLibres = 0;
+            db.config.categorias.forEach(cat => {
+                (db.cupos[cat.key] || []).forEach(cupo => {
+                    if (!cupo.ocupado) {
+                        const b = bloquesTiempo[cursorLibres % Math.max(1, bloquesTiempo.length)];
+                        if (b) {
+                            cupo.horaInicioMatch = b.isoLocal;
+                            cupo.cancha = `Cancha #${(cursorLibres % totalCanchas) + 1}`;
+                            cursorLibres++;
+                        }
+                    }
+                });
+
+                // Actualizar estructura de llaves para la vista pública
+                db.llaves[cat.key] = (db.cupos[cat.key] || [])
+                    .filter(c => c.ocupado && c.alias)
+                    .map(c => ({
+                        dupla: c.alias,
+                        boxId: c.id,
+                        juegos: c.partidosIA && c.partidosIA.length > 0 ? c.partidosIA : [
+                            { rival: "Por Sortear", hora: `${c.horaInicioMatch.replace('T',' ')} hrs`, cancha: c.cancha, res: "Programado" }
+                        ]
+                    }));
+            });
+
+            sincronizar();
+            actualizarDiagnosticoIA(partidosTotalesProgramados);
+            renderBracketTree();
+            renderAdminBoxes();
+            renderAdminParejas();
+            if (!silencioso) {
+                mostrarToast(`🤖 ¡IA Global ejecutada! ${db.config.categorias.length} categorías y ${partidosTotalesProgramados} partidos sincronizados sin choques.`);
+            }
+        }
+
+        function actualizarDiagnosticoIA() {
+            const { bloquesTiempo, diasTotales, totalCanchas, duracion } = generarGrillaSlotsAlmanaque();
+            const turnosOficialesPorDia = bloquesTiempo.filter(b => b.dentroDeRangoOficial).length;
+            const capacidadTotalTurnosCancha = turnosOficialesPorDia * totalCanchas;
+
+            let parejasInscritasTotales = 0;
+            let mapaColisiones = {};
+            let colisionesDetectadas = 0;
+
+            db.config.categorias.forEach(cat => {
+                (db.cupos[cat.key] || []).forEach(c => {
+                    if (c.ocupado) {
+                        parejasInscritasTotales++;
+                        const keySlot = `${(c.horaInicioMatch || '').slice(0,16)}_${c.cancha}`;
+                        if (mapaColisiones[keySlot]) {
+                            colisionesDetectadas++;
+                        } else {
+                            mapaColisiones[keySlot] = true;
+                        }
+                    }
+                });
+            });
+
+            const partidosRequeridos = parejasInscritasTotales * 3;
+            const elDiag = document.getElementById('textoDiagnosticoGlobalIA');
+            const elBadge = document.getElementById('badgeEstadoSincroniaIA');
+            const elResumenPub = document.getElementById('resumenPublicoIA');
+
+            if (elDiag) {
+                elDiag.innerText = `Almanaque: ${diasTotales} día(s) (${db.config.horaApertura} a ${db.config.horaCierre} hrs) • Capacidad: ${capacidadTotalTurnosCancha} turnos en ${totalCanchas} canchas (${duracion} min/partido) • Demanda actual: ${parejasInscritasTotales} duplas (${partidosRequeridos} partidos programados en ${db.config.categorias.length} categorías).`;
+            }
+            if (elBadge) {
+                if (colisionesDetectadas === 0) {
+                    elBadge.innerText = "🟢 0 Colisiones de Cancha • Sincronía Quirúrgica";
+                    elBadge.style.color = "#34D399";
+                } else {
+                    elBadge.innerText = `🟡 ${colisionesDetectadas} Cruce(s) de Horario (Presiona IA para corregir)`;
+                    elBadge.style.color = "#FACC15";
+                }
+            }
+            if (elResumenPub) {
+                elResumenPub.innerText = `Calendario oficial del ${db.config.fechaInicio} al ${db.config.fechaFin} (${db.config.horaApertura} a ${db.config.horaCierre} hrs) • ${db.config.totalCanchas} Canchas sincronizadas.`;
+            }
+        }
+
+        // =========================================================================
+        // GESTOR DE CATEGORÍAS ILIMITADAS (AGREGAR, RENOMBRAR, CAMBIAR CUPOS, BORRAR)
+        // =========================================================================
+        function renderEditorCategoriasDinamicas() {
+            const cont = document.getElementById('listaEditorCategoriasDinamicas');
+            if (!cont) return;
+            asegurarIntegridadCategorias();
+
+            cont.innerHTML = db.config.categorias.map((cat, idx) => {
+                const inscritosCat = (db.cupos[cat.key] || []).filter(c => c.ocupado).length;
+                return `
+                    <div style="background:#05070B; border:1px solid #1E293B; padding:0.85rem; border-radius:10px; display:flex; flex-direction:column; gap:0.5rem;">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <span style="font-size:0.68rem; color:var(--primary); font-family:'JetBrains Mono'; font-weight:800;">CATEGORÍA / CARRERA #${idx+1}</span>
+                            <span style="font-size:0.68rem; color:#10B981; font-family:'JetBrains Mono';">${inscritosCat} / ${cat.maxCupos} inscritos</span>
+                        </div>
+                        <div style="display:flex; gap:0.4rem;">
+                            <input type="text" value="${cat.nombre}" onchange="renombrarCategoriaDinamica('${cat.key}', this.value)" class="input-dark" style="font-weight:700;" title="Nombre de la Categoría">
+                            <select onchange="cambiarCuposCategoriaDinamica('${cat.key}', this.value)" class="input-dark" style="width:110px;" title="Cantidad de Boxes">
+                                <option value="8" ${cat.maxCupos==8?'selected':''}>8 Boxes</option>
+                                <option value="12" ${cat.maxCupos==12?'selected':''}>12 Boxes</option>
+                                <option value="16" ${cat.maxCupos==16?'selected':''}>16 Boxes</option>
+                                <option value="24" ${cat.maxCupos==24?'selected':''}>24 Boxes</option>
+                                <option value="32" ${cat.maxCupos==32?'selected':''}>32 Boxes</option>
+                            </select>
+                            <button onclick="eliminarCategoriaDinamica('${cat.key}')" style="background:#EF4444; color:#fff; border:none; padding:0.4rem 0.65rem; border-radius:8px; cursor:pointer; font-weight:800;" title="Eliminar Categoría">✕</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function agregarCategoriaDinamica() {
+            const inputNom = document.getElementById('inputNuevaCatNombre');
+            const selectCupos = document.getElementById('inputNuevaCatCupos');
+            const nombre = inputNom.value.trim();
+            const maxCupos = Number(selectCupos.value) || 16;
+
+            if (!nombre) {
+                alert("⚠️ Escribe el nombre de la nueva categoría (ej. Varones 3ª o Senior +40).");
+                return;
+            }
+
+            const key = 'cat_' + Date.now();
+            db.config.categorias.push({ key: key, nombre: nombre, maxCupos: maxCupos });
+            db.cupos[key] = crearCuposParaCategoria(db.id, key, maxCupos, 0, nombre.toUpperCase(), db.config.fechaInicio || "2026-11-21");
+            db.llaves[key] = [];
+
+            inputNom.value = '';
+            ejecutarMotorIAProgramacion(true);
+            renderEditorCategoriasDinamicas();
+            mostrarToast(`🏆 ¡Categoría "${nombre}" (${maxCupos} cupos) creada y sincronizada con IA!`);
+        }
+
+        function renombrarCategoriaDinamica(key, nuevoNombre) {
+            const cat = db.config.categorias.find(c => c.key === key);
+            if (cat && nuevoNombre.trim()) {
+                cat.nombre = nuevoNombre.trim();
+                sincronizar();
+                renderEditorCategoriasDinamicas();
+                mostrarToast(`✅ Categoría renombrada a "${cat.nombre}"`);
+            }
+        }
+
+        function cambiarCuposCategoriaDinamica(key, nuevoMax) {
+            const cat = db.config.categorias.find(c => c.key === key);
+            const cant = Number(nuevoMax) || 16;
+            if (!cat) return;
+            cat.maxCupos = cant;
+            const actuales = db.cupos[key] || [];
+            if (cant > actuales.length) {
+                for (let i = actuales.length; i < cant; i++) {
+                    actuales.push({
+                        id: i + 1,
+                        ocupado: false,
+                        alias: "",
+                        j1: "",
+                        j2: "",
+                        redes1: "",
+                        redes2: "",
+                        pin: "1234",
+                        avatar: `https://api.dicebear.com/7.x/avataaars/svg?seed=${db.id}_${key}_${i}`,
+                        cancha: `Cancha #${(i % (db.config.totalCanchas || 4)) + 1}`,
+                        estadoPartido: "Programado",
+                        horaInicioMatch: `${db.config.fechaInicio}T${db.config.horaApertura}`,
+                        resultado: "Próx.",
+                        partidosIA: []
+                    });
+                }
+            } else if (cant < actuales.length) {
+                db.cupos[key] = actuales.slice(0, cant);
+            }
+            ejecutarMotorIAProgramacion(true);
+            renderEditorCategoriasDinamicas();
+            mostrarToast(`🔢 Categoría "${cat.nombre}" ajustada a ${cant} Boxes.`);
+        }
+
+        function eliminarCategoriaDinamica(key) {
+            if (db.config.categorias.length <= 1) {
+                alert("⚠️ El torneo debe tener al menos 1 categoría activa.");
+                return;
+            }
+            db.config.categorias = db.config.categorias.filter(c => c.key !== key);
+            delete db.cupos[key];
+            delete db.llaves[key];
+            catActiva = db.config.categorias[0].key;
+            catLlavesActiva = db.config.categorias[0].key;
+            ejecutarMotorIAProgramacion(true);
+            renderEditorCategoriasDinamicas();
+            mostrarToast("🗑️ Categoría eliminada y horarios re-optimizados.");
+        }
+
+        function renderSelectoresCategorias() {
+            asegurarIntegridadCategorias();
+            const cats = db.config.categorias;
+            
+            const contPub = document.getElementById('contenedorTabsCategoriasPublico');
+            if (contPub) {
+                contPub.innerHTML = cats.map(c => 
+                    `<button onclick="setCategoria('${c.key}')" class="tab-cat-btn ${catActiva === c.key ? 'active' : ''}">${c.nombre}</button>`
+                ).join('');
+            }
+
+            const contLlaves = document.getElementById('contenedorTabsCategoriasLlaves');
+            if (contLlaves) {
+                contLlaves.innerHTML = cats.map(c => 
+                    `<button onclick="setCatLlaves('${c.key}')" class="tab-cat-btn ${catLlavesActiva === c.key ? 'active' : ''}">${c.nombre}</button>`
+                ).join('');
+            }
+
+            const selAdmin = document.getElementById('selectCatAdmin');
+            if (selAdmin) {
+                const valPrevio = cats.some(c => c.key === selAdmin.value) ? selAdmin.value : cats[0].key;
+                selAdmin.innerHTML = cats.map(c => 
+                    `<option value="${c.key}" ${valPrevio === c.key ? 'selected' : ''}>${c.nombre} (${c.maxCupos} Boxes)</option>`
+                ).join('');
+            }
+        }
+
         function cambiarTorneoActivo(nuevoId) {
             if (rolAdminActual !== 'SUPERGOD') return;
             if (saasDB.torneos[nuevoId]) {
                 saasDB.torneoActivoId = nuevoId;
                 db = saasDB.torneos[nuevoId];
+                asegurarIntegridadCategorias();
                 sincronizar();
                 renderPublico();
                 cargarValoresEnFormularioCMS();
@@ -803,38 +1196,12 @@
             }
         }
 
-        function renderSelectoresCategorias() {
-            const nombres = db.config.catNombres || { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
-            
-            const contPub = document.getElementById('contenedorTabsCategoriasPublico');
-            if (contPub) {
-                contPub.innerHTML = ['damas', 'varones', 'mixto'].map(k => 
-                    `<button onclick="setCategoria('${k}')" class="tab-cat-btn ${catActiva === k ? 'active' : ''}">${nombres[k]}</button>`
-                ).join('');
-            }
-
-            const contLlaves = document.getElementById('contenedorTabsCategoriasLlaves');
-            if (contLlaves) {
-                contLlaves.innerHTML = ['damas', 'varones', 'mixto'].map(k => 
-                    `<button onclick="setCatLlaves('${k}')" class="tab-cat-btn ${catLlavesActiva === k ? 'active' : ''}">${nombres[k]}</button>`
-                ).join('');
-            }
-
-            const selAdmin = document.getElementById('selectCatAdmin');
-            if (selAdmin) {
-                const valPrevio = selAdmin.value || 'varones';
-                selAdmin.innerHTML = ['varones', 'damas', 'mixto'].map(k => 
-                    `<option value="${k}" ${valPrevio === k ? 'selected' : ''}>${nombres[k]}</option>`
-                ).join('');
-            }
-        }
-
         function aplicarCMS() {
+            asegurarIntegridadCategorias();
             if (!db.licenciaMeta) {
                 db.licenciaMeta = { estado: "ACTIVA", contactoCliente: "Director", precioLicenciaCLP: 150000, fechaVencimiento: "2026-12-31" };
             }
 
-            // Verificar si la licencia está suspendida
             const bannerSusp = document.getElementById('bannerLicenciaSuspendida');
             if (db.licenciaMeta.estado === 'SUSPENDIDA') {
                 bannerSusp.classList.remove('modal-oculto');
@@ -844,7 +1211,6 @@
 
             document.documentElement.style.setProperty('--primary', db.config.colorPrimary || '#D4AF37');
             
-            // Selector interno exclusivo para Super Super Admin
             const selGod = document.getElementById('selectorTorneoInternoGod');
             if (selGod) {
                 selGod.innerHTML = Object.values(saasDB.torneos).map(t => 
@@ -859,10 +1225,11 @@
             document.getElementById('badgeOrgNav').innerText = db.config.badgeOrg || 'WIN WIN';
             document.getElementById('pageTitle').innerText = db.config.nombreTorneo;
             document.getElementById('heroMainTitle').innerHTML = `${db.config.nombreTorneo} <span style="color:var(--primary);">• ${db.config.badgeOrg}</span>`;
-            document.getElementById('heroSubtitleBadge').innerText = `📅 ${db.config.fechaInicio} al ${db.config.fechaFin} • ⏰ ${db.config.horaApertura} a ${db.config.horaCierre} hrs • 🎾 ${db.config.totalCanchas} Canchas`;
+            document.getElementById('heroSubtitleBadge').innerText = `📅 ${db.config.fechaInicio} al ${db.config.fechaFin} • ⏰ ${db.config.horaApertura} a ${db.config.horaCierre} hrs • 🎾 ${db.config.totalCanchas} Canchas • 🏆 ${db.config.categorias.length} Categorías`;
             document.getElementById('labelFechaReloj').innerText = `${db.config.fechaInicio} ${db.config.horaApertura} hrs`;
 
-            const cronoGenerado = `<strong>📅 FECHAS OFICIALES:</strong> Del ${db.config.fechaInicio} al ${db.config.fechaFin}<br><strong>⏰ HORARIO DE CANCHAS:</strong> Apertura ${db.config.horaApertura} hrs — Cierre ${db.config.horaCierre} hrs (Partidos de ${db.config.duracionPartido || 45} min)<br><strong>🎾 INFRAESTRUCTURA:</strong> ${db.config.totalCanchas} Canchas activas en simultáneo • 3 Partidos garantizados por pareja en fase de grupos.`;
+            const nombresCatsLista = db.config.categorias.map(c => c.nombre).join(' · ');
+            const cronoGenerado = `<strong>📅 FECHAS OFICIALES:</strong> Del ${db.config.fechaInicio} al ${db.config.fechaFin}<br><strong>⏰ HORARIO DE CANCHAS:</strong> Apertura ${db.config.horaApertura} hrs — Cierre ${db.config.horaCierre} hrs (Partidos de ${db.config.duracionPartido || 45} min)<br><strong>🏆 CATEGORÍAS HABILITADAS (${db.config.categorias.length}):</strong> ${nombresCatsLista}<br><strong>🎾 INFRAESTRUCTURA IA:</strong> ${db.config.totalCanchas} Canchas activas en simultáneo • 3 Partidos garantizados por pareja con descanso programado.`;
             db.config.cronograma = cronoGenerado;
             document.getElementById('textoCronogramaPublico').innerHTML = cronoGenerado;
             document.getElementById('textoReglamentoPublico').innerHTML = db.config.reglamento;
@@ -901,6 +1268,7 @@
 
             renderSelectoresCategorias();
             actualizarCajaPrivadaAdmin();
+            actualizarDiagnosticoIA();
         }
 
         function configurarPermisosVisualesPorRol() {
@@ -919,30 +1287,21 @@
                 tabSaas.classList.add('modal-oculto');
                 badgeRol.style.background = '#10B981';
                 badgeRol.style.color = '#030508';
-                badgeRol.innerText = '🎾 ORGANIZADOR LICENCIADO (ACCESO EXCLUSIVO A ESTE EVENTO)';
+                badgeRol.innerText = '🎾 ORGANIZADOR LICENCIADO';
             }
         }
 
         function cargarValoresEnFormularioCMS() {
-            if (!db.config.catNombres) db.config.catNombres = { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
+            asegurarIntegridadCategorias();
             document.getElementById('labelTorneoActivoAdmin').innerText = `${db.config.nombreTorneo}`;
             const shareUrl = `${window.location.origin}${window.location.pathname}?torneo=${db.id}`;
             document.getElementById('inputShareLinkTorneo').value = shareUrl;
-
-            const estadoLic = db.licenciaMeta?.estado || 'ACTIVA';
-            const elEst = document.getElementById('adminEstadoLicenciaActual');
-            if (elEst) {
-                elEst.innerText = estadoLic === 'ACTIVA' ? `🟢 ACTIVA (Vence: ${db.licenciaMeta?.fechaVencimiento || '2026-12-31'})` : `🔴 LICENCIA SUSPENDIDA`;
-                elEst.style.color = estadoLic === 'ACTIVA' ? '#10B981' : '#EF4444';
-            }
 
             document.getElementById('cfgNombreTorneo').value = db.config.nombreTorneo || '';
             document.getElementById('cfgBadge').value = db.config.badgeOrg || '';
             document.getElementById('cfgTotalCanchas').value = db.config.totalCanchas || 4;
             document.getElementById('cfgDuracionPartido').value = db.config.duracionPartido || 45;
-            document.getElementById('cfgCatNombreDamas').value = db.config.catNombres.damas || 'Damas C';
-            document.getElementById('cfgCatNombreVarones').value = db.config.catNombres.varones || 'Varones 5ª';
-            document.getElementById('cfgCatNombreMixto').value = db.config.catNombres.mixto || 'Mixto C';
+            document.getElementById('cfgTurnosDescansoIA').value = db.config.turnosDescansoIA || 2;
             document.getElementById('cfgFechaInicio').value = db.config.fechaInicio || '2026-11-21';
             document.getElementById('cfgFechaFin').value = db.config.fechaFin || '2026-11-22';
             document.getElementById('cfgHoraApertura').value = db.config.horaApertura || '09:00';
@@ -954,6 +1313,8 @@
             document.getElementById('cfgGoogleMapsQuery').value = db.config.googleMapsQuery || '';
             document.getElementById('cfgComunicado').value = db.config.comunicado || '';
             document.getElementById('cfgReglamento').value = db.config.reglamento || '';
+
+            renderEditorCategoriasDinamicas();
         }
 
         function cambiarVista(vista) {
@@ -996,6 +1357,7 @@
                     renderEditorRankings();
                     if (rolAdminActual === 'SUPERGOD') renderSaasTorneos();
                     actualizarCajaPrivadaAdmin();
+                    actualizarDiagnosticoIA();
                 } else {
                     document.getElementById('adminPanelBox').classList.add('modal-oculto');
                     document.getElementById('adminLoginBox').style.display = 'block';
@@ -1007,7 +1369,6 @@
             e.preventDefault();
             const clave = document.getElementById('inputClaveAdmin').value.trim();
 
-            // 1. Verificar si es el SUPER SUPER ADMIN GLOBAL (Dueño de todas las licencias)
             if (clave === CLAVE_SUPER_SUPER_ADMIN) {
                 rolAdminActual = 'SUPERGOD';
                 document.getElementById('inputClaveAdmin').value = '';
@@ -1016,10 +1377,9 @@
                 return;
             }
 
-            // 2. Verificar si la clave pertenece al Organizador del torneo actual
             if (clave === db.claveLicencia) {
                 if (db.licenciaMeta && db.licenciaMeta.estado === 'SUSPENDIDA') {
-                    alert("⛔ Tu licencia de organizador se encuentra SUSPENDIDA. Contacta al proveedor de Tutorneo Pro para regularizar tu suscripción.");
+                    alert("⛔ Tu licencia de organizador se encuentra SUSPENDIDA. Contacta al proveedor de Tutorneo Pro.");
                     return;
                 }
                 rolAdminActual = 'ORGANIZADOR';
@@ -1030,11 +1390,10 @@
                 return;
             }
 
-            // 3. Si un organizador ingresa su clave desde la URL genérica, lo redirigimos automáticamente a SU torneo
             const torneoEncontrado = Object.values(saasDB.torneos).find(t => t.claveLicencia === clave);
             if (torneoEncontrado) {
                 if (torneoEncontrado.licenciaMeta && torneoEncontrado.licenciaMeta.estado === 'SUSPENDIDA') {
-                    alert("⛔ La licencia de tu evento se encuentra SUSPENDIDA. Contacta a soporte comercial.");
+                    alert("⛔ La licencia de tu evento se encuentra SUSPENDIDA.");
                     return;
                 }
                 saasDB.torneoActivoId = torneoEncontrado.id;
@@ -1069,81 +1428,6 @@
             renderBracketTree();
         }
 
-        function sincronizarHorariosBoxesConAlmanaque() {
-            const fInicio = document.getElementById('cfgFechaInicio').value || db.config.fechaInicio || "2026-11-21";
-            const hApertura = document.getElementById('cfgHoraApertura').value || db.config.horaApertura || "09:00";
-            const duracion = Number(document.getElementById('cfgDuracionPartido').value) || db.config.duracionPartido || 45;
-            const totalC = Number(document.getElementById('cfgTotalCanchas').value) || db.config.totalCanchas || 4;
-
-            const [hBase, mBase] = hApertura.split(':').map(Number);
-            const baseDate = new Date(`${fInicio}T${String(hBase).padStart(2,'0')}:${String(mBase).padStart(2,'0')}:00`);
-
-            ['varones', 'damas', 'mixto'].forEach((cat, catIdx) => {
-                db.cupos[cat].forEach((cupo, idx) => {
-                    const turno = Math.floor(idx / totalC) + (catIdx * 2);
-                    const matchDate = new Date(baseDate.getTime() + turno * duracion * 60000);
-                    const yyyy = matchDate.getFullYear();
-                    const mm = String(matchDate.getMonth() + 1).padStart(2, '0');
-                    const dd = String(matchDate.getDate()).padStart(2, '0');
-                    const hh = String(matchDate.getHours()).padStart(2, '0');
-                    const min = String(matchDate.getMinutes()).padStart(2, '0');
-                    cupo.horaInicioMatch = `${yyyy}-${mm}-${dd}T${hh}:${min}`;
-                    cupo.cancha = `Cancha #${(idx % totalC) + 1}`;
-                });
-            });
-
-            guardarTodoAdmin(true);
-            renderAdminBoxes();
-            mostrarToast("⏱️ ¡Todos los Boxes y Canchas fueron sincronizados con el Almanaque!");
-        }
-
-        function ejecutarMotorIAProgramacion() {
-            const fInicio = db.config.fechaInicio || "2026-11-21";
-            const hApertura = db.config.horaApertura || "09:00";
-            const duracion = Number(db.config.duracionPartido) || 45;
-            const totalC = Number(db.config.totalCanchas) || 4;
-            const [hBase, mBase] = hApertura.split(':').map(Number);
-            const baseDate = new Date(`${fInicio}T${String(hBase).padStart(2,'0')}:${String(mBase).padStart(2,'0')}:00`);
-
-            ['varones', 'damas', 'mixto'].forEach((cat, catOffset) => {
-                let duplas = db.cupos[cat].filter(c => c.ocupado && c.alias);
-                if (duplas.length < 2) return;
-
-                let fixtures = [];
-                duplas.forEach((c, i) => {
-                    const r1 = duplas[(i + 1) % duplas.length].alias;
-                    const r2 = duplas[(i + 2) % duplas.length]?.alias || "Por Definir";
-                    const r3 = duplas[(i + 3) % duplas.length]?.alias || "Por Definir";
-
-                    const t1 = new Date(baseDate.getTime() + ((i % totalC) + catOffset) * duracion * 60000);
-                    const t2 = new Date(t1.getTime() + (duracion * 2) * 60000);
-                    const t3 = new Date(t2.getTime() + (duracion * 2) * 60000);
-
-                    const fmt = (d) => `${d.toISOString().slice(0,10)} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')} hrs`;
-                    const fmtInput = (d) => `${d.toISOString().slice(0,10)}T${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
-
-                    c.horaInicioMatch = fmtInput(t1);
-                    c.cancha = `Cancha #${(i % totalC) + 1}`;
-
-                    fixtures.push({
-                        dupla: c.alias,
-                        boxId: c.id,
-                        juegos: [
-                            { rival: r1, hora: fmt(t1), cancha: `Cancha #${(i % totalC) + 1}`, res: "Programado" },
-                            { rival: r2, hora: fmt(t2), cancha: `Cancha #${((i + 1) % totalC) + 1}`, res: "Con Descanso Previo" },
-                            { rival: r3, hora: fmt(t3), cancha: `Cancha #${((i + 2) % totalC) + 1}`, res: "Clasificatorio" }
-                        ]
-                    });
-                });
-                db.llaves[cat] = fixtures;
-            });
-
-            sincronizar();
-            renderBracketTree();
-            renderAdminBoxes();
-            mostrarToast("🤖 ¡IA ejecutada! 3 partidos por dupla, descansos y relojes actualizados.");
-        }
-
         function renderBracketTree() {
             const container = document.getElementById('bracketTreeContainer');
             if(!container) return;
@@ -1151,15 +1435,15 @@
 
             let dataFixtures = db.llaves[catLlavesActiva] || [];
             if(dataFixtures.length === 0) {
-                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1; background:#0D1322; border-radius:16px; border:1px solid #1E293B;">Aún no se han generado los cruces automáticos para esta categoría. El organizador puede activarlos desde <strong>Admin Master</strong> presionando <strong>🤖 IA: Armar Fixture 3 Partidos & Horarios</strong>.</div>`;
+                container.innerHTML = `<div style="text-align:center; color:#94A3B8; padding:3rem; font-family:'JetBrains Mono'; grid-column: 1 / -1; background:#0D1322; border-radius:16px; border:1px solid #1E293B;">No hay suficientes duplas inscritas en <strong>${obtenerNombreCategoria(catLlavesActiva)}</strong> o aún no se ha ejecutado el motor IA.</div>`;
                 return;
             }
 
             container.innerHTML = dataFixtures.map(f => `
                 <div class="admin-panel" style="background:#0D1322; border:1px solid #1E293B;">
                     <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--primary); font-family:'JetBrains Mono'; margin-bottom:0.4rem;">
-                        <span>BOX #${f.boxId || ''} • FASE DE GRUPOS</span>
-                        <span>3 PARTIDOS GARANTIZADOS</span>
+                        <span>BOX #${f.boxId || ''} • ${obtenerNombreCategoria(catLlavesActiva).toUpperCase()}</span>
+                        <span>3 PARTIDOS IA</span>
                     </div>
                     <h4 style="font-size:1.15rem; font-weight:800; color:#fff; margin-bottom:1rem;">⭐ ${f.dupla}</h4>
                     <div style="display:flex; flex-direction:column; gap:0.55rem; font-size:0.78rem; font-family:'JetBrains Mono';">
@@ -1178,7 +1462,7 @@
         }
 
         function formatearFechaHoraLegible(isoStr) {
-            if (!isoStr) return `${db.config.fechaInicio} ${db.config.horaApertura}`;
+            if (!isoStr) return `${db.config.fechaInicio} ${db.config.horaApertura} hrs`;
             return isoStr.replace('T', ' ') + ' hrs';
         }
 
@@ -1186,9 +1470,18 @@
             const grid = document.getElementById('gridCuposPublico');
             if(!grid) return;
             grid.innerHTML = '';
-            db.cupos[catActiva].forEach(cupo => {
+            const lista = db.cupos[catActiva] || [];
+
+            lista.forEach(cupo => {
                 const card = document.createElement('div');
                 if(cupo.ocupado) {
+                    const resumen3Partidos = (cupo.partidosIA && cupo.partidosIA.length > 0)
+                        ? `<div style="margin-top:0.5rem; background:rgba(0,0,0,0.3); padding:0.45rem 0.6rem; border-radius:8px; font-size:0.66rem; font-family:'JetBrains Mono'; color:#E2E8F0;">
+                            <div style="color:var(--primary); font-weight:700; margin-bottom:0.2rem;">🤖 Agenda IA (3 Partidos):</div>
+                            ${cupo.partidosIA.map((p, idx) => `<div>P${idx+1}: ${p.hora.slice(5)} (${p.cancha}) vs ${p.rival.substring(0,12)}</div>`).join('')}
+                           </div>`
+                        : '';
+
                     card.className = "box-card box-roja";
                     card.innerHTML = `
                         <div class="status-badge badge-red">INSCRITO 🔴</div>
@@ -1201,13 +1494,14 @@
                                 <div style="font-size: 0.65rem; color: #cbd5e1;">📸 ${cupo.redes1 || ''} ${cupo.redes2 || ''}</div>
                             </div>
                         </div>
-                        <div style="margin-top: 0.75rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; display:flex; flex-direction:column; gap:0.3rem;">
+                        ${resumen3Partidos}
+                        <div style="margin-top: 0.65rem; padding-top: 0.5rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; display:flex; flex-direction:column; gap:0.3rem;">
                             <div style="display:flex; justify-content:space-between;">
-                                <span style="color:#fca5a5;">🕒 Horario:</span>
+                                <span style="color:#fca5a5;">🕒 Debut IA:</span>
                                 <strong>${formatearFechaHoraLegible(cupo.horaInicioMatch)}</strong>
                             </div>
                             <div style="display:flex; justify-content:space-between; align-items:center;">
-                                <span style="color:#fca5a5;">⏱️ Empieza en:</span>
+                                <span style="color:#fca5a5;">⏱️ Cuenta Regresiva:</span>
                                 <strong class="box-countdown" data-time="${cupo.horaInicioMatch || `${db.config.fechaInicio}T${db.config.horaApertura}`}" style="background: rgba(0,0,0,0.45); padding: 0.15rem 0.5rem; border-radius: 4px; color: #FACC15;">Calculando...</strong>
                             </div>
                         </div>
@@ -1220,7 +1514,8 @@
                         <div style="font-size: 0.72rem; color: #6ee7b7; font-family: 'JetBrains Mono', monospace; margin-bottom: 0.5rem;">BOX #${cupo.id} • 🎾 ${cupo.cancha}</div>
                         <div style="background: rgba(0,0,0,0.25); padding: 1rem; border-radius: 10px; text-align: center;">
                             <div style="font-size: 1.05rem; font-weight: 800; color: #34d399;">¡Cupo Disponible!</div>
-                            <p style="font-size: 0.72rem; color: #a7f3d0; margin-top: 0.25rem;">Inscribe a tu pareja y asegura tus 3 partidos.</p>
+                            <p style="font-size: 0.72rem; color: #a7f3d0; margin-top: 0.25rem;">Inscríbete y la IA te asignará tus 3 partidos.</p>
+                            <div style="font-size: 0.68rem; color: #FACC15; font-family: 'JetBrains Mono'; margin-top: 0.35rem;">🕒 Turno estimado: ${formatearFechaHoraLegible(cupo.horaInicioMatch)}</div>
                         </div>
                         <div style="margin-top: 0.75rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem;">
                             <span style="color:#a7f3d0; font-family:'JetBrains Mono';">$${Number(db.config.precioInscripcion).toLocaleString('es-CL')} CLP</span>
@@ -1253,7 +1548,7 @@
 
             const elements = document.querySelectorAll('.box-countdown');
             elements.forEach(el => {
-                const rawTime = el.getAttribute('data-time');
+                const rawTime = el.getAttribute('data-time') || '';
                 const targetTime = new Date(rawTime.length === 16 ? rawTime + ':00' : rawTime).getTime();
                 const diff = targetTime - ahora;
                 if(!isNaN(diff) && diff > 0) {
@@ -1275,7 +1570,7 @@
                 return;
             }
             boxSeleccionado = id;
-            const nombreCat = (db.config.catNombres && db.config.catNombres[catActiva]) || catActiva.toUpperCase();
+            const nombreCat = obtenerNombreCategoria(catActiva);
             document.getElementById('modalBoxLabel').innerText = `Box #${id} • ${nombreCat}`;
             document.getElementById('modalPrecioLabel').innerText = `Valor de inscripción: $${Number(db.config.precioInscripcion).toLocaleString('es-CL')} CLP`;
             document.getElementById('modalInscripcion').classList.remove('modal-oculto');
@@ -1297,7 +1592,7 @@
             const pin = document.getElementById('inputPin').value.trim();
             const fileInput = document.getElementById('inputFileFotoJugador');
 
-            const cupo = db.cupos[catActiva].find(x => x.id === boxSeleccionado);
+            const cupo = (db.cupos[catActiva] || []).find(x => x.id === boxSeleccionado);
             if(cupo) {
                 cupo.ocupado = true;
                 cupo.alias = alias;
@@ -1307,9 +1602,6 @@
                 cupo.redes2 = redes2;
                 cupo.pin = pin;
                 cupo.estadoPartido = "Programado";
-                if (!cupo.horaInicioMatch) {
-                    cupo.horaInicioMatch = `${db.config.fechaInicio}T${db.config.horaApertura}`;
-                }
                 cupo.resultado = "Próx.";
 
                 if(fileInput.files && fileInput.files[0]) {
@@ -1323,19 +1615,25 @@
             }
 
             const boxGuardado = boxSeleccionado;
+            // La IA se ejecuta automáticamente al inscribirse para asignarle sus 3 partidos y horarios sin choques
+            ejecutarMotorIAProgramacion(true);
+
             const horarioAsignado = cupo ? formatearFechaHoraLegible(cupo.horaInicioMatch) : '';
             const canchaAsignada = cupo ? cupo.cancha : 'Cancha #1';
+            const listaMisPartidos = (cupo && cupo.partidosIA && cupo.partidosIA.length > 0)
+                ? cupo.partidosIA.map((p, idx) => `<div>• <strong>Partido #${idx+1}:</strong> ${p.hora} en <strong>${p.cancha}</strong> vs ${p.rival}</div>`).join('')
+                : '';
 
-            sincronizar();
             cerrarModal();
 
             document.getElementById('exitoTorneoNombre').innerText = db.config.nombreTorneo;
+            document.getElementById('exitoCategoriaNombre').innerText = obtenerNombreCategoria(catActiva);
             document.getElementById('exitoAlias').innerText = alias;
             document.getElementById('exitoJugadores').innerText = `${j1} (${redes1 || 'Sin IG'}) & ${j2} (${redes2 || 'Sin IG'})`;
             document.getElementById('exitoBox').innerText = `Box #${boxGuardado} • ${canchaAsignada}`;
             document.getElementById('exitoHorarioPartido').innerText = horarioAsignado;
             document.getElementById('exitoMontoPago').innerText = `$${Number(db.config.precioInscripcion).toLocaleString('es-CL')} CLP`;
-            document.getElementById('exitoCronogramaContenedor').innerHTML = db.config.cronograma;
+            document.getElementById('exitoCronogramaContenedor').innerHTML = `${listaMisPartidos}<hr style="border-color:#1E293B; margin:0.75rem 0;">${db.config.cronograma}`;
             document.getElementById('btnIrMercadoPagoDirecto').href = db.config.linkPago || 'https://www.mercadopago.cl';
 
             cambiarVista('exito');
@@ -1352,34 +1650,38 @@
                 for(let cNum = 1; cNum <= totalC; cNum++) {
                     const canchaNombre = `Cancha #${cNum}`;
                     let partidoActual = null;
-                    Object.keys(db.cupos).forEach(cat => {
-                        db.cupos[cat].forEach(cp => {
-                            if(cp.cancha === canchaNombre && cp.ocupado) partidoActual = cp;
+                    let catPartido = "";
+                    db.config.categorias.forEach(cat => {
+                        (db.cupos[cat.key] || []).forEach(cp => {
+                            if(cp.cancha === canchaNombre && cp.ocupado) {
+                                partidoActual = cp;
+                                catPartido = cat.nombre;
+                            }
                         });
                     });
 
                     const cardC = document.createElement('div');
                     if(partidoActual && partidoActual.estadoPartido.includes("Jugando")) {
                         cardC.className = "box-card box-roja";
-                        cardC.innerHTML = `<div class="status-badge badge-red">JUGANDO 🔴</div><div style="font-size:0.75rem; color:#fca5a5;">Cancha #${cNum}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.78rem; color:#fca5a5;">${partidoActual.j1} / ${partidoActual.j2}</div><div style="font-size:0.85rem; margin-top:0.5rem;">Marcador: <strong style="color:#FACC15;">${partidoActual.resultado}</strong></div>`;
+                        cardC.innerHTML = `<div class="status-badge badge-red">JUGANDO 🔴</div><div style="font-size:0.75rem; color:#fca5a5;">Cancha #${cNum} • ${catPartido}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.78rem; color:#fca5a5;">${partidoActual.j1} / ${partidoActual.j2}</div><div style="font-size:0.85rem; margin-top:0.5rem;">Marcador: <strong style="color:#FACC15;">${partidoActual.resultado}</strong></div>`;
                     } else if(partidoActual) {
                         cardC.className = "box-card";
                         cardC.style.background = "#1E293B";
-                        cardC.innerHTML = `<div class="status-badge" style="background:#3B82F6; color:#fff;">PROGRAMADO</div><div style="font-size:0.75rem; color:#94A3B8;">Cancha #${cNum}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.78rem; color:#cbd5e1;">🕒 ${formatearFechaHoraLegible(partidoActual.horaInicioMatch)}</div>`;
+                        cardC.innerHTML = `<div class="status-badge" style="background:#3B82F6; color:#fff;">PROGRAMADO</div><div style="font-size:0.75rem; color:#94A3B8;">Cancha #${cNum} • ${catPartido}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0;">${partidoActual.alias}</h4><div style="font-size:0.78rem; color:#cbd5e1;">🕒 ${formatearFechaHoraLegible(partidoActual.horaInicioMatch)}</div>`;
                     } else {
                         cardC.className = "box-card box-verde";
-                        cardC.innerHTML = `<div class="status-badge badge-green">LIBRE 🟢</div><div style="font-size:0.75rem; color:#6ee7b7;">Cancha #${cNum}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0; color:#34d399;">Cancha Disponible</h4><div style="font-size:0.8rem; color:#a7f3d0;">Lista para siguiente turno</div>`;
+                        cardC.innerHTML = `<div class="status-badge badge-green">LIBRE 🟢</div><div style="font-size:0.75rem; color:#6ee7b7;">Cancha #${cNum}</div><h4 style="font-size:1.15rem; font-weight:800; margin:0.5rem 0; color:#34d399;">Cancha Disponible</h4><div style="font-size:0.8rem; color:#a7f3d0;">Sincronizada por IA</div>`;
                     }
                     gridCanchas.appendChild(cardC);
                 }
             }
 
             let inscritas = [];
-            Object.keys(db.cupos).forEach(cat => {
-                db.cupos[cat].forEach(cp => {
+            db.config.categorias.forEach(cat => {
+                (db.cupos[cat.key] || []).forEach(cp => {
                     if(cp.ocupado && cp.alias) {
                         const ptsGuardados = (db.puntosExtraRanking && db.puntosExtraRanking[cp.alias]) || 1800;
-                        inscritas.push({ alias: cp.alias, pts: ptsGuardados });
+                        inscritas.push({ alias: `${cp.alias} (${cat.nombre})`, pts: ptsGuardados });
                     }
                 });
             });
@@ -1436,22 +1738,31 @@
         }
 
         function actualizarCajaPrivadaAdmin() {
-            let total = 0;
-            Object.values(db.cupos).forEach(cat => cat.forEach(c => { if(c.ocupado) total++; }));
+            let totalOcupados = 0;
+            let capacidadTotalCupos = 0;
+            db.config.categorias.forEach(cat => {
+                const arr = db.cupos[cat.key] || [];
+                capacidadTotalCupos += arr.length;
+                arr.forEach(c => { if(c.ocupado) totalOcupados++; });
+            });
             const elCaja = document.getElementById('adminCajaTotal');
             const elStats = document.getElementById('adminCuposStats');
-            if(elCaja) elCaja.innerText = "$" + (total * (Number(db.config.precioInscripcion) || 0)).toLocaleString('es-CL') + " CLP";
-            if(elStats) elStats.innerText = `${total} / 48`;
+            const elCats = document.getElementById('adminTotalCategoriasKpi');
+            if(elCaja) elCaja.innerText = "$" + (totalOcupados * (Number(db.config.precioInscripcion) || 0)).toLocaleString('es-CL') + " CLP";
+            if(elStats) elStats.innerText = `${totalOcupados} / ${capacidadTotalCupos}`;
+            if(elCats) elCats.innerText = `${db.config.categorias.length} Categorías`;
         }
 
         function renderAdminBoxes() {
-            const cat = document.getElementById('selectCatAdmin').value || 'varones';
+            asegurarIntegridadCategorias();
+            const sel = document.getElementById('selectCatAdmin');
+            const cat = (sel && sel.value) ? sel.value : db.config.categorias[0].key;
             const tbody = document.getElementById('tablaAdminBoxesBody');
             if(!tbody) return;
             tbody.innerHTML = '';
             const totalC = Number(db.config.totalCanchas) || 4;
 
-            db.cupos[cat].forEach(c => {
+            (db.cupos[cat] || []).forEach(c => {
                 let opcionesCanchas = '';
                 for(let i=1; i<=totalC; i++) {
                     const cNom = `Cancha #${i}`;
@@ -1495,10 +1806,11 @@
                 `;
             });
             actualizarCajaPrivadaAdmin();
+            actualizarDiagnosticoIA();
         }
 
         function cambiarCampoBox(cat, id, campo, valor) {
-            const c = db.cupos[cat].find(x => x.id === id);
+            const c = (db.cupos[cat] || []).find(x => x.id === id);
             if (c) {
                 c[campo] = valor;
                 if (campo === 'alias' && valor.trim() !== '') c.ocupado = true;
@@ -1522,28 +1834,24 @@
             const tbody = document.getElementById('tablaAdminParejasBody');
             if(!tbody) return;
             tbody.innerHTML = '';
-            const nombresCat = db.config.catNombres || { damas: "Damas C", varones: "Varones 5ª", mixto: "Mixto C" };
 
-            Object.keys(db.cupos).forEach(cat => {
-                db.cupos[cat].forEach(c => {
+            db.config.categorias.forEach(cat => {
+                (db.cupos[cat.key] || []).forEach(c => {
                     if(c.ocupado) {
                         tbody.innerHTML += `
                             <tr>
-                                <td style="font-weight:800; color:var(--primary);">${nombresCat[cat] || cat}</td>
+                                <td style="font-weight:800; color:var(--primary);">${cat.nombre}</td>
                                 <td><strong>Box #${c.id}</strong></td>
-                                <td><input type="text" value="${c.alias || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'alias', this.value)" class="input-dark"></td>
-                                <td><input type="text" value="${c.j1 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'j1', this.value)" class="input-dark"></td>
-                                <td><input type="text" value="${c.j2 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'j2', this.value)" class="input-dark"></td>
+                                <td><input type="text" value="${c.alias || ''}" onchange="cambiarCampoBox('${cat.key}', ${c.id}, 'alias', this.value)" class="input-dark"></td>
+                                <td><input type="text" value="${c.j1 || ''}" onchange="cambiarCampoBox('${cat.key}', ${c.id}, 'j1', this.value)" class="input-dark"></td>
+                                <td><input type="text" value="${c.j2 || ''}" onchange="cambiarCampoBox('${cat.key}', ${c.id}, 'j2', this.value)" class="input-dark"></td>
                                 <td>
-                                    <div style="display:flex; gap:0.25rem;">
-                                        <input type="text" value="${c.redes1 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'redes1', this.value)" class="input-dark" placeholder="@ig1">
-                                        <input type="text" value="${c.redes2 || ''}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'redes2', this.value)" class="input-dark" placeholder="@ig2">
-                                    </div>
+                                    <input type="datetime-local" value="${(c.horaInicioMatch || `${db.config.fechaInicio}T${db.config.horaApertura}`).slice(0,16)}" onchange="cambiarCampoBox('${cat.key}', ${c.id}, 'horaInicioMatch', this.value)" class="input-dark" style="min-width:160px;">
                                 </td>
-                                <td><input type="text" value="${c.pin || '1234'}" onchange="cambiarCampoBox('${cat}', ${c.id}, 'pin', this.value)" class="input-dark" style="width:70px; color:#FACC15;"></td>
+                                <td><input type="text" value="${c.pin || '1234'}" onchange="cambiarCampoBox('${cat.key}', ${c.id}, 'pin', this.value)" class="input-dark" style="width:70px; color:#FACC15;"></td>
                                 <td style="text-align:right; white-space:nowrap;">
                                     <button onclick="confirmarFilaBox()" class="btn-small-ok" style="margin-right:0.3rem;">✔ Guardar</button>
-                                    <button onclick="liberarBox('${cat}', ${c.id})" style="background:#EF4444; color:#fff; border:none; padding:0.4rem 0.6rem; border-radius:6px; cursor:pointer; font-size:0.72rem; font-weight:700;">Liberar</button>
+                                    <button onclick="liberarBox('${cat.key}', ${c.id})" style="background:#EF4444; color:#fff; border:none; padding:0.4rem 0.6rem; border-radius:6px; cursor:pointer; font-size:0.72rem; font-weight:700;">Liberar</button>
                                 </td>
                             </tr>
                         `;
@@ -1553,17 +1861,23 @@
         }
 
         function liberarBox(cat, id) {
-            const c = db.cupos[cat].find(x => x.id === id);
-            c.ocupado = false; c.alias = ""; c.j1 = ""; c.j2 = "";
-            sincronizar(); renderAdminParejas(); renderAdminBoxes();
-            mostrarToast("🗑️ Cupo liberado y disponible en verde.");
+            const c = (db.cupos[cat] || []).find(x => x.id === id);
+            if (!c) return;
+            c.ocupado = false; c.alias = ""; c.j1 = ""; c.j2 = ""; c.partidosIA = [];
+            ejecutarMotorIAProgramacion(true);
+            renderAdminParejas();
+            renderAdminBoxes();
+            mostrarToast("🗑️ Cupo liberado y horarios re-optimizados por IA.");
         }
 
         function cambiarEstado(cat, id, val) {
-            const c = db.cupos[cat].find(x => x.id === id);
+            const c = (db.cupos[cat] || []).find(x => x.id === id);
+            if (!c) return;
             c.ocupado = (val === 'ocupado');
             if(c.ocupado && !c.alias) c.alias = `DUPLA BOX #${id}`;
-            sincronizar(); renderAdminBoxes(); renderPublico();
+            ejecutarMotorIAProgramacion(true);
+            renderAdminBoxes();
+            renderPublico();
         }
 
         function renderEditorSponsors() {
@@ -1590,27 +1904,26 @@
             cont.innerHTML = '';
 
             let duplas = [];
-            Object.keys(db.cupos).forEach(cat => {
-                db.cupos[cat].forEach(c => {
-                    if(c.ocupado && c.alias) duplas.push(c.alias);
+            db.config.categorias.forEach(cat => {
+                (db.cupos[cat.key] || []).forEach(c => {
+                    if(c.ocupado && c.alias) duplas.push({ alias: c.alias, catNombre: cat.nombre });
                 });
             });
 
-            duplas.forEach((alias, idx) => {
-                const pts = db.puntosExtraRanking[alias] || (2200 - idx * 100);
-                db.puntosExtraRanking[alias] = pts;
+            duplas.forEach((item, idx) => {
+                const pts = db.puntosExtraRanking[item.alias] || (2200 - idx * 100);
+                db.puntosExtraRanking[item.alias] = pts;
                 cont.innerHTML += `
                     <div style="display:flex; gap:1rem; align-items:center; background:#05070B; padding:0.65rem 1rem; border-radius:10px; border:1px solid #1E293B;">
                         <strong style="color:var(--primary); width:40px;">#${idx+1}</strong>
-                        <span style="flex:1; font-weight:700;">${alias}</span>
-                        <input type="number" value="${pts}" onchange="db.puntosExtraRanking['${alias}']=Number(this.value); sincronizar();" class="input-dark" style="width:130px; color:#10B981; font-weight:800;">
+                        <span style="flex:1; font-weight:700;">${item.alias} <small style="color:#94A3B8;">(${item.catNombre})</small></span>
+                        <input type="number" value="${pts}" onchange="db.puntosExtraRanking['${item.alias}']=Number(this.value); sincronizar();" class="input-dark" style="width:130px; color:#10B981; font-weight:800;">
                         <button onclick="sincronizar(); mostrarToast('✅ Puntos confirmados');" class="btn-small-ok">✔ Fijar Puntos</button>
                     </div>
                 `;
             });
         }
 
-        // CONSOLA EXCLUSIVA SUPER SUPER ADMIN: GESTIÓN DE LICENCIAS SAAS
         function renderSaasTorneos() {
             if (rolAdminActual !== 'SUPERGOD') return;
             const tbody = document.getElementById('tablaSaasTorneosBody');
@@ -1636,7 +1949,7 @@
                         </td>
                         <td>
                             <div style="font-weight:800; color:#fff;">${t.config.nombreTorneo}</div>
-                            <div style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--primary);">ID: ${t.id}</div>
+                            <div style="font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--primary);">ID: ${t.id} (${(t.config.categorias || []).length} Cat)</div>
                         </td>
                         <td>
                             <div style="font-weight:700;">${t.config.badgeOrg}</div>
@@ -1708,10 +2021,10 @@
             saasDB.torneos[rawId] = crearEstructuraTorneoBase(rawId, nombre, club || "CLUB OFICIAL", clave, contacto, precioLic, venc);
             saasDB.torneoActivoId = rawId;
             db = saasDB.torneos[rawId];
-            sincronizar();
+            ejecutarMotorIAProgramacion(true);
             cargarValoresEnFormularioCMS();
             renderSaasTorneos();
-            mostrarToast(`👑 ¡Licencia comercial "${nombre}" creada y lista para entregar al cliente!`);
+            mostrarToast(`👑 ¡Licencia comercial "${nombre}" creada y sincronizada por IA!`);
         }
 
         function copiarLinkTorneo() {
@@ -1760,11 +2073,7 @@
             db.config.precioInscripcion = Number(document.getElementById('cfgPrecioInscripcion').value) || 70000;
             db.config.totalCanchas = Number(document.getElementById('cfgTotalCanchas').value) || 4;
             db.config.duracionPartido = Number(document.getElementById('cfgDuracionPartido').value) || 45;
-
-            if (!db.config.catNombres) db.config.catNombres = {};
-            db.config.catNombres.damas = document.getElementById('cfgCatNombreDamas').value.trim() || 'Damas C';
-            db.config.catNombres.varones = document.getElementById('cfgCatNombreVarones').value.trim() || 'Varones 5ª';
-            db.config.catNombres.mixto = document.getElementById('cfgCatNombreMixto').value.trim() || 'Mixto C';
+            db.config.turnosDescansoIA = Number(document.getElementById('cfgTurnosDescansoIA').value) || 2;
 
             db.config.fechaInicio = document.getElementById('cfgFechaInicio').value || '2026-11-21';
             db.config.fechaFin = document.getElementById('cfgFechaFin').value || '2026-11-22';
@@ -1774,13 +2083,16 @@
             db.config.comunicado = document.getElementById('cfgComunicado').value.trim();
             db.config.reglamento = document.getElementById('cfgReglamento').value;
 
-            sincronizar();
+            // Al guardar el Almanaque, la IA reprograma automáticamente todas las categorías, horarios y canchas
+            ejecutarMotorIAProgramacion(true);
             renderPublico();
             if (!silencioso) {
-                mostrarToast("✅ ¡Todos los cambios, horarios y nombres fueron confirmados!");
+                mostrarToast("✅ ¡Almanaque, categorías y horarios reprogramados por IA con éxito!");
             }
         }
 
+        // Inicialización automática con IA al arrancar
+        ejecutarMotorIAProgramacion(true);
         aplicarCMS();
         renderPublico();
     </script>
