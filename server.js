@@ -3,12 +3,19 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-app.set('trust proxy', 1); // Crítico en Render para detectar HTTPS correctamente
+app.set('trust proxy', 1);
 
 const PORT = process.env.PORT || 10000;
 const DB_FILE = path.join(__dirname, 'circuito360_db.json');
 
+// Tu Access Token de Producción oficial pre-cargado como respaldo automático
+const DEFAULT_MP_TOKEN = process.env.MP_ACCESS_TOKEN || 'APP_USR-6343439635613247-111721-d62e99775b7b52b629d88e2540c6e3dd-2521587898';
+
 app.use(express.json({ limit: '15mb' }));
+app.use((req, res, next) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    next();
+});
 app.use(express.static(__dirname));
 
 function leerEstadoDB() {
@@ -30,14 +37,14 @@ function guardarEstadoDB(data) {
     }
 }
 
-// 1. Obtener estado centralizado para todos los dispositivos
+// 1. Entregar siempre el estado central en vivo a todos los celulares y PCs
 app.get('/api/state', (req, res) => {
     const data = leerEstadoDB();
     if (!data) return res.status(404).json({ ok: false });
     res.json(data);
 });
 
-// 2. Guardar cambios sincronizados en tiempo real
+// 2. Guardar cualquier cambio de fechas, canchas o inscripciones en tiempo real
 app.post('/api/state', (req, res) => {
     if (req.body && req.body.torneos) {
         req.body.lastUpdated = Date.now();
@@ -47,7 +54,7 @@ app.post('/api/state', (req, res) => {
     res.status(400).json({ ok: false });
 });
 
-// 3. Crear Preferencia Oficial en Mercado Pago Checkout Pro
+// 3. Crear cobro real en Mercado Pago Checkout Pro
 app.post('/api/mp/create-preference', async (req, res) => {
     const {
         torneoId,
@@ -62,21 +69,23 @@ app.post('/api/mp/create-preference', async (req, res) => {
         fallbackLink
     } = req.body;
 
-    // Buscar token en la petición, en la DB del torneo o en las variables de Render
     const db = leerEstadoDB();
-    const tokenGuardadoEnTorneo = db?.torneos?.[torneoId]?.config?.mpAccessToken;
-    const token = (mpAccessToken && mpAccessToken.trim()) ||
-                  (tokenGuardadoEnTorneo && tokenGuardadoEnTorneo.trim()) ||
-                  process.env.MP_ACCESS_TOKEN;
+    const tokenEnTorneo = db?.torneos?.[torneoId]?.config?.mpAccessToken;
+    const linkEnTorneo = db?.torneos?.[torneoId]?.config?.linkPago;
 
-    // Si no hay Access Token configurado, usar el Link de Pago directo (mpago.la)
-    if (!token) {
-        console.log('Sin Access Token MP. Usando link directo:', fallbackLink);
-        return res.json({ init_point: fallbackLink || 'https://www.mercadopago.cl', mode: 'link' });
+    // Si pegaste APP_USR en la casilla de Enlace Mercado Pago, el servidor lo detecta como Token automáticamente
+    let token = DEFAULT_MP_TOKEN;
+    if (mpAccessToken && mpAccessToken.trim().startsWith('APP_USR-')) {
+        token = mpAccessToken.trim();
+    } else if (tokenEnTorneo && tokenEnTorneo.trim().startsWith('APP_USR-')) {
+        token = tokenEnTorneo.trim();
+    } else if (fallbackLink && fallbackLink.includes('APP_USR-')) {
+        token = fallbackLink.replace(/^https?:\/\//i, '').trim();
+    } else if (linkEnTorneo && linkEnTorneo.includes('APP_USR-')) {
+        token = linkEnTorneo.replace(/^https?:\/\//i, '').trim();
     }
 
     try {
-        // Forzar https en producción para que Mercado Pago acepte auto_return
         const host = req.get('host');
         const protocol = host.includes('localhost') ? 'http' : 'https';
         const baseUrl = `${protocol}://${host}`;
@@ -84,10 +93,10 @@ app.post('/api/mp/create-preference', async (req, res) => {
         const preferenceBody = {
             items: [{
                 id: String(folioMP || `BOX-${boxId}`),
-                title: `Inscripcion ${nombreTorneo} - ${categoriaNombre} (Box #${boxId}: ${aliasDupla})`,
+                title: `Inscripcion ${nombreTorneo || 'Torneo Padel'} - ${categoriaNombre || 'Categoria'} (Box #${boxId}: ${aliasDupla || 'Dupla'})`,
                 quantity: 1,
                 currency_id: 'CLP',
-                unit_price: Math.round(Number(monto) || 70000)
+                unit_price: Math.max(100, Math.round(Number(monto) || 70000))
             }],
             external_reference: JSON.stringify({
                 torneoId,
@@ -97,7 +106,7 @@ app.post('/api/mp/create-preference', async (req, res) => {
             }),
             back_urls: {
                 success: `${baseUrl}/?torneo=${encodeURIComponent(torneoId)}&cat=${encodeURIComponent(categoriaKey)}&box=${boxId}&mp_status=approved`,
-                failure: `${baseUrl}/?neo=${encodeURIComponent(torneoId)}&cat=${encodeURIComponent(categoriaKey)}&box=${boxId}&mp_status=failure`,
+                failure: `${baseUrl}/?torneo=${encodeURIComponent(torneoId)}&cat=${encodeURIComponent(categoriaKey)}&box=${boxId}&mp_status=failure`,
                 pending: `${baseUrl}/?torneo=${encodeURIComponent(torneoId)}&cat=${encodeURIComponent(categoriaKey)}&box=${boxId}&mp_status=pending`
             },
             auto_return: 'approved',
@@ -115,33 +124,23 @@ app.post('/api/mp/create-preference', async (req, res) => {
 
         const mpData = await mpResp.json();
         if (mpResp.ok && mpData && mpData.init_point) {
-            return res.json({ init_point: mpData.init_point, mode: 'api' });
+            return res.json({ ok: true, init_point: mpData.init_point, mode: 'api' });
         } else {
-            console.error('Error devuelto por Mercado Pago API:', JSON.stringify(mpData));
+            console.error('Respuesta error MP:', JSON.stringify(mpData));
+            return res.status(400).json({ ok: false, error: mpData?.message || 'Error al crear preferencia en MP' });
         }
     } catch (err) {
-        console.error('Excepción al conectar con Mercado Pago:', err.message);
+        console.error('Excepción MP:', err.message);
+        return res.status(500).json({ ok: false, error: err.message });
     }
-
-    res.json({ init_point: fallbackLink || 'https://www.mercadopago.cl', mode: 'fallback' });
 });
 
-// 4. Webhook Oficial de Mercado Pago: Pasa el Box a ROJO (PAGADO_MP) automáticamente
+// 4. Webhook Oficial de Mercado Pago: Pasa el Box a ROJO en todos los equipos al aprobarse el pago
 app.post('/api/mp/webhook', async (req, res) => {
     try {
         const paymentId = req.body?.data?.id || req.query?.['data.id'] || req.query?.id;
-        const torneoIdQuery = req.query?.torneoId;
         const db = leerEstadoDB();
-
-        let token = process.env.MP_ACCESS_TOKEN;
-        if (!token && db && torneoIdQuery && db.torneos?.[torneoIdQuery]?.config?.mpAccessToken) {
-            token = db.torneos[torneoIdQuery].config.mpAccessToken.trim();
-        }
-        // Si aún no hay token, buscar en cualquier torneo activo de la DB
-        if (!token && db && db.torneos) {
-            const tConToken = Object.values(db.torneos).find(t => t.config?.mpAccessToken);
-            if (tConToken) token = tConToken.config.mpAccessToken.trim();
-        }
+        const token = DEFAULT_MP_TOKEN;
 
         if (paymentId && token) {
             const pResp = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
@@ -160,13 +159,12 @@ app.post('/api/mp/webhook', async (req, res) => {
                         cupo.expiraReservaTimestamp = 0;
                         db.lastUpdated = Date.now();
                         guardarEstadoDB(db);
-                        console.log(`Pago aprobado Webhook MP: Torneo ${ref.torneoId}, Box #${ref.box}`);
                     }
                 }
             }
         }
     } catch (e) {
-        console.error('Error en Webhook MP:', e.message);
+        console.error('Error Webhook MP:', e.message);
     }
     res.sendStatus(200);
 });
