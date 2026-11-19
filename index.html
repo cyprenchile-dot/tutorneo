@@ -2031,7 +2031,38 @@ function eliminarCat(key){
   sincronizar(); renderEditorCategorias(); mostrarToast('🗑️ Eliminada.');
 }
 function subirImagenConfig(e,campo){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>{ db.config[campo]=ev.target.result; sincronizar(); mostrarToast('🖼️ Imagen guardada.'); }; r.readAsDataURL(f); }
+function subirPdfReglamento(e){
+  const f=e.target.files[0]; if(!f) return;
+  if(f.size > 5*1024*1024){ alert('⚠️ El PDF supera 5 MB. Comprímelo o pega el enlace en el casillero de al lado.'); e.target.value=''; return; }
+  const r=new FileReader();
+  r.onload=ev=>{
+    db.config.reglamentoPdfData=ev.target.result;
+    db.config.reglamentoPdfNombre=f.name||'Reglamento_Torneo.pdf';
+    sincronizar(); cargarFormsAdmin();
+    mostrarToast('📄 PDF del reglamento guardado en la nube.');
+  };
+  r.readAsDataURL(f);
+}
 
+async function descargarReglamentoPDF(){
+  if(db.config.reglamentoPdfData){
+    const blob=await (await fetch(db.config.reglamentoPdfData)).blob();
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download=db.config.reglamentoPdfNombre||`Reglamento_${db.id}.pdf`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),4000);
+    return;
+  }
+  if(db.config.reglamentoPdfUrl){
+    window.open(db.config.reglamentoPdfUrl,'_blank');
+    return;
+  }
+  const w=window.open('','_blank');
+  if(!w){ alert('⚠️ Habilita las ventanas emergentes para ver el reglamento.'); return; }
+  w.document.write(`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Bases y Reglamento - ${esc(db.config.nombreTorneo)}</title><style>body{font-family:Arial,sans-serif;max-width:740px;margin:30px auto;padding:20px;color:#111;line-height:1.6;}h1{margin-bottom:4px;}small{color:#555;}hr{margin:16px 0;}</style></head><body><h1>${esc(db.config.nombreTorneo)}</h1><small>${esc(db.config.badgeOrg)} • ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}</small><hr><div>${db.config.reglamento||'Reglamento oficial del torneo.'}</div><script>window.onload=()=>window.print();<\/script></body></html>`);
+  w.document.close();
+}
 function renderSponsorsYRankAdmin(){
   document.getElementById('editorSponsors').innerHTML=(db.sponsors||[]).map((s,i)=>`<div style="display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;">
     <input type="text" value="${esc(s.logoText||'')}" onchange="db.sponsors[${i}].logoText=this.value;sincronizar();" class="inp" style="width:140px;">
