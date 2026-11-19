@@ -120,7 +120,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   ⚠️ LICENCIA DE EVENTO PAUSADA TEMPORALMENTE POR CIRCUITO360.CL.
 </div>
 
-<!-- ================= VISTA PÚBLICA ================= -->
+<!-- VISTA PÚBLICA -->
 <div id="vistaPublica" class="vista activo">
   <section class="hero">
     <img id="heroSlide0" class="hero-slide active-slide" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=2000&auto=format&fit=crop" alt="Pádel">
@@ -166,7 +166,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- ================= VISTA PARTIDOS & TABLA ================= -->
+<!-- VISTA PARTIDOS & TABLA -->
 <div id="vistaLlaves" class="vista">
   <div class="container">
     <div style="text-align:center;margin-bottom:1.25rem;">
@@ -195,7 +195,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- ================= VISTA CHECKOUT / RETORNO MP ================= -->
+<!-- VISTA CHECKOUT / RETORNO MP -->
 <div id="vistaExito" class="vista">
   <div class="container" style="max-width:740px;">
     <div class="panel" style="border:2px solid var(--amber);background:linear-gradient(135deg,#451a03,#05070B);text-align:center;">
@@ -219,7 +219,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- ================= VISTA CLUB Y MAPA ================= -->
+<!-- VISTA CLUB Y MAPA -->
 <div id="vistaPremios" class="vista">
   <div class="container">
     <div style="text-align:center;margin-bottom:1.5rem;">
@@ -244,7 +244,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- ================= VISTA MONITOR TV ================= -->
+<!-- VISTA MONITOR TV -->
 <div id="vistaTV" class="vista">
   <div class="container">
     <div style="text-align:center;margin-bottom:1.25rem;">
@@ -260,7 +260,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- ================= VISTA ADMIN / ÁRBITRO / SUPER ADMIN ================= -->
+<!-- VISTA ADMIN / ÁRBITRO / SUPER ADMIN -->
 <div id="vistaAdmin" class="vista">
   <div class="container">
     <div id="adminLoginBox" style="max-width:440px;margin:2.5rem auto;">
@@ -276,7 +276,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
     </div>
 
     <div id="adminPanelBox" class="panel oculto">
-      <!-- BARRA SUPER ADMIN GLOBAL -->
       <div id="barraSuperGod" class="card-sub oculto" style="background:linear-gradient(90deg,#311042,#0B1220);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.85rem;">
         <div>
           <span style="background:var(--purple);color:#fff;font-weight:800;font-size:.66rem;padding:.2rem .55rem;border-radius:6px;">👑 SUPER ADMIN GLOBAL • CONTROL TOTAL</span>
@@ -289,7 +288,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
       </div>
 
-      <!-- CONTROL RÁPIDO SINCRONIZADO -->
       <div class="card-sub" style="border-color:var(--primary);">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.65rem;">
           <span class="mono" style="font-size:.73rem;font-weight:800;color:var(--primary);">⚡ CONTROL RÁPIDO EN VIVO (SE GUARDA Y SINCRONIZA EN TODOS LOS TELÉFONOS)</span>
@@ -377,9 +375,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <!-- 2. BOXES -->
       <div id="subBox" class="oculto">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.8rem;">
-          <div>
-            <h4 style="font-size:1.05rem;font-weight:800;">🎾 Administración de Boxes & Verificación MP</h4>
-          </div>
+          <div><h4 style="font-size:1.05rem;font-weight:800;">🎾 Administración de Boxes & Verificación MP</h4></div>
           <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
             <select id="selCatBoxes" onchange="renderAdminBoxes()" class="inp" style="width:220px;font-weight:700;"></select>
             <button onclick="sincronizar();mostrarToast('✅ Boxes guardados')" class="btn btn-green">✅ Confirmar Cambios</button>
@@ -629,7 +625,6 @@ let ultimoWhatsApp = '';
 let sonidoOn = true;
 let audioCtx = null;
 
-// MOTOR ANTI-REBOTE Y COLA SECUENCIAL DE GUARDADO
 let saveQueue = Promise.resolve();
 let pendingSaves = 0;
 let lastLocalMutationAt = 0;
@@ -768,7 +763,7 @@ function usuarioEscribiendoEnAdmin(){
   return !!a.closest('#adminPanelBox') && ['INPUT','TEXTAREA','SELECT'].includes(a.tagName);
 }
 
-// --- COLA SECUENCIAL DE GUARDADO EN SERVIDOR (CERO REBOTES) ---
+// COLA SECUENCIAL DE GUARDADO ANTI-REBOTE
 function empujarNube(){
   asegurarIntegridad();
   saasDB.torneos[saasDB.torneoActivoId]=db;
@@ -805,11 +800,20 @@ function empujarNube(){
 }
 
 async function consultarNube(inicial=false){
-  // Nunca pisar si hay un guardado en curso o recién se editó (ventana segura de 3.5s)
   if(!inicial && (pendingSaves>0 || (Date.now()-lastLocalMutationAt)<3500)) return;
   const reqStart=Date.now();
   try{
     const r=await fetch('/api/state?t='+reqStart,{cache:'no-store'});
+    if(r.status===404){
+      if(inicial){
+        saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
+        recalcularHorariosBoxes();
+        await empujarNube();
+        inicializadoServidor=true;
+        refrescarTodoUI(true);
+      }
+      return;
+    }
     const ct=r.headers.get('content-type')||'';
     if(!r.ok || !ct.includes('application/json')){
       setSyncBadge('❌ SIN SERVIDOR API','#EF4444');
@@ -829,12 +833,11 @@ async function consultarNube(inicial=false){
       return;
     }
 
-    // Descartar respuesta vieja si el usuario editó mientras esta petición viajaba
     if(!inicial && (pendingSaves>0 || lastLocalMutationAt>reqStart)) return;
 
-    const rem=res.state;
+    const rem=res.state || (res.torneos ? res : null);
     if(rem && rem.torneos){
-      const remRev=Number(rem.rev)||0;
+      const remRev=Number(rem.rev)||Number(rem.lastUpdated)||0;
       const esMasNuevo = inicial || !inicializadoServidor || (remRev > localRev);
       if(esMasNuevo){
         localRev=remRev;
@@ -871,7 +874,6 @@ function refrescarTodoUI(incluirFormsAdmin){
 
 setInterval(()=>consultarNube(false), 2500);
 
-// --- MOTOR DE SLOTS Y FIXTURE ---
 function generarSlots(){
   const fi=db.config.fechaInicio||'2026-12-05', ff=(db.config.fechaFin&&db.config.fechaFin>=fi)?db.config.fechaFin:fi;
   const [ah,am]=(db.config.horaApertura||'09:00').split(':').map(Number);
@@ -985,7 +987,6 @@ function generarFixtureConIA(silencioso){
   if(!silencioso) mostrarToast(`🤖 Fixture IA generado: ${totalGenerados} partidos.`);
 }
 
-// --- RENDER PÚBLICO ---
 function aplicarCMS(){
   asegurarIntegridad();
   document.documentElement.style.setProperty('--primary', db.config.colorPrimary||'#D4AF37');
@@ -1209,7 +1210,6 @@ function actualizarRelojes(){
 }
 setInterval(actualizarRelojes,1000);
 
-// --- INSCRIPCIÓN & MERCADO PAGO ---
 function abrirInscripcionRapida(){
   const lista=db.cupos[catActiva]||[];
   const libre=lista.find(c=>!c.ocupado);
@@ -1345,7 +1345,6 @@ async function verificarRetornoMP(){
   }
 }
 
-// --- NAVEGACIÓN & ADMIN ---
 function cambiarVista(v){
   ['vistaPublica','vistaLlaves','vistaExito','vistaPremios','vistaTV','vistaAdmin'].forEach(id=>document.getElementById(id).classList.remove('activo'));
   ['btnNavPub','btnNavLlaves','btnNavPrem','btnNavTV','btnNavAdmin'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
