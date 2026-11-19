@@ -666,9 +666,10 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
     <p style="font-size:.84rem;color:var(--muted);margin-bottom:.9rem;">Las canchas y horarios los asigna la organización. Al pagar recibirás tu <strong>Cupón de Kit de Jugador</strong>.</p>
 
     <form id="formInsc" onsubmit="procesarInscripcion(event)" style="display:flex;flex-direction:column;gap:.75rem;">
-      <div class="form-2col">
-        <div><label class="lbl" style="color:var(--primary);">Categoría</label><select id="modSelCat" onchange="actualizarSelectorBoxesModal()" class="inp"></select></div>
-        <div><label class="lbl" style="color:var(--green);">N° de Cupo Libre</label><select id="modSelBox" class="inp"></select></div>
+      <div>
+        <label class="lbl" style="color:var(--primary);">Categoría</label>
+        <select id="modSelCat" onchange="actualizarSelectorBoxesModal()" class="inp"></select>
+        <select id="modSelBox" style="display:none;"></select>
       </div>
 
       <div><label class="lbl" style="color:var(--primary);">Nombre de la Dupla / Equipo</label><input type="text" id="inAlias" required placeholder="Ej. Team Ayres" class="inp"></div>
