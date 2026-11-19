@@ -574,7 +574,8 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
           <div><label class="lbl">🎨 Color (Hex)</label><input type="text" id="cfgColor" class="inp"></div>
           <div><label class="lbl">🖼️ Logo</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'logoTorneoImg')" class="inp" style="padding:.3rem;"></div>
           <div><label class="lbl">📸 Portada</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'heroCustomBase64')" class="inp" style="padding:.3rem;"></div>
-         <div style="grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.65rem;background:#04070D;padding:.75rem;border-radius:10px;border:1px solid #1E293B;">
+          <div style="grid-column:1/-1;"><label class="lbl">📜 Reglamento (HTML)</label><textarea id="cfgReglamento" rows="3" class="inp"></textarea></div>
+          <div style="grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.65rem;background:#04070D;padding:.75rem;border-radius:10px;border:1px solid #1E293B;">
             <div>
               <label class="lbl" style="color:#38BDF8;">📄 Subir Bases y Reglamento en PDF (máx. 5 MB)</label>
               <input type="file" accept="application/pdf" onchange="subirPdfReglamento(event)" class="inp" style="padding:.35rem;">
