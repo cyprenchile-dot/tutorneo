@@ -946,7 +946,14 @@ function asegurarIntegridad(){
   db.config.categorias.forEach(c=>{
     if(!c.maxCupos||c.maxCupos<2) c.maxCupos=12;
     if(!c.partidosGarantizados||c.partidosGarantizados<1) c.partidosGarantizados=db.config.partidosGarantizados||3;
-    if(!db.cupos[c.key]) db.cupos[c.key]=crearCupos(db.id,c.key,c.maxCupos,db.config.fechaInicio,db.config.horaApertura);
+    if(!db.cupos[c.key]){
+      db.cupos[c.key]=crearCupos(db.id,c.key,c.maxCupos,db.config.fechaInicio,db.config.horaApertura);
+    } else if(db.cupos[c.key].length < c.maxCupos){
+      const faltan=c.maxCupos-db.cupos[c.key].length;
+      db.cupos[c.key].push(...crearCupos(db.id,c.key,faltan,db.config.fechaInicio,db.config.horaApertura,db.cupos[c.key].length));
+    } else if(db.cupos[c.key].length > c.maxCupos){
+      db.cupos[c.key]=db.cupos[c.key].slice(0,c.maxCupos);
+    }
     if(!db.partidos[c.key]) db.partidos[c.key]=[];
   });
   if(!db.config.categorias.some(c=>c.key===catActiva)) catActiva=db.config.categorias[0].key;
