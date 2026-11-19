@@ -3,162 +3,173 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title id="pageTitle">CIRCUITO360.CL | Plataforma de Torneos de Pádel</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
+<title id="pageTitle">CIRCUITO360.CL | Torneos de Pádel</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{--primary:#D4AF37;--mp:#009EE3;--dark:#04070D;--card:#0B1220;--border:#1E293B;--text:#F8FAFC;--muted:#94A3B8;--green:#10B981;--amber:#F59E0B;--red:#EF4444;--purple:#A855F7;}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Outfit',sans-serif;}
-body{background:var(--dark);color:var(--text);min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;overflow-x:hidden;}
+body{background:var(--dark);color:var(--text);min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;overflow-x:hidden;-webkit-tap-highlight-color:transparent;}
 .mono{font-family:'JetBrains Mono',monospace;}
-header{background:rgba(4,7,13,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,175,55,.25);position:sticky;top:0;z-index:1000;}
-.nav-wrap{max-width:1380px;margin:0 auto;padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;}
-.logo-area{display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;}
-.brand-pill{background:linear-gradient(135deg,#D4AF37,#FDE047);color:#030508;font-weight:900;padding:.28rem .65rem;border-radius:6px;font-size:.7rem;letter-spacing:.6px;}
-.badge-org{background:rgba(16,185,129,.16);color:#34D399;border:1px solid rgba(16,185,129,.45);font-weight:800;padding:.25rem .65rem;border-radius:6px;font-size:.7rem;text-transform:uppercase;}
-.nav-title{font-weight:800;font-size:1.05rem;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;}
+
+/* HEADER MINIMALISTA PARA JUGADORES */
+header{background:rgba(4,7,13,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(212,175,55,.25);position:sticky;top:0;z-index:1000;}
+.nav-wrap{max-width:1280px;margin:0 auto;padding:.65rem 1rem;display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap;}
+.logo-area{display:flex;align-items:center;gap:.55rem;}
+.brand-pill{background:linear-gradient(135deg,#D4AF37,#FDE047);color:#030508;font-weight:900;padding:.26rem .6rem;border-radius:6px;font-size:.72rem;letter-spacing:.5px;}
+.nav-title{font-weight:800;font-size:1.05rem;text-transform:uppercase;line-height:1.1;}
 .nav-title span{color:var(--primary);}
-.sync-pill{font-size:.66rem;padding:.22rem .55rem;border-radius:6px;background:rgba(16,185,129,.14);color:#34D399;border:1px solid rgba(16,185,129,.35);font-weight:800;}
-.nav-btns{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;}
-.nav-btn{background:#111A2E;color:#fff;border:1px solid var(--border);padding:.46rem .82rem;border-radius:9px;font-size:.75rem;cursor:pointer;font-weight:600;transition:.18s;display:inline-flex;align-items:center;gap:.3rem;}
-.nav-btn:hover{background:#1E293B;transform:translateY(-1px);}
-.nav-btn.active{background:var(--primary);color:#030508;font-weight:800;border-color:var(--primary);}
-.btn-cta-nav{background:linear-gradient(135deg,#10B981,#059669);color:#030508;font-weight:900;border:1px solid #34D399;}
+.nav-btns{display:flex;gap:.4rem;align-items:center;}
+.nav-btn{background:#111A2E;color:#E2E8F0;border:1px solid var(--border);padding:.55rem .95rem;border-radius:10px;font-size:.86rem;cursor:pointer;font-weight:700;transition:.18s;display:inline-flex;align-items:center;gap:.35rem;}
+.nav-btn:hover{background:#1E293B;}
+.nav-btn.active{background:var(--primary);color:#030508;font-weight:900;border-color:var(--primary);}
 
-.hero{position:relative;min-height:480px;display:flex;align-items:center;justify-content:center;padding:3.8rem 1rem;text-align:center;border-bottom:1px solid rgba(212,175,55,.3);overflow:hidden;background:#04070D;}
-.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;z-index:1;opacity:0;transition:opacity 1.5s ease-in-out,transform 16s ease-out;transform:scale(1.02);}
-.hero-slide.active-slide{opacity:1;transform:scale(1.1);}
-.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(4,7,13,.5),rgba(4,18,14,.62) 55%,rgba(4,7,13,.96) 100%);}
-.hero-content{position:relative;z-index:3;max-width:940px;margin:0 auto;}
-.hero-pill{display:inline-flex;align-items:center;gap:.45rem;background:rgba(4,7,13,.78);backdrop-filter:blur(10px);color:var(--primary);padding:.42rem 1.1rem;border-radius:30px;font-size:.73rem;font-weight:800;text-transform:uppercase;border:1px solid rgba(212,175,55,.5);margin-bottom:.9rem;flex-wrap:wrap;justify-content:center;}
-.hero h2{font-size:clamp(1.9rem,4.5vw,3.1rem);font-weight:900;margin-bottom:.75rem;line-height:1.1;text-shadow:0 8px 28px rgba(0,0,0,.9);text-transform:uppercase;}
-.hero h2 span{color:var(--primary);}
-.hero-sub{color:#E2E8F0;font-size:.95rem;max-width:680px;margin:0 auto 1.2rem;}
-.reloj-box{background:rgba(7,14,24,.86);backdrop-filter:blur(14px);border:1px solid rgba(212,175,55,.65);padding:1rem 1.4rem;border-radius:16px;max-width:490px;margin:0 auto 1.35rem;box-shadow:0 18px 40px rgba(0,0,0,.7);}
-.reloj-time{font-size:clamp(1.35rem,3.5vw,1.95rem);font-weight:800;color:var(--primary);letter-spacing:1.4px;}
-.hero-actions{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;}
-.btn-inscribirte-hero{background:linear-gradient(135deg,#10B981,#34D399);color:#030508;font-weight:900;font-size:1.05rem;padding:.9rem 2.2rem;border-radius:14px;border:2px solid #A7F3D0;cursor:pointer;letter-spacing:.6px;box-shadow:0 12px 30px rgba(16,185,129,.45);transition:.2s;text-transform:uppercase;}
-.btn-inscribirte-hero:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.08);}
+/* HERO COMPACTO MOBILE-FIRST */
+.hero{position:relative;padding:2rem 1rem 1.8rem;text-align:center;border-bottom:1px solid rgba(212,175,55,.28);overflow:hidden;background:#04070D;}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;z-index:1;opacity:0;transition:opacity 1.5s ease-in-out;}
+.hero-slide.active-slide{opacity:1;}
+.hero-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(4,7,13,.62),rgba(4,16,12,.76) 55%,rgba(4,7,13,.98) 100%);}
+.hero-content{position:relative;z-index:3;max-width:780px;margin:0 auto;}
+.hero-club{display:inline-block;background:rgba(16,185,129,.2);color:#34D399;border:1px solid rgba(16,185,129,.45);padding:.3rem .85rem;border-radius:20px;font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.55rem;}
+.hero h2{font-size:clamp(1.75rem,5.5vw,2.8rem);font-weight:900;line-height:1.08;text-shadow:0 6px 24px rgba(0,0,0,.9);text-transform:uppercase;margin-bottom:.45rem;}
+.hero-meta{color:#E2E8F0;font-size:.95rem;font-weight:600;margin-bottom:1rem;}
+.reloj-box{background:rgba(7,14,24,.88);backdrop-filter:blur(12px);border:1px solid rgba(212,175,55,.65);padding:.75rem 1.15rem;border-radius:14px;max-width:410px;margin:0 auto 1.1rem;}
+.reloj-lbl{font-size:.76rem;color:#CBD5E1;text-transform:uppercase;margin-bottom:.15rem;}
+.reloj-time{font-size:clamp(1.45rem,5vw,1.95rem);font-weight:800;color:var(--primary);letter-spacing:1.2px;}
+.btn-hero-cta{background:linear-gradient(135deg,#10B981,#34D399);color:#030508;font-weight:900;font-size:1.08rem;padding:.95rem 2.2rem;border-radius:14px;border:2px solid #A7F3D0;cursor:pointer;letter-spacing:.5px;box-shadow:0 10px 26px rgba(16,185,129,.4);transition:.2s;text-transform:uppercase;width:100%;max-width:340px;}
+.btn-hero-cta:hover{transform:translateY(-2px);filter:brightness(1.06);}
 
-.container{max-width:1380px;margin:0 auto;padding:1.75rem 1rem;width:100%;}
-.panel{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.4rem;box-shadow:0 16px 35px rgba(0,0,0,.55);}
-.grid-boxes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem;margin-top:1.25rem;}
-.box-card{border-radius:15px;padding:1.15rem;color:#fff;position:relative;overflow:hidden;box-shadow:0 8px 22px rgba(0,0,0,.45);transition:.2s;}
-.box-card:hover{transform:translateY(-3px);}
-.box-verde{background:linear-gradient(135deg,#064e3b,#022c22);border:2px solid var(--green);cursor:pointer;}
-.box-amarilla{background:linear-gradient(135deg,#78350f,#451a03);border:2px solid var(--amber);cursor:pointer;}
-.box-roja{background:linear-gradient(135deg,#7f1d1d,#3b0808);border:2px solid var(--red);}
-.status-badge{position:absolute;top:0;right:0;padding:.24rem .7rem;font-size:.63rem;font-weight:800;text-transform:uppercase;border-bottom-left-radius:11px;}
+/* CONTENEDOR Y BOXES DE PAGO GRANDES Y LEGIBLES */
+.container{max-width:1280px;margin:0 auto;padding:1.35rem 1rem;width:100%;}
+.panel{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.25rem;box-shadow:0 14px 30px rgba(0,0,0,.5);}
+.sec-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem;}
+.sec-head h3{font-size:1.45rem;font-weight:800;}
+.leyenda{display:flex;gap:.75rem;flex-wrap:wrap;font-size:.88rem;color:#CBD5E1;font-weight:600;}
+
+.tabs-cat{display:flex;justify-content:center;gap:.5rem;margin-bottom:1.15rem;flex-wrap:wrap;}
+.tab-cat{background:var(--card);color:#CBD5E1;border:1px solid #334155;padding:.65rem 1.15rem;border-radius:11px;cursor:pointer;font-weight:800;font-size:.95rem;transition:.18s;}
+.tab-cat.active{background:var(--primary);color:#030508;border-color:var(--primary);}
+
+.grid-boxes{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.1rem;}
+.box-card{border-radius:16px;padding:1.25rem;color:#fff;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.45);transition:.18s;display:flex;flex-direction:column;justify-content:space-between;gap:.85rem;}
+.box-card:hover{transform:translateY(-2px);}
+.box-verde{background:linear-gradient(145deg,#065f46,#022c22);border:2px solid var(--green);cursor:pointer;}
+.box-amarilla{background:linear-gradient(145deg,#78350f,#451a03);border:2px solid var(--amber);cursor:pointer;}
+.box-roja{background:linear-gradient(145deg,#7f1d1d,#3b0808);border:2px solid var(--red);}
+.status-badge{position:absolute;top:0;right:0;padding:.32rem .8rem;font-size:.74rem;font-weight:900;text-transform:uppercase;border-bottom-left-radius:12px;}
 .bg-green{background:var(--green);color:#030508;}
 .bg-yellow{background:var(--amber);color:#030508;}
 .bg-red{background:var(--red);color:#fff;}
+.box-top{font-size:.92rem;font-weight:800;letter-spacing:.3px;padding-right:6.8rem;}
+.box-price{font-size:1.35rem;font-weight:900;color:#fff;}
+.box-cta-btn{width:100%;padding:.8rem 1rem;border-radius:11px;border:none;font-weight:900;font-size:.98rem;text-align:center;cursor:pointer;display:block;letter-spacing:.4px;}
 
-.tabs-cat{display:flex;justify-content:center;gap:.45rem;margin-bottom:1.25rem;flex-wrap:wrap;}
-.tab-cat{background:var(--card);color:var(--muted);border:1px solid var(--border);padding:.5rem 1.1rem;border-radius:10px;cursor:pointer;font-weight:700;font-size:.82rem;transition:.18s;}
-.tab-cat.active{background:var(--primary);color:#030508;border-color:var(--primary);}
-
+/* TABLAS Y FORMULARIOS */
 .table-wrap{overflow-x:auto;width:100%;}
-table{width:100%;border-collapse:collapse;margin-top:.8rem;font-size:.76rem;}
-th,td{padding:.55rem .42rem;text-align:left;border-bottom:1px solid var(--border);vertical-align:middle;}
-th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65rem;letter-spacing:.45px;white-space:nowrap;}
-.inp{background:#04070D;border:1px solid #334155;color:#fff;padding:.45rem .65rem;border-radius:8px;width:100%;font-size:.78rem;}
-.inp:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(212,175,55,.2);}
-.lbl{font-size:.7rem;color:var(--muted);display:block;margin-bottom:.25rem;font-weight:600;}
+table{width:100%;border-collapse:collapse;margin-top:.75rem;font-size:.82rem;}
+th,td{padding:.6rem .48rem;text-align:left;border-bottom:1px solid var(--border);vertical-align:middle;}
+th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68rem;letter-spacing:.45px;white-space:nowrap;}
+.inp{background:#04070D;border:1px solid #334155;color:#fff;padding:.55rem .72rem;border-radius:9px;width:100%;font-size:.88rem;}
+.inp:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 2px rgba(212,175,55,.22);}
+.lbl{font-size:.76rem;color:#CBD5E1;display:block;margin-bottom:.25rem;font-weight:700;}
 
-.btn{padding:.58rem 1.05rem;border-radius:9px;border:none;cursor:pointer;font-size:.78rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:.35rem;transition:.18s;text-decoration:none;}
-.btn:hover{filter:brightness(1.1);transform:translateY(-1px);}
+.btn{padding:.62rem 1.05rem;border-radius:10px;border:none;cursor:pointer;font-size:.84rem;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:.35rem;transition:.18s;text-decoration:none;}
+.btn:hover{filter:brightness(1.08);}
 .btn-gold{background:var(--primary);color:#030508;}
 .btn-green{background:var(--green);color:#030508;}
 .btn-red{background:var(--red);color:#fff;}
 .btn-blue{background:#2563EB;color:#fff;}
-.btn-mp{background:linear-gradient(135deg,#009EE3,#007EB5);color:#fff;border:1px solid #38BDF8;box-shadow:0 8px 20px rgba(0,158,227,.3);}
+.btn-mp{background:linear-gradient(135deg,#009EE3,#007EB5);color:#fff;border:1px solid #38BDF8;box-shadow:0 8px 20px rgba(0,158,227,.35);}
 .btn-ai{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:1px solid #818CF8;}
-.btn-sm{padding:.34rem .58rem;font-size:.69rem;border-radius:6px;}
+.btn-sm{padding:.38rem .62rem;font-size:.74rem;border-radius:7px;}
 
 .grid-auto{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:.75rem;}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:1.25rem;}
-.kpi-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:.85rem;background:#04070D;padding:1rem;border-radius:12px;border:1px solid var(--border);margin-bottom:1.25rem;}
-.card-sub{background:#060B14;border:1px solid var(--border);border-radius:14px;padding:1.1rem;margin-bottom:1.15rem;}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.15rem;}
+.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:.55rem;}
+.kpi-bar{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:.8rem;background:#04070D;padding:.95rem;border-radius:12px;border:1px solid var(--border);margin-bottom:1.15rem;}
+.card-sub{background:#060B14;border:1px solid var(--border);border-radius:14px;padding:1rem;margin-bottom:1.1rem;}
+.sync-pill{font-size:.7rem;padding:.24rem .6rem;border-radius:6px;background:rgba(16,185,129,.14);color:#34D399;border:1px solid rgba(16,185,129,.4);font-weight:800;}
 
 .vista{display:none;}
 .vista.activo{display:block;}
 .oculto{display:none!important;}
-.modal-bg{position:fixed;inset:0;background:rgba(4,7,13,.9);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1rem;}
+.modal-bg{position:fixed;inset:0;background:rgba(4,7,13,.92);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:.85rem;}
 
-#toast{position:fixed;bottom:20px;right:20px;background:var(--green);color:#030508;padding:.85rem 1.3rem;border-radius:12px;font-weight:800;font-size:.82rem;box-shadow:0 14px 28px rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;gap:.45rem;border:2px solid #fff;max-width:90vw;}
+#toast{position:fixed;bottom:18px;right:18px;background:var(--green);color:#030508;padding:.85rem 1.25rem;border-radius:12px;font-weight:800;font-size:.86rem;box-shadow:0 14px 28px rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;gap:.45rem;border:2px solid #fff;max-width:92vw;}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .animate-scroll{display:flex;width:max-content;animation:scroll 28s linear infinite;}
-.animate-scroll:hover{animation-play-state:paused;}
+
+/* OPTIMIZACIÓN MÓVIL ESTRICTA */
+@media (max-width:640px){
+  .nav-wrap{justify-content:center;padding:.6rem .75rem;}
+  .logo-area{width:100%;justify-content:center;}
+  .nav-btns{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;}
+  .nav-btn{justify-content:center;padding:.62rem .4rem;font-size:.88rem;}
+  .hero{padding:1.4rem .85rem 1.45rem;}
+  .grid-boxes{grid-template-columns:1fr;gap:1rem;}
+  .form-2col{grid-template-columns:1fr;}
+  .inp{font-size:16px;padding:.68rem .8rem;}
+  .tab-cat{flex:1;min-width:44%;text-align:center;font-size:.95rem;padding:.72rem .6rem;}
+  .panel{padding:1rem;}
+}
 </style>
 </head>
 <body>
 
-<div id="toast">✅ Guardado y sincronizado en CIRCUITO360.CL</div>
+<div id="toast">✅ Guardado y sincronizado</div>
 
 <div>
 <header>
   <div class="nav-wrap">
-    <div class="logo-area">
-      <span class="brand-pill mono">🎾 CIRCUITO360.CL</span>
-      <span id="badgeOrgNav" class="badge-org">CLUB OFICIAL</span>
+    <div class="logo-area" onclick="cambiarVista('publico')" style="cursor:pointer;">
+      <span class="brand-pill mono">🎾 CIRCUITO360</span>
       <div id="navLogoContainer"></div>
       <h1 class="nav-title" id="navTitle">COPA AYRES <span>OPEN</span></h1>
-      <span id="indicadorNubeSync" class="sync-pill mono">⏳ CONECTANDO...</span>
     </div>
+    <!-- SOLO 3 BOTONES LIMPIOS PARA EL JUGADOR -->
     <div class="nav-btns">
-      <button onclick="abrirInscripcionRapida()" class="nav-btn btn-cta-nav">🎾 INSCRIBIRTE</button>
-      <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnNavPub">📋 Cuadros & Boxes</button>
-      <button onclick="cambiarVista('llaves')" class="nav-btn" id="btnNavLlaves">⚖️ Partidos & Tabla</button>
-      <button onclick="cambiarVista('premios')" class="nav-btn" id="btnNavPrem">🏆 Club & Mapa</button>
-      <button onclick="cambiarVista('tv')" class="nav-btn" id="btnNavTV">📺 Monitor TV</button>
-      <button onclick="toggleAudio()" class="nav-btn mono" id="btnSound" style="color:#34D399;">🔊 ON</button>
-      <button onclick="cambiarVista('admin')" class="nav-btn" id="btnNavAdmin">⚙️ Admin / Árbitro</button>
+      <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnNavPub">🎾 Cupos</button>
+      <button onclick="cambiarVista('llaves')" class="nav-btn" id="btnNavLlaves">📊 Partidos</button>
+      <button onclick="cambiarVista('premios')" class="nav-btn" id="btnNavPrem">📍 Info Club</button>
     </div>
   </div>
 </header>
 
-<div id="bannerSuspendida" class="oculto" style="background:#7F1D1D;border-bottom:2px solid #EF4444;padding:.8rem;text-align:center;font-weight:800;font-size:.82rem;color:#FECACA;">
-  ⚠️ LICENCIA DE EVENTO PAUSADA TEMPORALMENTE POR CIRCUITO360.CL.
+<div id="bannerSuspendida" class="oculto" style="background:#7F1D1D;border-bottom:2px solid #EF4444;padding:.8rem;text-align:center;font-weight:800;font-size:.86rem;color:#FECACA;">
+  ⚠️ Inscripciones temporalmente pausadas por la organización.
 </div>
 
-<!-- VISTA PÚBLICA -->
+<!-- ================= VISTA PÚBLICA (LIMPIA Y DIRECTA AL PAGO) ================= -->
 <div id="vistaPublica" class="vista activo">
   <section class="hero">
-    <img id="heroSlide0" class="hero-slide active-slide" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=2000&auto=format&fit=crop" alt="Pádel">
-    <img id="heroSlide1" class="hero-slide" src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=85&w=2000&auto=format&fit=crop" alt="Club">
-    <img id="heroSlide2" class="hero-slide" src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=85&w=2000&auto=format&fit=crop" alt="Torneo">
+    <img id="heroSlide0" class="hero-slide active-slide" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=1600&auto=format&fit=crop" alt="Pádel">
+    <img id="heroSlide1" class="hero-slide" src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=85&w=1600&auto=format&fit=crop" alt="Club">
+    <img id="heroSlide2" class="hero-slide" src="https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=85&w=1600&auto=format&fit=crop" alt="Torneo">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-pill">
-        <span id="heroClubTag">🎾 CIRCUITO 360</span> • <span id="heroSubtitleBadge">Fechas y Canchas Sincronizadas</span>
-      </div>
+      <div class="hero-club" id="heroClubTag">AYRES SPORTING CLUB</div>
       <h2 id="heroMainTitle">COPA AYRES OPEN</h2>
-      <p class="hero-sub">Sincronización online en vivo en todos los dispositivos • Arbitraje digital y reserva protegida con Mercado Pago.</p>
+      <p class="hero-meta" id="heroSubtitleBadge">📅 12/12/2026 al 13/12/2026 • 4 Canchas</p>
       <div class="reloj-box">
-        <div style="font-size:.7rem;color:#CBD5E1;text-transform:uppercase;margin-bottom:.25rem;">⏱️ Cuenta Regresiva Oficial (<span id="labelFechaReloj" style="color:var(--primary);font-weight:800;"></span>):</div>
+        <div class="reloj-lbl">⏱️ Inicio del Torneo (<span id="labelFechaReloj" style="color:var(--primary);font-weight:800;"></span>)</div>
         <div id="relojGigante" class="reloj-time mono">00D : 00H : 00M : 00S</div>
       </div>
-      <div class="hero-actions">
-        <button onclick="abrirInscripcionRapida()" class="btn-inscribirte-hero">🎾 INSCRIBIRTE AHORA</button>
-        <button onclick="cambiarVista('llaves')" class="btn btn-gold" style="padding:.85rem 1.4rem;font-size:.9rem;">📊 Ver Partidos y Tabla</button>
-      </div>
+      <button onclick="abrirInscripcionRapida()" class="btn-hero-cta">🎾 INSCRIBIRTE AHORA</button>
     </div>
   </section>
 
   <div class="container">
-    <div id="bannerComunicaciones" class="card-sub oculto" style="background:rgba(37,99,235,.14);border-color:rgba(59,130,246,.45);display:flex;align-items:center;gap:.9rem;">
-      <span style="font-size:1.5rem;">📢</span>
-      <div>
-        <div style="color:#60A5FA;font-size:.78rem;font-weight:800;text-transform:uppercase;">Comunicado Oficial</div>
-        <p id="textoComunicado" style="font-size:.82rem;color:#E2E8F0;margin-top:.15rem;"></p>
-      </div>
+    <div id="bannerComunicaciones" class="card-sub oculto" style="background:rgba(37,99,235,.15);border-color:rgba(59,130,246,.45);display:flex;align-items:center;gap:.8rem;">
+      <span style="font-size:1.45rem;">📢</span>
+      <p id="textoComunicado" style="font-size:.92rem;color:#E2E8F0;line-height:1.4;"></p>
     </div>
 
-    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.25rem;">
-      <div>
-        <h3 style="font-size:1.75rem;font-weight:800;">Cuadros Oficiales & Cupos en Vivo</h3>
-        <p style="color:var(--muted);font-size:.85rem;">🟢 <strong>DISPONIBLE</strong> • 🟡 <strong>PAGANDO (10m)</strong> • 🔴 <strong>INSCRITO CONFIRMADO</strong></p>
+    <div class="sec-head">
+      <h3>Elige tu Categoría y Box</h3>
+      <div class="leyenda">
+        <span>🟢 Libre</span>
+        <span>🟡 Pagando</span>
+        <span>🔴 Inscrito</span>
       </div>
-      <button onclick="abrirInscripcionRapida()" class="btn btn-green" style="padding:.75rem 1.5rem;font-size:.9rem;">🎾 INSCRIBIRTE EN ESTA CATEGORÍA</button>
     </div>
 
     <div class="tabs-cat" id="tabsCatPublico"></div>
@@ -166,175 +177,181 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- VISTA PARTIDOS & TABLA -->
+<!-- ================= VISTA PARTIDOS & TABLA ================= -->
 <div id="vistaLlaves" class="vista">
   <div class="container">
-    <div style="text-align:center;margin-bottom:1.25rem;">
-      <span class="mono" style="background:rgba(124,58,237,.2);color:#C4B5FD;padding:.28rem .85rem;border-radius:20px;font-size:.7rem;font-weight:800;border:1px solid #7C3AED;">⚖️ ARBITRAJE EN VIVO & FIXTURE IA</span>
-      <h2 style="font-size:2rem;font-weight:800;margin-top:.45rem;">Tabla de Posiciones & Partidos Oficiales</h2>
-      <p id="resumenPublicoIA" style="color:var(--muted);font-size:.84rem;margin-top:.25rem;"></p>
+    <div style="text-align:center;margin-bottom:1.15rem;">
+      <h2 style="font-size:1.75rem;font-weight:900;">Partidos y Tabla de Posiciones</h2>
+      <p id="resumenPublicoIA" style="color:var(--muted);font-size:.9rem;margin-top:.2rem;"></p>
     </div>
 
     <div class="tabs-cat" id="tabsCatLlaves"></div>
 
-    <div class="panel" style="margin-bottom:1.5rem;">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
-        <h4 style="color:var(--primary);font-size:1.05rem;font-weight:800;">📊 Tabla de Posiciones (Actualizada en Vivo)</h4>
-        <span class="mono" style="font-size:.7rem;color:var(--muted);">Victoria = 3 pts • Partido Jugado = 1 pt</span>
-      </div>
+    <div class="panel" style="margin-bottom:1.35rem;">
+      <h4 style="color:var(--primary);font-size:1.05rem;font-weight:800;margin-bottom:.3rem;">📊 Posiciones en Vivo</h4>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Pos</th><th>Dupla</th><th>Jugadores</th><th>Box</th><th>PJ</th><th>PG</th><th>PP</th><th>Último Marcador</th><th style="text-align:right;">PTS</th></tr></thead>
+          <thead><tr><th>#</th><th>Dupla</th><th>Box</th><th>PJ</th><th>PG</th><th>PP</th><th>Marcador</th><th style="text-align:right;">PTS</th></tr></thead>
           <tbody id="tbodyPosiciones"></tbody>
         </table>
       </div>
     </div>
 
-    <h4 style="font-size:1.15rem;font-weight:800;margin-bottom:.85rem;text-align:center;">🎾 Programación & Resultados de Partidos</h4>
+    <h4 style="font-size:1.15rem;font-weight:800;margin-bottom:.8rem;text-align:center;">🎾 Partidos Programados</h4>
     <div class="grid-2" id="contenedorPartidosPublico"></div>
   </div>
 </div>
 
-<!-- VISTA CHECKOUT / RETORNO MP -->
+<!-- ================= VISTA CHECKOUT / RETORNO MP ================= -->
 <div id="vistaExito" class="vista">
-  <div class="container" style="max-width:740px;">
+  <div class="container" style="max-width:680px;">
     <div class="panel" style="border:2px solid var(--amber);background:linear-gradient(135deg,#451a03,#05070B);text-align:center;">
-      <span style="display:inline-block;background:var(--amber);color:#030508;font-weight:900;font-size:.72rem;padding:.32rem .85rem;border-radius:20px;margin-bottom:.7rem;">⏳ PASO FINAL: COMPLETAR PAGO EN MERCADO PAGO</span>
-      <h2 style="font-size:1.75rem;color:#FDE047;margin-bottom:.35rem;">Box Bloqueado por 10 Minutos</h2>
-      <p style="color:#FDE68A;font-size:.85rem;margin-bottom:1.2rem;">Apenas Mercado Pago apruebe tu pago, tu Box pasará automáticamente a <strong>🔴 INSCRITO</strong> en todos los dispositivos.</p>
-      <div class="mono" style="background:rgba(4,7,13,.85);padding:1.1rem;border-radius:12px;text-align:left;font-size:.8rem;line-height:1.8;border:1px solid var(--border);margin-bottom:1.2rem;">
-        <div><strong>Folio MP:</strong> <span id="exFolio" style="color:#38BDF8;">--</span></div>
-        <div><strong>Torneo / Categoría:</strong> <span id="exTorneoCat">--</span></div>
+      <span style="display:inline-block;background:var(--amber);color:#030508;font-weight:900;font-size:.76rem;padding:.35rem .9rem;border-radius:20px;margin-bottom:.75rem;">⏳ PASO FINAL: COMPLETAR PAGO</span>
+      <h2 style="font-size:1.65rem;color:#FDE047;margin-bottom:.4rem;">Box Reservado por 10 Minutos</h2>
+      <p style="color:#FDE68A;font-size:.92rem;margin-bottom:1.1rem;">Tu cupo quedará en <strong>🔴 INSCRITO</strong> apenas completes el pago en Mercado Pago.</p>
+      <div class="mono" style="background:rgba(4,7,13,.85);padding:1.05rem;border-radius:12px;text-align:left;font-size:.86rem;line-height:1.8;border:1px solid var(--border);margin-bottom:1.15rem;">
+        <div><strong>Folio:</strong> <span id="exFolio" style="color:#38BDF8;">--</span></div>
+        <div><strong>Torneo:</strong> <span id="exTorneoCat">--</span></div>
         <div><strong>Dupla:</strong> <span id="exAlias" style="color:var(--primary);font-weight:800;">--</span></div>
         <div><strong>Jugadores:</strong> <span id="exJugadores">--</span></div>
-        <div><strong>Box & Cancha:</strong> <span id="exBox" style="color:#60A5FA;">--</span></div>
-        <div><strong>Monto:</strong> <span id="exMonto" style="color:var(--green);font-weight:800;">--</span></div>
+        <div><strong>Box:</strong> <span id="exBox" style="color:#60A5FA;">--</span></div>
+        <div><strong>Total:</strong> <span id="exMonto" style="color:var(--green);font-weight:800;">--</span></div>
       </div>
-      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
-        <a id="btnIrMP" href="#" class="btn btn-mp" style="flex:1.4;padding:.9rem;">💳 Abrir Mercado Pago Ahora →</a>
-        <button onclick="copiarWhatsAppJugador()" class="btn btn-green" style="flex:1;">📲 Copiar Ficha WhatsApp</button>
-        <button onclick="cambiarVista('publico')" class="btn btn-gold" style="flex:.7;">🎾 Volver</button>
+      <div style="display:flex;flex-direction:column;gap:.7rem;">
+        <a id="btnIrMP" href="#" class="btn btn-mp" style="padding:1rem;font-size:1rem;">💳 Ir a Pagar en Mercado Pago →</a>
+        <div class="form-2col">
+          <button onclick="copiarWhatsAppJugador()" class="btn btn-green">📲 Copiar WhatsApp</button>
+          <button onclick="cambiarVista('publico')" class="btn btn-gold">🎾 Volver a Cupos</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- VISTA CLUB Y MAPA -->
+<!-- ================= VISTA INFO CLUB & MAPA ================= -->
 <div id="vistaPremios" class="vista">
   <div class="container">
-    <div style="text-align:center;margin-bottom:1.5rem;">
-      <h3 style="font-size:1.85rem;font-weight:800;">Información Oficial del Torneo</h3>
-    </div>
+    <h3 style="font-size:1.65rem;font-weight:900;text-align:center;margin-bottom:1.2rem;">Información del Campeonato</h3>
     <div class="grid-2">
       <div class="panel">
-        <h4 style="color:var(--primary);margin-bottom:.8rem;">📅 Almanaque, Canchas & Partidos</h4>
-        <div id="textoCronogramaPublico" style="font-size:.85rem;color:#CBD5E1;line-height:1.7;"></div>
+        <h4 style="color:var(--primary);font-size:1.08rem;margin-bottom:.7rem;">📅 Fechas y Horarios</h4>
+        <div id="textoCronogramaPublico" style="font-size:.92rem;color:#E2E8F0;line-height:1.7;"></div>
       </div>
       <div class="panel">
-        <h4 style="color:var(--primary);margin-bottom:.8rem;">📜 Reglamento Oficial</h4>
-        <div id="textoReglamentoPublico" style="font-size:.85rem;color:#CBD5E1;line-height:1.7;"></div>
+        <h4 style="color:var(--primary);font-size:1.08rem;margin-bottom:.7rem;">📜 Reglamento</h4>
+        <div id="textoReglamentoPublico" style="font-size:.92rem;color:#E2E8F0;line-height:1.7;"></div>
       </div>
     </div>
-    <div class="panel" style="margin-top:1.25rem;">
-      <h4 style="color:var(--primary);margin-bottom:.75rem;">📍 Ubicación del Club</h4>
-      <div style="width:100%;height:330px;border-radius:12px;overflow:hidden;border:1px solid #334155;">
+    <div class="panel" style="margin-top:1.15rem;">
+      <h4 style="color:var(--primary);font-size:1.08rem;margin-bottom:.7rem;">📍 Ubicación del Club</h4>
+      <div style="width:100%;height:320px;border-radius:12px;overflow:hidden;border:1px solid #334155;">
         <iframe id="mapaIframe" width="100%" height="100%" style="border:0;" loading="lazy" src="https://maps.google.com/maps?q=Chicureo%20Colina%20Santiago&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
       </div>
     </div>
   </div>
 </div>
 
-<!-- VISTA MONITOR TV -->
+<!-- ================= VISTA MONITOR TV (ACCESIBLE DESDE ADMIN) ================= -->
 <div id="vistaTV" class="vista">
   <div class="container">
-    <div style="text-align:center;margin-bottom:1.25rem;">
-      <span class="brand-pill mono">📺 MONITOR TV EN VIVO</span>
-      <h3 style="font-size:2rem;font-weight:800;margin-top:.45rem;">Estado de Canchas & Marcadores en Directo</h3>
-      <p style="color:var(--muted);font-size:.88rem;">Sincronizado automáticamente con la Mesa de Arbitraje (<strong id="tvCanchasLbl" style="color:var(--primary);">4</strong> canchas).</p>
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1.2rem;">
+      <div>
+        <span class="brand-pill mono">📺 MONITOR TV EN VIVO</span>
+        <h3 style="font-size:1.85rem;font-weight:900;margin-top:.35rem;">Estado de Canchas (<span id="tvCanchasLbl" style="color:var(--primary);">4</span>)</h3>
+      </div>
+      <button onclick="cambiarVista('admin')" class="btn btn-gold">← Volver al Panel Admin</button>
     </div>
     <div id="gridCanchasTV" class="grid-boxes" style="margin-bottom:1.5rem;"></div>
     <div class="panel">
-      <h4 style="color:var(--primary);margin-bottom:.8rem;">🏆 Ranking General CIRCUITO360.CL</h4>
+      <h4 style="color:var(--primary);margin-bottom:.75rem;">🏆 Ranking General</h4>
       <div class="table-wrap"><table><tbody id="tbodyRankingTV"></tbody></table></div>
     </div>
   </div>
 </div>
 
-<!-- VISTA ADMIN / ÁRBITRO / SUPER ADMIN -->
+<!-- ================= VISTA ADMIN / ÁRBITRO / SUPER ADMIN ================= -->
 <div id="vistaAdmin" class="vista">
   <div class="container">
-    <div id="adminLoginBox" style="max-width:440px;margin:2.5rem auto;">
+    <div id="adminLoginBox" style="max-width:420px;margin:2rem auto;">
       <div class="panel" style="text-align:center;">
-        <span class="brand-pill mono">CIRCUITO360.CL SECURITY</span>
-        <h3 style="font-size:1.45rem;margin:.8rem 0 .3rem;">Acceso Admin / Árbitro</h3>
-        <p style="color:var(--muted);font-size:.78rem;margin-bottom:1.25rem;">Ingresa tu clave de <strong>Organizador/Árbitro</strong> o la llave <strong>Super Admin Global</strong>.</p>
+        <span class="brand-pill mono">CIRCUITO360.CL ADMIN</span>
+        <h3 style="font-size:1.45rem;margin:.8rem 0 .3rem;">Acceso Organizador / Super Admin</h3>
+        <p style="color:var(--muted);font-size:.82rem;margin-bottom:1.2rem;">Ingresa tu clave de Organizador o llave maestra.</p>
         <form onsubmit="procesarLogin(event)" style="display:flex;flex-direction:column;gap:.85rem;">
           <input type="password" id="inputClaveAdmin" required placeholder="Clave de acceso..." class="inp" style="text-align:center;">
-          <button type="submit" class="btn btn-gold">Entrar al Panel 🔓</button>
+          <button type="submit" class="btn btn-gold" style="padding:.8rem;">Entrar 🔓</button>
         </form>
       </div>
     </div>
 
     <div id="adminPanelBox" class="panel oculto">
-      <div id="barraSuperGod" class="card-sub oculto" style="background:linear-gradient(90deg,#311042,#0B1220);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.85rem;">
+      <!-- BARRA EXCLUSIVA SUPER ADMIN -->
+      <div id="barraSuperGod" class="card-sub oculto" style="background:linear-gradient(90deg,#311042,#0B1220);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;">
         <div>
-          <span style="background:var(--purple);color:#fff;font-weight:800;font-size:.66rem;padding:.2rem .55rem;border-radius:6px;">👑 SUPER ADMIN GLOBAL • CONTROL TOTAL</span>
-          <p style="font-size:.76rem;color:#E9D5FF;margin-top:.25rem;">Control absoluto de licencias, canchas, partidos, categorías libres, arbitraje y backups.</p>
+          <span style="background:var(--purple);color:#fff;font-weight:800;font-size:.68rem;padding:.22rem .55rem;border-radius:6px;">👑 SUPER ADMIN GLOBAL</span>
+          <p style="font-size:.78rem;color:#E9D5FF;margin-top:.25rem;">Herramientas avanzadas de gestión, Monitor TV, sonido y copias de seguridad.</p>
         </div>
         <div style="display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;">
-          <select id="selTorneoGod" onchange="cambiarTorneoActivo(this.value)" class="inp" style="width:260px;border-color:var(--purple);font-weight:700;"></select>
+          <select id="selTorneoGod" onchange="cambiarTorneoActivo(this.value)" class="inp" style="width:240px;border-color:var(--purple);font-weight:700;"></select>
           <button onclick="descargarBackupJSON()" class="btn btn-sm btn-blue">💾 Backup</button>
           <label class="btn btn-sm btn-gold" style="cursor:pointer;">📂 Restaurar<input type="file" accept=".json" onchange="restaurarBackupJSON(event)" style="display:none;"></label>
         </div>
       </div>
 
+      <!-- CABECERA OPERATIVA (AQUÍ VIVEN MONITOR TV, SONIDO Y ESTADO DE DB) -->
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem;">
+        <div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;">
+          <h2 style="font-size:1.25rem;font-weight:800;">🛠️ <span id="lblTorneoAdmin">--</span></h2>
+          <span id="badgeRol" style="background:var(--green);color:#030508;font-size:.68rem;font-weight:800;padding:.2rem .5rem;border-radius:5px;">ORGANIZADOR</span>
+          <span id="indicadorNubeSync" class="sync-pill mono">⏳ CONECTANDO...</span>
+        </div>
+        <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
+          <button onclick="cambiarVista('tv')" class="btn btn-sm btn-blue">📺 Monitor TV</button>
+          <button onclick="toggleAudio()" class="btn btn-sm" id="btnSound" style="background:#111A2E;color:#34D399;border:1px solid #334155;">🔊 Sonido: ON</button>
+          <button onclick="generarFixtureConIA(false)" class="btn btn-sm btn-ai">🤖 Generar Partidos IA</button>
+          <button onclick="guardarTodoAdmin()" class="btn btn-sm btn-green">✅ Guardar Todo</button>
+          <button onclick="cerrarSesion()" class="btn btn-sm btn-red">🔒 Salir</button>
+        </div>
+      </div>
+
+      <!-- CONTROL RÁPIDO -->
       <div class="card-sub" style="border-color:var(--primary);">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.65rem;">
-          <span class="mono" style="font-size:.73rem;font-weight:800;color:var(--primary);">⚡ CONTROL RÁPIDO EN VIVO (SE GUARDA Y SINCRONIZA EN TODOS LOS TELÉFONOS)</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem;">
+          <span class="mono" style="font-size:.73rem;font-weight:800;color:var(--primary);">⚡ CONTROL RÁPIDO EN VIVO</span>
           <span id="badgeSincronia" class="mono" style="font-size:.7rem;color:#34D399;font-weight:700;">🟢 Listo</span>
         </div>
         <div class="grid-auto" style="align-items:end;">
-          <div><label class="lbl" style="color:#10B981;">📅 Fecha Inicio</label><input type="date" id="qFechaIni" class="inp"></div>
-          <div><label class="lbl" style="color:#10B981;">📅 Fecha Fin</label><input type="date" id="qFechaFin" class="inp"></div>
-          <div><label class="lbl">⏰ Hora Inicio</label><input type="time" id="qHoraIni" class="inp"></div>
-          <div><label class="lbl" style="color:var(--primary);">🎾 N° Canchas</label><input type="number" id="qCanchas" min="1" max="30" class="inp"></div>
-          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos / Pareja</label><input type="number" id="qPartidos" min="1" max="12" class="inp"></div>
-          <div><label class="lbl" style="color:#38BDF8;">💲 Valor Dupla ($)</label><input type="number" id="qPrecio" class="inp"></div>
-          <div><button onclick="aplicarControlRapido()" class="btn btn-green" style="width:100%;">⚡ Guardar y Publicar</button></div>
+          <div><label class="lbl" style="color:#10B981;">📅 Inicio</label><input type="date" id="qFechaIni" class="inp"></div>
+          <div><label class="lbl" style="color:#10B981;">📅 Fin</label><input type="date" id="qFechaFin" class="inp"></div>
+          <div><label class="lbl">⏰ Hora</label><input type="time" id="qHoraIni" class="inp"></div>
+          <div><label class="lbl" style="color:var(--primary);">🎾 Canchas</label><input type="number" id="qCanchas" min="1" max="30" class="inp"></div>
+          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos/Dupla</label><input type="number" id="qPartidos" min="1" max="12" class="inp"></div>
+          <div><label class="lbl" style="color:#38BDF8;">💲 Precio ($)</label><input type="number" id="qPrecio" class="inp"></div>
+          <div><button onclick="aplicarControlRapido()" class="btn btn-green" style="width:100%;">⚡ Publicar</button></div>
         </div>
-        <p id="diagnosticoIA" class="mono" style="font-size:.71rem;color:var(--muted);margin-top:.55rem;"></p>
+        <p id="diagnosticoIA" class="mono" style="font-size:.7rem;color:var(--muted);margin-top:.55rem;"></p>
       </div>
 
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;margin-bottom:1rem;">
-        <div>
-          <h2 style="font-size:1.3rem;font-weight:800;">🛠️ <span id="lblTorneoAdmin">--</span></h2>
-          <span id="badgeRol" style="background:var(--green);color:#030508;font-size:.66rem;font-weight:800;padding:.18rem .5rem;border-radius:5px;">ORGANIZADOR</span>
-        </div>
-        <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
-          <button onclick="generarFixtureConIA(false)" class="btn btn-ai">🤖 Generar Partidos IA</button>
-          <button onclick="guardarTodoAdmin()" class="btn btn-green">✅ Guardar Todo en Nube</button>
-          <button onclick="cerrarSesion()" class="btn btn-red">🔒 Salir</button>
-        </div>
-      </div>
-
+      <!-- KPIs -->
       <div class="kpi-bar mono">
-        <div><div style="font-size:.63rem;color:#38BDF8;">💳 CAJA CONFIRMADA MP</div><div id="kpiCaja" style="font-size:1.2rem;font-weight:800;color:var(--green);">$0 CLP</div><div id="kpiPagosDet" style="font-size:.63rem;color:var(--muted);">0 🔴 • 0 🟡</div></div>
-        <div><div style="font-size:.63rem;color:var(--muted);">👥 INSCRITOS / CAPACIDAD</div><div id="kpiCupos" style="font-size:1.15rem;font-weight:800;color:var(--primary);">0 / 0</div></div>
-        <div><div style="font-size:.63rem;color:var(--muted);">⚙️ CONFIGURACIÓN ACTIVA</div><div id="kpiInfra" style="font-size:.95rem;font-weight:800;color:#C4B5FD;">--</div></div>
+        <div><div style="font-size:.64rem;color:#38BDF8;">💳 CAJA MERCADO PAGO</div><div id="kpiCaja" style="font-size:1.2rem;font-weight:800;color:var(--green);">$0 CLP</div><div id="kpiPagosDet" style="font-size:.64rem;color:var(--muted);">0 🔴 • 0 🟡</div></div>
+        <div><div style="font-size:.64rem;color:var(--muted);">👥 INSCRITOS / CUPOS</div><div id="kpiCupos" style="font-size:1.12rem;font-weight:800;color:var(--primary);">0 / 0</div></div>
+        <div><div style="font-size:.64rem;color:var(--muted);">⚙️ CONFIGURACIÓN</div><div id="kpiInfra" style="font-size:.9rem;font-weight:800;color:#C4B5FD;">--</div></div>
         <div>
-          <div style="font-size:.63rem;color:var(--muted);">🔗 ENLACE EXCLUSIVO TORNEO</div>
+          <div style="font-size:.64rem;color:var(--muted);">🔗 ENLACE PARA COMPARTIR</div>
           <div style="display:flex;gap:.35rem;margin-top:.2rem;">
-            <input type="text" id="inputShareLink" readonly class="inp" style="font-size:.68rem;padding:.25rem .45rem;">
+            <input type="text" id="inputShareLink" readonly class="inp" style="font-size:.7rem;padding:.28rem .45rem;">
             <button onclick="copiarTexto(document.getElementById('inputShareLink').value,'🔗 Link copiado')" class="btn btn-sm btn-green">Copiar</button>
           </div>
         </div>
       </div>
 
-      <div class="nav-btns" style="margin-bottom:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.85rem;">
+      <!-- PESTAÑAS INTERNAS ADMIN -->
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.15rem;border-bottom:1px solid var(--border);padding-bottom:.8rem;">
         <button onclick="setTabAdmin('arbitraje')" id="tabAdmArb" class="nav-btn active">⚖️ Arbitraje & Partidos</button>
         <button onclick="setTabAdmin('boxes')" id="tabAdmBox" class="nav-btn">🎾 Boxes & Pagos MP</button>
-        <button onclick="setTabAdmin('crm')" id="tabAdmCrm" class="nav-btn">👥 Inscritos (CRM & Excel)</button>
-        <button onclick="setTabAdmin('cms')" id="tabAdmCms" class="nav-btn">🎨 Categorías Libres, Canchas & MP</button>
+        <button onclick="setTabAdmin('crm')" id="tabAdmCrm" class="nav-btn">👥 Inscritos (CRM)</button>
+        <button onclick="setTabAdmin('cms')" id="tabAdmCms" class="nav-btn">🎨 Categorías & Config</button>
         <button onclick="setTabAdmin('sponsors')" id="tabAdmSpo" class="nav-btn">🤝 Sponsors & Ranking</button>
         <button onclick="setTabAdmin('saas')" id="tabAdmSaas" class="nav-btn oculto" style="background:rgba(168,85,247,.18);border-color:var(--purple);color:#E9D5FF;">👑 Consola Super Admin</button>
       </div>
@@ -342,31 +359,28 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <!-- 1. ARBITRAJE -->
       <div id="subArb">
         <div class="card-sub" style="border-color:#7C3AED;">
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.85rem;">
-            <div>
-              <h4 style="font-size:1.05rem;font-weight:800;color:#C4B5FD;">⚖️ Mesa de Control & Arbitraje de Partidos</h4>
-              <p style="font-size:.75rem;color:var(--muted);">Actualiza marcadores y estados en cancha; se reflejan en vivo en Monitor TV y Tabla.</p>
-            </div>
-            <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.65rem;margin-bottom:.8rem;">
+            <h4 style="font-size:1.05rem;font-weight:800;color:#C4B5FD;">⚖️ Mesa de Arbitraje en Vivo</h4>
+            <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
               <select id="selCatArb" onchange="renderAdminArbitraje()" class="inp" style="width:210px;font-weight:700;"></select>
-              <button onclick="generarFixtureConIA(false)" class="btn btn-ai">🤖 Auto-Generar Partidos</button>
+              <button onclick="generarFixtureConIA(false)" class="btn btn-sm btn-ai">🤖 Auto-Generar</button>
             </div>
           </div>
-          <div style="background:#04070D;padding:.85rem;border-radius:10px;border:1px solid var(--border);">
-            <div style="font-size:.72rem;font-weight:800;color:var(--primary);margin-bottom:.5rem;">➕ CREAR PARTIDO MANUAL (GRUPOS / PLAYOFFS / FINAL)</div>
+          <div style="background:#04070D;padding:.8rem;border-radius:10px;border:1px solid var(--border);">
+            <div style="font-size:.72rem;font-weight:800;color:var(--primary);margin-bottom:.45rem;">➕ CREAR PARTIDO MANUAL</div>
             <div class="grid-auto" style="align-items:end;">
               <div><label class="lbl">Fase</label><input type="text" id="newMatchFase" value="Fase de Grupos" class="inp"></div>
               <div><label class="lbl">Pareja A</label><select id="newMatchA" class="inp"></select></div>
               <div><label class="lbl">Pareja B</label><select id="newMatchB" class="inp"></select></div>
               <div><label class="lbl">Cancha</label><select id="newMatchCancha" class="inp"></select></div>
               <div><label class="lbl">Fecha y Hora</label><input type="datetime-local" id="newMatchFecha" class="inp"></div>
-              <div><button onclick="crearPartidoManual()" class="btn btn-green" style="width:100%;">+ Crear Partido</button></div>
+              <div><button onclick="crearPartidoManual()" class="btn btn-green" style="width:100%;">+ Crear</button></div>
             </div>
           </div>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Fase</th><th>Cruce</th><th>Cancha</th><th>Fecha / Hora</th><th>Estado</th><th>Marcador</th><th>Ganador</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Fase</th><th>Cruce</th><th>Cancha</th><th>Fecha/Hora</th><th>Estado</th><th>Marcador</th><th>Ganador</th><th>Acción</th></tr></thead>
             <tbody id="tbodyArbitraje"></tbody>
           </table>
         </div>
@@ -374,16 +388,16 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
 
       <!-- 2. BOXES -->
       <div id="subBox" class="oculto">
-        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.8rem;">
-          <div><h4 style="font-size:1.05rem;font-weight:800;">🎾 Administración de Boxes & Verificación MP</h4></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.75rem;">
+          <h4 style="font-size:1.05rem;font-weight:800;">🎾 Boxes & Aprobación de Pagos</h4>
           <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
-            <select id="selCatBoxes" onchange="renderAdminBoxes()" class="inp" style="width:220px;font-weight:700;"></select>
-            <button onclick="sincronizar();mostrarToast('✅ Boxes guardados')" class="btn btn-green">✅ Confirmar Cambios</button>
+            <select id="selCatBoxes" onchange="renderAdminBoxes()" class="inp" style="width:210px;font-weight:700;"></select>
+            <button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-green">✅ Confirmar</button>
           </div>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Box</th><th>Estado / Pago MP</th><th>Alias Dupla</th><th>Jugador 1 / Jugador 2</th><th>WhatsApp</th><th>Cancha</th><th>Acción</th></tr></thead>
+            <thead><tr><th>Box</th><th>Estado / Pago</th><th>Alias Dupla</th><th>Jugador 1 / Jugador 2</th><th>WhatsApp</th><th>Cancha</th><th>Acción</th></tr></thead>
             <tbody id="tbodyBoxes"></tbody>
           </table>
         </div>
@@ -392,74 +406,74 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <!-- 3. CRM -->
       <div id="subCrm" class="oculto">
         <div class="card-sub" style="border-color:#38BDF8;">
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.75rem;">
-            <div><h4 style="font-size:1.1rem;font-weight:800;">👥 Directorio Maestro de Inscritos</h4></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.75rem;">
+            <h4 style="font-size:1.05rem;font-weight:800;">👥 Nómina de Inscritos</h4>
             <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
-              <button onclick="exportarCSV()" class="btn btn-blue">📥 Exportar Excel (CSV)</button>
-              <button onclick="inscribirManualAdmin()" class="btn btn-green">+ Inscribir Pareja Manual</button>
+              <button onclick="exportarCSV()" class="btn btn-sm btn-blue">📥 Excel CSV</button>
+              <button onclick="inscribirManualAdmin()" class="btn btn-sm btn-green">+ Inscribir Manual</button>
             </div>
           </div>
           <div class="grid-auto">
-            <input type="text" id="buscadorCrm" oninput="renderAdminCRM()" placeholder="🔍 Buscar nombre, dupla, teléfono o folio..." class="inp">
+            <input type="text" id="buscadorCrm" oninput="renderAdminCRM()" placeholder="🔍 Buscar nombre, dupla o teléfono..." class="inp">
             <select id="filtroCatCrm" onchange="renderAdminCRM()" class="inp"></select>
           </div>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Categoría / Box</th><th>Pago MP / Folio</th><th>Dupla</th><th>Jugador 1</th><th>Jugador 2</th><th>PIN</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Categoría/Box</th><th>Pago/Folio</th><th>Dupla</th><th>Jugador 1</th><th>Jugador 2</th><th>PIN</th><th>Acciones</th></tr></thead>
             <tbody id="tbodyCrm"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 4. CATEGORÍAS LIBRES & CMS -->
+      <!-- 4. CATEGORÍAS LIBRES & CONFIG -->
       <div id="subCms" class="oculto">
         <div class="card-sub" style="border-color:var(--primary);">
-          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.85rem;">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.8rem;">
             <div>
-              <span style="background:rgba(212,175,55,.18);color:var(--primary);font-size:.66rem;font-weight:800;padding:.18rem .5rem;border-radius:5px;">LIBERTAD TOTAL • GUARDADO INMEDIATO</span>
-              <h4 style="font-size:1.05rem;font-weight:800;margin-top:.25rem;">🏆 Categorías, Cupos (2 a 128), Partidos por Pareja (1 a 12) y Precio</h4>
+              <span style="background:rgba(212,175,55,.18);color:var(--primary);font-size:.66rem;font-weight:800;padding:.18rem .5rem;border-radius:5px;">LIBERTAD TOTAL</span>
+              <h4 style="font-size:1.02rem;font-weight:800;margin-top:.2rem;">🏆 Categorías (2-128 Cupos, 1-12 Partidos por Dupla)</h4>
             </div>
-            <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;">
-              <input type="text" id="newCatNom" placeholder="Ej. 4ª Varones" class="inp" style="width:190px;">
-              <input type="number" id="newCatCupos" value="12" min="2" max="128" class="inp" style="width:85px;" title="Cupos">
-              <input type="number" id="newCatPartidos" value="3" min="1" max="12" class="inp" style="width:85px;" title="Partidos por pareja">
-              <button onclick="agregarCategoriaLibre()" class="btn btn-green">+ Agregar Categoría</button>
+            <div style="display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;">
+              <input type="text" id="newCatNom" placeholder="Ej. 4ª Varones" class="inp" style="width:170px;">
+              <input type="number" id="newCatCupos" value="12" min="2" max="128" class="inp" style="width:80px;" title="Cupos">
+              <input type="number" id="newCatPartidos" value="3" min="1" max="12" class="inp" style="width:80px;" title="Partidos por pareja">
+              <button onclick="agregarCategoriaLibre()" class="btn btn-sm btn-green">+ Agregar</button>
             </div>
           </div>
           <div id="listaCatsEditor" class="grid-2"></div>
         </div>
 
         <div class="card-sub" style="border-color:var(--mp);background:linear-gradient(90deg,rgba(0,158,227,.14),#060B14);">
-          <h4 style="color:#38BDF8;font-size:.95rem;margin-bottom:.75rem;">💳 Pasarela Oficial Mercado Pago</h4>
+          <h4 style="color:#38BDF8;font-size:.95rem;margin-bottom:.7rem;">💳 Pasarela Mercado Pago</h4>
           <div class="grid-auto">
             <div><label class="lbl" style="color:#FACC15;">Access Token (APP_USR-...)</label><input type="text" id="cfgMpToken" class="inp"></div>
-            <div><label class="lbl" style="color:#38BDF8;">Link de Respaldo (Opcional)</label><input type="text" id="cfgLinkPago" class="inp"></div>
+            <div><label class="lbl" style="color:#38BDF8;">Link Respaldo</label><input type="text" id="cfgLinkPago" class="inp"></div>
             <div><label class="lbl" style="color:var(--green);">Precio Base Dupla ($)</label><input type="number" id="cfgPrecio" class="inp"></div>
             <div><label class="lbl">Titular Cuenta</label><input type="text" id="cfgTitularMP" class="inp"></div>
           </div>
         </div>
 
         <div class="grid-auto">
-          <div><label class="lbl">Nombre del Torneo</label><input type="text" id="cfgNombre" class="inp"></div>
+          <div><label class="lbl">Nombre Torneo</label><input type="text" id="cfgNombre" class="inp"></div>
           <div><label class="lbl">Club / Marca</label><input type="text" id="cfgBadge" class="inp"></div>
-          <div><label class="lbl" style="color:var(--primary);">🎾 N° Canchas</label><input type="number" id="cfgCanchas" min="1" max="30" class="inp"></div>
-          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos / Pareja Base</label><input type="number" id="cfgPartidosBase" min="1" max="12" class="inp"></div>
-          <div><label class="lbl" style="color:var(--green);">📅 Fecha Inicio</label><input type="date" id="cfgFechaIni" class="inp"></div>
-          <div><label class="lbl" style="color:var(--green);">📅 Fecha Fin</label><input type="date" id="cfgFechaFin" class="inp"></div>
-          <div><label class="lbl">⏰ Hora Apertura</label><input type="time" id="cfgHoraIni" class="inp"></div>
-          <div><label class="lbl">⏰ Hora Cierre</label><input type="time" id="cfgHoraFin" class="inp"></div>
-          <div><label class="lbl">⏱️ Duración (min)</label><input type="number" id="cfgDuracion" min="15" max="120" class="inp"></div>
+          <div><label class="lbl" style="color:var(--primary);">🎾 Canchas</label><input type="number" id="cfgCanchas" min="1" max="30" class="inp"></div>
+          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos/Dupla</label><input type="number" id="cfgPartidosBase" min="1" max="12" class="inp"></div>
+          <div><label class="lbl" style="color:var(--green);">📅 Inicio</label><input type="date" id="cfgFechaIni" class="inp"></div>
+          <div><label class="lbl" style="color:var(--green);">📅 Fin</label><input type="date" id="cfgFechaFin" class="inp"></div>
+          <div><label class="lbl">⏰ Apertura</label><input type="time" id="cfgHoraIni" class="inp"></div>
+          <div><label class="lbl">⏰ Cierre</label><input type="time" id="cfgHoraFin" class="inp"></div>
+          <div><label class="lbl">⏱️ Min/Partido</label><input type="number" id="cfgDuracion" min="15" max="120" class="inp"></div>
           <div><label class="lbl">🛌 Descanso IA</label><input type="number" id="cfgDescanso" min="0" max="6" class="inp"></div>
           <div><label class="lbl">🎨 Color (Hex)</label><input type="text" id="cfgColor" class="inp"></div>
-          <div><label class="lbl">🖼️ Logo Torneo</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'logoTorneoImg')" class="inp" style="padding:.3rem;"></div>
-          <div><label class="lbl">📸 Foto Portada</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'heroCustomBase64')" class="inp" style="padding:.3rem;"></div>
-          <div style="grid-column:1/-1;"><label class="lbl">📍 Ubicación Google Maps</label><input type="text" id="cfgMapa" class="inp"></div>
-          <div style="grid-column:1/-1;"><label class="lbl">📢 Comunicado Oficial</label><input type="text" id="cfgComunicado" class="inp"></div>
+          <div><label class="lbl">🖼️ Logo</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'logoTorneoImg')" class="inp" style="padding:.3rem;"></div>
+          <div><label class="lbl">📸 Portada</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'heroCustomBase64')" class="inp" style="padding:.3rem;"></div>
+          <div style="grid-column:1/-1;"><label class="lbl">📍 Google Maps</label><input type="text" id="cfgMapa" class="inp"></div>
+          <div style="grid-column:1/-1;"><label class="lbl">📢 Comunicado Oficial (dejar vacío para ocultar)</label><input type="text" id="cfgComunicado" class="inp"></div>
           <div style="grid-column:1/-1;"><label class="lbl">📜 Reglamento (HTML)</label><textarea id="cfgReglamento" rows="3" class="inp"></textarea></div>
         </div>
         <div style="margin-top:1rem;text-align:right;">
-          <button onclick="guardarTodoAdmin()" class="btn btn-green" style="padding:.75rem 1.5rem;">✅ Guardar Configuración y Sincronizar</button>
+          <button onclick="guardarTodoAdmin()" class="btn btn-green" style="padding:.75rem 1.5rem;">✅ Guardar Configuración</button>
         </div>
       </div>
 
@@ -476,7 +490,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
           <div class="card-sub">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
               <h4>📊 Puntos Ranking</h4>
-              <button onclick="sincronizar();mostrarToast('✅ Ranking guardado')" class="btn btn-sm btn-green">✔ Guardar</button>
+              <button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-green">✔ Guardar</button>
             </div>
             <div id="editorRankings" style="display:flex;flex-direction:column;gap:.45rem;"></div>
           </div>
@@ -487,80 +501,82 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <div id="subSaas" class="oculto">
         <div class="card-sub" style="background:linear-gradient(135deg,#2E1065,#04070D);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
           <div>
-            <span style="background:var(--purple);color:#fff;padding:.2rem .55rem;border-radius:5px;font-size:.66rem;font-weight:800;">CONSOLA COMERCIAL SUPER ADMIN</span>
-            <h4 style="font-size:1.2rem;margin-top:.3rem;">👑 Gestión Global de Torneos & Licencias</h4>
+            <span style="background:var(--purple);color:#fff;padding:.2rem .55rem;border-radius:5px;font-size:.66rem;font-weight:800;">CONSOLA SUPER ADMIN</span>
+            <h4 style="font-size:1.15rem;margin-top:.3rem;">👑 Gestión Global de Torneos & Licencias</h4>
           </div>
-          <div class="mono" style="background:rgba(4,7,13,.75);padding:.8rem 1.1rem;border-radius:10px;border:1px solid var(--purple);text-align:right;">
+          <div class="mono" style="background:rgba(4,7,13,.75);padding:.75rem 1rem;border-radius:10px;border:1px solid var(--purple);text-align:right;">
             <div style="font-size:.63rem;color:#DDD6FE;">FACTURACIÓN LICENCIAS</div>
-            <div id="kpiSaasTotal" style="font-size:1.3rem;font-weight:800;color:var(--green);">$0 CLP</div>
+            <div id="kpiSaasTotal" style="font-size:1.25rem;font-weight:800;color:var(--green);">$0 CLP</div>
           </div>
         </div>
 
         <div class="card-sub">
-          <h5 style="color:var(--primary);margin-bottom:.75rem;">➕ Crear Nuevo Torneo</h5>
+          <h5 style="color:var(--primary);margin-bottom:.7rem;">➕ Crear Nuevo Torneo</h5>
           <div class="grid-auto">
             <div><label class="lbl">ID URL</label><input type="text" id="nsId" placeholder="copa-verano" class="inp"></div>
             <div><label class="lbl">Nombre Torneo</label><input type="text" id="nsNombre" placeholder="COPA AYRES OPEN" class="inp"></div>
             <div><label class="lbl">Club / Marca</label><input type="text" id="nsClub" placeholder="AYRES SPORTING CLUB" class="inp"></div>
             <div><label class="lbl">Contacto</label><input type="text" id="nsContacto" placeholder="@club" class="inp"></div>
-            <div><label class="lbl" style="color:var(--green);">📅 Fecha Inicio</label><input type="date" id="nsFIni" value="2026-12-05" class="inp"></div>
-            <div><label class="lbl" style="color:var(--green);">📅 Fecha Fin</label><input type="date" id="nsFFin" value="2026-12-06" class="inp"></div>
-            <div><label class="lbl">⏰ Hora Inicio</label><input type="time" id="nsHora" value="09:00" class="inp"></div>
+            <div><label class="lbl" style="color:var(--green);">📅 Inicio</label><input type="date" id="nsFIni" value="2026-12-12" class="inp"></div>
+            <div><label class="lbl" style="color:var(--green);">📅 Fin</label><input type="date" id="nsFFin" value="2026-12-13" class="inp"></div>
+            <div><label class="lbl">⏰ Hora</label><input type="time" id="nsHora" value="09:00" class="inp"></div>
             <div><label class="lbl" style="color:var(--primary);">🎾 Canchas</label><input type="number" id="nsCanchas" value="4" min="1" max="30" class="inp"></div>
-            <div><label class="lbl" style="color:#C4B5FD;">👥 Cupos x Cat</label><input type="number" id="nsCuposCat" value="12" min="2" max="128" class="inp"></div>
-            <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos / Pareja</label><input type="number" id="nsPartidos" value="3" min="1" max="12" class="inp"></div>
-            <div><label class="lbl">🏆 Categorías (coma)</label><input type="text" id="nsCats" value="DAMAS D, DAMAS C, MIXTO 7 6 Y 5" class="inp"></div>
-            <div><label class="lbl" style="color:#38BDF8;">💳 Token APP_USR</label><input type="text" id="nsMp" class="inp"></div>
-            <div><label class="lbl">💲 Valor Dupla ($)</label><input type="number" id="nsPrecio" value="70000" class="inp"></div>
-            <div><label class="lbl" style="color:#FACC15;">🔑 Clave Org.</label><input type="text" id="nsClave" value="1234" class="inp"></div>
+            <div><label class="lbl" style="color:#C4B5FD;">👥 Cupos/Cat</label><input type="number" id="nsCuposCat" value="12" min="2" max="128" class="inp"></div>
+            <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos</label><input type="number" id="nsPartidos" value="3" min="1" max="12" class="inp"></div>
+            <div><label class="lbl">🏆 Categorías</label><input type="text" id="nsCats" value="DAMAS D, DAMAS C, MIXTO" class="inp"></div>
+            <div><label class="lbl" style="color:#38BDF8;">💳 Token MP</label><input type="text" id="nsMp" class="inp"></div>
+            <div><label class="lbl">💲 Valor ($)</label><input type="number" id="nsPrecio" value="70000" class="inp"></div>
+            <div><label class="lbl" style="color:#FACC15;">🔑 Clave</label><input type="text" id="nsClave" value="1234" class="inp"></div>
             <div><label class="lbl" style="color:var(--green);">💵 Licencia ($)</label><input type="number" id="nsLic" value="0" class="inp"></div>
-            <div style="display:flex;align-items:end;"><button onclick="crearTorneoSaas()" class="btn btn-green" style="width:100%;">✅ Crear & Guardar</button></div>
+            <div style="display:flex;align-items:end;"><button onclick="crearTorneoSaas()" class="btn btn-green" style="width:100%;">✅ Crear</button></div>
           </div>
         </div>
 
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Estado</th><th>Torneo / ID</th><th>Clave</th><th>Canchas</th><th>Partidos</th><th>Inicio</th><th>Fin</th><th>Enlace</th><th>Control</th></tr></thead>
+            <thead><tr><th>Estado</th><th>Torneo</th><th>Clave</th><th>Canchas</th><th>Part.</th><th>Inicio</th><th>Fin</th><th>Link</th><th>Control</th></tr></thead>
             <tbody id="tbodySaas"></tbody>
           </table>
         </div>
       </div>
-
     </div>
   </div>
 </div>
 </div>
 
+<!-- FOOTER CON ACCESO DISCRETO PARA ADMIN / SUPER ADMIN -->
 <footer>
-  <div style="max-width:1380px;margin:0 auto;padding:1.6rem 1rem;text-align:center;">
-    <div class="mono" style="font-size:.68rem;color:var(--muted);margin-bottom:.75rem;text-transform:uppercase;">Auspiciadores Oficiales</div>
-    <div style="overflow:hidden;width:100%;"><div id="carruselSponsors" class="animate-scroll" style="gap:1.5rem;align-items:center;"></div></div>
-    <div class="mono" style="font-size:.7rem;color:#64748B;margin-top:1.2rem;">© 2026 <strong>CIRCUITO360.CL</strong> • Plataforma Online Sincronizada de Pádel.</div>
+  <div style="max-width:1280px;margin:0 auto;padding:1.4rem 1rem;text-align:center;">
+    <div id="sponsorsWrap" style="margin-bottom:1.1rem;">
+      <div class="mono" style="font-size:.68rem;color:var(--muted);margin-bottom:.65rem;text-transform:uppercase;">Auspiciadores</div>
+      <div style="overflow:hidden;width:100%;"><div id="carruselSponsors" class="animate-scroll" style="gap:1.25rem;align-items:center;"></div></div>
+    </div>
+    <div style="display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;font-size:.76rem;color:#64748B;">
+      <span class="mono">© 2026 <strong>CIRCUITO360.CL</strong></span>
+      <button onclick="cambiarVista('admin')" style="background:none;border:1px solid #1E293B;color:#94A3B8;padding:.3rem .7rem;border-radius:7px;cursor:pointer;font-size:.74rem;font-weight:700;">⚙️ Acceso Organizador / Admin</button>
+    </div>
   </div>
 </footer>
 
-<!-- MODAL INSCRIPCIÓN -->
+<!-- MODAL INSCRIPCIÓN (OPTIMIZADO PARA CELULAR) -->
 <div id="modalInscripcion" class="modal-bg oculto">
-  <div class="panel" style="max-width:540px;width:100%;position:relative;max-height:94vh;overflow-y:auto;border-color:var(--mp);">
-    <button onclick="cerrarModal()" style="position:absolute;top:.85rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.5rem;cursor:pointer;">&times;</button>
-    <div style="display:flex;gap:.45rem;flex-wrap:wrap;margin-bottom:.5rem;">
-      <span id="modalBoxLabel" style="background:rgba(212,175,55,.16);color:var(--primary);padding:.22rem .6rem;border-radius:6px;font-size:.7rem;font-weight:800;">Box #1</span>
-      <span style="background:rgba(0,158,227,.18);color:#38BDF8;padding:.22rem .6rem;border-radius:6px;font-size:.7rem;font-weight:800;">💳 Reserva Protegida 10 Min</span>
-    </div>
-    <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:.25rem;">Inscripción Oficial de Jugadores</h3>
-    <p style="font-size:.75rem;color:var(--muted);margin-bottom:.85rem;">Elige categoría y cupo disponible. Tu Box pasará a <strong>🔴 INSCRITO</strong> tras el pago en Mercado Pago.</p>
+  <div class="panel" style="max-width:520px;width:100%;position:relative;max-height:94vh;overflow-y:auto;border-color:var(--mp);">
+    <button onclick="cerrarModal()" style="position:absolute;top:.75rem;right:.95rem;background:none;border:none;color:var(--muted);font-size:1.8rem;cursor:pointer;line-height:1;">&times;</button>
+    <span id="modalBoxLabel" style="display:inline-block;background:rgba(212,175,55,.18);color:var(--primary);padding:.26rem .65rem;border-radius:6px;font-size:.76rem;font-weight:800;margin-bottom:.45rem;">Box #1</span>
+    <h3 style="font-size:1.35rem;font-weight:900;margin-bottom:.25rem;">Inscripción y Pago</h3>
+    <p style="font-size:.84rem;color:var(--muted);margin-bottom:.9rem;">Completa los datos para reservar tu cupo con Mercado Pago.</p>
 
-    <form id="formInsc" onsubmit="procesarInscripcion(event)" style="display:flex;flex-direction:column;gap:.65rem;">
-      <div class="grid-auto" style="grid-template-columns:1fr 1fr;">
+    <form id="formInsc" onsubmit="procesarInscripcion(event)" style="display:flex;flex-direction:column;gap:.75rem;">
+      <div class="form-2col">
         <div><label class="lbl" style="color:var(--primary);">Categoría</label><select id="modSelCat" onchange="actualizarSelectorBoxesModal()" class="inp"></select></div>
         <div><label class="lbl" style="color:var(--green);">Box Disponible</label><select id="modSelBox" class="inp"></select></div>
       </div>
 
-      <div><label class="lbl" style="color:var(--primary);">Nombre de la Dupla / Equipo</label><input type="text" id="inAlias" required placeholder="Ej. Team Ayres Pro" class="inp"></div>
+      <div><label class="lbl" style="color:var(--primary);">Nombre de la Dupla / Equipo</label><input type="text" id="inAlias" required placeholder="Ej. Team Ayres" class="inp"></div>
 
-      <div style="background:#060B14;padding:.65rem;border-radius:10px;border:1px solid var(--border);">
-        <div style="font-size:.68rem;font-weight:800;color:#38BDF8;margin-bottom:.35rem;">👤 JUGADOR 1</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;">
+      <div style="background:#060B14;padding:.75rem;border-radius:11px;border:1px solid var(--border);">
+        <div style="font-size:.76rem;font-weight:800;color:#38BDF8;margin-bottom:.45rem;">👤 JUGADOR 1</div>
+        <div class="form-2col">
           <input type="text" id="inJ1" required placeholder="Nombre y Apellido" class="inp">
           <input type="tel" id="inTel1" required placeholder="WhatsApp (+569...)" class="inp">
           <input type="email" id="inMail1" placeholder="Email (Opcional)" class="inp">
@@ -568,9 +584,9 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
       </div>
 
-      <div style="background:#060B14;padding:.65rem;border-radius:10px;border:1px solid var(--border);">
-        <div style="font-size:.68rem;font-weight:800;color:var(--green);margin-bottom:.35rem;">👤 JUGADOR 2</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;">
+      <div style="background:#060B14;padding:.75rem;border-radius:11px;border:1px solid var(--border);">
+        <div style="font-size:.76rem;font-weight:800;color:var(--green);margin-bottom:.45rem;">👤 JUGADOR 2</div>
+        <div class="form-2col">
           <input type="text" id="inJ2" required placeholder="Nombre y Apellido" class="inp">
           <input type="tel" id="inTel2" required placeholder="WhatsApp (+569...)" class="inp">
           <input type="email" id="inMail2" placeholder="Email (Opcional)" class="inp">
@@ -578,30 +594,30 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
       </div>
 
-      <div style="background:#04070D;border:1px solid var(--mp);border-radius:11px;padding:.8rem;">
-        <div style="display:flex;justify-content:space-between;font-size:.7rem;margin-bottom:.45rem;">
-          <span style="color:#38BDF8;font-weight:800;">💳 PAGO MERCADO PAGO</span>
-          <span id="modTitular" class="mono" style="color:var(--muted);">Club Oficial</span>
+      <div style="background:#04070D;border:1px solid var(--mp);border-radius:12px;padding:.85rem;">
+        <div style="display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:.5rem;">
+          <span style="color:#38BDF8;font-weight:800;">💳 MERCADO PAGO</span>
+          <span id="modTitular" style="color:var(--muted);">Club Oficial</span>
         </div>
-        <select id="modPagoTipo" onchange="actualizarPrecioModal()" class="inp" style="margin-bottom:.45rem;border-color:var(--mp);font-weight:700;">
+        <select id="modPagoTipo" onchange="actualizarPrecioModal()" class="inp" style="margin-bottom:.55rem;border-color:var(--mp);font-weight:700;">
           <option value="total">Pagar Dupla Completa (100%)</option>
           <option value="mitad">Pagar Mi Mitad (50% Individual)</option>
         </select>
-        <div class="mono" style="display:flex;justify-content:space-between;align-items:center;padding-top:.3rem;border-top:1px solid var(--border);">
-          <span style="font-size:.8rem;">Total a Pagar:</span>
-          <strong id="modPrecioLbl" style="color:var(--green);font-size:1.05rem;">$70.000 CLP</strong>
+        <div class="mono" style="display:flex;justify-content:space-between;align-items:center;padding-top:.4rem;border-top:1px solid var(--border);">
+          <span style="font-size:.9rem;">Total a Pagar:</span>
+          <strong id="modPrecioLbl" style="color:var(--green);font-size:1.25rem;">$70.000 CLP</strong>
         </div>
       </div>
 
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;">
-        <div><label class="lbl">PIN de la Dupla (4 dígitos)</label><input type="password" id="inPin" required placeholder="Ej. 1234" class="inp"></div>
-        <div><label class="lbl">Foto Dupla (Opcional)</label><input type="file" accept="image/*" id="inFoto" class="inp" style="padding:.3rem;"></div>
+      <div class="form-2col">
+        <div><label class="lbl">PIN de Seguridad (4 dígitos)</label><input type="password" id="inPin" required placeholder="Ej. 1234" class="inp"></div>
+        <div><label class="lbl">Foto Dupla (Opcional)</label><input type="file" accept="image/*" id="inFoto" class="inp" style="padding:.4rem;"></div>
       </div>
 
-      <label style="display:flex;align-items:center;gap:.45rem;font-size:.73rem;color:var(--muted);cursor:pointer;">
-        <input type="checkbox" required> Acepto el reglamento y confirmo que el cupo se activa al pagar en Mercado Pago.
+      <label style="display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:#CBD5E1;cursor:pointer;">
+        <input type="checkbox" required style="width:18px;height:18px;"> Acepto el reglamento del torneo.
       </label>
-      <button type="submit" id="btnSubmitMP" class="btn btn-mp" style="width:100%;padding:.85rem;font-size:.9rem;">🎾 INSCRIBIRTE Y PAGAR EN MERCADO PAGO →</button>
+      <button type="submit" id="btnSubmitMP" class="btn btn-mp" style="width:100%;padding:1rem;font-size:1rem;">💳 PAGAR E INSCRIBIRME →</button>
     </form>
   </div>
 </div>
@@ -611,38 +627,28 @@ const SUPER_KEY = 'supergod2026';
 const EXPIRA_MS = 10 * 60 * 1000;
 const DEFAULT_MP_TOKEN = 'APP_USR-6343439635613247-111721-d62e99775b7b52b629d88e2540c6e3dd-2521587898';
 const HERO_IMGS = [
-  'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=2000&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=85&w=2000&auto=format&fit=crop',
-  'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=85&w=2000&auto=format&fit=crop'
+  'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=85&w=1600&auto=format&fit=crop',
+  'https://images.unsplash.com/photo-1595435934249-5df7ed86e1c0?q=85&w=1600&auto=format&fit=crop'
 ];
 
-let saasDB = null;
-let db = null;
-let catActiva = '';
-let catLlavesActiva = '';
-let rolAdmin = null;
-let ultimoWhatsApp = '';
-let sonidoOn = true;
-let audioCtx = null;
-
-let saveQueue = Promise.resolve();
-let pendingSaves = 0;
-let lastLocalMutationAt = 0;
-let localRev = 0;
-let inicializadoServidor = false;
+let saasDB = null, db = null, catActiva = '', catLlavesActiva = '', rolAdmin = null;
+let ultimoWhatsApp = '', sonidoOn = true, audioCtx = null;
+let saveQueue = Promise.resolve(), pendingSaves = 0, lastLocalMutationAt = 0, localRev = 0, inicializadoServidor = false;
 
 const urlParams = new URLSearchParams(window.location.search);
 const paramTorneo = urlParams.get('torneo');
 
+function esc(s){ return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
 function fmtCL(iso){ if(!iso||!iso.includes('-')) return iso||''; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; }
 function fmtFechaHora(iso){ if(!iso||!iso.includes('T')) return `${fmtCL(db?.config?.fechaInicio)} ${db?.config?.horaApertura||'09:00'} hrs`; const [f,h]=iso.split('T'); return `${fmtCL(f)} ${h.slice(0,5)} hrs`; }
 function parseLocalTs(fIso, hStr){
-  const [y,m,d]=(fIso||'2026-12-05').split('-').map(Number);
+  const [y,m,d]=(fIso||'2026-12-12').split('-').map(Number);
   const [hh,mm]=(hStr||'09:00').split(':').map(Number);
-  return new Date(y, (m||1)-1, d||1, hh||0, mm||0, 0).getTime();
+  return new Date(y,(m||1)-1,d||1,hh||0,mm||0,0).getTime();
 }
 function sumarDias(iso, n){
-  const [y,m,d]=(iso||'2026-12-05').split('-').map(Number);
+  const [y,m,d]=(iso||'2026-12-12').split('-').map(Number);
   const dt=new Date(y,(m||1)-1,(d||1)+n);
   return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
 }
@@ -657,11 +663,11 @@ function sonarPelota(){
     if(!audioCtx) return; if(audioCtx.state==='suspended') audioCtx.resume();
     const now=audioCtx.currentTime, o=audioCtx.createOscillator(), g=audioCtx.createGain();
     o.type='sine'; o.frequency.setValueAtTime(230,now); o.frequency.exponentialRampToValueAtTime(70,now+.08);
-    g.gain.setValueAtTime(.2,now); g.gain.exponentialRampToValueAtTime(.001,now+.085);
+    g.gain.setValueAtTime(.18,now); g.gain.exponentialRampToValueAtTime(.001,now+.085);
     o.connect(g); g.connect(audioCtx.destination); o.start(now); o.stop(now+.09);
   }catch(e){}
 }
-function toggleAudio(){ sonidoOn=!sonidoOn; const b=document.getElementById('btnSound'); b.innerText=sonidoOn?'🔊 ON':'🔇 OFF'; if(sonidoOn) sonarPelota(); }
+function toggleAudio(){ sonidoOn=!sonidoOn; const b=document.getElementById('btnSound'); if(b) b.innerText=sonidoOn?'🔊 Sonido: ON':'🔇 Sonido: OFF'; if(sonidoOn) sonarPelota(); }
 document.addEventListener('click',e=>{ if(e.target.closest('button')||e.target.closest('.box-verde')) sonarPelota(); });
 
 let slideIdx=0;
@@ -671,7 +677,7 @@ setInterval(()=>{
   sl.forEach(s=>s.classList.remove('active-slide'));
   slideIdx=(slideIdx+1)%sl.length;
   sl[slideIdx].classList.add('active-slide');
-},6000);
+},6500);
 
 function crearCupos(tid, cKey, cant, fBase, hBase, nCanchas){
   const nc=Math.max(1,Number(nCanchas)||4);
@@ -684,10 +690,10 @@ function crearCupos(tid, cKey, cant, fBase, hBase, nCanchas){
 }
 
 function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFin, hIni, nCanchas, precioInsc, catsStr, mpVal, cuposDef, partidosDef){
-  const fi=fIni||'2026-12-05', ff=(fFin&&fFin>=fi)?fFin:sumarDias(fi,1), hi=hIni||'09:00';
+  const fi=fIni||'2026-12-12', ff=(fFin&&fFin>=fi)?fFin:sumarDias(fi,1), hi=hIni||'09:00';
   const nc=Math.max(1,Number(nCanchas)||4), cupN=Math.max(2,Number(cuposDef)||16), partN=Math.max(1,Math.min(12,Number(partidosDef)||3));
   const esTok=mpVal&&mpVal.includes('APP_USR-');
-  const catsArr=(catsStr||'DAMAS 7 6 Y 5, VARONES 7 6 Y 5, MIXTO 7 6 Y 5').split(',').map(s=>s.trim()).filter(Boolean);
+  const catsArr=(catsStr||'DAMAS D, DAMAS C, MIXTO 7 6 Y 5').split(',').map(s=>s.trim()).filter(Boolean);
   const categorias=(catsArr.length?catsArr:['General']).map((nom,idx)=>({
     key:`cat_${idx+1}_${nom.toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,12)}`,
     nombre:nom, maxCupos:cupN, partidosGarantizados:partN, precioCustom:0
@@ -704,8 +710,8 @@ function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFi
       precioInscripcion:Number(precioInsc)||70000, totalCanchas:nc, partidosGarantizados:partN,
       duracionPartido:45, turnosDescansoIA:2, fechaInicio:fi, fechaFin:ff, horaApertura:hi, horaCierre:'21:00',
       categorias, googleMapsQuery:'Chicureo Colina Santiago Chile',
-      comunicado:`¡Bienvenidos a ${nombre||'COPA AYRES OPEN'}! Inscripciones y arbitraje sincronizados en vivo.`,
-      reglamento:'1. W.O. estricto a los 10 minutos.<br>2. El cupo queda confirmado en rojo tras la aprobación de Mercado Pago.<br>3. Arbitraje y tabla de posiciones en vivo.'
+      comunicado:'',
+      reglamento:'1. W.O. estricto a los 10 minutos.<br>2. El cupo queda confirmado tras la aprobación de Mercado Pago.<br>3. Horarios y tabla actualizados en vivo.'
     },
     sponsors:[
       {nombre:'Chicureo Motors',url:'https://www.google.com',logoText:'🚗 CHICUREO MOTORS',logoImg:''},
@@ -719,21 +725,22 @@ function initDefaultDB(){
   return {
     rev:0, lastUpdated:0, torneoActivoId:'copa',
     torneos:{
-      copa:crearTorneoBase('copa','COPA AYRES OPEN','AYRES SPORTING CLUB','1234','@ayres.cl',0,'2026-12-05','2026-12-06','09:00',4,70000,'DAMAS 7 6 Y 5, VARONES 7 6 Y 5, MIXTO 7 6 Y 5',DEFAULT_MP_TOKEN,16,3)
+      copa:crearTorneoBase('copa','COPA AYRES OPEN','AYRES SPORTING CLUB','1234','@ayres.cl',0,'2026-12-12','2026-12-13','09:00',4,70000,'DAMAS D, DAMAS C, MIXTO 7 6 Y 5',DEFAULT_MP_TOKEN,12,3)
     }
   };
 }
 
 function asegurarIntegridad(){
   if(!db.config.categorias||!db.config.categorias.length){
-    db.config.categorias=[{key:'cat_1',nombre:'Categoría General',maxCupos:16,partidosGarantizados:3,precioCustom:0}];
+    db.config.categorias=[{key:'cat_1',nombre:'Categoría General',maxCupos:12,partidosGarantizados:3,precioCustom:0}];
   }
   if(!db.cupos) db.cupos={};
   if(!db.partidos) db.partidos={};
+  if(!db.puntosExtraRanking) db.puntosExtraRanking={};
   if(!db.config.partidosGarantizados) db.config.partidosGarantizados=3;
   if(!db.config.mpAccessToken||!db.config.mpAccessToken.startsWith('APP_USR-')) db.config.mpAccessToken=DEFAULT_MP_TOKEN;
   db.config.categorias.forEach(c=>{
-    if(!c.maxCupos||c.maxCupos<2) c.maxCupos=16;
+    if(!c.maxCupos||c.maxCupos<2) c.maxCupos=12;
     if(!c.partidosGarantizados||c.partidosGarantizados<1) c.partidosGarantizados=db.config.partidosGarantizados||3;
     if(!db.cupos[c.key]) db.cupos[c.key]=crearCupos(db.id,c.key,c.maxCupos,db.config.fechaInicio,db.config.horaApertura,db.config.totalCanchas);
     if(!db.partidos[c.key]) db.partidos[c.key]=[];
@@ -751,19 +758,16 @@ function setSyncBadge(txt, col){
   const bs=document.getElementById('badgeSincronia');
   if(bs){ bs.innerText=txt; bs.style.color=col; }
 }
-
 function actualizarBadgeStorage(mode){
   if(mode==='POSTGRES_PERMANENT') setSyncBadge('☁️ DB PERMANENTE OK','#34D399');
   else setSyncBadge('⚠️ SYNC VIVO (FALTA DB)','#F59E0B');
 }
-
 function usuarioEscribiendoEnAdmin(){
   const a=document.activeElement;
-  if(!a) return false;
-  return !!a.closest('#adminPanelBox') && ['INPUT','TEXTAREA','SELECT'].includes(a.tagName);
+  return !!a && !!a.closest('#adminPanelBox') && ['INPUT','TEXTAREA','SELECT'].includes(a.tagName);
 }
 
-// COLA SECUENCIAL DE GUARDADO ANTI-REBOTE
+// --- COLA SECUENCIAL ANTI-REBOTE ---
 function empujarNube(){
   asegurarIntegridad();
   saasDB.torneos[saasDB.torneoActivoId]=db;
@@ -774,27 +778,17 @@ function empujarNube(){
   const snapshot=JSON.stringify(saasDB);
   saveQueue=saveQueue.then(async ()=>{
     try{
-      const r=await fetch('/api/state',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:snapshot
-      });
+      const r=await fetch('/api/state',{method:'POST',headers:{'Content-Type':'application/json'},body:snapshot});
       const ct=r.headers.get('content-type')||'';
-      if(!r.ok || !ct.includes('application/json')) throw new Error('API no disponible');
+      if(!r.ok || !ct.includes('application/json')) throw new Error();
       const j=await r.json();
       if(j.ok){
         if(j.rev){ saasDB.rev=j.rev; localRev=j.rev; }
         if(j.lastUpdated) saasDB.lastUpdated=j.lastUpdated;
         actualizarBadgeStorage(j.storageMode);
-      } else {
-        setSyncBadge('❌ ERROR AL GUARDAR','#EF4444');
-      }
-    }catch(e){
-      setSyncBadge('❌ SIN SERVIDOR API','#EF4444');
-    }finally{
-      pendingSaves=Math.max(0, pendingSaves-1);
-      lastLocalMutationAt=Date.now();
-    }
+      } else setSyncBadge('❌ ERROR GUARDADO','#EF4444');
+    }catch(e){ setSyncBadge('❌ SIN SERVIDOR API','#EF4444'); }
+    finally{ pendingSaves=Math.max(0,pendingSaves-1); lastLocalMutationAt=Date.now(); }
   });
   return saveQueue;
 }
@@ -805,44 +799,25 @@ async function consultarNube(inicial=false){
   try{
     const r=await fetch('/api/state?t='+reqStart,{cache:'no-store'});
     if(r.status===404){
-      if(inicial){
-        saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
-        recalcularHorariosBoxes();
-        await empujarNube();
-        inicializadoServidor=true;
-        refrescarTodoUI(true);
-      }
+      if(inicial){ saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId]; recalcularHorariosBoxes(); await empujarNube(); inicializadoServidor=true; refrescarTodoUI(true); }
       return;
     }
     const ct=r.headers.get('content-type')||'';
-    if(!r.ok || !ct.includes('application/json')){
-      setSyncBadge('❌ SIN SERVIDOR API','#EF4444');
-      return;
-    }
+    if(!r.ok || !ct.includes('application/json')){ setSyncBadge('❌ SIN SERVIDOR API','#EF4444'); return; }
     const res=await r.json();
     actualizarBadgeStorage(res.storageMode);
 
     if(res.empty){
-      if(inicial){
-        saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
-        recalcularHorariosBoxes();
-        await empujarNube();
-        inicializadoServidor=true;
-        refrescarTodoUI(true);
-      }
+      if(inicial){ saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId]; recalcularHorariosBoxes(); await empujarNube(); inicializadoServidor=true; refrescarTodoUI(true); }
       return;
     }
-
     if(!inicial && (pendingSaves>0 || lastLocalMutationAt>reqStart)) return;
 
     const rem=res.state || (res.torneos ? res : null);
     if(rem && rem.torneos){
       const remRev=Number(rem.rev)||Number(rem.lastUpdated)||0;
-      const esMasNuevo = inicial || !inicializadoServidor || (remRev > localRev);
-      if(esMasNuevo){
-        localRev=remRev;
-        inicializadoServidor=true;
-        saasDB=rem;
+      if(inicial || !inicializadoServidor || remRev>localRev){
+        localRev=remRev; inicializadoServidor=true; saasDB=rem;
         if(paramTorneo && saasDB.torneos[paramTorneo]) saasDB.torneoActivoId=paramTorneo;
         else if(!saasDB.torneos[saasDB.torneoActivoId]) saasDB.torneoActivoId=Object.keys(saasDB.torneos)[0];
         db=saasDB.torneos[saasDB.torneoActivoId];
@@ -850,37 +825,23 @@ async function consultarNube(inicial=false){
         refrescarTodoUI(!usuarioEscribiendoEnAdmin());
       }
     }
-  }catch(e){
-    setSyncBadge('❌ SIN CONEXIÓN API','#EF4444');
-  }
+  }catch(e){ setSyncBadge('❌ SIN CONEXIÓN','#EF4444'); }
 }
 
 function sincronizar(){ empujarNube(); refrescarTodoUI(false); }
-
-function refrescarTodoUI(incluirFormsAdmin){
-  aplicarCMS();
-  renderPublico();
-  renderPartidosYTabla();
-  renderTV();
-  if(rolAdmin && incluirFormsAdmin){
-    cargarFormsAdmin();
-    renderAdminArbitraje();
-    renderAdminBoxes();
-    renderAdminCRM();
-    renderSponsorsYRankAdmin();
-    if(rolAdmin==='SUPERGOD') renderSaas();
-  }
+function refrescarTodoUI(incluirForms){
+  aplicarCMS(); renderPublico(); renderPartidosYTabla(); renderTV();
+  if(rolAdmin && incluirForms){ cargarFormsAdmin(); renderAdminArbitraje(); renderAdminBoxes(); renderAdminCRM(); renderSponsorsYRankAdmin(); if(rolAdmin==='SUPERGOD') renderSaas(); }
 }
-
 setInterval(()=>consultarNube(false), 2500);
 
+// --- SLOTS & FIXTURE IA ---
 function generarSlots(){
-  const fi=db.config.fechaInicio||'2026-12-05', ff=(db.config.fechaFin&&db.config.fechaFin>=fi)?db.config.fechaFin:fi;
+  const fi=db.config.fechaInicio||'2026-12-12', ff=(db.config.fechaFin&&db.config.fechaFin>=fi)?db.config.fechaFin:fi;
   const [ah,am]=(db.config.horaApertura||'09:00').split(':').map(Number);
   const [ch,cm]=(db.config.horaCierre||'21:00').split(':').map(Number);
   const minA=(ah||9)*60+(am||0), minC=(ch||21)*60+(cm||0);
-  const dur=Math.max(15,Number(db.config.duracionPartido)||45);
-  const nc=Math.max(1,Number(db.config.totalCanchas)||4);
+  const dur=Math.max(15,Number(db.config.duracionPartido)||45), nc=Math.max(1,Number(db.config.totalCanchas)||4);
   const dias=Math.max(1,Math.round((parseLocalTs(ff,'12:00')-parseLocalTs(fi,'12:00'))/86400000)+1);
   const slots=[];
   for(let d=0;d<dias;d++){
@@ -895,8 +856,7 @@ function generarSlots(){
 
 function recalcularHorariosBoxes(){
   asegurarIntegridad();
-  const {slots,nc}=generarSlots();
-  if(!slots.length) return;
+  const {slots,nc}=generarSlots(); if(!slots.length) return;
   let idx=0;
   db.config.categorias.forEach(cat=>{
     const arr=db.cupos[cat.key]||[];
@@ -911,129 +871,113 @@ function recalcularHorariosBoxes(){
 
 function generarFixtureConIA(silencioso){
   recalcularHorariosBoxes();
-  const {slots,nc}=generarSlots();
-  if(!slots.length) return;
+  const {slots,nc}=generarSlots(); if(!slots.length) return;
   const desc=Math.max(0,Number(db.config.turnosDescansoIA)||1);
-  const ultimoBloque={};
-  let totalGenerados=0;
-
+  const ultimoBloque={}; let totalGen=0;
   db.config.categorias.forEach(cat=>{
     const inscritos=(db.cupos[cat.key]||[]).filter(c=>c.ocupado && c.estadoPagoMP==='PAGADO_MP' && c.alias);
-    const nPartidosCat=Math.max(1, Math.min(12, Number(cat.partidosGarantizados)||Number(db.config.partidosGarantizados)||3));
-    const preservados=(db.partidos[cat.key]||[]).filter(p=>p.manual || p.estado==='Finalizado 🏁' || p.estado==='Jugando 🔴');
+    const nPart=Math.max(1,Math.min(12,Number(cat.partidosGarantizados)||Number(db.config.partidosGarantizados)||3));
+    const pres=(db.partidos[cat.key]||[]).filter(p=>p.manual||p.estado==='Finalizado 🏁'||p.estado==='Jugando 🔴');
     const nuevos=[];
     if(inscritos.length>=2){
-      const paresUsados={}, conteoDupla={};
-      inscritos.forEach(d=>conteoDupla[d.id]=0);
-      for(let r=1; r<=nPartidosCat; r++){
-        const orden=[...inscritos];
-        for(let i=0; i<orden.length; i++){
-          const A=orden[i];
-          if(conteoDupla[A.id]>=nPartidosCat) continue;
+      const pares={}, cont={}; inscritos.forEach(d=>cont[d.id]=0);
+      for(let r=1;r<=nPart;r++){
+        for(let i=0;i<inscritos.length;i++){
+          const A=inscritos[i]; if(cont[A.id]>=nPart) continue;
           let B=null;
-          for(let step=1; step<orden.length; step++){
-            const cand=orden[(i+step)%orden.length];
-            const kPair=[Math.min(A.id,cand.id),Math.max(A.id,cand.id)].join('-');
-            if(cand.id!==A.id && conteoDupla[cand.id]<nPartidosCat && !paresUsados[kPair]){ B=cand; break; }
+          for(let step=1;step<inscritos.length;step++){
+            const cand=inscritos[(i+step)%inscritos.length];
+            const k=[Math.min(A.id,cand.id),Math.max(A.id,cand.id)].join('-');
+            if(cand.id!==A.id && cont[cand.id]<nPart && !pares[k]){ B=cand; break; }
           }
-          if(!B){
-            for(let step=1; step<orden.length; step++){
-              const cand=orden[(i+step)%orden.length];
-              if(cand.id!==A.id && conteoDupla[cand.id]<nPartidosCat){ B=cand; break; }
-            }
+          if(!B) for(let step=1;step<inscritos.length;step++){
+            const cand=inscritos[(i+step)%inscritos.length];
+            if(cand.id!==A.id && cont[cand.id]<nPart){ B=cand; break; }
           }
           if(!B) continue;
-          paresUsados[[Math.min(A.id,B.id),Math.max(A.id,B.id)].join('-')]=true;
-          conteoDupla[A.id]++; conteoDupla[B.id]++;
-
+          pares[[Math.min(A.id,B.id),Math.max(A.id,B.id)].join('-')]=true;
+          cont[A.id]++; cont[B.id]++;
           const idA=`${cat.key}_${A.id}`, idB=`${cat.key}_${B.id}`;
-          const minB=Math.min(slots.length-1, Math.max(
-            ultimoBloque[idA]!==undefined ? ultimoBloque[idA]+desc+1 : 0,
-            ultimoBloque[idB]!==undefined ? ultimoBloque[idB]+desc+1 : 0
-          ));
-          let asignado=false;
-          for(let b=minB; b<slots.length; b++){
-            for(let c=1; c<=nc; c++){
+          const minB=Math.min(slots.length-1,Math.max(ultimoBloque[idA]!==undefined?ultimoBloque[idA]+desc+1:0,ultimoBloque[idB]!==undefined?ultimoBloque[idB]+desc+1:0));
+          let ok=false;
+          for(let b=minB;b<slots.length;b++){
+            for(let c=1;c<=nc;c++){
               const cn=`Cancha #${c}`;
               if(!slots[b].occ[cn]){
                 slots[b].occ[cn]=true; ultimoBloque[idA]=b; ultimoBloque[idB]=b;
-                nuevos.push({
-                  id:`m_${Date.now()}_${Math.random().toString(36).slice(2,6)}`,
-                  fase:`Ronda #${r}`, boxA:A.id, aliasA:A.alias, boxB:B.id, aliasB:B.alias,
-                  cancha:cn, fechaHora:slots[b].iso, estado:'Programado', marcador:'', ganador:'', manual:false
-                });
+                nuevos.push({id:`m_${Date.now()}_${Math.random().toString(36).slice(2,6)}`,fase:`Ronda #${r}`,boxA:A.id,aliasA:A.alias,boxB:B.id,aliasB:B.alias,cancha:cn,fechaHora:slots[b].iso,estado:'Programado',marcador:'',ganador:'',manual:false});
                 if(r===1){ A.horaInicioMatch=slots[b].iso; A.cancha=cn; B.horaInicioMatch=slots[b].iso; B.cancha=cn; }
-                totalGenerados++; asignado=true; break;
+                totalGen++; ok=true; break;
               }
             }
-            if(asignado) break;
+            if(ok) break;
           }
-          if(!asignado){
+          if(!ok){
             const sl=slots[slots.length-1];
-            nuevos.push({
-              id:`m_${Date.now()}_${Math.random().toString(36).slice(2,6)}`,
-              fase:`Ronda #${r}`, boxA:A.id, aliasA:A.alias, boxB:B.id, aliasB:B.alias,
-              cancha:'Cancha #1', fechaHora:sl.iso, estado:'Programado', marcador:'', ganador:'', manual:false
-            });
-            totalGenerados++;
+            nuevos.push({id:`m_${Date.now()}_${Math.random().toString(36).slice(2,6)}`,fase:`Ronda #${r}`,boxA:A.id,aliasA:A.alias,boxB:B.id,aliasB:B.alias,cancha:'Cancha #1',fechaHora:sl.iso,estado:'Programado',marcador:'',ganador:'',manual:false});
+            totalGen++;
           }
         }
       }
     }
-    db.partidos[cat.key]=[...preservados, ...nuevos];
+    db.partidos[cat.key]=[...pres,...nuevos];
   });
-  sincronizar();
-  renderAdminArbitraje();
-  if(!silencioso) mostrarToast(`🤖 Fixture IA generado: ${totalGenerados} partidos.`);
+  sincronizar(); renderAdminArbitraje();
+  if(!silencioso) mostrarToast(`🤖 Fixture generado: ${totalGen} partidos.`);
 }
 
+// --- RENDER PÚBLICO ---
 function aplicarCMS(){
   asegurarIntegridad();
   document.documentElement.style.setProperty('--primary', db.config.colorPrimary||'#D4AF37');
   document.getElementById('bannerSuspendida').classList.toggle('oculto', db.licenciaMeta?.estado!=='SUSPENDIDA');
 
   const p=(db.config.nombreTorneo||'TORNEO').split(' ');
-  document.getElementById('navTitle').innerHTML=`${p.slice(0,2).join(' ')} <span>${p.slice(2).join(' ')}</span>`;
-  document.getElementById('badgeOrgNav').innerText=db.config.badgeOrg||'CLUB';
+  document.getElementById('navTitle').innerHTML=`${esc(p.slice(0,2).join(' '))} <span>${esc(p.slice(2).join(' '))}</span>`;
   document.getElementById('pageTitle').innerText=`CIRCUITO360.CL | ${db.config.nombreTorneo}`;
-  document.getElementById('navLogoContainer').innerHTML=db.config.logoTorneoImg?`<img src="${db.config.logoTorneoImg}" style="height:34px;border-radius:6px;">`:'';
-  document.getElementById('heroClubTag').innerText=`🎾 ${db.config.badgeOrg}`;
-  document.getElementById('heroMainTitle').innerHTML=`${db.config.nombreTorneo} <span>• ${db.config.badgeOrg}</span>`;
-  document.getElementById('heroSubtitleBadge').innerText=`📅 ${fmtCL(db.config.fechaInicio)} AL ${fmtCL(db.config.fechaFin)} • ⏰ ${db.config.horaApertura}-${db.config.horaCierre} • 🎾 ${db.config.totalCanchas} CANCHAS • ⚔️ ${db.config.partidosGarantizados} PARTIDOS • 🏆 ${db.config.categorias.length} CAT`;
-  document.getElementById('labelFechaReloj').innerText=`${fmtCL(db.config.fechaInicio)} ${db.config.horaApertura} HRS`;
+  document.getElementById('navLogoContainer').innerHTML=db.config.logoTorneoImg?`<img src="${db.config.logoTorneoImg}" style="height:30px;border-radius:6px;">`:'';
+  document.getElementById('heroClubTag').innerText=db.config.badgeOrg||'CLUB OFICIAL';
+  document.getElementById('heroMainTitle').innerText=db.config.nombreTorneo||'TORNEO DE PÁDEL';
+  document.getElementById('heroSubtitleBadge').innerText=`📅 ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)} • 🎾 ${db.config.totalCanchas} Canchas`;
+  document.getElementById('labelFechaReloj').innerText=`${fmtCL(db.config.fechaInicio)} • ${db.config.horaApertura} hrs`;
   document.getElementById('tvCanchasLbl').innerText=db.config.totalCanchas||4;
   document.getElementById('heroSlide0').src=db.config.heroCustomBase64||HERO_IMGS[0];
 
-  const catsTxt=db.config.categorias.map(c=>`${c.nombre} (${c.maxCupos} duplas, ${c.partidosGarantizados} partidos)`).join(' · ');
-  document.getElementById('textoCronogramaPublico').innerHTML=`<strong>📅 FECHAS:</strong> ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}<br><strong>⏰ HORARIO:</strong> ${db.config.horaApertura} a ${db.config.horaCierre} hrs (${db.config.duracionPartido} min/partido)<br><strong>🎾 CANCHAS:</strong> ${db.config.totalCanchas} simultáneas<br><strong>🏆 CATEGORÍAS:</strong> ${catsTxt}`;
+  const catsTxt=db.config.categorias.map(c=>`${esc(c.nombre)} (${c.maxCupos} duplas)`).join(' · ');
+  document.getElementById('textoCronogramaPublico').innerHTML=`<strong>📅 Fechas:</strong> ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}<br><strong>⏰ Horario:</strong> ${esc(db.config.horaApertura)} a ${esc(db.config.horaCierre)} hrs<br><strong>🎾 Canchas:</strong> ${db.config.totalCanchas}<br><strong>🏆 Categorías:</strong> ${catsTxt}`;
   document.getElementById('textoReglamentoPublico').innerHTML=db.config.reglamento||'';
   if(db.config.googleMapsQuery) document.getElementById('mapaIframe').src=`https://maps.google.com/maps?q=${encodeURIComponent(db.config.googleMapsQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
 
   const banC=document.getElementById('bannerComunicaciones');
-  if(db.config.comunicado){ banC.classList.remove('oculto'); document.getElementById('textoComunicado').innerText=db.config.comunicado; }
+  if(db.config.comunicado && db.config.comunicado.trim()){ banC.classList.remove('oculto'); document.getElementById('textoComunicado').innerText=db.config.comunicado; }
   else banC.classList.add('oculto');
 
-  const spHtml=(db.sponsors||[]).map(s=>`<a href="${s.url||'#'}" target="_blank" style="background:#111A2E;padding:.55rem 1.2rem;border-radius:12px;border:1px solid var(--border);display:flex;align-items:center;text-decoration:none;">${s.logoImg?`<img src="${s.logoImg}" style="height:42px;object-fit:contain;">`:`<strong style="color:#fff;font-size:.9rem;">${s.logoText||s.nombre}</strong>`}</a>`).join('');
-  document.getElementById('carruselSponsors').innerHTML=spHtml+spHtml;
+  const spWrap=document.getElementById('sponsorsWrap');
+  if(db.sponsors && db.sponsors.length){
+    spWrap.classList.remove('oculto');
+    const spHtml=db.sponsors.map(s=>`<a href="${esc(s.url||'#')}" target="_blank" style="background:#111A2E;padding:.5rem 1.1rem;border-radius:11px;border:1px solid var(--border);display:flex;align-items:center;text-decoration:none;">${s.logoImg?`<img src="${s.logoImg}" style="height:38px;object-fit:contain;">`:`<strong style="color:#fff;font-size:.88rem;">${esc(s.logoText||s.nombre)}</strong>`}</a>`).join('');
+    document.getElementById('carruselSponsors').innerHTML=spHtml+spHtml;
+  } else spWrap.classList.add('oculto');
 
-  renderTabsCategorias();
-  actualizarKPIs();
-  actualizarRelojes();
+  renderTabsCategorias(); actualizarKPIs(); actualizarRelojes();
 }
 
 function renderTabsCategorias(){
   const cats=db.config.categorias;
-  document.getElementById('tabsCatPublico').innerHTML=cats.map(c=>`<button onclick="catActiva='${c.key}';renderTabsCategorias();renderPublico();" class="tab-cat ${catActiva===c.key?'active':''}">${c.nombre} (${c.maxCupos})</button>`).join('');
-  document.getElementById('tabsCatLlaves').innerHTML=cats.map(c=>`<button onclick="catLlavesActiva='${c.key}';renderTabsCategorias();renderPartidosYTabla();" class="tab-cat ${catLlavesActiva===c.key?'active':''}">${c.nombre}</button>`).join('');
+  document.getElementById('tabsCatPublico').innerHTML=cats.map(c=>{
+    const libres=(db.cupos[c.key]||[]).filter(x=>!x.ocupado).length;
+    return `<button onclick="catActiva='${c.key}';renderTabsCategorias();renderPublico();" class="tab-cat ${catActiva===c.key?'active':''}">${esc(c.nombre)} (${libres} libres)</button>`;
+  }).join('');
+  document.getElementById('tabsCatLlaves').innerHTML=cats.map(c=>`<button onclick="catLlavesActiva='${c.key}';renderTabsCategorias();renderPartidosYTabla();" class="tab-cat ${catLlavesActiva===c.key?'active':''}">${esc(c.nombre)}</button>`).join('');
   ['selCatArb','selCatBoxes'].forEach(id=>{
     const el=document.getElementById(id); if(!el) return;
     const prev=cats.some(c=>c.key===el.value)?el.value:cats[0].key;
-    el.innerHTML=cats.map(c=>`<option value="${c.key}" ${prev===c.key?'selected':''}>${c.nombre} (${c.maxCupos} cupos • ${c.partidosGarantizados}p)</option>`).join('');
+    el.innerHTML=cats.map(c=>`<option value="${c.key}" ${prev===c.key?'selected':''}>${esc(c.nombre)} (${c.maxCupos})</option>`).join('');
   });
   const fc=document.getElementById('filtroCatCrm');
   if(fc){
     const prev=fc.value||'TODAS';
-    fc.innerHTML=`<option value="TODAS">📋 Todas las Categorías (${cats.length})</option>`+cats.map(c=>`<option value="${c.key}" ${prev===c.key?'selected':''}>🏆 ${c.nombre}</option>`).join('');
+    fc.innerHTML=`<option value="TODAS">📋 Todas (${cats.length})</option>`+cats.map(c=>`<option value="${c.key}" ${prev===c.key?'selected':''}>🏆 ${esc(c.nombre)}</option>`).join('');
   }
 }
 
@@ -1042,48 +986,47 @@ function renderPublico(){
   const lista=db.cupos[catActiva]||[], precio=getPrecioCat(catActiva), catObj=getCatObj(catActiva);
   grid.innerHTML=lista.map(c=>{
     if(c.ocupado && c.estadoPagoMP==='PAGADO_MP'){
-      const misP=(db.partidos[catActiva]||[]).filter(m=>m.boxA===c.id||m.boxB===c.id).slice(0,4);
-      const pHtml=misP.length?`<div class="mono" style="margin-top:.5rem;background:rgba(0,0,0,.35);padding:.45rem;border-radius:8px;font-size:.65rem;">${misP.map(m=>`<div>${m.fase}: ${fmtFechaHora(m.fechaHora).slice(0,11)} (${m.cancha}) vs ${m.boxA===c.id?m.aliasB:m.aliasA}</div>`).join('')}</div>`:'';
       return `<div class="box-card box-roja">
         <div class="status-badge bg-red">INSCRITO 🔴</div>
-        <div class="mono" style="font-size:.7rem;color:#fca5a5;margin-bottom:.45rem;">BOX #${c.id} • 🎾 ${c.cancha}</div>
-        <div style="display:flex;align-items:center;gap:.65rem;background:rgba(0,0,0,.32);padding:.65rem;border-radius:10px;">
-          <img src="${c.avatar}" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid var(--red);">
-          <div><div style="font-weight:800;">${c.alias}</div><div style="font-size:.7rem;color:#fca5a5;">👤 ${c.j1} / ${c.j2}</div><div style="font-size:.63rem;color:#34D399;font-weight:800;">💳 Pago Verificado</div></div>
+        <div class="box-top mono" style="color:#fecaca;">BOX #${c.id} • ${esc(c.cancha)}</div>
+        <div style="display:flex;align-items:center;gap:.8rem;background:rgba(0,0,0,.32);padding:.8rem;border-radius:12px;">
+          <img src="${c.avatar}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--red);flex-shrink:0;">
+          <div>
+            <div style="font-size:1.15rem;font-weight:900;">${esc(c.alias)}</div>
+            <div style="font-size:.9rem;color:#fecaca;margin-top:.1rem;">${esc(c.j1)} / ${esc(c.j2)}</div>
+          </div>
         </div>
-        ${pHtml}
-        <div class="mono" style="margin-top:.55rem;padding-top:.45rem;border-top:1px solid rgba(255,255,255,.1);font-size:.7rem;display:flex;justify-content:space-between;">
-          <span style="color:#fca5a5;">🕒 ${fmtFechaHora(c.horaInicioMatch)}</span>
+        <div class="mono" style="font-size:.86rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.14);padding-top:.6rem;">
+          <span>🕒 ${fmtFechaHora(c.horaInicioMatch)}</span>
           <strong class="box-cd" data-time="${c.horaInicioMatch}" style="color:#FACC15;">--</strong>
         </div>
       </div>`;
     }
     if(c.ocupado && c.estadoPagoMP==='RESERVANDO_MP'){
       return `<div class="box-card box-amarilla" onclick="retomarPago(${c.id})">
-        <div class="status-badge bg-yellow">PAGANDO EN MP ⏳</div>
-        <div class="mono" style="font-size:.7rem;color:#FDE68A;margin-bottom:.45rem;">BOX #${c.id} • 🎾 ${c.cancha}</div>
-        <div style="background:rgba(0,0,0,.32);padding:.75rem;border-radius:10px;">
-          <div style="font-weight:800;color:#FDE047;">⏳ ${c.alias}</div>
-          <div style="font-size:.7rem;color:#FEF3C7;">👤 ${c.j1} / ${c.j2}</div>
-          <p style="font-size:.66rem;color:#FDE68A;margin-top:.3rem;">Esperando pago en Mercado Pago. Haz clic para reabrir el cobro.</p>
+        <div class="status-badge bg-yellow">PAGANDO ⏳</div>
+        <div class="box-top mono" style="color:#FDE68A;">BOX #${c.id} • ${esc(c.cancha)}</div>
+        <div style="background:rgba(0,0,0,.32);padding:.85rem;border-radius:12px;">
+          <div style="font-size:1.1rem;font-weight:900;color:#FDE047;">⏳ ${esc(c.alias)}</div>
+          <div style="font-size:.88rem;color:#FEF3C7;margin-top:.15rem;">En proceso de pago en Mercado Pago</div>
         </div>
-        <div class="mono" style="margin-top:.65rem;display:flex;justify-content:space-between;align-items:center;font-size:.7rem;">
-          <span class="exp-cd" data-exp="${c.expiraReservaTimestamp||0}" style="color:#FDE047;font-weight:800;">⏱️ 10:00</span>
-          <span style="background:var(--mp);color:#fff;padding:.26rem .6rem;border-radius:6px;font-weight:800;">Pagar MP 💳</span>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.6rem;">
+          <span class="exp-cd mono" data-exp="${c.expiraReservaTimestamp||0}" style="color:#FDE047;font-size:.95rem;font-weight:800;">⏱️ 10:00</span>
+          <span class="btn btn-mp" style="padding:.6rem 1rem;font-size:.88rem;">Retomar Pago 💳</span>
         </div>
       </div>`;
     }
     return `<div class="box-card box-verde" onclick="abrirModalInscripcion('${catActiva}',${c.id})">
       <div class="status-badge bg-green">DISPONIBLE 🟢</div>
-      <div class="mono" style="font-size:.7rem;color:#6ee7b7;margin-bottom:.45rem;">BOX #${c.id} • 🎾 ${c.cancha}</div>
-      <div style="background:rgba(0,0,0,.22);padding:.85rem;border-radius:10px;text-align:center;">
-        <div style="font-size:1rem;font-weight:800;color:#34d399;">¡Cupo Disponible!</div>
-        <p style="font-size:.7rem;color:#a7f3d0;margin-top:.2rem;">${catObj.partidosGarantizados||db.config.partidosGarantizados} partidos garantizados • Reserva online.</p>
-        <div class="mono" style="font-size:.66rem;color:#FACC15;margin-top:.3rem;">🕒 Turno base: ${fmtFechaHora(c.horaInicioMatch)}</div>
+      <div class="box-top mono" style="color:#a7f3d0;">BOX #${c.id} • ${esc(c.cancha)}</div>
+      <div style="background:rgba(0,0,0,.22);padding:.9rem;border-radius:12px;">
+        <div style="font-size:1.18rem;font-weight:900;color:#6ee7b7;margin-bottom:.25rem;">Cupo Disponible</div>
+        <div style="font-size:.9rem;color:#d1fae5;">🎾 ${catObj.partidosGarantizados||db.config.partidosGarantizados} partidos garantizados</div>
+        <div class="mono" style="font-size:.84rem;color:#FDE047;margin-top:.3rem;">🕒 ${fmtFechaHora(c.horaInicioMatch)}</div>
       </div>
-      <div style="margin-top:.7rem;display:flex;justify-content:space-between;align-items:center;">
-        <span class="mono" style="font-size:.74rem;color:#a7f3d0;font-weight:700;">$${precio.toLocaleString('es-CL')} CLP</span>
-        <span style="background:var(--green);color:#030508;font-weight:900;padding:.35rem .85rem;border-radius:7px;font-size:.74rem;">INSCRIBIRTE 💳</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap;">
+        <div class="box-price mono">$${precio.toLocaleString('es-CL')}</div>
+        <span class="box-cta-btn" style="background:linear-gradient(135deg,#009EE3,#007EB5);color:#fff;flex:1;min-width:170px;">INSCRIBIRTE 💳</span>
       </div>
     </div>`;
   }).join('');
@@ -1092,7 +1035,7 @@ function renderPublico(){
 
 function renderPartidosYTabla(){
   const catObj=getCatObj(catLlavesActiva);
-  document.getElementById('resumenPublicoIA').innerText=`${catObj.nombre} • ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)} • ${db.config.totalCanchas} canchas • ${catObj.partidosGarantizados} partidos/pareja.`;
+  document.getElementById('resumenPublicoIA').innerText=`${catObj.nombre} • ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}`;
   const inscritos=(db.cupos[catLlavesActiva]||[]).filter(c=>c.ocupado && c.estadoPagoMP==='PAGADO_MP' && c.alias);
   const partidos=db.partidos[catLlavesActiva]||[];
 
@@ -1104,32 +1047,31 @@ function renderPartidosYTabla(){
       if(stats[m.boxB]){ stats[m.boxB].pj++; stats[m.boxB].ult=m.marcador||'OK'; if(m.ganador==='B'){stats[m.boxB].pg++;stats[m.boxB].pts+=3;} else {stats[m.boxB].pp++;stats[m.boxB].pts+=1;} }
     }
   });
-  const tabla=Object.values(stats).sort((a,b)=>b.pts-a.pts || b.pg-a.pg);
+  const tabla=Object.values(stats).sort((a,b)=>b.pts-a.pts||b.pg-a.pg);
   document.getElementById('tbodyPosiciones').innerHTML=tabla.length?tabla.map((f,i)=>`<tr>
     <td class="mono" style="color:var(--primary);font-weight:900;">#${i+1}</td>
-    <td><strong>⭐ ${f.alias}</strong></td>
-    <td style="color:#CBD5E1;">${f.j1} / ${f.j2}</td>
-    <td class="mono" style="color:#60A5FA;">Box #${f.id}</td>
+    <td><strong>${esc(f.alias)}</strong><div style="font-size:.76rem;color:var(--muted);">${esc(f.j1)} / ${esc(f.j2)}</div></td>
+    <td class="mono" style="color:#60A5FA;">#${f.id}</td>
     <td class="mono">${f.pj}</td><td class="mono" style="color:var(--green);">${f.pg}</td><td class="mono" style="color:var(--red);">${f.pp}</td>
-    <td class="mono" style="color:#FACC15;">${f.ult}</td>
-    <td class="mono" style="text-align:right;color:var(--green);font-weight:900;">${f.pts} PTS</td>
-  </tr>`).join(''):`<tr><td colspan="9" style="text-align:center;color:var(--muted);padding:1.2rem;">Sin parejas confirmadas aún en esta categoría.</td></tr>`;
+    <td class="mono" style="color:#FACC15;">${esc(f.ult)}</td>
+    <td class="mono" style="text-align:right;color:var(--green);font-weight:900;">${f.pts}</td>
+  </tr>`).join(''):`<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:1.2rem;">Sin parejas confirmadas aún.</td></tr>`;
 
   document.getElementById('contenedorPartidosPublico').innerHTML=partidos.length?partidos.map(m=>{
     const colEst=m.estado==='Jugando 🔴'?'var(--red)':(m.estado==='Finalizado 🏁'?'var(--green)':(m.estado==='Llamado a Cancha 📢'?'var(--amber)':'#3B82F6'));
-    return `<div class="panel" style="padding:1rem;">
-      <div class="mono" style="display:flex;justify-content:space-between;font-size:.68rem;margin-bottom:.5rem;">
-        <span style="color:var(--primary);font-weight:800;">${m.fase} • 🎾 ${m.cancha}</span>
-        <span style="background:${colEst};color:#fff;padding:.15rem .5rem;border-radius:5px;font-weight:800;">${m.estado}</span>
+    return `<div class="panel" style="padding:1.05rem;">
+      <div class="mono" style="display:flex;justify-content:space-between;font-size:.76rem;margin-bottom:.55rem;">
+        <span style="color:var(--primary);font-weight:800;">${esc(m.fase)} • ${esc(m.cancha)}</span>
+        <span style="background:${colEst};color:#fff;padding:.18rem .55rem;border-radius:6px;font-weight:800;">${esc(m.estado)}</span>
       </div>
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:#04070D;padding:.75rem;border-radius:10px;border:1px solid var(--border);">
-        <div style="font-weight:800;color:${m.ganador==='A'?'#34D399':'#fff'};">${m.ganador==='A'?'🏆 ':''}${m.aliasA}</div>
-        <span class="mono" style="color:var(--primary);font-weight:900;">${m.marcador||'VS'}</span>
-        <div style="font-weight:800;text-align:right;color:${m.ganador==='B'?'#34D399':'#fff'};">${m.aliasB}${m.ganador==='B'?' 🏆':''}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:#04070D;padding:.85rem;border-radius:11px;border:1px solid var(--border);font-size:1rem;">
+        <div style="font-weight:800;color:${m.ganador==='A'?'#34D399':'#fff'};">${m.ganador==='A'?'🏆 ':''}${esc(m.aliasA)}</div>
+        <span class="mono" style="color:var(--primary);font-weight:900;">${esc(m.marcador||'VS')}</span>
+        <div style="font-weight:800;text-align:right;color:${m.ganador==='B'?'#34D399':'#fff'};">${esc(m.aliasB)}${m.ganador==='B'?' 🏆':''}</div>
       </div>
-      <div class="mono" style="font-size:.68rem;color:var(--muted);margin-top:.45rem;">🕒 ${fmtFechaHora(m.fechaHora)}</div>
+      <div class="mono" style="font-size:.78rem;color:var(--muted);margin-top:.5rem;">🕒 ${fmtFechaHora(m.fechaHora)}</div>
     </div>`;
-  }).join(''):`<div class="panel" style="grid-column:1/-1;text-align:center;color:var(--muted);">Aún no hay partidos generados.</div>`;
+  }).join(''):`<div class="panel" style="grid-column:1/-1;text-align:center;color:var(--muted);font-size:.95rem;">Los partidos se publicarán al cerrar inscripciones.</div>`;
 }
 
 function renderTV(){
@@ -1137,42 +1079,26 @@ function renderTV(){
   const nc=Number(db.config.totalCanchas)||4;
   let cards='';
   for(let i=1;i<=nc;i++){
-    const cn=`Cancha #${i}`;
-    let live=null, prox=null, catN='';
-    db.config.categorias.forEach(c=>{
-      (db.partidos[c.key]||[]).forEach(m=>{
-        if(m.cancha===cn){
-          if(m.estado==='Jugando 🔴' || m.estado==='Llamado a Cancha 📢'){ live=m; catN=c.nombre; }
-          else if(!prox && m.estado==='Programado'){ prox=m; catN=c.nombre; }
-        }
-      });
-    });
+    const cn=`Cancha #${i}`; let live=null, prox=null, catN='';
+    db.config.categorias.forEach(c=>(db.partidos[c.key]||[]).forEach(m=>{
+      if(m.cancha===cn){
+        if(m.estado==='Jugando 🔴'||m.estado==='Llamado a Cancha 📢'){ live=m; catN=c.nombre; }
+        else if(!prox && m.estado==='Programado'){ prox=m; catN=c.nombre; }
+      }
+    }));
     if(live){
-      cards+=`<div class="box-card ${live.estado==='Jugando 🔴'?'box-roja':'box-amarilla'}">
-        <div class="status-badge ${live.estado==='Jugando 🔴'?'bg-red':'bg-yellow'}">${live.estado}</div>
-        <div class="mono" style="font-size:.72rem;">${cn} • ${catN} (${live.fase})</div>
-        <h4 style="font-size:1.15rem;margin:.5rem 0;">${live.aliasA} vs ${live.aliasB}</h4>
-        <div class="mono" style="font-size:1.1rem;color:#FACC15;font-weight:900;">Marcador: ${live.marcador||'0-0'}</div>
-      </div>`;
+      cards+=`<div class="box-card ${live.estado==='Jugando 🔴'?'box-roja':'box-amarilla'}"><div class="status-badge ${live.estado==='Jugando 🔴'?'bg-red':'bg-yellow'}">${esc(live.estado)}</div><div class="mono">${cn} • ${esc(catN)}</div><h4 style="font-size:1.25rem;">${esc(live.aliasA)} vs ${esc(live.aliasB)}</h4><div class="mono" style="font-size:1.3rem;color:#FACC15;font-weight:900;">${esc(live.marcador||'0-0')}</div></div>`;
     } else if(prox){
-      cards+=`<div class="box-card" style="background:#111A2E;border:2px solid #3B82F6;">
-        <div class="status-badge" style="background:#3B82F6;color:#fff;">PRÓXIMO</div>
-        <div class="mono" style="font-size:.72rem;color:#93C5FD;">${cn} • ${catN}</div>
-        <h4 style="font-size:1.05rem;margin:.45rem 0;">${prox.aliasA} vs ${prox.aliasB}</h4>
-        <div class="mono" style="font-size:.74rem;color:#CBD5E1;">🕒 ${fmtFechaHora(prox.fechaHora)}</div>
-      </div>`;
+      cards+=`<div class="box-card" style="background:#111A2E;border:2px solid #3B82F6;"><div class="status-badge" style="background:#3B82F6;color:#fff;">PRÓXIMO</div><div class="mono" style="color:#93C5FD;">${cn} • ${esc(catN)}</div><h4 style="font-size:1.15rem;">${esc(prox.aliasA)} vs ${esc(prox.aliasB)}</h4><div class="mono" style="color:#CBD5E1;">🕒 ${fmtFechaHora(prox.fechaHora)}</div></div>`;
     } else {
-      cards+=`<div class="box-card box-verde"><div class="status-badge bg-green">LIBRE 🟢</div><div class="mono" style="font-size:.72rem;">${cn}</div><h4 style="margin:.5rem 0;color:#34d399;">Cancha Disponible</h4></div>`;
+      cards+=`<div class="box-card box-verde"><div class="status-badge bg-green">LIBRE 🟢</div><div class="mono">${cn}</div><h4 style="font-size:1.15rem;color:#6ee7b7;">Cancha Disponible</h4></div>`;
     }
   }
   g.innerHTML=cards;
-
   const rank=[];
-  db.config.categorias.forEach(c=>(db.cupos[c.key]||[]).forEach(x=>{
-    if(x.ocupado&&x.estadoPagoMP==='PAGADO_MP'&&x.alias) rank.push({n:`${x.alias} (${c.nombre})`,pts:Number(db.puntosExtraRanking?.[x.alias])||1500});
-  }));
+  db.config.categorias.forEach(c=>(db.cupos[c.key]||[]).forEach(x=>{ if(x.ocupado&&x.estadoPagoMP==='PAGADO_MP'&&x.alias) rank.push({n:`${x.alias} (${c.nombre})`,pts:Number(db.puntosExtraRanking?.[x.alias])||1500}); }));
   rank.sort((a,b)=>b.pts-a.pts);
-  document.getElementById('tbodyRankingTV').innerHTML=rank.length?rank.map((r,i)=>`<tr><td class="mono" style="color:var(--primary);font-weight:800;">#${i+1}</td><td><strong>${r.n}</strong></td><td class="mono" style="text-align:right;color:var(--green);font-weight:800;">${r.pts} pts</td></tr>`).join(''):`<tr><td style="color:var(--muted);">Sin parejas confirmadas aún.</td></tr>`;
+  document.getElementById('tbodyRankingTV').innerHTML=rank.length?rank.map((r,i)=>`<tr><td class="mono" style="color:var(--primary);font-weight:800;">#${i+1}</td><td><strong>${esc(r.n)}</strong></td><td class="mono" style="text-align:right;color:var(--green);font-weight:800;">${r.pts} pts</td></tr>`).join(''):`<tr><td style="color:var(--muted);">Sin parejas confirmadas aún.</td></tr>`;
 }
 
 function actualizarRelojes(){
@@ -1193,14 +1119,14 @@ function actualizarRelojes(){
     if(d>0){
       const dd=Math.floor(d/86400000), hh=Math.floor((d%86400000)/3600000), mm=Math.floor((d%3600000)/60000), ss=Math.floor((d%60000)/1000);
       elG.innerText=`${dd}D : ${String(hh).padStart(2,'0')}H : ${String(mm).padStart(2,'0')}M : ${String(ss).padStart(2,'0')}S`;
-    } else elG.innerText='🎾 ¡TORNEO EN JUEGO!';
+    } else elG.innerText='🎾 ¡EN JUEGO!';
   }
   document.querySelectorAll('.box-cd').forEach(el=>{
     const raw=el.dataset.time||''; if(!raw.includes('T')) return;
     const [f,h]=raw.split('T'), df=parseLocalTs(f,h)-now;
     if(df>0){
       const dd=Math.floor(df/86400000), hh=Math.floor((df%86400000)/3600000), mm=Math.floor((df%3600000)/60000);
-      el.innerText=dd>0?`${dd}d ${hh}h ${mm}m`:`${hh}h ${mm}m`;
+      el.innerText=dd>0?`${dd}d ${hh}h`:`${hh}h ${mm}m`;
     } else el.innerText='🎾 Live';
   });
   document.querySelectorAll('.exp-cd').forEach(el=>{
@@ -1210,9 +1136,9 @@ function actualizarRelojes(){
 }
 setInterval(actualizarRelojes,1000);
 
+// --- INSCRIPCIÓN & MERCADO PAGO ---
 function abrirInscripcionRapida(){
-  const lista=db.cupos[catActiva]||[];
-  const libre=lista.find(c=>!c.ocupado);
+  const libre=(db.cupos[catActiva]||[]).find(c=>!c.ocupado);
   if(libre){ abrirModalInscripcion(catActiva, libre.id); return; }
   for(const cat of db.config.categorias){
     const l=(db.cupos[cat.key]||[]).find(c=>!c.ocupado);
@@ -1224,7 +1150,7 @@ function abrirInscripcionRapida(){
 function abrirModalInscripcion(cKey, boxId){
   if(db.licenciaMeta?.estado==='SUSPENDIDA'){ alert('⚠️ Inscripciones pausadas.'); return; }
   const selC=document.getElementById('modSelCat');
-  selC.innerHTML=db.config.categorias.map(c=>`<option value="${c.key}" ${c.key===cKey?'selected':''}>${c.nombre}</option>`).join('');
+  selC.innerHTML=db.config.categorias.map(c=>`<option value="${c.key}" ${c.key===cKey?'selected':''}>${esc(c.nombre)}</option>`).join('');
   actualizarSelectorBoxesModal(boxId);
   document.getElementById('modTitular').innerText=db.config.titularMP||db.config.badgeOrg;
   document.getElementById('modPagoTipo').value='total';
@@ -1236,11 +1162,7 @@ function actualizarSelectorBoxesModal(preferBoxId){
   const ck=document.getElementById('modSelCat').value;
   const libres=(db.cupos[ck]||[]).filter(c=>!c.ocupado);
   const selB=document.getElementById('modSelBox');
-  if(!libres.length){
-    selB.innerHTML=`<option value="">Sin cupos libres</option>`;
-  } else {
-    selB.innerHTML=libres.map(c=>`<option value="${c.id}" ${c.id===preferBoxId?'selected':''}>Box #${c.id} (${c.cancha} • ${fmtFechaHora(c.horaInicioMatch)})</option>`).join('');
-  }
+  selB.innerHTML=libres.length?libres.map(c=>`<option value="${c.id}" ${c.id===preferBoxId?'selected':''}>Box #${c.id} (${esc(c.cancha)})</option>`).join(''):`<option value="">Sin cupos libres</option>`;
   document.getElementById('modalBoxLabel').innerText=`${getCatObj(ck).nombre} • Box #${selB.value||'--'}`;
   actualizarPrecioModal();
 }
@@ -1254,20 +1176,23 @@ function actualizarPrecioModal(){
 
 function cerrarModal(){ document.getElementById('modalInscripcion').classList.add('oculto'); document.getElementById('formInsc').reset(); }
 
+function leerArchivoDataUrl(file){
+  return new Promise(res=>{ const r=new FileReader(); r.onload=ev=>res(ev.target.result); r.onerror=()=>res(null); r.readAsDataURL(file); });
+}
+
 async function procesarInscripcion(e){
   e.preventDefault();
-  const ck=document.getElementById('modSelCat').value;
-  const boxId=Number(document.getElementById('modSelBox').value);
+  const ck=document.getElementById('modSelCat').value, boxId=Number(document.getElementById('modSelBox').value);
   if(!boxId){ alert('⚠️ Elige una categoría con cupos libres.'); return; }
 
   const btn=document.getElementById('btnSubmitMP');
-  btn.disabled=true; btn.innerText='⏳ Verificando cupo y conectando a MP...';
+  btn.disabled=true; btn.innerText='⏳ Verificando cupo y abriendo Mercado Pago...';
 
   await consultarNube(true);
   const cupo=(db.cupos[ck]||[]).find(x=>x.id===boxId);
   if(!cupo || cupo.ocupado){
-    btn.disabled=false; btn.innerText='🎾 INSCRIBIRTE Y PAGAR EN MERCADO PAGO →';
-    alert('⚠️ Otro jugador reservó ese Box recién. Elige otro cupo disponible.');
+    btn.disabled=false; btn.innerText='💳 PAGAR E INSCRIBIRME →';
+    alert('⚠️ Otro jugador tomó ese Box hace un instante. Elige otro disponible.');
     actualizarSelectorBoxesModal(); return;
   }
 
@@ -1276,20 +1201,19 @@ async function procesarInscripcion(e){
   const t1=document.getElementById('inTel1').value.trim(), t2=document.getElementById('inTel2').value.trim();
   const m1=document.getElementById('inMail1').value.trim(), m2=document.getElementById('inMail2').value.trim();
   const ig1=document.getElementById('inIg1').value.trim(), ig2=document.getElementById('inIg2').value.trim();
-  const pin=document.getElementById('inPin').value.trim();
-  const tipo=document.getElementById('modPagoTipo').value;
+  const pin=document.getElementById('inPin').value.trim(), tipo=document.getElementById('modPagoTipo').value;
   const base=getPrecioCat(ck), monto=tipo==='mitad'?Math.round(base/2):base;
   const folio=`C360-${Math.floor(100000+Math.random()*900000)}`;
+
+  let avatarData=cupo.avatar;
+  const fIn=document.getElementById('inFoto');
+  if(fIn.files && fIn.files[0]){ const img=await leerArchivoDataUrl(fIn.files[0]); if(img) avatarData=img; }
 
   let urlMP=cleanUrl(db.config.linkPago);
   try{
     const resp=await fetch('/api/mp/create-preference',{
       method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        torneoId:db.id, nombreTorneo:db.config.nombreTorneo, categoriaKey:ck,
-        categoriaNombre:getCatObj(ck).nombre, boxId, aliasDupla:alias, monto,
-        folioMP:folio, mpAccessToken:db.config.mpAccessToken||DEFAULT_MP_TOKEN, fallbackLink:db.config.linkPago
-      })
+      body:JSON.stringify({torneoId:db.id,nombreTorneo:db.config.nombreTorneo,categoriaKey:ck,categoriaNombre:getCatObj(ck).nombre,boxId,aliasDupla:alias,monto,folioMP:folio,mpAccessToken:db.config.mpAccessToken||DEFAULT_MP_TOKEN,fallbackLink:db.config.linkPago})
     });
     const d=await resp.json();
     if(resp.ok && d.init_point) urlMP=d.init_point;
@@ -1298,23 +1222,18 @@ async function procesarInscripcion(e){
   Object.assign(cupo,{
     ocupado:true, estadoPagoMP:'RESERVANDO_MP', expiraReservaTimestamp:Date.now()+EXPIRA_MS,
     folioMP:folio, urlCheckoutMP:urlMP, modalidadPago:tipo==='mitad'?'50%':'100%',
-    alias, j1, j2, tel1:t1, tel2:t2, email1:m1, email2:m2, redes1:ig1, redes2:ig2, pin
+    alias, j1, j2, tel1:t1, tel2:t2, email1:m1, email2:m2, redes1:ig1, redes2:ig2, pin, avatar:avatarData
   });
-
-  const fIn=document.getElementById('inFoto');
-  if(fIn.files && fIn.files[0]){
-    const r=new FileReader(); r.onload=ev=>{ cupo.avatar=ev.target.result; empujarNube(); }; r.readAsDataURL(fIn.files[0]);
-  }
   await empujarNube();
 
-  btn.disabled=false; btn.innerText='🎾 INSCRIBIRTE Y PAGAR EN MERCADO PAGO →';
-  ultimoWhatsApp=`🎾 *CIRCUITO360.CL*\n🏆 ${db.config.nombreTorneo} (${getCatObj(ck).nombre})\n⭐ Dupla: ${alias}\n👤 ${j1} / ${j2}\n📦 Box #${boxId} (${cupo.cancha})\n💳 Folio: ${folio}\n🔗 Pagar: ${urlMP}`;
+  btn.disabled=false; btn.innerText='💳 PAGAR E INSCRIBIRME →';
+  ultimoWhatsApp=`🎾 *${db.config.nombreTorneo}*\n🏆 ${getCatObj(ck).nombre}\n⭐ ${alias}\n👤 ${j1} / ${j2}\n📦 Box #${boxId}\n💳 Folio: ${folio}\n🔗 Pagar: ${urlMP}`;
 
   cerrarModal();
   document.getElementById('exFolio').innerText=folio;
   document.getElementById('exTorneoCat').innerText=`${db.config.nombreTorneo} • ${getCatObj(ck).nombre}`;
   document.getElementById('exAlias').innerText=alias;
-  document.getElementById('exJugadores').innerText=`${j1} (${t1}) & ${j2} (${t2})`;
+  document.getElementById('exJugadores').innerText=`${j1} & ${j2}`;
   document.getElementById('exBox').innerText=`Box #${boxId} • ${cupo.cancha}`;
   document.getElementById('exMonto').innerText=`$${monto.toLocaleString('es-CL')} CLP`;
   document.getElementById('btnIrMP').href=urlMP;
@@ -1322,7 +1241,13 @@ async function procesarInscripcion(e){
   window.location.href=urlMP;
 }
 
-function retomarPago(boxId){ const c=(db.cupos[catActiva]||[]).find(x=>x.id===boxId); if(c&&c.urlCheckoutMP) window.location.href=c.urlCheckoutMP; }
+function retomarPago(boxId){
+  const c=(db.cupos[catActiva]||[]).find(x=>x.id===boxId);
+  if(!c || !c.urlCheckoutMP) return;
+  if(confirm(`Este Box está reservado en proceso de pago por "${c.alias}".\n\n¿Eres tú y deseas continuar el pago en Mercado Pago?`)){
+    window.location.href=c.urlCheckoutMP;
+  }
+}
 function copiarWhatsAppJugador(){ if(ultimoWhatsApp) copiarTexto(ultimoWhatsApp,'📲 Ficha copiada'); }
 
 async function verificarRetornoMP(){
@@ -1335,23 +1260,25 @@ async function verificarRetornoMP(){
     if(st==='approved'||st==='success'){
       cupo.ocupado=true; cupo.estadoPagoMP='PAGADO_MP'; cupo.expiraReservaTimestamp=0;
       await empujarNube(); refrescarTodoUI(true);
-      mostrarToast(`🎉 ¡Pago aprobado! Box #${bid} inscrito en rojo.`);
+      mostrarToast(`🎉 ¡Pago aprobado! Box #${bid} inscrito.`);
     } else if(st==='failure'||st==='rejected'){
       cupo.ocupado=false; cupo.estadoPagoMP='LIBRE'; cupo.alias=''; cupo.j1=''; cupo.j2=''; cupo.expiraReservaTimestamp=0;
       await empujarNube(); refrescarTodoUI(true);
-      alert('⚠️ El pago no fue completado. El Box volvió a estar DISPONIBLE.');
+      alert('⚠️ El pago no se completó. El Box volvió a quedar disponible.');
     }
     window.history.replaceState({},document.title,`${window.location.pathname}?torneo=${t.id}`);
   }
 }
 
+// --- NAVEGACIÓN & ADMIN ---
 function cambiarVista(v){
   ['vistaPublica','vistaLlaves','vistaExito','vistaPremios','vistaTV','vistaAdmin'].forEach(id=>document.getElementById(id).classList.remove('activo'));
-  ['btnNavPub','btnNavLlaves','btnNavPrem','btnNavTV','btnNavAdmin'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
-  const map={publico:['vistaPublica','btnNavPub'],llaves:['vistaLlaves','btnNavLlaves'],exito:['vistaExito',''],premios:['vistaPremios','btnNavPrem'],tv:['vistaTV','btnNavTV'],admin:['vistaAdmin','btnNavAdmin']};
+  ['btnNavPub','btnNavLlaves','btnNavPrem'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
+  const map={publico:['vistaPublica','btnNavPub'],llaves:['vistaLlaves','btnNavLlaves'],exito:['vistaExito',''],premios:['vistaPremios','btnNavPrem'],tv:['vistaTV',''],admin:['vistaAdmin','']};
   const [vid,bid]=map[v]||['vistaPublica','btnNavPub'];
   document.getElementById(vid).classList.add('activo');
   if(bid) document.getElementById(bid).classList.add('active');
+  window.scrollTo({top:0,behavior:'instant'});
   if(v==='publico') renderPublico();
   if(v==='llaves') renderPartidosYTabla();
   if(v==='tv') renderTV();
@@ -1377,7 +1304,7 @@ function procesarLogin(e){
   }
   document.getElementById('inputClaveAdmin').value='';
   cambiarVista('admin');
-  mostrarToast(rolAdmin==='SUPERGOD'?'👑 Bienvenido Super Admin Global':'🎾 Acceso Organizador / Árbitro activo');
+  mostrarToast(rolAdmin==='SUPERGOD'?'👑 Super Admin activo':'🎾 Panel Admin activo');
 }
 
 function cerrarSesion(){ rolAdmin=null; cambiarVista('publico'); mostrarToast('🔒 Sesión cerrada'); }
@@ -1386,14 +1313,10 @@ function abrirPanelAdminUI(){
   document.getElementById('barraSuperGod').classList.toggle('oculto',rolAdmin!=='SUPERGOD');
   document.getElementById('tabAdmSaas').classList.toggle('oculto',rolAdmin!=='SUPERGOD');
   const br=document.getElementById('badgeRol');
-  br.innerText=rolAdmin==='SUPERGOD'?'👑 SUPER ADMIN GLOBAL':'🎾 ORGANIZADOR / ÁRBITRO';
+  br.innerText=rolAdmin==='SUPERGOD'?'👑 SUPER ADMIN':'🎾 ORGANIZADOR';
   br.style.background=rolAdmin==='SUPERGOD'?'var(--purple)':'var(--green)';
   br.style.color=rolAdmin==='SUPERGOD'?'#fff':'#030508';
-  cargarFormsAdmin();
-  renderAdminArbitraje();
-  renderAdminBoxes();
-  renderAdminCRM();
-  renderSponsorsYRankAdmin();
+  cargarFormsAdmin(); renderAdminArbitraje(); renderAdminBoxes(); renderAdminCRM(); renderSponsorsYRankAdmin();
   if(rolAdmin==='SUPERGOD') renderSaas();
 }
 
@@ -1414,36 +1337,30 @@ function setTabAdmin(tab){
 
 function actualizarKPIs(){
   let pag=0,proc=0,cap=0;
-  db.config.categorias.forEach(c=>{
-    const a=db.cupos[c.key]||[]; cap+=a.length;
-    a.forEach(x=>{ if(x.ocupado){ if(x.estadoPagoMP==='PAGADO_MP') pag++; else proc++; } });
-  });
+  db.config.categorias.forEach(c=>{ const a=db.cupos[c.key]||[]; cap+=a.length; a.forEach(x=>{ if(x.ocupado){ if(x.estadoPagoMP==='PAGADO_MP') pag++; else proc++; } }); });
   const elC=document.getElementById('kpiCaja'); if(!elC) return;
   elC.innerText=`$${(pag*(Number(db.config.precioInscripcion)||0)).toLocaleString('es-CL')} CLP`;
   document.getElementById('kpiPagosDet').innerText=`${pag} Pagados 🔴 • ${proc} Pagando 🟡`;
-  document.getElementById('kpiCupos').innerText=`${pag} Duplas (${pag*2} Jug.) / ${cap}`;
-  document.getElementById('kpiInfra').innerText=`${db.config.totalCanchas} Canchas • ${db.config.partidosGarantizados} Partidos • ${db.config.categorias.length} Cat`;
+  document.getElementById('kpiCupos').innerText=`${pag} Duplas / ${cap}`;
+  document.getElementById('kpiInfra').innerText=`${db.config.totalCanchas} Canchas • ${db.config.partidosGarantizados} Part. • ${db.config.categorias.length} Cat`;
   const {slots,dias,nc}=generarSlots();
-  document.getElementById('diagnosticoIA').innerText=`Almanaque: ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)} (${dias} días) • Capacidad: ${slots.length*nc} partidos en ${nc} canchas.`;
+  document.getElementById('diagnosticoIA').innerText=`${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)} (${dias} días) • Capacidad: ${slots.length*nc} partidos.`;
 }
 
 function cargarFormsAdmin(){
-  document.getElementById('lblTorneoAdmin').innerText=`${db.config.nombreTorneo} • ${db.config.badgeOrg}`;
+  document.getElementById('lblTorneoAdmin').innerText=`${db.config.nombreTorneo}`;
   document.getElementById('inputShareLink').value=`${window.location.origin}${window.location.pathname}?torneo=${db.id}`;
   const sg=document.getElementById('selTorneoGod');
-  if(sg) sg.innerHTML=Object.values(saasDB.torneos).map(t=>`<option value="${t.id}" ${t.id===saasDB.torneoActivoId?'selected':''}>[${t.licenciaMeta?.estado||'ACTIVA'}] ${t.config.nombreTorneo} (${fmtCL(t.config.fechaInicio)})</option>`).join('');
-
+  if(sg) sg.innerHTML=Object.values(saasDB.torneos).map(t=>`<option value="${t.id}" ${t.id===saasDB.torneoActivoId?'selected':''}>[${t.licenciaMeta?.estado||'ACTIVA'}] ${esc(t.config.nombreTorneo)}</option>`).join('');
   const setV=(id,v)=>{ const el=document.getElementById(id); if(el) el.value=v??''; };
   setV('qFechaIni',db.config.fechaInicio); setV('qFechaFin',db.config.fechaFin); setV('qHoraIni',db.config.horaApertura);
   setV('qCanchas',db.config.totalCanchas); setV('qPartidos',db.config.partidosGarantizados); setV('qPrecio',db.config.precioInscripcion);
-
   setV('cfgNombre',db.config.nombreTorneo); setV('cfgBadge',db.config.badgeOrg); setV('cfgCanchas',db.config.totalCanchas);
   setV('cfgPartidosBase',db.config.partidosGarantizados); setV('cfgFechaIni',db.config.fechaInicio); setV('cfgFechaFin',db.config.fechaFin);
   setV('cfgHoraIni',db.config.horaApertura); setV('cfgHoraFin',db.config.horaCierre); setV('cfgDuracion',db.config.duracionPartido);
   setV('cfgDescanso',db.config.turnosDescansoIA); setV('cfgColor',db.config.colorPrimary); setV('cfgMpToken',db.config.mpAccessToken);
   setV('cfgLinkPago',db.config.linkPago); setV('cfgPrecio',db.config.precioInscripcion); setV('cfgTitularMP',db.config.titularMP);
   setV('cfgMapa',db.config.googleMapsQuery); setV('cfgComunicado',db.config.comunicado); setV('cfgReglamento',db.config.reglamento);
-
   renderEditorCategorias();
 }
 
@@ -1454,12 +1371,10 @@ function aplicarControlRapido(){
   db.config.horaApertura=document.getElementById('qHoraIni').value||db.config.horaApertura;
   db.config.totalCanchas=Math.max(1,Number(document.getElementById('qCanchas').value)||4);
   const pNew=Math.max(1,Math.min(12,Number(document.getElementById('qPartidos').value)||3));
-  db.config.partidosGarantizados=pNew;
-  db.config.categorias.forEach(c=>c.partidosGarantizados=pNew);
+  db.config.partidosGarantizados=pNew; db.config.categorias.forEach(c=>c.partidosGarantizados=pNew);
   db.config.precioInscripcion=Number(document.getElementById('qPrecio').value)||db.config.precioInscripcion;
-  recalcularHorariosBoxes();
-  sincronizar(); cargarFormsAdmin();
-  mostrarToast(`⚡ ¡Guardado y publicado! (${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)})`);
+  recalcularHorariosBoxes(); sincronizar(); cargarFormsAdmin();
+  mostrarToast(`⚡ Publicado (${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)})`);
 }
 
 function guardarTodoAdmin(){
@@ -1475,208 +1390,145 @@ function guardarTodoAdmin(){
   db.config.duracionPartido=Math.max(15,Number(document.getElementById('cfgDuracion').value)||45);
   db.config.turnosDescansoIA=Math.max(0,Number(document.getElementById('cfgDescanso').value)||1);
   db.config.colorPrimary=document.getElementById('cfgColor').value.trim()||'#D4AF37';
-  const tok=document.getElementById('cfgMpToken').value.trim();
-  db.config.mpAccessToken=tok||DEFAULT_MP_TOKEN;
+  db.config.mpAccessToken=document.getElementById('cfgMpToken').value.trim()||DEFAULT_MP_TOKEN;
   db.config.linkPago=cleanUrl(document.getElementById('cfgLinkPago').value);
   db.config.precioInscripcion=Number(document.getElementById('cfgPrecio').value)||70000;
   db.config.titularMP=document.getElementById('cfgTitularMP').value.trim()||'Club Oficial';
   db.config.googleMapsQuery=document.getElementById('cfgMapa').value.trim();
   db.config.comunicado=document.getElementById('cfgComunicado').value.trim();
   db.config.reglamento=document.getElementById('cfgReglamento').value;
-  recalcularHorariosBoxes();
-  sincronizar(); cargarFormsAdmin();
-  mostrarToast('✅ ¡Configuración guardada y publicada en vivo!');
+  recalcularHorariosBoxes(); sincronizar(); cargarFormsAdmin();
+  mostrarToast('✅ Configuración guardada.');
 }
 
 function renderAdminArbitraje(){
   const ck=document.getElementById('selCatArb')?.value||db.config.categorias[0].key;
-  const inscritos=(db.cupos[ck]||[]).filter(c=>c.ocupado&&c.alias);
-  const nc=Number(db.config.totalCanchas)||4;
-  const optsDup=inscritos.length?inscritos.map(c=>`<option value="${c.id}">Box #${c.id} - ${c.alias}</option>`).join(''):`<option value="">Sin parejas</option>`;
-  document.getElementById('newMatchA').innerHTML=optsDup;
-  document.getElementById('newMatchB').innerHTML=optsDup;
-  let optsC=''; for(let i=1;i<=nc;i++) optsC+=`<option value="Cancha #${i}">Cancha #${i}</option>`;
-  document.getElementById('newMatchCancha').innerHTML=optsC;
-  const nf=document.getElementById('newMatchFecha');
-  if(nf && !nf.value) nf.value=`${db.config.fechaInicio}T${db.config.horaApertura}`;
-
+  const ins=(db.cupos[ck]||[]).filter(c=>c.ocupado&&c.alias), nc=Number(db.config.totalCanchas)||4;
+  const optsDup=ins.length?ins.map(c=>`<option value="${c.id}">Box #${c.id} - ${esc(c.alias)}</option>`).join(''):`<option value="">Sin parejas</option>`;
+  document.getElementById('newMatchA').innerHTML=optsDup; document.getElementById('newMatchB').innerHTML=optsDup;
+  let oc=''; for(let i=1;i<=nc;i++) oc+=`<option value="Cancha #${i}">Cancha #${i}</option>`;
+  document.getElementById('newMatchCancha').innerHTML=oc;
+  const nf=document.getElementById('newMatchFecha'); if(nf&&!nf.value) nf.value=`${db.config.fechaInicio}T${db.config.horaApertura}`;
   const lista=db.partidos[ck]||[];
   document.getElementById('tbodyArbitraje').innerHTML=lista.length?lista.map(m=>{
-    let cSel=''; for(let i=1;i<=nc;i++){ const cn=`Cancha #${i}`; cSel+=`<option value="${cn}" ${m.cancha===cn?'selected':''}>${cn}</option>`; }
+    let cs=''; for(let i=1;i<=nc;i++){ const cn=`Cancha #${i}`; cs+=`<option value="${cn}" ${m.cancha===cn?'selected':''}>${cn}</option>`; }
     return `<tr>
-      <td><input type="text" value="${m.fase}" onchange="editMatch('${ck}','${m.id}','fase',this.value)" class="inp" style="width:110px;"></td>
-      <td><strong>${m.aliasA}</strong> <span style="color:var(--primary);">vs</span> <strong>${m.aliasB}</strong></td>
-      <td><select onchange="editMatch('${ck}','${m.id}','cancha',this.value)" class="inp" style="width:105px;">${cSel}</select></td>
+      <td><input type="text" value="${esc(m.fase)}" onchange="editMatch('${ck}','${m.id}','fase',this.value)" class="inp" style="width:110px;"></td>
+      <td><strong>${esc(m.aliasA)}</strong> <span style="color:var(--primary);">vs</span> <strong>${esc(m.aliasB)}</strong></td>
+      <td><select onchange="editMatch('${ck}','${m.id}','cancha',this.value)" class="inp" style="width:105px;">${cs}</select></td>
       <td><input type="datetime-local" value="${(m.fechaHora||'').slice(0,16)}" onchange="editMatch('${ck}','${m.id}','fechaHora',this.value)" class="inp" style="width:155px;"></td>
-      <td>
-        <select onchange="editMatch('${ck}','${m.id}','estado',this.value)" class="inp" style="width:140px;font-weight:700;">
-          <option value="Programado" ${m.estado==='Programado'?'selected':''}>Programado</option>
-          <option value="Llamado a Cancha 📢" ${m.estado==='Llamado a Cancha 📢'?'selected':''}>Llamado 📢</option>
-          <option value="Jugando 🔴" ${m.estado==='Jugando 🔴'?'selected':''}>Jugando 🔴</option>
-          <option value="Finalizado 🏁" ${m.estado==='Finalizado 🏁'?'selected':''}>Finalizado 🏁</option>
-          <option value="W.O." ${m.estado==='W.O.'?'selected':''}>W.O.</option>
-        </select>
-      </td>
-      <td><input type="text" value="${m.marcador||''}" placeholder="6-4 / 6-3" onchange="editMatch('${ck}','${m.id}','marcador',this.value)" class="inp mono" style="width:110px;color:#FACC15;"></td>
-      <td>
-        <select onchange="editMatch('${ck}','${m.id}','ganador',this.value)" class="inp" style="width:130px;">
-          <option value="" ${!m.ganador?'selected':''}>Sin definir</option>
-          <option value="A" ${m.ganador==='A'?'selected':''}>🏆 ${m.aliasA}</option>
-          <option value="B" ${m.ganador==='B'?'selected':''}>🏆 ${m.aliasB}</option>
-        </select>
-      </td>
-      <td style="white-space:nowrap;">
-        <button onclick="sincronizar();mostrarToast('⚖️ Guardado')" class="btn btn-sm btn-green">✔</button>
-        <button onclick="borrarMatch('${ck}','${m.id}')" class="btn btn-sm btn-red">✕</button>
-      </td>
+      <td><select onchange="editMatch('${ck}','${m.id}','estado',this.value)" class="inp" style="width:135px;">
+        <option value="Programado" ${m.estado==='Programado'?'selected':''}>Programado</option>
+        <option value="Llamado a Cancha 📢" ${m.estado==='Llamado a Cancha 📢'?'selected':''}>Llamado 📢</option>
+        <option value="Jugando 🔴" ${m.estado==='Jugando 🔴'?'selected':''}>Jugando 🔴</option>
+        <option value="Finalizado 🏁" ${m.estado==='Finalizado 🏁'?'selected':''}>Finalizado 🏁</option>
+        <option value="W.O." ${m.estado==='W.O.'?'selected':''}>W.O.</option>
+      </select></td>
+      <td><input type="text" value="${esc(m.marcador||'')}" placeholder="6-4 / 6-3" onchange="editMatch('${ck}','${m.id}','marcador',this.value)" class="inp mono" style="width:105px;color:#FACC15;"></td>
+      <td><select onchange="editMatch('${ck}','${m.id}','ganador',this.value)" class="inp" style="width:125px;">
+        <option value="" ${!m.ganador?'selected':''}>Sin definir</option>
+        <option value="A" ${m.ganador==='A'?'selected':''}>🏆 ${esc(m.aliasA)}</option>
+        <option value="B" ${m.ganador==='B'?'selected':''}>🏆 ${esc(m.aliasB)}</option>
+      </select></td>
+      <td style="white-space:nowrap;"><button onclick="sincronizar();mostrarToast('⚖️ Guardado')" class="btn btn-sm btn-green">✔</button> <button onclick="borrarMatch('${ck}','${m.id}')" class="btn btn-sm btn-red">✕</button></td>
     </tr>`;
-  }).join(''):`<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:1.5rem;">Sin partidos aún en esta categoría.</td></tr>`;
+  }).join(''):`<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:1.3rem;">Sin partidos aún.</td></tr>`;
 }
 
 function crearPartidoManual(){
-  const ck=document.getElementById('selCatArb').value;
-  const idA=Number(document.getElementById('newMatchA').value), idB=Number(document.getElementById('newMatchB').value);
+  const ck=document.getElementById('selCatArb').value, idA=Number(document.getElementById('newMatchA').value), idB=Number(document.getElementById('newMatchB').value);
   if(!idA||!idB||idA===idB){ alert('⚠️ Elige dos parejas distintas.'); return; }
   const cA=db.cupos[ck].find(x=>x.id===idA), cB=db.cupos[ck].find(x=>x.id===idB);
-  db.partidos[ck].push({
-    id:'m_'+Date.now(), fase:document.getElementById('newMatchFase').value.trim()||'Partido',
-    boxA:idA, aliasA:cA.alias, boxB:idB, aliasB:cB.alias,
-    cancha:document.getElementById('newMatchCancha').value,
-    fechaHora:document.getElementById('newMatchFecha').value||`${db.config.fechaInicio}T${db.config.horaApertura}`,
-    estado:'Programado', marcador:'', ganador:'', manual:true
-  });
+  db.partidos[ck].push({id:'m_'+Date.now(),fase:document.getElementById('newMatchFase').value.trim()||'Partido',boxA:idA,aliasA:cA.alias,boxB:idB,aliasB:cB.alias,cancha:document.getElementById('newMatchCancha').value,fechaHora:document.getElementById('newMatchFecha').value||`${db.config.fechaInicio}T${db.config.horaApertura}`,estado:'Programado',marcador:'',ganador:'',manual:true});
   sincronizar(); renderAdminArbitraje(); mostrarToast('⚖️ Partido creado.');
 }
-
-function editMatch(ck, mid, campo, val){
-  const m=(db.partidos[ck]||[]).find(x=>x.id===mid); if(!m) return;
-  m[campo]=val;
-  if(campo==='ganador' && val && m.estado==='Programado') m.estado='Finalizado 🏁';
-  sincronizar();
-}
-function borrarMatch(ck, mid){
-  db.partidos[ck]=(db.partidos[ck]||[]).filter(x=>x.id!==mid);
-  sincronizar(); renderAdminArbitraje(); mostrarToast('🗑️ Partido eliminado.');
-}
+function editMatch(ck,mid,campo,val){ const m=(db.partidos[ck]||[]).find(x=>x.id===mid); if(!m) return; m[campo]=val; if(campo==='ganador'&&val&&m.estado==='Programado') m.estado='Finalizado 🏁'; sincronizar(); }
+function borrarMatch(ck,mid){ db.partidos[ck]=(db.partidos[ck]||[]).filter(x=>x.id!==mid); sincronizar(); renderAdminArbitraje(); mostrarToast('🗑️ Eliminado.'); }
 
 function renderAdminBoxes(){
-  const ck=document.getElementById('selCatBoxes')?.value||db.config.categorias[0].key;
-  const nc=Number(db.config.totalCanchas)||4;
+  const ck=document.getElementById('selCatBoxes')?.value||db.config.categorias[0].key, nc=Number(db.config.totalCanchas)||4;
   document.getElementById('tbodyBoxes').innerHTML=(db.cupos[ck]||[]).map(c=>{
     const st=!c.ocupado?'LIBRE':(c.estadoPagoMP==='PAGADO_MP'?'PAGADO_MP':'RESERVANDO_MP');
     let oc=''; for(let i=1;i<=nc;i++){ const cn=`Cancha #${i}`; oc+=`<option value="${cn}" ${c.cancha===cn?'selected':''}>${cn}</option>`; }
     return `<tr>
-      <td><strong>Box #${c.id}</strong></td>
-      <td><select onchange="setEstadoBox('${ck}',${c.id},this.value)" class="inp" style="width:145px;font-weight:700;">
+      <td><strong>#${c.id}</strong></td>
+      <td><select onchange="setEstadoBox('${ck}',${c.id},this.value)" class="inp" style="width:140px;font-weight:700;">
         <option value="LIBRE" ${st==='LIBRE'?'selected':''}>🟢 Libre</option>
         <option value="RESERVANDO_MP" ${st==='RESERVANDO_MP'?'selected':''}>🟡 Pagando MP</option>
-        <option value="PAGADO_MP" ${st==='PAGADO_MP'?'selected':''}>🔴 Inscrito Pagado</option>
+        <option value="PAGADO_MP" ${st==='PAGADO_MP'?'selected':''}>🔴 Pagado</option>
       </select></td>
-      <td><input type="text" value="${c.alias||''}" placeholder="Alias" onchange="editBox('${ck}',${c.id},'alias',this.value)" class="inp" style="min-width:110px;"></td>
-      <td><div style="display:flex;gap:.25rem;"><input type="text" value="${c.j1||''}" placeholder="J1" onchange="editBox('${ck}',${c.id},'j1',this.value)" class="inp"><input type="text" value="${c.j2||''}" placeholder="J2" onchange="editBox('${ck}',${c.id},'j2',this.value)" class="inp"></div></td>
-      <td><div style="display:flex;gap:.25rem;"><input type="text" value="${c.tel1||''}" placeholder="Tel 1" onchange="editBox('${ck}',${c.id},'tel1',this.value)" class="inp"><input type="text" value="${c.tel2||''}" placeholder="Tel 2" onchange="editBox('${ck}',${c.id},'tel2',this.value)" class="inp"></div></td>
+      <td><input type="text" value="${esc(c.alias||'')}" placeholder="Alias" onchange="editBox('${ck}',${c.id},'alias',this.value)" class="inp" style="min-width:110px;"></td>
+      <td><div style="display:flex;gap:.25rem;"><input type="text" value="${esc(c.j1||'')}" placeholder="J1" onchange="editBox('${ck}',${c.id},'j1',this.value)" class="inp"><input type="text" value="${esc(c.j2||'')}" placeholder="J2" onchange="editBox('${ck}',${c.id},'j2',this.value)" class="inp"></div></td>
+      <td><div style="display:flex;gap:.25rem;"><input type="text" value="${esc(c.tel1||'')}" placeholder="Tel 1" onchange="editBox('${ck}',${c.id},'tel1',this.value)" class="inp"><input type="text" value="${esc(c.tel2||'')}" placeholder="Tel 2" onchange="editBox('${ck}',${c.id},'tel2',this.value)" class="inp"></div></td>
       <td><select onchange="editBox('${ck}',${c.id},'cancha',this.value)" class="inp" style="width:105px;">${oc}</select></td>
-      <td style="white-space:nowrap;">
-        ${st==='RESERVANDO_MP'?`<button onclick="setEstadoBox('${ck}',${c.id},'PAGADO_MP')" class="btn btn-sm btn-green">💳 Aprobar</button>`:''}
-        <button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-blue">✔</button>
-      </td>
+      <td style="white-space:nowrap;">${st==='RESERVANDO_MP'?`<button onclick="setEstadoBox('${ck}',${c.id},'PAGADO_MP')" class="btn btn-sm btn-green">💳 Aprobar</button> `:''}<button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-blue">✔</button></td>
     </tr>`;
   }).join('');
 }
 
-function setEstadoBox(ck, id, st){
+function setEstadoBox(ck,id,st){
   const c=(db.cupos[ck]||[]).find(x=>x.id===id); if(!c) return;
-  if(st==='LIBRE'){ Object.assign(c,{ocupado:false,estadoPagoMP:'LIBRE',expiraReservaTimestamp:0,alias:'',j1:'',j2:'',tel1:'',tel2:''}); }
-  else if(st==='RESERVANDO_MP'){ Object.assign(c,{ocupado:true,estadoPagoMP:'RESERVANDO_MP',expiraReservaTimestamp:Date.now()+EXPIRA_MS,alias:c.alias||`RESERVA #${id}`}); }
-  else { Object.assign(c,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,alias:c.alias||`DUPLA #${id}`}); }
-  sincronizar(); renderAdminBoxes(); renderAdminCRM(); mostrarToast(`✅ Box #${id} guardado.`);
+  if(st==='LIBRE') Object.assign(c,{ocupado:false,estadoPagoMP:'LIBRE',expiraReservaTimestamp:0,alias:'',j1:'',j2:'',tel1:'',tel2:''});
+  else if(st==='RESERVANDO_MP') Object.assign(c,{ocupado:true,estadoPagoMP:'RESERVANDO_MP',expiraReservaTimestamp:Date.now()+EXPIRA_MS,alias:c.alias||`RESERVA #${id}`});
+  else Object.assign(c,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,alias:c.alias||`DUPLA #${id}`});
+  sincronizar(); renderAdminBoxes(); renderAdminCRM(); mostrarToast(`✅ Box #${id} actualizado.`);
 }
-
-function editBox(ck, id, campo, val){
-  const c=(db.cupos[ck]||[]).find(x=>x.id===id); if(!c) return;
-  c[campo]=val;
-  if(campo==='alias' && val.trim() && !c.ocupado){ c.ocupado=true; c.estadoPagoMP='PAGADO_MP'; }
-  sincronizar();
-}
+function editBox(ck,id,campo,val){ const c=(db.cupos[ck]||[]).find(x=>x.id===id); if(!c) return; c[campo]=val; if(campo==='alias'&&val.trim()&&!c.ocupado){c.ocupado=true;c.estadoPagoMP='PAGADO_MP';} sincronizar(); }
 
 function renderAdminCRM(){
-  const q=(document.getElementById('buscadorCrm')?.value||'').toLowerCase().trim();
-  const fc=document.getElementById('filtroCatCrm')?.value||'TODAS';
+  const q=(document.getElementById('buscadorCrm')?.value||'').toLowerCase().trim(), fc=document.getElementById('filtroCatCrm')?.value||'TODAS';
   let rows='';
   db.config.categorias.forEach(cat=>{
     if(fc!=='TODAS' && cat.key!==fc) return;
     (db.cupos[cat.key]||[]).forEach(c=>{
       if(!c.ocupado) return;
-      const hay=`${cat.nombre} ${c.alias} ${c.j1} ${c.j2} ${c.tel1} ${c.tel2} ${c.folioMP}`.toLowerCase();
-      if(q && !hay.includes(q)) return;
+      if(q && !`${cat.nombre} ${c.alias} ${c.j1} ${c.j2} ${c.tel1} ${c.tel2} ${c.folioMP}`.toLowerCase().includes(q)) return;
       rows+=`<tr>
-        <td><strong style="color:var(--primary);">${cat.nombre}</strong><div class="mono" style="font-size:.7rem;color:#60A5FA;">Box #${c.id}</div></td>
-        <td>
-          <select onchange="setEstadoBox('${cat.key}',${c.id},this.value)" class="inp" style="width:130px;font-size:.72rem;margin-bottom:.2rem;">
-            <option value="PAGADO_MP" ${c.estadoPagoMP==='PAGADO_MP'?'selected':''}>🔴 Pagado</option>
-            <option value="RESERVANDO_MP" ${c.estadoPagoMP==='RESERVANDO_MP'?'selected':''}>🟡 Pagando</option>
-            <option value="LIBRE">🟢 Liberar</option>
-          </select>
-          <div class="mono" style="font-size:.64rem;color:#38BDF8;">${c.folioMP||'MANUAL'}</div>
-        </td>
-        <td><input type="text" value="${c.alias||''}" onchange="editBox('${cat.key}',${c.id},'alias',this.value)" class="inp" style="min-width:120px;font-weight:700;"></td>
-        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:160px;">
-          <input type="text" value="${c.j1||''}" placeholder="Nombre J1" onchange="editBox('${cat.key}',${c.id},'j1',this.value)" class="inp">
-          <div style="display:flex;gap:.2rem;"><input type="text" value="${c.tel1||''}" placeholder="Tel J1" onchange="editBox('${cat.key}',${c.id},'tel1',this.value)" class="inp"><input type="text" value="${c.redes1||''}" placeholder="@ig" onchange="editBox('${cat.key}',${c.id},'redes1',this.value)" class="inp" style="width:75px;"></div>
-          <input type="text" value="${c.email1||''}" placeholder="Email J1" onchange="editBox('${cat.key}',${c.id},'email1',this.value)" class="inp">
-        </div></td>
-        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:160px;">
-          <input type="text" value="${c.j2||''}" placeholder="Nombre J2" onchange="editBox('${cat.key}',${c.id},'j2',this.value)" class="inp">
-          <div style="display:flex;gap:.2rem;"><input type="text" value="${c.tel2||''}" placeholder="Tel J2" onchange="editBox('${cat.key}',${c.id},'tel2',this.value)" class="inp"><input type="text" value="${c.redes2||''}" placeholder="@ig" onchange="editBox('${cat.key}',${c.id},'redes2',this.value)" class="inp" style="width:75px;"></div>
-          <input type="text" value="${c.email2||''}" placeholder="Email J2" onchange="editBox('${cat.key}',${c.id},'email2',this.value)" class="inp">
-        </div></td>
-        <td><input type="text" value="${c.pin||'1234'}" onchange="editBox('${cat.key}',${c.id},'pin',this.value)" class="inp mono" style="width:60px;color:#FACC15;"></td>
-        <td style="white-space:nowrap;">
-          <button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-green">✔</button>
-          <button onclick="setEstadoBox('${cat.key}',${c.id},'LIBRE')" class="btn btn-sm btn-red">Liberar</button>
-        </td>
+        <td><strong style="color:var(--primary);">${esc(cat.nombre)}</strong><div class="mono" style="font-size:.7rem;color:#60A5FA;">Box #${c.id}</div></td>
+        <td><select onchange="setEstadoBox('${cat.key}',${c.id},this.value)" class="inp" style="width:125px;font-size:.74rem;margin-bottom:.2rem;">
+          <option value="PAGADO_MP" ${c.estadoPagoMP==='PAGADO_MP'?'selected':''}>🔴 Pagado</option>
+          <option value="RESERVANDO_MP" ${c.estadoPagoMP==='RESERVANDO_MP'?'selected':''}>🟡 Pagando</option>
+          <option value="LIBRE">🟢 Liberar</option>
+        </select><div class="mono" style="font-size:.66rem;color:#38BDF8;">${esc(c.folioMP||'MANUAL')}</div></td>
+        <td><input type="text" value="${esc(c.alias||'')}" onchange="editBox('${cat.key}',${c.id},'alias',this.value)" class="inp" style="min-width:115px;font-weight:700;"></td>
+        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:155px;"><input type="text" value="${esc(c.j1||'')}" placeholder="J1" onchange="editBox('${cat.key}',${c.id},'j1',this.value)" class="inp"><input type="text" value="${esc(c.tel1||'')}" placeholder="Tel J1" onchange="editBox('${cat.key}',${c.id},'tel1',this.value)" class="inp"><input type="text" value="${esc(c.email1||'')}" placeholder="Email" onchange="editBox('${cat.key}',${c.id},'email1',this.value)" class="inp"></div></td>
+        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:155px;"><input type="text" value="${esc(c.j2||'')}" placeholder="J2" onchange="editBox('${cat.key}',${c.id},'j2',this.value)" class="inp"><input type="text" value="${esc(c.tel2||'')}" placeholder="Tel J2" onchange="editBox('${cat.key}',${c.id},'tel2',this.value)" class="inp"><input type="text" value="${esc(c.email2||'')}" placeholder="Email" onchange="editBox('${cat.key}',${c.id},'email2',this.value)" class="inp"></div></td>
+        <td><input type="text" value="${esc(c.pin||'1234')}" onchange="editBox('${cat.key}',${c.id},'pin',this.value)" class="inp mono" style="width:60px;color:#FACC15;"></td>
+        <td style="white-space:nowrap;"><button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-green">✔</button> <button onclick="setEstadoBox('${cat.key}',${c.id},'LIBRE')" class="btn btn-sm btn-red">Liberar</button></td>
       </tr>`;
     });
   });
-  document.getElementById('tbodyCrm').innerHTML=rows||`<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:1.5rem;">Sin jugadores inscritos.</td></tr>`;
+  document.getElementById('tbodyCrm').innerHTML=rows||`<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:1.3rem;">Sin inscritos.</td></tr>`;
 }
 
 function inscribirManualAdmin(){
-  const fc=document.getElementById('filtroCatCrm')?.value;
-  const ck=(fc&&fc!=='TODAS')?fc:db.config.categorias[0].key;
+  const fc=document.getElementById('filtroCatCrm')?.value, ck=(fc&&fc!=='TODAS')?fc:db.config.categorias[0].key;
   const lib=(db.cupos[ck]||[]).find(c=>!c.ocupado);
   if(!lib){ alert('⚠️ Sin Boxes libres en esta categoría.'); return; }
   Object.assign(lib,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,folioMP:'ADM-'+Math.floor(1000+Math.random()*9000),alias:`DUPLA #${lib.id}`,j1:'Jugador 1',j2:'Jugador 2',tel1:'+569',tel2:'+569'});
-  sincronizar(); renderAdminCRM(); mostrarToast(`➕ Pareja inscrita en ${getCatObj(ck).nombre} (Box #${lib.id}).`);
+  sincronizar(); renderAdminCRM(); mostrarToast(`➕ Pareja inscrita (Box #${lib.id}).`);
 }
 
 function exportarCSV(){
   const f=[['Torneo','Categoria','Box','Estado','Folio','Dupla','Jugador 1','Tel 1','Email 1','IG 1','Jugador 2','Tel 2','Email 2','IG 2','Cancha','PIN']];
-  db.config.categorias.forEach(cat=>(db.cupos[cat.key]||[]).forEach(c=>{
-    if(c.ocupado) f.push([db.config.nombreTorneo,cat.nombre,`Box #${c.id}`,c.estadoPagoMP,c.folioMP,c.alias,c.j1,c.tel1,c.email1,c.redes1,c.j2,c.tel2,c.email2,c.redes2,c.cancha,c.pin]);
-  }));
-  const a=document.createElement('a');
-  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(f.map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(';')).join('\n'));
-  a.download=`inscritos_${db.id}.csv`; a.click();
-  mostrarToast('📥 Excel CSV descargado.');
+  db.config.categorias.forEach(cat=>(db.cupos[cat.key]||[]).forEach(c=>{ if(c.ocupado) f.push([db.config.nombreTorneo,cat.nombre,`Box #${c.id}`,c.estadoPagoMP,c.folioMP,c.alias,c.j1,c.tel1,c.email1,c.redes1,c.j2,c.tel2,c.email2,c.redes2,c.cancha,c.pin]); }));
+  const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(f.map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(';')).join('\n')); a.download=`inscritos_${db.id}.csv`; a.click();
+  mostrarToast('📥 CSV descargado.');
 }
 
 function renderEditorCategorias(){
   document.getElementById('listaCatsEditor').innerHTML=db.config.categorias.map((c,i)=>{
     const ins=(db.cupos[c.key]||[]).filter(x=>x.ocupado&&x.estadoPagoMP==='PAGADO_MP').length;
     return `<div style="background:#04070D;border:1px solid var(--border);padding:.8rem;border-radius:10px;display:flex;flex-direction:column;gap:.45rem;">
-      <div class="mono" style="display:flex;justify-content:space-between;font-size:.66rem;">
-        <span style="color:var(--primary);font-weight:800;">CATEGORÍA #${i+1}</span>
-        <span style="color:var(--green);">${ins} / ${c.maxCupos} pagados</span>
-      </div>
+      <div class="mono" style="display:flex;justify-content:space-between;font-size:.68rem;"><span style="color:var(--primary);font-weight:800;">CATEGORÍA #${i+1}</span><span style="color:var(--green);">${ins}/${c.maxCupos} pagados</span></div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:.35rem;align-items:center;">
-        <input type="text" value="${c.nombre}" onchange="editCat('${c.key}','nombre',this.value)" class="inp" title="Nombre">
-        <input type="number" min="2" max="128" value="${c.maxCupos}" onchange="editCat('${c.key}','maxCupos',this.value)" class="inp" title="Cupos (2-128)">
-        <input type="number" min="1" max="12" value="${c.partidosGarantizados}" onchange="editCat('${c.key}','partidosGarantizados',this.value)" class="inp" title="Partidos por pareja (1-12)">
-        <input type="number" min="0" value="${c.precioCustom||''}" placeholder="$ Base" onchange="editCat('${c.key}','precioCustom',this.value)" class="inp" title="Precio propio opcional">
+        <input type="text" value="${esc(c.nombre)}" onchange="editCat('${c.key}','nombre',this.value)" class="inp">
+        <input type="number" min="2" max="128" value="${c.maxCupos}" onchange="editCat('${c.key}','maxCupos',this.value)" class="inp" title="Cupos">
+        <input type="number" min="1" max="12" value="${c.partidosGarantizados}" onchange="editCat('${c.key}','partidosGarantizados',this.value)" class="inp" title="Partidos por dupla">
+        <input type="number" min="0" value="${c.precioCustom||''}" placeholder="$ Base" onchange="editCat('${c.key}','precioCustom',this.value)" class="inp" title="Precio propio">
         <button onclick="eliminarCat('${c.key}')" class="btn btn-sm btn-red">✕</button>
       </div>
-      <div style="font-size:.62rem;color:var(--muted);display:flex;justify-content:space-between;"><span>Nombre</span><span>Cupos | Partidos/Dupla | Precio</span></div>
+      <div style="font-size:.64rem;color:var(--muted);display:flex;justify-content:space-between;"><span>Nombre</span><span>Cupos | Partidos | Precio</span></div>
     </div>`;
   }).join('');
 }
@@ -1685,69 +1537,50 @@ function agregarCategoriaLibre(){
   const nom=document.getElementById('newCatNom').value.trim();
   const cup=Math.max(2,Math.min(128,Number(document.getElementById('newCatCupos').value)||12));
   const part=Math.max(1,Math.min(12,Number(document.getElementById('newCatPartidos').value)||3));
-  if(!nom){ alert('⚠️ Escribe el nombre de la categoría.'); return; }
+  if(!nom){ alert('⚠️ Escribe el nombre.'); return; }
   const key='cat_'+Date.now();
   db.config.categorias.push({key,nombre:nom,maxCupos:cup,partidosGarantizados:part,precioCustom:0});
   db.cupos[key]=crearCupos(db.id,key,cup,db.config.fechaInicio,db.config.horaApertura,db.config.totalCanchas);
-  db.partidos[key]=[];
-  document.getElementById('newCatNom').value='';
+  db.partidos[key]=[]; document.getElementById('newCatNom').value='';
   recalcularHorariosBoxes(); sincronizar(); renderEditorCategorias();
-  mostrarToast(`🏆 Categoría "${nom}" guardada (${cup} cupos, ${part} partidos).`);
+  mostrarToast(`🏆 Categoría "${nom}" agregada.`);
 }
 
-function editCat(key, campo, val){
+function editCat(key,campo,val){
   const c=db.config.categorias.find(x=>x.key===key); if(!c) return;
-  if(campo==='nombre' && val.trim()) c.nombre=val.trim();
+  if(campo==='nombre'&&val.trim()) c.nombre=val.trim();
   if(campo==='partidosGarantizados') c.partidosGarantizados=Math.max(1,Math.min(12,Number(val)||3));
   if(campo==='precioCustom') c.precioCustom=Math.max(0,Number(val)||0);
   if(campo==='maxCupos'){
-    const n=Math.max(2,Math.min(128,Number(val)||16));
-    c.maxCupos=n;
+    const n=Math.max(2,Math.min(128,Number(val)||12)); c.maxCupos=n;
     const arr=db.cupos[key]||[];
-    if(n>arr.length){
-      const extra=crearCupos(db.id,key,n-arr.length,db.config.fechaInicio,db.config.horaApertura,db.config.totalCanchas);
-      extra.forEach((x,idx)=>{ x.id=arr.length+idx+1; arr.push(x); });
-    } else if(n<arr.length){
-      db.cupos[key]=arr.slice(0,n);
-    }
+    if(n>arr.length){ const ex=crearCupos(db.id,key,n-arr.length,db.config.fechaInicio,db.config.horaApertura,db.config.totalCanchas); ex.forEach((x,i)=>{x.id=arr.length+i+1;arr.push(x);}); }
+    else if(n<arr.length) db.cupos[key]=arr.slice(0,n);
     recalcularHorariosBoxes();
   }
-  sincronizar(); renderEditorCategorias();
-  mostrarToast(`✅ Categoría "${c.nombre}" guardada.`);
+  sincronizar(); renderEditorCategorias(); mostrarToast(`✅ Guardado.`);
 }
-
 function eliminarCat(key){
   if(db.config.categorias.length<=1){ alert('⚠️ Debe quedar al menos 1 categoría.'); return; }
-  db.config.categorias=db.config.categorias.filter(x=>x.key!==key);
-  delete db.cupos[key]; delete db.partidos[key];
+  db.config.categorias=db.config.categorias.filter(x=>x.key!==key); delete db.cupos[key]; delete db.partidos[key];
   catActiva=db.config.categorias[0].key; catLlavesActiva=catActiva;
-  recalcularHorariosBoxes(); sincronizar(); renderEditorCategorias();
-  mostrarToast('🗑️ Categoría eliminada.');
+  recalcularHorariosBoxes(); sincronizar(); renderEditorCategorias(); mostrarToast('🗑️ Eliminada.');
 }
-
-function subirImagenConfig(e, campo){
-  const f=e.target.files[0]; if(!f) return;
-  const r=new FileReader(); r.onload=ev=>{ db.config[campo]=ev.target.result; sincronizar(); mostrarToast('🖼️ Imagen guardada.'); }; r.readAsDataURL(f);
-}
+function subirImagenConfig(e,campo){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>{ db.config[campo]=ev.target.result; sincronizar(); mostrarToast('🖼️ Imagen guardada.'); }; r.readAsDataURL(f); }
 
 function renderSponsorsYRankAdmin(){
   document.getElementById('editorSponsors').innerHTML=(db.sponsors||[]).map((s,i)=>`<div style="display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;">
-    <input type="text" value="${s.logoText||''}" onchange="db.sponsors[${i}].logoText=this.value;sincronizar();" class="inp" style="width:140px;">
-    <input type="text" value="${s.url||''}" onchange="db.sponsors[${i}].url=this.value;sincronizar();" class="inp" style="flex:1;min-width:120px;">
+    <input type="text" value="${esc(s.logoText||'')}" onchange="db.sponsors[${i}].logoText=this.value;sincronizar();" class="inp" style="width:140px;">
+    <input type="text" value="${esc(s.url||'')}" onchange="db.sponsors[${i}].url=this.value;sincronizar();" class="inp" style="flex:1;min-width:120px;">
     <input type="file" accept="image/*" onchange="subirLogoSp(event,${i})" style="width:110px;font-size:.65rem;">
     <button onclick="db.sponsors.splice(${i},1);sincronizar();renderSponsorsYRankAdmin();" class="btn btn-sm btn-red">✕</button>
   </div>`).join('');
-
   const dups=[];
   db.config.categorias.forEach(c=>(db.cupos[c.key]||[]).forEach(x=>{ if(x.ocupado&&x.estadoPagoMP==='PAGADO_MP'&&x.alias) dups.push({a:x.alias,c:c.nombre}); }));
-  document.getElementById('editorRankings').innerHTML=dups.length?dups.map((d,i)=>{
-    const pts=Number(db.puntosExtraRanking?.[d.a])||1500;
-    return `<div style="display:flex;gap:.5rem;align-items:center;background:#04070D;padding:.45rem .7rem;border-radius:8px;">
-      <strong style="color:var(--primary);">#${i+1}</strong>
-      <span style="flex:1;font-size:.8rem;">${d.a} <small style="color:var(--muted);">(${d.c})</small></span>
-      <input type="number" value="${pts}" onchange="db.puntosExtraRanking['${d.a}']=Number(this.value);sincronizar();" class="inp mono" style="width:95px;color:var(--green);">
-    </div>`;
-  }).join(''):`<div style="color:var(--muted);font-size:.78rem;">Sin duplas confirmadas aún.</div>`;
+  document.getElementById('editorRankings').innerHTML=dups.length?dups.map((d,i)=>`<div style="display:flex;gap:.5rem;align-items:center;background:#04070D;padding:.45rem .7rem;border-radius:8px;">
+    <strong style="color:var(--primary);">#${i+1}</strong><span style="flex:1;font-size:.82rem;">${esc(d.a)} <small style="color:var(--muted);">(${esc(d.c)})</small></span>
+    <input type="number" data-alias="${esc(d.a)}" value="${Number(db.puntosExtraRanking?.[d.a])||1500}" onchange="db.puntosExtraRanking[this.dataset.alias]=Number(this.value);sincronizar();" class="inp mono" style="width:95px;color:var(--green);">
+  </div>`).join(''):`<div style="color:var(--muted);font-size:.8rem;">Sin duplas confirmadas.</div>`;
 }
 function agregarSponsor(){ db.sponsors.push({nombre:'Nuevo',url:'https://www.google.com',logoText:'⭐ SPONSOR',logoImg:''}); sincronizar(); renderSponsorsYRankAdmin(); }
 function subirLogoSp(e,i){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>{ db.sponsors[i].logoImg=ev.target.result; sincronizar(); renderSponsorsYRankAdmin(); }; r.readAsDataURL(f); }
@@ -1761,16 +1594,16 @@ function renderSaas(){
     const link=`${window.location.origin}${window.location.pathname}?torneo=${t.id}`;
     let ins=0; (t.config.categorias||[]).forEach(c=>(t.cupos[c.key]||[]).forEach(x=>{if(x.ocupado&&x.estadoPagoMP==='PAGADO_MP')ins++;}));
     return `<tr>
-      <td><span style="color:${act?'var(--green)':'var(--red)'};font-weight:800;font-size:.7rem;">${act?'🟢 ACTIVA':'🔴 PAUSA'}</span></td>
-      <td><strong>${t.config.nombreTorneo}</strong><div class="mono" style="font-size:.66rem;color:var(--primary);">${t.id} • ${ins} pagados • ${(t.config.categorias||[]).length} cat</div></td>
-      <td><input type="text" value="${t.claveLicencia}" onchange="editSaas('${t.id}','clave',this.value)" class="inp mono" style="width:70px;color:#FACC15;"></td>
-      <td><input type="number" min="1" max="30" value="${t.config.totalCanchas}" onchange="editSaas('${t.id}','canchas',this.value)" class="inp" style="width:62px;"></td>
-      <td><input type="number" min="1" max="12" value="${t.config.partidosGarantizados||3}" onchange="editSaas('${t.id}','partidos',this.value)" class="inp" style="width:62px;"></td>
+      <td><span style="color:${act?'var(--green)':'var(--red)'};font-weight:800;font-size:.72rem;">${act?'🟢 ACTIVA':'🔴 PAUSA'}</span></td>
+      <td><strong>${esc(t.config.nombreTorneo)}</strong><div class="mono" style="font-size:.66rem;color:var(--primary);">${esc(t.id)} • ${ins} pagados</div></td>
+      <td><input type="text" value="${esc(t.claveLicencia)}" onchange="editSaas('${t.id}','clave',this.value)" class="inp mono" style="width:68px;color:#FACC15;"></td>
+      <td><input type="number" min="1" max="30" value="${t.config.totalCanchas}" onchange="editSaas('${t.id}','canchas',this.value)" class="inp" style="width:60px;"></td>
+      <td><input type="number" min="1" max="12" value="${t.config.partidosGarantizados||3}" onchange="editSaas('${t.id}','partidos',this.value)" class="inp" style="width:60px;"></td>
       <td><input type="date" value="${t.config.fechaInicio}" onchange="editSaas('${t.id}','fIni',this.value)" class="inp" style="width:128px;"></td>
       <td><input type="date" value="${t.config.fechaFin}" onchange="editSaas('${t.id}','fFin',this.value)" class="inp" style="width:128px;"></td>
-      <td><button onclick="copiarTexto('${link}','🔗 Link copiado')" class="btn btn-sm btn-green">Copiar Link</button></td>
+      <td><button onclick="copiarTexto('${link}','🔗 Link copiado')" class="btn btn-sm btn-green">Copiar</button></td>
       <td style="white-space:nowrap;">
-        <button onclick="cambiarTorneoActivo('${t.id}');setTabAdmin('arbitraje');" class="btn btn-sm btn-blue">⚖️ Arbitrar</button>
+        <button onclick="cambiarTorneoActivo('${t.id}');setTabAdmin('arbitraje');" class="btn btn-sm btn-blue">⚖️</button>
         <button onclick="toggleLic('${t.id}')" class="btn btn-sm ${act?'btn-red':'btn-green'}">${act?'⏸️':'▶️'}</button>
         <button onclick="borrarTorneoSaas('${t.id}')" class="btn btn-sm btn-red">🗑️</button>
       </td>
@@ -1778,84 +1611,39 @@ function renderSaas(){
   }).join('');
   document.getElementById('kpiSaasTotal').innerText=`$${tot.toLocaleString('es-CL')} CLP`;
 }
-
-function editSaas(id, campo, val){
+function editSaas(id,campo,val){
   const t=saasDB.torneos[id]; if(!t) return;
   if(campo==='clave') t.claveLicencia=val.trim();
   if(campo==='canchas') t.config.totalCanchas=Math.max(1,Number(val)||4);
   if(campo==='partidos'){ const p=Math.max(1,Math.min(12,Number(val)||3)); t.config.partidosGarantizados=p; (t.config.categorias||[]).forEach(c=>c.partidosGarantizados=p); }
   if(campo==='fIni'){ t.config.fechaInicio=val; if(t.config.fechaFin<val) t.config.fechaFin=sumarDias(val,1); }
   if(campo==='fFin') t.config.fechaFin=val>=t.config.fechaInicio?val:t.config.fechaInicio;
-  saasDB.torneoActivoId=id; db=t;
-  recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin();
-  mostrarToast(`👑 Torneo "${t.config.nombreTorneo}" guardado.`);
+  saasDB.torneoActivoId=id; db=t; recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin(); mostrarToast('👑 Guardado.');
 }
-
 function toggleLic(id){ const t=saasDB.torneos[id]; if(!t) return; t.licenciaMeta.estado=t.licenciaMeta.estado==='ACTIVA'?'SUSPENDIDA':'ACTIVA'; sincronizar(); renderSaas(); }
-
 function borrarTorneoSaas(id){
-  if(Object.keys(saasDB.torneos).length<=1){ alert('⚠️ Debe existir al menos 1 torneo.'); return; }
-  if(!confirm(`¿Eliminar permanentemente el torneo "${id}"?`)) return;
-  delete saasDB.torneos[id];
-  saasDB.torneoActivoId=Object.keys(saasDB.torneos)[0];
-  db=saasDB.torneos[saasDB.torneoActivoId];
-  sincronizar(); renderSaas(); cargarFormsAdmin();
-  mostrarToast('🗑️ Torneo eliminado.');
+  if(Object.keys(saasDB.torneos).length<=1){ alert('⚠️ Debe quedar al menos 1 torneo.'); return; }
+  if(!confirm(`¿Eliminar "${id}"?`)) return;
+  delete saasDB.torneos[id]; saasDB.torneoActivoId=Object.keys(saasDB.torneos)[0]; db=saasDB.torneos[saasDB.torneoActivoId];
+  sincronizar(); renderSaas(); cargarFormsAdmin(); mostrarToast('🗑️ Torneo eliminado.');
 }
-
 function crearTorneoSaas(){
   const id=(document.getElementById('nsId').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'-'))||('torneo-'+Date.now().toString().slice(-4));
   const nom=document.getElementById('nsNombre').value.trim()||'TORNEO PÁDEL';
-  const club=document.getElementById('nsClub').value.trim()||'CLUB OFICIAL';
-  saasDB.torneos[id]=crearTorneoBase(
-    id, nom, club, document.getElementById('nsClave').value.trim()||'1234',
-    document.getElementById('nsContacto').value.trim(), document.getElementById('nsLic').value,
-    document.getElementById('nsFIni').value, document.getElementById('nsFFin').value,
-    document.getElementById('nsHora').value, document.getElementById('nsCanchas').value,
-    document.getElementById('nsPrecio').value, document.getElementById('nsCats').value,
-    document.getElementById('nsMp').value.trim()||DEFAULT_MP_TOKEN,
-    document.getElementById('nsCuposCat').value, document.getElementById('nsPartidos').value
-  );
-  saasDB.torneoActivoId=id; db=saasDB.torneos[id];
-  recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin();
-  mostrarToast(`👑 Torneo "${nom}" guardado en vivo.`);
+  saasDB.torneos[id]=crearTorneoBase(id,nom,document.getElementById('nsClub').value.trim()||'CLUB OFICIAL',document.getElementById('nsClave').value.trim()||'1234',document.getElementById('nsContacto').value.trim(),document.getElementById('nsLic').value,document.getElementById('nsFIni').value,document.getElementById('nsFFin').value,document.getElementById('nsHora').value,document.getElementById('nsCanchas').value,document.getElementById('nsPrecio').value,document.getElementById('nsCats').value,document.getElementById('nsMp').value.trim()||DEFAULT_MP_TOKEN,document.getElementById('nsCuposCat').value,document.getElementById('nsPartidos').value);
+  saasDB.torneoActivoId=id; db=saasDB.torneos[id]; recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin(); mostrarToast(`👑 Torneo "${nom}" creado.`);
 }
-
-function cambiarTorneoActivo(id){
-  if(!saasDB.torneos[id]) return;
-  saasDB.torneoActivoId=id; db=saasDB.torneos[id];
-  asegurarIntegridad(); sincronizar(); abrirPanelAdminUI();
-  mostrarToast(`👑 Editando: ${db.config.nombreTorneo}`);
-}
-
-function descargarBackupJSON(){
-  const a=document.createElement('a');
-  a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(saasDB,null,2));
-  a.download=`backup_circuito360_${new Date().toISOString().slice(0,10)}.json`; a.click();
-  mostrarToast('💾 Backup descargado.');
-}
-
+function cambiarTorneoActivo(id){ if(!saasDB.torneos[id]) return; saasDB.torneoActivoId=id; db=saasDB.torneos[id]; asegurarIntegridad(); sincronizar(); abrirPanelAdminUI(); }
+function descargarBackupJSON(){ const a=document.createElement('a'); a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(saasDB,null,2)); a.download=`backup_circuito360_${new Date().toISOString().slice(0,10)}.json`; a.click(); mostrarToast('💾 Backup descargado.'); }
 function restaurarBackupJSON(e){
   const f=e.target.files[0]; if(!f) return;
-  const r=new FileReader();
-  r.onload=async ev=>{
-    try{
-      const parsed=JSON.parse(ev.target.result);
-      if(!parsed.torneos) throw new Error();
-      saasDB=parsed; db=saasDB.torneos[saasDB.torneoActivoId]||Object.values(saasDB.torneos)[0];
-      await empujarNube(); refrescarTodoUI(true);
-      mostrarToast('📂 Backup restaurado y guardado.');
-    }catch(err){ alert('❌ Archivo JSON inválido.'); }
-  };
-  r.readAsText(f);
+  const r=new FileReader(); r.onload=async ev=>{ try{ const p=JSON.parse(ev.target.result); if(!p.torneos) throw new Error(); saasDB=p; db=saasDB.torneos[saasDB.torneoActivoId]||Object.values(saasDB.torneos)[0]; await empujarNube(); refrescarTodoUI(true); mostrarToast('📂 Backup restaurado.'); }catch(err){ alert('❌ JSON inválido.'); } }; r.readAsText(f);
 }
 
 (async function init(){
   saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
-  recalcularHorariosBoxes();
-  refrescarTodoUI(false);
-  await consultarNube(true);
-  await verificarRetornoMP();
+  recalcularHorariosBoxes(); refrescarTodoUI(false);
+  await consultarNube(true); await verificarRetornoMP();
 })();
 </script>
 </body>
