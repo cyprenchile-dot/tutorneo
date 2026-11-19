@@ -1803,6 +1803,7 @@ function guardarTodoAdmin(){
   db.config.googleMapsQuery=document.getElementById('cfgMapa').value.trim();
   db.config.comunicado=document.getElementById('cfgComunicado').value.trim();
   db.config.reglamento=document.getElementById('cfgReglamento').value;
+  db.config.reglamentoPdfUrl=(document.getElementById('cfgReglamentoPdfUrl')?.value||'').trim();
   guardarCuponYCanales();
   cargarFormsAdmin();
   mostrarToast('✅ Todo guardado en la nube.');
