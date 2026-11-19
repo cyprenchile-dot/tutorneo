@@ -17,7 +17,7 @@ header{background:rgba(4,7,13,.95);backdrop-filter:blur(16px);border-bottom:1px 
 .badge-org{background:rgba(16,185,129,.16);color:#34D399;border:1px solid rgba(16,185,129,.45);font-weight:800;padding:.25rem .65rem;border-radius:6px;font-size:.7rem;text-transform:uppercase;}
 .nav-title{font-weight:800;font-size:1.05rem;text-transform:uppercase;display:flex;align-items:center;gap:.4rem;}
 .nav-title span{color:var(--primary);}
-.sync-pill{font-size:.66rem;padding:.22rem .55rem;border-radius:6px;background:rgba(16,185,129,.14);color:#34D399;border:1px solid rgba(16,185,129,.35);}
+.sync-pill{font-size:.66rem;padding:.22rem .55rem;border-radius:6px;background:rgba(16,185,129,.14);color:#34D399;border:1px solid rgba(16,185,129,.35);font-weight:800;}
 .nav-btns{display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;}
 .nav-btn{background:#111A2E;color:#fff;border:1px solid var(--border);padding:.46rem .82rem;border-radius:9px;font-size:.75rem;cursor:pointer;font-weight:600;transition:.18s;display:inline-flex;align-items:center;gap:.3rem;}
 .nav-btn:hover{background:#1E293B;transform:translateY(-1px);}
@@ -92,7 +92,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
 </head>
 <body>
 
-<div id="toast">✅ Sincronizado en CIRCUITO360.CL</div>
+<div id="toast">✅ Guardado y sincronizado en CIRCUITO360.CL</div>
 
 <div>
 <header>
@@ -102,7 +102,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <span id="badgeOrgNav" class="badge-org">CLUB OFICIAL</span>
       <div id="navLogoContainer"></div>
       <h1 class="nav-title" id="navTitle">COPA AYRES <span>OPEN</span></h1>
-      <span id="indicadorNubeSync" class="sync-pill mono">☁️ CONECTANDO...</span>
+      <span id="indicadorNubeSync" class="sync-pill mono">⏳ CONECTANDO...</span>
     </div>
     <div class="nav-btns">
       <button onclick="abrirInscripcionRapida()" class="nav-btn btn-cta-nav">🎾 INSCRIBIRTE</button>
@@ -132,7 +132,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         <span id="heroClubTag">🎾 CIRCUITO 360</span> • <span id="heroSubtitleBadge">Fechas y Canchas Sincronizadas</span>
       </div>
       <h2 id="heroMainTitle">COPA AYRES OPEN</h2>
-      <p class="hero-sub" id="heroSubDesc">Sincronización online en vivo en todos los dispositivos • Arbitraje digital y reserva protegida con Mercado Pago.</p>
+      <p class="hero-sub">Sincronización online en vivo en todos los dispositivos • Arbitraje digital y reserva protegida con Mercado Pago.</p>
       <div class="reloj-box">
         <div style="font-size:.7rem;color:#CBD5E1;text-transform:uppercase;margin-bottom:.25rem;">⏱️ Cuenta Regresiva Oficial (<span id="labelFechaReloj" style="color:var(--primary);font-weight:800;"></span>):</div>
         <div id="relojGigante" class="reloj-time mono">00D : 00H : 00M : 00S</div>
@@ -166,7 +166,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- ================= VISTA PARTIDOS, FIXTURE & TABLA ================= -->
+<!-- ================= VISTA PARTIDOS & TABLA ================= -->
 <div id="vistaLlaves" class="vista">
   <div class="container">
     <div style="text-align:center;margin-bottom:1.25rem;">
@@ -179,7 +179,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
 
     <div class="panel" style="margin-bottom:1.5rem;">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
-        <h4 style="color:var(--primary);font-size:1.05rem;font-weight:800;">📊 Tabla de Posiciones (Actualizada por Arbitraje en Vivo)</h4>
+        <h4 style="color:var(--primary);font-size:1.05rem;font-weight:800;">📊 Tabla de Posiciones (Actualizada en Vivo)</h4>
         <span class="mono" style="font-size:.7rem;color:var(--muted);">Victoria = 3 pts • Partido Jugado = 1 pt</span>
       </div>
       <div class="table-wrap">
@@ -260,7 +260,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
   </div>
 </div>
 
-<!-- ================= VISTA ADMIN MASTER / ARBITRAJE / SUPER ADMIN ================= -->
+<!-- ================= VISTA ADMIN / ÁRBITRO / SUPER ADMIN ================= -->
 <div id="vistaAdmin" class="vista">
   <div class="container">
     <div id="adminLoginBox" style="max-width:440px;margin:2.5rem auto;">
@@ -280,7 +280,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <div id="barraSuperGod" class="card-sub oculto" style="background:linear-gradient(90deg,#311042,#0B1220);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.85rem;">
         <div>
           <span style="background:var(--purple);color:#fff;font-weight:800;font-size:.66rem;padding:.2rem .55rem;border-radius:6px;">👑 SUPER ADMIN GLOBAL • CONTROL TOTAL</span>
-          <p style="font-size:.76rem;color:#E9D5FF;margin-top:.25rem;">Control absoluto de licencias, canchas, partidos, categorías libres, arbitraje y backups en la nube.</p>
+          <p style="font-size:.76rem;color:#E9D5FF;margin-top:.25rem;">Control absoluto de licencias, canchas, partidos, categorías libres, arbitraje y backups.</p>
         </div>
         <div style="display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;">
           <select id="selTorneoGod" onchange="cambiarTorneoActivo(this.value)" class="inp" style="width:260px;border-color:var(--purple);font-weight:700;"></select>
@@ -292,35 +292,33 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <!-- CONTROL RÁPIDO SINCRONIZADO -->
       <div class="card-sub" style="border-color:var(--primary);">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.65rem;">
-          <span class="mono" style="font-size:.73rem;font-weight:800;color:var(--primary);">⚡ CONTROL RÁPIDO EN VIVO (SE SINCRONIZA EN TODOS LOS TELÉFONOS)</span>
-          <span id="badgeSincronia" class="mono" style="font-size:.7rem;color:#34D399;font-weight:700;">🟢 Nube Sincronizada</span>
+          <span class="mono" style="font-size:.73rem;font-weight:800;color:var(--primary);">⚡ CONTROL RÁPIDO EN VIVO (SE GUARDA Y SINCRONIZA EN TODOS LOS TELÉFONOS)</span>
+          <span id="badgeSincronia" class="mono" style="font-size:.7rem;color:#34D399;font-weight:700;">🟢 Listo</span>
         </div>
         <div class="grid-auto" style="align-items:end;">
           <div><label class="lbl" style="color:#10B981;">📅 Fecha Inicio</label><input type="date" id="qFechaIni" class="inp"></div>
           <div><label class="lbl" style="color:#10B981;">📅 Fecha Fin</label><input type="date" id="qFechaFin" class="inp"></div>
           <div><label class="lbl">⏰ Hora Inicio</label><input type="time" id="qHoraIni" class="inp"></div>
           <div><label class="lbl" style="color:var(--primary);">🎾 N° Canchas</label><input type="number" id="qCanchas" min="1" max="30" class="inp"></div>
-          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos / Pareja</label><input type="number" id="qPartidos" min="1" max="12" class="inp" title="Cantidad de partidos garantizados por dupla"></div>
+          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos / Pareja</label><input type="number" id="qPartidos" min="1" max="12" class="inp"></div>
           <div><label class="lbl" style="color:#38BDF8;">💲 Valor Dupla ($)</label><input type="number" id="qPrecio" class="inp"></div>
-          <div><button onclick="aplicarControlRapido()" class="btn btn-green" style="width:100%;">⚡ Publicar a Todos</button></div>
+          <div><button onclick="aplicarControlRapido()" class="btn btn-green" style="width:100%;">⚡ Guardar y Publicar</button></div>
         </div>
         <p id="diagnosticoIA" class="mono" style="font-size:.71rem;color:var(--muted);margin-top:.55rem;"></p>
       </div>
 
-      <!-- CABECERA DEL PANEL -->
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;margin-bottom:1rem;">
         <div>
           <h2 style="font-size:1.3rem;font-weight:800;">🛠️ <span id="lblTorneoAdmin">--</span></h2>
           <span id="badgeRol" style="background:var(--green);color:#030508;font-size:.66rem;font-weight:800;padding:.18rem .5rem;border-radius:5px;">ORGANIZADOR</span>
         </div>
         <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
-          <button onclick="generarFixtureConIA(false)" class="btn btn-ai">🤖 Generar / Re-Armar Partidos IA</button>
+          <button onclick="generarFixtureConIA(false)" class="btn btn-ai">🤖 Generar Partidos IA</button>
           <button onclick="guardarTodoAdmin()" class="btn btn-green">✅ Guardar Todo en Nube</button>
           <button onclick="cerrarSesion()" class="btn btn-red">🔒 Salir</button>
         </div>
       </div>
 
-      <!-- KPIs -->
       <div class="kpi-bar mono">
         <div><div style="font-size:.63rem;color:#38BDF8;">💳 CAJA CONFIRMADA MP</div><div id="kpiCaja" style="font-size:1.2rem;font-weight:800;color:var(--green);">$0 CLP</div><div id="kpiPagosDet" style="font-size:.63rem;color:var(--muted);">0 🔴 • 0 🟡</div></div>
         <div><div style="font-size:.63rem;color:var(--muted);">👥 INSCRITOS / CAPACIDAD</div><div id="kpiCupos" style="font-size:1.15rem;font-weight:800;color:var(--primary);">0 / 0</div></div>
@@ -334,7 +332,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
       </div>
 
-      <!-- PESTAÑAS ADMIN -->
       <div class="nav-btns" style="margin-bottom:1.25rem;border-bottom:1px solid var(--border);padding-bottom:.85rem;">
         <button onclick="setTabAdmin('arbitraje')" id="tabAdmArb" class="nav-btn active">⚖️ Arbitraje & Partidos</button>
         <button onclick="setTabAdmin('boxes')" id="tabAdmBox" class="nav-btn">🎾 Boxes & Pagos MP</button>
@@ -344,25 +341,23 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         <button onclick="setTabAdmin('saas')" id="tabAdmSaas" class="nav-btn oculto" style="background:rgba(168,85,247,.18);border-color:var(--purple);color:#E9D5FF;">👑 Consola Super Admin</button>
       </div>
 
-      <!-- 1. SUB-PANEL: ARBITRAJE & CONTROL DE PARTIDOS EN VIVO -->
+      <!-- 1. ARBITRAJE -->
       <div id="subArb">
         <div class="card-sub" style="border-color:#7C3AED;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.85rem;">
             <div>
-              <h4 style="font-size:1.05rem;font-weight:800;color:#C4B5FD;">⚖️ Mesa de Control & Arbitraje de Partidos en Vivo</h4>
-              <p style="font-size:.75rem;color:var(--muted);">Controla marcadores, estados en cancha (se ven al instante en Monitor TV), crea cruces manuales o genera el fixture automático según tu N° de partidos.</p>
+              <h4 style="font-size:1.05rem;font-weight:800;color:#C4B5FD;">⚖️ Mesa de Control & Arbitraje de Partidos</h4>
+              <p style="font-size:.75rem;color:var(--muted);">Actualiza marcadores y estados en cancha; se reflejan en vivo en Monitor TV y Tabla.</p>
             </div>
             <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;">
               <select id="selCatArb" onchange="renderAdminArbitraje()" class="inp" style="width:210px;font-weight:700;"></select>
               <button onclick="generarFixtureConIA(false)" class="btn btn-ai">🤖 Auto-Generar Partidos</button>
             </div>
           </div>
-
-          <!-- CREADOR DE PARTIDO MANUAL (CUARTOS, SEMIS, FINAL O EXTRA) -->
-          <div style="background:#04070D;padding:.85rem;border-radius:10px;border:1px solid var(--border);margin-bottom:.5rem;">
-            <div style="font-size:.72rem;font-weight:800;color:var(--primary);margin-bottom:.5rem;">➕ AGREGAR PARTIDO MANUAL (GRUPOS / PLAYOFFS / FINAL)</div>
+          <div style="background:#04070D;padding:.85rem;border-radius:10px;border:1px solid var(--border);">
+            <div style="font-size:.72rem;font-weight:800;color:var(--primary);margin-bottom:.5rem;">➕ CREAR PARTIDO MANUAL (GRUPOS / PLAYOFFS / FINAL)</div>
             <div class="grid-auto" style="align-items:end;">
-              <div><label class="lbl">Fase / Ronda</label><input type="text" id="newMatchFase" value="Fase de Grupos" placeholder="Ej. Semifinal / Final" class="inp"></div>
+              <div><label class="lbl">Fase</label><input type="text" id="newMatchFase" value="Fase de Grupos" class="inp"></div>
               <div><label class="lbl">Pareja A</label><select id="newMatchA" class="inp"></select></div>
               <div><label class="lbl">Pareja B</label><select id="newMatchB" class="inp"></select></div>
               <div><label class="lbl">Cancha</label><select id="newMatchCancha" class="inp"></select></div>
@@ -371,43 +366,38 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
             </div>
           </div>
         </div>
-
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Fase</th><th>Cruce (Pareja A vs Pareja B)</th><th>Cancha</th><th>Fecha / Hora</th><th>Estado Árbitro</th><th>Marcador (Ej. 6-4 / 6-3)</th><th>Ganador</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Fase</th><th>Cruce</th><th>Cancha</th><th>Fecha / Hora</th><th>Estado</th><th>Marcador</th><th>Ganador</th><th>Acciones</th></tr></thead>
             <tbody id="tbodyArbitraje"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 2. SUB-PANEL: BOXES Y PAGOS MP -->
+      <!-- 2. BOXES -->
       <div id="subBox" class="oculto">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.8rem;">
           <div>
-            <h4 style="font-size:1.05rem;font-weight:800;">🎾 Administración de Boxes & Verificación Mercado Pago</h4>
-            <p style="font-size:.75rem;color:var(--muted);">Aprueba pagos con 1 clic, edita duplas o libera cupos.</p>
+            <h4 style="font-size:1.05rem;font-weight:800;">🎾 Administración de Boxes & Verificación MP</h4>
           </div>
           <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
             <select id="selCatBoxes" onchange="renderAdminBoxes()" class="inp" style="width:220px;font-weight:700;"></select>
-            <button onclick="sincronizar();mostrarToast('✅ Boxes publicados en la nube')" class="btn btn-green">✅ Confirmar Cambios</button>
+            <button onclick="sincronizar();mostrarToast('✅ Boxes guardados')" class="btn btn-green">✅ Confirmar Cambios</button>
           </div>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Box</th><th>Estado / Pago MP</th><th>Alias Dupla</th><th>Jugador 1 / Jugador 2</th><th>WhatsApp</th><th>Cancha Base</th><th>Acción</th></tr></thead>
+            <thead><tr><th>Box</th><th>Estado / Pago MP</th><th>Alias Dupla</th><th>Jugador 1 / Jugador 2</th><th>WhatsApp</th><th>Cancha</th><th>Acción</th></tr></thead>
             <tbody id="tbodyBoxes"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 3. SUB-PANEL: CRM INSCRITOS -->
+      <!-- 3. CRM -->
       <div id="subCrm" class="oculto">
         <div class="card-sub" style="border-color:#38BDF8;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.75rem;">
-            <div>
-              <h4 style="font-size:1.1rem;font-weight:800;">👥 Directorio Maestro de Inscritos (Todos los Datos)</h4>
-              <p style="font-size:.75rem;color:var(--muted);">Edita jugadores, mueve de categoría, aprueba pagos o descarga la nómina a Excel.</p>
-            </div>
+            <div><h4 style="font-size:1.1rem;font-weight:800;">👥 Directorio Maestro de Inscritos</h4></div>
             <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
               <button onclick="exportarCSV()" class="btn btn-blue">📥 Exportar Excel (CSV)</button>
               <button onclick="inscribirManualAdmin()" class="btn btn-green">+ Inscribir Pareja Manual</button>
@@ -420,59 +410,56 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Categoría / Box</th><th>Pago MP / Folio</th><th>Dupla</th><th>Jugador 1 (Nombre/Tel/Email/IG)</th><th>Jugador 2 (Nombre/Tel/Email/IG)</th><th>PIN</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Categoría / Box</th><th>Pago MP / Folio</th><th>Dupla</th><th>Jugador 1</th><th>Jugador 2</th><th>PIN</th><th>Acciones</th></tr></thead>
             <tbody id="tbodyCrm"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 4. SUB-PANEL: CATEGORÍAS LIBRES, CANCHAS, ALMANAQUE & MP -->
+      <!-- 4. CATEGORÍAS LIBRES & CMS -->
       <div id="subCms" class="oculto">
-        <!-- GESTOR DE CATEGORÍAS 100% LIBRES -->
         <div class="card-sub" style="border-color:var(--primary);">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:.85rem;">
             <div>
-              <span style="background:rgba(212,175,55,.18);color:var(--primary);font-size:.66rem;font-weight:800;padding:.18rem .5rem;border-radius:5px;">LIBERTAD TOTAL • SIN LÍMITE DE 16</span>
-              <h4 style="font-size:1.05rem;font-weight:800;margin-top:.25rem;">🏆 Categorías, Cupos Exactos (2 a 128), Partidos y Precio Propio</h4>
+              <span style="background:rgba(212,175,55,.18);color:var(--primary);font-size:.66rem;font-weight:800;padding:.18rem .5rem;border-radius:5px;">LIBERTAD TOTAL • GUARDADO INMEDIATO</span>
+              <h4 style="font-size:1.05rem;font-weight:800;margin-top:.25rem;">🏆 Categorías, Cupos (2 a 128), Partidos por Pareja (1 a 12) y Precio</h4>
             </div>
             <div style="display:flex;gap:.45rem;flex-wrap:wrap;align-items:center;">
-              <input type="text" id="newCatNom" placeholder="Nombre Categoría (Ej. 4ª Varones)" class="inp" style="width:200px;">
-              <input type="number" id="newCatCupos" value="12" min="2" max="128" placeholder="Cupos" class="inp" style="width:90px;" title="Cantidad exacta de parejas">
-              <input type="number" id="newCatPartidos" value="3" min="1" max="12" placeholder="Partidos" class="inp" style="width:90px;" title="Partidos por pareja en esta categoría">
+              <input type="text" id="newCatNom" placeholder="Ej. 4ª Varones" class="inp" style="width:190px;">
+              <input type="number" id="newCatCupos" value="12" min="2" max="128" class="inp" style="width:85px;" title="Cupos">
+              <input type="number" id="newCatPartidos" value="3" min="1" max="12" class="inp" style="width:85px;" title="Partidos por pareja">
               <button onclick="agregarCategoriaLibre()" class="btn btn-green">+ Agregar Categoría</button>
             </div>
           </div>
           <div id="listaCatsEditor" class="grid-2"></div>
         </div>
 
-        <!-- MERCADO PAGO -->
         <div class="card-sub" style="border-color:var(--mp);background:linear-gradient(90deg,rgba(0,158,227,.14),#060B14);">
-          <h4 style="color:#38BDF8;font-size:.95rem;margin-bottom:.75rem;">💳 Pasarela Oficial Mercado Pago (API Checkout Pro)</h4>
+          <h4 style="color:#38BDF8;font-size:.95rem;margin-bottom:.75rem;">💳 Pasarela Oficial Mercado Pago</h4>
           <div class="grid-auto">
-            <div><label class="lbl" style="color:#FACC15;">Access Token Producción (APP_USR-...)</label><input type="text" id="cfgMpToken" class="inp"></div>
+            <div><label class="lbl" style="color:#FACC15;">Access Token (APP_USR-...)</label><input type="text" id="cfgMpToken" class="inp"></div>
             <div><label class="lbl" style="color:#38BDF8;">Link de Respaldo (Opcional)</label><input type="text" id="cfgLinkPago" class="inp"></div>
-            <div><label class="lbl" style="color:var(--green);">Precio Base Inscripción Dupla ($)</label><input type="number" id="cfgPrecio" class="inp"></div>
-            <div><label class="lbl">Titular Cuenta Receptora</label><input type="text" id="cfgTitularMP" class="inp"></div>
+            <div><label class="lbl" style="color:var(--green);">Precio Base Dupla ($)</label><input type="number" id="cfgPrecio" class="inp"></div>
+            <div><label class="lbl">Titular Cuenta</label><input type="text" id="cfgTitularMP" class="inp"></div>
           </div>
         </div>
 
-        <!-- CONFIGURACIÓN GENERAL -->
         <div class="grid-auto">
           <div><label class="lbl">Nombre del Torneo</label><input type="text" id="cfgNombre" class="inp"></div>
           <div><label class="lbl">Club / Marca</label><input type="text" id="cfgBadge" class="inp"></div>
-          <div><label class="lbl" style="color:var(--primary);">🎾 N° Canchas (1 a 30)</label><input type="number" id="cfgCanchas" min="1" max="30" class="inp"></div>
-          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos Garantizados Base</label><input type="number" id="cfgPartidosBase" min="1" max="12" class="inp"></div>
+          <div><label class="lbl" style="color:var(--primary);">🎾 N° Canchas</label><input type="number" id="cfgCanchas" min="1" max="30" class="inp"></div>
+          <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos / Pareja Base</label><input type="number" id="cfgPartidosBase" min="1" max="12" class="inp"></div>
           <div><label class="lbl" style="color:var(--green);">📅 Fecha Inicio</label><input type="date" id="cfgFechaIni" class="inp"></div>
           <div><label class="lbl" style="color:var(--green);">📅 Fecha Fin</label><input type="date" id="cfgFechaFin" class="inp"></div>
           <div><label class="lbl">⏰ Hora Apertura</label><input type="time" id="cfgHoraIni" class="inp"></div>
           <div><label class="lbl">⏰ Hora Cierre</label><input type="time" id="cfgHoraFin" class="inp"></div>
-          <div><label class="lbl">⏱️ Duración Partido (min)</label><input type="number" id="cfgDuracion" min="15" max="120" class="inp"></div>
-          <div><label class="lbl">🛌 Descanso IA (turnos)</label><input type="number" id="cfgDescanso" min="0" max="6" class="inp"></div>
-          <div><label class="lbl">🎨 Color Primario (Hex)</label><input type="text" id="cfgColor" class="inp"></div>
-          <div><label class="lbl">🖼️ Subir Logo Torneo</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'logoTorneoImg')" class="inp" style="padding:.3rem;"></div>
-          <div><label class="lbl">📸 Subir Foto Portada</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'heroCustomBase64')" class="inp" style="padding:.3rem;"></div>
+          <div><label class="lbl">⏱️ Duración (min)</label><input type="number" id="cfgDuracion" min="15" max="120" class="inp"></div>
+          <div><label class="lbl">🛌 Descanso IA</label><input type="number" id="cfgDescanso" min="0" max="6" class="inp"></div>
+          <div><label class="lbl">🎨 Color (Hex)</label><input type="text" id="cfgColor" class="inp"></div>
+          <div><label class="lbl">🖼️ Logo Torneo</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'logoTorneoImg')" class="inp" style="padding:.3rem;"></div>
+          <div><label class="lbl">📸 Foto Portada</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'heroCustomBase64')" class="inp" style="padding:.3rem;"></div>
           <div style="grid-column:1/-1;"><label class="lbl">📍 Ubicación Google Maps</label><input type="text" id="cfgMapa" class="inp"></div>
-          <div style="grid-column:1/-1;"><label class="lbl">📢 Comunicado Oficial (Banner)</label><input type="text" id="cfgComunicado" class="inp"></div>
+          <div style="grid-column:1/-1;"><label class="lbl">📢 Comunicado Oficial</label><input type="text" id="cfgComunicado" class="inp"></div>
           <div style="grid-column:1/-1;"><label class="lbl">📜 Reglamento (HTML)</label><textarea id="cfgReglamento" rows="3" class="inp"></textarea></div>
         </div>
         <div style="margin-top:1rem;text-align:right;">
@@ -480,7 +467,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
       </div>
 
-      <!-- 5. SUB-PANEL: SPONSORS & RANKING -->
+      <!-- 5. SPONSORS & RANKING -->
       <div id="subSpo" class="oculto">
         <div class="grid-2">
           <div class="card-sub">
@@ -492,7 +479,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
           </div>
           <div class="card-sub">
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
-              <h4>📊 Puntos Ranking Circuito 360</h4>
+              <h4>📊 Puntos Ranking</h4>
               <button onclick="sincronizar();mostrarToast('✅ Ranking guardado')" class="btn btn-sm btn-green">✔ Guardar</button>
             </div>
             <div id="editorRankings" style="display:flex;flex-direction:column;gap:.45rem;"></div>
@@ -500,12 +487,12 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
       </div>
 
-      <!-- 6. SUB-PANEL: CONSOLA SUPER ADMIN GLOBAL -->
+      <!-- 6. CONSOLA SUPER ADMIN -->
       <div id="subSaas" class="oculto">
         <div class="card-sub" style="background:linear-gradient(135deg,#2E1065,#04070D);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
           <div>
             <span style="background:var(--purple);color:#fff;padding:.2rem .55rem;border-radius:5px;font-size:.66rem;font-weight:800;">CONSOLA COMERCIAL SUPER ADMIN</span>
-            <h4 style="font-size:1.2rem;margin-top:.3rem;">👑 Gestión Global de Torneos, Licencias & Parámetros Libres</h4>
+            <h4 style="font-size:1.2rem;margin-top:.3rem;">👑 Gestión Global de Torneos & Licencias</h4>
           </div>
           <div class="mono" style="background:rgba(4,7,13,.75);padding:.8rem 1.1rem;border-radius:10px;border:1px solid var(--purple);text-align:right;">
             <div style="font-size:.63rem;color:#DDD6FE;">FACTURACIÓN LICENCIAS</div>
@@ -514,30 +501,30 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
         </div>
 
         <div class="card-sub">
-          <h5 style="color:var(--primary);margin-bottom:.75rem;">➕ Crear Nuevo Torneo con Parámetros 100% Libres</h5>
+          <h5 style="color:var(--primary);margin-bottom:.75rem;">➕ Crear Nuevo Torneo</h5>
           <div class="grid-auto">
-            <div><label class="lbl">ID URL (Ej. copa-verano)</label><input type="text" id="nsId" placeholder="copa-verano" class="inp"></div>
+            <div><label class="lbl">ID URL</label><input type="text" id="nsId" placeholder="copa-verano" class="inp"></div>
             <div><label class="lbl">Nombre Torneo</label><input type="text" id="nsNombre" placeholder="COPA AYRES OPEN" class="inp"></div>
             <div><label class="lbl">Club / Marca</label><input type="text" id="nsClub" placeholder="AYRES SPORTING CLUB" class="inp"></div>
-            <div><label class="lbl">Contacto Cliente</label><input type="text" id="nsContacto" placeholder="@club" class="inp"></div>
+            <div><label class="lbl">Contacto</label><input type="text" id="nsContacto" placeholder="@club" class="inp"></div>
             <div><label class="lbl" style="color:var(--green);">📅 Fecha Inicio</label><input type="date" id="nsFIni" value="2026-12-05" class="inp"></div>
             <div><label class="lbl" style="color:var(--green);">📅 Fecha Fin</label><input type="date" id="nsFFin" value="2026-12-06" class="inp"></div>
             <div><label class="lbl">⏰ Hora Inicio</label><input type="time" id="nsHora" value="09:00" class="inp"></div>
-            <div><label class="lbl" style="color:var(--primary);">🎾 N° Canchas</label><input type="number" id="nsCanchas" value="4" min="1" max="30" class="inp"></div>
-            <div><label class="lbl" style="color:#C4B5FD;">👥 Cupos x Categoría</label><input type="number" id="nsCuposCat" value="12" min="2" max="128" class="inp"></div>
-            <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos x Pareja</label><input type="number" id="nsPartidos" value="3" min="1" max="12" class="inp"></div>
-            <div><label class="lbl">🏆 Categorías (por coma)</label><input type="text" id="nsCats" value="DAMAS 7 6 Y 5, VARONES 7 6 Y 5, MIXTO 7 6 Y 5" class="inp"></div>
-            <div><label class="lbl" style="color:#38BDF8;">💳 Token APP_USR o Link MP</label><input type="text" id="nsMp" class="inp" placeholder="Token o Link MP"></div>
+            <div><label class="lbl" style="color:var(--primary);">🎾 Canchas</label><input type="number" id="nsCanchas" value="4" min="1" max="30" class="inp"></div>
+            <div><label class="lbl" style="color:#C4B5FD;">👥 Cupos x Cat</label><input type="number" id="nsCuposCat" value="12" min="2" max="128" class="inp"></div>
+            <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos / Pareja</label><input type="number" id="nsPartidos" value="3" min="1" max="12" class="inp"></div>
+            <div><label class="lbl">🏆 Categorías (coma)</label><input type="text" id="nsCats" value="DAMAS D, DAMAS C, MIXTO 7 6 Y 5" class="inp"></div>
+            <div><label class="lbl" style="color:#38BDF8;">💳 Token APP_USR</label><input type="text" id="nsMp" class="inp"></div>
             <div><label class="lbl">💲 Valor Dupla ($)</label><input type="number" id="nsPrecio" value="70000" class="inp"></div>
-            <div><label class="lbl" style="color:#FACC15;">🔑 Clave Organizador</label><input type="text" id="nsClave" value="1234" class="inp"></div>
-            <div><label class="lbl" style="color:var(--green);">💵 Licencia SaaS ($)</label><input type="number" id="nsLic" value="0" class="inp"></div>
-            <div style="display:flex;align-items:end;"><button onclick="crearTorneoSaas()" class="btn btn-green" style="width:100%;">✅ Crear & Publicar</button></div>
+            <div><label class="lbl" style="color:#FACC15;">🔑 Clave Org.</label><input type="text" id="nsClave" value="1234" class="inp"></div>
+            <div><label class="lbl" style="color:var(--green);">💵 Licencia ($)</label><input type="number" id="nsLic" value="0" class="inp"></div>
+            <div style="display:flex;align-items:end;"><button onclick="crearTorneoSaas()" class="btn btn-green" style="width:100%;">✅ Crear & Guardar</button></div>
           </div>
         </div>
 
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Estado</th><th>Torneo / ID / Inscritos</th><th>Clave</th><th>Canchas</th><th>Partidos</th><th>Inicio</th><th>Fin</th><th>Enlace</th><th>Control</th></tr></thead>
+            <thead><tr><th>Estado</th><th>Torneo / ID</th><th>Clave</th><th>Canchas</th><th>Partidos</th><th>Inicio</th><th>Fin</th><th>Enlace</th><th>Control</th></tr></thead>
             <tbody id="tbodySaas"></tbody>
           </table>
         </div>
@@ -565,7 +552,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.65r
       <span style="background:rgba(0,158,227,.18);color:#38BDF8;padding:.22rem .6rem;border-radius:6px;font-size:.7rem;font-weight:800;">💳 Reserva Protegida 10 Min</span>
     </div>
     <h3 style="font-size:1.3rem;font-weight:800;margin-bottom:.25rem;">Inscripción Oficial de Jugadores</h3>
-    <p style="font-size:.75rem;color:var(--muted);margin-bottom:.85rem;">Elige categoría y cupo disponible. Tu Box pasará a <strong>🔴 INSCRITO</strong> automáticamente tras el pago en Mercado Pago.</p>
+    <p style="font-size:.75rem;color:var(--muted);margin-bottom:.85rem;">Elige categoría y cupo disponible. Tu Box pasará a <strong>🔴 INSCRITO</strong> tras el pago en Mercado Pago.</p>
 
     <form id="formInsc" onsubmit="procesarInscripcion(event)" style="display:flex;flex-direction:column;gap:.65rem;">
       <div class="grid-auto" style="grid-template-columns:1fr 1fr;">
@@ -638,14 +625,20 @@ let db = null;
 let catActiva = '';
 let catLlavesActiva = '';
 let rolAdmin = null;
-let guardandoEnNube = false;
 let ultimoWhatsApp = '';
 let sonidoOn = true;
 let audioCtx = null;
+
+// MOTOR ANTI-REBOTE Y COLA SECUENCIAL DE GUARDADO
+let saveQueue = Promise.resolve();
+let pendingSaves = 0;
+let lastLocalMutationAt = 0;
+let localRev = 0;
+let inicializadoServidor = false;
+
 const urlParams = new URLSearchParams(window.location.search);
 const paramTorneo = urlParams.get('torneo');
 
-// --- UTILIDADES FECHA & AUDIO ---
 function fmtCL(iso){ if(!iso||!iso.includes('-')) return iso||''; const [y,m,d]=iso.split('-'); return `${d}/${m}/${y}`; }
 function fmtFechaHora(iso){ if(!iso||!iso.includes('T')) return `${fmtCL(db?.config?.fechaInicio)} ${db?.config?.horaApertura||'09:00'} hrs`; const [f,h]=iso.split('T'); return `${fmtCL(f)} ${h.slice(0,5)} hrs`; }
 function parseLocalTs(fIso, hStr){
@@ -685,7 +678,6 @@ setInterval(()=>{
   sl[slideIdx].classList.add('active-slide');
 },6000);
 
-// --- CREACIÓN DE ESTRUCTURAS LIBRES ---
 function crearCupos(tid, cKey, cant, fBase, hBase, nCanchas){
   const nc=Math.max(1,Number(nCanchas)||4);
   return Array.from({length:Math.max(2,Number(cant)||16)},(_,i)=>({
@@ -698,7 +690,7 @@ function crearCupos(tid, cKey, cant, fBase, hBase, nCanchas){
 
 function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFin, hIni, nCanchas, precioInsc, catsStr, mpVal, cuposDef, partidosDef){
   const fi=fIni||'2026-12-05', ff=(fFin&&fFin>=fi)?fFin:sumarDias(fi,1), hi=hIni||'09:00';
-  const nc=Math.max(1,Number(nCanchas)||4), cupN=Math.max(2,Number(cuposDef)||16), partN=Math.max(1,Number(partidosDef)||3);
+  const nc=Math.max(1,Number(nCanchas)||4), cupN=Math.max(2,Number(cuposDef)||16), partN=Math.max(1,Math.min(12,Number(partidosDef)||3));
   const esTok=mpVal&&mpVal.includes('APP_USR-');
   const catsArr=(catsStr||'DAMAS 7 6 Y 5, VARONES 7 6 Y 5, MIXTO 7 6 Y 5').split(',').map(s=>s.trim()).filter(Boolean);
   const categorias=(catsArr.length?catsArr:['General']).map((nom,idx)=>({
@@ -730,7 +722,7 @@ function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFi
 
 function initDefaultDB(){
   return {
-    lastUpdated:0, torneoActivoId:'copa',
+    rev:0, lastUpdated:0, torneoActivoId:'copa',
     torneos:{
       copa:crearTorneoBase('copa','COPA AYRES OPEN','AYRES SPORTING CLUB','1234','@ayres.cl',0,'2026-12-05','2026-12-06','09:00',4,70000,'DAMAS 7 6 Y 5, VARONES 7 6 Y 5, MIXTO 7 6 Y 5',DEFAULT_MP_TOKEN,16,3)
     }
@@ -758,26 +750,16 @@ function asegurarIntegridad(){
 function getCatObj(k){ return (db.config.categorias||[]).find(c=>c.key===k)||db.config.categorias[0]; }
 function getPrecioCat(k){ const c=getCatObj(k); return (c&&Number(c.precioCustom)>0)?Number(c.precioCustom):(Number(db.config.precioInscripcion)||70000); }
 
-// --- SINCRONIZACIÓN CENTRAL EN LA NUBE (100% COORDINADO ENTRE DISPOSITIVOS) ---
-async function empujarNube(){
-  guardandoEnNube=true;
-  asegurarIntegridad();
-  saasDB.lastUpdated=Date.now();
-  saasDB.torneos[saasDB.torneoActivoId]=db;
-  try{
-    const r=await fetch('/api/state',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(saasDB)});
-    if(r.ok){
-      const j=await r.json();
-      if(j.lastUpdated) saasDB.lastUpdated=j.lastUpdated;
-      setSyncBadge('☁️ CLOUD SYNC OK','#34D399');
-    }
-  }catch(e){ setSyncBadge('⚠️ SIN CONEXIÓN','#F59E0B'); }
-  finally{ guardandoEnNube=false; }
+function setSyncBadge(txt, col){
+  const el=document.getElementById('indicadorNubeSync');
+  if(el){ el.innerText=txt; el.style.color=col; el.style.borderColor=col; }
+  const bs=document.getElementById('badgeSincronia');
+  if(bs){ bs.innerText=txt; bs.style.color=col; }
 }
 
-function setSyncBadge(txt,col){
-  const el=document.getElementById('indicadorNubeSync');
-  if(el){ el.innerText=txt; el.style.color=col; }
+function actualizarBadgeStorage(mode){
+  if(mode==='POSTGRES_PERMANENT') setSyncBadge('☁️ DB PERMANENTE OK','#34D399');
+  else setSyncBadge('⚠️ SYNC VIVO (FALTA DB)','#F59E0B');
 }
 
 function usuarioEscribiendoEnAdmin(){
@@ -786,20 +768,77 @@ function usuarioEscribiendoEnAdmin(){
   return !!a.closest('#adminPanelBox') && ['INPUT','TEXTAREA','SELECT'].includes(a.tagName);
 }
 
-async function consultarNube(inicial=false){
-  if(guardandoEnNube && !inicial) return;
-  try{
-    const r=await fetch('/api/state?t='+Date.now(),{cache:'no-store'});
-    if(r.status===404 && inicial){
-      saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
-      recalcularHorariosBoxes(); await empujarNube();
-      refrescarTodoUI(true); return;
+// --- COLA SECUENCIAL DE GUARDADO EN SERVIDOR (CERO REBOTES) ---
+function empujarNube(){
+  asegurarIntegridad();
+  saasDB.torneos[saasDB.torneoActivoId]=db;
+  pendingSaves++;
+  lastLocalMutationAt=Date.now();
+  setSyncBadge('⏳ GUARDANDO...','#FACC15');
+
+  const snapshot=JSON.stringify(saasDB);
+  saveQueue=saveQueue.then(async ()=>{
+    try{
+      const r=await fetch('/api/state',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:snapshot
+      });
+      const ct=r.headers.get('content-type')||'';
+      if(!r.ok || !ct.includes('application/json')) throw new Error('API no disponible');
+      const j=await r.json();
+      if(j.ok){
+        if(j.rev){ saasDB.rev=j.rev; localRev=j.rev; }
+        if(j.lastUpdated) saasDB.lastUpdated=j.lastUpdated;
+        actualizarBadgeStorage(j.storageMode);
+      } else {
+        setSyncBadge('❌ ERROR AL GUARDAR','#EF4444');
+      }
+    }catch(e){
+      setSyncBadge('❌ SIN SERVIDOR API','#EF4444');
+    }finally{
+      pendingSaves=Math.max(0, pendingSaves-1);
+      lastLocalMutationAt=Date.now();
     }
-    if(!r.ok) return;
-    const rem=await r.json();
+  });
+  return saveQueue;
+}
+
+async function consultarNube(inicial=false){
+  // Nunca pisar si hay un guardado en curso o recién se editó (ventana segura de 3.5s)
+  if(!inicial && (pendingSaves>0 || (Date.now()-lastLocalMutationAt)<3500)) return;
+  const reqStart=Date.now();
+  try{
+    const r=await fetch('/api/state?t='+reqStart,{cache:'no-store'});
+    const ct=r.headers.get('content-type')||'';
+    if(!r.ok || !ct.includes('application/json')){
+      setSyncBadge('❌ SIN SERVIDOR API','#EF4444');
+      return;
+    }
+    const res=await r.json();
+    actualizarBadgeStorage(res.storageMode);
+
+    if(res.empty){
+      if(inicial){
+        saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
+        recalcularHorariosBoxes();
+        await empujarNube();
+        inicializadoServidor=true;
+        refrescarTodoUI(true);
+      }
+      return;
+    }
+
+    // Descartar respuesta vieja si el usuario editó mientras esta petición viajaba
+    if(!inicial && (pendingSaves>0 || lastLocalMutationAt>reqStart)) return;
+
+    const rem=res.state;
     if(rem && rem.torneos){
-      const cambio = inicial || !saasDB || rem.lastUpdated !== saasDB.lastUpdated;
-      if(cambio){
+      const remRev=Number(rem.rev)||0;
+      const esMasNuevo = inicial || !inicializadoServidor || (remRev > localRev);
+      if(esMasNuevo){
+        localRev=remRev;
+        inicializadoServidor=true;
         saasDB=rem;
         if(paramTorneo && saasDB.torneos[paramTorneo]) saasDB.torneoActivoId=paramTorneo;
         else if(!saasDB.torneos[saasDB.torneoActivoId]) saasDB.torneoActivoId=Object.keys(saasDB.torneos)[0];
@@ -807,9 +846,10 @@ async function consultarNube(inicial=false){
         asegurarIntegridad();
         refrescarTodoUI(!usuarioEscribiendoEnAdmin());
       }
-      setSyncBadge('☁️ CLOUD SYNC OK','#34D399');
     }
-  }catch(e){ setSyncBadge('⚠️ OFFLINE','#F59E0B'); }
+  }catch(e){
+    setSyncBadge('❌ SIN CONEXIÓN API','#EF4444');
+  }
 }
 
 function sincronizar(){ empujarNube(); refrescarTodoUI(false); }
@@ -829,9 +869,9 @@ function refrescarTodoUI(incluirFormsAdmin){
   }
 }
 
-setInterval(()=>consultarNube(false), 2000);
+setInterval(()=>consultarNube(false), 2500);
 
-// --- MOTOR DE SLOTS, CANCHAS & FIXTURE IA CON CANTIDAD DE PARTIDOS LIBRE ---
+// --- MOTOR DE SLOTS Y FIXTURE ---
 function generarSlots(){
   const fi=db.config.fechaInicio||'2026-12-05', ff=(db.config.fechaFin&&db.config.fechaFin>=fi)?db.config.fechaFin:fi;
   const [ah,am]=(db.config.horaApertura||'09:00').split(':').map(Number);
@@ -877,21 +917,17 @@ function generarFixtureConIA(silencioso){
 
   db.config.categorias.forEach(cat=>{
     const inscritos=(db.cupos[cat.key]||[]).filter(c=>c.ocupado && c.estadoPagoMP==='PAGADO_MP' && c.alias);
-    const nPartidosCat=Math.max(1, Number(cat.partidosGarantizados)||Number(db.config.partidosGarantizados)||3);
-    // Conservar partidos manuales/playoffs que el árbitro haya marcado como manuales o ya jugados
+    const nPartidosCat=Math.max(1, Math.min(12, Number(cat.partidosGarantizados)||Number(db.config.partidosGarantizados)||3));
     const preservados=(db.partidos[cat.key]||[]).filter(p=>p.manual || p.estado==='Finalizado 🏁' || p.estado==='Jugando 🔴');
     const nuevos=[];
     if(inscritos.length>=2){
-      const paresUsados={};
-      const conteoDupla={};
+      const paresUsados={}, conteoDupla={};
       inscritos.forEach(d=>conteoDupla[d.id]=0);
-
       for(let r=1; r<=nPartidosCat; r++){
         const orden=[...inscritos];
         for(let i=0; i<orden.length; i++){
           const A=orden[i];
           if(conteoDupla[A.id]>=nPartidosCat) continue;
-          // Buscar rival con menos partidos que no haya repetido si es posible
           let B=null;
           for(let step=1; step<orden.length; step++){
             const cand=orden[(i+step)%orden.length];
@@ -905,8 +941,7 @@ function generarFixtureConIA(silencioso){
             }
           }
           if(!B) continue;
-          const kPair=[Math.min(A.id,B.id),Math.max(A.id,B.id)].join('-');
-          paresUsados[kPair]=true;
+          paresUsados[[Math.min(A.id,B.id),Math.max(A.id,B.id)].join('-')]=true;
           conteoDupla[A.id]++; conteoDupla[B.id]++;
 
           const idA=`${cat.key}_${A.id}`, idB=`${cat.key}_${B.id}`;
@@ -919,8 +954,7 @@ function generarFixtureConIA(silencioso){
             for(let c=1; c<=nc; c++){
               const cn=`Cancha #${c}`;
               if(!slots[b].occ[cn]){
-                slots[b].occ[cn]=true;
-                ultimoBloque[idA]=b; ultimoBloque[idB]=b;
+                slots[b].occ[cn]=true; ultimoBloque[idA]=b; ultimoBloque[idB]=b;
                 nuevos.push({
                   id:`m_${Date.now()}_${Math.random().toString(36).slice(2,6)}`,
                   fase:`Ronda #${r}`, boxA:A.id, aliasA:A.alias, boxB:B.id, aliasB:B.alias,
@@ -948,10 +982,10 @@ function generarFixtureConIA(silencioso){
   });
   sincronizar();
   renderAdminArbitraje();
-  if(!silencioso) mostrarToast(`🤖 Fixture IA generado: ${totalGenerados} partidos distribuidos en ${nc} canchas.`);
+  if(!silencioso) mostrarToast(`🤖 Fixture IA generado: ${totalGenerados} partidos.`);
 }
 
-// --- RENDER PÚBLICO & BOTÓN INSCRIBIRTE ---
+// --- RENDER PÚBLICO ---
 function aplicarCMS(){
   asegurarIntegridad();
   document.documentElement.style.setProperty('--primary', db.config.colorPrimary||'#D4AF37');
@@ -1061,7 +1095,6 @@ function renderPartidosYTabla(){
   const inscritos=(db.cupos[catLlavesActiva]||[]).filter(c=>c.ocupado && c.estadoPagoMP==='PAGADO_MP' && c.alias);
   const partidos=db.partidos[catLlavesActiva]||[];
 
-  // Calcular Tabla de Posiciones real desde los partidos arbitrados
   const stats={};
   inscritos.forEach(c=>stats[c.id]={...c,pj:0,pg:0,pp:0,pts:0,ult:'--'});
   partidos.forEach(m=>{
@@ -1095,7 +1128,7 @@ function renderPartidosYTabla(){
       </div>
       <div class="mono" style="font-size:.68rem;color:var(--muted);margin-top:.45rem;">🕒 ${fmtFechaHora(m.fechaHora)}</div>
     </div>`;
-  }).join(''):`<div class="panel" style="grid-column:1/-1;text-align:center;color:var(--muted);">Aún no hay partidos generados. El organizador puede generarlos en 1 clic desde <strong>Arbitraje & Partidos</strong>.</div>`;
+  }).join(''):`<div class="panel" style="grid-column:1/-1;text-align:center;color:var(--muted);">Aún no hay partidos generados.</div>`;
 }
 
 function renderTV(){
@@ -1141,18 +1174,16 @@ function renderTV(){
   document.getElementById('tbodyRankingTV').innerHTML=rank.length?rank.map((r,i)=>`<tr><td class="mono" style="color:var(--primary);font-weight:800;">#${i+1}</td><td><strong>${r.n}</strong></td><td class="mono" style="text-align:right;color:var(--green);font-weight:800;">${r.pts} pts</td></tr>`).join(''):`<tr><td style="color:var(--muted);">Sin parejas confirmadas aún.</td></tr>`;
 }
 
-// --- RELOJES Y EXPIRACIÓN ---
 function actualizarRelojes(){
   if(!db) return;
   const now=Date.now();
-  // Limpiar expirados de 10 min
   let expiro=false;
   db.config.categorias.forEach(cat=>(db.cupos[cat.key]||[]).forEach(c=>{
     if(c.ocupado && c.estadoPagoMP==='RESERVANDO_MP' && c.expiraReservaTimestamp>0 && now>c.expiraReservaTimestamp){
       c.ocupado=false; c.estadoPagoMP='LIBRE'; c.alias=''; c.j1=''; c.j2=''; c.expiraReservaTimestamp=0; expiro=true;
     }
   }));
-  if(expiro && !guardandoEnNube){ empujarNube(); renderPublico(); }
+  if(expiro && pendingSaves===0){ empujarNube(); renderPublico(); }
 
   const target=parseLocalTs(db.config.fechaInicio, db.config.horaApertura);
   const elG=document.getElementById('relojGigante');
@@ -1178,7 +1209,7 @@ function actualizarRelojes(){
 }
 setInterval(actualizarRelojes,1000);
 
-// --- FLUJO DE INSCRIPCIÓN ("INSCRIBIRTE") + ANTI-COLISIÓN + MERCADO PAGO ---
+// --- INSCRIPCIÓN & MERCADO PAGO ---
 function abrirInscripcionRapida(){
   const lista=db.cupos[catActiva]||[];
   const libre=lista.find(c=>!c.ocupado);
@@ -1187,7 +1218,7 @@ function abrirInscripcionRapida(){
     const l=(db.cupos[cat.key]||[]).find(c=>!c.ocupado);
     if(l){ abrirModalInscripcion(cat.key, l.id); return; }
   }
-  alert('⚠️ Todos los cupos del torneo están ocupados actualmente.');
+  alert('⚠️ Todos los cupos están ocupados.');
 }
 
 function abrirModalInscripcion(cKey, boxId){
@@ -1206,7 +1237,7 @@ function actualizarSelectorBoxesModal(preferBoxId){
   const libres=(db.cupos[ck]||[]).filter(c=>!c.ocupado);
   const selB=document.getElementById('modSelBox');
   if(!libres.length){
-    selB.innerHTML=`<option value="">Sin cupos libres en esta categoría</option>`;
+    selB.innerHTML=`<option value="">Sin cupos libres</option>`;
   } else {
     selB.innerHTML=libres.map(c=>`<option value="${c.id}" ${c.id===preferBoxId?'selected':''}>Box #${c.id} (${c.cancha} • ${fmtFechaHora(c.horaInicioMatch)})</option>`).join('');
   }
@@ -1227,17 +1258,16 @@ async function procesarInscripcion(e){
   e.preventDefault();
   const ck=document.getElementById('modSelCat').value;
   const boxId=Number(document.getElementById('modSelBox').value);
-  if(!boxId){ alert('⚠️ Selecciona una categoría con cupos disponibles.'); return; }
+  if(!boxId){ alert('⚠️ Elige una categoría con cupos libres.'); return; }
 
   const btn=document.getElementById('btnSubmitMP');
-  btn.disabled=true; btn.innerText='⏳ Verificando cupo en la nube y conectando a MP...';
+  btn.disabled=true; btn.innerText='⏳ Verificando cupo y conectando a MP...';
 
-  // Verificación anti-colisión en tiempo real contra el servidor
-  await consultarNube(false);
+  await consultarNube(true);
   const cupo=(db.cupos[ck]||[]).find(x=>x.id===boxId);
   if(!cupo || cupo.ocupado){
     btn.disabled=false; btn.innerText='🎾 INSCRIBIRTE Y PAGAR EN MERCADO PAGO →';
-    alert('⚠️ Otro jugador reservó ese Box hace un instante. Elige otro cupo verde disponible.');
+    alert('⚠️ Otro jugador reservó ese Box recién. Elige otro cupo disponible.');
     actualizarSelectorBoxesModal(); return;
   }
 
@@ -1278,7 +1308,7 @@ async function procesarInscripcion(e){
   await empujarNube();
 
   btn.disabled=false; btn.innerText='🎾 INSCRIBIRTE Y PAGAR EN MERCADO PAGO →';
-  ultimoWhatsApp=`🎾 *CIRCUITO360.CL - INSCRIPCIÓN*\n🏆 ${db.config.nombreTorneo} (${getCatObj(ck).nombre})\n⭐ Dupla: ${alias}\n👤 ${j1} / ${j2}\n📦 Box #${boxId} (${cupo.cancha})\n💳 Folio: ${folio}\n🔗 Pagar: ${urlMP}`;
+  ultimoWhatsApp=`🎾 *CIRCUITO360.CL*\n🏆 ${db.config.nombreTorneo} (${getCatObj(ck).nombre})\n⭐ Dupla: ${alias}\n👤 ${j1} / ${j2}\n📦 Box #${boxId} (${cupo.cancha})\n💳 Folio: ${folio}\n🔗 Pagar: ${urlMP}`;
 
   cerrarModal();
   document.getElementById('exFolio').innerText=folio;
@@ -1292,13 +1322,9 @@ async function procesarInscripcion(e){
   window.location.href=urlMP;
 }
 
-function retomarPago(boxId){
-  const c=(db.cupos[catActiva]||[]).find(x=>x.id===boxId);
-  if(c && c.urlCheckoutMP) window.location.href=c.urlCheckoutMP;
-}
-function copiarWhatsAppJugador(){ if(ultimoWhatsApp) copiarTexto(ultimoWhatsApp,'📲 Ficha copiada para WhatsApp'); }
+function retomarPago(boxId){ const c=(db.cupos[catActiva]||[]).find(x=>x.id===boxId); if(c&&c.urlCheckoutMP) window.location.href=c.urlCheckoutMP; }
+function copiarWhatsAppJugador(){ if(ultimoWhatsApp) copiarTexto(ultimoWhatsApp,'📲 Ficha copiada'); }
 
-// --- RETORNO DE MERCADO PAGO ---
 async function verificarRetornoMP(){
   const st=urlParams.get('mp_status')||urlParams.get('collection_status')||urlParams.get('status');
   const tid=urlParams.get('torneo'), ck=urlParams.get('cat'), bid=Number(urlParams.get('box'));
@@ -1309,17 +1335,17 @@ async function verificarRetornoMP(){
     if(st==='approved'||st==='success'){
       cupo.ocupado=true; cupo.estadoPagoMP='PAGADO_MP'; cupo.expiraReservaTimestamp=0;
       await empujarNube(); refrescarTodoUI(true);
-      mostrarToast(`🎉 ¡Pago aprobado! Box #${bid} inscrito en rojo en todos los equipos.`);
+      mostrarToast(`🎉 ¡Pago aprobado! Box #${bid} inscrito en rojo.`);
     } else if(st==='failure'||st==='rejected'){
       cupo.ocupado=false; cupo.estadoPagoMP='LIBRE'; cupo.alias=''; cupo.j1=''; cupo.j2=''; cupo.expiraReservaTimestamp=0;
       await empujarNube(); refrescarTodoUI(true);
-      alert('⚠️ El pago no fue completado. El Box volvió a estar DISPONIBLE en verde.');
+      alert('⚠️ El pago no fue completado. El Box volvió a estar DISPONIBLE.');
     }
     window.history.replaceState({},document.title,`${window.location.pathname}?torneo=${t.id}`);
   }
 }
 
-// --- NAVEGACIÓN & LOGIN ADMIN ---
+// --- NAVEGACIÓN & ADMIN ---
 function cambiarVista(v){
   ['vistaPublica','vistaLlaves','vistaExito','vistaPremios','vistaTV','vistaAdmin'].forEach(id=>document.getElementById(id).classList.remove('activo'));
   ['btnNavPub','btnNavLlaves','btnNavPrem','btnNavTV','btnNavAdmin'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
@@ -1428,20 +1454,20 @@ function aplicarControlRapido(){
   db.config.fechaFin=(ff&&ff>=db.config.fechaInicio)?ff:db.config.fechaInicio;
   db.config.horaApertura=document.getElementById('qHoraIni').value||db.config.horaApertura;
   db.config.totalCanchas=Math.max(1,Number(document.getElementById('qCanchas').value)||4);
-  const pNew=Math.max(1,Number(document.getElementById('qPartidos').value)||3);
+  const pNew=Math.max(1,Math.min(12,Number(document.getElementById('qPartidos').value)||3));
   db.config.partidosGarantizados=pNew;
   db.config.categorias.forEach(c=>c.partidosGarantizados=pNew);
   db.config.precioInscripcion=Number(document.getElementById('qPrecio').value)||db.config.precioInscripcion;
   recalcularHorariosBoxes();
   sincronizar(); cargarFormsAdmin();
-  mostrarToast(`⚡ ¡Publicado a todos los dispositivos! (${db.config.totalCanchas} canchas, ${pNew} partidos/pareja)`);
+  mostrarToast(`⚡ ¡Guardado y publicado! (${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)})`);
 }
 
 function guardarTodoAdmin(){
   db.config.nombreTorneo=document.getElementById('cfgNombre').value.trim()||db.config.nombreTorneo;
   db.config.badgeOrg=document.getElementById('cfgBadge').value.trim()||db.config.badgeOrg;
   db.config.totalCanchas=Math.max(1,Number(document.getElementById('cfgCanchas').value)||4);
-  db.config.partidosGarantizados=Math.max(1,Number(document.getElementById('cfgPartidosBase').value)||3);
+  db.config.partidosGarantizados=Math.max(1,Math.min(12,Number(document.getElementById('cfgPartidosBase').value)||3));
   db.config.fechaInicio=document.getElementById('cfgFechaIni').value||db.config.fechaInicio;
   const ff=document.getElementById('cfgFechaFin').value;
   db.config.fechaFin=(ff&&ff>=db.config.fechaInicio)?ff:db.config.fechaInicio;
@@ -1460,15 +1486,14 @@ function guardarTodoAdmin(){
   db.config.reglamento=document.getElementById('cfgReglamento').value;
   recalcularHorariosBoxes();
   sincronizar(); cargarFormsAdmin();
-  mostrarToast('✅ ¡Configuración guardada y sincronizada en la nube!');
+  mostrarToast('✅ ¡Configuración guardada y publicada en vivo!');
 }
 
-// --- MESA DE CONTROL Y ARBITRAJE EN VIVO ---
 function renderAdminArbitraje(){
   const ck=document.getElementById('selCatArb')?.value||db.config.categorias[0].key;
   const inscritos=(db.cupos[ck]||[]).filter(c=>c.ocupado&&c.alias);
   const nc=Number(db.config.totalCanchas)||4;
-  const optsDup=inscritos.length?inscritos.map(c=>`<option value="${c.id}">Box #${c.id} - ${c.alias}</option>`).join(''):`<option value="">Sin parejas inscritas</option>`;
+  const optsDup=inscritos.length?inscritos.map(c=>`<option value="${c.id}">Box #${c.id} - ${c.alias}</option>`).join(''):`<option value="">Sin parejas</option>`;
   document.getElementById('newMatchA').innerHTML=optsDup;
   document.getElementById('newMatchB').innerHTML=optsDup;
   let optsC=''; for(let i=1;i<=nc;i++) optsC+=`<option value="Cancha #${i}">Cancha #${i}</option>`;
@@ -1481,7 +1506,7 @@ function renderAdminArbitraje(){
     let cSel=''; for(let i=1;i<=nc;i++){ const cn=`Cancha #${i}`; cSel+=`<option value="${cn}" ${m.cancha===cn?'selected':''}>${cn}</option>`; }
     return `<tr>
       <td><input type="text" value="${m.fase}" onchange="editMatch('${ck}','${m.id}','fase',this.value)" class="inp" style="width:110px;"></td>
-      <td><strong style="color:#fff;">${m.aliasA}</strong> <span style="color:var(--primary);">vs</span> <strong style="color:#fff;">${m.aliasB}</strong></td>
+      <td><strong>${m.aliasA}</strong> <span style="color:var(--primary);">vs</span> <strong>${m.aliasB}</strong></td>
       <td><select onchange="editMatch('${ck}','${m.id}','cancha',this.value)" class="inp" style="width:105px;">${cSel}</select></td>
       <td><input type="datetime-local" value="${(m.fechaHora||'').slice(0,16)}" onchange="editMatch('${ck}','${m.id}','fechaHora',this.value)" class="inp" style="width:155px;"></td>
       <td>
@@ -1502,11 +1527,11 @@ function renderAdminArbitraje(){
         </select>
       </td>
       <td style="white-space:nowrap;">
-        <button onclick="sincronizar();mostrarToast('⚖️ Arbitraje actualizado en vivo')" class="btn btn-sm btn-green">✔</button>
+        <button onclick="sincronizar();mostrarToast('⚖️ Guardado')" class="btn btn-sm btn-green">✔</button>
         <button onclick="borrarMatch('${ck}','${m.id}')" class="btn btn-sm btn-red">✕</button>
       </td>
     </tr>`;
-  }).join(''):`<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:1.5rem;">Sin partidos en esta categoría. Inscribe parejas o usa <strong>🤖 Auto-Generar Partidos</strong> / <strong>+ Crear Partido</strong>.</td></tr>`;
+  }).join(''):`<tr><td colspan="8" style="text-align:center;color:var(--muted);padding:1.5rem;">Sin partidos aún en esta categoría.</td></tr>`;
 }
 
 function crearPartidoManual(){
@@ -1521,7 +1546,7 @@ function crearPartidoManual(){
     fechaHora:document.getElementById('newMatchFecha').value||`${db.config.fechaInicio}T${db.config.horaApertura}`,
     estado:'Programado', marcador:'', ganador:'', manual:true
   });
-  sincronizar(); renderAdminArbitraje(); mostrarToast('⚖️ Partido creado y sincronizado en vivo.');
+  sincronizar(); renderAdminArbitraje(); mostrarToast('⚖️ Partido creado.');
 }
 
 function editMatch(ck, mid, campo, val){
@@ -1535,7 +1560,6 @@ function borrarMatch(ck, mid){
   sincronizar(); renderAdminArbitraje(); mostrarToast('🗑️ Partido eliminado.');
 }
 
-// --- ADMIN BOXES & CRM ---
 function renderAdminBoxes(){
   const ck=document.getElementById('selCatBoxes')?.value||db.config.categorias[0].key;
   const nc=Number(db.config.totalCanchas)||4;
@@ -1555,7 +1579,7 @@ function renderAdminBoxes(){
       <td><select onchange="editBox('${ck}',${c.id},'cancha',this.value)" class="inp" style="width:105px;">${oc}</select></td>
       <td style="white-space:nowrap;">
         ${st==='RESERVANDO_MP'?`<button onclick="setEstadoBox('${ck}',${c.id},'PAGADO_MP')" class="btn btn-sm btn-green">💳 Aprobar</button>`:''}
-        <button onclick="sincronizar();mostrarToast('✅ Box guardado')" class="btn btn-sm btn-blue">✔</button>
+        <button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-blue">✔</button>
       </td>
     </tr>`;
   }).join('');
@@ -1566,7 +1590,7 @@ function setEstadoBox(ck, id, st){
   if(st==='LIBRE'){ Object.assign(c,{ocupado:false,estadoPagoMP:'LIBRE',expiraReservaTimestamp:0,alias:'',j1:'',j2:'',tel1:'',tel2:''}); }
   else if(st==='RESERVANDO_MP'){ Object.assign(c,{ocupado:true,estadoPagoMP:'RESERVANDO_MP',expiraReservaTimestamp:Date.now()+EXPIRA_MS,alias:c.alias||`RESERVA #${id}`}); }
   else { Object.assign(c,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,alias:c.alias||`DUPLA #${id}`}); }
-  sincronizar(); renderAdminBoxes(); renderAdminCRM(); mostrarToast(`✅ Box #${id} actualizado en vivo.`);
+  sincronizar(); renderAdminBoxes(); renderAdminCRM(); mostrarToast(`✅ Box #${id} guardado.`);
 }
 
 function editBox(ck, id, campo, val){
@@ -1609,7 +1633,7 @@ function renderAdminCRM(){
         </div></td>
         <td><input type="text" value="${c.pin||'1234'}" onchange="editBox('${cat.key}',${c.id},'pin',this.value)" class="inp mono" style="width:60px;color:#FACC15;"></td>
         <td style="white-space:nowrap;">
-          <button onclick="sincronizar();mostrarToast('✅ Jugador guardado')" class="btn btn-sm btn-green">✔</button>
+          <button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-green">✔</button>
           <button onclick="setEstadoBox('${cat.key}',${c.id},'LIBRE')" class="btn btn-sm btn-red">Liberar</button>
         </td>
       </tr>`;
@@ -1622,7 +1646,7 @@ function inscribirManualAdmin(){
   const fc=document.getElementById('filtroCatCrm')?.value;
   const ck=(fc&&fc!=='TODAS')?fc:db.config.categorias[0].key;
   const lib=(db.cupos[ck]||[]).find(c=>!c.ocupado);
-  if(!lib){ alert('⚠️ Sin Boxes libres en esta categoría. Puedes ampliar el número de cupos en Categorías Libres.'); return; }
+  if(!lib){ alert('⚠️ Sin Boxes libres en esta categoría.'); return; }
   Object.assign(lib,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,folioMP:'ADM-'+Math.floor(1000+Math.random()*9000),alias:`DUPLA #${lib.id}`,j1:'Jugador 1',j2:'Jugador 2',tel1:'+569',tel2:'+569'});
   sincronizar(); renderAdminCRM(); mostrarToast(`➕ Pareja inscrita en ${getCatObj(ck).nombre} (Box #${lib.id}).`);
 }
@@ -1638,7 +1662,6 @@ function exportarCSV(){
   mostrarToast('📥 Excel CSV descargado.');
 }
 
-// --- CATEGORÍAS 100% LIBRES (CUALQUIER CANTIDAD DE PAREJAS Y PARTIDOS) ---
 function renderEditorCategorias(){
   document.getElementById('listaCatsEditor').innerHTML=db.config.categorias.map((c,i)=>{
     const ins=(db.cupos[c.key]||[]).filter(x=>x.ocupado&&x.estadoPagoMP==='PAGADO_MP').length;
@@ -1649,12 +1672,12 @@ function renderEditorCategorias(){
       </div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:.35rem;align-items:center;">
         <input type="text" value="${c.nombre}" onchange="editCat('${c.key}','nombre',this.value)" class="inp" title="Nombre">
-        <input type="number" min="2" max="128" value="${c.maxCupos}" onchange="editCat('${c.key}','maxCupos',this.value)" class="inp" title="Cantidad exacta de parejas (2 a 128)">
-        <input type="number" min="1" max="12" value="${c.partidosGarantizados}" onchange="editCat('${c.key}','partidosGarantizados',this.value)" class="inp" title="Partidos por pareja">
-        <input type="number" min="0" value="${c.precioCustom||''}" placeholder="$ Base" onchange="editCat('${c.key}','precioCustom',this.value)" class="inp" title="Precio propio opcional (0 = usa valor base)">
+        <input type="number" min="2" max="128" value="${c.maxCupos}" onchange="editCat('${c.key}','maxCupos',this.value)" class="inp" title="Cupos (2-128)">
+        <input type="number" min="1" max="12" value="${c.partidosGarantizados}" onchange="editCat('${c.key}','partidosGarantizados',this.value)" class="inp" title="Partidos por pareja (1-12)">
+        <input type="number" min="0" value="${c.precioCustom||''}" placeholder="$ Base" onchange="editCat('${c.key}','precioCustom',this.value)" class="inp" title="Precio propio opcional">
         <button onclick="eliminarCat('${c.key}')" class="btn btn-sm btn-red">✕</button>
       </div>
-      <div style="font-size:.62rem;color:var(--muted);display:flex;justify-content:space-between;"><span>Nombre</span><span>Cupos (2-128) | Partidos | Precio opcional</span></div>
+      <div style="font-size:.62rem;color:var(--muted);display:flex;justify-content:space-between;"><span>Nombre</span><span>Cupos | Partidos/Dupla | Precio</span></div>
     </div>`;
   }).join('');
 }
@@ -1670,7 +1693,7 @@ function agregarCategoriaLibre(){
   db.partidos[key]=[];
   document.getElementById('newCatNom').value='';
   recalcularHorariosBoxes(); sincronizar(); renderEditorCategorias();
-  mostrarToast(`🏆 Categoría "${nom}" creada (${cup} parejas, ${part} partidos).`);
+  mostrarToast(`🏆 Categoría "${nom}" guardada (${cup} cupos, ${part} partidos).`);
 }
 
 function editCat(key, campo, val){
@@ -1691,7 +1714,7 @@ function editCat(key, campo, val){
     recalcularHorariosBoxes();
   }
   sincronizar(); renderEditorCategorias();
-  mostrarToast(`✅ Categoría "${c.nombre}" actualizada en vivo.`);
+  mostrarToast(`✅ Categoría "${c.nombre}" guardada.`);
 }
 
 function eliminarCat(key){
@@ -1703,16 +1726,15 @@ function eliminarCat(key){
   mostrarToast('🗑️ Categoría eliminada.');
 }
 
-// --- SPONSORS, RANKING & IMÁGENES ---
 function subirImagenConfig(e, campo){
   const f=e.target.files[0]; if(!f) return;
-  const r=new FileReader(); r.onload=ev=>{ db.config[campo]=ev.target.result; sincronizar(); mostrarToast('🖼️ Imagen actualizada.'); }; r.readAsDataURL(f);
+  const r=new FileReader(); r.onload=ev=>{ db.config[campo]=ev.target.result; sincronizar(); mostrarToast('🖼️ Imagen guardada.'); }; r.readAsDataURL(f);
 }
 
 function renderSponsorsYRankAdmin(){
   document.getElementById('editorSponsors').innerHTML=(db.sponsors||[]).map((s,i)=>`<div style="display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;">
-    <input type="text" value="${s.logoText||''}" onchange="db.sponsors[${i}].logoText=this.value;sincronizar();" class="inp" style="width:140px;" placeholder="Texto">
-    <input type="text" value="${s.url||''}" onchange="db.sponsors[${i}].url=this.value;sincronizar();" class="inp" style="flex:1;min-width:120px;" placeholder="URL">
+    <input type="text" value="${s.logoText||''}" onchange="db.sponsors[${i}].logoText=this.value;sincronizar();" class="inp" style="width:140px;">
+    <input type="text" value="${s.url||''}" onchange="db.sponsors[${i}].url=this.value;sincronizar();" class="inp" style="flex:1;min-width:120px;">
     <input type="file" accept="image/*" onchange="subirLogoSp(event,${i})" style="width:110px;font-size:.65rem;">
     <button onclick="db.sponsors.splice(${i},1);sincronizar();renderSponsorsYRankAdmin();" class="btn btn-sm btn-red">✕</button>
   </div>`).join('');
@@ -1731,7 +1753,6 @@ function renderSponsorsYRankAdmin(){
 function agregarSponsor(){ db.sponsors.push({nombre:'Nuevo',url:'https://www.google.com',logoText:'⭐ SPONSOR',logoImg:''}); sincronizar(); renderSponsorsYRankAdmin(); }
 function subirLogoSp(e,i){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>{ db.sponsors[i].logoImg=ev.target.result; sincronizar(); renderSponsorsYRankAdmin(); }; r.readAsDataURL(f); }
 
-// --- CONSOLA SUPER ADMIN GLOBAL ---
 function renderSaas(){
   if(rolAdmin!=='SUPERGOD') return;
   let tot=0;
@@ -1752,7 +1773,7 @@ function renderSaas(){
       <td style="white-space:nowrap;">
         <button onclick="cambiarTorneoActivo('${t.id}');setTabAdmin('arbitraje');" class="btn btn-sm btn-blue">⚖️ Arbitrar</button>
         <button onclick="toggleLic('${t.id}')" class="btn btn-sm ${act?'btn-red':'btn-green'}">${act?'⏸️':'▶️'}</button>
-        <button onclick="borrarTorneoSaas('${t.id}')" class="btn btn-sm btn-red" title="Eliminar Torneo">🗑️</button>
+        <button onclick="borrarTorneoSaas('${t.id}')" class="btn btn-sm btn-red">🗑️</button>
       </td>
     </tr>`;
   }).join('');
@@ -1763,19 +1784,15 @@ function editSaas(id, campo, val){
   const t=saasDB.torneos[id]; if(!t) return;
   if(campo==='clave') t.claveLicencia=val.trim();
   if(campo==='canchas') t.config.totalCanchas=Math.max(1,Number(val)||4);
-  if(campo==='partidos'){ const p=Math.max(1,Number(val)||3); t.config.partidosGarantizados=p; (t.config.categorias||[]).forEach(c=>c.partidosGarantizados=p); }
+  if(campo==='partidos'){ const p=Math.max(1,Math.min(12,Number(val)||3)); t.config.partidosGarantizados=p; (t.config.categorias||[]).forEach(c=>c.partidosGarantizados=p); }
   if(campo==='fIni'){ t.config.fechaInicio=val; if(t.config.fechaFin<val) t.config.fechaFin=sumarDias(val,1); }
   if(campo==='fFin') t.config.fechaFin=val>=t.config.fechaInicio?val:t.config.fechaInicio;
   saasDB.torneoActivoId=id; db=t;
   recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin();
-  mostrarToast(`👑 Torneo "${t.config.nombreTorneo}" actualizado en la nube.`);
+  mostrarToast(`👑 Torneo "${t.config.nombreTorneo}" guardado.`);
 }
 
-function toggleLic(id){
-  const t=saasDB.torneos[id]; if(!t) return;
-  t.licenciaMeta.estado=t.licenciaMeta.estado==='ACTIVA'?'SUSPENDIDA':'ACTIVA';
-  sincronizar(); renderSaas();
-}
+function toggleLic(id){ const t=saasDB.torneos[id]; if(!t) return; t.licenciaMeta.estado=t.licenciaMeta.estado==='ACTIVA'?'SUSPENDIDA':'ACTIVA'; sincronizar(); renderSaas(); }
 
 function borrarTorneoSaas(id){
   if(Object.keys(saasDB.torneos).length<=1){ alert('⚠️ Debe existir al menos 1 torneo.'); return; }
@@ -1802,7 +1819,7 @@ function crearTorneoSaas(){
   );
   saasDB.torneoActivoId=id; db=saasDB.torneos[id];
   recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin();
-  mostrarToast(`👑 Torneo "${nom}" creado y sincronizado en vivo.`);
+  mostrarToast(`👑 Torneo "${nom}" guardado en vivo.`);
 }
 
 function cambiarTorneoActivo(id){
@@ -1816,7 +1833,7 @@ function descargarBackupJSON(){
   const a=document.createElement('a');
   a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(saasDB,null,2));
   a.download=`backup_circuito360_${new Date().toISOString().slice(0,10)}.json`; a.click();
-  mostrarToast('💾 Backup completo descargado.');
+  mostrarToast('💾 Backup descargado.');
 }
 
 function restaurarBackupJSON(e){
@@ -1828,13 +1845,12 @@ function restaurarBackupJSON(e){
       if(!parsed.torneos) throw new Error();
       saasDB=parsed; db=saasDB.torneos[saasDB.torneoActivoId]||Object.values(saasDB.torneos)[0];
       await empujarNube(); refrescarTodoUI(true);
-      mostrarToast('📂 Backup restaurado y publicado en la nube.');
+      mostrarToast('📂 Backup restaurado y guardado.');
     }catch(err){ alert('❌ Archivo JSON inválido.'); }
   };
   r.readAsText(f);
 }
 
-// --- ARRANQUE CLOUD-FIRST ---
 (async function init(){
   saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
   recalcularHorariosBoxes();
