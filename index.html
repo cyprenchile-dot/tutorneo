@@ -720,9 +720,13 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <div><label class="lbl">Foto Dupla (Opcional)</label><input type="file" accept="image/*" id="inFoto" class="inp" style="padding:.4rem;"></div>
       </div>
 
-      <label style="display:flex;align-items:center;gap:.55rem;font-size:.82rem;color:#CBD5E1;cursor:pointer;">
-        <input type="checkbox" required style="width:18px;height:18px;"> Acepto el reglamento del torneo.
-      </label>
+     <div style="display:flex;align-items:flex-start;gap:.55rem;font-size:.8rem;color:#CBD5E1;line-height:1.4;background:rgba(255,255,255,.03);padding:.6rem .7rem;border-radius:9px;border:1px solid #1E293B;">
+        <input type="checkbox" id="chkBasesTorneo" required style="width:18px;height:18px;margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:#10B981;">
+        <label for="chkBasesTorneo" style="cursor:pointer;">
+          He leído y acepto las Bases y Reglamento del Torneo.
+          <a href="#" onclick="event.preventDefault();event.stopPropagation();descargarReglamentoPDF();" style="color:#94A3B8;text-decoration:underline;margin-left:.35rem;font-size:.76rem;white-space:nowrap;">📄 Descargar PDF</a>
+        </label>
+      </div>
       <button type="submit" id="btnSubmitMP" class="btn btn-mp" style="width:100%;padding:1rem;font-size:1rem;">💳 PAGAR E INSCRIBIRME →</button>
     </form>
   </div>
