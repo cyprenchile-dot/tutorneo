@@ -2101,9 +2101,9 @@ function renderSaas(){
       <td><input type="date" value="${t.config.fechaFin}" onchange="editSaas('${t.id}','fFin',this.value)" class="inp" style="width:128px;"></td>
       <td><button onclick="copiarTexto('${link}','🔗 Link copiado')" class="btn btn-sm btn-green">Copiar</button></td>
       <td style="white-space:nowrap;">
-        <button onclick="cambiarTorneoActivo('${t.id}');setTabAdmin('arbitraje');" class="btn btn-sm btn-blue">⚖️</button>
-        <button onclick="toggleLic('${t.id}')" class="btn btn-sm ${act?'btn-red':'btn-green'}">${act?'⏸️':'▶️'}</button>
-        <button onclick="borrarTorneoSaas('${t.id}')" class="btn btn-sm btn-red">🗑️</button>
+        <button onclick="cambiarTorneoActivo('${t.id}');setTabAdmin('arbitraje');" class="btn btn-sm btn-blue" title="Entrar a editar y arbitrar este torneo">⚖️ Entrar</button>
+        <button onclick="toggleLic('${t.id}')" class="btn btn-sm ${act?'btn-red':'btn-green'}" title="${act?'Pausar inscripciones y licencia':'Reactivar este torneo'}">${act?'⏸️ Pausar':'▶️ Activar'}</button>
+        <button onclick="borrarTorneoSaas('${t.id}')" class="btn btn-sm btn-red" title="Eliminar este torneo permanentemente">🗑️ Borrar</button>
       </td>
     </tr>`;
   }).join('');
