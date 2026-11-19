@@ -866,11 +866,12 @@ setInterval(()=>{
   sl[slideIdx].classList.add('active-slide');
 },6500);
 
-function crearCupos(tid, cKey, cant, fBase, hBase){
-  return Array.from({length:Math.max(2,Number(cant)||12)},(_,i)=>({
-    id:i+1, ocupado:false, estadoPagoMP:'LIBRE', expiraReservaTimestamp:0, folioMP:'', codigoCupon:'', emailEnviado:false, urlCheckoutMP:'',
+function crearCupos(tid, cKey, cant, fBase, hBase, startIndex=0){
+  const total=Math.max(0, Number(cant)||0);
+  return Array.from({length:total},(_,i)=>({
+    id:startIndex+i+1, ocupado:false, estadoPagoMP:'LIBRE', expiraReservaTimestamp:0, folioMP:'', codigoCupon:'', emailEnviado:false, urlCheckoutMP:'',
     modalidadPago:'', alias:'', j1:'', j2:'', tel1:'', tel2:'', email1:'', email2:'', redes1:'', redes2:'',
-    pin:'1234', avatar:`https://api.dicebear.com/7.x/avataaars/svg?seed=${tid}_${cKey}_${i}`,
+    pin:'1234', avatar:`https://api.dicebear.com/7.x/avataaars/svg?seed=${tid}_${cKey}_${startIndex+i}`,
     cancha:'Por asignar', horaInicioMatch:`${fBase}T${hBase}`
   }));
 }
