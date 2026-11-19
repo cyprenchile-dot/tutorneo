@@ -1741,6 +1741,9 @@ function cargarFormsAdmin(){
   setV('cfgCuponNota',db.config.cuponNota); setV('cfgInstagramClub',db.config.instagramClub); setV('cfgWaNum',db.config.whatsappNum);
   setV('cfgWaMsg',db.config.whatsappMsg); setV('cfgEmailAlerta',db.config.emailAlertaAdmin);
   actualizarPreviewCupon();
+  setV('cfgReglamentoPdfUrl',db.config.reglamentoPdfUrl||'');
+  const ep=document.getElementById('lblEstadoPdf');
+  if(ep) ep.innerText=db.config.reglamentoPdfData?`✅ PDF cargado (${db.config.reglamentoPdfNombre||'Reglamento.pdf'})`:'Sin PDF subido (usa enlace o texto)';
   renderEditorCategorias();
 }
 
