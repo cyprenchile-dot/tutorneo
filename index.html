@@ -1916,16 +1916,39 @@ function exportarCSV(){
   mostrarToast('📥 Nómina Excel (CSV) descargada.');
 }
 
+function ajustarCuposCategoria(c){
+  const n=Math.max(2,Math.min(128,Number(c.maxCupos)||12));
+  c.maxCupos=n;
+  if(!db.cupos[c.key]) db.cupos[c.key]=[];
+  const arr=db.cupos[c.key];
+  if(n>arr.length){
+    const faltan=n-arr.length;
+    for(let i=0;i<faltan;i++){
+      const idx=arr.length;
+      arr.push({
+        id:idx+1, ocupado:false, estadoPagoMP:'LIBRE', expiraReservaTimestamp:0, folioMP:'', codigoCupon:'', emailEnviado:false, urlCheckoutMP:'',
+        modalidadPago:'', alias:'', j1:'', j2:'', tel1:'', tel2:'', email1:'', email2:'', redes1:'', redes2:'',
+        pin:'1234', avatar:`https://api.dicebear.com/7.x/avataaars/svg?seed=${db.id}_${c.key}_${idx}`,
+        cancha:'Por asignar', horaInicioMatch:`${db.config.fechaInicio}T${db.config.horaApertura}`
+      });
+    }
+  } else if(n<arr.length){
+    db.cupos[c.key]=arr.slice(0,n);
+  }
+  db.cupos[c.key].forEach((x,i)=>{ x.id=i+1; });
+}
+
 function renderEditorCategorias(){
   document.getElementById('listaCatsEditor').innerHTML=db.config.categorias.map((c,i)=>{
+    ajustarCuposCategoria(c);
     const ins=(db.cupos[c.key]||[]).filter(x=>x.ocupado&&x.estadoPagoMP==='PAGADO_MP').length;
     return `<div style="background:#04070D;border:1px solid var(--border);padding:.8rem;border-radius:10px;display:flex;flex-direction:column;gap:.45rem;">
-      <div class="mono" style="display:flex;justify-content:space-between;font-size:.68rem;"><span style="color:var(--primary);font-weight:800;">CATEGORÍA #${i+1}</span><span style="color:var(--green);">${ins}/${c.maxCupos} pagados</span></div>
+      <div class="mono" style="display:flex;justify-content:space-between;font-size:.68rem;"><span style="color:var(--primary);font-weight:800;">CATEGORÍA #${i+1}</span><span id="catStat_${c.key}" style="color:var(--green);">${ins}/${c.maxCupos} pagados</span></div>
       <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto;gap:.35rem;align-items:center;">
-        <input type="text" value="${esc(c.nombre)}" onchange="editCat('${c.key}','nombre',this.value)" class="inp">
-        <input type="number" min="2" max="128" value="${c.maxCupos}" onchange="editCat('${c.key}','maxCupos',this.value)" class="inp" title="Cupos">
-        <input type="number" min="1" max="12" value="${c.partidosGarantizados}" onchange="editCat('${c.key}','partidosGarantizados',this.value)" class="inp" title="Partidos">
-        <input type="number" min="0" value="${c.precioCustom||''}" placeholder="$ Base" onchange="editCat('${c.key}','precioCustom',this.value)" class="inp" title="Precio propio">
+        <input type="text" value="${esc(c.nombre)}" oninput="editCat('${c.key}','nombre',this.value,false)" onchange="editCat('${c.key}','nombre',this.value,true)" class="inp">
+        <input type="number" min="2" max="128" value="${c.maxCupos}" oninput="editCat('${c.key}','maxCupos',this.value,false)" onchange="editCat('${c.key}','maxCupos',this.value,true)" class="inp" title="Cupos">
+        <input type="number" min="1" max="12" value="${c.partidosGarantizados}" oninput="editCat('${c.key}','partidosGarantizados',this.value,false)" onchange="editCat('${c.key}','partidosGarantizados',this.value,true)" class="inp" title="Partidos">
+        <input type="number" min="0" value="${c.precioCustom||''}" placeholder="$ Base" oninput="editCat('${c.key}','precioCustom',this.value,false)" onchange="editCat('${c.key}','precioCustom',this.value,true)" class="inp" title="Precio propio">
         <button onclick="eliminarCat('${c.key}')" class="btn btn-sm btn-red">✕</button>
       </div>
       <div style="font-size:.64rem;color:var(--muted);display:flex;justify-content:space-between;"><span>Nombre</span><span>Cupos | Partidos | Precio</span></div>
@@ -1939,10 +1962,35 @@ function agregarCategoriaLibre(){
   const part=Math.max(1,Math.min(12,Number(document.getElementById('newCatPartidos').value)||3));
   if(!nom){ alert('⚠️ Escribe el nombre.'); return; }
   const key='cat_'+Date.now();
-  db.config.categorias.push({key,nombre:nom,maxCupos:cup,partidosGarantizados:part,precioCustom:0});
-  db.cupos[key]=crearCupos(db.id,key,cup,db.config.fechaInicio,db.config.horaApertura);
+  const nueva={key,nombre:nom,maxCupos:cup,partidosGarantizados:part,precioCustom:0};
+  db.config.categorias.push(nueva);
+  db.cupos[key]=[];
+  ajustarCuposCategoria(nueva);
   db.partidos[key]=[]; document.getElementById('newCatNom').value='';
   sincronizar(); renderEditorCategorias(); mostrarToast(`🏆 Categoría "${nom}" agregada.`);
+}
+
+function editCat(key,campo,val,guardar){
+  const c=db.config.categorias.find(x=>x.key===key); if(!c) return;
+  if(campo==='nombre'&&val.trim()) c.nombre=val.trim();
+  if(campo==='partidosGarantizados'){ const p=Number(val); if(p>=1&&p<=12) c.partidosGarantizados=p; }
+  if(campo==='precioCustom') c.precioCustom=Math.max(0,Number(val)||0);
+  if(campo==='maxCupos'){
+    const n=Number(val);
+    if(n>=2 && n<=128){
+      c.maxCupos=n;
+      ajustarCuposCategoria(c);
+      const st=document.getElementById('catStat_'+key);
+      if(st){
+        const ins=(db.cupos[key]||[]).filter(x=>x.ocupado&&x.estadoPagoMP==='PAGADO_MP').length;
+        st.innerText=`${ins}/${c.maxCupos} pagados`;
+      }
+    }
+  }
+  if(guardar){
+    sincronizar();
+    mostrarToast(`✅ ${c.nombre}: ${c.maxCupos} cupos guardados.`);
+  }
 }
 
 function editCat(key,campo,val){
