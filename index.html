@@ -1733,7 +1733,9 @@ function cargarFormsAdmin(){
   setV('cfgHoraIni',db.config.horaApertura); setV('cfgHoraFin',db.config.horaCierre); setV('cfgDuracion',db.config.duracionPartido);
   setV('cfgDescanso',db.config.turnosDescansoIA); setV('cfgColor',db.config.colorPrimary); setV('cfgMpToken',db.config.mpAccessToken);
   setV('cfgLinkPago',db.config.linkPago); setV('cfgPrecio',db.config.precioInscripcion); setV('cfgTitularMP',db.config.titularMP);
-  setV('cfgMapa',db.config.googleMapsQuery); setV('cfgMapsUrl',db.config.googleMapsUrl); setV('cfgComunicado',db.config.comunicado); setV('cfgReglamento',db.config.reglamento);
+  setV('cfgReglamentoPdfUrl',db.config.reglamentoPdfUrl||'');
+  const ep=document.getElementById('lblEstadoPdf');
+  if(ep) ep.innerText=db.config.reglamentoPdfData?`✅ PDF cargado (${db.config.reglamentoPdfNombre||'Reglamento.pdf'})`:'Sin PDF subido (usa enlace o texto)';
   setV('cfgCuponTitulo',db.config.cuponTitulo); setV('cfgCuponSaludo',db.config.cuponSaludo); setV('cfgCuponTexto',db.config.cuponTexto);
   setV('cfgCuponNota',db.config.cuponNota); setV('cfgInstagramClub',db.config.instagramClub); setV('cfgWaNum',db.config.whatsappNum);
   setV('cfgWaMsg',db.config.whatsappMsg); setV('cfgEmailAlerta',db.config.emailAlertaAdmin);
