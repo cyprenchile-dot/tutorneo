@@ -23,7 +23,7 @@ header{background:rgba(4,7,13,.96);backdrop-filter:blur(16px);border-bottom:1px 
 .nav-btn:hover{background:#1E293B;}
 .nav-btn.active{background:var(--primary);color:#030508;font-weight:900;border-color:var(--primary);}
 
-/* HERO COMPACTO MOBILE-FIRST */
+/* HERO COMPACTO */
 .hero{position:relative;padding:2rem 1rem 1.8rem;text-align:center;border-bottom:1px solid rgba(212,175,55,.28);overflow:hidden;background:#04070D;}
 .hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;z-index:1;opacity:0;transition:opacity 1.5s ease-in-out;}
 .hero-slide.active-slide{opacity:1;}
@@ -38,7 +38,7 @@ header{background:rgba(4,7,13,.96);backdrop-filter:blur(16px);border-bottom:1px 
 .btn-hero-cta{background:linear-gradient(135deg,#10B981,#34D399);color:#030508;font-weight:900;font-size:1.08rem;padding:.95rem 2.2rem;border-radius:14px;border:2px solid #A7F3D0;cursor:pointer;letter-spacing:.5px;box-shadow:0 10px 26px rgba(16,185,129,.4);transition:.2s;text-transform:uppercase;width:100%;max-width:340px;}
 .btn-hero-cta:hover{transform:translateY(-2px);filter:brightness(1.06);}
 
-/* CONTENEDOR Y BOXES DE PAGO GRANDES Y LEGIBLES */
+/* BOXES DE PAGO GRANDES Y LEGIBLES */
 .container{max-width:1280px;margin:0 auto;padding:1.35rem 1rem;width:100%;}
 .panel{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:1.25rem;box-shadow:0 14px 30px rgba(0,0,0,.5);}
 .sec-head{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem;}
@@ -54,14 +54,23 @@ header{background:rgba(4,7,13,.96);backdrop-filter:blur(16px);border-bottom:1px 
 .box-card:hover{transform:translateY(-2px);}
 .box-verde{background:linear-gradient(145deg,#065f46,#022c22);border:2px solid var(--green);cursor:pointer;}
 .box-amarilla{background:linear-gradient(145deg,#78350f,#451a03);border:2px solid var(--amber);cursor:pointer;}
-.box-roja{background:linear-gradient(145deg,#7f1d1d,#3b0808);border:2px solid var(--red);}
+.box-roja{background:linear-gradient(145deg,#7f1d1d,#3b0808);border:2px solid var(--red);cursor:pointer;}
 .status-badge{position:absolute;top:0;right:0;padding:.32rem .8rem;font-size:.74rem;font-weight:900;text-transform:uppercase;border-bottom-left-radius:12px;}
 .bg-green{background:var(--green);color:#030508;}
 .bg-yellow{background:var(--amber);color:#030508;}
 .bg-red{background:var(--red);color:#fff;}
-.box-top{font-size:.92rem;font-weight:800;letter-spacing:.3px;padding-right:6.8rem;}
-.box-price{font-size:1.35rem;font-weight:900;color:#fff;}
-.box-cta-btn{width:100%;padding:.8rem 1rem;border-radius:11px;border:none;font-weight:900;font-size:.98rem;text-align:center;cursor:pointer;display:block;letter-spacing:.4px;}
+.box-top{font-size:.96rem;font-weight:900;letter-spacing:.3px;padding-right:6.8rem;}
+.box-price{font-size:1.38rem;font-weight:900;color:#fff;}
+.box-cta-btn{width:100%;padding:.82rem 1rem;border-radius:11px;border:none;font-weight:900;font-size:.98rem;text-align:center;cursor:pointer;display:block;letter-spacing:.4px;}
+
+/* CUPÓN OFICIAL DE KIT DE JUGADOR */
+.cupon-ticket{background:linear-gradient(145deg,#0B1629,#04070D);border:2px solid var(--primary);border-radius:20px;padding:1.6rem;position:relative;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.75);text-align:center;}
+.cupon-code-box{background:rgba(212,175,55,.1);border:2px dashed var(--primary);border-radius:14px;padding:1.1rem;margin:1rem 0;}
+.cupon-number{font-size:clamp(1.6rem,6vw,2.4rem);font-weight:900;color:#FDE047;letter-spacing:2px;}
+
+/* BOTÓN FLOTANTE WHATSAPP */
+.wa-float{position:fixed;bottom:20px;right:18px;z-index:1500;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;border:2px solid #A7F3D0;border-radius:50px;padding:.72rem 1.15rem;display:inline-flex;align-items:center;gap:.5rem;font-weight:900;font-size:.92rem;text-decoration:none;box-shadow:0 10px 28px rgba(37,211,102,.45);transition:.2s;}
+.wa-float:hover{transform:translateY(-3px) scale(1.03);filter:brightness(1.06);}
 
 /* TABLAS Y FORMULARIOS */
 .table-wrap{overflow-x:auto;width:100%;}
@@ -78,6 +87,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
 .btn-green{background:var(--green);color:#030508;}
 .btn-red{background:var(--red);color:#fff;}
 .btn-blue{background:#2563EB;color:#fff;}
+.btn-ig{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);color:#fff;}
 .btn-mp{background:linear-gradient(135deg,#009EE3,#007EB5);color:#fff;border:1px solid #38BDF8;box-shadow:0 8px 20px rgba(0,158,227,.35);}
 .btn-ai{background:linear-gradient(135deg,#4F46E5,#7C3AED);color:#fff;border:1px solid #818CF8;}
 .btn-sm{padding:.38rem .62rem;font-size:.74rem;border-radius:7px;}
@@ -94,11 +104,10 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
 .oculto{display:none!important;}
 .modal-bg{position:fixed;inset:0;background:rgba(4,7,13,.92);backdrop-filter:blur(8px);z-index:2000;display:flex;align-items:center;justify-content:center;padding:.85rem;}
 
-#toast{position:fixed;bottom:18px;right:18px;background:var(--green);color:#030508;padding:.85rem 1.25rem;border-radius:12px;font-weight:800;font-size:.86rem;box-shadow:0 14px 28px rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;gap:.45rem;border:2px solid #fff;max-width:92vw;}
+#toast{position:fixed;bottom:84px;right:18px;background:var(--green);color:#030508;padding:.85rem 1.25rem;border-radius:12px;font-weight:800;font-size:.86rem;box-shadow:0 14px 28px rgba(0,0,0,.6);z-index:9999;display:none;align-items:center;gap:.45rem;border:2px solid #fff;max-width:92vw;}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .animate-scroll{display:flex;width:max-content;animation:scroll 28s linear infinite;}
 
-/* OPTIMIZACIÓN MÓVIL ESTRICTA */
 @media (max-width:640px){
   .nav-wrap{justify-content:center;padding:.6rem .75rem;}
   .logo-area{width:100%;justify-content:center;}
@@ -110,12 +119,19 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   .inp{font-size:16px;padding:.68rem .8rem;}
   .tab-cat{flex:1;min-width:44%;text-align:center;font-size:.95rem;padding:.72rem .6rem;}
   .panel{padding:1rem;}
+  .wa-float{bottom:16px;right:14px;padding:.68rem 1rem;font-size:.88rem;}
 }
 </style>
 </head>
 <body>
 
 <div id="toast">✅ Guardado y sincronizado</div>
+
+<!-- BOTÓN FLOTANTE WHATSAPP PARA CONSULTAS -->
+<a id="waFloatBtn" href="#" target="_blank" class="wa-float">
+  <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor"><path d="M16.01 3.2C8.94 3.2 3.2 8.94 3.2 16.01c0 2.26.59 4.46 1.71 6.4L3.1 28.9l6.68-1.75a12.75 12.75 0 0 0 6.23 1.62h.01c7.06 0 12.8-5.74 12.8-12.8 0-3.42-1.33-6.64-3.75-9.05A12.7 12.7 0 0 0 16.01 3.2zm7.48 18.1c-.32.9-1.86 1.72-2.57 1.83-.66.1-1.5.14-2.42-.15-.56-.18-1.27-.42-2.18-.82-3.84-1.66-6.34-5.53-6.53-5.79-.19-.25-1.56-2.08-1.56-3.97s.99-2.82 1.34-3.2c.35-.38.77-.48 1.02-.48h.73c.24 0 .55-.09.86.66.32.77 1.09 2.66 1.18 2.85.1.19.16.42.03.67-.13.26-.19.42-.38.64-.19.22-.4.5-.58.67-.19.19-.39.4-.17.78.22.38 1 1.65 2.15 2.67 1.48 1.32 2.72 1.73 3.1 1.92.38.19.61.16.83-.1.22-.26.96-1.12 1.21-1.5.26-.38.51-.32.86-.19.35.13 2.24 1.06 2.62 1.25.38.19.64.29.73.45.1.16.1.93-.22 1.83z"/></svg>
+  <span>Consultas</span>
+</a>
 
 <div>
 <header>
@@ -125,7 +141,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
       <div id="navLogoContainer"></div>
       <h1 class="nav-title" id="navTitle">COPA AYRES <span>OPEN</span></h1>
     </div>
-    <!-- SOLO 3 BOTONES LIMPIOS PARA EL JUGADOR -->
     <div class="nav-btns">
       <button onclick="cambiarVista('publico')" class="nav-btn active" id="btnNavPub">🎾 Cupos</button>
       <button onclick="cambiarVista('llaves')" class="nav-btn" id="btnNavLlaves">📊 Partidos</button>
@@ -138,7 +153,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   ⚠️ Inscripciones temporalmente pausadas por la organización.
 </div>
 
-<!-- ================= VISTA PÚBLICA (LIMPIA Y DIRECTA AL PAGO) ================= -->
+<!-- ================= VISTA PÚBLICA ================= -->
 <div id="vistaPublica" class="vista activo">
   <section class="hero">
     <img id="heroSlide0" class="hero-slide active-slide" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=1600&auto=format&fit=crop" alt="Pádel">
@@ -148,7 +163,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
     <div class="hero-content">
       <div class="hero-club" id="heroClubTag">AYRES SPORTING CLUB</div>
       <h2 id="heroMainTitle">COPA AYRES OPEN</h2>
-      <p class="hero-meta" id="heroSubtitleBadge">📅 12/12/2026 al 13/12/2026 • 4 Canchas</p>
+      <p class="hero-meta" id="heroSubtitleBadge">📅 12/12/2026 al 13/12/2026</p>
       <div class="reloj-box">
         <div class="reloj-lbl">⏱️ Inicio del Torneo (<span id="labelFechaReloj" style="color:var(--primary);font-weight:800;"></span>)</div>
         <div id="relojGigante" class="reloj-time mono">00D : 00H : 00M : 00S</div>
@@ -164,7 +179,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
     </div>
 
     <div class="sec-head">
-      <h3>Elige tu Categoría y Box</h3>
+      <h3>Elige tu Categoría y Cupo</h3>
       <div class="leyenda">
         <span>🟢 Libre</span>
         <span>🟡 Pagando</span>
@@ -191,7 +206,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
       <h4 style="color:var(--primary);font-size:1.05rem;font-weight:800;margin-bottom:.3rem;">📊 Posiciones en Vivo</h4>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>#</th><th>Dupla</th><th>Box</th><th>PJ</th><th>PG</th><th>PP</th><th>Marcador</th><th style="text-align:right;">PTS</th></tr></thead>
+          <thead><tr><th>#</th><th>Dupla</th><th>Cupo</th><th>PJ</th><th>PG</th><th>PP</th><th>Marcador</th><th style="text-align:right;">PTS</th></tr></thead>
           <tbody id="tbodyPosiciones"></tbody>
         </table>
       </div>
@@ -202,26 +217,60 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA CHECKOUT / RETORNO MP ================= -->
+<!-- ================= VISTA CHECKOUT PENDIENTE MP ================= -->
 <div id="vistaExito" class="vista">
   <div class="container" style="max-width:680px;">
     <div class="panel" style="border:2px solid var(--amber);background:linear-gradient(135deg,#451a03,#05070B);text-align:center;">
       <span style="display:inline-block;background:var(--amber);color:#030508;font-weight:900;font-size:.76rem;padding:.35rem .9rem;border-radius:20px;margin-bottom:.75rem;">⏳ PASO FINAL: COMPLETAR PAGO</span>
-      <h2 style="font-size:1.65rem;color:#FDE047;margin-bottom:.4rem;">Box Reservado por 10 Minutos</h2>
-      <p style="color:#FDE68A;font-size:.92rem;margin-bottom:1.1rem;">Tu cupo quedará en <strong>🔴 INSCRITO</strong> apenas completes el pago en Mercado Pago.</p>
+      <h2 style="font-size:1.65rem;color:#FDE047;margin-bottom:.4rem;">Cupo Reservado por 10 Minutos</h2>
+      <p style="color:#FDE68A;font-size:.92rem;margin-bottom:1.1rem;">Al aprobarse el pago recibirás tu <strong>🎟️ Cupón Oficial de Kit de Jugador</strong>.</p>
       <div class="mono" style="background:rgba(4,7,13,.85);padding:1.05rem;border-radius:12px;text-align:left;font-size:.86rem;line-height:1.8;border:1px solid var(--border);margin-bottom:1.15rem;">
         <div><strong>Folio:</strong> <span id="exFolio" style="color:#38BDF8;">--</span></div>
         <div><strong>Torneo:</strong> <span id="exTorneoCat">--</span></div>
         <div><strong>Dupla:</strong> <span id="exAlias" style="color:var(--primary);font-weight:800;">--</span></div>
         <div><strong>Jugadores:</strong> <span id="exJugadores">--</span></div>
-        <div><strong>Box:</strong> <span id="exBox" style="color:#60A5FA;">--</span></div>
+        <div><strong>Cupo:</strong> <span id="exBox" style="color:#60A5FA;">--</span></div>
         <div><strong>Total:</strong> <span id="exMonto" style="color:var(--green);font-weight:800;">--</span></div>
       </div>
       <div style="display:flex;flex-direction:column;gap:.7rem;">
         <a id="btnIrMP" href="#" class="btn btn-mp" style="padding:1rem;font-size:1rem;">💳 Ir a Pagar en Mercado Pago →</a>
+        <button onclick="cambiarVista('publico')" class="btn btn-gold">🎾 Volver a Cupos</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= VISTA CUPÓN OFICIAL DE KIT DE JUGADOR (TRAS PAGO APROBADO) ================= -->
+<div id="vistaCupon" class="vista">
+  <div class="container" style="max-width:620px;">
+    <div class="cupon-ticket">
+      <div style="display:inline-flex;align-items:center;gap:.45rem;background:var(--green);color:#030508;font-weight:900;font-size:.8rem;padding:.35rem 1rem;border-radius:20px;margin-bottom:.75rem;">
+        ✅ INSCRITO Y PAGADO OFICIALMENTE
+      </div>
+      <h2 id="cupTitulo" style="font-size:1.55rem;font-weight:900;color:#fff;text-transform:uppercase;">CUPÓN OFICIAL • KIT DE JUGADOR</h2>
+      <p id="cupTorneoClub" style="color:var(--primary);font-weight:800;font-size:.95rem;margin-top:.2rem;">COPA AYRES OPEN • AYRES SPORTING CLUB</p>
+
+      <div class="cupon-code-box">
+        <div class="mono" style="font-size:.75rem;color:#CBD5E1;text-transform:uppercase;">N° DE CUPÓN • KIT RESERVADO</div>
+        <div id="cupNumero" class="cupon-number mono">KIT-00000</div>
+        <p id="cupTexto" style="font-size:.95rem;color:#E2E8F0;margin-top:.55rem;line-height:1.45;"></p>
+      </div>
+
+      <div class="mono" style="background:rgba(4,7,13,.85);padding:1rem;border-radius:12px;text-align:left;font-size:.86rem;line-height:1.8;border:1px solid var(--border);margin-bottom:1rem;">
+        <div><strong>Categoría:</strong> <span id="cupCat" style="color:#C4B5FD;">--</span> • <strong id="cupBoxNum" style="color:#60A5FA;">Cupo #1</strong></div>
+        <div><strong>Dupla:</strong> <span id="cupAlias" style="color:var(--primary);font-weight:800;">--</span></div>
+        <div><strong>Jugadores:</strong> <span id="cupJugadores">--</span></div>
+        <div><strong>Instagram:</strong> <span id="cupIgs" style="color:#F472B6;">--</span></div>
+        <div><strong>Fecha Torneo:</strong> <span id="cupFechas">--</span></div>
+      </div>
+
+      <p id="cupNota" style="font-size:.82rem;color:#94A3B8;margin-bottom:1.15rem;"></p>
+
+      <div style="display:flex;flex-direction:column;gap:.65rem;">
+        <button onclick="descargarImagenCupon()" class="btn btn-ig" style="padding:.95rem;font-size:.98rem;">📸 Descargar Cupón (PNG para Instagram / Galería)</button>
         <div class="form-2col">
-          <button onclick="copiarWhatsAppJugador()" class="btn btn-green">📲 Copiar WhatsApp</button>
-          <button onclick="cambiarVista('publico')" class="btn btn-gold">🎾 Volver a Cupos</button>
+          <button onclick="enviarCuponPorWhatsApp()" class="btn btn-green" style="padding:.8rem;">📲 Enviar por WhatsApp</button>
+          <button onclick="cambiarVista('publico')" class="btn btn-gold" style="padding:.8rem;">🎾 Ver Cuadro</button>
         </div>
       </div>
     </div>
@@ -251,7 +300,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA MONITOR TV (ACCESIBLE DESDE ADMIN) ================= -->
+<!-- ================= VISTA MONITOR TV (DESDE ADMIN) ================= -->
 <div id="vistaTV" class="vista">
   <div class="container">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1.2rem;">
@@ -269,7 +318,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA ADMIN / ÁRBITRO / SUPER ADMIN ================= -->
+<!-- ================= VISTA ADMIN / SUPER ADMIN ================= -->
 <div id="vistaAdmin" class="vista">
   <div class="container">
     <div id="adminLoginBox" style="max-width:420px;margin:2rem auto;">
@@ -285,11 +334,11 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
     </div>
 
     <div id="adminPanelBox" class="panel oculto">
-      <!-- BARRA EXCLUSIVA SUPER ADMIN -->
+      <!-- BARRA SUPER ADMIN -->
       <div id="barraSuperGod" class="card-sub oculto" style="background:linear-gradient(90deg,#311042,#0B1220);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;">
         <div>
-          <span style="background:var(--purple);color:#fff;font-weight:800;font-size:.68rem;padding:.22rem .55rem;border-radius:6px;">👑 SUPER ADMIN GLOBAL</span>
-          <p style="font-size:.78rem;color:#E9D5FF;margin-top:.25rem;">Herramientas avanzadas de gestión, Monitor TV, sonido y copias de seguridad.</p>
+          <span style="background:var(--purple);color:#fff;font-weight:800;font-size:.68rem;padding:.22rem .55rem;border-radius:6px;">👑 SUPER ADMIN GLOBAL • SUPER PODERES</span>
+          <p style="font-size:.78rem;color:#E9D5FF;margin-top:.25rem;">Control total de torneos, cupones de kit, WhatsApp, alertas, canchas, arbitraje y backups.</p>
         </div>
         <div style="display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;">
           <select id="selTorneoGod" onchange="cambiarTorneoActivo(this.value)" class="inp" style="width:240px;border-color:var(--purple);font-weight:700;"></select>
@@ -298,7 +347,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- CABECERA OPERATIVA (AQUÍ VIVEN MONITOR TV, SONIDO Y ESTADO DE DB) -->
+      <!-- CABECERA OPERATIVA -->
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem;">
         <div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;">
           <h2 style="font-size:1.25rem;font-weight:800;">🛠️ <span id="lblTorneoAdmin">--</span></h2>
@@ -307,7 +356,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
         <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
           <button onclick="cambiarVista('tv')" class="btn btn-sm btn-blue">📺 Monitor TV</button>
-          <button onclick="toggleAudio()" class="btn btn-sm" id="btnSound" style="background:#111A2E;color:#34D399;border:1px solid #334155;">🔊 Sonido: ON</button>
+          <button onclick="toggleAudio()" class="btn btn-sm" id="btnSound" style="background:#111A2E;color:#34D399;border:1px solid #334155;">🔊 Pelota Fondo: ON</button>
           <button onclick="generarFixtureConIA(false)" class="btn btn-sm btn-ai">🤖 Generar Partidos IA</button>
           <button onclick="guardarTodoAdmin()" class="btn btn-sm btn-green">✅ Guardar Todo</button>
           <button onclick="cerrarSesion()" class="btn btn-sm btn-red">🔒 Salir</button>
@@ -338,7 +387,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <div><div style="font-size:.64rem;color:var(--muted);">👥 INSCRITOS / CUPOS</div><div id="kpiCupos" style="font-size:1.12rem;font-weight:800;color:var(--primary);">0 / 0</div></div>
         <div><div style="font-size:.64rem;color:var(--muted);">⚙️ CONFIGURACIÓN</div><div id="kpiInfra" style="font-size:.9rem;font-weight:800;color:#C4B5FD;">--</div></div>
         <div>
-          <div style="font-size:.64rem;color:var(--muted);">🔗 ENLACE PARA COMPARTIR</div>
+          <div style="font-size:.64rem;color:var(--muted);">🔗 ENLACE DEL TORNEO</div>
           <div style="display:flex;gap:.35rem;margin-top:.2rem;">
             <input type="text" id="inputShareLink" readonly class="inp" style="font-size:.7rem;padding:.28rem .45rem;">
             <button onclick="copiarTexto(document.getElementById('inputShareLink').value,'🔗 Link copiado')" class="btn btn-sm btn-green">Copiar</button>
@@ -348,19 +397,23 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
 
       <!-- PESTAÑAS INTERNAS ADMIN -->
       <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.15rem;border-bottom:1px solid var(--border);padding-bottom:.8rem;">
-        <button onclick="setTabAdmin('arbitraje')" id="tabAdmArb" class="nav-btn active">⚖️ Arbitraje & Partidos</button>
-        <button onclick="setTabAdmin('boxes')" id="tabAdmBox" class="nav-btn">🎾 Boxes & Pagos MP</button>
-        <button onclick="setTabAdmin('crm')" id="tabAdmCrm" class="nav-btn">👥 Inscritos (CRM)</button>
+        <button onclick="setTabAdmin('arbitraje')" id="tabAdmArb" class="nav-btn active">⚖️ Arbitraje & Canchas</button>
+        <button onclick="setTabAdmin('boxes')" id="tabAdmBox" class="nav-btn">🎾 Cupos & Pagos MP</button>
+        <button onclick="setTabAdmin('crm')" id="tabAdmCrm" class="nav-btn">👥 Inscritos & Cupones</button>
+        <button onclick="setTabAdmin('cupones')" id="tabAdmCup" class="nav-btn">🎟️ Cupón Kit, WhatsApp & Alertas</button>
         <button onclick="setTabAdmin('cms')" id="tabAdmCms" class="nav-btn">🎨 Categorías & Config</button>
         <button onclick="setTabAdmin('sponsors')" id="tabAdmSpo" class="nav-btn">🤝 Sponsors & Ranking</button>
-        <button onclick="setTabAdmin('saas')" id="tabAdmSaas" class="nav-btn oculto" style="background:rgba(168,85,247,.18);border-color:var(--purple);color:#E9D5FF;">👑 Consola Super Admin</button>
+        <button onclick="setTabAdmin('saas')" id="tabAdmSaas" class="nav-btn oculto" style="background:rgba(168,85,247,.18);border-color:var(--purple);color:#E9D5FF;">👑 Super Admin Global</button>
       </div>
 
-      <!-- 1. ARBITRAJE -->
+      <!-- 1. ARBITRAJE & ASIGNACIÓN DE CANCHAS -->
       <div id="subArb">
         <div class="card-sub" style="border-color:#7C3AED;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.65rem;margin-bottom:.8rem;">
-            <h4 style="font-size:1.05rem;font-weight:800;color:#C4B5FD;">⚖️ Mesa de Arbitraje en Vivo</h4>
+            <div>
+              <h4 style="font-size:1.05rem;font-weight:800;color:#C4B5FD;">⚖️ Mesa de Arbitraje & Asignación de Canchas</h4>
+              <p style="font-size:.76rem;color:var(--muted);">Aquí decides en qué cancha y horario juega cada partido (los jugadores no eligen cancha al inscribirse).</p>
+            </div>
             <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
               <select id="selCatArb" onchange="renderAdminArbitraje()" class="inp" style="width:210px;font-weight:700;"></select>
               <button onclick="generarFixtureConIA(false)" class="btn btn-sm btn-ai">🤖 Auto-Generar</button>
@@ -389,7 +442,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
       <!-- 2. BOXES -->
       <div id="subBox" class="oculto">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.75rem;">
-          <h4 style="font-size:1.05rem;font-weight:800;">🎾 Boxes & Aprobación de Pagos</h4>
+          <h4 style="font-size:1.05rem;font-weight:800;">🎾 Cupos & Aprobación de Pagos</h4>
           <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
             <select id="selCatBoxes" onchange="renderAdminBoxes()" class="inp" style="width:210px;font-weight:700;"></select>
             <button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-green">✅ Confirmar</button>
@@ -397,36 +450,82 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Box</th><th>Estado / Pago</th><th>Alias Dupla</th><th>Jugador 1 / Jugador 2</th><th>WhatsApp</th><th>Cancha</th><th>Acción</th></tr></thead>
+            <thead><tr><th>Cupo</th><th>Estado / Pago</th><th>N° Cupón Kit</th><th>Alias Dupla</th><th>Jugadores</th><th>WhatsApp</th><th>Cancha (Admin)</th><th>Acción</th></tr></thead>
             <tbody id="tbodyBoxes"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 3. CRM -->
+      <!-- 3. CRM & ENVÍO DE CUPONES -->
       <div id="subCrm" class="oculto">
         <div class="card-sub" style="border-color:#38BDF8;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.75rem;">
-            <h4 style="font-size:1.05rem;font-weight:800;">👥 Nómina de Inscritos</h4>
+            <h4 style="font-size:1.05rem;font-weight:800;">👥 Nómina de Inscritos & Envío de Cupones</h4>
             <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
               <button onclick="exportarCSV()" class="btn btn-sm btn-blue">📥 Excel CSV</button>
               <button onclick="inscribirManualAdmin()" class="btn btn-sm btn-green">+ Inscribir Manual</button>
             </div>
           </div>
           <div class="grid-auto">
-            <input type="text" id="buscadorCrm" oninput="renderAdminCRM()" placeholder="🔍 Buscar nombre, dupla o teléfono..." class="inp">
+            <input type="text" id="buscadorCrm" oninput="renderAdminCRM()" placeholder="🔍 Buscar nombre, dupla, teléfono o N° cupón..." class="inp">
             <select id="filtroCatCrm" onchange="renderAdminCRM()" class="inp"></select>
           </div>
         </div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Categoría/Box</th><th>Pago/Folio</th><th>Dupla</th><th>Jugador 1</th><th>Jugador 2</th><th>PIN</th><th>Acciones</th></tr></thead>
+            <thead><tr><th>Cat / Cupo</th><th>Pago / N° Kit</th><th>Dupla</th><th>Jugador 1</th><th>Jugador 2</th><th>PIN</th><th>Cupón & Acciones</th></tr></thead>
             <tbody id="tbodyCrm"></tbody>
           </table>
         </div>
       </div>
 
-      <!-- 4. CATEGORÍAS LIBRES & CONFIG -->
+      <!-- 4. EDITOR DE CUPÓN DE KIT, WHATSAPP FLOTANTE Y ALERTAS -->
+      <div id="subCup" class="oculto">
+        <div class="grid-2">
+          <div class="card-sub" style="border-color:var(--primary);">
+            <h4 style="color:var(--primary);margin-bottom:.8rem;">🎟️ Editor del Cupón Digital & Kit de Jugador</h4>
+            <div style="display:flex;flex-direction:column;gap:.7rem;">
+              <div><label class="lbl">Título del Cupón</label><input type="text" id="cfgCuponTitulo" oninput="actualizarPreviewCupon()" class="inp" placeholder="Ej. CUPÓN OFICIAL • KIT DE JUGADOR RESERVADO"></div>
+              <div><label class="lbl">Mensaje del Kit (Qué incluye al presentar este número)</label><textarea id="cfgCuponTexto" rows="3" oninput="actualizarPreviewCupon()" class="inp" placeholder="Ej. Con este número tienes reservado tu Kit Oficial: Polera técnica + Hidratación + Overgrip."></textarea></div>
+              <div><label class="lbl">Nota al Pie del Cupón</label><input type="text" id="cfgCuponNota" oninput="actualizarPreviewCupon()" class="inp" placeholder="Ej. Preséntalo en acreditación el día del torneo."></div>
+              <div><label class="lbl" style="color:#F472B6;">📸 Instagram Oficial del Club / Torneo (para etiquetar)</label><input type="text" id="cfgInstagramClub" oninput="actualizarPreviewCupon()" class="inp" placeholder="Ej. @ayres.padel"></div>
+            </div>
+          </div>
+
+          <div class="card-sub" style="border-color:var(--green);">
+            <h4 style="color:var(--green);margin-bottom:.8rem;">📲 Botón Flotante WhatsApp & Alertas de Pago</h4>
+            <div style="display:flex;flex-direction:column;gap:.7rem;">
+              <div><label class="lbl">Número WhatsApp de Consultas (con código país, ej. 56912345678)</label><input type="text" id="cfgWaNum" class="inp" placeholder="56912345678"></div>
+              <div><label class="lbl">Mensaje Predeterminado al tocar WhatsApp</label><input type="text" id="cfgWaMsg" class="inp" placeholder="Hola! Tengo una consulta sobre el torneo..."></div>
+              <div><label class="lbl" style="color:#38BDF8;">📧 Tu Email de Organizador (recibe alerta automática al pagarse un cupo)</label><input type="email" id="cfgEmailAlerta" class="inp" placeholder="organizador@club.cl"></div>
+              <div style="background:#04070D;padding:.75rem;border-radius:10px;border:1px solid var(--border);font-size:.76rem;color:var(--muted);line-height:1.5;">
+                <strong>ℹ️ Alertas automáticas por Email:</strong> Para que el servidor envíe el correo automáticamente a los jugadores y a tu mail, solo agrega tu clave gratuita <code>RESEND_API_KEY</code> en Render → Environment. El Cupón descargable para Instagram y el envío por WhatsApp funcionan siempre sin configuración extra.
+              </div>
+              <button onclick="guardarCuponYCanales()" class="btn btn-green" style="padding:.8rem;">✅ Guardar Cupón, WhatsApp y Alertas</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- VISTA PREVIA EN VIVO DEL CUPÓN -->
+        <div class="card-sub" style="border-color:#FACC15;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem;">
+            <h4 style="color:#FACC15;">👁️ Vista Previa en Vivo del Cupón que verá el Jugador</h4>
+            <span class="mono" style="font-size:.72rem;color:var(--muted);">Así aparece al pagar en Mercado Pago</span>
+          </div>
+          <div class="cupon-ticket" style="max-width:520px;margin:0 auto;padding:1.25rem;">
+            <span style="background:var(--green);color:#030508;font-weight:900;font-size:.72rem;padding:.25rem .75rem;border-radius:20px;">✅ INSCRITO Y PAGADO</span>
+            <h3 id="prevCupTit" style="margin-top:.6rem;font-size:1.2rem;">--</h3>
+            <div class="cupon-code-box" style="padding:.8rem;">
+              <div class="mono" style="font-size:.68rem;color:#CBD5E1;">N° DE CUPÓN • KIT RESERVADO</div>
+              <div class="mono" style="font-size:1.8rem;font-weight:900;color:#FDE047;">KIT-48219</div>
+              <p id="prevCupTxt" style="font-size:.86rem;color:#E2E8F0;margin-top:.35rem;"></p>
+            </div>
+            <div id="prevCupNota" style="font-size:.76rem;color:#94A3B8;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. CATEGORÍAS LIBRES & CONFIG -->
       <div id="subCms" class="oculto">
         <div class="card-sub" style="border-color:var(--primary);">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.8rem;">
@@ -477,7 +576,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- 5. SPONSORS & RANKING -->
+      <!-- 6. SPONSORS & RANKING -->
       <div id="subSpo" class="oculto">
         <div class="grid-2">
           <div class="card-sub">
@@ -497,7 +596,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- 6. CONSOLA SUPER ADMIN -->
+      <!-- 7. CONSOLA SUPER ADMIN -->
       <div id="subSaas" class="oculto">
         <div class="card-sub" style="background:linear-gradient(135deg,#2E1065,#04070D);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
           <div>
@@ -546,7 +645,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
 
 <!-- FOOTER CON ACCESO DISCRETO PARA ADMIN / SUPER ADMIN -->
 <footer>
-  <div style="max-width:1280px;margin:0 auto;padding:1.4rem 1rem;text-align:center;">
+  <div style="max-width:1280px;margin:0 auto;padding:1.4rem 1rem 4.8rem;text-align:center;">
     <div id="sponsorsWrap" style="margin-bottom:1.1rem;">
       <div class="mono" style="font-size:.68rem;color:var(--muted);margin-bottom:.65rem;text-transform:uppercase;">Auspiciadores</div>
       <div style="overflow:hidden;width:100%;"><div id="carruselSponsors" class="animate-scroll" style="gap:1.25rem;align-items:center;"></div></div>
@@ -558,18 +657,18 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </footer>
 
-<!-- MODAL INSCRIPCIÓN (OPTIMIZADO PARA CELULAR) -->
+<!-- MODAL INSCRIPCIÓN (SIN ELECCIÓN DE CANCHA) -->
 <div id="modalInscripcion" class="modal-bg oculto">
   <div class="panel" style="max-width:520px;width:100%;position:relative;max-height:94vh;overflow-y:auto;border-color:var(--mp);">
     <button onclick="cerrarModal()" style="position:absolute;top:.75rem;right:.95rem;background:none;border:none;color:var(--muted);font-size:1.8rem;cursor:pointer;line-height:1;">&times;</button>
-    <span id="modalBoxLabel" style="display:inline-block;background:rgba(212,175,55,.18);color:var(--primary);padding:.26rem .65rem;border-radius:6px;font-size:.76rem;font-weight:800;margin-bottom:.45rem;">Box #1</span>
+    <span id="modalBoxLabel" style="display:inline-block;background:rgba(212,175,55,.18);color:var(--primary);padding:.26rem .65rem;border-radius:6px;font-size:.76rem;font-weight:800;margin-bottom:.45rem;">Cupo #1</span>
     <h3 style="font-size:1.35rem;font-weight:900;margin-bottom:.25rem;">Inscripción y Pago</h3>
-    <p style="font-size:.84rem;color:var(--muted);margin-bottom:.9rem;">Completa los datos para reservar tu cupo con Mercado Pago.</p>
+    <p style="font-size:.84rem;color:var(--muted);margin-bottom:.9rem;">Las canchas y horarios los asigna la organización. Al pagar recibirás tu <strong>Cupón de Kit de Jugador</strong>.</p>
 
     <form id="formInsc" onsubmit="procesarInscripcion(event)" style="display:flex;flex-direction:column;gap:.75rem;">
       <div class="form-2col">
         <div><label class="lbl" style="color:var(--primary);">Categoría</label><select id="modSelCat" onchange="actualizarSelectorBoxesModal()" class="inp"></select></div>
-        <div><label class="lbl" style="color:var(--green);">Box Disponible</label><select id="modSelBox" class="inp"></select></div>
+        <div><label class="lbl" style="color:var(--green);">N° de Cupo Libre</label><select id="modSelBox" class="inp"></select></div>
       </div>
 
       <div><label class="lbl" style="color:var(--primary);">Nombre de la Dupla / Equipo</label><input type="text" id="inAlias" required placeholder="Ej. Team Ayres" class="inp"></div>
@@ -579,8 +678,8 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <div class="form-2col">
           <input type="text" id="inJ1" required placeholder="Nombre y Apellido" class="inp">
           <input type="tel" id="inTel1" required placeholder="WhatsApp (+569...)" class="inp">
-          <input type="email" id="inMail1" placeholder="Email (Opcional)" class="inp">
-          <input type="text" id="inIg1" placeholder="Instagram (@...)" class="inp">
+          <input type="email" id="inMail1" required placeholder="Email (para recibir cupón)" class="inp">
+          <input type="text" id="inIg1" placeholder="Instagram (@usuario1)" class="inp">
         </div>
       </div>
 
@@ -589,8 +688,8 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <div class="form-2col">
           <input type="text" id="inJ2" required placeholder="Nombre y Apellido" class="inp">
           <input type="tel" id="inTel2" required placeholder="WhatsApp (+569...)" class="inp">
-          <input type="email" id="inMail2" placeholder="Email (Opcional)" class="inp">
-          <input type="text" id="inIg2" placeholder="Instagram (@...)" class="inp">
+          <input type="email" id="inMail2" placeholder="Email J2 (Opcional)" class="inp">
+          <input type="text" id="inIg2" placeholder="Instagram (@usuario2)" class="inp">
         </div>
       </div>
 
@@ -633,7 +732,8 @@ const HERO_IMGS = [
 ];
 
 let saasDB = null, db = null, catActiva = '', catLlavesActiva = '', rolAdmin = null;
-let ultimoWhatsApp = '', sonidoOn = true, audioCtx = null;
+let cuponActivo = null;
+let sonidoOn = true, audioCtx = null, ambienteTimer = null, golpeCount = 0;
 let saveQueue = Promise.resolve(), pendingSaves = 0, lastLocalMutationAt = 0, localRev = 0, inicializadoServidor = false;
 
 const urlParams = new URLSearchParams(window.location.search);
@@ -656,19 +756,84 @@ function cleanUrl(u){ if(!u||u.includes('APP_USR-')) return 'https://www.mercado
 function mostrarToast(msg){ const t=document.getElementById('toast'); t.innerText=msg; t.style.display='flex'; clearTimeout(window._tTo); window._tTo=setTimeout(()=>t.style.display='none',3200); }
 function copiarTexto(txt,msg){ navigator.clipboard.writeText(txt); mostrarToast(msg||'Copiado'); }
 
-function sonarPelota(){
+// --- MOTOR DE SONIDO DE PELOTA DE PÁDEL AMBIENTAL DE FONDO + GOLPE EN CLICS ---
+function initAudio(){
+  if(!audioCtx){
+    const AC=window.AudioContext||window.webkitAudioContext;
+    if(AC) audioCtx=new AC();
+  }
+  if(audioCtx && audioCtx.state==='suspended') audioCtx.resume();
+}
+
+function sonarGolpePadel(vol=0.14, tono=1.0, pan=0){
   if(!sonidoOn) return;
   try{
-    if(!audioCtx){ const AC=window.AudioContext||window.webkitAudioContext; if(AC) audioCtx=new AC(); }
-    if(!audioCtx) return; if(audioCtx.state==='suspended') audioCtx.resume();
-    const now=audioCtx.currentTime, o=audioCtx.createOscillator(), g=audioCtx.createGain();
-    o.type='sine'; o.frequency.setValueAtTime(230,now); o.frequency.exponentialRampToValueAtTime(70,now+.08);
-    g.gain.setValueAtTime(.18,now); g.gain.exponentialRampToValueAtTime(.001,now+.085);
-    o.connect(g); g.connect(audioCtx.destination); o.start(now); o.stop(now+.09);
+    initAudio(); if(!audioCtx || audioCtx.state!=='running') return;
+    const now=audioCtx.currentTime;
+    const osc=audioCtx.createOscillator(), g=audioCtx.createGain();
+    osc.type='triangle';
+    osc.frequency.setValueAtTime(245*tono, now);
+    osc.frequency.exponentialRampToValueAtTime(72*tono, now+0.075);
+    g.gain.setValueAtTime(vol, now);
+    g.gain.exponentialRampToValueAtTime(0.0008, now+0.08);
+
+    // Pequeño crujido seco de la pala + pelota
+    const bufSz=Math.floor(audioCtx.sampleRate*0.03);
+    const nb=audioCtx.createBuffer(1,bufSz,audioCtx.sampleRate);
+    const out=nb.getChannelData(0);
+    for(let i=0;i<bufSz;i++) out[i]=(Math.random()*2-1)*Math.exp(-i/(audioCtx.sampleRate*0.008));
+    const ns=audioCtx.createBufferSource(); ns.buffer=nb;
+    const flt=audioCtx.createBiquadFilter(); flt.type='bandpass'; flt.frequency.value=1050*tono; flt.Q.value=2.0;
+    const ng=audioCtx.createGain(); ng.gain.setValueAtTime(vol*0.75,now); ng.gain.exponentialRampToValueAtTime(0.0008,now+0.03);
+
+    const dest = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+    if(dest){ dest.pan.value=pan; dest.connect(audioCtx.destination); }
+    const target=dest||audioCtx.destination;
+
+    osc.connect(g); g.connect(target);
+    ns.connect(flt); flt.connect(ng); ng.connect(target);
+    osc.start(now); osc.stop(now+0.085);
+    ns.start(now);
   }catch(e){}
 }
-function toggleAudio(){ sonidoOn=!sonidoOn; const b=document.getElementById('btnSound'); if(b) b.innerText=sonidoOn?'🔊 Sonido: ON':'🔇 Sonido: OFF'; if(sonidoOn) sonarPelota(); }
-document.addEventListener('click',e=>{ if(e.target.closest('button')||e.target.closest('.box-verde')) sonarPelota(); });
+
+// Loop ambiental realista de peloteo de pádel suave en el fondo
+function programarPeloteoFondo(){
+  clearTimeout(ambienteTimer);
+  if(!sonidoOn) return;
+  const esPausaPunto = golpeCount > 0 && (golpeCount % (5 + Math.floor(Math.random()*5)) === 0);
+  const delay = esPausaPunto ? (2600 + Math.random()*1800) : (680 + Math.random()*520);
+  ambienteTimer = setTimeout(()=>{
+    if(sonidoOn && document.visibilityState === 'visible'){
+      const lado = (golpeCount % 2 === 0) ? -0.45 : 0.45;
+      const tono = (golpeCount % 2 === 0) ? 0.96 : 1.08;
+      // Golpe de paleta
+      sonarGolpePadel(0.055, tono, lado);
+      // Rebote suave en el suelo/cristal 320ms después
+      setTimeout(()=>{ if(sonidoOn) sonarGolpePadel(0.028, 0.82, lado*0.3); }, 310);
+      golpeCount++;
+    }
+    programarPeloteoFondo();
+  }, delay);
+}
+
+function activarAudioAlPrimerToque(){
+  initAudio();
+  if(sonidoOn && !ambienteTimer) programarPeloteoFondo();
+}
+document.addEventListener('pointerdown', activarAudioAlPrimerToque, { once: true });
+document.addEventListener('click', e=>{
+  activarAudioAlPrimerToque();
+  if(e.target.closest('button') || e.target.closest('.box-verde')) sonarGolpePadel(0.14, 1.05, 0);
+});
+
+function toggleAudio(){
+  sonidoOn=!sonidoOn;
+  const b=document.getElementById('btnSound');
+  if(b) b.innerText=sonidoOn?'🔊 Pelota Fondo: ON':'🔇 Pelota Fondo: OFF';
+  if(sonidoOn){ initAudio(); sonarGolpePadel(0.15,1.1,0); programarPeloteoFondo(); }
+  else { clearTimeout(ambienteTimer); ambienteTimer=null; }
+}
 
 let slideIdx=0;
 setInterval(()=>{
@@ -679,19 +844,19 @@ setInterval(()=>{
   sl[slideIdx].classList.add('active-slide');
 },6500);
 
+// --- CREACIÓN DE DATOS ---
 function crearCupos(tid, cKey, cant, fBase, hBase, nCanchas){
-  const nc=Math.max(1,Number(nCanchas)||4);
-  return Array.from({length:Math.max(2,Number(cant)||16)},(_,i)=>({
-    id:i+1, ocupado:false, estadoPagoMP:'LIBRE', expiraReservaTimestamp:0, folioMP:'', urlCheckoutMP:'',
+  return Array.from({length:Math.max(2,Number(cant)||12)},(_,i)=>({
+    id:i+1, ocupado:false, estadoPagoMP:'LIBRE', expiraReservaTimestamp:0, folioMP:'', codigoCupon:'', emailEnviado:false, urlCheckoutMP:'',
     modalidadPago:'', alias:'', j1:'', j2:'', tel1:'', tel2:'', email1:'', email2:'', redes1:'', redes2:'',
     pin:'1234', avatar:`https://api.dicebear.com/7.x/avataaars/svg?seed=${tid}_${cKey}_${i}`,
-    cancha:`Cancha #${(Math.floor(i/2)%nc)+1}`, horaInicioMatch:`${fBase}T${hBase}`
+    cancha:'Por asignar', horaInicioMatch:`${fBase}T${hBase}`
   }));
 }
 
 function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFin, hIni, nCanchas, precioInsc, catsStr, mpVal, cuposDef, partidosDef){
   const fi=fIni||'2026-12-12', ff=(fFin&&fFin>=fi)?fFin:sumarDias(fi,1), hi=hIni||'09:00';
-  const nc=Math.max(1,Number(nCanchas)||4), cupN=Math.max(2,Number(cuposDef)||16), partN=Math.max(1,Math.min(12,Number(partidosDef)||3));
+  const nc=Math.max(1,Number(nCanchas)||4), cupN=Math.max(2,Number(cuposDef)||12), partN=Math.max(1,Math.min(12,Number(partidosDef)||3));
   const esTok=mpVal&&mpVal.includes('APP_USR-');
   const catsArr=(catsStr||'DAMAS D, DAMAS C, MIXTO 7 6 Y 5').split(',').map(s=>s.trim()).filter(Boolean);
   const categorias=(catsArr.length?catsArr:['General']).map((nom,idx)=>({
@@ -711,7 +876,14 @@ function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFi
       duracionPartido:45, turnosDescansoIA:2, fechaInicio:fi, fechaFin:ff, horaApertura:hi, horaCierre:'21:00',
       categorias, googleMapsQuery:'Chicureo Colina Santiago Chile',
       comunicado:'',
-      reglamento:'1. W.O. estricto a los 10 minutos.<br>2. El cupo queda confirmado tras la aprobación de Mercado Pago.<br>3. Horarios y tabla actualizados en vivo.'
+      reglamento:'1. W.O. estricto a los 10 minutos.<br>2. El cupo queda confirmado tras la aprobación de Mercado Pago.<br>3. Canchas y horarios serán publicados por la organización.',
+      whatsappNum:'56999999999',
+      whatsappMsg:'Hola! Tengo una consulta sobre la inscripción al torneo de pádel.',
+      emailAlertaAdmin:'',
+      instagramClub:'@circuito360.cl',
+      cuponTitulo:'CUPÓN OFICIAL • KIT DE JUGADOR RESERVADO',
+      cuponTexto:'¡Ya estás inscrito! Con este número tienes reservado tu Kit Oficial de Jugador para retirar en acreditación.',
+      cuponNota:'Guarda o comparte este cupón en tu Instagram etiquetando al club.'
     },
     sponsors:[
       {nombre:'Chicureo Motors',url:'https://www.google.com',logoText:'🚗 CHICUREO MOTORS',logoImg:''},
@@ -739,6 +911,14 @@ function asegurarIntegridad(){
   if(!db.puntosExtraRanking) db.puntosExtraRanking={};
   if(!db.config.partidosGarantizados) db.config.partidosGarantizados=3;
   if(!db.config.mpAccessToken||!db.config.mpAccessToken.startsWith('APP_USR-')) db.config.mpAccessToken=DEFAULT_MP_TOKEN;
+  if(db.config.whatsappNum===undefined) db.config.whatsappNum='56999999999';
+  if(db.config.whatsappMsg===undefined) db.config.whatsappMsg='Hola! Tengo una consulta sobre el torneo.';
+  if(!db.config.cuponTitulo) db.config.cuponTitulo='CUPÓN OFICIAL • KIT DE JUGADOR RESERVADO';
+  if(!db.config.cuponTexto) db.config.cuponTexto='¡Ya estás inscrito! Con este número tienes reservado tu Kit Oficial de Jugador.';
+  if(!db.config.cuponNota) db.config.cuponNota='Preséntalo en mesa de acreditación el día del torneo.';
+  if(db.config.instagramClub===undefined) db.config.instagramClub='@circuito360.cl';
+  if(db.config.emailAlertaAdmin===undefined) db.config.emailAlertaAdmin='';
+
   db.config.categorias.forEach(c=>{
     if(!c.maxCupos||c.maxCupos<2) c.maxCupos=12;
     if(!c.partidosGarantizados||c.partidosGarantizados<1) c.partidosGarantizados=db.config.partidosGarantizados||3;
@@ -753,10 +933,8 @@ function getCatObj(k){ return (db.config.categorias||[]).find(c=>c.key===k)||db.
 function getPrecioCat(k){ const c=getCatObj(k); return (c&&Number(c.precioCustom)>0)?Number(c.precioCustom):(Number(db.config.precioInscripcion)||70000); }
 
 function setSyncBadge(txt, col){
-  const el=document.getElementById('indicadorNubeSync');
-  if(el){ el.innerText=txt; el.style.color=col; el.style.borderColor=col; }
-  const bs=document.getElementById('badgeSincronia');
-  if(bs){ bs.innerText=txt; bs.style.color=col; }
+  const el=document.getElementById('indicadorNubeSync'); if(el){ el.innerText=txt; el.style.color=col; el.style.borderColor=col; }
+  const bs=document.getElementById('badgeSincronia'); if(bs){ bs.innerText=txt; bs.style.color=col; }
 }
 function actualizarBadgeStorage(mode){
   if(mode==='POSTGRES_PERMANENT') setSyncBadge('☁️ DB PERMANENTE OK','#34D399');
@@ -799,7 +977,7 @@ async function consultarNube(inicial=false){
   try{
     const r=await fetch('/api/state?t='+reqStart,{cache:'no-store'});
     if(r.status===404){
-      if(inicial){ saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId]; recalcularHorariosBoxes(); await empujarNube(); inicializadoServidor=true; refrescarTodoUI(true); }
+      if(inicial){ saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId]; await empujarNube(); inicializadoServidor=true; refrescarTodoUI(true); }
       return;
     }
     const ct=r.headers.get('content-type')||'';
@@ -808,7 +986,7 @@ async function consultarNube(inicial=false){
     actualizarBadgeStorage(res.storageMode);
 
     if(res.empty){
-      if(inicial){ saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId]; recalcularHorariosBoxes(); await empujarNube(); inicializadoServidor=true; refrescarTodoUI(true); }
+      if(inicial){ saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId]; await empujarNube(); inicializadoServidor=true; refrescarTodoUI(true); }
       return;
     }
     if(!inicial && (pendingSaves>0 || lastLocalMutationAt>reqStart)) return;
@@ -835,7 +1013,7 @@ function refrescarTodoUI(incluirForms){
 }
 setInterval(()=>consultarNube(false), 2500);
 
-// --- SLOTS & FIXTURE IA ---
+// --- SLOTS & FIXTURE IA (CANCHAS LAS ASIGNA SOLO EL ADMIN/IA) ---
 function generarSlots(){
   const fi=db.config.fechaInicio||'2026-12-12', ff=(db.config.fechaFin&&db.config.fechaFin>=fi)?db.config.fechaFin:fi;
   const [ah,am]=(db.config.horaApertura||'09:00').split(':').map(Number);
@@ -854,23 +1032,8 @@ function generarSlots(){
   return {slots,dias,nc,dur};
 }
 
-function recalcularHorariosBoxes(){
-  asegurarIntegridad();
-  const {slots,nc}=generarSlots(); if(!slots.length) return;
-  let idx=0;
-  db.config.categorias.forEach(cat=>{
-    const arr=db.cupos[cat.key]||[];
-    for(let i=0;i<arr.length;i+=2){
-      const cNum=(idx%nc)+1, sl=slots[Math.floor(idx/nc)%slots.length];
-      if(arr[i]){ arr[i].cancha=`Cancha #${cNum}`; arr[i].horaInicioMatch=sl.iso; }
-      if(arr[i+1]){ arr[i+1].cancha=`Cancha #${cNum}`; arr[i+1].horaInicioMatch=sl.iso; }
-      idx++;
-    }
-  });
-}
-
 function generarFixtureConIA(silencioso){
-  recalcularHorariosBoxes();
+  asegurarIntegridad();
   const {slots,nc}=generarSlots(); if(!slots.length) return;
   const desc=Math.max(0,Number(db.config.turnosDescansoIA)||1);
   const ultimoBloque={}; let totalGen=0;
@@ -923,7 +1086,7 @@ function generarFixtureConIA(silencioso){
     db.partidos[cat.key]=[...pres,...nuevos];
   });
   sincronizar(); renderAdminArbitraje();
-  if(!silencioso) mostrarToast(`🤖 Fixture generado: ${totalGen} partidos.`);
+  if(!silencioso) mostrarToast(`🤖 Fixture generado: ${totalGen} partidos asignados a canchas.`);
 }
 
 // --- RENDER PÚBLICO ---
@@ -938,13 +1101,24 @@ function aplicarCMS(){
   document.getElementById('navLogoContainer').innerHTML=db.config.logoTorneoImg?`<img src="${db.config.logoTorneoImg}" style="height:30px;border-radius:6px;">`:'';
   document.getElementById('heroClubTag').innerText=db.config.badgeOrg||'CLUB OFICIAL';
   document.getElementById('heroMainTitle').innerText=db.config.nombreTorneo||'TORNEO DE PÁDEL';
-  document.getElementById('heroSubtitleBadge').innerText=`📅 ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)} • 🎾 ${db.config.totalCanchas} Canchas`;
+  document.getElementById('heroSubtitleBadge').innerText=`📅 ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}`;
   document.getElementById('labelFechaReloj').innerText=`${fmtCL(db.config.fechaInicio)} • ${db.config.horaApertura} hrs`;
   document.getElementById('tvCanchasLbl').innerText=db.config.totalCanchas||4;
   document.getElementById('heroSlide0').src=db.config.heroCustomBase64||HERO_IMGS[0];
 
+  // Botón flotante de WhatsApp
+  const waBtn=document.getElementById('waFloatBtn');
+  const waNum=(db.config.whatsappNum||'').replace(/\D/g,'');
+  if(waNum){
+    waBtn.classList.remove('oculto');
+    const waMsg=encodeURIComponent(db.config.whatsappMsg||`Hola! Tengo una consulta sobre ${db.config.nombreTorneo}`);
+    waBtn.href=`https://wa.me/${waNum}?text=${waMsg}`;
+  } else {
+    waBtn.classList.add('oculto');
+  }
+
   const catsTxt=db.config.categorias.map(c=>`${esc(c.nombre)} (${c.maxCupos} duplas)`).join(' · ');
-  document.getElementById('textoCronogramaPublico').innerHTML=`<strong>📅 Fechas:</strong> ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}<br><strong>⏰ Horario:</strong> ${esc(db.config.horaApertura)} a ${esc(db.config.horaCierre)} hrs<br><strong>🎾 Canchas:</strong> ${db.config.totalCanchas}<br><strong>🏆 Categorías:</strong> ${catsTxt}`;
+  document.getElementById('textoCronogramaPublico').innerHTML=`<strong>📅 Fechas:</strong> ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}<br><strong>⏰ Horario:</strong> ${esc(db.config.horaApertura)} a ${esc(db.config.horaCierre)} hrs<br><strong>🏆 Categorías:</strong> ${catsTxt}`;
   document.getElementById('textoReglamentoPublico').innerHTML=db.config.reglamento||'';
   if(db.config.googleMapsQuery) document.getElementById('mapaIframe').src=`https://maps.google.com/maps?q=${encodeURIComponent(db.config.googleMapsQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
 
@@ -981,14 +1155,15 @@ function renderTabsCategorias(){
   }
 }
 
+// RENDER PÚBLICO SIN MOSTRAR CANCHAS (LAS ASIGNA LA ORGANIZACIÓN DESPUÉS)
 function renderPublico(){
   const grid=document.getElementById('gridBoxesPublico'); if(!grid) return;
   const lista=db.cupos[catActiva]||[], precio=getPrecioCat(catActiva), catObj=getCatObj(catActiva);
   grid.innerHTML=lista.map(c=>{
     if(c.ocupado && c.estadoPagoMP==='PAGADO_MP'){
-      return `<div class="box-card box-roja">
+      return `<div class="box-card box-roja" onclick="abrirCuponConPin('${catActiva}',${c.id})">
         <div class="status-badge bg-red">INSCRITO 🔴</div>
-        <div class="box-top mono" style="color:#fecaca;">BOX #${c.id} • ${esc(c.cancha)}</div>
+        <div class="box-top mono" style="color:#fecaca;">CUPO #${c.id}</div>
         <div style="display:flex;align-items:center;gap:.8rem;background:rgba(0,0,0,.32);padding:.8rem;border-radius:12px;">
           <img src="${c.avatar}" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--red);flex-shrink:0;">
           <div>
@@ -996,16 +1171,16 @@ function renderPublico(){
             <div style="font-size:.9rem;color:#fecaca;margin-top:.1rem;">${esc(c.j1)} / ${esc(c.j2)}</div>
           </div>
         </div>
-        <div class="mono" style="font-size:.86rem;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.14);padding-top:.6rem;">
-          <span>🕒 ${fmtFechaHora(c.horaInicioMatch)}</span>
-          <strong class="box-cd" data-time="${c.horaInicioMatch}" style="color:#FACC15;">--</strong>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,.15);padding-top:.6rem;font-size:.86rem;">
+          <span style="color:#86efac;font-weight:800;">✅ Kit Reservado</span>
+          <span class="mono" style="background:rgba(212,175,55,.22);color:#FDE047;padding:.28rem .65rem;border-radius:7px;font-weight:800;">🎟️ Ver Mi Cupón</span>
         </div>
       </div>`;
     }
     if(c.ocupado && c.estadoPagoMP==='RESERVANDO_MP'){
       return `<div class="box-card box-amarilla" onclick="retomarPago(${c.id})">
         <div class="status-badge bg-yellow">PAGANDO ⏳</div>
-        <div class="box-top mono" style="color:#FDE68A;">BOX #${c.id} • ${esc(c.cancha)}</div>
+        <div class="box-top mono" style="color:#FDE68A;">CUPO #${c.id}</div>
         <div style="background:rgba(0,0,0,.32);padding:.85rem;border-radius:12px;">
           <div style="font-size:1.1rem;font-weight:900;color:#FDE047;">⏳ ${esc(c.alias)}</div>
           <div style="font-size:.88rem;color:#FEF3C7;margin-top:.15rem;">En proceso de pago en Mercado Pago</div>
@@ -1018,11 +1193,11 @@ function renderPublico(){
     }
     return `<div class="box-card box-verde" onclick="abrirModalInscripcion('${catActiva}',${c.id})">
       <div class="status-badge bg-green">DISPONIBLE 🟢</div>
-      <div class="box-top mono" style="color:#a7f3d0;">BOX #${c.id} • ${esc(c.cancha)}</div>
+      <div class="box-top mono" style="color:#a7f3d0;">CUPO #${c.id}</div>
       <div style="background:rgba(0,0,0,.22);padding:.9rem;border-radius:12px;">
-        <div style="font-size:1.18rem;font-weight:900;color:#6ee7b7;margin-bottom:.25rem;">Cupo Disponible</div>
-        <div style="font-size:.9rem;color:#d1fae5;">🎾 ${catObj.partidosGarantizados||db.config.partidosGarantizados} partidos garantizados</div>
-        <div class="mono" style="font-size:.84rem;color:#FDE047;margin-top:.3rem;">🕒 ${fmtFechaHora(c.horaInicioMatch)}</div>
+        <div style="font-size:1.2rem;font-weight:900;color:#6ee7b7;margin-bottom:.25rem;">Cupo Disponible</div>
+        <div style="font-size:.92rem;color:#d1fae5;">🎾 ${catObj.partidosGarantizados||db.config.partidosGarantizados} partidos garantizados</div>
+        <div style="font-size:.84rem;color:#FDE047;margin-top:.25rem;">🎟️ Incluye Cupón de Kit de Jugador</div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap;">
         <div class="box-price mono">$${precio.toLocaleString('es-CL')}</div>
@@ -1071,7 +1246,7 @@ function renderPartidosYTabla(){
       </div>
       <div class="mono" style="font-size:.78rem;color:var(--muted);margin-top:.5rem;">🕒 ${fmtFechaHora(m.fechaHora)}</div>
     </div>`;
-  }).join(''):`<div class="panel" style="grid-column:1/-1;text-align:center;color:var(--muted);font-size:.95rem;">Los partidos se publicarán al cerrar inscripciones.</div>`;
+  }).join(''):`<div class="panel" style="grid-column:1/-1;text-align:center;color:var(--muted);font-size:.95rem;">La organización publicará canchas y horarios al cerrar inscripciones.</div>`;
 }
 
 function renderTV(){
@@ -1121,14 +1296,6 @@ function actualizarRelojes(){
       elG.innerText=`${dd}D : ${String(hh).padStart(2,'0')}H : ${String(mm).padStart(2,'0')}M : ${String(ss).padStart(2,'0')}S`;
     } else elG.innerText='🎾 ¡EN JUEGO!';
   }
-  document.querySelectorAll('.box-cd').forEach(el=>{
-    const raw=el.dataset.time||''; if(!raw.includes('T')) return;
-    const [f,h]=raw.split('T'), df=parseLocalTs(f,h)-now;
-    if(df>0){
-      const dd=Math.floor(df/86400000), hh=Math.floor((df%86400000)/3600000), mm=Math.floor((df%3600000)/60000);
-      el.innerText=dd>0?`${dd}d ${hh}h`:`${hh}h ${mm}m`;
-    } else el.innerText='🎾 Live';
-  });
   document.querySelectorAll('.exp-cd').forEach(el=>{
     const rest=(Number(el.dataset.exp)||0)-now;
     el.innerText=rest>0?`⏱️ ${String(Math.floor(rest/60000)).padStart(2,'0')}:${String(Math.floor((rest%60000)/1000)).padStart(2,'0')}`:'Liberando...';
@@ -1136,7 +1303,146 @@ function actualizarRelojes(){
 }
 setInterval(actualizarRelojes,1000);
 
-// --- INSCRIPCIÓN & MERCADO PAGO ---
+// --- CUPÓN DIGITAL DE KIT DE JUGADOR (VER, DESCARGAR PNG PARA INSTAGRAM, ENVIAR WHATSAPP) ---
+function mostrarCuponOficial(catKey, boxId){
+  const catObj=getCatObj(catKey);
+  const cupo=(db.cupos[catKey]||[]).find(x=>x.id===Number(boxId));
+  if(!cupo) return;
+  if(!cupo.codigoCupon) cupo.codigoCupon=`KIT-${Math.floor(10000+Math.random()*90000)}`;
+  cuponActivo={ catKey, catNombre:catObj.nombre, cupo };
+
+  document.getElementById('cupTitulo').innerText=db.config.cuponTitulo||'CUPÓN OFICIAL • KIT DE JUGADOR RESERVADO';
+  document.getElementById('cupTorneoClub').innerText=`${db.config.nombreTorneo} • ${db.config.badgeOrg}`;
+  document.getElementById('cupNumero').innerText=cupo.codigoCupon;
+  document.getElementById('cupTexto').innerText=db.config.cuponTexto||'Con este número tienes reservado tu Kit Oficial de Jugador.';
+  document.getElementById('cupCat').innerText=catObj.nombre;
+  document.getElementById('cupBoxNum').innerText=`Cupo #${cupo.id}`;
+  document.getElementById('cupAlias').innerText=cupo.alias;
+  document.getElementById('cupJugadores').innerText=`${cupo.j1} & ${cupo.j2}`;
+  const igs=[cupo.redes1,cupo.redes2].filter(Boolean).join(' / ') || 'Sin Instagram';
+  document.getElementById('cupIgs').innerText=igs;
+  document.getElementById('cupFechas').innerText=`${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}`;
+  document.getElementById('cupNota').innerText=`${db.config.cuponNota||''} ${db.config.instagramClub?`• Instagram oficial: ${db.config.instagramClub}`:''}`;
+  cambiarVista('cupon');
+}
+
+function abrirCuponConPin(catKey, boxId){
+  const cupo=(db.cupos[catKey]||[]).find(x=>x.id===Number(boxId));
+  if(!cupo) return;
+  if(rolAdmin){ mostrarCuponOficial(catKey, boxId); return; }
+  const pin=prompt(`🎟️ Para abrir el Cupón de Kit de "${cupo.alias}", ingresa el PIN de 4 dígitos de la dupla:`);
+  if(pin===null) return;
+  if(pin.trim()===String(cupo.pin||'1234').trim()){
+    mostrarCuponOficial(catKey, boxId);
+  } else {
+    alert('❌ PIN incorrecto.');
+  }
+}
+
+function enviarCuponPorWhatsApp(catKeyOpt, boxIdOpt){
+  let data=cuponActivo;
+  if(catKeyOpt && boxIdOpt){
+    const c=(db.cupos[catKeyOpt]||[]).find(x=>x.id===Number(boxIdOpt));
+    if(c) data={ catKey:catKeyOpt, catNombre:getCatObj(catKeyOpt).nombre, cupo:c };
+  }
+  if(!data) return;
+  const c=data.cupo, numKit=c.codigoCupon||`KIT-${c.id}`;
+  const msg=`🎟️ *${db.config.cuponTitulo}*\n✅ *INSCRITO Y PAGADO*\n\n🏆 Torneo: ${db.config.nombreTorneo} (${db.config.badgeOrg})\n🥇 Categoría: ${data.catNombre} (Cupo #${c.id})\n⭐ Dupla: ${c.alias}\n👤 Jugadores: ${c.j1} & ${c.j2}\n\n🔢 *N° DE CUPÓN KIT:* *${numKit}*\n🎁 ${db.config.cuponTexto}\n\n📅 ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)} ${db.config.instagramClub?`\n📸 Instagram: ${db.config.instagramClub}`:''}`;
+  const telDestino=(catKeyOpt && c.tel1)?c.tel1.replace(/\D/g,''):'';
+  const url=telDestino?`https://wa.me/${telDestino}?text=${encodeURIComponent(msg)}`:`https://wa.me/?text=${encodeURIComponent(msg)}`;
+  window.open(url,'_blank');
+}
+
+function descargarImagenCupon(){
+  if(!cuponActivo) return;
+  const c=cuponActivo.cupo, cfg=db.config;
+  const canvas=document.createElement('canvas');
+  canvas.width=1080; canvas.height=1350;
+  const ctx=canvas.getContext('2d');
+
+  // Fondo degradado elegante
+  const grd=ctx.createLinearGradient(0,0,1080,1350);
+  grd.addColorStop(0,'#0B1629'); grd.addColorStop(1,'#04070D');
+  ctx.fillStyle=grd; ctx.fillRect(0,0,1080,1350);
+
+  // Borde dorado
+  ctx.strokeStyle='#D4AF37'; ctx.lineWidth=14;
+  ctx.strokeRect(36,36,1008,1278);
+
+  // Encabezado
+  ctx.fillStyle='#D4AF37'; ctx.fillRect(340,90,400,56);
+  ctx.fillStyle='#030508'; ctx.font='900 28px sans-serif'; ctx.textAlign='center';
+  ctx.fillText('CIRCUITO360.CL',540,128);
+
+  ctx.fillStyle='#10B981'; ctx.font='900 36px sans-serif';
+  ctx.fillText('✅ INSCRITO Y PAGADO OFICIALMENTE',540,215);
+
+  ctx.fillStyle='#FFFFFF'; ctx.font='900 54px sans-serif';
+  ctx.fillText((cfg.nombreTorneo||'TORNEO DE PÁDEL').toUpperCase().slice(0,26),540,295);
+
+  ctx.fillStyle='#D4AF37'; ctx.font='700 32px sans-serif';
+  ctx.fillText((cfg.badgeOrg||'CLUB OFICIAL').toUpperCase(),540,348);
+
+  // Recuadro del número de Cupón
+  ctx.fillStyle='rgba(212,175,55,0.12)'; ctx.fillRect(100,400,880,290);
+  ctx.strokeStyle='#D4AF37'; ctx.setLineDash([14,10]); ctx.lineWidth=5;
+  ctx.strokeRect(100,400,880,290); ctx.setLineDash([]);
+
+  ctx.fillStyle='#CBD5E1'; ctx.font='700 26px sans-serif';
+  ctx.fillText((cfg.cuponTitulo||'CUPÓN OFICIAL • KIT DE JUGADOR').toUpperCase().slice(0,44),540,455);
+
+  ctx.fillStyle='#FDE047'; ctx.font='900 84px monospace';
+  ctx.fillText(c.codigoCupon||'KIT-00000',540,560);
+
+  ctx.fillStyle='#E2E8F0'; ctx.font='600 26px sans-serif';
+  const txtKit=(cfg.cuponTexto||'Con este número tienes reservado tu Kit Oficial de Jugador.').slice(0,95);
+  ctx.fillText(txtKit.slice(0,50),540,625);
+  if(txtKit.length>50) ctx.fillText(txtKit.slice(50),540,662);
+
+  // Datos de la Dupla
+  ctx.fillStyle='#060B14'; ctx.fillRect(100,740,880,360);
+  ctx.strokeStyle='#1E293B'; ctx.lineWidth=3; ctx.strokeRect(100,740,880,360);
+  ctx.textAlign='left';
+  const filas=[
+    ['DUPLA:', c.alias],
+    ['CATEGORÍA:', `${cuponActivo.catNombre} (Cupo #${c.id})`],
+    ['JUGADORES:', `${c.j1} & ${c.j2}`],
+    ['FECHAS:', `${fmtCL(cfg.fechaInicio)} al ${fmtCL(cfg.fechaFin)}`],
+    ['INSTAGRAM:', [c.redes1,c.redes2].filter(Boolean).join(' / ') || (cfg.instagramClub||'@circuito360.cl')]
+  ];
+  filas.forEach((f,idx)=>{
+    const y=810 + idx*62;
+    ctx.fillStyle='#94A3B8'; ctx.font='700 24px monospace'; ctx.fillText(f[0],140,y);
+    ctx.fillStyle=idx===0?'#D4AF37':'#F8FAFC'; ctx.font='800 28px sans-serif'; ctx.fillText(String(f[1]||'').slice(0,32),340,y);
+  });
+
+  // Pie
+  ctx.textAlign='center';
+  ctx.fillStyle='#94A3B8'; ctx.font='600 24px sans-serif';
+  ctx.fillText((cfg.cuponNota||'Presenta este cupón en acreditación.').slice(0,65),540,1180);
+  if(cfg.instagramClub){
+    ctx.fillStyle='#F472B6'; ctx.font='800 30px sans-serif';
+    ctx.fillText(`📸 Súbelo a tus Historias etiquetando a ${cfg.instagramClub}`,540,1245);
+  }
+
+  const a=document.createElement('a');
+  a.download=`cupon_${c.codigoCupon||c.id}.png`;
+  a.href=canvas.toDataURL('image/png');
+  a.click();
+  mostrarToast('📸 ¡Cupón descargado! Listo para compartir en Instagram.');
+}
+
+async function reenviarEmailCuponAdmin(catKey, boxId){
+  try{
+    const r=await fetch('/api/notify-coupon',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({torneoId:db.id,categoriaKey:catKey,boxId,force:true})});
+    const j=await r.json();
+    if(j.sent) mostrarToast('📧 Correo con Cupón enviado exitosamente.');
+    else if(j.reason==='FALTA_RESEND_API_KEY') alert('ℹ️ Falta configurar la variable RESEND_API_KEY en Render para enviar correos automáticos. Mientras tanto puedes usar el botón 📲 WhatsApp.');
+    else alert('⚠️ No hay correo registrado para esta pareja ni en tu alerta de organizador.');
+  }catch(e){ alert('❌ Error al conectar con el servidor de correos.'); }
+}
+
+// --- INSCRIPCIÓN & MERCADO PAGO (SIN ELECCIÓN DE CANCHA) ---
 function abrirInscripcionRapida(){
   const libre=(db.cupos[catActiva]||[]).find(c=>!c.ocupado);
   if(libre){ abrirModalInscripcion(catActiva, libre.id); return; }
@@ -1162,8 +1468,8 @@ function actualizarSelectorBoxesModal(preferBoxId){
   const ck=document.getElementById('modSelCat').value;
   const libres=(db.cupos[ck]||[]).filter(c=>!c.ocupado);
   const selB=document.getElementById('modSelBox');
-  selB.innerHTML=libres.length?libres.map(c=>`<option value="${c.id}" ${c.id===preferBoxId?'selected':''}>Box #${c.id} (${esc(c.cancha)})</option>`).join(''):`<option value="">Sin cupos libres</option>`;
-  document.getElementById('modalBoxLabel').innerText=`${getCatObj(ck).nombre} • Box #${selB.value||'--'}`;
+  selB.innerHTML=libres.length?libres.map(c=>`<option value="${c.id}" ${c.id===preferBoxId?'selected':''}>Cupo #${c.id} (Disponible)</option>`).join(''):`<option value="">Sin cupos libres</option>`;
+  document.getElementById('modalBoxLabel').innerText=`${getCatObj(ck).nombre} • Cupo #${selB.value||'--'}`;
   actualizarPrecioModal();
 }
 
@@ -1192,7 +1498,7 @@ async function procesarInscripcion(e){
   const cupo=(db.cupos[ck]||[]).find(x=>x.id===boxId);
   if(!cupo || cupo.ocupado){
     btn.disabled=false; btn.innerText='💳 PAGAR E INSCRIBIRME →';
-    alert('⚠️ Otro jugador tomó ese Box hace un instante. Elige otro disponible.');
+    alert('⚠️ Otro jugador tomó ese cupo hace un instante. Elige otro disponible.');
     actualizarSelectorBoxesModal(); return;
   }
 
@@ -1204,6 +1510,7 @@ async function procesarInscripcion(e){
   const pin=document.getElementById('inPin').value.trim(), tipo=document.getElementById('modPagoTipo').value;
   const base=getPrecioCat(ck), monto=tipo==='mitad'?Math.round(base/2):base;
   const folio=`C360-${Math.floor(100000+Math.random()*900000)}`;
+  const codigoCupon=`KIT-${Math.floor(10000+Math.random()*90000)}`;
 
   let avatarData=cupo.avatar;
   const fIn=document.getElementById('inFoto');
@@ -1221,20 +1528,18 @@ async function procesarInscripcion(e){
 
   Object.assign(cupo,{
     ocupado:true, estadoPagoMP:'RESERVANDO_MP', expiraReservaTimestamp:Date.now()+EXPIRA_MS,
-    folioMP:folio, urlCheckoutMP:urlMP, modalidadPago:tipo==='mitad'?'50%':'100%',
+    folioMP:folio, codigoCupon, emailEnviado:false, urlCheckoutMP:urlMP, modalidadPago:tipo==='mitad'?'50%':'100%',
     alias, j1, j2, tel1:t1, tel2:t2, email1:m1, email2:m2, redes1:ig1, redes2:ig2, pin, avatar:avatarData
   });
   await empujarNube();
 
   btn.disabled=false; btn.innerText='💳 PAGAR E INSCRIBIRME →';
-  ultimoWhatsApp=`🎾 *${db.config.nombreTorneo}*\n🏆 ${getCatObj(ck).nombre}\n⭐ ${alias}\n👤 ${j1} / ${j2}\n📦 Box #${boxId}\n💳 Folio: ${folio}\n🔗 Pagar: ${urlMP}`;
-
   cerrarModal();
   document.getElementById('exFolio').innerText=folio;
   document.getElementById('exTorneoCat').innerText=`${db.config.nombreTorneo} • ${getCatObj(ck).nombre}`;
   document.getElementById('exAlias').innerText=alias;
   document.getElementById('exJugadores').innerText=`${j1} & ${j2}`;
-  document.getElementById('exBox').innerText=`Box #${boxId} • ${cupo.cancha}`;
+  document.getElementById('exBox').innerText=`Cupo #${boxId}`;
   document.getElementById('exMonto').innerText=`$${monto.toLocaleString('es-CL')} CLP`;
   document.getElementById('btnIrMP').href=urlMP;
   cambiarVista('exito');
@@ -1244,11 +1549,10 @@ async function procesarInscripcion(e){
 function retomarPago(boxId){
   const c=(db.cupos[catActiva]||[]).find(x=>x.id===boxId);
   if(!c || !c.urlCheckoutMP) return;
-  if(confirm(`Este Box está reservado en proceso de pago por "${c.alias}".\n\n¿Eres tú y deseas continuar el pago en Mercado Pago?`)){
+  if(confirm(`Este cupo está reservado en proceso de pago por "${c.alias}".\n\n¿Eres tú y deseas continuar el pago en Mercado Pago?`)){
     window.location.href=c.urlCheckoutMP;
   }
 }
-function copiarWhatsAppJugador(){ if(ultimoWhatsApp) copiarTexto(ultimoWhatsApp,'📲 Ficha copiada'); }
 
 async function verificarRetornoMP(){
   const st=urlParams.get('mp_status')||urlParams.get('collection_status')||urlParams.get('status');
@@ -1259,12 +1563,17 @@ async function verificarRetornoMP(){
   if(cupo){
     if(st==='approved'||st==='success'){
       cupo.ocupado=true; cupo.estadoPagoMP='PAGADO_MP'; cupo.expiraReservaTimestamp=0;
-      await empujarNube(); refrescarTodoUI(true);
-      mostrarToast(`🎉 ¡Pago aprobado! Box #${bid} inscrito.`);
+      if(!cupo.codigoCupon) cupo.codigoCupon=`KIT-${Math.floor(10000+Math.random()*90000)}`;
+      await empujarNube();
+      // Disparar alerta de email automática (si Resend está configurado)
+      fetch('/api/notify-coupon',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({torneoId:t.id,categoriaKey:ck,boxId:bid})}).catch(()=>{});
+      refrescarTodoUI(true);
+      mostrarCuponOficial(ck, bid);
+      mostrarToast(`🎉 ¡Pago aprobado! Aquí tienes tu Cupón ${cupo.codigoCupon}`);
     } else if(st==='failure'||st==='rejected'){
       cupo.ocupado=false; cupo.estadoPagoMP='LIBRE'; cupo.alias=''; cupo.j1=''; cupo.j2=''; cupo.expiraReservaTimestamp=0;
       await empujarNube(); refrescarTodoUI(true);
-      alert('⚠️ El pago no se completó. El Box volvió a quedar disponible.');
+      alert('⚠️ El pago no se completó. El cupo volvió a quedar disponible.');
     }
     window.history.replaceState({},document.title,`${window.location.pathname}?torneo=${t.id}`);
   }
@@ -1272,9 +1581,9 @@ async function verificarRetornoMP(){
 
 // --- NAVEGACIÓN & ADMIN ---
 function cambiarVista(v){
-  ['vistaPublica','vistaLlaves','vistaExito','vistaPremios','vistaTV','vistaAdmin'].forEach(id=>document.getElementById(id).classList.remove('activo'));
+  ['vistaPublica','vistaLlaves','vistaExito','vistaCupon','vistaPremios','vistaTV','vistaAdmin'].forEach(id=>document.getElementById(id).classList.remove('activo'));
   ['btnNavPub','btnNavLlaves','btnNavPrem'].forEach(id=>document.getElementById(id)?.classList.remove('active'));
-  const map={publico:['vistaPublica','btnNavPub'],llaves:['vistaLlaves','btnNavLlaves'],exito:['vistaExito',''],premios:['vistaPremios','btnNavPrem'],tv:['vistaTV',''],admin:['vistaAdmin','']};
+  const map={publico:['vistaPublica','btnNavPub'],llaves:['vistaLlaves','btnNavLlaves'],exito:['vistaExito',''],cupon:['vistaCupon',''],premios:['vistaPremios','btnNavPrem'],tv:['vistaTV',''],admin:['vistaAdmin','']};
   const [vid,bid]=map[v]||['vistaPublica','btnNavPub'];
   document.getElementById(vid).classList.add('activo');
   if(bid) document.getElementById(bid).classList.add('active');
@@ -1304,7 +1613,7 @@ function procesarLogin(e){
   }
   document.getElementById('inputClaveAdmin').value='';
   cambiarVista('admin');
-  mostrarToast(rolAdmin==='SUPERGOD'?'👑 Super Admin activo':'🎾 Panel Admin activo');
+  mostrarToast(rolAdmin==='SUPERGOD'?'👑 Super Admin con todos los poderes':'🎾 Panel Admin activo');
 }
 
 function cerrarSesion(){ rolAdmin=null; cambiarVista('publico'); mostrarToast('🔒 Sesión cerrada'); }
@@ -1321,8 +1630,8 @@ function abrirPanelAdminUI(){
 }
 
 function setTabAdmin(tab){
-  const panels={arbitraje:'subArb',boxes:'subBox',crm:'subCrm',cms:'subCms',sponsors:'subSpo',saas:'subSaas'};
-  const btns={arbitraje:'tabAdmArb',boxes:'tabAdmBox',crm:'tabAdmCrm',cms:'tabAdmCms',sponsors:'tabAdmSpo',saas:'tabAdmSaas'};
+  const panels={arbitraje:'subArb',boxes:'subBox',crm:'subCrm',cupones:'subCup',cms:'subCms',sponsors:'subSpo',saas:'subSaas'};
+  const btns={arbitraje:'tabAdmArb',boxes:'tabAdmBox',crm:'tabAdmCrm',cupones:'tabAdmCup',cms:'tabAdmCms',sponsors:'tabAdmSpo',saas:'tabAdmSaas'};
   Object.values(panels).forEach(id=>document.getElementById(id).classList.add('oculto'));
   Object.values(btns).forEach(id=>document.getElementById(id).classList.remove('active'));
   document.getElementById(panels[tab]).classList.remove('oculto');
@@ -1330,6 +1639,7 @@ function setTabAdmin(tab){
   if(tab==='arbitraje') renderAdminArbitraje();
   if(tab==='boxes') renderAdminBoxes();
   if(tab==='crm') renderAdminCRM();
+  if(tab==='cupones'){ cargarFormsAdmin(); actualizarPreviewCupon(); }
   if(tab==='cms') cargarFormsAdmin();
   if(tab==='sponsors') renderSponsorsYRankAdmin();
   if(tab==='saas') renderSaas();
@@ -1361,7 +1671,33 @@ function cargarFormsAdmin(){
   setV('cfgDescanso',db.config.turnosDescansoIA); setV('cfgColor',db.config.colorPrimary); setV('cfgMpToken',db.config.mpAccessToken);
   setV('cfgLinkPago',db.config.linkPago); setV('cfgPrecio',db.config.precioInscripcion); setV('cfgTitularMP',db.config.titularMP);
   setV('cfgMapa',db.config.googleMapsQuery); setV('cfgComunicado',db.config.comunicado); setV('cfgReglamento',db.config.reglamento);
+  setV('cfgCuponTitulo',db.config.cuponTitulo); setV('cfgCuponTexto',db.config.cuponTexto); setV('cfgCuponNota',db.config.cuponNota);
+  setV('cfgInstagramClub',db.config.instagramClub); setV('cfgWaNum',db.config.whatsappNum); setV('cfgWaMsg',db.config.whatsappMsg);
+  setV('cfgEmailAlerta',db.config.emailAlertaAdmin);
+  actualizarPreviewCupon();
   renderEditorCategorias();
+}
+
+function actualizarPreviewCupon(){
+  const t=document.getElementById('cfgCuponTitulo')?.value||db.config.cuponTitulo;
+  const x=document.getElementById('cfgCuponTexto')?.value||db.config.cuponTexto;
+  const n=document.getElementById('cfgCuponNota')?.value||db.config.cuponNota;
+  const ig=document.getElementById('cfgInstagramClub')?.value||db.config.instagramClub;
+  const pt=document.getElementById('prevCupTit'); if(pt) pt.innerText=t;
+  const px=document.getElementById('prevCupTxt'); if(px) px.innerText=x;
+  const pn=document.getElementById('prevCupNota'); if(pn) pn.innerText=`${n} ${ig?`• 📸 ${ig}`:''}`;
+}
+
+function guardarCuponYCanales(){
+  db.config.cuponTitulo=document.getElementById('cfgCuponTitulo').value.trim()||'CUPÓN OFICIAL • KIT DE JUGADOR RESERVADO';
+  db.config.cuponTexto=document.getElementById('cfgCuponTexto').value.trim();
+  db.config.cuponNota=document.getElementById('cfgCuponNota').value.trim();
+  db.config.instagramClub=document.getElementById('cfgInstagramClub').value.trim();
+  db.config.whatsappNum=document.getElementById('cfgWaNum').value.trim();
+  db.config.whatsappMsg=document.getElementById('cfgWaMsg').value.trim();
+  db.config.emailAlertaAdmin=document.getElementById('cfgEmailAlerta').value.trim();
+  sincronizar(); actualizarPreviewCupon();
+  mostrarToast('🎟️ Cupón, WhatsApp y Alertas guardados en vivo.');
 }
 
 function aplicarControlRapido(){
@@ -1373,7 +1709,7 @@ function aplicarControlRapido(){
   const pNew=Math.max(1,Math.min(12,Number(document.getElementById('qPartidos').value)||3));
   db.config.partidosGarantizados=pNew; db.config.categorias.forEach(c=>c.partidosGarantizados=pNew);
   db.config.precioInscripcion=Number(document.getElementById('qPrecio').value)||db.config.precioInscripcion;
-  recalcularHorariosBoxes(); sincronizar(); cargarFormsAdmin();
+  sincronizar(); cargarFormsAdmin();
   mostrarToast(`⚡ Publicado (${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)})`);
 }
 
@@ -1397,14 +1733,15 @@ function guardarTodoAdmin(){
   db.config.googleMapsQuery=document.getElementById('cfgMapa').value.trim();
   db.config.comunicado=document.getElementById('cfgComunicado').value.trim();
   db.config.reglamento=document.getElementById('cfgReglamento').value;
-  recalcularHorariosBoxes(); sincronizar(); cargarFormsAdmin();
-  mostrarToast('✅ Configuración guardada.');
+  guardarCuponYCanales();
+  cargarFormsAdmin();
+  mostrarToast('✅ Todo guardado en la nube.');
 }
 
 function renderAdminArbitraje(){
   const ck=document.getElementById('selCatArb')?.value||db.config.categorias[0].key;
   const ins=(db.cupos[ck]||[]).filter(c=>c.ocupado&&c.alias), nc=Number(db.config.totalCanchas)||4;
-  const optsDup=ins.length?ins.map(c=>`<option value="${c.id}">Box #${c.id} - ${esc(c.alias)}</option>`).join(''):`<option value="">Sin parejas</option>`;
+  const optsDup=ins.length?ins.map(c=>`<option value="${c.id}">Cupo #${c.id} - ${esc(c.alias)}</option>`).join(''):`<option value="">Sin parejas</option>`;
   document.getElementById('newMatchA').innerHTML=optsDup; document.getElementById('newMatchB').innerHTML=optsDup;
   let oc=''; for(let i=1;i<=nc;i++) oc+=`<option value="Cancha #${i}">Cancha #${i}</option>`;
   document.getElementById('newMatchCancha').innerHTML=oc;
@@ -1449,18 +1786,20 @@ function renderAdminBoxes(){
   const ck=document.getElementById('selCatBoxes')?.value||db.config.categorias[0].key, nc=Number(db.config.totalCanchas)||4;
   document.getElementById('tbodyBoxes').innerHTML=(db.cupos[ck]||[]).map(c=>{
     const st=!c.ocupado?'LIBRE':(c.estadoPagoMP==='PAGADO_MP'?'PAGADO_MP':'RESERVANDO_MP');
-    let oc=''; for(let i=1;i<=nc;i++){ const cn=`Cancha #${i}`; oc+=`<option value="${cn}" ${c.cancha===cn?'selected':''}>${cn}</option>`; }
+    let oc=`<option value="Por asignar" ${!c.cancha||c.cancha==='Por asignar'?'selected':''}>Por asignar</option>`;
+    for(let i=1;i<=nc;i++){ const cn=`Cancha #${i}`; oc+=`<option value="${cn}" ${c.cancha===cn?'selected':''}>${cn}</option>`; }
     return `<tr>
       <td><strong>#${c.id}</strong></td>
-      <td><select onchange="setEstadoBox('${ck}',${c.id},this.value)" class="inp" style="width:140px;font-weight:700;">
+      <td><select onchange="setEstadoBox('${ck}',${c.id},this.value)" class="inp" style="width:135px;font-weight:700;">
         <option value="LIBRE" ${st==='LIBRE'?'selected':''}>🟢 Libre</option>
-        <option value="RESERVANDO_MP" ${st==='RESERVANDO_MP'?'selected':''}>🟡 Pagando MP</option>
+        <option value="RESERVANDO_MP" ${st==='RESERVANDO_MP'?'selected':''}>🟡 Pagando</option>
         <option value="PAGADO_MP" ${st==='PAGADO_MP'?'selected':''}>🔴 Pagado</option>
       </select></td>
-      <td><input type="text" value="${esc(c.alias||'')}" placeholder="Alias" onchange="editBox('${ck}',${c.id},'alias',this.value)" class="inp" style="min-width:110px;"></td>
+      <td class="mono" style="color:#FDE047;font-size:.76rem;">${esc(c.codigoCupon||'--')}</td>
+      <td><input type="text" value="${esc(c.alias||'')}" placeholder="Alias" onchange="editBox('${ck}',${c.id},'alias',this.value)" class="inp" style="min-width:105px;"></td>
       <td><div style="display:flex;gap:.25rem;"><input type="text" value="${esc(c.j1||'')}" placeholder="J1" onchange="editBox('${ck}',${c.id},'j1',this.value)" class="inp"><input type="text" value="${esc(c.j2||'')}" placeholder="J2" onchange="editBox('${ck}',${c.id},'j2',this.value)" class="inp"></div></td>
       <td><div style="display:flex;gap:.25rem;"><input type="text" value="${esc(c.tel1||'')}" placeholder="Tel 1" onchange="editBox('${ck}',${c.id},'tel1',this.value)" class="inp"><input type="text" value="${esc(c.tel2||'')}" placeholder="Tel 2" onchange="editBox('${ck}',${c.id},'tel2',this.value)" class="inp"></div></td>
-      <td><select onchange="editBox('${ck}',${c.id},'cancha',this.value)" class="inp" style="width:105px;">${oc}</select></td>
+      <td><select onchange="editBox('${ck}',${c.id},'cancha',this.value)" class="inp" style="width:110px;">${oc}</select></td>
       <td style="white-space:nowrap;">${st==='RESERVANDO_MP'?`<button onclick="setEstadoBox('${ck}',${c.id},'PAGADO_MP')" class="btn btn-sm btn-green">💳 Aprobar</button> `:''}<button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-blue">✔</button></td>
     </tr>`;
   }).join('');
@@ -1468,12 +1807,15 @@ function renderAdminBoxes(){
 
 function setEstadoBox(ck,id,st){
   const c=(db.cupos[ck]||[]).find(x=>x.id===id); if(!c) return;
-  if(st==='LIBRE') Object.assign(c,{ocupado:false,estadoPagoMP:'LIBRE',expiraReservaTimestamp:0,alias:'',j1:'',j2:'',tel1:'',tel2:''});
-  else if(st==='RESERVANDO_MP') Object.assign(c,{ocupado:true,estadoPagoMP:'RESERVANDO_MP',expiraReservaTimestamp:Date.now()+EXPIRA_MS,alias:c.alias||`RESERVA #${id}`});
-  else Object.assign(c,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,alias:c.alias||`DUPLA #${id}`});
-  sincronizar(); renderAdminBoxes(); renderAdminCRM(); mostrarToast(`✅ Box #${id} actualizado.`);
+  if(st==='LIBRE') Object.assign(c,{ocupado:false,estadoPagoMP:'LIBRE',expiraReservaTimestamp:0,alias:'',j1:'',j2:'',tel1:'',tel2:'',codigoCupon:'',emailEnviado:false});
+  else if(st==='RESERVANDO_MP') Object.assign(c,{ocupado:true,estadoPagoMP:'RESERVANDO_MP',expiraReservaTimestamp:Date.now()+EXPIRA_MS,alias:c.alias||`RESERVA #${id}`,codigoCupon:c.codigoCupon||`KIT-${Math.floor(10000+Math.random()*90000)}`});
+  else {
+    Object.assign(c,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,alias:c.alias||`DUPLA #${id}`,codigoCupon:c.codigoCupon||`KIT-${Math.floor(10000+Math.random()*90000)}`});
+    fetch('/api/notify-coupon',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({torneoId:db.id,categoriaKey:ck,boxId:id})}).catch(()=>{});
+  }
+  sincronizar(); renderAdminBoxes(); renderAdminCRM(); mostrarToast(`✅ Cupo #${id} actualizado.`);
 }
-function editBox(ck,id,campo,val){ const c=(db.cupos[ck]||[]).find(x=>x.id===id); if(!c) return; c[campo]=val; if(campo==='alias'&&val.trim()&&!c.ocupado){c.ocupado=true;c.estadoPagoMP='PAGADO_MP';} sincronizar(); }
+function editBox(ck,id,campo,val){ const c=(db.cupos[ck]||[]).find(x=>x.id===id); if(!c) return; c[campo]=val; if(campo==='alias'&&val.trim()&&!c.ocupado){c.ocupado=true;c.estadoPagoMP='PAGADO_MP';c.codigoCupon=c.codigoCupon||`KIT-${Math.floor(10000+Math.random()*90000)}`;} sincronizar(); }
 
 function renderAdminCRM(){
   const q=(document.getElementById('buscadorCrm')?.value||'').toLowerCase().trim(), fc=document.getElementById('filtroCatCrm')?.value||'TODAS';
@@ -1482,19 +1824,24 @@ function renderAdminCRM(){
     if(fc!=='TODAS' && cat.key!==fc) return;
     (db.cupos[cat.key]||[]).forEach(c=>{
       if(!c.ocupado) return;
-      if(q && !`${cat.nombre} ${c.alias} ${c.j1} ${c.j2} ${c.tel1} ${c.tel2} ${c.folioMP}`.toLowerCase().includes(q)) return;
+      if(q && !`${cat.nombre} ${c.alias} ${c.j1} ${c.j2} ${c.tel1} ${c.tel2} ${c.codigoCupon} ${c.folioMP}`.toLowerCase().includes(q)) return;
       rows+=`<tr>
-        <td><strong style="color:var(--primary);">${esc(cat.nombre)}</strong><div class="mono" style="font-size:.7rem;color:#60A5FA;">Box #${c.id}</div></td>
-        <td><select onchange="setEstadoBox('${cat.key}',${c.id},this.value)" class="inp" style="width:125px;font-size:.74rem;margin-bottom:.2rem;">
+        <td><strong style="color:var(--primary);">${esc(cat.nombre)}</strong><div class="mono" style="font-size:.7rem;color:#60A5FA;">Cupo #${c.id}</div></td>
+        <td><select onchange="setEstadoBox('${cat.key}',${c.id},this.value)" class="inp" style="width:120px;font-size:.74rem;margin-bottom:.2rem;">
           <option value="PAGADO_MP" ${c.estadoPagoMP==='PAGADO_MP'?'selected':''}>🔴 Pagado</option>
           <option value="RESERVANDO_MP" ${c.estadoPagoMP==='RESERVANDO_MP'?'selected':''}>🟡 Pagando</option>
           <option value="LIBRE">🟢 Liberar</option>
-        </select><div class="mono" style="font-size:.66rem;color:#38BDF8;">${esc(c.folioMP||'MANUAL')}</div></td>
-        <td><input type="text" value="${esc(c.alias||'')}" onchange="editBox('${cat.key}',${c.id},'alias',this.value)" class="inp" style="min-width:115px;font-weight:700;"></td>
-        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:155px;"><input type="text" value="${esc(c.j1||'')}" placeholder="J1" onchange="editBox('${cat.key}',${c.id},'j1',this.value)" class="inp"><input type="text" value="${esc(c.tel1||'')}" placeholder="Tel J1" onchange="editBox('${cat.key}',${c.id},'tel1',this.value)" class="inp"><input type="text" value="${esc(c.email1||'')}" placeholder="Email" onchange="editBox('${cat.key}',${c.id},'email1',this.value)" class="inp"></div></td>
-        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:155px;"><input type="text" value="${esc(c.j2||'')}" placeholder="J2" onchange="editBox('${cat.key}',${c.id},'j2',this.value)" class="inp"><input type="text" value="${esc(c.tel2||'')}" placeholder="Tel J2" onchange="editBox('${cat.key}',${c.id},'tel2',this.value)" class="inp"><input type="text" value="${esc(c.email2||'')}" placeholder="Email" onchange="editBox('${cat.key}',${c.id},'email2',this.value)" class="inp"></div></td>
-        <td><input type="text" value="${esc(c.pin||'1234')}" onchange="editBox('${cat.key}',${c.id},'pin',this.value)" class="inp mono" style="width:60px;color:#FACC15;"></td>
-        <td style="white-space:nowrap;"><button onclick="sincronizar();mostrarToast('✅ Guardado')" class="btn btn-sm btn-green">✔</button> <button onclick="setEstadoBox('${cat.key}',${c.id},'LIBRE')" class="btn btn-sm btn-red">Liberar</button></td>
+        </select><div class="mono" style="font-size:.72rem;color:#FDE047;font-weight:800;">${esc(c.codigoCupon||'SIN-KIT')}</div></td>
+        <td><input type="text" value="${esc(c.alias||'')}" onchange="editBox('${cat.key}',${c.id},'alias',this.value)" class="inp" style="min-width:110px;font-weight:700;"></td>
+        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:155px;"><input type="text" value="${esc(c.j1||'')}" placeholder="J1" onchange="editBox('${cat.key}',${c.id},'j1',this.value)" class="inp"><input type="text" value="${esc(c.tel1||'')}" placeholder="Tel J1" onchange="editBox('${cat.key}',${c.id},'tel1',this.value)" class="inp"><input type="text" value="${esc(c.email1||'')}" placeholder="Email" onchange="editBox('${cat.key}',${c.id},'email1',this.value)" class="inp"><input type="text" value="${esc(c.redes1||'')}" placeholder="@ig1" onchange="editBox('${cat.key}',${c.id},'redes1',this.value)" class="inp"></div></td>
+        <td><div style="display:flex;flex-direction:column;gap:.2rem;min-width:155px;"><input type="text" value="${esc(c.j2||'')}" placeholder="J2" onchange="editBox('${cat.key}',${c.id},'j2',this.value)" class="inp"><input type="text" value="${esc(c.tel2||'')}" placeholder="Tel J2" onchange="editBox('${cat.key}',${c.id},'tel2',this.value)" class="inp"><input type="text" value="${esc(c.email2||'')}" placeholder="Email" onchange="editBox('${cat.key}',${c.id},'email2',this.value)" class="inp"><input type="text" value="${esc(c.redes2||'')}" placeholder="@ig2" onchange="editBox('${cat.key}',${c.id},'redes2',this.value)" class="inp"></div></td>
+        <td><input type="text" value="${esc(c.pin||'1234')}" onchange="editBox('${cat.key}',${c.id},'pin',this.value)" class="inp mono" style="width:58px;color:#FACC15;"></td>
+        <td style="white-space:nowrap;">
+          <button onclick="mostrarCuponOficial('${cat.key}',${c.id})" class="btn btn-sm btn-gold" title="Ver Cupón">🎟️</button>
+          <button onclick="enviarCuponPorWhatsApp('${cat.key}',${c.id})" class="btn btn-sm btn-green" title="Enviar Cupón por WhatsApp">📲</button>
+          <button onclick="reenviarEmailCuponAdmin('${cat.key}',${c.id})" class="btn btn-sm btn-blue" title="Enviar Cupón por Email">📧</button>
+          <button onclick="setEstadoBox('${cat.key}',${c.id},'LIBRE')" class="btn btn-sm btn-red" title="Liberar">✕</button>
+        </td>
       </tr>`;
     });
   });
@@ -1504,14 +1851,14 @@ function renderAdminCRM(){
 function inscribirManualAdmin(){
   const fc=document.getElementById('filtroCatCrm')?.value, ck=(fc&&fc!=='TODAS')?fc:db.config.categorias[0].key;
   const lib=(db.cupos[ck]||[]).find(c=>!c.ocupado);
-  if(!lib){ alert('⚠️ Sin Boxes libres en esta categoría.'); return; }
-  Object.assign(lib,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,folioMP:'ADM-'+Math.floor(1000+Math.random()*9000),alias:`DUPLA #${lib.id}`,j1:'Jugador 1',j2:'Jugador 2',tel1:'+569',tel2:'+569'});
-  sincronizar(); renderAdminCRM(); mostrarToast(`➕ Pareja inscrita (Box #${lib.id}).`);
+  if(!lib){ alert('⚠️ Sin cupos libres en esta categoría.'); return; }
+  Object.assign(lib,{ocupado:true,estadoPagoMP:'PAGADO_MP',expiraReservaTimestamp:0,folioMP:'ADM-'+Math.floor(1000+Math.random()*9000),codigoCupon:`KIT-${Math.floor(10000+Math.random()*90000)}`,alias:`DUPLA #${lib.id}`,j1:'Jugador 1',j2:'Jugador 2',tel1:'+569',tel2:'+569'});
+  sincronizar(); renderAdminCRM(); mostrarToast(`➕ Pareja inscrita (Cupo #${lib.id} • ${lib.codigoCupon}).`);
 }
 
 function exportarCSV(){
-  const f=[['Torneo','Categoria','Box','Estado','Folio','Dupla','Jugador 1','Tel 1','Email 1','IG 1','Jugador 2','Tel 2','Email 2','IG 2','Cancha','PIN']];
-  db.config.categorias.forEach(cat=>(db.cupos[cat.key]||[]).forEach(c=>{ if(c.ocupado) f.push([db.config.nombreTorneo,cat.nombre,`Box #${c.id}`,c.estadoPagoMP,c.folioMP,c.alias,c.j1,c.tel1,c.email1,c.redes1,c.j2,c.tel2,c.email2,c.redes2,c.cancha,c.pin]); }));
+  const f=[['Torneo','Categoria','Cupo','Estado','Cupon Kit','Dupla','Jugador 1','Tel 1','Email 1','IG 1','Jugador 2','Tel 2','Email 2','IG 2','PIN']];
+  db.config.categorias.forEach(cat=>(db.cupos[cat.key]||[]).forEach(c=>{ if(c.ocupado) f.push([db.config.nombreTorneo,cat.nombre,`Cupo #${c.id}`,c.estadoPagoMP,c.codigoCupon||'',c.alias,c.j1,c.tel1,c.email1,c.redes1,c.j2,c.tel2,c.email2,c.redes2,c.pin]); }));
   const a=document.createElement('a'); a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(f.map(r=>r.map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(';')).join('\n')); a.download=`inscritos_${db.id}.csv`; a.click();
   mostrarToast('📥 CSV descargado.');
 }
@@ -1542,7 +1889,7 @@ function agregarCategoriaLibre(){
   db.config.categorias.push({key,nombre:nom,maxCupos:cup,partidosGarantizados:part,precioCustom:0});
   db.cupos[key]=crearCupos(db.id,key,cup,db.config.fechaInicio,db.config.horaApertura,db.config.totalCanchas);
   db.partidos[key]=[]; document.getElementById('newCatNom').value='';
-  recalcularHorariosBoxes(); sincronizar(); renderEditorCategorias();
+  sincronizar(); renderEditorCategorias();
   mostrarToast(`🏆 Categoría "${nom}" agregada.`);
 }
 
@@ -1556,7 +1903,6 @@ function editCat(key,campo,val){
     const arr=db.cupos[key]||[];
     if(n>arr.length){ const ex=crearCupos(db.id,key,n-arr.length,db.config.fechaInicio,db.config.horaApertura,db.config.totalCanchas); ex.forEach((x,i)=>{x.id=arr.length+i+1;arr.push(x);}); }
     else if(n<arr.length) db.cupos[key]=arr.slice(0,n);
-    recalcularHorariosBoxes();
   }
   sincronizar(); renderEditorCategorias(); mostrarToast(`✅ Guardado.`);
 }
@@ -1564,7 +1910,7 @@ function eliminarCat(key){
   if(db.config.categorias.length<=1){ alert('⚠️ Debe quedar al menos 1 categoría.'); return; }
   db.config.categorias=db.config.categorias.filter(x=>x.key!==key); delete db.cupos[key]; delete db.partidos[key];
   catActiva=db.config.categorias[0].key; catLlavesActiva=catActiva;
-  recalcularHorariosBoxes(); sincronizar(); renderEditorCategorias(); mostrarToast('🗑️ Eliminada.');
+  sincronizar(); renderEditorCategorias(); mostrarToast('🗑️ Eliminada.');
 }
 function subirImagenConfig(e,campo){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>{ db.config[campo]=ev.target.result; sincronizar(); mostrarToast('🖼️ Imagen guardada.'); }; r.readAsDataURL(f); }
 
@@ -1618,7 +1964,7 @@ function editSaas(id,campo,val){
   if(campo==='partidos'){ const p=Math.max(1,Math.min(12,Number(val)||3)); t.config.partidosGarantizados=p; (t.config.categorias||[]).forEach(c=>c.partidosGarantizados=p); }
   if(campo==='fIni'){ t.config.fechaInicio=val; if(t.config.fechaFin<val) t.config.fechaFin=sumarDias(val,1); }
   if(campo==='fFin') t.config.fechaFin=val>=t.config.fechaInicio?val:t.config.fechaInicio;
-  saasDB.torneoActivoId=id; db=t; recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin(); mostrarToast('👑 Guardado.');
+  saasDB.torneoActivoId=id; db=t; sincronizar(); renderSaas(); cargarFormsAdmin(); mostrarToast('👑 Guardado.');
 }
 function toggleLic(id){ const t=saasDB.torneos[id]; if(!t) return; t.licenciaMeta.estado=t.licenciaMeta.estado==='ACTIVA'?'SUSPENDIDA':'ACTIVA'; sincronizar(); renderSaas(); }
 function borrarTorneoSaas(id){
@@ -1631,7 +1977,7 @@ function crearTorneoSaas(){
   const id=(document.getElementById('nsId').value.trim().toLowerCase().replace(/[^a-z0-9-]/g,'-'))||('torneo-'+Date.now().toString().slice(-4));
   const nom=document.getElementById('nsNombre').value.trim()||'TORNEO PÁDEL';
   saasDB.torneos[id]=crearTorneoBase(id,nom,document.getElementById('nsClub').value.trim()||'CLUB OFICIAL',document.getElementById('nsClave').value.trim()||'1234',document.getElementById('nsContacto').value.trim(),document.getElementById('nsLic').value,document.getElementById('nsFIni').value,document.getElementById('nsFFin').value,document.getElementById('nsHora').value,document.getElementById('nsCanchas').value,document.getElementById('nsPrecio').value,document.getElementById('nsCats').value,document.getElementById('nsMp').value.trim()||DEFAULT_MP_TOKEN,document.getElementById('nsCuposCat').value,document.getElementById('nsPartidos').value);
-  saasDB.torneoActivoId=id; db=saasDB.torneos[id]; recalcularHorariosBoxes(); sincronizar(); renderSaas(); cargarFormsAdmin(); mostrarToast(`👑 Torneo "${nom}" creado.`);
+  saasDB.torneoActivoId=id; db=saasDB.torneos[id]; sincronizar(); renderSaas(); cargarFormsAdmin(); mostrarToast(`👑 Torneo "${nom}" creado.`);
 }
 function cambiarTorneoActivo(id){ if(!saasDB.torneos[id]) return; saasDB.torneoActivoId=id; db=saasDB.torneos[id]; asegurarIntegridad(); sincronizar(); abrirPanelAdminUI(); }
 function descargarBackupJSON(){ const a=document.createElement('a'); a.href='data:application/json;charset=utf-8,'+encodeURIComponent(JSON.stringify(saasDB,null,2)); a.download=`backup_circuito360_${new Date().toISOString().slice(0,10)}.json`; a.click(); mostrarToast('💾 Backup descargado.'); }
@@ -1642,8 +1988,9 @@ function restaurarBackupJSON(e){
 
 (async function init(){
   saasDB=initDefaultDB(); db=saasDB.torneos[saasDB.torneoActivoId];
-  recalcularHorariosBoxes(); refrescarTodoUI(false);
-  await consultarNube(true); await verificarRetornoMP();
+  refrescarTodoUI(false);
+  await consultarNube(true);
+  await verificarRetornoMP();
 })();
 </script>
 </body>
