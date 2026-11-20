@@ -832,12 +832,7 @@ function toggleAudio(){
   const b=document.getElementById('btnSound');
   if(b) b.innerText=sonidoOn?'🔊 Sonido Clic: ON':'🔇 Sonido Clic: OFF';
 }
-  initAudio();
-  if(sonidoOn && !ambienteTimer){
-    sonarGolpePadel(0.35, 1.05, 0);
-    programarPeloteoFondo();
-  }
-}
+  
 ['pointerdown','touchstart','keydown'].forEach(ev=>document.addEventListener(ev, activarAudioAlPrimerToque, { passive: true }));
 document.addEventListener('click', e=>{
   activarAudioAlPrimerToque();
