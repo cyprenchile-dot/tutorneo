@@ -815,24 +815,23 @@ function sonarGolpePadel(vol=0.45, tono=1.0, pan=0){
   }catch(e){}
 }
 
-function programarPeloteoFondo(){
-  clearTimeout(ambienteTimer);
+document.addEventListener('click', e=>{
   if(!sonidoOn) return;
-  const esPausa=golpeCount>0 && (golpeCount%(6+Math.floor(Math.random()*5))===0);
-  const delay=esPausa?(1800+Math.random()*1200):(560+Math.random()*420);
-  ambienteTimer=setTimeout(()=>{
-    if(sonidoOn && document.visibilityState==='visible'){
-      const lado=(golpeCount%2===0)?-0.5:0.5;
-      const tono=(golpeCount%2===0)?0.95:1.1;
-      sonarGolpePadel(0.36, tono, lado);
-      setTimeout(()=>{ if(sonidoOn) sonarGolpePadel(0.20, 0.80, lado*0.25); }, 270);
-      golpeCount++;
+  if(e.target.closest('button, a, .box-card')){
+    initAudio();
+    if(audioCtx && audioCtx.state==='suspended'){
+      audioCtx.resume().then(()=>sonarGolpePadel(0.45, 1.08, 0));
+    } else {
+      sonarGolpePadel(0.45, 1.08, 0);
     }
-    programarPeloteoFondo();
-  }, delay);
-}
+  }
+});
 
-function activarAudioAlPrimerToque(){
+function toggleAudio(){
+  sonidoOn=!sonidoOn;
+  const b=document.getElementById('btnSound');
+  if(b) b.innerText=sonidoOn?'🔊 Sonido Clic: ON':'🔇 Sonido Clic: OFF';
+}
   initAudio();
   if(sonidoOn && !ambienteTimer){
     sonarGolpePadel(0.35, 1.05, 0);
