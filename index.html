@@ -148,7 +148,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   ⚠️ Inscripciones temporalmente pausadas por la organización.
 </div>
 
-<!-- ================= VISTA PÚBLICA ================= -->
+<!-- VISTA PÚBLICA -->
 <div id="vistaPublica" class="vista activo">
   <section class="hero">
     <img id="heroSlide0" class="hero-slide active-slide" src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=85&w=1600&auto=format&fit=crop" alt="Pádel">
@@ -158,7 +158,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
     <div class="hero-content">
       <div class="hero-club" id="heroClubTag">AYRES SPORTING CLUB</div>
       <h2 id="heroMainTitle">COPA AYRES OPEN</h2>
-      <p class="hero-meta" id="heroSubtitleBadge">📅 12/12/2026 al 13/12/2026</p>
+      <p class="hero-meta" id="heroSubtitleBadge">📅 Cargando fechas...</p>
       <div class="reloj-box">
         <div class="reloj-lbl">⏱️ Inicio del Torneo (<span id="labelFechaReloj" style="color:var(--primary);font-weight:800;"></span>)</div>
         <div id="relojGigante" class="reloj-time mono">00D : 00H : 00M : 00S</div>
@@ -187,16 +187,14 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA PARTIDOS & TABLA ================= -->
+<!-- VISTA PARTIDOS & TABLA -->
 <div id="vistaLlaves" class="vista">
   <div class="container">
     <div style="text-align:center;margin-bottom:1.15rem;">
       <h2 style="font-size:1.75rem;font-weight:900;">Partidos y Tabla de Posiciones</h2>
       <p id="resumenPublicoIA" style="color:var(--muted);font-size:.9rem;margin-top:.2rem;"></p>
     </div>
-
     <div class="tabs-cat" id="tabsCatLlaves"></div>
-
     <div class="panel" style="margin-bottom:1.35rem;">
       <h4 style="color:var(--primary);font-size:1.05rem;font-weight:800;margin-bottom:.3rem;">📊 Posiciones en Vivo</h4>
       <div class="table-wrap">
@@ -206,13 +204,12 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </table>
       </div>
     </div>
-
     <h4 style="font-size:1.15rem;font-weight:800;margin-bottom:.8rem;text-align:center;">🎾 Partidos Programados</h4>
     <div class="grid-2" id="contenedorPartidosPublico"></div>
   </div>
 </div>
 
-<!-- ================= VISTA CHECKOUT PENDIENTE MP ================= -->
+<!-- VISTA CHECKOUT PENDIENTE MP -->
 <div id="vistaExito" class="vista">
   <div class="container" style="max-width:680px;">
     <div class="panel" style="border:2px solid var(--amber);background:linear-gradient(135deg,#451a03,#05070B);text-align:center;">
@@ -235,7 +232,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA BOX PRIVADO & CUPÓN OFICIAL (CON PIN) ================= -->
+<!-- VISTA BOX PRIVADO & CUPÓN OFICIAL -->
 <div id="vistaCupon" class="vista">
   <div class="container" style="max-width:640px;">
     <div class="cupon-ticket">
@@ -243,17 +240,13 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         🔓 BOX PRIVADO VERIFICADO • INSCRITO
       </div>
       <h2 id="cupTitulo" style="font-size:1.5rem;font-weight:900;color:#fff;text-transform:uppercase;">CUPÓN OFICIAL • KIT DE JUGADOR</h2>
-      <p id="cupTorneoClub" style="color:var(--primary);font-weight:800;font-size:.95rem;margin-top:.2rem;">COPA AYRES OPEN • AYRES SPORTING CLUB</p>
-
-      <!-- SALUDO DE ÁNIMO Y ÉXITO EDITABLE -->
-      <div id="cupSaludo" class="cupon-saludo">🎾 ¡Mucho éxito en la cancha! A disfrutar cada punto y dejarlo todo en el torneo.</div>
-
+      <p id="cupTorneoClub" style="color:var(--primary);font-weight:800;font-size:.95rem;margin-top:.2rem;"></p>
+      <div id="cupSaludo" class="cupon-saludo"></div>
       <div class="cupon-code-box">
         <div class="mono" style="font-size:.75rem;color:#CBD5E1;text-transform:uppercase;">N° DE CUPÓN • KIT RESERVADO</div>
         <div id="cupNumero" class="cupon-number mono">KIT-00000</div>
         <p id="cupTexto" style="font-size:.94rem;color:#E2E8F0;margin-top:.5rem;line-height:1.45;"></p>
       </div>
-
       <div class="mono" style="background:rgba(4,7,13,.85);padding:1rem;border-radius:12px;text-align:left;font-size:.86rem;line-height:1.8;border:1px solid var(--border);margin-bottom:.9rem;">
         <div><strong>Categoría:</strong> <span id="cupCat" style="color:#C4B5FD;">--</span> • <strong id="cupBoxNum" style="color:#60A5FA;">Cupo #1</strong></div>
         <div><strong>Dupla:</strong> <span id="cupAlias" style="color:var(--primary);font-weight:800;">--</span></div>
@@ -262,15 +255,11 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <div><strong>Fecha Evento:</strong> <span id="cupFechas">--</span></div>
         <div><strong>PIN Privado:</strong> <span id="cupPinPrivado" style="color:#FACC15;font-weight:800;">****</span> <span style="font-size:.72rem;color:var(--muted);">(solo dueño del Box)</span></div>
       </div>
-
-      <!-- PARTIDOS ASIGNADOS A ESTA DUPLA (SE LLENA CUANDO EL ADMIN ARMA LOS CRUCES) -->
       <div id="cupMisPartidosBox" style="background:rgba(11,18,32,.9);padding:.95rem;border-radius:12px;text-align:left;border:1px solid #334155;margin-bottom:1rem;">
         <div style="font-size:.82rem;font-weight:800;color:var(--primary);margin-bottom:.45rem;">🎾 MIS PARTIDOS & CANCHAS ASIGNADAS</div>
         <div id="cupMisPartidosLista" style="font-size:.84rem;color:#CBD5E1;line-height:1.6;"></div>
       </div>
-
       <p id="cupNota" style="font-size:.82rem;color:#94A3B8;margin-bottom:1.1rem;"></p>
-
       <div style="display:flex;flex-direction:column;gap:.65rem;">
         <button onclick="descargarImagenCupon()" class="btn btn-ig" style="padding:.95rem;font-size:.98rem;">📸 Descargar Cupón PNG (Instagram / Galería)</button>
         <a id="btnCupMaps" href="#" target="_blank" class="btn btn-blue" style="padding:.9rem;font-size:.95rem;">📍 Cómo llegar al Evento (Abrir Google Maps)</a>
@@ -283,7 +272,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA INFO CLUB & MAPA ================= -->
+<!-- VISTA INFO CLUB & MAPA -->
 <div id="vistaPremios" class="vista">
   <div class="container">
     <h3 style="font-size:1.65rem;font-weight:900;text-align:center;margin-bottom:1.2rem;">Información del Campeonato</h3>
@@ -293,7 +282,10 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <div id="textoCronogramaPublico" style="font-size:.92rem;color:#E2E8F0;line-height:1.7;"></div>
       </div>
       <div class="panel">
-        <h4 style="color:var(--primary);font-size:1.08rem;margin-bottom:.7rem;">📜 Reglamento</h4>
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem;margin-bottom:.7rem;">
+          <h4 style="color:var(--primary);font-size:1.08rem;">📜 Bases y Reglamento</h4>
+          <button onclick="descargarReglamentoPDF()" class="btn btn-sm btn-gold">📄 Descargar PDF</button>
+        </div>
         <div id="textoReglamentoPublico" style="font-size:.92rem;color:#E2E8F0;line-height:1.7;"></div>
       </div>
     </div>
@@ -309,7 +301,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA MONITOR TV (DESDE ADMIN) ================= -->
+<!-- VISTA MONITOR TV -->
 <div id="vistaTV" class="vista">
   <div class="container">
     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1.2rem;">
@@ -327,7 +319,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </div>
 
-<!-- ================= VISTA ADMIN / SUPER ADMIN ================= -->
+<!-- VISTA ADMIN / SUPER ADMIN -->
 <div id="vistaAdmin" class="vista">
   <div class="container">
     <div id="adminLoginBox" style="max-width:420px;margin:2rem auto;">
@@ -343,11 +335,10 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
     </div>
 
     <div id="adminPanelBox" class="panel oculto">
-      <!-- BARRA SUPER ADMIN -->
       <div id="barraSuperGod" class="card-sub oculto" style="background:linear-gradient(90deg,#311042,#0B1220);border-color:var(--purple);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;">
         <div>
           <span style="background:var(--purple);color:#fff;font-weight:800;font-size:.68rem;padding:.22rem .55rem;border-radius:6px;">👑 SUPER ADMIN GLOBAL • SUPER PODERES</span>
-          <p style="font-size:.78rem;color:#E9D5FF;margin-top:.25rem;">Control total de torneos, cupón con saludo y mapa, exportación de jugadores, cruces, arbitraje y backups.</p>
+          <p style="font-size:.78rem;color:#E9D5FF;margin-top:.25rem;">Control total de torneos, cupón con saludo y mapa, PDF de bases, exportación de jugadores, cruces y backups.</p>
         </div>
         <div style="display:flex;align-items:center;gap:.45rem;flex-wrap:wrap;">
           <select id="selTorneoGod" onchange="cambiarTorneoActivo(this.value)" class="inp" style="width:240px;border-color:var(--purple);font-weight:700;"></select>
@@ -356,7 +347,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- CABECERA OPERATIVA -->
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem;margin-bottom:1rem;">
         <div style="display:flex;align-items:center;gap:.55rem;flex-wrap:wrap;">
           <h2 style="font-size:1.25rem;font-weight:800;">🛠️ <span id="lblTorneoAdmin">--</span></h2>
@@ -373,7 +363,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- CONTROL RÁPIDO -->
       <div class="card-sub" style="border-color:var(--primary);">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;margin-bottom:.6rem;">
           <span class="mono" style="font-size:.73rem;font-weight:800;color:var(--primary);">⚡ CONTROL RÁPIDO EN VIVO</span>
@@ -391,7 +380,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <p id="diagnosticoIA" class="mono" style="font-size:.7rem;color:var(--muted);margin-top:.55rem;"></p>
       </div>
 
-      <!-- KPIs -->
       <div class="kpi-bar mono">
         <div><div style="font-size:.64rem;color:#38BDF8;">💳 CAJA MERCADO PAGO</div><div id="kpiCaja" style="font-size:1.2rem;font-weight:800;color:var(--green);">$0 CLP</div><div id="kpiPagosDet" style="font-size:.64rem;color:var(--muted);">0 🔴 • 0 🟡</div></div>
         <div><div style="font-size:.64rem;color:var(--muted);">👥 INSCRITOS / CUPOS</div><div id="kpiCupos" style="font-size:1.12rem;font-weight:800;color:var(--primary);">0 / 0</div></div>
@@ -405,13 +393,12 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- PESTAÑAS INTERNAS ADMIN -->
       <div style="display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.15rem;border-bottom:1px solid var(--border);padding-bottom:.8rem;">
         <button onclick="setTabAdmin('arbitraje')" id="tabAdmArb" class="nav-btn active">⚖️ Cruces, Arbitraje & Canchas</button>
         <button onclick="setTabAdmin('boxes')" id="tabAdmBox" class="nav-btn">🎾 Cupos & Pagos MP</button>
         <button onclick="setTabAdmin('crm')" id="tabAdmCrm" class="nav-btn">👥 Inscritos, PIN & Excel</button>
         <button onclick="setTabAdmin('cupones')" id="tabAdmCup" class="nav-btn">🎟️ Cupón, Saludo, Maps & WA</button>
-        <button onclick="setTabAdmin('cms')" id="tabAdmCms" class="nav-btn">🎨 Categorías & Config</button>
+        <button onclick="setTabAdmin('cms')" id="tabAdmCms" class="nav-btn">🎨 Categorías, PDF & Config</button>
         <button onclick="setTabAdmin('sponsors')" id="tabAdmSpo" class="nav-btn">🤝 Sponsors & Ranking</button>
         <button onclick="setTabAdmin('saas')" id="tabAdmSaas" class="nav-btn oculto" style="background:rgba(168,85,247,.18);border-color:var(--purple);color:#E9D5FF;">👑 Super Admin Global</button>
       </div>
@@ -422,7 +409,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.65rem;margin-bottom:.8rem;">
             <div>
               <h4 style="font-size:1.05rem;font-weight:800;color:#C4B5FD;">⚖️ Mesa de Cruces, Arbitraje & Asignación de Canchas</h4>
-              <p style="font-size:.76rem;color:var(--muted);">Una vez inscritos todos los jugadores, presiona <strong>🤖 Auto-Generar Cruces</strong> o crea partidos manuales (Cuartos, Semis, Final).</p>
+              <p style="font-size:.76rem;color:var(--muted);">Una vez inscritos todos los jugadores, presiona <strong>🤖 Auto-Generar Cruces</strong> o crea partidos manuales.</p>
             </div>
             <div style="display:flex;gap:.45rem;flex-wrap:wrap;">
               <select id="selCatArb" onchange="renderAdminArbitraje()" class="inp" style="width:210px;font-weight:700;"></select>
@@ -466,7 +453,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- 3. CRM & ENVÍO DE CUPONES -->
+      <!-- 3. CRM -->
       <div id="subCrm" class="oculto">
         <div class="card-sub" style="border-color:#38BDF8;">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.75rem;">
@@ -489,24 +476,23 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- 4. EDITOR DE CUPÓN, SALUDO DE ÁNIMO, GOOGLE MAPS Y WHATSAPP -->
+      <!-- 4. CUPÓN, SALUDO, MAPS & WA -->
       <div id="subCup" class="oculto">
         <div class="grid-2">
           <div class="card-sub" style="border-color:var(--primary);">
             <h4 style="color:var(--primary);margin-bottom:.8rem;">🎟️ Editor Total del Cupón & Saludo de Éxito</h4>
             <div style="display:flex;flex-direction:column;gap:.7rem;">
               <div><label class="lbl">Título del Cupón</label><input type="text" id="cfgCuponTitulo" oninput="actualizarPreviewCupon()" class="inp"></div>
-              <div><label class="lbl" style="color:var(--green);">💪 Saludo de Ánimo y Éxito para el Participante</label><textarea id="cfgCuponSaludo" rows="2" oninput="actualizarPreviewCupon()" class="inp" placeholder="Ej. ¡Mucho éxito en la cancha! A disfrutar cada punto y dejarlo todo en el torneo."></textarea></div>
+              <div><label class="lbl" style="color:var(--green);">💪 Saludo de Ánimo y Éxito para el Participante</label><textarea id="cfgCuponSaludo" rows="2" oninput="actualizarPreviewCupon()" class="inp"></textarea></div>
               <div><label class="lbl">Mensaje del Kit Reservado</label><textarea id="cfgCuponTexto" rows="2" oninput="actualizarPreviewCupon()" class="inp"></textarea></div>
               <div><label class="lbl">Nota al Pie del Cupón</label><input type="text" id="cfgCuponNota" oninput="actualizarPreviewCupon()" class="inp"></div>
               <div><label class="lbl" style="color:#F472B6;">📸 Instagram Oficial del Club</label><input type="text" id="cfgInstagramClub" oninput="actualizarPreviewCupon()" class="inp" placeholder="@ayres.padel"></div>
             </div>
           </div>
-
           <div class="card-sub" style="border-color:var(--green);">
             <h4 style="color:var(--green);margin-bottom:.8rem;">📍 Enlace Google Maps, WhatsApp & Alertas</h4>
             <div style="display:flex;flex-direction:column;gap:.7rem;">
-              <div><label class="lbl" style="color:#60A5FA;">📍 Enlace Directo Google Maps del Evento (URL exacta, ej. https://maps.app.goo.gl/...)</label><input type="text" id="cfgMapsUrl" class="inp" placeholder="Pega aquí el link de Compartir de Google Maps (si queda vacío usa la dirección del club)"></div>
+              <div><label class="lbl" style="color:#60A5FA;">📍 Enlace Directo Google Maps (URL exacta, ej. https://maps.app.goo.gl/...)</label><input type="text" id="cfgMapsUrl" class="inp"></div>
               <div><label class="lbl">Número WhatsApp Flotante (código país, ej. 56912345678)</label><input type="text" id="cfgWaNum" class="inp"></div>
               <div><label class="lbl">Mensaje Inicial WhatsApp</label><input type="text" id="cfgWaMsg" class="inp"></div>
               <div><label class="lbl" style="color:#38BDF8;">📧 Tu Email de Organizador (alertas de pago)</label><input type="email" id="cfgEmailAlerta" class="inp" placeholder="organizador@club.cl"></div>
@@ -514,10 +500,8 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
             </div>
           </div>
         </div>
-
-        <!-- VISTA PREVIA EN VIVO DEL CUPÓN -->
         <div class="card-sub" style="border-color:#FACC15;">
-          <h4 style="color:#FACC15;margin-bottom:.75rem;">👁️ Vista Previa en Vivo del Cupón que descargará el Jugador</h4>
+          <h4 style="color:#FACC15;margin-bottom:.75rem;">👁️ Vista Previa en Vivo del Cupón</h4>
           <div class="cupon-ticket" style="max-width:520px;margin:0 auto;padding:1.2rem;">
             <span style="background:var(--green);color:#030508;font-weight:900;font-size:.72rem;padding:.25rem .75rem;border-radius:20px;">🔓 BOX PRIVADO • INSCRITO</span>
             <h3 id="prevCupTit" style="margin-top:.55rem;font-size:1.18rem;">--</h3>
@@ -532,7 +516,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         </div>
       </div>
 
-      <!-- 5. CATEGORÍAS LIBRES & CONFIG -->
+      <!-- 5. CATEGORÍAS, PDF & CONFIG -->
       <div id="subCms" class="oculto">
         <div class="card-sub" style="border-color:var(--primary);">
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;margin-bottom:.8rem;">
@@ -542,7 +526,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
             </div>
             <div style="display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;">
               <input type="text" id="newCatNom" placeholder="Ej. 4ª Varones" class="inp" style="width:170px;">
-              <input type="number" id="newCatCupos" value="12" min="2" max="128" class="inp" style="width:80px;" title="Cupos">
+              <input type="number" id="newCatCupos" value="6" min="2" max="128" class="inp" style="width:80px;" title="Cupos">
               <input type="number" id="newCatPartidos" value="3" min="1" max="12" class="inp" style="width:80px;" title="Partidos">
               <button onclick="agregarCategoriaLibre()" class="btn btn-sm btn-green">+ Agregar</button>
             </div>
@@ -574,7 +558,9 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
           <div><label class="lbl">🎨 Color (Hex)</label><input type="text" id="cfgColor" class="inp"></div>
           <div><label class="lbl">🖼️ Logo</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'logoTorneoImg')" class="inp" style="padding:.3rem;"></div>
           <div><label class="lbl">📸 Portada</label><input type="file" accept="image/*" onchange="subirImagenConfig(event,'heroCustomBase64')" class="inp" style="padding:.3rem;"></div>
-          <div style="grid-column:1/-1;"><label class="lbl">📜 Reglamento (HTML)</label><textarea id="cfgReglamento" rows="3" class="inp"></textarea></div>
+          <div style="grid-column:1/-1;"><label class="lbl">📍 Dirección del Club (para el mapa incrustado)</label><input type="text" id="cfgMapa" class="inp"></div>
+          <div style="grid-column:1/-1;"><label class="lbl">📢 Comunicado Oficial (dejar vacío para ocultar)</label><input type="text" id="cfgComunicado" class="inp"></div>
+          <div style="grid-column:1/-1;"><label class="lbl">📜 Bases y Reglamento (Texto / HTML)</label><textarea id="cfgReglamento" rows="3" class="inp"></textarea></div>
           <div style="grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.65rem;background:#04070D;padding:.75rem;border-radius:10px;border:1px solid #1E293B;">
             <div>
               <label class="lbl" style="color:#38BDF8;">📄 Subir Bases y Reglamento en PDF (máx. 5 MB)</label>
@@ -586,8 +572,6 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
               <input type="text" id="cfgReglamentoPdfUrl" placeholder="https://.../reglamento.pdf" class="inp">
             </div>
           </div>
-          <div style="grid-column:1/-1;"><label class="lbl">📢 Comunicado Oficial (dejar vacío para ocultar)</label><input type="text" id="cfgComunicado" class="inp"></div>
-          <div style="grid-column:1/-1;"><label class="lbl">📜 Reglamento (HTML)</label><textarea id="cfgReglamento" rows="3" class="inp"></textarea></div>
         </div>
         <div style="margin-top:1rem;text-align:right;">
           <button onclick="guardarTodoAdmin()" class="btn btn-green" style="padding:.75rem 1.5rem;">✅ Guardar Configuración</button>
@@ -638,7 +622,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
             <div><label class="lbl" style="color:var(--green);">📅 Fin</label><input type="date" id="nsFFin" value="2026-12-13" class="inp"></div>
             <div><label class="lbl">⏰ Hora</label><input type="time" id="nsHora" value="09:00" class="inp"></div>
             <div><label class="lbl" style="color:var(--primary);">🎾 Canchas</label><input type="number" id="nsCanchas" value="4" min="1" max="30" class="inp"></div>
-            <div><label class="lbl" style="color:#C4B5FD;">👥 Cupos/Cat</label><input type="number" id="nsCuposCat" value="12" min="2" max="128" class="inp"></div>
+            <div><label class="lbl" style="color:#C4B5FD;">👥 Cupos/Cat</label><input type="number" id="nsCuposCat" value="6" min="2" max="128" class="inp"></div>
             <div><label class="lbl" style="color:#C4B5FD;">⚔️ Partidos</label><input type="number" id="nsPartidos" value="3" min="1" max="12" class="inp"></div>
             <div><label class="lbl">🏆 Categorías</label><input type="text" id="nsCats" value="DAMAS D, DAMAS C, MIXTO" class="inp"></div>
             <div><label class="lbl" style="color:#38BDF8;">💳 Token MP</label><input type="text" id="nsMp" class="inp"></div>
@@ -674,7 +658,7 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
   </div>
 </footer>
 
-<!-- MODAL INSCRIPCIÓN (CUPO AUTOMÁTICO OCULTO + PIN PRIVADO DE 4 DÍGITOS) -->
+<!-- MODAL INSCRIPCIÓN -->
 <div id="modalInscripcion" class="modal-bg oculto">
   <div class="panel" style="max-width:520px;width:100%;position:relative;max-height:94vh;overflow-y:auto;border-color:var(--mp);">
     <button onclick="cerrarModal()" style="position:absolute;top:.75rem;right:.95rem;background:none;border:none;color:var(--muted);font-size:1.8rem;cursor:pointer;line-height:1;">&times;</button>
@@ -731,13 +715,14 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
         <div><label class="lbl">Foto Dupla (Opcional)</label><input type="file" accept="image/*" id="inFoto" class="inp" style="padding:.4rem;"></div>
       </div>
 
-     <div style="display:flex;align-items:flex-start;gap:.55rem;font-size:.8rem;color:#CBD5E1;line-height:1.4;background:rgba(255,255,255,.03);padding:.6rem .7rem;border-radius:9px;border:1px solid #1E293B;">
+      <div style="display:flex;align-items:flex-start;gap:.55rem;font-size:.8rem;color:#CBD5E1;line-height:1.4;background:rgba(255,255,255,.03);padding:.6rem .7rem;border-radius:9px;border:1px solid #1E293B;">
         <input type="checkbox" id="chkBasesTorneo" required style="width:18px;height:18px;margin-top:2px;flex-shrink:0;cursor:pointer;accent-color:#10B981;">
         <label for="chkBasesTorneo" style="cursor:pointer;">
           He leído y acepto las Bases y Reglamento del Torneo.
           <a href="#" onclick="event.preventDefault();event.stopPropagation();descargarReglamentoPDF();" style="color:#94A3B8;text-decoration:underline;margin-left:.35rem;font-size:.76rem;white-space:nowrap;">📄 Descargar PDF</a>
         </label>
       </div>
+
       <button type="submit" id="btnSubmitMP" class="btn btn-mp" style="width:100%;padding:1rem;font-size:1rem;">💳 PAGAR E INSCRIBIRME →</button>
     </form>
   </div>
@@ -784,7 +769,7 @@ function getMapsUrl(){
 function mostrarToast(msg){ const t=document.getElementById('toast'); t.innerText=msg; t.style.display='flex'; clearTimeout(window._tTo); window._tTo=setTimeout(()=>t.style.display='none',3200); }
 function copiarTexto(txt,msg){ navigator.clipboard.writeText(txt); mostrarToast(msg||'Copiado'); }
 
-// --- MOTOR DE SONIDO DE PELOTA DE PÁDEL FUERTE, REALISTA Y CONTINUO ---
+// --- SONIDO DE PELOTA DE PÁDEL FUERTE Y CONTINUO ---
 function initAudio(){
   if(!audioCtx){
     const AC=window.AudioContext||window.webkitAudioContext;
@@ -803,7 +788,6 @@ function sonarGolpePadel(vol=0.45, tono=1.0, pan=0){
   try{
     initAudio(); if(!audioCtx || audioCtx.state!=='running') return;
     const now=audioCtx.currentTime;
-    // Cuerpo resonante de pelota presurizada de pádel
     const osc=audioCtx.createOscillator(), g=audioCtx.createGain();
     osc.type='triangle';
     osc.frequency.setValueAtTime(280*tono, now);
@@ -811,7 +795,6 @@ function sonarGolpePadel(vol=0.45, tono=1.0, pan=0){
     g.gain.setValueAtTime(vol, now);
     g.gain.exponentialRampToValueAtTime(0.001, now+0.095);
 
-    // Impacto seco de fibra de carbono / pala
     const bufSz=Math.floor(audioCtx.sampleRate*0.045);
     const nb=audioCtx.createBuffer(1,bufSz,audioCtx.sampleRate);
     const out=nb.getChannelData(0);
@@ -841,9 +824,7 @@ function programarPeloteoFondo(){
     if(sonidoOn && document.visibilityState==='visible'){
       const lado=(golpeCount%2===0)?-0.5:0.5;
       const tono=(golpeCount%2===0)?0.95:1.1;
-      // Golpe fuerte de pelota en cancha
       sonarGolpePadel(0.36, tono, lado);
-      // Rebote nítido en césped/cristal
       setTimeout(()=>{ if(sonidoOn) sonarGolpePadel(0.20, 0.80, lado*0.25); }, 270);
       golpeCount++;
     }
@@ -881,6 +862,7 @@ setInterval(()=>{
   sl[slideIdx].classList.add('active-slide');
 },6500);
 
+// --- CREACIÓN Y AJUSTE EXACTO DE CUPOS ---
 function crearCupos(tid, cKey, cant, fBase, hBase, startIndex=0){
   const total=Math.max(0, Number(cant)||0);
   return Array.from({length:total},(_,i)=>({
@@ -889,6 +871,20 @@ function crearCupos(tid, cKey, cant, fBase, hBase, startIndex=0){
     pin:'1234', avatar:`https://api.dicebear.com/7.x/avataaars/svg?seed=${tid}_${cKey}_${startIndex+i}`,
     cancha:'Por asignar', horaInicioMatch:`${fBase}T${hBase}`
   }));
+}
+
+function ajustarCuposCategoria(c){
+  const n=Math.max(2,Math.min(128,Number(c.maxCupos)||12));
+  c.maxCupos=n;
+  if(!db.cupos[c.key]) db.cupos[c.key]=[];
+  const arr=db.cupos[c.key];
+  if(n>arr.length){
+    const faltan=n-arr.length;
+    arr.push(...crearCupos(db.id, c.key, faltan, db.config.fechaInicio, db.config.horaApertura, arr.length));
+  } else if(n<arr.length){
+    db.cupos[c.key]=arr.slice(0,n);
+  }
+  db.cupos[c.key].forEach((x,i)=>{ x.id=i+1; });
 }
 
 function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFin, hIni, nCanchas, precioInsc, catsStr, mpVal, cuposDef, partidosDef){
@@ -901,7 +897,7 @@ function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFi
     nombre:nom, maxCupos:cupN, partidosGarantizados:partN, precioCustom:0
   }));
   const cupos={}, partidos={};
-  categorias.forEach(c=>{ cupos[c.key]=crearCupos(id,c.key,c.maxCupos,fi,hi); partidos[c.key]=[]; });
+  categorias.forEach(c=>{ cupos[c.key]=crearCupos(id,c.key,c.maxCupos,fi,hi,0); partidos[c.key]=[]; });
   return {
     id, claveLicencia:clave||'1234',
     licenciaMeta:{ estado:'ACTIVA', contactoCliente:contacto||'@club', precioLicenciaCLP:Number(precioLic)||0, fechaVencimiento:ff },
@@ -914,6 +910,7 @@ function crearTorneoBase(id, nombre, club, clave, contacto, precioLic, fIni, fFi
       categorias, googleMapsQuery:'Chicureo Colina Santiago Chile', googleMapsUrl:'',
       comunicado:'',
       reglamento:'1. W.O. estricto a los 10 minutos.<br>2. El cupo queda confirmado tras la aprobación de Mercado Pago.<br>3. Canchas y horarios serán publicados por la organización.',
+      reglamentoPdfData:'', reglamentoPdfNombre:'', reglamentoPdfUrl:'',
       whatsappNum:'56999999999',
       whatsappMsg:'Hola! Tengo una consulta sobre la inscripción al torneo de pádel.',
       emailAlertaAdmin:'', instagramClub:'@circuito360.cl',
@@ -934,14 +931,14 @@ function initDefaultDB(){
   return {
     rev:0, lastUpdated:0, torneoActivoId:'copa',
     torneos:{
-      copa:crearTorneoBase('copa','COPA AYRES OPEN','AYRES SPORTING CLUB','1234','@ayres.cl',0,'2026-12-12','2026-12-13','09:00',4,70000,'DAMAS D, DAMAS C, MIXTO 7 6 Y 5',DEFAULT_MP_TOKEN,12,3)
+      copa:crearTorneoBase('copa','COPA AYRES OPEN','AYRES SPORTING CLUB','1234','@ayres.cl',0,'2026-12-12','2026-12-13','09:00',4,70000,'DAMAS D, DAMAS C, MIXTO 7 6 Y 5',DEFAULT_MP_TOKEN,6,3)
     }
   };
 }
 
 function asegurarIntegridad(){
   if(!db.config.categorias||!db.config.categorias.length){
-    db.config.categorias=[{key:'cat_1',nombre:'Categoría General',maxCupos:12,partidosGarantizados:3,precioCustom:0}];
+    db.config.categorias=[{key:'cat_1',nombre:'Categoría General',maxCupos:6,partidosGarantizados:3,precioCustom:0}];
   }
   if(!db.cupos) db.cupos={};
   if(!db.partidos) db.partidos={};
@@ -957,18 +954,11 @@ function asegurarIntegridad(){
   if(db.config.instagramClub===undefined) db.config.instagramClub='@circuito360.cl';
   if(db.config.emailAlertaAdmin===undefined) db.config.emailAlertaAdmin='';
   if(db.config.googleMapsUrl===undefined) db.config.googleMapsUrl='';
+  if(db.config.reglamentoPdfUrl===undefined) db.config.reglamentoPdfUrl='';
 
   db.config.categorias.forEach(c=>{
-    if(!c.maxCupos||c.maxCupos<2) c.maxCupos=12;
     if(!c.partidosGarantizados||c.partidosGarantizados<1) c.partidosGarantizados=db.config.partidosGarantizados||3;
-    if(!db.cupos[c.key]){
-      db.cupos[c.key]=crearCupos(db.id,c.key,c.maxCupos,db.config.fechaInicio,db.config.horaApertura);
-    } else if(db.cupos[c.key].length < c.maxCupos){
-      const faltan=c.maxCupos-db.cupos[c.key].length;
-      db.cupos[c.key].push(...crearCupos(db.id,c.key,faltan,db.config.fechaInicio,db.config.horaApertura,db.cupos[c.key].length));
-    } else if(db.cupos[c.key].length > c.maxCupos){
-      db.cupos[c.key]=db.cupos[c.key].slice(0,c.maxCupos);
-    }
+    ajustarCuposCategoria(c);
     if(!db.partidos[c.key]) db.partidos[c.key]=[];
   });
   if(!db.config.categorias.some(c=>c.key===catActiva)) catActiva=db.config.categorias[0].key;
@@ -1345,7 +1335,7 @@ function actualizarRelojes(){
 }
 setInterval(actualizarRelojes,1000);
 
-// --- BOX PRIVADO & CUPÓN DIGITAL (CON SALUDO, MAPS Y PARTIDOS) ---
+// --- BOX PRIVADO, CUPÓN & REGLAMENTO PDF ---
 function mostrarCuponOficial(catKey, boxId){
   const catObj=getCatObj(catKey);
   const cupo=(db.cupos[catKey]||[]).find(x=>x.id===Number(boxId));
@@ -1368,7 +1358,6 @@ function mostrarCuponOficial(catKey, boxId){
   document.getElementById('cupNota').innerText=`${db.config.cuponNota||''} ${db.config.instagramClub?`• 📸 ${db.config.instagramClub}`:''}`;
   document.getElementById('btnCupMaps').href=getMapsUrl();
 
-  // Mostrar los partidos programados para esta dupla apenas el Admin arme los cruces
   const misP=(db.partidos[catKey]||[]).filter(m=>m.boxA===cupo.id||m.boxB===cupo.id);
   document.getElementById('cupMisPartidosLista').innerHTML=misP.length
     ? misP.map(m=>`<div style="padding:.35rem 0;border-bottom:1px solid #1E293B;"><strong>${esc(m.fase)}:</strong> vs <strong style="color:#fff;">${esc(m.boxA===cupo.id?m.aliasB:m.aliasA)}</strong> • 🎾 <span style="color:#34D399;">${esc(m.cancha)}</span> • 🕒 ${fmtFechaHora(m.fechaHora)} ${m.marcador?`(<strong style="color:#FACC15;">${esc(m.marcador)}</strong>)`:''}</div>`).join('')
@@ -1383,11 +1372,8 @@ function abrirCuponConPin(catKey, boxId){
   if(rolAdmin){ mostrarCuponOficial(catKey, boxId); return; }
   const pin=prompt(`🔒 Box Privado de "${cupo.alias}".\nIngresa tu PIN de 4 dígitos para acceder a tu Box y descargar tu Cupón:`);
   if(pin===null) return;
-  if(pin.trim()===String(cupo.pin||'1234').trim()){
-    mostrarCuponOficial(catKey, boxId);
-  } else {
-    alert('❌ PIN incorrecto. Solo los dueños de este Box pueden ingresar.');
-  }
+  if(pin.trim()===String(cupo.pin||'1234').trim()) mostrarCuponOficial(catKey, boxId);
+  else alert('❌ PIN incorrecto. Solo los dueños de este Box pueden ingresar.');
 }
 
 function enviarCuponPorWhatsApp(catKeyOpt, boxIdOpt){
@@ -1441,13 +1427,11 @@ function descargarImagenCupon(){
   ctx.fillStyle='#D4AF37'; ctx.font='700 30px sans-serif';
   ctx.fillText((cfg.badgeOrg||'CLUB OFICIAL').toUpperCase(),540,310);
 
-  // Saludo de ánimo y éxito
   ctx.fillStyle='rgba(16,185,129,0.16)'; ctx.fillRect(96,342,888,108);
   ctx.strokeStyle='#10B981'; ctx.lineWidth=3; ctx.strokeRect(96,342,888,108);
   ctx.fillStyle='#A7F3D0'; ctx.font='700 26px sans-serif';
   dibujarTextoMultilinea(ctx, cfg.cuponSaludo||'¡Mucho éxito en la cancha!', 540, 386, 840, 36, 2);
 
-  // Recuadro número de Cupón
   ctx.fillStyle='rgba(212,175,55,0.12)'; ctx.fillRect(96,478,888,265);
   ctx.strokeStyle='#D4AF37'; ctx.setLineDash([14,10]); ctx.lineWidth=5;
   ctx.strokeRect(96,478,888,265); ctx.setLineDash([]);
@@ -1461,7 +1445,6 @@ function descargarImagenCupon(){
   ctx.fillStyle='#E2E8F0'; ctx.font='600 24px sans-serif';
   dibujarTextoMultilinea(ctx, cfg.cuponTexto||'Con este número tienes reservado tu Kit Oficial.', 540, 682, 830, 32, 2);
 
-  // Datos de la Dupla y Lugar
   ctx.fillStyle='#060B14'; ctx.fillRect(96,775,888,415);
   ctx.strokeStyle='#1E293B'; ctx.lineWidth=3; ctx.strokeRect(96,775,888,415);
   ctx.textAlign='left';
@@ -1492,6 +1475,40 @@ function descargarImagenCupon(){
   a.href=canvas.toDataURL('image/png');
   a.click();
   mostrarToast('📸 ¡Cupón descargado! Listo para Instagram o tu galería.');
+}
+
+function subirPdfReglamento(e){
+  const f=e.target.files[0]; if(!f) return;
+  if(f.size > 5*1024*1024){ alert('⚠️ El PDF supera 5 MB. Comprímelo o pega el enlace en el casillero de al lado.'); e.target.value=''; return; }
+  const r=new FileReader();
+  r.onload=ev=>{
+    db.config.reglamentoPdfData=ev.target.result;
+    db.config.reglamentoPdfNombre=f.name||'Reglamento_Torneo.pdf';
+    sincronizar(); cargarFormsAdmin();
+    mostrarToast('📄 PDF del reglamento guardado en la nube.');
+  };
+  r.readAsDataURL(f);
+}
+
+async function descargarReglamentoPDF(){
+  if(db.config.reglamentoPdfData){
+    const blob=await (await fetch(db.config.reglamentoPdfData)).blob();
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');
+    a.href=url; a.download=db.config.reglamentoPdfNombre||`Reglamento_${db.id}.pdf`;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),4000);
+    return;
+  }
+  if(db.config.reglamentoPdfUrl){
+    window.open(db.config.reglamentoPdfUrl,'_blank');
+    return;
+  }
+  const w=window.open('','_blank');
+  if(!w){ alert('⚠️ Habilita las ventanas emergentes para ver el reglamento.'); return; }
+  w.document.write(`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Bases y Reglamento - ${esc(db.config.nombreTorneo)}</title><style>body{font-family:Arial,sans-serif;max-width:740px;margin:30px auto;padding:20px;color:#111;line-height:1.6;}h1{margin-bottom:4px;}small{color:#555;}hr{margin:16px 0;}</style></head><body><h1>${esc(db.config.nombreTorneo)}</h1><small>${esc(db.config.badgeOrg)} • ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}</small><hr><div>${db.config.reglamento||'Reglamento oficial del torneo.'}</div></body></html>`);
+  w.document.close();
+  setTimeout(()=>{ try{ w.print(); }catch(e){} }, 350);
 }
 
 async function reenviarEmailCuponAdmin(catKey, boxId){
@@ -1558,7 +1575,6 @@ async function procesarInscripcion(e){
 
   await consultarNube(true);
   let cupo=(db.cupos[ck]||[]).find(x=>x.id===boxId && !x.ocupado);
-  // Si justo tomaron ese cupo, asigna automáticamente el siguiente libre de la misma categoría
   if(!cupo) cupo=(db.cupos[ck]||[]).find(x=>!x.ocupado);
   if(!cupo){
     btn.disabled=false; btn.innerText='💳 PAGAR E INSCRIBIRME →';
@@ -1734,6 +1750,7 @@ function cargarFormsAdmin(){
   setV('cfgHoraIni',db.config.horaApertura); setV('cfgHoraFin',db.config.horaCierre); setV('cfgDuracion',db.config.duracionPartido);
   setV('cfgDescanso',db.config.turnosDescansoIA); setV('cfgColor',db.config.colorPrimary); setV('cfgMpToken',db.config.mpAccessToken);
   setV('cfgLinkPago',db.config.linkPago); setV('cfgPrecio',db.config.precioInscripcion); setV('cfgTitularMP',db.config.titularMP);
+  setV('cfgMapa',db.config.googleMapsQuery); setV('cfgMapsUrl',db.config.googleMapsUrl); setV('cfgComunicado',db.config.comunicado); setV('cfgReglamento',db.config.reglamento);
   setV('cfgReglamentoPdfUrl',db.config.reglamentoPdfUrl||'');
   const ep=document.getElementById('lblEstadoPdf');
   if(ep) ep.innerText=db.config.reglamentoPdfData?`✅ PDF cargado (${db.config.reglamentoPdfNombre||'Reglamento.pdf'})`:'Sin PDF subido (usa enlace o texto)';
@@ -1741,9 +1758,6 @@ function cargarFormsAdmin(){
   setV('cfgCuponNota',db.config.cuponNota); setV('cfgInstagramClub',db.config.instagramClub); setV('cfgWaNum',db.config.whatsappNum);
   setV('cfgWaMsg',db.config.whatsappMsg); setV('cfgEmailAlerta',db.config.emailAlertaAdmin);
   actualizarPreviewCupon();
-  setV('cfgReglamentoPdfUrl',db.config.reglamentoPdfUrl||'');
-  const ep=document.getElementById('lblEstadoPdf');
-  if(ep) ep.innerText=db.config.reglamentoPdfData?`✅ PDF cargado (${db.config.reglamentoPdfNombre||'Reglamento.pdf'})`:'Sin PDF subido (usa enlace o texto)';
   renderEditorCategorias();
 }
 
@@ -1937,28 +1951,6 @@ function exportarCSV(){
   mostrarToast('📥 Nómina Excel (CSV) descargada.');
 }
 
-function ajustarCuposCategoria(c){
-  const n=Math.max(2,Math.min(128,Number(c.maxCupos)||12));
-  c.maxCupos=n;
-  if(!db.cupos[c.key]) db.cupos[c.key]=[];
-  const arr=db.cupos[c.key];
-  if(n>arr.length){
-    const faltan=n-arr.length;
-    for(let i=0;i<faltan;i++){
-      const idx=arr.length;
-      arr.push({
-        id:idx+1, ocupado:false, estadoPagoMP:'LIBRE', expiraReservaTimestamp:0, folioMP:'', codigoCupon:'', emailEnviado:false, urlCheckoutMP:'',
-        modalidadPago:'', alias:'', j1:'', j2:'', tel1:'', tel2:'', email1:'', email2:'', redes1:'', redes2:'',
-        pin:'1234', avatar:`https://api.dicebear.com/7.x/avataaars/svg?seed=${db.id}_${c.key}_${idx}`,
-        cancha:'Por asignar', horaInicioMatch:`${db.config.fechaInicio}T${db.config.horaApertura}`
-      });
-    }
-  } else if(n<arr.length){
-    db.cupos[c.key]=arr.slice(0,n);
-  }
-  db.cupos[c.key].forEach((x,i)=>{ x.id=i+1; });
-}
-
 function renderEditorCategorias(){
   document.getElementById('listaCatsEditor').innerHTML=db.config.categorias.map((c,i)=>{
     ajustarCuposCategoria(c);
@@ -1979,7 +1971,7 @@ function renderEditorCategorias(){
 
 function agregarCategoriaLibre(){
   const nom=document.getElementById('newCatNom').value.trim();
-  const cup=Math.max(2,Math.min(128,Number(document.getElementById('newCatCupos').value)||12));
+  const cup=Math.max(2,Math.min(128,Number(document.getElementById('newCatCupos').value)||6));
   const part=Math.max(1,Math.min(12,Number(document.getElementById('newCatPartidos').value)||3));
   if(!nom){ alert('⚠️ Escribe el nombre.'); return; }
   const key='cat_'+Date.now();
@@ -2014,19 +2006,6 @@ function editCat(key,campo,val,guardar){
   }
 }
 
-function editCat(key,campo,val){
-  const c=db.config.categorias.find(x=>x.key===key); if(!c) return;
-  if(campo==='nombre'&&val.trim()) c.nombre=val.trim();
-  if(campo==='partidosGarantizados') c.partidosGarantizados=Math.max(1,Math.min(12,Number(val)||3));
-  if(campo==='precioCustom') c.precioCustom=Math.max(0,Number(val)||0);
-  if(campo==='maxCupos'){
-    const n=Math.max(2,Math.min(128,Number(val)||12)); c.maxCupos=n;
-    const arr=db.cupos[key]||[];
-    if(n>arr.length){ const ex=crearCupos(db.id,key,n-arr.length,db.config.fechaInicio,db.config.horaApertura); ex.forEach((x,i)=>{x.id=arr.length+i+1;arr.push(x);}); }
-    else if(n<arr.length) db.cupos[key]=arr.slice(0,n);
-  }
-  sincronizar(); renderEditorCategorias(); mostrarToast(`✅ Guardado.`);
-}
 function eliminarCat(key){
   if(db.config.categorias.length<=1){ alert('⚠️ Debe quedar al menos 1 categoría.'); return; }
   db.config.categorias=db.config.categorias.filter(x=>x.key!==key); delete db.cupos[key]; delete db.partidos[key];
@@ -2034,38 +2013,7 @@ function eliminarCat(key){
   sincronizar(); renderEditorCategorias(); mostrarToast('🗑️ Eliminada.');
 }
 function subirImagenConfig(e,campo){ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=ev=>{ db.config[campo]=ev.target.result; sincronizar(); mostrarToast('🖼️ Imagen guardada.'); }; r.readAsDataURL(f); }
-function subirPdfReglamento(e){
-  const f=e.target.files[0]; if(!f) return;
-  if(f.size > 5*1024*1024){ alert('⚠️ El PDF supera 5 MB. Comprímelo o pega el enlace en el casillero de al lado.'); e.target.value=''; return; }
-  const r=new FileReader();
-  r.onload=ev=>{
-    db.config.reglamentoPdfData=ev.target.result;
-    db.config.reglamentoPdfNombre=f.name||'Reglamento_Torneo.pdf';
-    sincronizar(); cargarFormsAdmin();
-    mostrarToast('📄 PDF del reglamento guardado en la nube.');
-  };
-  r.readAsDataURL(f);
-}
 
-async function descargarReglamentoPDF(){
-  if(db.config.reglamentoPdfData){
-    const blob=await (await fetch(db.config.reglamentoPdfData)).blob();
-    const url=URL.createObjectURL(blob);
-    const a=document.createElement('a');
-    a.href=url; a.download=db.config.reglamentoPdfNombre||`Reglamento_${db.id}.pdf`;
-    document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),4000);
-    return;
-  }
-  if(db.config.reglamentoPdfUrl){
-    window.open(db.config.reglamentoPdfUrl,'_blank');
-    return;
-  }
-  const w=window.open('','_blank');
-  if(!w){ alert('⚠️ Habilita las ventanas emergentes para ver el reglamento.'); return; }
-  w.document.write(`<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Bases y Reglamento - ${esc(db.config.nombreTorneo)}</title><style>body{font-family:Arial,sans-serif;max-width:740px;margin:30px auto;padding:20px;color:#111;line-height:1.6;}h1{margin-bottom:4px;}small{color:#555;}hr{margin:16px 0;}</style></head><body><h1>${esc(db.config.nombreTorneo)}</h1><small>${esc(db.config.badgeOrg)} • ${fmtCL(db.config.fechaInicio)} al ${fmtCL(db.config.fechaFin)}</small><hr><div>${db.config.reglamento||'Reglamento oficial del torneo.'}</div><script>window.onload=()=>window.print();<\/script></body></html>`);
-  w.document.close();
-}
 function renderSponsorsYRankAdmin(){
   document.getElementById('editorSponsors').innerHTML=(db.sponsors||[]).map((s,i)=>`<div style="display:flex;gap:.4rem;flex-wrap:wrap;align-items:center;">
     <input type="text" value="${esc(s.logoText||'')}" onchange="db.sponsors[${i}].logoText=this.value;sincronizar();" class="inp" style="width:140px;">
