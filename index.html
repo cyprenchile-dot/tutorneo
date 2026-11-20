@@ -1518,7 +1518,7 @@ function abrirModalInscripcion(cKey, boxId){
   selC.innerHTML=db.config.categorias.map(c=>`<option value="${c.key}" ${c.key===cKey?'selected':''}>${esc(c.nombre)}</option>`).join('');
   actualizarSelectorBoxesModal(boxId);
   document.getElementById('modTitular').innerText=db.config.titularMP||db.config.badgeOrg;
-  document.getElementById('modPagoTipo').value='total';
+  document.getElementById('modPagoTipo').value='mitad';
   actualizarPrecioModal();
   document.getElementById('modalInscripcion').classList.remove('oculto');
 }
