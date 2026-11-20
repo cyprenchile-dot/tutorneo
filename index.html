@@ -833,20 +833,6 @@ function toggleAudio(){
   if(b) b.innerText=sonidoOn?'🔊 Sonido Clic: ON':'🔇 Sonido Clic: OFF';
 }
   
-['pointerdown','touchstart','keydown'].forEach(ev=>document.addEventListener(ev, activarAudioAlPrimerToque, { passive: true }));
-document.addEventListener('click', e=>{
-  activarAudioAlPrimerToque();
-  if(e.target.closest('button') || e.target.closest('.box-verde')) sonarGolpePadel(0.45, 1.08, 0);
-});
-
-function toggleAudio(){
-  sonidoOn=!sonidoOn;
-  const b=document.getElementById('btnSound');
-  if(b) b.innerText=sonidoOn?'🔊 Pelota Fondo: ON':'🔇 Pelota Fondo: OFF';
-  if(sonidoOn){ initAudio(); sonarGolpePadel(0.45,1.1,0); programarPeloteoFondo(); }
-  else { clearTimeout(ambienteTimer); ambienteTimer=null; }
-}
-
 let slideIdx=0;
 setInterval(()=>{
   const sl=[0,1,2].map(i=>document.getElementById('heroSlide'+i));
