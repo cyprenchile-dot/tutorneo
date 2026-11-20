@@ -701,8 +701,8 @@ th{background:#04070D;color:var(--muted);text-transform:uppercase;font-size:.68r
           <span id="modTitular" style="color:var(--muted);">Club Oficial</span>
         </div>
         <select id="modPagoTipo" onchange="actualizarPrecioModal()" class="inp" style="margin-bottom:.55rem;border-color:var(--mp);font-weight:700;">
-          <option value="total">Pagar Dupla Completa (100%)</option>
-          <option value="mitad">Pagar Mi Mitad (50% Individual)</option>
+          <option value="total">👥 Pagar 2 Jugadores (Dupla Completa)</option>
+          <option value="mitad">👤 Pagar 1 Jugador (Reserva tu mitad)</option>
         </select>
         <div class="mono" style="display:flex;justify-content:space-between;align-items:center;padding-top:.4rem;border-top:1px solid var(--border);">
           <span style="font-size:.9rem;">Total a Pagar:</span>
@@ -1212,7 +1212,7 @@ function renderPublico(){
         <div style="font-size:.84rem;color:#FDE047;margin-top:.25rem;">🎟️ Incluye Cupón de Kit de Jugador</div>
       </div>
       <div style="display:flex;justify-content:space-between;align-items:center;gap:.75rem;flex-wrap:wrap;">
-        <div class="box-price mono">$${precio.toLocaleString('es-CL')}</div>
+        <div style="line-height:1.05;"><div class="box-price mono">$${Math.round(precio/2).toLocaleString('es-CL')}</div><div style="font-size:.72rem;color:#a7f3d0;font-weight:700;">por jugador</div></div>
         <span class="box-cta-btn" style="background:linear-gradient(135deg,#009EE3,#007EB5);color:#fff;flex:1;min-width:170px;">INSCRIBIRTE 💳</span>
       </div>
     </div>`;
